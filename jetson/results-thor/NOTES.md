@@ -60,9 +60,33 @@ Unattended run following `jetson/THOR_PROMPT.md`, started 2026-09-23.
     since Edge-LLM 0.8; empty = not passed, so the Orin v0.6.0 build is unchanged).
   - Backend `trt_edgellm`: new `encoder_cache_budget_bytes` option. Edge-LLM 0.10 caches vision-encoder outputs
     across requests by default (256 MiB); `trt_edgellm.sh` passes 0, matching vLLM/llama.cpp with caching off.
+  - `trt_edgellm/Dockerfile`: the Thor vLLM base image carries an unpackaged copy of TensorRT 10.13.2 headers in
+    `/usr/include` (the apt package has 10.13.3 in `/usr/include/aarch64-linux-gnu`). Edge-LLM's FindTensorRT picked
+    `/usr/include`, the resulting `-isystem /usr/include` broke libstdc++'s `#include_next <math.h>` in every CUDA
+    file. Fixed by passing `-DTensorRT_INCLUDE_DIR` from `dpkg -L libnvinfer-headers-dev`.
+  - `trt_edgellm/Dockerfile`: the base image exports `CUDAARCHS=110`, overriding Edge-LLM's toolchain target
+    `110a`; the FP4 kernels then fail in ptxas (`cvt with .e2m1x2 not supported on sm_110`). Unset for the build.
+  - `trt_edgellm/Dockerfile`: `EDGELLM_PLUGIN_PATH` set; otherwise `llm_build`/`llm_inference` look for
+    `build/libNvInfer_edgellm_plugin.so` relative to the working directory ("Plugin not found" for AttentionPlugin).
+  - `export.sh`: int4_awq failed in the visual export (`hidden_size // None`): Qwen's AWQ repos store a vision_config
+    without the fields that have defaults (num_heads, depth, ...). The LLM is now exported from the LLM checkpoint
+    (`--skip-visual`) and the vision encoder always from the base checkpoint (`--skip-llm`). The AWQ repos' 390
+    vision tensors were checked to be bit-identical to the base checkpoint's, so this changes nothing numerically,
+    and every precision uses the same FP16 vision encoder.
+  - `export.sh`: `HF_TOKEN_PATH` points away from `/opt/hf-cache/token` (another user's, unreadable), which the
+    quantizer's calibration download (public `abisee/cnn_dailymail`) otherwise tried to read; `USER`/`LOGNAME` are
+    passed (torch needs a user name for uid 1001 inside the container).
+  - `build_engines.sh`: `REMOVE_ONNX=1` deletes the ONNX export after a successful build (disk).
+  - Build times on Thor (with the other user's job running): export fp16/int4_awq ~2 min; quantize+export fp8/nvfp4
+    ~9 min; engine build ~2 min. 3B engine sets: fp16 7.7 GB, fp8 5.1 GB, int4_awq 3.8 GB, nvfp4 4.0 GB.
+  - Checked with a two-request probe of `llm_inference` (red panda image): output fields `output_text`,
+    `request_idx`, `finish_reason` and profile keys `prefill`, `generation`, `multimodal`, `stages`, `wall_clock`
+    match the backend and `summarize.py`; warmup runs are not counted in the profile.
   - Backend: the runner exits 1 if any request failed but still writes all responses, with the error text as
     `output_text` and `finish_reason: "error"`. The backend used `check=True` (one bad sample would abort the run)
     and would have scored error text as answers. Failed requests are now empty answers, counted in the profile as
     `failed_requests`. `test/models/test_trt_edgellm.py` covers this and the encoder-cache flag.
 
 ## Log
+- Disk reached 4.5 GB free after the 3B Edge-LLM engines + calibration data; deleted my calibration dataset cache
+  (2.1 GB, re-downloaded for 7B). Plan: evaluate the Edge-LLM 3B engines early in phase 2 and then delete them.

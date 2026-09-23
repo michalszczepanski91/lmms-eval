@@ -6,7 +6,10 @@
 # Usage: export.sh <3b|7b> <fp16|int4_awq|fp8|nvfp4> [workspace]
 #   workspace default: $TRT_WORKSPACE, else /opt/models/trt-edgellm -> <workspace>/<model>-<precision>/onnx/{llm,visual}
 #   fp16      the Hugging Face checkpoint as is
-#   int4_awq  Qwen's official AWQ checkpoint (Qwen/<model>-AWQ, the same one the vLLM awq runs use)
+#   int4_awq  Qwen's official AWQ checkpoint (Qwen/<model>-AWQ, the same one the vLLM awq runs use) for the LLM
+#   The vision encoder is always exported in FP16 from the Hugging Face checkpoint. (The AWQ repos' config.json
+#   omits the vision fields that have defaults, e.g. num_heads, which Edge-LLM's visual exporter requires; their
+#   vision weights are bit-identical to the base checkpoint's.)
 #   fp8/nvfp4 tensorrt-edgellm-quantize on the Hugging Face checkpoint (default text calibration, LM head and
 #             vision encoder unquantized), then export; fp8/nvfp4 engines run only on Thor (SM110) and Blackwell.
 # Checkpoints come from $HF_CACHE (download them first: jetson/download_assets.sh hf <size> / vllm <size>-awq).
@@ -28,12 +31,15 @@ OFFLINE=1
 source "$REPO/jetson/frameworks/common.sh"
 
 case "${SIZE,,}" in 3b) MODEL=Qwen2.5-VL-3B-Instruct ;; 7b) MODEL=Qwen2.5-VL-7B-Instruct ;; *) echo "unknown size $SIZE" >&2; exit 1 ;; esac
+SRC=$(hf_snapshot "Qwen/$MODEL")
 case "$PRECISION" in
-  fp16|fp8|nvfp4) SRC=$(hf_snapshot "Qwen/$MODEL") ;;
-  int4_awq) SRC=$(hf_snapshot "Qwen/$MODEL-AWQ") ;;
+  fp16|fp8|nvfp4) LLM_CKPT=$SRC ;;
+  int4_awq) LLM_CKPT=$(hf_snapshot "Qwen/$MODEL-AWQ") ;;
   *) echo "precision must be fp16, int4_awq, fp8 or nvfp4" >&2; exit 1 ;;
 esac
-[ -d "$SRC" ] || { echo "checkpoint $SRC not in $HF_CACHE - run jetson/download_assets.sh first" >&2; exit 1; }
+for d in "$SRC" "$LLM_CKPT"; do
+  [ -d "$d" ] || { echo "checkpoint $d not in $HF_CACHE - run jetson/download_assets.sh first" >&2; exit 1; }
+done
 
 if ! docker image inspect "$EXPORT_IMAGE" >/dev/null 2>&1; then
   docker build --build-arg BASE_IMAGE="$BASE_IMAGE" --build-arg EDGELLM_REF="$EDGELLM_REF" \
@@ -43,20 +49,21 @@ fi
 OUT=$WORKSPACE/$MODEL-$PRECISION
 mkdir -p "$OUT"
 # Calibration datasets (fp8/nvfp4) are downloaded into the shared HF cache, so the Hub is reachable here.
-docker run --rm $GPU_FLAGS --ipc=host \
+# They are public: HF_TOKEN_PATH points away from a token file in the shared cache that may belong to someone else.
+docker run --rm $GPU_FLAGS --ipc=host -e HF_TOKEN_PATH=/tmp/no-hf-token \
   --user "$(id -u):$(id -g)" $(shared_group_args) -e HOME=/tmp -e USER="$(id -un)" -e LOGNAME="$(id -un)" \
   -e HF_HOME="$HF_CACHE" -e HF_HUB_CACHE="$HF_CACHE/hub" -v "$HF_CACHE":"$HF_CACHE" -v "$WORKSPACE":"$WORKSPACE" \
-  -e SRC="$SRC" -e OUT="$OUT" -e PRECISION="$PRECISION" -e KEEP_QUANTIZED="${KEEP_QUANTIZED:-0}" \
+  -e SRC="$SRC" -e LLM_CKPT="$LLM_CKPT" -e OUT="$OUT" -e PRECISION="$PRECISION" -e KEEP_QUANTIZED="${KEEP_QUANTIZED:-0}" \
   "$EXPORT_IMAGE" bash -euo pipefail -c '
     umask 002
-    LLM_SRC=$SRC
     if [ "$PRECISION" = fp8 ] || [ "$PRECISION" = nvfp4 ]; then
       rm -rf "$OUT/quantized"
       tensorrt-edgellm-quantize llm --model_dir "$SRC" --output_dir "$OUT/quantized" --quantization "$PRECISION"
-      LLM_SRC=$OUT/quantized
+      LLM_CKPT=$OUT/quantized
     fi
     rm -rf "$OUT/onnx"
-    tensorrt-edgellm-export "$LLM_SRC" "$OUT/onnx"
+    tensorrt-edgellm-export "$LLM_CKPT" "$OUT/onnx" --skip-visual
+    tensorrt-edgellm-export "$SRC" "$OUT/onnx" --skip-llm
     [ "$KEEP_QUANTIZED" = 1 ] || rm -rf "$OUT/quantized"
     ls "$OUT/onnx"
   '

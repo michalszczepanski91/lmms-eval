@@ -1,9 +1,10 @@
 #!/usr/bin/env bash
-# Build TensorRT Edge-LLM engines on the Jetson from ONNX produced by export.sh. UNTESTED here.
+# Build TensorRT Edge-LLM engines on the Jetson from ONNX produced by export.sh (tested on Thor, Edge-LLM v0.10.1).
 #
 # Usage: build_engines.sh <3b|7b> <fp16|int4_awq|fp8|nvfp4>   (fp8/nvfp4: Thor only)
 # Expects  $TRT_WORKSPACE/<model>-<precision>/onnx/{llm,visual}   (TRT_WORKSPACE default /opt/models/trt-edgellm)
 # Writes   $TRT_WORKSPACE/<model>-<precision>/engines/{llm,visual}
+# REMOVE_ONNX=1 deletes <model>-<precision>/onnx after a successful build (saves disk; export.sh recreates it).
 #
 # Image-token limits match the HF/vLLM runs (min_pixels 200704 / max_pixels 1605632 = 256..2048 tokens
 # of 28x28 patches), so every framework sees the same image resolution range.
@@ -28,3 +29,4 @@ docker run --rm --runtime nvidia --ipc=host \
       --minImageTokens 256 --maxImageTokens 2048 --maxImageTokensPerImage 2048
   "
 echo "engines: $DIR/engines/{llm,visual}"
+[ "${REMOVE_ONNX:-0}" = 1 ] && rm -rf "$DIR/onnx" && echo "removed $DIR/onnx"

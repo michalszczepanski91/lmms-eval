@@ -48,4 +48,7 @@ RUN git clone --depth 1 --branch ${EDGELLM_REF} https://github.com/NVIDIA/Tensor
     && cmake --build build -j"$(nproc)"
 # (No `llm_inference --help` check here: the CUDA driver is only mounted at `docker run --runtime nvidia`.)
 
-ENV PATH=/opt/TensorRT-Edge-LLM/build/examples/llm:/opt/TensorRT-Edge-LLM/build/examples/multimodal:$PATH
+# The builders and llm_inference load the plugin library from build/... relative to the working directory
+# unless EDGELLM_PLUGIN_PATH is set.
+ENV PATH=/opt/TensorRT-Edge-LLM/build/examples/llm:/opt/TensorRT-Edge-LLM/build/examples/multimodal:$PATH \
+    EDGELLM_PLUGIN_PATH=/opt/TensorRT-Edge-LLM/build/libNvInfer_edgellm_plugin.so
