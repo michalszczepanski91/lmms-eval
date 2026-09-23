@@ -7,6 +7,9 @@ runs the binary once (engines load once) and maps responses back by ``request_id
 Latency is only available as the runner's aggregate profile (vision encoder, prefill,
 per-token decode), not per sample; pass ``profile_output`` to keep it.
 
+``max_image_side`` downscales larger images (aspect ratio kept) before they reach the runner: Edge-LLM
+rejects raw images with a side above its GPU-resize budget (4096 px in v0.10), e.g. MME's landmark photos.
+
 Requests the runner fails (``finish_reason == "error"``) are scored as empty answers and
 counted in the profile (``failed_requests``) instead of aborting the whole evaluation.
 
@@ -43,6 +46,7 @@ class TRTEdgeLLM(lmms):
         profile_output: Optional[str] = None,
         warmup: int = 1,
         encoder_cache_budget_bytes: Optional[int] = None,
+        max_image_side: Optional[int] = None,
         batch_size: int = 1,
         **kwargs,
     ) -> None:
@@ -58,6 +62,7 @@ class TRTEdgeLLM(lmms):
         # Edge-LLM >= 0.10 caches vision-encoder outputs across requests (256 MiB by default); 0 disables it.
         # None = don't pass the flag (older runners don't know it).
         self.encoder_cache_budget_bytes = encoder_cache_budget_bytes
+        self.max_image_side = int(max_image_side) if max_image_side else None
 
     def _to_edgellm_messages(self, chat_messages: ChatMessages, media_dir: str, request_index: int) -> list:
         messages = []
@@ -71,9 +76,15 @@ class TRTEdgeLLM(lmms):
                     content.append({"type": "text", "text": item.text})
                 elif item.type == "image":
                     image = item.url
+                    if not isinstance(image, Image.Image) and self.max_image_side:
+                        image = Image.open(image)
                     if isinstance(image, Image.Image):
+                        image = image.convert("RGB")
+                        if self.max_image_side and max(image.size) > self.max_image_side:
+                            scale = self.max_image_side / max(image.size)
+                            image = image.resize((max(1, round(image.width * scale)), max(1, round(image.height * scale))), Image.BICUBIC)
                         path = os.path.join(media_dir, f"{request_index}_{image_count}.png")
-                        image.convert("RGB").save(path)
+                        image.save(path)
                         image = path
                     image_count += 1
                     content.append({"type": "image", "image": image})

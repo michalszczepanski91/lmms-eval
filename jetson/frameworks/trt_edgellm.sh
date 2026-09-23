@@ -17,5 +17,8 @@ fw_setup() {
   # No cross-request reuse (as for vLLM / llama.cpp): Edge-LLM >= 0.10 caches vision-encoder outputs by default,
   # which would skip the encoder for MME's second question on every image. TRT_ENCODER_CACHE= (empty) for older runners.
   MODEL_ARGS+=${TRT_ENCODER_CACHE-,encoder_cache_budget_bytes=0}
+  # Edge-LLM (v0.10) rejects raw images with a side above 4096 px ("GPU-resize budget"), e.g. 128 of MME's landmark
+  # questions; downscale those first. Every framework shrinks them to <= 2048 visual tokens anyway.
+  MODEL_ARGS+=",max_image_side=${TRT_MAX_IMAGE_SIDE:-4096}"
   DOCKER_ARGS+=(-v "$TRT_WORKSPACE":"$TRT_WORKSPACE":ro)
 }

@@ -11,6 +11,7 @@ from types import SimpleNamespace
 from PIL import Image
 
 from lmms_eval.models.chat.trt_edgellm import TRTEdgeLLM
+from lmms_eval.protocol import ChatMessages
 
 # Stand-in for Edge-LLM's llm_inference (v0.10 output format): echoes each request's text, fails requests
 # whose text is "fail" (error text + finish_reason "error", exit 1 like the real runner) and writes a profile.
@@ -59,3 +60,10 @@ class TestTRTEdgeLLM(unittest.TestCase):
             self.assertEqual(profiles[16]["profile"]["failed_requests"], 1)
             self.assertEqual(profiles[32]["profile"]["failed_requests"], 0)
             self.assertEqual(profiles[16]["profile"]["encoder_cache"], "0")
+
+    def test_large_images_are_downscaled_to_max_image_side(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            model = TRTEdgeLLM(engine_dir="engines/llm", max_image_side=4096)
+            messages = ChatMessages(messages=[{"role": "user", "content": [{"type": "image", "url": Image.new("RGB", (5000, 2500))}, {"type": "image", "url": Image.new("RGB", (64, 32))}, {"type": "text", "text": "q"}]}])
+            content = model._to_edgellm_messages(messages, tmp, 0)[-1]["content"]
+            self.assertEqual([Image.open(c["image"]).size for c in content if c["type"] == "image"], [(4096, 2048), (64, 32)])

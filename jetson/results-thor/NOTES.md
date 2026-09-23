@@ -88,6 +88,13 @@ Unattended run following `jetson/THOR_PROMPT.md`, started 2026-09-23.
     `failed_requests`. `test/models/test_trt_edgellm.py` covers this and the encoder-cache flag.
 
 ## Log
+- Phase 2, Edge-LLM 3B full MME (fp16/int4_awq/fp8) first attempt: perception ~1450 vs 1547 for HF on Orin. Per
+  category everything matched HF except landmark (64% vs 96%): 128 requests (64 landmark photos x 2 questions)
+  failed in the runner with "Raw image 2848x4288 exceeds the GPU-resize budget of 4096x4096 pixels", so they scored
+  as empty answers (the backend's failed-request handling kept the run alive). Fix: backend option
+  `max_image_side` (4096 in `trt_edgellm.sh`) downscales such images (bicubic, aspect ratio kept) before the runner;
+  every framework resizes them to <= 2048 visual tokens (~1.6 MP) anyway. The first runs are kept as
+  `trt_edgellm-<p>+no-downscale`; the three runs are repeated after the main matrix.
 - Phase 1 (smoke, `mme 8`): the other user's job ended ~19:55 (board clock); all 10 HF/vLLM/llama.cpp combinations
   finished with sensible Yes/No answers and per-sample timing. Edge-LLM 3B: fp16 and fp8 correct.
   - `run_eval.sh` fix: lmms-eval writes the trt_edgellm result files directly into the run dir (no model-named
