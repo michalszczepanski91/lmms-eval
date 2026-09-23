@@ -88,5 +88,17 @@ Unattended run following `jetson/THOR_PROMPT.md`, started 2026-09-23.
     `failed_requests`. `test/models/test_trt_edgellm.py` covers this and the encoder-cache flag.
 
 ## Log
+- Phase 1 (smoke, `mme 8`): the other user's job ended ~19:55 (board clock); all 10 HF/vLLM/llama.cpp combinations
+  finished with sensible Yes/No answers and per-sample timing. Edge-LLM 3B: fp16 and fp8 correct.
+  - `run_eval.sh` fix: lmms-eval writes the trt_edgellm result files directly into the run dir (no model-named
+    subdir), which run_eval.sh did not move into `lmms_eval/`, so summarize.py skipped them.
+  - int4_awq exported from Qwen's AWQ checkpoint (attempt 1, kept as `trt_edgellm-int4_awq+qwen-awq-ckpt`):
+    answers "Hello" to every MME question. Probe: text-only prompts are answered correctly, every image prompt
+    ends immediately with an empty answer (patching `vision_config.dtype` in the engine config changed nothing).
+    Attempt 2: AWQ via `tensorrt-edgellm-quantize` on the base checkpoint (now the default, `AWQ_SOURCE=qwen` for the
+    old path) - correct answers. Note: Edge-LLM int4_awq is therefore not the same AWQ checkpoint as vLLM awq.
+  - nvfp4 (3B, quantized here with `tensorrt-edgellm-quantize --quantization nvfp4`): garbage output even for a
+    text-only prompt ("嚯嚯。 本 1.111..."); fp8 from the same pipeline is fine. Deferred: test the 7B with NVIDIA's
+    pre-quantized `nvidia/Qwen2.5-VL-7B-Instruct-NVFP4` to separate the kernels from the 3B quantization.
 - Disk reached 4.5 GB free after the 3B Edge-LLM engines + calibration data; deleted my calibration dataset cache
   (2.1 GB, re-downloaded for 7B). Plan: evaluate the Edge-LLM 3B engines early in phase 2 and then delete them.

@@ -6,7 +6,10 @@
 # Usage: export.sh <3b|7b> <fp16|int4_awq|fp8|nvfp4> [workspace]
 #   workspace default: $TRT_WORKSPACE, else /opt/models/trt-edgellm -> <workspace>/<model>-<precision>/onnx/{llm,visual}
 #   fp16      the Hugging Face checkpoint as is
-#   int4_awq  Qwen's official AWQ checkpoint (Qwen/<model>-AWQ, the same one the vLLM awq runs use) for the LLM
+#   int4_awq  tensorrt-edgellm-quantize (AWQ, default text calibration) on the Hugging Face checkpoint.
+#             AWQ_SOURCE=qwen exports Qwen's AWQ checkpoint instead (Qwen/<model>-AWQ, as used by the vLLM awq runs);
+#             with Edge-LLM v0.10.1 on Thor that engine answers text prompts but returns an empty answer for every
+#             image prompt, so it is not the default.
 #   The vision encoder is always exported in FP16 from the Hugging Face checkpoint. (The AWQ repos' config.json
 #   omits the vision fields that have defaults, e.g. num_heads, which Edge-LLM's visual exporter requires; their
 #   vision weights are bit-identical to the base checkpoint's.)
@@ -34,7 +37,7 @@ case "${SIZE,,}" in 3b) MODEL=Qwen2.5-VL-3B-Instruct ;; 7b) MODEL=Qwen2.5-VL-7B-
 SRC=$(hf_snapshot "Qwen/$MODEL")
 case "$PRECISION" in
   fp16|fp8|nvfp4) LLM_CKPT=$SRC ;;
-  int4_awq) LLM_CKPT=$(hf_snapshot "Qwen/$MODEL-AWQ") ;;
+  int4_awq) [ "${AWQ_SOURCE:-quantize}" = qwen ] && LLM_CKPT=$(hf_snapshot "Qwen/$MODEL-AWQ") || LLM_CKPT=$SRC ;;
   *) echo "precision must be fp16, int4_awq, fp8 or nvfp4" >&2; exit 1 ;;
 esac
 for d in "$SRC" "$LLM_CKPT"; do
@@ -53,10 +56,10 @@ mkdir -p "$OUT"
 docker run --rm $GPU_FLAGS --ipc=host -e HF_TOKEN_PATH=/tmp/no-hf-token \
   --user "$(id -u):$(id -g)" $(shared_group_args) -e HOME=/tmp -e USER="$(id -un)" -e LOGNAME="$(id -un)" \
   -e HF_HOME="$HF_CACHE" -e HF_HUB_CACHE="$HF_CACHE/hub" -v "$HF_CACHE":"$HF_CACHE" -v "$WORKSPACE":"$WORKSPACE" \
-  -e SRC="$SRC" -e LLM_CKPT="$LLM_CKPT" -e OUT="$OUT" -e PRECISION="$PRECISION" -e KEEP_QUANTIZED="${KEEP_QUANTIZED:-0}" \
+  -e SRC="$SRC" -e LLM_CKPT="$LLM_CKPT" -e AWQ_SOURCE="${AWQ_SOURCE:-quantize}" -e OUT="$OUT" -e PRECISION="$PRECISION" -e KEEP_QUANTIZED="${KEEP_QUANTIZED:-0}" \
   "$EXPORT_IMAGE" bash -euo pipefail -c '
     umask 002
-    if [ "$PRECISION" = fp8 ] || [ "$PRECISION" = nvfp4 ]; then
+    if [ "$PRECISION" = fp8 ] || [ "$PRECISION" = nvfp4 ] || { [ "$PRECISION" = int4_awq ] && [ "$AWQ_SOURCE" != qwen ]; }; then
       rm -rf "$OUT/quantized"
       tensorrt-edgellm-quantize llm --model_dir "$SRC" --output_dir "$OUT/quantized" --quantization "$PRECISION"
       LLM_CKPT=$OUT/quantized

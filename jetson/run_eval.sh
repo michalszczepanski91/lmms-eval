@@ -99,9 +99,13 @@ STATUS=${PIPESTATUS[0]}
 if [ "$STATUS" -eq 0 ] && grep -q "Error during evaluation" "$OUT/run.log"; then STATUS=1; fi
 
 # lmms-eval names its output dir after the model (a cache path gives "snapshots__<hash>"); use one fixed name.
+# Backends without a model path (e.g. trt_edgellm) get no subdir: the files land in $OUT itself.
 for d in "$OUT"/*/; do
   ls "$d"*_results.json >/dev/null 2>&1 && [ "$d" != "$OUT/lmms_eval/" ] && mv "$d" "$OUT/lmms_eval"
 done
+if ls "$OUT"/*_results.json >/dev/null 2>&1; then
+  mkdir -p "$OUT/lmms_eval" && mv "$OUT"/*_results.json "$OUT"/*_samples_*.jsonl "$OUT/lmms_eval/" 2>/dev/null
+fi
 
 grep -m1 '^torch ' "$OUT/run.log" | sed 's/^/versions:    /' >>"$OUT/run_info.txt" || true
 echo "results in: $OUT (exit $STATUS)"
