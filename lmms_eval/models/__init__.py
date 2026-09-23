@@ -157,6 +157,7 @@ AVAILABLE_CHAT_TEMPLATE_MODELS = {
     "llava_onevision1_5": "Llava_OneVision1_5",
     "llava_onevision2": "Llava_OneVision2",
     "lfm2_5_vl": "LFM2_5_VL",
+    "trt_edgellm": "TRTEdgeLLM",
 }
 
 MODEL_ALIASES: dict[str, tuple[str, ...]] = {

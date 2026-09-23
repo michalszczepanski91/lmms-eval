@@ -179,3 +179,35 @@ class TestOpenAICompatibleGenerationParameters(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class _StreamingCompletions:
+    def __init__(self) -> None:
+        self.payloads: list[dict] = []
+
+    def create(self, **payload):
+        self.payloads.append(payload)
+
+        def chunk(content=None, usage=None):
+            choices = [SimpleNamespace(delta=SimpleNamespace(content=content))] if content is not None else []
+            return SimpleNamespace(choices=choices, usage=usage)
+
+        return iter([chunk(""), chunk("Ye"), chunk("s"), chunk(usage=SimpleNamespace(prompt_tokens=12, completion_tokens=2, completion_tokens_details=None))])
+
+
+class TestOpenAICompatibleStreamTiming(unittest.TestCase):
+    def test_stream_timing_records_per_sample_latency(self):
+        completions = _StreamingCompletions()
+        model = ChatOpenAICompatible.__new__(ChatOpenAICompatible)
+        _configure_openai_model(model, completions)
+        model.stream_timing = True
+
+        [result] = model.generate_until([_chat_request({"max_new_tokens": 4, "temperature": 0})])
+
+        self.assertTrue(completions.payloads[0]["stream"])
+        self.assertEqual(completions.payloads[0]["stream_options"], {"include_usage": True})
+        self.assertEqual(result.text, "Yes")
+        counts = result.token_counts.to_dict()
+        self.assertEqual((counts["input_tokens"], counts["output_tokens"]), (12, 2))
+        self.assertGreaterEqual(counts["generation_seconds"], counts["time_to_first_token_seconds"])
+        self.assertIn("preprocess_seconds", counts)

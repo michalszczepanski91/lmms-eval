@@ -97,8 +97,8 @@ class VLLM(VLLMSimple):
         batch_size = self.batch_size_per_gpu
         batched_requests = [requests[i : i + batch_size] for i in range(0, len(requests), batch_size)]
         total_elapsed_time = 0
-        sample_token_counts: Optional[TokenCounts] = None
         for batch_requests in batched_requests:
+            preprocess_start = time.perf_counter()
             batched_messages = []
             batched_sampling_params = []
             with ThreadPoolExecutor(max_workers=WORKERS) as executor:
@@ -108,9 +108,9 @@ class VLLM(VLLMSimple):
                     batched_messages.append(messages)
                     batched_sampling_params.append(sampling_params)
 
-            start_time = time.time()
+            start_time = time.perf_counter()
 
-            def _run_chat(request_items: list[tuple[list[dict], dict]]) -> list[str]:
+            def _run_chat(request_items: list[tuple[list[dict], dict]]) -> list[tuple[str, TokenCounts]]:
                 inputs = [messages for messages, _ in request_items]
                 sampling_params = [SamplingParams(**params) for _, params in request_items]
                 response = self.client.chat(
@@ -118,16 +118,30 @@ class VLLM(VLLMSimple):
                     messages=inputs,
                     chat_template=self.chat_template,
                 )
-                return [o.outputs[0].text for o in response]
+                results = []
+                for o in response:
+                    # metrics is None when vLLM runs with disable_log_stats=True.
+                    first_token_latency = getattr(o.metrics, "first_token_latency", None) or None
+                    counts = TokenCounts(
+                        input_tokens=len(o.prompt_token_ids) if o.prompt_token_ids is not None else None,
+                        output_tokens=len(o.outputs[0].token_ids),
+                        time_to_first_token_seconds=first_token_latency,
+                    )
+                    results.append((o.outputs[0].text, counts))
+                return results
 
-            response_text = self._run_tp_synced(list(zip(batched_messages, batched_sampling_params)), _run_chat)
-            end_time = time.time()
+            responses = self._run_tp_synced(list(zip(batched_messages, batched_sampling_params)), _run_chat)
+            end_time = time.perf_counter()
+            if len(batch_requests) == 1:
+                # Whole-call latency is per sample only when a batch holds one request.
+                responses[0][1].preprocess_seconds = start_time - preprocess_start
+                responses[0][1].generation_seconds = end_time - start_time
 
             # Calculate timing metrics for batch
             total_elapsed_time += end_time - start_time
 
-            assert len(response_text) == len(batch_requests)
-            res.extend([GenerationResult(text=resp_text, token_counts=sample_token_counts) for resp_text in response_text])
+            assert len(responses) == len(batch_requests)
+            res.extend([GenerationResult(text=resp_text, token_counts=counts) for resp_text, counts in responses])
             pbar.update(len(batch_requests))
 
         if not self.disable_log_stats:

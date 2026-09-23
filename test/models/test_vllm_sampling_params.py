@@ -21,7 +21,7 @@ def _install_vllm_stubs() -> None:
         "lmms_eval.api.instance": types.SimpleNamespace(
             GenerationResult=lambda text, token_counts=None: types.SimpleNamespace(text=text, token_counts=token_counts),
             Instance=object,
-            TokenCounts=object,
+            TokenCounts=types.SimpleNamespace,
         ),
         "lmms_eval.api.registry": types.SimpleNamespace(register_model=lambda _name: lambda cls: cls),
         "lmms_eval.imports": types.SimpleNamespace(optional_import=lambda *_args: (None, False)),
@@ -94,7 +94,14 @@ class _CaptureClient:
                 "chat_template": chat_template,
             }
         )
-        return [types.SimpleNamespace(outputs=[types.SimpleNamespace(text=f"chat-{idx}")]) for idx, _ in enumerate(messages)]
+        return [
+            types.SimpleNamespace(
+                outputs=[types.SimpleNamespace(text=f"chat-{idx}", token_ids=[idx])],
+                prompt_token_ids=[0, 1],
+                metrics=None,
+            )
+            for idx, _ in enumerate(messages)
+        ]
 
     def generate(self, inputs, sampling_params):
         self.calls.append(

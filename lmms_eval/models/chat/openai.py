@@ -38,10 +38,31 @@ def _validate_single_choice_n(gen_kwargs: dict) -> None:
 class OpenAICompatible(OpenAICompatibleSimple):
     is_simple = False
 
-    def __init__(self, *args, pass_video_url: bool = False, enable_thinking_kwarg: object = None, **kwargs):
+    stream_timing = False
+
+    def __init__(self, *args, pass_video_url: bool = False, enable_thinking_kwarg: object = None, stream_timing: bool = False, **kwargs):
         super().__init__(*args, **kwargs)
         self.pass_video_url = bool(pass_video_url)
         self.enable_thinking_kwarg = enable_thinking_kwarg
+        # Stream responses to record per-sample time-to-first-token (client side, includes HTTP).
+        self.stream_timing = str(stream_timing).lower() == "true" if isinstance(stream_timing, str) else bool(stream_timing)
+
+    def _create_streaming(self, payload: dict):
+        """Stream one chat completion; return (text, usage, seconds from call to first content token)."""
+        started_at = time.perf_counter()
+        first_token_at = None
+        parts = []
+        usage = None
+        stream = self.client.chat.completions.create(**payload, stream=True, stream_options={"include_usage": True})
+        for chunk in stream:
+            if getattr(chunk, "usage", None):
+                usage = chunk.usage
+            if chunk.choices and chunk.choices[0].delta.content:
+                if first_token_at is None:
+                    first_token_at = time.perf_counter()
+                parts.append(chunk.choices[0].delta.content)
+        ttft = first_token_at - started_at if first_token_at is not None else None
+        return "".join(parts), usage, ttft
 
     def generate_until(self, requests) -> List[GenerationResult]:
         if not requests:
@@ -79,6 +100,7 @@ class OpenAICompatible(OpenAICompatibleSimple):
         failed_requests = 0
         rate_limited_requests = 0
         latencies: List[float] = []
+        preprocess_seconds: dict = {}
         completed_since_adapt = 0
         in_flight = {}
         max_workers = max(
@@ -88,23 +110,31 @@ class OpenAICompatible(OpenAICompatibleSimple):
 
         def process_single_request(local_index: int, payload: dict | None):
             if payload is None:
-                return "", local_index, False, False, 0.0, 0, 0, 0
+                return "", local_index, False, False, 0.0, 0, 0, 0, None
             started_at = time.time()
             rate_limited = False
             last_error_msg = "unknown error"
             for attempt in range(self.max_retries):
                 try:
-                    response = self.client.chat.completions.create(**payload)
-                    elapsed = time.time() - started_at
-                    response_text = response.choices[0].message.content
+                    ttft = None
+                    if self.stream_timing:
+                        attempt_started_at = time.time()
+                        response_text, usage, ttft = self._create_streaming(payload)
+                        # Latency of the successful attempt only, so retries don't skew per-sample timing.
+                        elapsed = time.time() - attempt_started_at
+                    else:
+                        response = self.client.chat.completions.create(**payload)
+                        elapsed = time.time() - started_at
+                        response_text = response.choices[0].message.content
+                        usage = getattr(response, "usage", None)
                     input_tokens = 0
                     output_tokens = 0
                     reasoning_tokens = 0
-                    if hasattr(response, "usage") and response.usage:
-                        input_tokens = getattr(response.usage, "prompt_tokens", 0) or 0
-                        output_tokens = getattr(response.usage, "completion_tokens", 0) or 0
-                        if hasattr(response.usage, "completion_tokens_details") and response.usage.completion_tokens_details:
-                            reasoning_tokens = getattr(response.usage.completion_tokens_details, "reasoning_tokens", 0) or 0
+                    if usage:
+                        input_tokens = getattr(usage, "prompt_tokens", 0) or 0
+                        output_tokens = getattr(usage, "completion_tokens", 0) or 0
+                        if hasattr(usage, "completion_tokens_details") and usage.completion_tokens_details:
+                            reasoning_tokens = getattr(usage.completion_tokens_details, "reasoning_tokens", 0) or 0
                         completion_tokens = output_tokens
                     else:
                         completion_tokens = len(response_text.split())
@@ -126,6 +156,7 @@ class OpenAICompatible(OpenAICompatibleSimple):
                         completion_tokens,
                         input_tokens,
                         reasoning_tokens,
+                        ttft,
                     )
                 except Exception as exc:
                     error_msg = str(exc)
@@ -140,7 +171,7 @@ class OpenAICompatible(OpenAICompatibleSimple):
             elapsed = time.time() - started_at
             error_preview = last_error_msg.replace("\n", " ")[:200]
             failure_content = f"[LMMS_EVAL_REQUEST_FAILED after {self.max_retries} retries] {error_preview}"
-            return failure_content, local_index, False, rate_limited, elapsed, 0, 0, 0
+            return failure_content, local_index, False, rate_limited, elapsed, 0, 0, 0, None
 
         def maybe_update_concurrency(force: bool = False) -> None:
             nonlocal current_concurrency
@@ -228,7 +259,9 @@ class OpenAICompatible(OpenAICompatibleSimple):
             while cursor < len(dispatch_order) or in_flight:
                 while cursor < len(dispatch_order) and len(in_flight) < max(1, current_concurrency):
                     request_index = dispatch_order[cursor]
+                    payload_started_at = time.perf_counter()
                     payload = build_payload_for_index(request_index)
+                    preprocess_seconds[request_index] = time.perf_counter() - payload_started_at
                     if payload is None:
                         responses[request_index] = GenerationResult(text="", token_counts=TokenCounts())
                         pbar.update(1)
@@ -260,14 +293,23 @@ class OpenAICompatible(OpenAICompatibleSimple):
                         completion_tokens,
                         input_tokens,
                         reasoning_tokens,
+                        ttft,
                     ) = future.result()
                     in_flight.pop(future, None)
+                    latency = {}
+                    if self.stream_timing and success:
+                        latency = {
+                            "preprocess_seconds": preprocess_seconds.get(local_index),
+                            "time_to_first_token_seconds": ttft,
+                            "generation_seconds": elapsed,
+                        }
                     responses[local_index] = GenerationResult(
                         text=response_text,
                         token_counts=TokenCounts(
                             input_tokens=input_tokens,
                             output_tokens=completion_tokens,
                             reasoning_tokens=reasoning_tokens,
+                            **latency,
                         ),
                     )
                     total_latency += elapsed

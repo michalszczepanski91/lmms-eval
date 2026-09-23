@@ -3,31 +3,44 @@
 # All repos here are public; no HF token needed. Datasets are also prepared into $HF_HOME/datasets
 # (the Arrow cache that `datasets` requires offline); this also sidesteps task YAMLs with `token: True`.
 #
-# Usage: jetson/download_assets.sh [repo ...]   (default: Qwen2.5-VL 3B + 7B and MME)
+# Usage:
+#   jetson/download_assets.sh <framework> <size>[-<precision>]   # what run_eval.sh needs, plus MME
+#   jetson/download_assets.sh <kind:repo[:file]> ...             # explicit, e.g. model:Qwen/Qwen2.5-VL-3B-Instruct
+# Examples:
+#   jetson/download_assets.sh llamacpp 7b-q8_0
+#   jetson/download_assets.sh vllm 3b-awq
 set -euo pipefail
 
-HF_CACHE=${HF_CACHE:-/opt/hf-cache}
+REPO=$(cd "$(dirname "$0")/.." && pwd)
 IMAGE=${IMAGE:-lmms-eval-jetson:latest}
-REPOS=("$@")
-[ ${#REPOS[@]} -gt 0 ] || REPOS=(
-  dataset:lmms-lab-encoder/MME
-  model:Qwen/Qwen2.5-VL-3B-Instruct
-  model:Qwen/Qwen2.5-VL-7B-Instruct
-)
+source "$REPO/jetson/frameworks/common.sh"
+
+if [ $# -ge 1 ] && [[ "$1" != *:* ]]; then
+  resolve_framework "$1" "${2:?usage: $0 <framework> <size>[-precision]}"
+  mapfile -t SPECS < <(fw_assets)
+  SPECS+=(dataset:lmms-lab-encoder/MME)
+else
+  SPECS=("$@")
+fi
+[ ${#SPECS[@]} -gt 0 ] || { echo "nothing to download" >&2; exit 1; }
 
 docker run --rm -i \
   --user "$(id -u):$(id -g)" --group-add "$(getent group mlusers | cut -d: -f3)" \
   -e HOME=/tmp -e HF_HOME="$HF_CACHE" -e HF_HUB_CACHE="$HF_CACHE/hub" -e HF_HUB_ENABLE_HF_TRANSFER=1 \
   -v "$HF_CACHE":"$HF_CACHE" \
-  "$IMAGE" bash -c 'umask 002; python - "$@"' _ "${REPOS[@]}" <<'EOF'
-import sys
+  "$IMAGE" bash -c 'umask 002; python - "$@"' _ "${SPECS[@]}" <<'EOF'
 import os
+import sys
+
 import datasets
-from huggingface_hub import snapshot_download
+from huggingface_hub import hf_hub_download, snapshot_download
 
 for spec in sys.argv[1:]:
-    kind, _, repo = spec.rpartition(":")
-    path = snapshot_download(repo, repo_type=kind or "model", token=False)
+    kind, repo, *file = spec.split(":", 2)
+    if file:
+        path = hf_hub_download(repo, file[0], repo_type=kind, token=False)
+    else:
+        path = snapshot_download(repo, repo_type=kind, token=False)
     if kind == "dataset":
         ds = datasets.load_dataset(repo, token=False, cache_dir=os.path.join(os.environ["HF_HOME"], "datasets"))
         print(f"    {ds}", flush=True)
