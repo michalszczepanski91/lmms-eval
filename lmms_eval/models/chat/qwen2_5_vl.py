@@ -18,6 +18,26 @@ if not _has_qwen_vl:
     eval_logger.warning("Failed to import qwen_vl_utils; Please install it via `pip install qwen-vl-utils`")
 
 
+class _FirstTokenTimer:
+    """Generation streamer that records when the first new token is produced.
+
+    ``generate`` calls ``put`` once with the prompt ids, then once per decoding step
+    with ids already copied to CPU, so the second call marks the first token.
+    """
+
+    def __init__(self):
+        self._calls = 0
+        self.first_token_time = None
+
+    def put(self, value):
+        self._calls += 1
+        if self._calls == 2:
+            self.first_token_time = time.perf_counter()
+
+    def end(self):
+        pass
+
+
 @register_model("qwen2_5_vl_chat")
 class Qwen2_5_VL(Qwen2_5_VLSimple):
     is_simple = False
@@ -44,6 +64,7 @@ class Qwen2_5_VL(Qwen2_5_VLSimple):
         total_elapsed_time = 0
         total_tokens = 0
         for chunk in chunks:
+            preprocess_start = time.perf_counter()
             ctx, doc_to_messages, all_gen_kwargs, doc_id, task, split = zip(*chunk)
             chat_messages = [doc_to_messages[idx](self.task_dict[task][split][ids]) for idx, (ids, task, split) in enumerate(zip(doc_id, task, split))]
             chat_messages: List[ChatMessages] = [ChatMessages(**{"messages": message}) for message in chat_messages]
@@ -132,7 +153,9 @@ class Qwen2_5_VL(Qwen2_5_VLSimple):
                 current_gen_kwargs["top_p"] = None
                 current_gen_kwargs["top_k"] = None
 
-            start_time = time.time()
+            # HF streamers only support batch size 1; per-sample latency is recorded only then.
+            first_token_timer = _FirstTokenTimer() if len(texts) == 1 else None
+            start_time = time.perf_counter()
             cont = self.model.generate(
                 **inputs,
                 eos_token_id=self.tokenizer.eos_token_id,
@@ -144,8 +167,16 @@ class Qwen2_5_VL(Qwen2_5_VLSimple):
                 max_new_tokens=current_gen_kwargs["max_new_tokens"],
                 top_k=current_gen_kwargs.get("top_k", None),
                 use_cache=self.use_cache,
+                streamer=first_token_timer,
             )
-            end_time = time.time()
+            end_time = time.perf_counter()
+            latency = {}
+            if first_token_timer is not None:
+                latency = {
+                    "preprocess_seconds": start_time - preprocess_start,
+                    "time_to_first_token_seconds": first_token_timer.first_token_time - start_time if first_token_timer.first_token_time else None,
+                    "generation_seconds": end_time - start_time,
+                }
 
             generated_ids_trimmed = [out_ids[len(in_ids) :] for in_ids, out_ids in zip(inputs.input_ids, cont)]
             answers = self.processor.batch_decode(
@@ -159,7 +190,7 @@ class Qwen2_5_VL(Qwen2_5_VLSimple):
             total_tokens += sum(len(ids) for ids in generated_ids_trimmed)
 
             for i, (ans, context) in enumerate(zip(answers, texts)):
-                res.append(GenerationResult(text=ans, token_counts=TokenCounts(output_tokens=len(generated_ids_trimmed[i]))))
+                res.append(GenerationResult(text=ans, token_counts=TokenCounts(input_tokens=int(inputs.attention_mask[i].sum()), output_tokens=len(generated_ids_trimmed[i]), **latency)))
                 self.cache_hook.add_partial("generate_until", (context, gen_kwargs), ans)
 
                 eval_logger.debug(f"Question: {context}")

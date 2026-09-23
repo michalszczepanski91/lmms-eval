@@ -1,0 +1,1 @@
+[/opt/venv/bin/vllm serve Qwen/Qwen2.5-1.5B-Instruct-AWQ --host 0.0.0.0 --port 8001 --gpu-memory-utilization 0.15 --max-model-len 2048 --trust-remote-code --enable-auto-tool-choice --tool-call-parser hermes] map[] host

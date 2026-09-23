@@ -1,0 +1,82 @@
+/opt/venv/lib/python3.10/site-packages/requests/__init__.py:113: RequestsDependencyWarning: urllib3 (2.6.3) or chardet (6.0.0.post1)/charset_normalizer (3.4.4) doesn't match a supported version!
+  warnings.warn(
+/opt/venv/lib/python3.10/site-packages/transformers/utils/hub.py:110: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+  warnings.warn(
+torch 2.10.0 transformers 4.57.3
+/opt/venv/lib/python3.10/site-packages/requests/__init__.py:113: RequestsDependencyWarning: urllib3 (2.6.3) or chardet (6.0.0.post1)/charset_normalizer (3.4.4) doesn't match a supported version!
+  warnings.warn(
+/opt/venv/lib/python3.10/site-packages/transformers/utils/hub.py:110: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+  warnings.warn(
+[32m2026-09-23 10:05:21[0m | [1mINFO    [0m | [36mlmms_eval.__main__[0m:[36mcli_evaluate[0m:[36m516[0m - [1mVerbosity set to INFO[0m
+[32m2026-09-23 10:05:27[0m | [1mINFO    [0m | [36mlmms_eval.__main__[0m:[36mcli_evaluate_single[0m:[36m653[0m - [1mEvaluation tracker args: {'output_path': 'jetson/results/Qwen2.5-VL-7B-Instruct/mme/20260923-120505'}[0m
+[32m2026-09-23 10:05:27[0m | [1mINFO    [0m | [36mlmms_eval.__main__[0m:[36mcli_evaluate_single[0m:[36m737[0m - [1mSelected Tasks: ['mme'][0m
+[32m2026-09-23 10:05:27[0m | [1mINFO    [0m | [36mlmms_eval.evaluator[0m:[36msimple_evaluate[0m:[36m486[0m - [1mSetting random seed to 0 | Setting numpy seed to 1234 | Setting torch manual seed to 1234[0m
+`torch_dtype` is deprecated! Use `dtype` instead!
+NvMapMemAllocInternalTagged: 1075072515 error 12
+NvMapMemHandleAlloc: error 0
+Loading checkpoint shards:   0%|          | 0/5 [00:00<?, ?it/s]Loading checkpoint shards:  20%|██        | 1/5 [00:03<00:12,  3.09s/it]Loading checkpoint shards:  40%|████      | 2/5 [00:05<00:08,  2.90s/it]Loading checkpoint shards:  60%|██████    | 3/5 [00:08<00:05,  2.82s/it]Loading checkpoint shards:  80%|████████  | 4/5 [00:10<00:02,  2.48s/it]Loading checkpoint shards: 100%|██████████| 5/5 [00:10<00:00,  2.11s/it]
+Some parameters are on the meta device because they were offloaded to the cpu.
+The image processor of type `Qwen2VLImageProcessor` is now loaded as a fast processor by default, even if the model checkpoint was saved with a slow processor. This is a breaking change and may produce slightly different outputs. To continue using the slow processor, instantiate this class with `use_fast=False`. Note that this behavior will be extended to all models in a future release.
+Using the latest cached version of the dataset since lmms-lab-encoder/MME couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'default' at /opt/hf-cache/datasets/lmms-lab-encoder___mme/default/0.0.0/d6c9023f017b564f7b3ccccf5348166bce8fdbcd (last modified on Wed Sep 23 09:24:43 2026).
+[32m2026-09-23 10:05:46[0m | [1mINFO    [0m | [36mlmms_eval.evaluator[0m:[36mevaluate[0m:[36m1047[0m - [1mRunning on rank 0 (local rank 0)[0m
+[32m2026-09-23 10:05:46[0m | [1mINFO    [0m | [36mlmms_eval.evaluator_utils[0m:[36mfrom_taskdict[0m:[36m100[0m - [1mNo metadata found in task config for mme, using default n_shot=0[0m
+[32m2026-09-23 10:05:46[0m | [1mINFO    [0m | [36mlmms_eval.api.task[0m:[36mbuild_all_requests[0m:[36m473[0m - [1mBuilding contexts for mme on rank 0...[0m
+  0%|          | 0/2374 [00:00<?, ?it/s] 69%|██████▉   | 1640/2374 [00:00<00:00, 16397.87it/s]100%|██████████| 2374/2374 [00:00<00:00, 16270.04it/s]
+[32m2026-09-23 10:05:46[0m | [1mINFO    [0m | [36mlmms_eval.evaluator[0m:[36mevaluate[0m:[36m1202[0m - [1mRunning generate_until requests[0m
+Model Responding:   0%|          | 0/2374 [00:00<?, ?it/s]NvMapMemAllocInternalTagged: 1075072515 error 12
+NvMapMemHandleAlloc: error 0
+NvMapMemAllocInternalTagged: 1075072515 error 12
+NvMapMemHandleAlloc: error 0
+NvMapMemAllocInternalTagged: 1075072515 error 12
+NvMapMemHandleAlloc: error 0
+NvMapMemAllocInternalTagged: 1075072515 error 12
+NvMapMemHandleAlloc: error 0
+Traceback (most recent call last):
+  File "/home/michal/dev/lmms-eval/lmms_eval/__main__.py", line 584, in cli_evaluate
+    results, samples = cli_evaluate_single(args)
+  File "/home/michal/dev/lmms-eval/lmms_eval/__main__.py", line 741, in cli_evaluate_single
+    results = evaluator.simple_evaluate(
+  File "/home/michal/dev/lmms-eval/lmms_eval/utils.py", line 737, in _wrapper
+    return fn(*args, **kwargs)
+  File "/home/michal/dev/lmms-eval/lmms_eval/evaluator.py", line 653, in simple_evaluate
+    results = evaluate(
+  File "/home/michal/dev/lmms-eval/lmms_eval/utils.py", line 737, in _wrapper
+    return fn(*args, **kwargs)
+  File "/home/michal/dev/lmms-eval/lmms_eval/evaluator.py", line 1231, in evaluate
+    resps = getattr(lm, reqtype)(cloned_reqs)
+  File "/home/michal/dev/lmms-eval/lmms_eval/models/chat/qwen2_5_vl.py", line 136, in generate_until
+    cont = self.model.generate(
+  File "/opt/venv/lib/python3.10/site-packages/torch/utils/_contextlib.py", line 124, in decorate_context
+    return func(*args, **kwargs)
+  File "/opt/venv/lib/python3.10/site-packages/transformers/generation/utils.py", line 2564, in generate
+    result = decoding_method(
+  File "/opt/venv/lib/python3.10/site-packages/transformers/generation/utils.py", line 2784, in _sample
+    outputs = self(**model_inputs, return_dict=True)
+  File "/opt/venv/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1776, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/opt/venv/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1787, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/opt/venv/lib/python3.10/site-packages/accelerate/hooks.py", line 192, in new_forward
+    output = module._old_forward(*args, **kwargs)
+  File "/opt/venv/lib/python3.10/site-packages/transformers/utils/generic.py", line 918, in wrapper
+    output = func(self, *args, **kwargs)
+  File "/opt/venv/lib/python3.10/site-packages/transformers/models/qwen2_5_vl/modeling_qwen2_5_vl.py", line 1499, in forward
+    logits = self.lm_head(hidden_states[:, slice_indices, :])
+  File "/opt/venv/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1776, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/opt/venv/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1787, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/opt/venv/lib/python3.10/site-packages/accelerate/hooks.py", line 187, in new_forward
+    args, kwargs = module._hf_hook.pre_forward(module, *args, **kwargs)
+  File "/opt/venv/lib/python3.10/site-packages/accelerate/hooks.py", line 50, in wrapper
+    return wrapper._compiled_fn(*args, **kwargs)
+  File "/opt/venv/lib/python3.10/site-packages/torch/_dynamo/eval_frame.py", line 1181, in _fn
+    return fn(*args, **kwargs)
+  File "/opt/venv/lib/python3.10/site-packages/accelerate/hooks.py", line 378, in pre_forward
+    set_module_tensor_to_device(
+  File "/opt/venv/lib/python3.10/site-packages/accelerate/utils/modeling.py", line 343, in set_module_tensor_to_device
+    new_value = value.to(device, non_blocking=non_blocking)
+RuntimeError: NVML_SUCCESS == r INTERNAL ASSERT FAILED at "/opt/pytorch/c10/cuda/CUDACachingAllocator.cpp":1154, please report a bug to PyTorch. 
+[32m2026-09-23 10:05:51[0m | [31m[1mERROR   [0m | [36mlmms_eval.__main__[0m:[36mcli_evaluate[0m:[36m615[0m - [31m[1mError during evaluation: NVML_SUCCESS == r INTERNAL ASSERT FAILED at "/opt/pytorch/c10/cuda/CUDACachingAllocator.cpp":1154, please report a bug to PyTorch. . Please set `--verbosity=DEBUG` to get more information.[0m
+Model Responding:   0%|          | 0/2374 [00:04<?, ?it/s]

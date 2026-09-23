@@ -4,25 +4,27 @@ from typing import Any, Dict, List, Literal, Optional, Tuple, Union
 
 @dataclass
 class TokenCounts:
-    """Per-request token usage counters.
+    """Per-request token usage counters and, optionally, latency.
 
     Fields are ``None`` when the backend cannot report them (e.g. cached
     responses, or backends that only expose aggregate metrics).
+
+    Latency fields (seconds, wall clock) let backends be compared on the same samples:
+    ``preprocess_seconds`` covers prompt/media processing up to the model call,
+    ``time_to_first_token_seconds`` runs from the model call to the first generated token
+    (vision encoding + prefill + one decode step), and ``generation_seconds`` covers the
+    whole model call.
     """
 
     input_tokens: Optional[int] = None
     output_tokens: Optional[int] = None
     reasoning_tokens: Optional[int] = None
+    preprocess_seconds: Optional[float] = None
+    time_to_first_token_seconds: Optional[float] = None
+    generation_seconds: Optional[float] = None
 
-    def to_dict(self) -> Dict[str, Optional[int]]:
-        d: Dict[str, Optional[int]] = {}
-        if self.input_tokens is not None:
-            d["input_tokens"] = self.input_tokens
-        if self.output_tokens is not None:
-            d["output_tokens"] = self.output_tokens
-        if self.reasoning_tokens is not None:
-            d["reasoning_tokens"] = self.reasoning_tokens
-        return d
+    def to_dict(self) -> Dict[str, Union[int, float]]:
+        return {name: value for name, value in vars(self).items() if value is not None}
 
 
 @dataclass
