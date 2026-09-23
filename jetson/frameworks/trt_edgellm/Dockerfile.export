@@ -1,0 +1,22 @@
+# TensorRT Edge-LLM Python front end (quantize + ONNX export, Edge-LLM >= 0.8) on an NVIDIA PyTorch container.
+# Built on demand by export.sh. Edge-LLM's extras pin torch/torchvision to PyPI builds; those are skipped so the
+# container's own CUDA build of torch stays (on Jetson Thor the PyPI wheel would replace the Tegra/SM110 build).
+#   docker build --build-arg BASE_IMAGE=nvcr.io/nvidia/pytorch:26.05-py3 --build-arg EDGELLM_REF=v0.10.1 \
+#     -f jetson/frameworks/trt_edgellm/Dockerfile.export -t lmms-eval-trt-export:v0.10.1 jetson/frameworks/trt_edgellm
+ARG BASE_IMAGE=nvcr.io/nvidia/pytorch:26.05-py3
+FROM ${BASE_IMAGE}
+
+ARG EDGELLM_REF=v0.10.1
+RUN git clone --depth 1 --branch ${EDGELLM_REF} https://github.com/NVIDIA/TensorRT-Edge-LLM.git /opt/TensorRT-Edge-LLM \
+    && cd /opt/TensorRT-Edge-LLM && git submodule update --init --recursive --depth 1 \
+    && python -c "from importlib import metadata as m; \
+print('\n'.join(f'{d}=={m.version(d)}' for d in ('torch', 'torchvision', 'torchaudio') if any(x.metadata['Name'] == d for x in m.distributions())))" > /tmp/torch-pins.txt \
+    && cat /tmp/torch-pins.txt \
+    && python -c "import tomllib; p = tomllib.load(open('pyproject.toml', 'rb'))['project']; \
+print('\n'.join(p['dependencies'] + [d for d in p['optional-dependencies']['tools'] if not d.startswith(('torch=', 'torchvision=', 'torchaudio='))]))" > /tmp/edgellm-reqs.txt \
+    && cat /tmp/edgellm-reqs.txt \
+    && pip install -c /tmp/torch-pins.txt -r /tmp/edgellm-reqs.txt \
+    && pip install --no-deps -e . \
+    && tensorrt-edgellm-export --help >/dev/null && tensorrt-edgellm-quantize --help >/dev/null
+
+ENTRYPOINT []

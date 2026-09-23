@@ -14,6 +14,8 @@
 #                HF_CACHE (default /opt/hf-cache), plus per-framework ones (see jetson/frameworks/*.sh).
 #   RUN_TAG   label for a variant, appended to the result dir: <framework>-<precision>+<RUN_TAG>
 #   RESULTS_DIR  results root relative to the repo (default jetson/results; e.g. jetson/results-thor)
+#   WAIT_GPU_IDLE  default 1: before starting, wait until no other process uses the GPU (checked with
+#             nvidia-smi, e.g. another user's host job that `docker ps` cannot see); 0 = start anyway
 #   EVAL_ENV  space-separated KEY=VALUE pairs passed into the eval container
 #             (e.g. EVAL_ENV="LMMS_IMAGE_PNG_COMPRESS_LEVEL=1")
 #
@@ -44,6 +46,16 @@ MODEL_ARGS+=${EXTRA_MODEL_ARGS:+,$EXTRA_MODEL_ARGS}
 EVAL_CMD=(python -m lmms_eval --model "$BACKEND" --model_args "$MODEL_ARGS" --tasks "$TASKS"
           --batch_size 1 --log_samples --output_path "$OUT_REL" ${LIMIT:+--limit "$LIMIT"})
 
+# Other GPU compute processes (host jobs included) would skew latency and memory; wait for them.
+other_gpu_procs() {
+  command -v nvidia-smi >/dev/null && nvidia-smi --query-compute-apps=pid,process_name,used_memory --format=csv,noheader 2>/dev/null | sed 's/  */ /g'
+}
+if [ "${WAIT_GPU_IDLE:-1}" = 1 ] && [ -n "$(other_gpu_procs)" ]; then
+  echo "$(date +%H:%M:%S) waiting for other GPU processes to finish: $(other_gpu_procs | tr '\n' ';')"
+  while [ -n "$(other_gpu_procs)" ]; do sleep 60; done
+  echo "$(date +%H:%M:%S) GPU idle, starting"
+fi
+
 {
   echo "date:        $(date -Is)"
   echo "board:       $(tr -d '\0' </proc/device-tree/model)"
@@ -57,6 +69,7 @@ EVAL_CMD=(python -m lmms_eval --model "$BACKEND" --model_args "$MODEL_ARGS" --ta
   echo "image:       $IMAGE ($(docker image inspect -f '{{.Id}}' "$IMAGE" | cut -c1-19))"
   [ -n "${LLAMACPP_IMAGE:-}" ] && echo "server image: $LLAMACPP_IMAGE ($(docker image inspect -f '{{.Id}}' "$LLAMACPP_IMAGE" 2>/dev/null | cut -c1-19))"
   echo "other containers: $(docker ps --format '{{.Names}}' | tr '\n' ' ')"
+  echo "other GPU processes: $(other_gpu_procs | tr '\n' ';')"
   echo "command:     ${EVAL_CMD[*]}"
 } >"$OUT/run_info.txt"
 

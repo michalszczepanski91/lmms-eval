@@ -7,6 +7,9 @@ runs the binary once (engines load once) and maps responses back by ``request_id
 Latency is only available as the runner's aggregate profile (vision encoder, prefill,
 per-token decode), not per sample; pass ``profile_output`` to keep it.
 
+Requests the runner fails (``finish_reason == "error"``) are scored as empty answers and
+counted in the profile (``failed_requests``) instead of aborting the whole evaluation.
+
 Engines are built with Edge-LLM's ``llm_build`` / ``visual_build`` (see jetson/frameworks/trt_edgellm/).
 """
 
@@ -39,6 +42,7 @@ class TRTEdgeLLM(lmms):
         system_prompt: Optional[str] = "You are a helpful assistant.",
         profile_output: Optional[str] = None,
         warmup: int = 1,
+        encoder_cache_budget_bytes: Optional[int] = None,
         batch_size: int = 1,
         **kwargs,
     ) -> None:
@@ -51,6 +55,9 @@ class TRTEdgeLLM(lmms):
         self.system_prompt = system_prompt
         self.profile_output = profile_output
         self.warmup = int(warmup)
+        # Edge-LLM >= 0.10 caches vision-encoder outputs across requests (256 MiB by default); 0 disables it.
+        # None = don't pass the flag (older runners don't know it).
+        self.encoder_cache_budget_bytes = encoder_cache_budget_bytes
 
     def _to_edgellm_messages(self, chat_messages: ChatMessages, media_dir: str, request_index: int) -> list:
         messages = []
@@ -85,18 +92,29 @@ class TRTEdgeLLM(lmms):
         cmd = [self.inference_bin, "--engineDir", self.engine_dir, "--inputFile", input_file, "--outputFile", output_file, "--dumpProfile", "--profileOutputFile", profile_file, "--warmup", str(self.warmup)]
         if self.multimodal_engine_dir:
             cmd += ["--multimodalEngineDir", self.multimodal_engine_dir]
+        if self.encoder_cache_budget_bytes is not None:
+            cmd += ["--encoderCacheBudgetBytes", str(self.encoder_cache_budget_bytes)]
         eval_logger.info(f"Running TensorRT Edge-LLM: {' '.join(cmd)}")
-        subprocess.run(cmd, check=True)
+        # The runner exits non-zero when any request failed but still writes every response.
+        returncode = subprocess.run(cmd).returncode
+        if not os.path.exists(output_file):
+            raise RuntimeError(f"TensorRT Edge-LLM runner failed (exit {returncode}) without writing {output_file}")
 
         with open(output_file) as f:
             responses = json.load(f)["responses"]
         texts = [""] * len(requests)
+        failed = 0
         for response in responses:
+            if response.get("finish_reason") == "error":
+                failed += 1
+                eval_logger.warning(f"TensorRT Edge-LLM request {response['request_idx']} failed: {response['output_text']}")
+                continue
             texts[response["request_idx"]] = response["output_text"]
         profile = None
         if os.path.exists(profile_file):
             with open(profile_file) as f:
                 profile = json.load(f)
+            profile["failed_requests"] = failed
         return texts, profile
 
     def generate_until(self, requests: List[Instance]) -> List[GenerationResult]:

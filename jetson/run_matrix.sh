@@ -29,11 +29,11 @@ for ((i = 0; i < ${#MATRIX[@]}; i += 2)); do
   framework=${MATRIX[i]} spec=${MATRIX[i + 1]}
   echo "=== $(date +%H:%M:%S) $framework $spec $TASKS ${LIMIT:+limit=$LIMIT}"
   if ! "$REPO/jetson/run_eval.sh" "$framework" "$spec" "$TASKS" $LIMIT >/dev/null 2>&1; then
-    echo "    FAILED (see the newest run dir under jetson/results/*/*/$framework-*/)"
+    echo "    FAILED (see the newest run dir under ${RESULTS_DIR:-jetson/results}/*/*/$framework-*/)"
     failed+=("$framework $spec")
   fi
 done
 
 python3 "$REPO/jetson/summarize.py" ${LIMIT:+--include-smoke} >/dev/null
-echo "summary: $REPO/jetson/results/SUMMARY.md"
+echo "summary: $REPO/${RESULTS_DIR:-jetson/results}/SUMMARY.md"
 [ ${#failed[@]} -eq 0 ] || { printf 'failed: %s\n' "${failed[@]}"; exit 1; }

@@ -5,6 +5,9 @@
 # The repo itself is bind-mounted at its host path at run time (see run_eval.sh).
 ARG BASE_IMAGE=ghcr.io/nvidia-ai-iot/vllm:latest-jetson-orin
 FROM ${BASE_IMAGE}
+# Extra apt options, e.g. APT_OPTS="-o Acquire::Check-Date=false" on a board whose clock is not synchronized
+# (apt then rejects the Ubuntu Release files as "not valid yet").
+ARG APT_OPTS=""
 
 COPY jetson/requirements-jetson.txt /tmp/requirements-jetson.txt
 RUN pip freeze | grep -iE '^(torch|torchvision|torchaudio|transformers|tokenizers|vllm|flash[-_]attn|numpy|triton|xformers|accelerate|av)==' > /tmp/gpu-pins.txt \
@@ -13,7 +16,7 @@ RUN pip freeze | grep -iE '^(torch|torchvision|torchaudio|transformers|tokenizer
     && python -c "import torch, transformers; print('torch', torch.__version__, 'transformers', transformers.__version__)"
 
 # Java for pycocoevalcap (PTB tokenizer, METEOR) used by captioning tasks such as coco2017_cap_val_lite.
-RUN apt-get update && apt-get install -y --no-install-recommends default-jre-headless && rm -rf /var/lib/apt/lists/*
+RUN apt-get ${APT_OPTS} update && apt-get ${APT_OPTS} install -y --no-install-recommends default-jre-headless && rm -rf /var/lib/apt/lists/*
 
 # The base venv's interpreter lives under /root; open it up so run_eval.sh can run as the host user.
 RUN chmod 755 /root
