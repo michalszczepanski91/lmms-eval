@@ -13,6 +13,7 @@
 # Env overrides: OFFLINE (default 1: only what download_assets.sh cached), EXTRA_MODEL_ARGS, IMAGE,
 #                HF_CACHE (default /opt/hf-cache), plus per-framework ones (see jetson/frameworks/*.sh).
 #   RUN_TAG   label for a variant, appended to the result dir: <framework>-<precision>+<RUN_TAG>
+#   RESULTS_DIR  results root relative to the repo (default jetson/results; e.g. jetson/results-thor)
 #   EVAL_ENV  space-separated KEY=VALUE pairs passed into the eval container
 #             (e.g. EVAL_ENV="LMMS_IMAGE_PNG_COMPRESS_LEVEL=1")
 #
@@ -32,7 +33,7 @@ resolve_framework "$FRAMEWORK" "$MODEL_SPEC" || exit 1
 
 IMAGE=${IMAGE:-lmms-eval-jetson:latest}
 RUN_ID=$(date +%Y%m%d-%H%M%S)${LIMIT:+_limit$LIMIT}
-OUT_REL=jetson/results/$MODEL_TAG/${TASKS//,/+}/$FRAMEWORK-$PRECISION${RUN_TAG:++$RUN_TAG}/$RUN_ID
+OUT_REL=${RESULTS_DIR:-jetson/results}/$MODEL_TAG/${TASKS//,/+}/$FRAMEWORK-$PRECISION${RUN_TAG:++$RUN_TAG}/$RUN_ID
 OUT=$REPO/$OUT_REL
 mkdir -p "$OUT"
 
@@ -71,9 +72,9 @@ if declare -F fw_start >/dev/null; then
   fw_start || exit 1
 fi
 
-# Run as the calling user (group mlusers) so files in the shared HF cache stay group-writable.
+# Run as the calling user (+ SHARED_GROUP if it exists) so files in the shared HF cache stay group-writable.
 docker run --rm --runtime nvidia --ipc=host "${DOCKER_ARGS[@]}" \
-  --user "$(id -u):$(id -g)" --group-add "$(getent group mlusers | cut -d: -f3)" \
+  --user "$(id -u):$(id -g)" $(shared_group_args) \
   -e HOME=/tmp -e USER="$(id -un)" -e LOGNAME="$(id -un)" -e HF_HOME="$HF_CACHE" -e HF_HUB_CACHE="$HF_CACHE/hub" -e HUGGINGFACE_HUB_CACHE="$HF_CACHE/hub" \
   -e TRANSFORMERS_CACHE="$HF_CACHE/hub" -e HF_HUB_ENABLE_HF_TRANSFER=1 \
   -e HF_HUB_OFFLINE="$OFFLINE" -e HF_DATASETS_OFFLINE="$OFFLINE" -e TRANSFORMERS_OFFLINE="$OFFLINE" \

@@ -1,6 +1,6 @@
 # lmms-eval on Jetson: framework benchmarks
 
-Scripts for running lmms-eval benchmarks for Qwen2.5-VL 3B/7B on Jetson with four inference frameworks, measuring accuracy, latency and memory the same way for each. Tested on a Jetson AGX Orin 32GB (JetPack 6.2, L4T R36.4, CUDA 12.6, MAXN).
+Scripts for running lmms-eval benchmarks for Qwen2.5-VL 3B/7B on Jetson with four inference frameworks, measuring accuracy, latency and memory the same way for each. Tested on a Jetson AGX Orin 32GB (JetPack 6.2, L4T R36.4, CUDA 12.6, MAXN). For Jetson Thor, see [THOR.md](THOR.md).
 
 | Framework | `<framework>` | Precisions (`<size>-<precision>`) | How it runs | Status |
 |---|---|---|---|---|

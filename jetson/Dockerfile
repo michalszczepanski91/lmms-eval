@@ -1,8 +1,10 @@
-# lmms-eval runtime for Jetson Orin (JetPack 6 / L4T R36.4, CUDA 12.6).
+# lmms-eval runtime for Jetson (default: Orin, JetPack 6 / L4T R36.4, CUDA 12.6).
+# Thor (JetPack 7): docker build --build-arg BASE_IMAGE=ghcr.io/nvidia-ai-iot/vllm:latest-jetson-thor ...
 # The base image ships Tegra-built torch, transformers, flash-attn and vLLM;
 # we only add lmms-eval's pure-Python deps and pin the GPU stack so pip cannot replace it.
 # The repo itself is bind-mounted at its host path at run time (see run_eval.sh).
-FROM ghcr.io/nvidia-ai-iot/vllm:latest-jetson-orin
+ARG BASE_IMAGE=ghcr.io/nvidia-ai-iot/vllm:latest-jetson-orin
+FROM ${BASE_IMAGE}
 
 COPY jetson/requirements-jetson.txt /tmp/requirements-jetson.txt
 RUN pip freeze | grep -iE '^(torch|torchvision|torchaudio|transformers|tokenizers|vllm|flash[-_]attn|numpy|triton|xformers|accelerate|av)==' > /tmp/gpu-pins.txt \

@@ -10,7 +10,8 @@ set -uo pipefail
 
 REPO=$(cd "$(dirname "$0")/../.." && pwd)
 RUN=$REPO/jetson/run_eval.sh
-LOG=$REPO/jetson/results/followups_20260923.log
+mkdir -p "$REPO/${RESULTS_DIR:-jetson/results}"
+LOG=$REPO/${RESULTS_DIR:-jetson/results}/followups_20260923.log
 
 run() {
   echo "=== $(date +%H:%M:%S) $*" | tee -a "$LOG"

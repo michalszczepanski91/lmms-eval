@@ -9,6 +9,14 @@
 
 HF_CACHE=${HF_CACHE:-/opt/hf-cache}
 OFFLINE=${OFFLINE:-1}
+# Containers run as the calling user; if this group exists it is added so shared caches stay group-writable.
+SHARED_GROUP=${SHARED_GROUP:-mlusers}
+
+shared_group_args() {
+  local gid
+  gid=$(getent group "$SHARED_GROUP" | cut -d: -f3)
+  [ -z "$gid" ] || echo "--group-add $gid"
+}
 
 resolve_framework() {
   FRAMEWORK=$1

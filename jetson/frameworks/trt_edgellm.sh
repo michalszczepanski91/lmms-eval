@@ -1,7 +1,7 @@
 # TensorRT Edge-LLM (C++ runner) via lmms-eval's trt_edgellm backend. UNTESTED on this board:
 # ONNX export needs an x86 GPU host or Jetson Thor (trt_edgellm/export.sh), then trt_edgellm/build_engines.sh.
 # Latency is the runner's aggregate profile (trt_profile.json), not per sample.
-FW_PRECISIONS="fp16 int4_awq"
+FW_PRECISIONS="fp16 int4_awq fp8 nvfp4"  # fp8 / nvfp4: Thor only
 TRT_WORKSPACE=${TRT_WORKSPACE:-/opt/models/trt-edgellm}
 
 fw_assets() {

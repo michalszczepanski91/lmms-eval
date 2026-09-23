@@ -26,7 +26,7 @@ fi
 [ ${#SPECS[@]} -gt 0 ] || { echo "nothing to download" >&2; exit 1; }
 
 docker run --rm -i \
-  --user "$(id -u):$(id -g)" --group-add "$(getent group mlusers | cut -d: -f3)" \
+  --user "$(id -u):$(id -g)" $(shared_group_args) \
   -e HOME=/tmp -e HF_HOME="$HF_CACHE" -e HF_HUB_CACHE="$HF_CACHE/hub" -e HF_HUB_ENABLE_HF_TRANSFER=1 \
   -v "$HF_CACHE":"$HF_CACHE" \
   "$IMAGE" bash -c 'umask 002; python - "$@"' _ "${SPECS[@]}" <<'EOF'
