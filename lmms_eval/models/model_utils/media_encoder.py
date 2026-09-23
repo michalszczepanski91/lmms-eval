@@ -71,6 +71,10 @@ def _encode_pil_image_to_bytes(image: Image.Image, *, image_format: str, quality
     save_kwargs = {}
     if quality is not None and image_format in {"JPEG", "WEBP"}:
         save_kwargs["quality"] = quality
+    # PNG stays lossless at any level; lower levels encode large photos several times faster (default 6).
+    png_compress_level = os.getenv("LMMS_IMAGE_PNG_COMPRESS_LEVEL")
+    if image_format == "PNG" and png_compress_level:
+        save_kwargs["compress_level"] = int(png_compress_level)
     image.save(output_buffer, format=image_format, **save_kwargs)
     return output_buffer.getvalue()
 

@@ -79,7 +79,17 @@ jetson/run_eval.sh trt_edgellm 3b-int4_awq mme
 jetson/run_eval.sh hf 3b mme,pope 50                                        # several tasks, 50 samples each
 EXTRA_MODEL_ARGS=max_pixels=802816 jetson/run_eval.sh hf 7b mme             # extra --model_args
 OFFLINE=0 jetson/run_eval.sh hf 3b mme                                      # allow Hub downloads during the run
+
+# Variants get their own result dir <framework>-<precision>+<RUN_TAG>:
+RUN_TAG=pil EXTRA_MODEL_ARGS=pass_pil_images=True jetson/run_eval.sh vllm 3b mme                 # vLLM: PIL images, no PNG/base64
+RUN_TAG=png1 EVAL_ENV=LMMS_IMAGE_PNG_COMPRESS_LEVEL=1 jetson/run_eval.sh llamacpp 3b-q8_0 mme    # fast lossless PNG over HTTP
+
+# Other datasets: download once (dataset:<repo>:<config>), then run
+jetson/download_assets.sh dataset:lmms-lab-encoder/LMMs-Eval-Lite:coco2017_cap_val
+jetson/run_eval.sh hf 3b coco2017_cap_val_lite                              # captioning, needs Java (in the image)
 ```
+
+**Image transport overhead.** The default vLLM and OpenAI-compatible paths encode every image as PNG/base64 on the CPU. For MME's large `landmark` photos (up to 4592×3056) that takes about 2 s per image on Orin, which lengthens wall time but not the per-sample model latency. `pass_pil_images=True` (vLLM) removes the encoding. `LMMS_IMAGE_PNG_COMPRESS_LEVEL=1` makes the PNG about 3.6× faster and is still lossless. The runs in [experiments/followups_20260923.sh](experiments/followups_20260923.sh) measure both.
 
 ## What gets measured
 

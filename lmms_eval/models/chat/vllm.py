@@ -3,6 +3,7 @@ import time
 from concurrent.futures import ThreadPoolExecutor
 from typing import List, Optional, Tuple
 
+from PIL import Image
 from tqdm import tqdm
 
 from lmms_eval.api.instance import GenerationResult, Instance, TokenCounts
@@ -22,6 +23,8 @@ WORKERS = int(os.getenv("WORKERS", "32"))
 class VLLM(VLLMSimple):
     is_simple = False
 
+    pass_pil_images = False
+
     def __init__(
         self,
         model="Qwen/Qwen2.5-VL-3B-Instruct",
@@ -38,6 +41,7 @@ class VLLM(VLLMSimple):
         nframes: Optional[int] = 32,
         max_new_tokens: int = 4096,
         is_qwen3_vl: bool = False,
+        pass_pil_images: bool = False,
         **kwargs,
     ):
         super().__init__(
@@ -59,6 +63,9 @@ class VLLM(VLLMSimple):
         self.is_qwen3_vl = is_qwen3_vl
         self.max_pixels = max_pixels
         self.nframes = nframes
+        # Hand images to the in-process engine as PIL objects instead of PNG/base64 data URLs:
+        # lossless and skips an encode/decode round trip that costs seconds for large photos on Jetson CPUs.
+        self.pass_pil_images = str(pass_pil_images).lower() == "true" if isinstance(pass_pil_images, str) else bool(pass_pil_images)
 
     def make_one_request(self, request: Instance) -> Tuple[list[dict], dict]:
         """
@@ -84,11 +91,29 @@ class VLLM(VLLMSimple):
             video_kwargs["fps"] = self.fps
         else:
             video_kwargs["nframes"] = self.nframes
-        if self.is_qwen3_vl:
+        if self.pass_pil_images and not self.is_qwen3_vl and not any(c.type == "video" for m in chat_messages.messages for c in m.content):
+            messages = self._to_pil_messages(chat_messages)
+        elif self.is_qwen3_vl:
             messages = chat_messages.to_qwen3_vl_openai_messages(video_kwargs)
         else:
             messages = chat_messages.to_openai_messages(video_kwargs=video_kwargs)
         return messages, params
+
+    @staticmethod
+    def _to_pil_messages(chat_messages: ChatMessages) -> list[dict]:
+        messages = []
+        for message in chat_messages.messages:
+            content = []
+            for item in message.content:
+                if item.type == "text":
+                    content.append({"type": "text", "text": item.text})
+                elif item.type == "image":
+                    image = item.url if isinstance(item.url, Image.Image) else Image.open(item.url)
+                    content.append({"type": "image_pil", "image_pil": image.convert("RGB")})
+                else:
+                    raise NotImplementedError(f"pass_pil_images does not support {item.type} content")
+            messages.append({"role": message.role, "content": content})
+        return messages
 
     def generate_until(self, requests) -> List[GenerationResult]:
         res = []

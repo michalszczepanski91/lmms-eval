@@ -177,3 +177,28 @@ class TestVLLMSamplingParams(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class TestVLLMPilImages(unittest.TestCase):
+    def test_pil_messages_keep_order_and_skip_encoding(self):
+        from PIL import Image
+
+        image = Image.new("L", (4, 4))
+        chat_messages = types.SimpleNamespace(
+            messages=[
+                types.SimpleNamespace(
+                    role="user",
+                    content=[
+                        types.SimpleNamespace(type="image", url=image),
+                        types.SimpleNamespace(type="text", text="Is it dark?"),
+                    ],
+                )
+            ]
+        )
+
+        [message] = VLLMChat._to_pil_messages(chat_messages)
+
+        self.assertEqual(message["role"], "user")
+        self.assertEqual([part["type"] for part in message["content"]], ["image_pil", "text"])
+        self.assertEqual(message["content"][0]["image_pil"].mode, "RGB")
+        self.assertEqual(message["content"][1]["text"], "Is it dark?")

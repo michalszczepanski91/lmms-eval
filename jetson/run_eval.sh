@@ -12,8 +12,11 @@
 #   jetson/run_eval.sh llamacpp 3b-q4_k_m mme
 # Env overrides: OFFLINE (default 1: only what download_assets.sh cached), EXTRA_MODEL_ARGS, IMAGE,
 #                HF_CACHE (default /opt/hf-cache), plus per-framework ones (see jetson/frameworks/*.sh).
+#   RUN_TAG   label for a variant, appended to the result dir: <framework>-<precision>+<RUN_TAG>
+#   EVAL_ENV  space-separated KEY=VALUE pairs passed into the eval container
+#             (e.g. EVAL_ENV="LMMS_IMAGE_PNG_COMPRESS_LEVEL=1")
 #
-# Each run writes jetson/results/<model>/<tasks>/<framework>-<precision>/<timestamp>[_limitN]/:
+# Each run writes jetson/results/<model>/<tasks>/<framework>-<precision>[+<tag>]/<timestamp>[_limitN]/:
 #   run_info.txt, run.log, tegrastats.log, [server.log | trt_profile.json],
 #   lmms_eval/<date>_results.json and lmms_eval/<date>_samples_<task>.jsonl
 set -uo pipefail
@@ -29,11 +32,12 @@ resolve_framework "$FRAMEWORK" "$MODEL_SPEC" || exit 1
 
 IMAGE=${IMAGE:-lmms-eval-jetson:latest}
 RUN_ID=$(date +%Y%m%d-%H%M%S)${LIMIT:+_limit$LIMIT}
-OUT_REL=jetson/results/$MODEL_TAG/${TASKS//,/+}/$FRAMEWORK-$PRECISION/$RUN_ID
+OUT_REL=jetson/results/$MODEL_TAG/${TASKS//,/+}/$FRAMEWORK-$PRECISION${RUN_TAG:++$RUN_TAG}/$RUN_ID
 OUT=$REPO/$OUT_REL
 mkdir -p "$OUT"
 
 DOCKER_ARGS=()
+for kv in ${EVAL_ENV:-}; do DOCKER_ARGS+=(-e "$kv"); done
 fw_setup || exit 1
 MODEL_ARGS+=${EXTRA_MODEL_ARGS:+,$EXTRA_MODEL_ARGS}
 EVAL_CMD=(python -m lmms_eval --model "$BACKEND" --model_args "$MODEL_ARGS" --tasks "$TASKS"
@@ -47,6 +51,8 @@ EVAL_CMD=(python -m lmms_eval --model "$BACKEND" --model_args "$MODEL_ARGS" --ta
   echo "git commit:  $(git -C "$REPO" rev-parse --short HEAD)$(git -C "$REPO" diff --quiet || echo ' (dirty)')"
   echo "framework:   $FRAMEWORK"
   echo "precision:   $PRECISION"
+  [ -n "${RUN_TAG:-}" ] && echo "run tag:     $RUN_TAG"
+  [ -n "${EVAL_ENV:-}" ] && echo "eval env:    $EVAL_ENV"
   echo "image:       $IMAGE ($(docker image inspect -f '{{.Id}}' "$IMAGE" | cut -c1-19))"
   [ -n "${LLAMACPP_IMAGE:-}" ] && echo "server image: $LLAMACPP_IMAGE ($(docker image inspect -f '{{.Id}}' "$LLAMACPP_IMAGE" 2>/dev/null | cut -c1-19))"
   echo "other containers: $(docker ps --format '{{.Names}}' | tr '\n' ' ')"

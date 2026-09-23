@@ -5,7 +5,8 @@
 #
 # Usage:
 #   jetson/download_assets.sh <framework> <size>[-<precision>]   # what run_eval.sh needs, plus MME
-#   jetson/download_assets.sh <kind:repo[:file]> ...             # explicit, e.g. model:Qwen/Qwen2.5-VL-3B-Instruct
+#   jetson/download_assets.sh <kind:repo[:file|config]> ...      # explicit, e.g. model:Qwen/Qwen2.5-VL-3B-Instruct
+#     (for datasets the third field is a config name, e.g. dataset:lmms-lab-encoder/LMMs-Eval-Lite:coco2017_cap_val)
 # Examples:
 #   jetson/download_assets.sh llamacpp 7b-q8_0
 #   jetson/download_assets.sh vllm 3b-awq
@@ -36,13 +37,17 @@ import datasets
 from huggingface_hub import hf_hub_download, snapshot_download
 
 for spec in sys.argv[1:]:
-    kind, repo, *file = spec.split(":", 2)
-    if file:
-        path = hf_hub_download(repo, file[0], repo_type=kind, token=False)
+    kind, repo, *extra = spec.split(":", 2)
+    config = extra[0] if kind == "dataset" and extra else None
+    if kind == "dataset":
+        # Only this config's files: some repos (e.g. LMMs-Eval-Lite) bundle many datasets.
+        path = snapshot_download(repo, repo_type=kind, token=False, allow_patterns=[f"{config}/*", "*.md", "*.json"] if config else None)
+    elif extra:
+        path = hf_hub_download(repo, extra[0], repo_type=kind, token=False)
     else:
         path = snapshot_download(repo, repo_type=kind, token=False)
     if kind == "dataset":
-        ds = datasets.load_dataset(repo, token=False, cache_dir=os.path.join(os.environ["HF_HOME"], "datasets"))
+        ds = datasets.load_dataset(repo, config, token=False, cache_dir=os.path.join(os.environ["HF_HOME"], "datasets"))
         print(f"    {ds}", flush=True)
     print(f"ok  {spec} -> {path}", flush=True)
 EOF

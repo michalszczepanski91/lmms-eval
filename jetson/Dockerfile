@@ -10,6 +10,9 @@ RUN pip freeze | grep -iE '^(torch|torchvision|torchaudio|transformers|tokenizer
     && pip install -c /tmp/gpu-pins.txt -r /tmp/requirements-jetson.txt \
     && python -c "import torch, transformers; print('torch', torch.__version__, 'transformers', transformers.__version__)"
 
+# Java for pycocoevalcap (PTB tokenizer, METEOR) used by captioning tasks such as coco2017_cap_val_lite.
+RUN apt-get update && apt-get install -y --no-install-recommends default-jre-headless && rm -rf /var/lib/apt/lists/*
+
 # The base venv's interpreter lives under /root; open it up so run_eval.sh can run as the host user.
 RUN chmod 755 /root
 
