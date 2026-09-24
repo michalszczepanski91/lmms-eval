@@ -42,7 +42,8 @@ for kv in ${EVAL_ENV:-}; do DOCKER_ARGS+=(-e "$kv"); done
 fw_setup || exit 1
 MODEL_ARGS+=${EXTRA_MODEL_ARGS:+,$EXTRA_MODEL_ARGS}
 EVAL_CMD=(python -m lmms_eval --model "$BACKEND" --model_args "$MODEL_ARGS" --tasks "$TASKS"
-          --batch_size 1 --log_samples --output_path "$OUT_REL" ${LIMIT:+--limit "$LIMIT"})
+          --batch_size 1 --log_samples --output_path "$OUT_REL" ${LIMIT:+--limit "$LIMIT"}
+          --include_path jetson/tasks)  # benchmark-specific task variants, e.g. mme_fixed
 
 {
   echo "date:        $(date -Is)"

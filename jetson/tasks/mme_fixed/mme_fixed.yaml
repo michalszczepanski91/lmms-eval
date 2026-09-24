@@ -1,0 +1,7 @@
+# MME with every image resized to one fixed square (side from FIXED_IMAGE_SIDE, default 448 px),
+# so all frameworks see identical inputs with a constant visual token count: (side / 28)^2
+# (448 -> 256, 672 -> 576, 896 -> 1024, 1260 -> 2025). For latency comparisons; the aspect ratio is
+# not preserved, so use plain `mme` for accuracy. Load with: --include_path jetson/tasks
+include: ../../../lmms_eval/tasks/mme/mme.yaml
+task: mme_fixed
+doc_to_visual: !function fixed_utils.doc_to_visual
