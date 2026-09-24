@@ -17,6 +17,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends default-jre-hea
 
 # The base venv's interpreter lives under /root; open it up so run_eval.sh can run as the host user.
 RUN chmod 755 /root
+# pycocoevalcap's PTB tokenizer writes temp files next to its own module; runs are non-root.
+RUN chmod -R a+w "$(python -c 'import os, pycocoevalcap.tokenizer.ptbtokenizer as t; print(os.path.dirname(t.__file__))')"
 
 # Base image points the HF caches at /data/models/huggingface; use the host's shared /opt/hf-cache instead.
 ENV HF_HOME=/opt/hf-cache \

@@ -23,6 +23,10 @@ fw_setup() {
   # No cross-request reuse: MME asks two questions per image, so prefix/image caches would skip most of the
   # vision + prefill work for every second sample, which the HF reference cannot do.
   MODEL_ARGS+=",enable_prefix_caching=False,mm_processor_cache_gb=0"
+  # Fixed KV cache instead of a fraction of total memory (the fraction ignores what else uses Jetson's unified
+  # memory: 7B bf16 at 0.7 ran out of memory when the board started with 1.5 GB more in use). 2 GiB holds several
+  # 4096-token sequences; batch-1 latency does not depend on it. Overrides gpu_memory_utilization.
+  MODEL_ARGS+=",kv_cache_memory_bytes=$(( ${VLLM_KV_CACHE_GB:-2} * 1073741824 ))"
   # Keep torch.compile / CUDA graph caches between runs (the container is ephemeral).
   DOCKER_ARGS+=(-e VLLM_CACHE_ROOT="$REPO/jetson/.cache/vllm")
 }

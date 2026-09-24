@@ -41,6 +41,7 @@ fw_start() {
     llama-server -m "$gguf" --mmproj "$mmproj" -ngl 999 -c 4096 -np 1 --jinja \
       --image-min-tokens 256 --image-max-tokens 2048 --no-cache-prompt --cache-ram 0 \
       --host 127.0.0.1 --port "$LLAMACPP_PORT" >/dev/null
+  echo "server:      $(docker inspect -f 'GGML_CUDA_CUBLAS_COMPUTE_TYPE={{range .Config.Env}}{{if eq (printf "%.29s" .) "GGML_CUDA_CUBLAS_COMPUTE_TYPE"}}{{slice . 30}}{{end}}{{end}} {{join .Config.Cmd " "}}' "$LLAMACPP_CONTAINER")" >>"$OUT/run_info.txt"
   echo "llama-server: $LLAMACPP_IMAGE $(_gguf_file) (waiting for /health)"
   for _ in $(seq 300); do
     curl -sf "http://127.0.0.1:$LLAMACPP_PORT/health" >/dev/null && return 0

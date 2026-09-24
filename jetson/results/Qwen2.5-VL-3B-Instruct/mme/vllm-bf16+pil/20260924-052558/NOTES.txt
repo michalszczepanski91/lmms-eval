@@ -1,0 +1,2 @@
+Note: between about 05:27 and 05:36 a separate llama.cpp diagnostic server shared the GPU for ~6 minutes
+(testing the fp16 overflow fix). Samples processed in that window may show higher latency; p50 is barely affected.

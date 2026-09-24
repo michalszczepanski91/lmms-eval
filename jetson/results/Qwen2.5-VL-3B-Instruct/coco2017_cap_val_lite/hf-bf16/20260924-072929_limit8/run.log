@@ -1,0 +1,64 @@
+/opt/venv/lib/python3.10/site-packages/requests/__init__.py:113: RequestsDependencyWarning: urllib3 (2.6.3) or chardet (6.0.0.post1)/charset_normalizer (3.4.4) doesn't match a supported version!
+  warnings.warn(
+/opt/venv/lib/python3.10/site-packages/transformers/utils/hub.py:110: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+  warnings.warn(
+torch 2.10.0 transformers 4.57.3
+/opt/venv/lib/python3.10/site-packages/requests/__init__.py:113: RequestsDependencyWarning: urllib3 (2.6.3) or chardet (6.0.0.post1)/charset_normalizer (3.4.4) doesn't match a supported version!
+  warnings.warn(
+/opt/venv/lib/python3.10/site-packages/transformers/utils/hub.py:110: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+  warnings.warn(
+[32m2026-09-24 05:29:45[0m | [1mINFO    [0m | [36mlmms_eval.__main__[0m:[36mcli_evaluate[0m:[36m516[0m - [1mVerbosity set to INFO[0m
+[32m2026-09-24 05:29:51[0m | [1mINFO    [0m | [36mlmms_eval.__main__[0m:[36mcli_evaluate_single[0m:[36m653[0m - [1mEvaluation tracker args: {'output_path': 'jetson/results/Qwen2.5-VL-3B-Instruct/coco2017_cap_val_lite/hf-bf16/20260924-072929_limit8'}[0m
+[32m2026-09-24 05:29:51[0m | [33m[1mWARNING [0m | [36mlmms_eval.__main__[0m:[36mcli_evaluate_single[0m:[36m683[0m - [33m[1m --limit SHOULD ONLY BE USED FOR TESTING.REAL METRICS SHOULD NOT BE COMPUTED USING LIMIT.[0m
+[32m2026-09-24 05:29:51[0m | [1mINFO    [0m | [36mlmms_eval.__main__[0m:[36mcli_evaluate_single[0m:[36m737[0m - [1mSelected Tasks: ['coco2017_cap_val_lite'][0m
+[32m2026-09-24 05:29:51[0m | [1mINFO    [0m | [36mlmms_eval.evaluator[0m:[36msimple_evaluate[0m:[36m486[0m - [1mSetting random seed to 0 | Setting numpy seed to 1234 | Setting torch manual seed to 1234[0m
+`torch_dtype` is deprecated! Use `dtype` instead!
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:  50%|█████     | 1/2 [00:02<00:02,  2.32s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:04<00:00,  2.28s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:04<00:00,  2.28s/it]
+The image processor of type `Qwen2VLImageProcessor` is now loaded as a fast processor by default, even if the model checkpoint was saved with a slow processor. This is a breaking change and may produce slightly different outputs. To continue using the slow processor, instantiate this class with `use_fast=False`. Note that this behavior will be extended to all models in a future release.
+Using the latest cached version of the dataset since lmms-lab-encoder/LMMs-Eval-Lite couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'coco2017_cap_val' at /opt/hf-cache/datasets/lmms-lab-encoder___lm_ms-eval-lite/coco2017_cap_val/0.0.0/07fc750730e654d2801cf1d76c2cde9dca5f9e5b (last modified on Wed Sep 23 18:15:33 2026).
+[32m2026-09-24 05:29:59[0m | [1mINFO    [0m | [36mlmms_eval.evaluator[0m:[36mevaluate[0m:[36m1047[0m - [1mRunning on rank 0 (local rank 0)[0m
+[32m2026-09-24 05:29:59[0m | [1mINFO    [0m | [36mlmms_eval.evaluator_utils[0m:[36mfrom_taskdict[0m:[36m100[0m - [1mNo metadata found in task config for coco2017_cap_val_lite, using default n_shot=0[0m
+[32m2026-09-24 05:29:59[0m | [1mINFO    [0m | [36mlmms_eval.api.task[0m:[36mbuild_all_requests[0m:[36m473[0m - [1mBuilding contexts for coco2017_cap_val_lite on rank 0...[0m
+  0%|          | 0/8 [00:00<?, ?it/s]100%|██████████| 8/8 [00:00<00:00, 6523.02it/s]
+[32m2026-09-24 05:30:00[0m | [1mINFO    [0m | [36mlmms_eval.evaluator[0m:[36mevaluate[0m:[36m1202[0m - [1mRunning generate_until requests[0m
+Model Responding:   0%|          | 0/8 [00:00<?, ?it/s]Model Responding:  12%|█▎        | 1/8 [00:03<00:23,  3.29s/it]Model Responding:  25%|██▌       | 2/8 [00:05<00:15,  2.58s/it]Model Responding:  38%|███▊      | 3/8 [00:08<00:13,  2.62s/it]Model Responding:  50%|█████     | 4/8 [00:09<00:09,  2.30s/it]Model Responding:  62%|██████▎   | 5/8 [00:11<00:06,  2.16s/it]Model Responding:  75%|███████▌  | 6/8 [00:14<00:04,  2.19s/it]Model Responding:  88%|████████▊ | 7/8 [00:16<00:02,  2.30s/it]Model Responding: 100%|██████████| 8/8 [00:18<00:00,  2.27s/it][32m2026-09-24 05:30:18[0m | [1mINFO    [0m | [36mlmms_eval.models.model_utils.gen_metrics[0m:[36mlog_metrics[0m:[36m136[0m - [1mMetric summary - Total elapsed time: 18.520s, Total gen tokens: 130, Avg speed: 7.0 tokens/s, Additional metrics: rank: 0[0m
+Model Responding: 100%|██████████| 8/8 [00:18<00:00,  2.34s/it]
+Postprocessing:   0%|          | 0/8 [00:00<?, ?it/s]Postprocessing: 100%|██████████| 8/8 [00:00<00:00, 1629.73it/s]
+[32m2026-09-24 05:30:19[0m | [1mINFO    [0m | [36mlmms_eval.evaluator[0m:[36mevaluate[0m:[36m1402[0m - [1mPostprocessed 8 docs for coco2017_cap_val_lite/none with 4 worker(s) in 0.01s[0m
+creating index...
+index created!
+Loading and preparing results...
+DONE (t=0.00s)
+creating index...
+index created!
+[32m2026-09-24 05:30:19[0m | [1mINFO    [0m | [36mutils[0m:[36mcoco_aggregation_result[0m:[36m106[0m - [1mtokenization...[0m
+Traceback (most recent call last):
+  File "/home/michal/dev/lmms-eval/lmms_eval/__main__.py", line 584, in cli_evaluate
+    results, samples = cli_evaluate_single(args)
+  File "/home/michal/dev/lmms-eval/lmms_eval/__main__.py", line 741, in cli_evaluate_single
+    results = evaluator.simple_evaluate(
+  File "/home/michal/dev/lmms-eval/lmms_eval/utils.py", line 737, in _wrapper
+    return fn(*args, **kwargs)
+  File "/home/michal/dev/lmms-eval/lmms_eval/evaluator.py", line 653, in simple_evaluate
+    results = evaluate(
+  File "/home/michal/dev/lmms-eval/lmms_eval/utils.py", line 737, in _wrapper
+    return fn(*args, **kwargs)
+  File "/home/michal/dev/lmms-eval/lmms_eval/evaluator.py", line 1511, in evaluate
+    task_output.calculate_aggregate_metric(bootstrap_iters=bootstrap_iters)
+  File "/home/michal/dev/lmms-eval/lmms_eval/evaluator_utils.py", line 121, in calculate_aggregate_metric
+    self.agg_metrics[metric_key] = agg_fn(items, args=self.task.args)
+  File "/home/michal/dev/lmms-eval/lmms_eval/tasks/coco_cap/utils.py", line 129, in coco_bleu4
+    return coco_aggregation_result(results, "Bleu_4", args)
+  File "/home/michal/dev/lmms-eval/lmms_eval/tasks/coco_cap/utils.py", line 108, in coco_aggregation_result
+    gts = tokenizer.tokenize(gts)
+  File "/opt/venv/lib/python3.10/site-packages/pycocoevalcap/tokenizer/ptbtokenizer.py", line 43, in tokenize
+    tmp_file = tempfile.NamedTemporaryFile(delete=False, dir=path_to_jar_dirname)
+  File "/root/.local/share/uv/python/cpython-3.10-linux-aarch64-gnu/lib/python3.10/tempfile.py", line 575, in NamedTemporaryFile
+    file = _io.open(dir, mode, buffering=buffering,
+  File "/root/.local/share/uv/python/cpython-3.10-linux-aarch64-gnu/lib/python3.10/tempfile.py", line 572, in opener
+    fd, name = _mkstemp_inner(dir, prefix, suffix, flags, output_type)
+  File "/root/.local/share/uv/python/cpython-3.10-linux-aarch64-gnu/lib/python3.10/tempfile.py", line 256, in _mkstemp_inner
+    fd = _os.open(file, flags, 0o600)
+PermissionError: [Errno 13] Permission denied: '/opt/venv/lib/python3.10/site-packages/pycocoevalcap/tokenizer/tmp6m7jwlrc'
+[32m2026-09-24 05:30:19[0m | [31m[1mERROR   [0m | [36mlmms_eval.__main__[0m:[36mcli_evaluate[0m:[36m615[0m - [31m[1mError during evaluation: [Errno 13] Permission denied: '/opt/venv/lib/python3.10/site-packages/pycocoevalcap/tokenizer/tmp6m7jwlrc'. Please set `--verbosity=DEBUG` to get more information.[0m
