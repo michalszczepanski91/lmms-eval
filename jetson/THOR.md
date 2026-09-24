@@ -67,7 +67,7 @@ jetson/run_matrix.sh mme          # full MME: hf, vllm, llamacpp x 3B/7B x preci
 
 `run_matrix.sh` writes `jetson/results-thor/SUMMARY.md` when it finishes. Rebuild the summary at any time with `python3 jetson/summarize.py`, keeping `RESULTS_DIR` exported.
 
-Thor has 4× Orin's memory. The vLLM memory fractions in `jetson/frameworks/vllm.sh` (0.45, or 0.6 for 7B bf16) then reserve about 58–77 GB, which is more than needed but harmless. To keep the KV-cache budget similar to Orin, set `VLLM_GPU_MEM=0.15`.
+Thor has 4× Orin's memory. The vLLM memory fractions in `jetson/frameworks/vllm.sh` (0.45, or 0.7 for 7B bf16) then reserve about 58–77 GB, which is more than needed but harmless. To keep the KV-cache budget similar to Orin, set `VLLM_GPU_MEM=0.15`.
 
 ## 5. Follow-up experiments
 
