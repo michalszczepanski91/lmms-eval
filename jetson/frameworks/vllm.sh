@@ -16,7 +16,7 @@ fw_setup() {
   BACKEND=vllm
   # Fraction of the board's unified memory vLLM may take (weights + KV cache + activations).
   local default_mem=0.45
-  [ "$SIZE" = 7b ] && [ "$PRECISION" = bf16 ] && default_mem=0.6
+  [ "$SIZE" = 7b ] && [ "$PRECISION" = bf16 ] && default_mem=0.7  # 0.6 leaves no KV cache after profiling (tested)
   # Same image resolution range as the HF run (256..2048 visual tokens).
   MODEL_ARGS="model=$(hf_snapshot "$(_vllm_repo)"),gpu_memory_utilization=${VLLM_GPU_MEM:-$default_mem},max_model_len=4096,max_pixels=1605632"
   MODEL_ARGS+=',mm_processor_kwargs={"min_pixels":200704,"max_pixels":1605632}'

@@ -32,6 +32,8 @@ Read `jetson/README.md` and `jetson/THOR.md` first. They describe the harness an
 - Out of memory on Jetson shows up as `NVML_SUCCESS == r INTERNAL ASSERT FAILED` in PyTorch's CUDA allocator.
 - The default image transport (PNG/base64) is slow for MME's large `landmark` photos. `+pil` (vLLM) and `+png1` (llama.cpp) variants exist; the follow-up experiments measure the difference.
 - `docker build` has no GPU driver, so don't run CUDA binaries during builds.
+- llama.cpp with Qwen2.5-VL-3B: with fp16 cuBLAS accumulation, one MME image (`commonsense_reasoning/0064.png`) overflows, and **every later request returns `????????????????`** until the server restarts. `llamacpp.sh` now sets `GGML_CUDA_CUBLAS_COMPUTE_TYPE=bf16`. Scan every llama.cpp run's samples for `"??"` answers anyway, and check that per-category scores look plausible, not just the totals.
+- The vLLM 7B bf16 memory fraction is 0.7: 0.6 leaves no KV cache after profiling on a 32 GB Orin. Thor has much more memory.
 
 ## Phases
 
