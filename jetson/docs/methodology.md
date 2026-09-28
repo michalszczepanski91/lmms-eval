@@ -27,7 +27,7 @@ Remaining differences are properties of the frameworks and are reported, not rem
 | Preprocess | Prompt and image preparation before the model call, client side (HF: chat template + processor; vLLM: message building; llama.cpp: message building incl. PNG/base64 encoding) |
 | Vision encoder / LLM prefill | The two parts of TTFT, p50. HF: CUDA events around the vision encoder (`stage_timing=True`, read after `generate`, so no extra syncs), prefill = TTFT − encoder. llama.cpp: server log at verbosity 4, encoder = `encoding mtmd batch` → first `decoding image batch`, prefill = `prompt eval time` − encoder (server side, no HTTP). Edge-LLM: median GPU time of the runner's `vision_encoder` and `llm_prefill` stages. vLLM: not available (the encoder runs inside its prefill step) |
 | TTFT / answer p99 | Tail latency over all samples |
-| Throughput | Samples / eval wall time |
+| Throughput | Samples / eval wall time (lmms-eval `total_evaluation_time_seconds`, which includes model load and vLLM compilation: significant only for smoke runs) |
 | Energy per sample | Average module power × eval wall time / samples: includes preprocessing and gaps between requests |
 | Wall time | Whole lmms-eval run, including image loading and preprocessing |
 | RAM | Whole-board unified memory from `tegrastats` at 1 Hz: base (before model load) and peak; other processes included |

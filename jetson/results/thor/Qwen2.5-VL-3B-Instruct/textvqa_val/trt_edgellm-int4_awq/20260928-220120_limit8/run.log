@@ -1,0 +1,138 @@
+/opt/venv/lib/python3.12/site-packages/transformers/utils/hub.py:110: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+  warnings.warn(
+torch 2.10.0 transformers 4.57.3
+/opt/venv/lib/python3.12/site-packages/transformers/utils/hub.py:110: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+  warnings.warn(
+[32m2026-09-28 20:01:31[0m | [1mINFO    [0m | [36mlmms_eval.__main__[0m:[36mcli_evaluate[0m:[36m516[0m - [1mVerbosity set to INFO[0m
+[32m2026-09-28 20:01:33[0m | [1mINFO    [0m | [36mlmms_eval.__main__[0m:[36mcli_evaluate_single[0m:[36m653[0m - [1mEvaluation tracker args: {'output_path': 'jetson/results/thor/Qwen2.5-VL-3B-Instruct/textvqa_val/trt_edgellm-int4_awq/20260928-220120_limit8'}[0m
+[32m2026-09-28 20:01:33[0m | [33m[1mWARNING [0m | [36mlmms_eval.__main__[0m:[36mcli_evaluate_single[0m:[36m683[0m - [33m[1m --limit SHOULD ONLY BE USED FOR TESTING.REAL METRICS SHOULD NOT BE COMPUTED USING LIMIT.[0m
+[32m2026-09-28 20:01:33[0m | [1mINFO    [0m | [36mlmms_eval.__main__[0m:[36mcli_evaluate_single[0m:[36m737[0m - [1mSelected Tasks: ['textvqa_val'][0m
+[32m2026-09-28 20:01:33[0m | [1mINFO    [0m | [36mlmms_eval.evaluator[0m:[36msimple_evaluate[0m:[36m486[0m - [1mSetting random seed to 0 | Setting numpy seed to 1234 | Setting torch manual seed to 1234[0m
+Using the latest cached version of the dataset since lmms-lab-encoder/textvqa couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'default' at /opt/hf-cache/datasets/lmms-lab-encoder___textvqa/default/0.0.0/9c0699cd19768ac5ab97568f6b3cbac4c0062884 (last modified on Mon Sep 28 19:16:10 2026).
+[32m2026-09-28 20:01:34[0m | [1mINFO    [0m | [36mlmms_eval.evaluator[0m:[36mevaluate[0m:[36m1047[0m - [1mRunning on rank 0 (local rank 0)[0m
+[32m2026-09-28 20:01:34[0m | [1mINFO    [0m | [36mlmms_eval.api.task[0m:[36mbuild_all_requests[0m:[36m473[0m - [1mBuilding contexts for textvqa_val on rank 0...[0m
+100%|██████████| 8/8 [00:00<00:00, 11970.90it/s]
+[32m2026-09-28 20:01:34[0m | [1mINFO    [0m | [36mlmms_eval.evaluator[0m:[36mevaluate[0m:[36m1202[0m - [1mRunning generate_until requests[0m
+[32m2026-09-28 20:01:35[0m | [1mINFO    [0m | [36mlmms_eval.models.chat.trt_edgellm[0m:[36m_run[0m:[36m108[0m - [1mRunning TensorRT Edge-LLM: llm_inference --engineDir /opt/models/trt-edgellm/Qwen2.5-VL-3B-Instruct-int4_awq/engines/llm --inputFile /tmp/trt_edgellm_24n22p_l/input.json --outputFile /tmp/trt_edgellm_24n22p_l/output.json --dumpProfile --profileOutputFile /tmp/trt_edgellm_24n22p_l/profile.json --warmup 1 --multimodalEngineDir /opt/models/trt-edgellm/Qwen2.5-VL-3B-Instruct-int4_awq/engines/visual --encoderCacheBudgetBytes 0[0m
+[20:01:35.853] [INFO] [llm_inference.cpp:809:parseLLMInferenceArgs] args.inputFile: /tmp/trt_edgellm_24n22p_l/input.json
+[20:01:35.853] [INFO] [llm_inference.cpp:815:parseLLMInferenceArgs] args.engineDir: /opt/models/trt-edgellm/Qwen2.5-VL-3B-Instruct-int4_awq/engines/llm
+[20:01:35.853] [INFO] [llm_inference.cpp:823:parseLLMInferenceArgs] args.multimodalEngineDir: /opt/models/trt-edgellm/Qwen2.5-VL-3B-Instruct-int4_awq/engines/visual
+[20:01:35.853] [INFO] [llm_inference.cpp:831:parseLLMInferenceArgs] args.outputFile: /tmp/trt_edgellm_24n22p_l/output.json
+[20:01:35.853] [INFO] [llm_inference.cpp:840:parseLLMInferenceArgs] args.profileOutputFile: /tmp/trt_edgellm_24n22p_l/profile.json
+[20:01:35.853] [INFO] [llm_inference.cpp:845:parseLLMInferenceArgs] Profile dumping to console is enabled
+[20:01:35.853] [INFO] [llm_inference.cpp:850:parseLLMInferenceArgs] Warmup runs: 1
+[20:01:35.853] [INFO] [trtUtils.h:71:loadEdgellmPluginLib] EDGELLM_PLUGIN_PATH: /opt/TensorRT-Edge-LLM/build/libNvInfer_edgellm_plugin.so
+[20:01:36.117] [INFO] [llm_inference.cpp:1480:main] Successfully parsed 0 LoRA weights from input file.
+[20:01:36.117] [INFO] [llm_inference.cpp:1481:main] Successfully parsed 8 batches of requests from input file.
+[20:01:36.128] [INFO] [memoryMonitor.cpp:267:start] Memory Monitor Started - metric: nvml_process_allocation
+[20:01:36.503] [INFO] [llmRuntimeUtils.cpp:715:loadEmbeddingTable] Loaded FP16 embedding: [151936, 2048]
+[20:01:36.503] [INFO] [llmEngineConfig.cpp:672:parseEngineConfig] reading /opt/models/trt-edgellm/Qwen2.5-VL-3B-Instruct-int4_awq/engines/llm/config.json
+[20:01:36.503] [INFO] [llmRuntimeUtils.cpp:422:collectRopeConfig] Collected rope config: RopeConfig:  type: MRope  rotaryScale: 1  rotaryTheta: 1e+06  partialRotaryFactor: 1  maxPositionEmbeddings: 128000
+[20:01:36.503] [INFO] [llmEngineConfig.cpp:887:parseEngineConfig] LLMEngineConfig{ hiddenSize=2048 vocabSize=151936 outputVocabSize=151936 numDecoderLayers=36 numAttentionLayers=36 numKVHeads=2 headDim=128 rotaryDim=128 maxBatch=1 maxInputLen=2560 maxKVCapacity=3072 kvPoolPages=24 pleEnabled=false numPleInputs=0 pleHiddenSize=0 isSpecDecodeBase=false specDecodeType=0 loraRank=0 eosTokenIds=[151645,151643] }
+[20:01:36.503] [INFO] [engineExecutor.cpp:135:TrtEngineExecutor] loading engine file: /opt/models/trt-edgellm/Qwen2.5-VL-3B-Instruct-int4_awq/engines/llm/llm.engine
+[20:01:37.217] [INFO] [TensorRT] [MS] Running engine with multi stream info
+[20:01:37.217] [INFO] [TensorRT] [MS] Number of aux streams is 2
+[20:01:37.217] [INFO] [TensorRT] [MS] Number of total worker streams is 3
+[20:01:37.217] [INFO] [TensorRT] [MS] The main stream provided by execute/enqueue calls is the first worker stream
+[20:01:37.365] [INFO] [TensorRT] [MemUsageChange] TensorRT-managed allocation in IExecutionContext creation: CPU +0, GPU +0, now: CPU 0, GPU 1958 (MiB)
+[20:01:37.366] [INFO] [trtUtils.cpp:374:setNonBlockingAuxStreams] configured 2 non-blocking auxiliary stream(s) for execution context
+[20:01:37.366] [INFO] [engineExecutor.cpp:166:TrtEngineExecutor] engine loaded successfully (80 I/O tensors)
+[20:01:37.366] [INFO] [modelArtifacts.cpp:213:loadFromEngineDir] Base EngineExecutor successfully loaded from /opt/models/trt-edgellm/Qwen2.5-VL-3B-Instruct-int4_awq/engines/llm/llm.engine.
+[20:01:37.366] [INFO] [modelArtifacts.cpp:144:loadTokenizer] Start loading tokenizer from model directory: /opt/models/trt-edgellm/Qwen2.5-VL-3B-Instruct-int4_awq/engines/llm
+[20:01:37.692] [INFO] [tokenizer.cpp:603:loadVocabulary] Loaded 151643 vocabulary tokens
+[20:01:37.766] [INFO] [tokenizer.cpp:135:loadFromHF] Loaded 22 special tokens
+[20:01:37.807] [INFO] [tokenizer.cpp:1090:loadChatTemplate] Successfully loaded chat template from /opt/models/trt-edgellm/Qwen2.5-VL-3B-Instruct-int4_awq/engines/llm/processed_chat_template.json (for model: /opt/models/trt-edgellm/Qwen2.5-VL-3B-Instruct-int4_awq/quantized)
+[20:01:37.807] [INFO] [tokenizer.cpp:167:loadFromHF] Successfully loaded tokenizer from /opt/models/trt-edgellm/Qwen2.5-VL-3B-Instruct-int4_awq/engines/llm (vocab_size=151665)
+[20:01:37.823] [INFO] [modelArtifacts.cpp:147:loadTokenizer] Tokenizer successfully loaded from model directory: /opt/models/trt-edgellm/Qwen2.5-VL-3B-Instruct-int4_awq/engines/llm
+[20:01:37.823] [INFO] [modelArtifacts.cpp:154:loadTokenizer] Loaded 2 EOS token IDs from config
+[20:01:37.823] [INFO] [runtimeCoordinator.cpp:70:RuntimeCoordinator] RuntimeCoordinator running single-device inline (no worker thread).
+[20:01:37.824] [INFO] [llmRankRuntime.cpp:364:initializeCommon] Runtime batch size set to: 1 (from engine bundle)
+[20:01:37.887] [INFO] [llmRankRuntime.cpp:533:initializeCommon] Runtime tensors successfully allocated.
+[20:01:38.225] [INFO] [TensorRT] [MemUsageChange] TensorRT-managed allocation in IExecutionContext creation: CPU +0, GPU +0, now: CPU 0, GPU 3235 (MiB)
+[20:01:38.227] [INFO] [llmRankRuntime.cpp:571:operator()] Vision runner successfully initialized
+[20:01:38.227] [INFO] [llmRankRuntime.cpp:589:initializeCommon] Attempting to load Action runner from /opt/models/trt-edgellm/Qwen2.5-VL-3B-Instruct-int4_awq/engines/visual/action
+[20:01:38.234] [INFO] [llmRankRuntime.cpp:601:initializeCommon] Failed to load Action runner from /opt/models/trt-edgellm/Qwen2.5-VL-3B-Instruct-int4_awq/engines/visual/action: Failed to open engine file: /opt/models/trt-edgellm/Qwen2.5-VL-3B-Instruct-int4_awq/engines/visual/action/action.engine: No such file or directory
+[20:01:38.236] [INFO] [llmRankRuntime.cpp:676:initializeCommon] Setup shared execution context memory: 233873920 bytes (base requires: 221511680, strategy requires: 0, vision requires: 233873920, audio requires: 0, action requires: 0)
+[20:01:38.236] [INFO] [runtimeCoordinator.cpp:299:operator()] [parallel rank 0/1] Runtime initialized.
+[20:01:38.420] [INFO] [engineExecutor.cpp:360:captureGraph] captured graph (hash=0x62c2c35422c8acf9)
+[20:01:38.420] [INFO] [decoderRegistry.cpp:126:captureCudaGraphs] Successfully captured decoding CUDA graphs for active decoding strategies.
+[20:01:38.420] [INFO] [llm_inference.cpp:1669:main] Starting warmup with 1 runs using the first request...
+[20:01:38.716] [INFO] [llm_inference.cpp:1691:main] Warmup of 1 runs completed. Starting actual benchmark runs...
+[20:01:38.716] [INFO] [llm_inference.cpp:1716:main] Processing 8 batched requests...
+[20:01:38.716] [INFO] [llm_inference.cpp:1726:main] Progress: 1/8 (12.500000%)
+[20:01:38.985] [INFO] [llm_inference.cpp:1726:main] Progress: 2/8 (25.000000%)
+[20:01:39.280] [INFO] [llm_inference.cpp:1726:main] Progress: 3/8 (37.500000%)
+[20:01:39.653] [INFO] [llm_inference.cpp:1726:main] Progress: 4/8 (50.000000%)
+[20:01:39.861] [INFO] [llm_inference.cpp:1726:main] Progress: 5/8 (62.500000%)
+[20:01:40.080] [INFO] [llm_inference.cpp:1726:main] Progress: 6/8 (75.000000%)
+[20:01:40.316] [INFO] [llm_inference.cpp:1726:main] Progress: 7/8 (87.500000%)
+[20:01:40.594] [INFO] [llm_inference.cpp:1726:main] Progress: 8/8 (100.000000%)
+[20:01:40.873] [INFO] [llm_inference.cpp:2093:main] Processing complete: 8/8 batched requests successful
+[20:01:40.919] [INFO] [llm_inference.cpp:2159:main] 
+=== Performance Summary ===
+=== LLM Prefill ===
+Reused Tokens: 0
+Computed Tokens: 7822
+Average Tokens per Run: 977.75
+Average Time per Run: 138.8813 ms
+Tokens/Second: 7040.2
+Average Time per Token: 0.1420 ms
+LLM Prefill - Total Runs: 8, Total GPU Time: 1111.05 ms, Average: 138.88 ms
+=== LLM Generation (Excluding sampling after prefill) ===
+Generated Tokens: 37
+Average Tokens per Run: 4.62
+Tokens/Second: 108.7
+Average Time per Token: 9.2036 ms
+LLM Generation - Total Runs: 29, Total GPU Time: 340.53 ms, Average: 11.74 ms
+=== Multimodal Processing ===
+Total Images: 8
+Total Image Tokens: 7511
+Total Multimodal Tokens: 7511
+Average Time per Token: 0.0921 ms
+Vision Encoder - Total Runs: 8, Total GPU Time: 691.46 ms, Average: 86.43 ms
+=== Memory Usage ===
+Peak GPU Memory: 4544.96 MB (4765736960 bytes)
+Peak CPU Memory: 845.97 MB (887066624 bytes)
+GPU Memory Metric: nvml_process_allocation
+=== Wall-Clock (end-to-end, prefill + generation) ===
+TP Size: 1
+Total Generated Tokens: 37
+Total Wall-Clock Time: 2157.72 ms
+Wall-Clock Tokens/Second: 17.1
+Wall-Clock ms/Token: 58.317
+=====================================
+
+[20:01:40.919] [INFO] [llm_inference.cpp:2218:main] Profile data exported to: /tmp/trt_edgellm_24n22p_l/profile.json
+[20:01:40.919] [INFO] [llm_inference.cpp:2243:main] All responses exported to: /tmp/trt_edgellm_24n22p_l/output.json
+[32m2026-09-28 20:01:41[0m | [1mINFO    [0m | [36mlmms_eval.models.chat.trt_edgellm[0m:[36mgenerate_until[0m:[36m159[0m - [1mTensorRT Edge-LLM profile saved to jetson/results/thor/Qwen2.5-VL-3B-Instruct/textvqa_val/trt_edgellm-int4_awq/20260928-220120_limit8/trt_profile.json[0m
+[32m2026-09-28 20:01:41[0m | [1mINFO    [0m | [36mlmms_eval.models.model_utils.gen_metrics[0m:[36mlog_metrics[0m:[36m136[0m - [1mMetric summary - Total elapsed time: 6.970s, Total gen tokens: 0, Avg speed: 0.0 tokens/s[0m
+Postprocessing: 100%|██████████| 8/8 [00:00<00:00, 745.09it/s]
+[32m2026-09-28 20:01:41[0m | [1mINFO    [0m | [36mlmms_eval.evaluator[0m:[36mevaluate[0m:[36m1402[0m - [1mPostprocessed 8 docs for textvqa_val/none with 4 worker(s) in 0.01s[0m
+[32m2026-09-28 20:01:41[0m | [1mINFO    [0m | [36mutils[0m:[36mtextvqa_aggregate_submissions[0m:[36m63[0m - [1mSubmission file saved to /home/michal/dev/lmms-eval/jetson/results/thor/Qwen2.5-VL-3B-Instruct/textvqa_val/trt_edgellm-int4_awq/20260928-220120_limit8/submissions/textvqa_submission_2026-09-28-20-01-41.json[0m
+[32m2026-09-28 20:01:41[0m | [1mINFO    [0m | [36mlmms_eval.loggers.evaluation_tracker[0m:[36msave_results_aggregated[0m:[36m187[0m - [1mSaving results aggregated[0m
+[32m2026-09-28 20:01:41[0m | [1mINFO    [0m | [36mlmms_eval.loggers.evaluation_tracker[0m:[36msave_results_samples[0m:[36m300[0m - [1mSaving samples to jetson/results/thor/Qwen2.5-VL-3B-Instruct/textvqa_val/trt_edgellm-int4_awq/20260928-220120_limit8/20260929_040133_samples_textvqa_val.jsonl[0m
+trt_edgellm (engine_dir=/opt/models/trt-edgellm/Qwen2.5-VL-3B-Instruct-int4_awq/engines/llm,multimodal_engine_dir=/opt/models/trt-edgellm/Qwen2.5-VL-3B-Instruct-int4_awq/engines/visual,profile_output=jetson/results/thor/Qwen2.5-VL-3B-Instruct/textvqa_val/trt_edgellm-int4_awq/20260928-220120_limit8/trt_profile.json,encoder_cache_budget_bytes=0,max_image_side=4096), gen_kwargs: (), limit: 8.0, offset: 0, num_fewshot: None, batch_size: 1
+
+LMMs-Eval: Probing Intelligence in the Real World
+> Good evaluation shapes what we build next.
+
+branch: jetson-benchmark
+commit: v0.6-255-g21318cba
+
+|   Tasks   |Filter|n-shot|  Metric   |   |Value|   |Stderr|Stderr_CLT|
+|-----------|------|-----:|-----------|---|-----|---|------|----------|
+|textvqa_val|none  |     0|exact_match|↑  |0.625|±  | 0.183|     0.183|
+|textvqa_val|none  |     0|submission |↑  |N/A  |±  |N/A   |N/A       |
+
+
+Throughput Summary
+
+|      Metric      |Value |  Unit  |
+|------------------|-----:|--------|
+|total_gen_tokens  |0.0000|tokens  |
+|total_elapsed_time|6.9703|seconds |
+|avg_speed         |0.0000|tokens/s|
+
+
+[slim_run.py: dropped 19 per-request progress/profile lines]

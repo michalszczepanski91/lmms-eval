@@ -1,0 +1,27 @@
+=== 21:46:24 hf 3b textvqa_val limit=8
+    /home/michal/dev/lmms-eval/jetson/results/thor/Qwen2.5-VL-3B-Instruct/textvqa_val/hf-bf16/20260928-214624_limit8/: samples 8, question_marks 0, empty 0, request_failed 0
+=== 21:47:09 hf 7b textvqa_val limit=8
+    /home/michal/dev/lmms-eval/jetson/results/thor/Qwen2.5-VL-7B-Instruct/textvqa_val/hf-bf16/20260928-214709_limit8/: samples 8, question_marks 0, empty 0, request_failed 0
+=== 21:48:04 vllm 3b textvqa_val limit=8
+    /home/michal/dev/lmms-eval/jetson/results/thor/Qwen2.5-VL-3B-Instruct/textvqa_val/vllm-bf16/20260928-214804_limit8/: samples 8, question_marks 0, empty 0, request_failed 0
+=== 21:50:04 vllm 3b-awq textvqa_val limit=8
+    /home/michal/dev/lmms-eval/jetson/results/thor/Qwen2.5-VL-3B-Instruct/textvqa_val/vllm-awq/20260928-215004_limit8/: samples 8, question_marks 0, empty 0, request_failed 0
+=== 21:52:19 vllm 7b textvqa_val limit=8
+    /home/michal/dev/lmms-eval/jetson/results/thor/Qwen2.5-VL-7B-Instruct/textvqa_val/vllm-bf16/20260928-215219_limit8/: samples 8, question_marks 0, empty 0, request_failed 0
+=== 21:54:25 vllm 7b-awq textvqa_val limit=8
+    /home/michal/dev/lmms-eval/jetson/results/thor/Qwen2.5-VL-7B-Instruct/textvqa_val/vllm-awq/20260928-215425_limit8/: samples 8, question_marks 0, empty 0, request_failed 0
+=== 21:56:50 llamacpp 3b-q8_0 textvqa_val limit=8
+    /home/michal/dev/lmms-eval/jetson/results/thor/Qwen2.5-VL-3B-Instruct/textvqa_val/llamacpp-q8_0/20260928-215650_limit8/: samples 8, question_marks 0, empty 0, request_failed 0
+=== 21:57:35 llamacpp 3b-q4_k_m textvqa_val limit=8
+    /home/michal/dev/lmms-eval/jetson/results/thor/Qwen2.5-VL-3B-Instruct/textvqa_val/llamacpp-q4_k_m/20260928-215735_limit8/: samples 8, question_marks 0, empty 0, request_failed 0
+=== 21:58:20 llamacpp 7b-q8_0 textvqa_val limit=8
+    /home/michal/dev/lmms-eval/jetson/results/thor/Qwen2.5-VL-7B-Instruct/textvqa_val/llamacpp-q8_0/20260928-215820_limit8/: samples 8, question_marks 0, empty 0, request_failed 0
+=== 21:59:10 llamacpp 7b-q4_k_m textvqa_val limit=8
+    /home/michal/dev/lmms-eval/jetson/results/thor/Qwen2.5-VL-7B-Instruct/textvqa_val/llamacpp-q4_k_m/20260928-215910_limit8/: samples 8, question_marks 0, empty 0, request_failed 0
+=== 22:00:00 trt_edgellm 3b-fp16 textvqa_val limit=8
+    /home/michal/dev/lmms-eval/jetson/results/thor/Qwen2.5-VL-3B-Instruct/textvqa_val/trt_edgellm-fp16/20260928-220000_limit8/: samples 8, question_marks 0, empty 0, request_failed 0
+=== 22:00:40 trt_edgellm 3b-fp8 textvqa_val limit=8
+    /home/michal/dev/lmms-eval/jetson/results/thor/Qwen2.5-VL-3B-Instruct/textvqa_val/trt_edgellm-fp8/20260928-220040_limit8/: samples 8, question_marks 0, empty 0, request_failed 0
+=== 22:01:20 trt_edgellm 3b-int4_awq textvqa_val limit=8
+    /home/michal/dev/lmms-eval/jetson/results/thor/Qwen2.5-VL-3B-Instruct/textvqa_val/trt_edgellm-int4_awq/20260928-220120_limit8/: samples 8, question_marks 0, empty 0, request_failed 0
+summary: /home/michal/dev/lmms-eval/jetson/results/thor/SUMMARY.md

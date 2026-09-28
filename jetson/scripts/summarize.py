@@ -227,7 +227,8 @@ def main():
             **llamacpp_server_stats(run_dir),
         }
         for task, metrics in r["results"].items():
-            scores = {k.split(",")[0]: v for k, v in metrics.items() if k.endswith(",none") and "stderr" not in k}
+            # Metrics without a value (e.g. TextVQA's "submission" file writer) are left out.
+            scores = {k.split(",")[0]: v for k, v in metrics.items() if k.endswith(",none") and "stderr" not in k and v is not None}
             rows.append(
                 {
                     "model": model,
