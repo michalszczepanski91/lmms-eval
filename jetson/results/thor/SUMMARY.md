@@ -29,6 +29,36 @@ llama.cpp is measured client side over HTTP (streaming); TensorRT Edge-LLM only 
 | Qwen2.5-VL-7B-Instruct | vllm-awq | mme | mme_cognition_score: 610.71<br>mme_perception_score: 1686.57 | 2374 | 52.4 | 396 / 1698 | 420 / 1724 | 25 | 39.0 | 43.7 | 22.8 | 43.3 | none | [Qwen2.5-VL-7B-Instruct/mme/vllm-awq/20260924-010100](Qwen2.5-VL-7B-Instruct/mme/vllm-awq/20260924-010100) |
 | Qwen2.5-VL-7B-Instruct | vllm-bf16 | mme | mme_cognition_score: 621.07<br>mme_perception_score: 1687.05 | 2374 | 50.8 | 367 / 1511 | 468 / 1617 | 102 | 27.3 | 43.1 | 18.4 | 40.5 | none | [Qwen2.5-VL-7B-Instruct/mme/vllm-bf16/20260924-000951](Qwen2.5-VL-7B-Instruct/mme/vllm-bf16/20260924-000951) |
 
+## Latency breakdown and efficiency
+
+Where the time to the first token goes, per sample (p50). Preprocess = prompt and image preparation before the model call
+(client side; for llama.cpp this includes the PNG/base64 encoding). Vision encoder and LLM prefill (text + image tokens,
+first output token) come from: HF - CUDA events around the vision encoder (`stage_timing=True`), prefill = TTFT - encoder;
+llama.cpp - llama-server's log (server side, without HTTP); TensorRT Edge-LLM - the runner's per-stage GPU time. vLLM runs
+the encoder inside its prefill step and reports only TTFT. TTFT p99 shows the tail. Throughput = samples / eval wall time;
+energy per sample = average module power x eval wall time / samples (includes preprocessing and idle gaps).
+
+| Model | Framework | Task | N | Preprocess (ms) | Vision encoder (ms) | LLM prefill (ms) | TTFT p50 / p99 (ms) | Answer p99 (ms) | Output tokens (mean) | Decode (tokens/s) | Throughput (samples/s) | Energy (J/sample) | Stage timing source |
+|---|---|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---|
+| Qwen2.5-VL-3B-Instruct | hf-bf16 | gqa | 12578 | 38 | - | - | 199 / 252 | 370 | 2.3 | 18 | 3.26 | 16.4 | - |
+| Qwen2.5-VL-3B-Instruct | trt_edgellm-fp16 | gqa | 12578 | - | 34 | 39 | ~74 (avg) | - | - | 66 | 5.14 | 11.5 | runner profile (GPU time) |
+| Qwen2.5-VL-3B-Instruct | trt_edgellm-fp8 | gqa | 12578 | - | 30 | 27 | ~59 (avg) | - | - | 114 | 6.05 | 8.6 | runner profile (GPU time) |
+| Qwen2.5-VL-3B-Instruct | trt_edgellm-int4_awq | gqa | 12578 | - | 28 | 79 | ~103 (avg) | - | - | 160 | 4.91 | 11.6 | runner profile (GPU time) |
+| Qwen2.5-VL-3B-Instruct | vllm-awq | gqa | 12578 | 84 | - | - | 217 / 290 | 305 | 2.2 | 87 | 3.11 | 15.5 | - |
+| Qwen2.5-VL-3B-Instruct | vllm-bf16 | gqa | 12578 | 83 | - | - | 185 / 228 | 283 | 2.3 | 36 | 3.25 | 15.6 | - |
+| Qwen2.5-VL-3B-Instruct | hf-bf16 | mme | 2374 | 22 | - | - | 241 / 933 | 998 | 2.0 | 17 | 1.89 | 31.1 | - |
+| Qwen2.5-VL-3B-Instruct | trt_edgellm-fp16+no-downscale | mme | 2374 | - | 45 | 46 | ~143 (avg) | - | - | 66 | 1.31 | 25.6 | runner profile (GPU time) |
+| Qwen2.5-VL-3B-Instruct | trt_edgellm-fp8+no-downscale | mme | 2374 | - | 41 | 32 | ~116 (avg) | - | - | 102 | 1.38 | 21.6 | runner profile (GPU time) |
+| Qwen2.5-VL-3B-Instruct | trt_edgellm-int4_awq+no-downscale | mme | 2374 | - | 38 | 92 | ~208 (avg) | - | - | 152 | 1.24 | 27.7 | runner profile (GPU time) |
+| Qwen2.5-VL-3B-Instruct | vllm-awq | mme | 2374 | 108 | - | - | 282 / 1830 | 1843 | 2.0 | 76 | 0.89 | 39.0 | - |
+| Qwen2.5-VL-3B-Instruct | vllm-bf16 | mme | 2374 | 109 | - | - | 241 / 1667 | 1713 | 2.0 | 23 | 0.91 | 37.2 | - |
+| Qwen2.5-VL-7B-Instruct | hf-bf16 | gqa | 12578 | 28 | - | - | 944 / 1130 | 4282 | 2.3 | 1 | 0.49 | 60.4 | - |
+| Qwen2.5-VL-7B-Instruct | vllm-awq | gqa | 12578 | 84 | - | - | 300 / 400 | 426 | 2.3 | 48 | 2.40 | 23.2 | - |
+| Qwen2.5-VL-7B-Instruct | vllm-bf16 | gqa | 12578 | 84 | - | - | 223 / 309 | 465 | 2.3 | 16 | 2.53 | 22.5 | - |
+| Qwen2.5-VL-7B-Instruct | hf-bf16 | mme | 2374 | 29 | - | - | 283 / 1228 | 1316 | 2.0 | 12 | 1.51 | 43.1 | - |
+| Qwen2.5-VL-7B-Instruct | vllm-awq | mme | 2374 | 107 | - | - | 396 / 2265 | 2289 | 2.0 | 40 | 0.76 | 57.4 | - |
+| Qwen2.5-VL-7B-Instruct | vllm-bf16 | mme | 2374 | 109 | - | - | 367 / 1976 | 2080 | 2.0 | 10 | 0.78 | 52.1 | - |
+
 ## Compute (FLOPs)
 
 Analytical FLOPs per sample from `flops.json` (`jetson/models/<model>/flops.py`): matrix multiplies at 2 FLOPs per multiply-accumulate

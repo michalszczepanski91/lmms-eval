@@ -16,7 +16,7 @@ This folder benchmarks vision-language models on NVIDIA Jetson with lmms-eval. I
 | Jetson AGX Orin 32GB (MAXN) | [results/orin/SUMMARY.md](results/orin/SUMMARY.md) | full MME: HF 3B/7B, vLLM bf16/AWQ 3B, vLLM AWQ 7B, llama.cpp Q8_0/Q4_K_M 7B; llama.cpp 3B runs marked `INVALID` (fp16 overflow, see [methodology](docs/methodology.md#implementation-notes)) |
 | Jetson AGX Thor (120 W) | [results/thor/SUMMARY.md](results/thor/SUMMARY.md) | [results/thor/NOTES.md](results/thor/NOTES.md) |
 
-Each summary has one table of scores, latency, memory and power per run, and one table of FLOPs per sample (vision encoder / LLM prefill / LLM decode) with the achieved TFLOP/s. How everything is measured, and which settings keep the frameworks comparable: [docs/methodology.md](docs/methodology.md).
+Each summary has one table of scores, latency, memory and power per run; one latency breakdown (preprocessing / vision encoder / LLM prefill, TTFT p99, throughput, energy per sample); and one table of FLOPs per sample (vision encoder / LLM prefill / LLM decode) with the achieved TFLOP/s. How everything is measured, and which settings keep the frameworks comparable: [docs/methodology.md](docs/methodology.md).
 
 ## Quick start
 
@@ -38,6 +38,7 @@ jetson/scripts/run_eval.sh vllm 3b-awq mme        # full MME
 # 4. Many runs in a row (SUMMARY.md is refreshed at the end), or a whole experiment
 jetson/scripts/run_matrix.sh mme "" -- hf 3b vllm 3b-awq llamacpp 3b-q8_0
 jetson/experiments/qwen2_5_vl/gqa.sh              # SMOKE=1 for 8 samples per run
+jetson/experiments/qwen2_5_vl/textvqa.sh          # builds missing Edge-LLM 3B engines first (SKIP_ENGINES=1 to skip)
 python3 jetson/scripts/summarize.py               # rebuild SUMMARY.md at any time
 ```
 
@@ -61,7 +62,24 @@ One script per question, under [experiments/qwen2_5_vl/](experiments/qwen2_5_vl/
 |---|---|
 | `mme.sh` | Main comparison: MME (2,374 yes/no questions) for every framework and precision, 3B and 7B |
 | `gqa.sh` | Short-answer VQA: GQA testdev-balanced (12,578 questions), same matrix |
+| `textvqa.sh` | Reading text in images (OCR-heavy VQA): TextVQA val (5,000 questions, VQA accuracy), same matrix. Needs `download_assets.sh dataset:lmms-lab-encoder/textvqa` |
 | `followups.sh` | Image transport overhead (PIL vs PNG/base64), decode-heavy captioning (COCO), image-resolution sweep |
+
+## Running unattended
+
+A full matrix takes 12–16 h. Run the matrix itself detached, so that it survives a closed SSH session:
+
+```bash
+export HF_CACHE=/opt/hf-cache TRT_WORKSPACE=/opt/models/trt-edgellm SHARED_GROUP=mlusers
+nohup setsid jetson/experiments/qwen2_5_vl/textvqa.sh > jetson/results/thor/logs/textvqa.log 2>&1 &
+```
+
+`run_matrix.sh` stops a run whose `run.log` hasn't grown for 30 min (`STALL_MINUTES`) and marks runs with `????` answers `INVALID`, so the matrix finishes without supervision. To also have Claude Code fix failures and write the report, start it on the board in `tmux` (a session tied to an IDE's SSH connection stops when the connection closes):
+
+```bash
+tmux new -s textvqa
+claude "Follow jetson/docs/agent-prompt-textvqa.md"        # detach: Ctrl-b d; reattach: tmux attach -t textvqa
+```
 
 ## Layout
 
@@ -73,10 +91,12 @@ jetson/
     setup-thor.md           building and running on Jetson Thor (JetPack 7)
     tensorrt-edgellm.md     ONNX export, engine build, evaluation with TensorRT Edge-LLM
     agent-prompt-thor.md    the prompt used to run the Thor benchmark unattended with Claude Code
+    agent-prompt-textvqa.md the same for the TextVQA experiment (see "Running unattended" below)
   docker/                   lmms-eval image (Dockerfile, requirements-jetson.txt)
   scripts/
     run_eval.sh             one run: start servers, eval in the container, tegrastats, FLOPs, slim the run dir
-    run_matrix.sh           many runs in a row + summary
+    run_matrix.sh           many runs in a row + summary; stall watchdog (STALL_MINUTES) and answer check per run
+    check_run.py            marks runs with "????" answers INVALID; counts empty / failed answers
     download_assets.sh      models / datasets into the shared HF cache (offline-ready)
     summarize.py            results/<board>/SUMMARY.md
     compute_flops.sh        analytical FLOPs per sample (runs models/<model>/flops.py in the container)
@@ -85,12 +105,12 @@ jetson/
     common.sh               argument parsing, board / model resolution, Hub cache helpers
     hf.sh, vllm.sh, llamacpp.sh, trt_edgellm.sh   per framework: precisions, assets, backend args, server start/stop
     llamacpp/Dockerfile     llama.cpp server image
-    trt_edgellm/            runtime + export images, export.sh, build_engines.sh
+    trt_edgellm/            runtime + export images, export.sh, build_engines.sh, ensure_engines.sh (build missing ones)
   models/
     qwen2_5_vl/
       model.sh              sizes -> Hub repos (base, AWQ, GGUF), image-token range
       flops.py              FLOPs model of Qwen2.5-VL (vision encoder, LLM prefill, decode)
-  experiments/qwen2_5_vl/   mme.sh, gqa.sh, followups.sh
+  experiments/qwen2_5_vl/   mme.sh, gqa.sh, textvqa.sh, followups.sh
   results/<board>/          SUMMARY.md, NOTES.md, logs/, <model>/<task>/<framework>-<precision>[+tag]/<run id>/
 ```
 

@@ -13,7 +13,8 @@ class TokenCounts:
     ``preprocess_seconds`` covers prompt/media processing up to the model call,
     ``time_to_first_token_seconds`` runs from the model call to the first generated token
     (vision encoding + prefill + one decode step), and ``generation_seconds`` covers the
-    whole model call.
+    whole model call. ``vision_seconds`` is the vision encoder's share of the time to first
+    token, for backends that can time it on its own.
     """
 
     input_tokens: Optional[int] = None
@@ -22,6 +23,7 @@ class TokenCounts:
     preprocess_seconds: Optional[float] = None
     time_to_first_token_seconds: Optional[float] = None
     generation_seconds: Optional[float] = None
+    vision_seconds: Optional[float] = None
 
     def to_dict(self) -> Dict[str, Union[int, float]]:
         return {name: value for name, value in vars(self).items() if value is not None}

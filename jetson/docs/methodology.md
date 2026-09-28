@@ -20,17 +20,22 @@ Remaining differences are properties of the frameworks and are reported, not rem
 
 | Metric | Source |
 |---|---|
-| Scores | lmms-eval task metrics (MME perception / cognition, GQA exact match, COCO CIDEr, ...) |
+| Scores | lmms-eval task metrics (MME perception / cognition, GQA exact match, TextVQA VQA accuracy (reported as `exact_match`: min(1, matching human answers / 3), averaged over the 10 leave-one-out subsets), COCO CIDEr, ...) |
 | TTFT per sample | From the model call to the first generated token: vision encoder + prefill + first decode step. HF: generation streamer. vLLM: engine request metrics. llama.cpp: first streamed chunk (includes HTTP). Edge-LLM: runner averages only (vision encoder + prefill) |
 | Answer time per sample | Whole model call, all generated tokens |
 | Decode ms/token | (answer − TTFT) / (output tokens − 1) |
+| Preprocess | Prompt and image preparation before the model call, client side (HF: chat template + processor; vLLM: message building; llama.cpp: message building incl. PNG/base64 encoding) |
+| Vision encoder / LLM prefill | The two parts of TTFT, p50. HF: CUDA events around the vision encoder (`stage_timing=True`, read after `generate`, so no extra syncs), prefill = TTFT − encoder. llama.cpp: server log at verbosity 4, encoder = `encoding mtmd batch` → first `decoding image batch`, prefill = `prompt eval time` − encoder (server side, no HTTP). Edge-LLM: median GPU time of the runner's `vision_encoder` and `llm_prefill` stages. vLLM: not available (the encoder runs inside its prefill step) |
+| TTFT / answer p99 | Tail latency over all samples |
+| Throughput | Samples / eval wall time |
+| Energy per sample | Average module power × eval wall time / samples: includes preprocessing and gaps between requests |
 | Wall time | Whole lmms-eval run, including image loading and preprocessing |
 | RAM | Whole-board unified memory from `tegrastats` at 1 Hz: base (before model load) and peak; other processes included |
 | Power | `tegrastats` rails averaged over the run. GPU rail: `VDD_GPU_SOC` on Orin (GPU + SoC), `VDD_GPU` on Thor (GPU only). Module: GPU + CPU/SoC + 5 V system rails, comparable across boards |
 | FLOPs per sample | Analytical, see below |
 | Achieved TFLOP/s | (vision + prefill FLOPs) / mean TTFT, and total FLOPs / mean answer time. A lower bound on GPU throughput, since TTFT includes preprocessing (and HTTP for llama.cpp) |
 
-Per-sample numbers are in each run's `lmms_eval/*_samples_<task>.jsonl.gz` under `token_counts`: `input_tokens`, `output_tokens`, `preprocess_seconds`, `time_to_first_token_seconds`, `generation_seconds`. MME and GQA answers are one word (about 2 tokens), so TTFT dominates; use a longer-answer task such as COCO captioning to compare decode speed.
+Per-sample numbers are in each run's `lmms_eval/*_samples_<task>.jsonl.gz` under `token_counts`: `input_tokens`, `output_tokens`, `preprocess_seconds`, `time_to_first_token_seconds`, `generation_seconds`. MME, GQA and TextVQA answers are one word or a short phrase (2–4 tokens), so TTFT dominates; use a longer-answer task such as COCO captioning to compare decode speed.
 
 ## FLOPs
 
@@ -52,7 +57,8 @@ Each run writes `results/<board>/<model>/<tasks>/<framework>-<precision>[+tag]/<
 |---|---|
 | `run_info.txt` | board, L4T, power mode, git commit, image IDs, other containers / GPU processes, exact lmms-eval command, versions |
 | `run.log` | console output, without per-request progress bars (see `slim_run.py`) |
-| `server.log` / `trt_profile.json` | llama-server log / Edge-LLM runner profile |
+| `server.log.gz` / `trt_profile.json` | llama-server log (verbosity 4) / Edge-LLM runner profile |
+| `INVALID` / `STALLED` | run excluded from the summary: `????` answers (`check_run.py`), or stopped by the `run_matrix.sh` watchdog |
 | `tegrastats.log.gz` | 1 Hz RAM, CPU, GPU, temperatures, power rails |
 | `flops.json`, `flops_samples.jsonl.gz`, `flops.log` | FLOPs summary per task / per sample / log |
 | `lmms_eval/*_results.json` | scores and the full lmms-eval config |
@@ -66,6 +72,7 @@ Run IDs with `_limitN` are smoke tests; `summarize.py` leaves them out unless `-
 - `download_assets.sh` also prepares the `datasets` Arrow cache, which works offline and avoids the HF login that task configs with `token: True` (MME, GQA) would otherwise require.
 - Models load from local snapshot paths, because transformers 4.57.3 queries the Hub for repo IDs even in offline mode.
 - lmms-eval exits 0 when evaluation fails, so `run_eval.sh` checks the log for `Error during evaluation`.
+- `run_matrix.sh` stops a run whose `run.log` has not grown for `STALL_MINUTES` (default 30): a llama.cpp MME run on Thor once hung on one request for 27 h. The run dir keeps its logs plus a `STALLED` file.
 - The repo is mounted at its host path: `lmms_eval/llm_judge/factory.py` fails when it is mounted at a shallow path such as `/workspace`.
 - llama.cpp runs with `GGML_CUDA_CUBLAS_COMPUTE_TYPE=bf16`: with fp16 accumulation one MME image overflows Qwen2.5-VL-3B and every later answer is `????` until the server restarts. A run found invalid keeps its files plus an `INVALID` file saying why; `summarize.py` skips it.
 - Out of memory on Jetson shows up as `NVML_SUCCESS == r INTERNAL ASSERT FAILED` in PyTorch's CUDA allocator.

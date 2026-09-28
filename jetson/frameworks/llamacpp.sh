@@ -35,12 +35,14 @@ fw_start() {
   # MME asks two questions per image, so a cache would skip the image work on every second sample.
   # cuBLAS accumulates in bf16 instead of fp16: with fp16, one MME image (commonsense_reasoning/0064.png) overflows
   # Qwen2.5-VL-3B and every later request returns "????..." until the server restarts. bf16 keeps fp32's range.
+  # Log verbosity 4 adds the image-encoder start/end lines per request (~25 lines per request, no measurable slowdown),
+  # which summarize.py uses to split TTFT into vision encoder and LLM prefill.
   docker run -d --name "$LLAMACPP_CONTAINER" --runtime nvidia --network host \
     -e GGML_CUDA_CUBLAS_COMPUTE_TYPE="${LLAMACPP_CUBLAS_COMPUTE:-bf16}" \
     -v "$HF_CACHE":"$HF_CACHE":ro "$LLAMACPP_IMAGE" \
     llama-server -m "$gguf" --mmproj "$mmproj" -ngl 999 -c 4096 -np 1 --jinja \
       --image-min-tokens "$IMAGE_MIN_TOKENS" --image-max-tokens "$IMAGE_MAX_TOKENS" --no-cache-prompt --cache-ram 0 \
-      --host 127.0.0.1 --port "$LLAMACPP_PORT" >/dev/null
+      -lv "${LLAMACPP_LOG_VERBOSITY:-4}" --host 127.0.0.1 --port "$LLAMACPP_PORT" >/dev/null
   echo "llama-server: $LLAMACPP_IMAGE $(_gguf_file) (waiting for /health)"
   for _ in $(seq 300); do
     curl -sf "http://127.0.0.1:$LLAMACPP_PORT/health" >/dev/null && return 0

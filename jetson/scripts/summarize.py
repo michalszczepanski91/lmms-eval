@@ -70,26 +70,70 @@ def percentile(values, q):
 
 def latency_stats(samples_path):
     """Per-sample latency recorded by backends that fill TokenCounts timing fields."""
-    ttft, gen, decode_ms = [], [], []
+    ttft, gen, decode_ms, pre, vision, prefill, out_tokens = [], [], [], [], [], [], []
     for line in open_text(samples_path):
         counts = (json.loads(line).get("token_counts") or [None])[0] or {}
+        if counts.get("output_tokens") is not None:
+            out_tokens.append(counts["output_tokens"])
         if counts.get("time_to_first_token_seconds") is None or counts.get("generation_seconds") is None:
             continue
         ttft.append(counts["time_to_first_token_seconds"])
         gen.append(counts["generation_seconds"])
+        if counts.get("preprocess_seconds") is not None:
+            pre.append(counts["preprocess_seconds"])
+        if counts.get("vision_seconds") is not None:  # HF with stage_timing: prefill = TTFT - vision encoder
+            vision.append(counts["vision_seconds"])
+            prefill.append(counts["time_to_first_token_seconds"] - counts["vision_seconds"])
         if counts.get("output_tokens", 0) > 1:
             decode_ms.append(1000 * (counts["generation_seconds"] - counts["time_to_first_token_seconds"]) / (counts["output_tokens"] - 1))
+    stats = {"out_tokens_mean": sum(out_tokens) / len(out_tokens)} if out_tokens else {}
     if not ttft:
-        return {}
+        return stats
     return {
+        **stats,
         "ttft_p50": percentile(ttft, 50),
         "ttft_p90": percentile(ttft, 90),
+        "ttft_p99": percentile(ttft, 99),
         "gen_p50": percentile(gen, 50),
         "gen_p90": percentile(gen, 90),
+        "gen_p99": percentile(gen, 99),
         "decode_ms_p50": percentile(decode_ms, 50),
         "ttft_mean": sum(ttft) / len(ttft),
         "gen_mean": sum(gen) / len(gen),
+        **({"pre_p50": percentile(pre, 50)} if pre else {}),
+        **({"vision_p50": percentile(vision, 50), "prefill_p50": percentile(prefill, 50), "stage_source": "CUDA events"} if vision else {}),
     }
+
+
+LLAMA_TS = re.compile(r"^(\d+)\.(\d+)\.(\d+)\.(\d+) ")
+
+
+def llamacpp_server_stats(run_dir):
+    """Per-request stages from llama-server's log (verbosity 4, llamacpp.sh), in seconds.
+
+    Vision encoder = "encoding mtmd batch" to the first "decoding image batch" (the image embeddings are ready);
+    LLM prefill = "prompt eval time" (which includes the encoder) minus the encoder. Server side, without HTTP.
+    """
+    path = os.path.join(run_dir, "server.log")
+    if not (os.path.exists(path) or os.path.exists(path + ".gz")):
+        return {}
+    vision, prefill = [], []
+    encode_start = current_vision = None
+    for line in open_text(path):
+        ts = LLAMA_TS.match(line)
+        t = int(ts[1]) * 60 + int(ts[2]) + int(ts[3]) / 1e3 + int(ts[4]) / 1e6 if ts else None
+        if "encoding mtmd batch" in line:
+            encode_start = t
+        elif "decoding image batch 1/" in line and encode_start is not None and t is not None:
+            current_vision = t - encode_start
+            vision.append(current_vision)
+            encode_start = None
+        elif m := re.search(r"prompt eval time =\s+([\d.]+) ms", line):
+            prefill.append(float(m[1]) / 1000 - (current_vision or 0))
+            current_vision = None
+    if not vision:
+        return {}
+    return {"vision_p50": percentile(vision, 50), "prefill_p50": percentile(prefill, 50), "stage_source": "server log"}
 
 
 def trt_profile_stats(path):
@@ -101,7 +145,16 @@ def trt_profile_stats(path):
     vision_ms = vision.get("average_time_per_token_ms", 0) * vision.get("total_multimodal_tokens", 0) / max(1, vision.get("total_runs", 1))
     ttft = (vision_ms + profile.get("prefill", {}).get("average_time_per_run_ms", 0)) / 1000
     decode = profile.get("generation", {}).get("average_time_per_token_ms")
-    return {"ttft_avg": ttft, "decode_ms_p50": decode}
+    stats = {"ttft_avg": ttft, "decode_ms_p50": decode, "out_tokens_mean": profile.get("generation", {}).get("average_tokens_per_run")}
+    # Per-stage GPU time distributions (Edge-LLM >= 0.10): vision_encoder, llm_prefill, llm_generation.
+    stages = {stage["stage_id"]: stage.get("gpu_time_stats", {}) for stage in profile.get("stages", [])}
+    if "vision_encoder" in stages and "llm_prefill" in stages:
+        stats.update(
+            vision_p50=stages["vision_encoder"]["median_ms"] / 1000,
+            prefill_p50=stages["llm_prefill"]["median_ms"] / 1000,
+            stage_source="runner profile (GPU time)",
+        )
+    return stats
 
 
 def flops_stats(run_dir, task):
@@ -171,6 +224,7 @@ def main():
             **tegrastats_stats(os.path.join(run_dir, "tegrastats.log")),
             **(latency_stats(samples[0]) if samples else {}),
             **trt_profile_stats(os.path.join(run_dir, "trt_profile.json")),
+            **llamacpp_server_stats(run_dir),
         }
         for task, metrics in r["results"].items():
             scores = {k.split(",")[0]: v for k, v in metrics.items() if k.endswith(",none") and "stderr" not in k}
@@ -213,6 +267,33 @@ def main():
             f"| {row['model']} | {row['framework']} | {row['task']} | {scores} | {row['n']} | {row['minutes']:.1f} | "
             f"{fmt_ms(row, 'ttft_p50', 'ttft_p90')} | {fmt_ms(row, 'gen_p50', 'gen_p90')} | {decode} | "
             f"{fmt_gb(row.get('base_ram'))} | {fmt_gb(row.get('peak_ram'))} | {power} | {row['others']} | [{row['run']}]({row['run']}) |"
+        )
+    lines += [
+        "",
+        "## Latency breakdown and efficiency",
+        "",
+        "Where the time to the first token goes, per sample (p50). Preprocess = prompt and image preparation before the model call",
+        "(client side; for llama.cpp this includes the PNG/base64 encoding). Vision encoder and LLM prefill (text + image tokens,",
+        "first output token) come from: HF - CUDA events around the vision encoder (`stage_timing=True`), prefill = TTFT - encoder;",
+        "llama.cpp - llama-server's log (server side, without HTTP); TensorRT Edge-LLM - the runner's per-stage GPU time. vLLM runs",
+        "the encoder inside its prefill step and reports only TTFT. TTFT p99 shows the tail. Throughput = samples / eval wall time;",
+        "energy per sample = average module power x eval wall time / samples (includes preprocessing and idle gaps).",
+        "",
+        "| Model | Framework | Task | N | Preprocess (ms) | Vision encoder (ms) | LLM prefill (ms) | TTFT p50 / p99 (ms) | Answer p99 (ms) | Output tokens (mean) | Decode (tokens/s) | Throughput (samples/s) | Energy (J/sample) | Stage timing source |",
+        "|---|---|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---|",
+    ]
+    for row in rows:
+
+        def ms(key):
+            return f"{1000 * row[key]:.0f}" if row.get(key) is not None else "-"
+
+        seconds = row["minutes"] * 60
+        energy = f"{row['avg_total_w'] * seconds / row['n']:.1f}" if row.get("avg_total_w") and row["n"] else "-"
+        decode_tps = f"{1000 / row['decode_ms_p50']:.0f}" if row.get("decode_ms_p50") else "-"
+        out_tokens = f"{row['out_tokens_mean']:.1f}" if row.get("out_tokens_mean") is not None else "-"
+        lines.append(
+            f"| {row['model']} | {row['framework']} | {row['task']} | {row['n']} | {ms('pre_p50')} | {ms('vision_p50')} | {ms('prefill_p50')} | "
+            f"{fmt_ms(row, 'ttft_p50', 'ttft_p99')} | {ms('gen_p99')} | {out_tokens} | {decode_tps} | {row['n'] / seconds:.2f} | {energy} | {row.get('stage_source', '-')} |"
         )
     lines += [
         "",

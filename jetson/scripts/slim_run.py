@@ -2,7 +2,7 @@
 """Shrink a finished run dir for git (stdlib only; run_eval.sh calls it after every run, idempotent).
 
 - run.log / server.log: progress bars rewrite one line with carriage returns; keep only each line's final state.
-- tegrastats.log, lmms_eval/*_samples_*.jsonl -> gzipped (summarize.py and flops.py read .gz transparently).
+- tegrastats.log, server.log, lmms_eval/*_samples_*.jsonl -> gzipped (summarize.py and flops.py read .gz transparently).
 - flops.json: per-sample rows move to flops_samples.jsonl.gz; flops.json keeps the per-task summary.
 
 Usage: python3 jetson/scripts/slim_run.py <run dir> [<run dir> ...]
@@ -64,7 +64,7 @@ def slim(run_dir):
     for name in ("run.log", "server.log", "flops.log"):
         if os.path.exists(os.path.join(run_dir, name)):
             strip_progress(os.path.join(run_dir, name))
-    for path in [os.path.join(run_dir, "tegrastats.log"), *glob.glob(os.path.join(run_dir, "lmms_eval", "*_samples_*.jsonl"))]:
+    for path in [os.path.join(run_dir, "tegrastats.log"), os.path.join(run_dir, "server.log"), *glob.glob(os.path.join(run_dir, "lmms_eval", "*_samples_*.jsonl"))]:
         if os.path.exists(path):
             gzip_file(path)
     if os.path.exists(os.path.join(run_dir, "flops.json")):

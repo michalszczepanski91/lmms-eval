@@ -1,6 +1,7 @@
 import time
-from typing import List
+from typing import List, Optional
 
+import torch
 from loguru import logger as eval_logger
 from tqdm import tqdm
 
@@ -38,6 +39,32 @@ class _FirstTokenTimer:
         pass
 
 
+class _VisionTimer:
+    """CUDA events around the vision encoder's forward passes (``stage_timing=True``).
+
+    Events are only read after ``generate`` has returned, so timing adds no host syncs.
+    Qwen2.5-VL runs the encoder once per ``generate`` call, inside the prefill step.
+    """
+
+    def __init__(self, visual: torch.nn.Module):
+        self._events = []
+        visual.register_forward_pre_hook(lambda *_: self._record())
+        visual.register_forward_hook(lambda *_: self._record())
+
+    def _record(self):
+        event = torch.cuda.Event(enable_timing=True)
+        event.record()
+        self._events.append(event)
+
+    def pop_seconds(self) -> Optional[float]:
+        """Encoder time since the previous call, or None if the encoder did not run."""
+        events, self._events = self._events, []
+        if len(events) < 2:
+            return None
+        events[-1].synchronize()
+        return sum(start.elapsed_time(end) for start, end in zip(events[::2], events[1::2])) / 1000
+
+
 @register_model("qwen2_5_vl_chat")
 class Qwen2_5_VL(Qwen2_5_VLSimple):
     is_simple = False
@@ -63,6 +90,10 @@ class Qwen2_5_VL(Qwen2_5_VLSimple):
         pbar = tqdm(total=num_iters, disable=(self.rank != 0), desc="Model Responding")
         total_elapsed_time = 0
         total_tokens = 0
+        # Hooks are registered once per model; later generate_until calls reuse the timer.
+        if self.stage_timing and getattr(self, "_vision_timer", None) is None:
+            self._vision_timer = _VisionTimer(self.model.model.visual)
+        vision_timer = getattr(self, "_vision_timer", None)
         for chunk in chunks:
             preprocess_start = time.perf_counter()
             ctx, doc_to_messages, all_gen_kwargs, doc_id, task, split = zip(*chunk)
@@ -170,12 +201,14 @@ class Qwen2_5_VL(Qwen2_5_VLSimple):
                 streamer=first_token_timer,
             )
             end_time = time.perf_counter()
+            vision_seconds = vision_timer.pop_seconds() if vision_timer is not None else None
             latency = {}
             if first_token_timer is not None:
                 latency = {
                     "preprocess_seconds": start_time - preprocess_start,
                     "time_to_first_token_seconds": first_token_timer.first_token_time - start_time if first_token_timer.first_token_time else None,
                     "generation_seconds": end_time - start_time,
+                    "vision_seconds": vision_seconds,
                 }
 
             generated_ids_trimmed = [out_ids[len(in_ids) :] for in_ids, out_ids in zip(inputs.input_ids, cont)]

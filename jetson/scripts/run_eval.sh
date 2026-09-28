@@ -22,7 +22,7 @@
 #             (e.g. EVAL_ENV="LMMS_IMAGE_PNG_COMPRESS_LEVEL=1")
 #
 # Each run writes $RESULTS_DIR/<model>/<tasks>/<framework>-<precision>[+<tag>]/<timestamp>[_limitN]/:
-#   run_info.txt, run.log, tegrastats.log.gz, flops.json (+ flops_samples.jsonl.gz), [server.log | trt_profile.json],
+#   run_info.txt, run.log, tegrastats.log.gz, flops.json (+ flops_samples.jsonl.gz), [server.log.gz | trt_profile.json],
 #   lmms_eval/<date>_results.json and lmms_eval/<date>_samples_<task>.jsonl.gz
 set -uo pipefail
 

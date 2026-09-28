@@ -133,6 +133,7 @@ class Qwen2_5_VL(lmms):
         system_prompt: Optional[str] = "You are a helpful assistant.",
         interleave_visuals: Optional[bool] = False,
         reasoning_prompt: Optional[str] = None,
+        stage_timing: bool = False,
         **kwargs,
     ) -> None:
         super().__init__()
@@ -185,6 +186,8 @@ class Qwen2_5_VL(lmms):
         self._tokenizer = AutoTokenizer.from_pretrained(pretrained)
         self.system_prompt = system_prompt
         self.interleave_visuals = interleave_visuals
+        # Chat backend only: time the vision encoder per sample (TokenCounts.vision_seconds), batch size 1.
+        self.stage_timing = stage_timing
 
         self._config = self.model.config
         self._max_length = kwargs.get("max_length", 2048)
