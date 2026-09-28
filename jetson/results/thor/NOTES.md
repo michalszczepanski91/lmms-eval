@@ -139,3 +139,35 @@ Unattended run following `jetson/THOR_PROMPT.md`, started 2026-09-23.
   (`GGML_CUDA_CUBLAS_COMPUTE_TYPE=bf16`) because fp16 overflows on one MME image for 3B and every later answer becomes
   `????`; vLLM 7B bf16 budget 21.0 GB. The Thor llama.cpp 3B q8_0 MME run that hung (started before this fix, stuck at
   935/2374) may be the same problem showing differently; re-run it with the fix and check for `??` answers.
+
+## TextVQA (started 2026-09-28)
+
+Prompt: `jetson/docs/agent-prompt-textvqa.md`. Task `textvqa_val`: 5,000 questions on 3,166 images, VQA accuracy
+(`exact_match`), prompt "Answer the question using a single word or phrase."
+
+### Setup
+- **Power mode: MAXN** (`nvpmodel -q`: MAXN). The earlier Thor MME/GQA runs were at 120 W, so compare their timings only
+  with that caveat. `jetson_clocks` not used.
+- Board idle at the start: no containers, no GPU processes; 758 GB free on `/`.
+- `/opt/models` is now group-writable (`mlusers`): `TRT_WORKSPACE=/opt/models/trt-edgellm` (no more `$HOME` fallback).
+  The earlier Edge-LLM engines and the export image were gone; rebuilt with the new
+  `jetson/frameworks/trt_edgellm/ensure_engines.sh 3b fp16 fp8 int4_awq` (export image build + 3 exports/builds:
+  21:16-21:44, log `logs/textvqa_engines.log`). int4_awq = Edge-LLM's own AWQ of the base checkpoint, as before.
+- Dataset `lmms-lab-encoder/textvqa` downloaded with `download_assets.sh` (all splits, incl. train).
+- `uv`/`ruff`/`pytest` are not installed on the host or in the image; used a standalone `uv` from the session scratch dir.
+- lmms-eval result file names inside the container carry a timestamp 6 h ahead of the board's local time
+  (e.g. `20260929_034639_results.json` for a run at 21:46 CEST); run ids (host clock) are correct.
+
+### New measurements (commit "feat(jetson): TextVQA experiment, per-stage latency breakdown, stall watchdog")
+- TTFT split into vision encoder and LLM prefill: HF via CUDA events (`stage_timing=True`), llama.cpp via llama-server
+  log verbosity 4 (checked: ~25 lines per request, TTFT unchanged vs verbosity 3), Edge-LLM via its stage profile.
+  vLLM: TTFT only. New SUMMARY.md table "Latency breakdown and efficiency" (also p99, throughput, energy per sample).
+- `run_matrix.sh`: 30-min stall watchdog (tested with a fake hanging run) and `check_run.py` (flags the Orin
+  `????` run correctly).
+
+### Log
+- Smoke test (21:46-22:02, `logs/textvqa_smoke.log`): all 13 combinations finished, sensible answers, no `????`/empty
+  answers; HF `vision_seconds`, llama.cpp server-log stages and Edge-LLM stages present; FLOPs identical across
+  frameworks (same images and prompts). First look at the TTFT split (3B, 8 samples, ~940 image tokens): vision encoder
+  ~270 ms HF, ~600 ms llama.cpp, ~80 ms Edge-LLM.
+- Full matrix started 22:02 (`SKIP_ENGINES=1 jetson/experiments/qwen2_5_vl/textvqa.sh`, log `logs/textvqa.log`).

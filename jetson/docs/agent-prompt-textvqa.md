@@ -4,6 +4,14 @@ You are on the Jetson AGX Thor in `~/dev/lmms-eval`, branch `jetson-benchmark`. 
 
 First read `jetson/README.md`, `jetson/docs/methodology.md` and `jetson/results/thor/NOTES.md` (the "TextVQA" section says what has already been done). This prompt adds the rules and the order.
 
+## Status (2026-09-28 22:05)
+
+Done: preparation (dataset, Edge-LLM 3B engines), smoke test (all 13 combinations OK, committed). **Running**: the full
+matrix, started 22:02 as a detached process (`pgrep -f run_matrix.sh`), log `jetson/results/thor/logs/textvqa.log`.
+Don't start it a second time: wait for it (the log ends with `summary:` and possibly `failed:` lines), then go on
+with the re-runs of phase 3 and with phase 4. If it is not running and the log has no `summary:` line, it died:
+re-run only the missing items with `run_matrix.sh`.
+
 ## What the user wants
 
 - **Quality**: TextVQA val accuracy (5,000 questions, VQA accuracy against 10 human answers) for every framework and precision. Qwen reports ~79.3 (3B) and ~84.9 (7B); a large gap for the HF bf16 reference means a prompt or image-size problem, which you should find before running the matrix.
@@ -12,7 +20,7 @@ First read `jetson/README.md`, `jetson/docs/methodology.md` and `jetson/results/
 ## Ground rules
 
 - Every shell: `export HF_CACHE=/opt/hf-cache TRT_WORKSPACE=/opt/models/trt-edgellm SHARED_GROUP=mlusers`.
-- **Git: commit locally only; do not push** (the user reviews and pushes). Commit only the files you created or changed plus results; leave the user's uncommitted `CLAUDE.md` edit alone. Conventional commit messages.
+- **Git: commit locally only; do not push** (the user reviews and pushes). Commit only the files you created or changed plus results; leave the user's uncommitted `CLAUDE.md` edit alone. Conventional commit messages. The root `.gitignore` ignores `scripts/` and `logs/`: add files under `jetson/scripts/` and `jetson/results/thor/logs/` with `git add -f`. Don't commit the dir of a run that is still in progress.
 - **Clean measurements**: no other GPU process, no two benchmarks at once, no benchmark next to a Docker build or an Edge-LLM export. `run_eval.sh` waits for an idle GPU on its own. Before a long phase, also check `top` for a foreign process pinning a CPU core (on 2026-09-25 one made HF 7B GQA 3x slower); record it in NOTES.md if found. Power mode is MAXN now (earlier Thor runs were at 120 W): record `nvpmodel -q` at the start, and compare timings with the old MME/GQA runs only with that caveat.
 - **Don't disturb running scripts**: never edit `run_eval.sh` or `run_matrix.sh` in place while a matrix is running (write a copy and `mv` it over). No `git stash` / `checkout` / reset while anything runs.
 - **Long jobs**: start them detached (`nohup setsid ... > jetson/results/thor/logs/<name>.log 2>&1 &`) and wait with a sleep loop that checks for completion every few minutes; don't poll every few seconds. A full TextVQA run takes roughly 25–90 min; the whole matrix roughly 12–16 h.
