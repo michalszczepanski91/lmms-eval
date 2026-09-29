@@ -154,6 +154,9 @@ Prompt: `jetson/docs/agent-prompt-textvqa.md`. Task `textvqa_val`: 5,000 questio
   `jetson/frameworks/trt_edgellm/ensure_engines.sh 3b fp16 fp8 int4_awq` (export image build + 3 exports/builds:
   21:16-21:44, log `logs/textvqa_engines.log`). int4_awq = Edge-LLM's own AWQ of the base checkpoint, as before.
 - Dataset `lmms-lab-encoder/textvqa` downloaded with `download_assets.sh` (all splits, incl. train).
+- Versions as above: transformers 4.57.3, vLLM 0.19.0, flash-attn 2.8.4, llama.cpp b11135, TensorRT Edge-LLM 0.10.1
+  (TensorRT 10.13.3). Edge-LLM 3B engines: fp16, fp8 (Edge-LLM quantizer), int4_awq (Edge-LLM AWQ of the base
+  checkpoint); LLM max input 2,560, KV cache 3,072; vision encoder 256-2048 image tokens, fp16 (scaled, see Log).
 - `uv`/`ruff`/`pytest` are not installed on the host or in the image; used a standalone `uv` from the session scratch dir.
 - lmms-eval result file names inside the container carry a timestamp 6 h ahead of the board's local time
   (e.g. `20260929_034639_results.json` for a run at 21:46 CEST); run ids (host clock) are correct.
@@ -171,3 +174,41 @@ Prompt: `jetson/docs/agent-prompt-textvqa.md`. Task `textvqa_val`: 5,000 questio
   frameworks (same images and prompts). First look at the TTFT split (3B, 8 samples, ~940 image tokens): vision encoder
   ~270 ms HF, ~600 ms llama.cpp, ~80 ms Edge-LLM.
 - Full matrix started 22:02 (`SKIP_ENGINES=1 jetson/experiments/qwen2_5_vl/textvqa.sh`, log `logs/textvqa.log`).
+- Full matrix finished 2026-09-29 18:18 (all 13 runs 5,000 samples, no `????`, no failed requests). HF/vLLM/llama.cpp
+  answers clean (0 empty). HF bf16: 78.86 (3B, Qwen reports 79.3) and 82.96 (7B, Qwen 84.9); no image was capped by
+  the 2048-token limit (max 2,028), so no prompt/image-size problem was looked for further.
+- **Edge-LLM 3B fp16 / fp8 / int4_awq: 1,006 / 1,011 / 1,005 empty answers** (the same questions, 980 in all three).
+  Probing `llm_inference` directly with `--numLogprobs 3`: NaN logits from the first token (every top-3 = -FLT_MAX at
+  token 151935, which decodes to ""), generation runs to max length. HF with an fp16 vision tower: the ViT residual
+  stream reaches 46-60k on these 1024x768 photos and overflows at block 31 on some; fp32 reaches ~76k. Edge-LLM exports
+  the Qwen2.5-VL vision encoder in fp16 only (`tensorrt-edgellm-export --dtype bfloat16` still writes FLOAT16 ONNX
+  weights and I/O). Also seen: after a NaN request, later requests in the same runner process can fail too (doc 0
+  answers alone but not after docs 14-101) - an Edge-LLM state bug, not fixed here.
+  - Fix: `jetson/frameworks/trt_edgellm/scale_vision.py` (called by `export.sh`, `VISION_SCALE`, default 8) divides the
+    patch embedding and every block's `attn.proj` / `mlp.down_proj` (weight + bias) by 8 before the visual export. The
+    blocks read the residual stream only through RMSNorm, so the encoder output is unchanged: vs fp32 the scaled fp16
+    encoder is within 2-4.5% (relative L2 of the embeddings; unscaled fp16 on non-overflowing images: the same; bf16:
+    11-27%). Peak residual ~9.4k. Failing samples answer correctly in all three precisions afterwards.
+  - Speed: neutral. On the same 40 images, fresh builds of the unscaled encoder and of encoders scaled by 2 / 4 / 8 all
+    take 75.5-76.7 ms (vision median); the shared engine built 2026-09-28 takes 68-70 ms. Engine build-to-build
+    variance, not the fix.
+  - Replacing the shared engines in `/opt/models/trt-edgellm` was blocked by the session's permission rules (shared
+    dir). The fixed engines were built in `~/trt-edgellm-vscale8` (log `logs/textvqa_engines_vscale8.log`,
+    18:02-18:18); the shared engines still have the bug. Leftover from the bf16 attempt:
+    `/opt/models/trt-edgellm/visual-bf16-test` (not deleted, same reason).
+  - `check_run.py`: runs with >= 2% empty answers are now marked INVALID (test `test/tools/test_jetson_check_run.py`);
+    the three broken runs are marked and kept.
+  - Re-runs 21:27-23:33 with `TRT_WORKSPACE=~/trt-edgellm-vscale8` (log `logs/textvqa_trt_rerun.log`): 0 empty answers;
+    fp16 79.45, fp8 79.59, int4_awq 73.75 (Edge-LLM's own AWQ: -5.7 vs fp16; on GQA it was -2.5).
+  - Lost ~3 h: the wait loop around the engine build used `pgrep -f ensure_engines.sh`, which matched its own command
+    line. Wait on log contents instead.
+- During the Edge-LLM fp8 re-run the user's `dsvlm` job (`~/dev/distilation-edge-ai`, `scripts/run.sh --gpu`) started
+  (22:13) and waited for an idle GPU the whole time; its container is listed in that run's `run_info.txt`. No GPU use,
+  and the fp8 stage times match the other two runs. The board base RAM was 59 GB at the start of the Edge-LLM fp16
+  re-run (memory from the engine builds / probes just before), falling to 33 GB by int4_awq: the tegrastats RAM of the
+  three re-runs is not comparable; the report uses the runner's peak GPU allocation instead.
+- The Edge-LLM backend writes all 5,000 images as PNG before the runner starts: 19.4 min per run (~230 ms/sample, the
+  same as vLLM's / llama.cpp's PNG+base64 "preprocess"). Runner alone: 19.7 / 14.8 / 22.1 min (fp16 / fp8 / int4_awq).
+- Tests (lmms-eval-jetson image, pytest from a `--target` dir): `test/tools/test_jetson_stage_timing.py`,
+  `test/eval/test_token_counts.py`, `test/models/test_trt_edgellm.py`, `test/tools/test_jetson_check_run.py`: 37 passed.
+- Report: `TEXTVQA_REPORT.md`.

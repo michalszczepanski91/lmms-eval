@@ -14,7 +14,7 @@ This folder benchmarks vision-language models on NVIDIA Jetson with lmms-eval. I
 | Board | Summary | Notes (setup, deviations, failures) |
 |---|---|---|
 | Jetson AGX Orin 32GB (MAXN) | [results/orin/SUMMARY.md](results/orin/SUMMARY.md) | full MME: HF 3B/7B, vLLM bf16/AWQ 3B, vLLM AWQ 7B, llama.cpp Q8_0/Q4_K_M 7B; llama.cpp 3B runs marked `INVALID` (fp16 overflow, see [methodology](docs/methodology.md#implementation-notes)) |
-| Jetson AGX Thor (120 W) | [results/thor/SUMMARY.md](results/thor/SUMMARY.md) | [results/thor/NOTES.md](results/thor/NOTES.md) |
+| Jetson AGX Thor (MME/GQA at 120 W, TextVQA at MAXN) | [results/thor/SUMMARY.md](results/thor/SUMMARY.md) | [results/thor/NOTES.md](results/thor/NOTES.md); TextVQA report: [results/thor/TEXTVQA_REPORT.md](results/thor/TEXTVQA_REPORT.md) |
 
 Each summary has one table of scores, latency, memory and power per run; one latency breakdown (preprocessing / vision encoder / LLM prefill, TTFT p99, throughput, energy per sample); and one table of FLOPs per sample (vision encoder / LLM prefill / LLM decode) with the achieved TFLOP/s. How everything is measured, and which settings keep the frameworks comparable: [docs/methodology.md](docs/methodology.md).
 
@@ -96,7 +96,7 @@ jetson/
   scripts/
     run_eval.sh             one run: start servers, eval in the container, tegrastats, FLOPs, slim the run dir
     run_matrix.sh           many runs in a row + summary; stall watchdog (STALL_MINUTES) and answer check per run
-    check_run.py            marks runs with "????" answers INVALID; counts empty / failed answers
+    check_run.py            marks runs with "????" or >= 2% empty answers INVALID; counts failed answers
     download_assets.sh      models / datasets into the shared HF cache (offline-ready)
     summarize.py            results/<board>/SUMMARY.md
     compute_flops.sh        analytical FLOPs per sample (runs models/<model>/flops.py in the container)
@@ -105,7 +105,7 @@ jetson/
     common.sh               argument parsing, board / model resolution, Hub cache helpers
     hf.sh, vllm.sh, llamacpp.sh, trt_edgellm.sh   per framework: precisions, assets, backend args, server start/stop
     llamacpp/Dockerfile     llama.cpp server image
-    trt_edgellm/            runtime + export images, export.sh, build_engines.sh, ensure_engines.sh (build missing ones)
+    trt_edgellm/            runtime + export images, export.sh, build_engines.sh, ensure_engines.sh (build missing ones), scale_vision.py (fp16-safe vision encoder)
   models/
     qwen2_5_vl/
       model.sh              sizes -> Hub repos (base, AWQ, GGUF), image-token range
