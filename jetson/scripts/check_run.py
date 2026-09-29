@@ -3,7 +3,9 @@
 
 - Answers made only of "?" (llama.cpp fp16 overflow: every later answer is "????" until the server restarts):
   at >= 1% of the samples the run gets an INVALID file with the reason (summarize.py skips such runs).
-- Empty answers and "[LMMS_EVAL_REQUEST_FAILED ...]" answers are counted and reported, not marked invalid.
+- Empty answers (e.g. Edge-LLM fp16 vision-encoder overflow: NaN logits decode to nothing): INVALID at >= 2%.
+  Healthy runs of the short-answer tasks here have none.
+- "[LMMS_EVAL_REQUEST_FAILED ...]" answers are counted and reported, not marked invalid.
 
 Usage: python3 jetson/scripts/check_run.py <run dir> [<run dir> ...]    exit 1 if any run was marked INVALID
 """
@@ -35,8 +37,12 @@ def check(run_dir):
             counts["empty"] += not text.strip()
             counts["request_failed"] += text.startswith("[LMMS_EVAL_REQUEST_FAILED")
     print(f"{run_dir}: " + ", ".join(f"{k} {v}" for k, v in counts.items()))
+    reason = None
     if counts["samples"] and counts["question_marks"] >= max(1, 0.01 * counts["samples"]):
         reason = f"{counts['question_marks']} of {counts['samples']} answers are only '?' (llama.cpp numeric overflow); scores are not valid.\n"
+    elif counts["samples"] and counts["empty"] >= max(1, 0.02 * counts["samples"]):
+        reason = f"{counts['empty']} of {counts['samples']} answers are empty (e.g. NaN logits from a numeric overflow); scores are not valid.\n"
+    if reason:
         with open(os.path.join(run_dir, "INVALID"), "w") as f:
             f.write(f"check_run.py: {reason}")
         print(f"{run_dir}: marked INVALID - {reason.strip()}")

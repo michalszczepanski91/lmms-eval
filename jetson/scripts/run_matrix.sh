@@ -6,7 +6,7 @@
 #   jetson/scripts/run_matrix.sh mme                     # default matrix below
 #   jetson/scripts/run_matrix.sh mme 8                   # smoke test of every combination
 #   jetson/scripts/run_matrix.sh mme "" -- vllm 3b llamacpp 3b-q8_0
-# After each run, check_run.py scans the answers (marks llama.cpp "????" runs INVALID).
+# After each run, check_run.py scans the answers (marks runs with "????" or many empty answers INVALID).
 # Watchdog: a run whose run.log has not grown for STALL_MINUTES (default 30; 0 = off) is stopped and gets a STALLED
 # file (a llama.cpp MME run on Thor once hung on one request for 27 h); the matrix goes on with the next run.
 set -uo pipefail

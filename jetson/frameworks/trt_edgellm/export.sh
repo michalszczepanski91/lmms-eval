@@ -12,7 +12,9 @@
 #             image prompt, so it is not the default.
 #   The vision encoder is always exported in FP16 from the Hugging Face checkpoint. (The AWQ repos' config.json
 #   omits the vision fields that have defaults, e.g. num_heads, which Edge-LLM's visual exporter requires; their
-#   vision weights are bit-identical to the base checkpoint's.)
+#   vision weights are bit-identical to the base checkpoint's.) Its residual stream is first scaled down by
+#   VISION_SCALE (default 8; 1 = off), because it overflows fp16 on some images (NaN -> empty answers); see
+#   scale_vision.py. The encoder output is unchanged.
 #   fp8/nvfp4 tensorrt-edgellm-quantize on the Hugging Face checkpoint (default text calibration, LM head and
 #             vision encoder unquantized), then export; fp8/nvfp4 engines run only on Thor (SM110) and Blackwell.
 # Checkpoints come from $HF_CACHE (download them first: jetson/scripts/download_assets.sh hf <size> / vllm <size>-awq).
@@ -57,6 +59,7 @@ docker run --rm $GPU_FLAGS --ipc=host -e HF_TOKEN_PATH=/tmp/no-hf-token \
   --user "$(id -u):$(id -g)" $(shared_group_args) -e HOME=/tmp -e USER="$(id -un)" -e LOGNAME="$(id -un)" \
   -e HF_HOME="$HF_CACHE" -e HF_HUB_CACHE="$HF_CACHE/hub" -v "$HF_CACHE":"$HF_CACHE" -v "$WORKSPACE":"$WORKSPACE" \
   -e SRC="$SRC" -e LLM_CKPT="$LLM_CKPT" -e AWQ_SOURCE="${AWQ_SOURCE:-quantize}" -e OUT="$OUT" -e PRECISION="$PRECISION" -e KEEP_QUANTIZED="${KEEP_QUANTIZED:-0}" \
+  -e VISION_SCALE="${VISION_SCALE:-8}" -v "$JETSON/frameworks/trt_edgellm":/edgellm-scripts:ro \
   "$EXPORT_IMAGE" bash -euo pipefail -c '
     umask 002
     if [ "$PRECISION" = fp8 ] || [ "$PRECISION" = nvfp4 ] || { [ "$PRECISION" = int4_awq ] && [ "$AWQ_SOURCE" != qwen ]; }; then
@@ -66,7 +69,14 @@ docker run --rm $GPU_FLAGS --ipc=host -e HF_TOKEN_PATH=/tmp/no-hf-token \
     fi
     rm -rf "$OUT/onnx"
     tensorrt-edgellm-export "$LLM_CKPT" "$OUT/onnx" --skip-visual
-    tensorrt-edgellm-export "$SRC" "$OUT/onnx" --skip-llm
+    VISUAL_CKPT=$SRC
+    if [ "$VISION_SCALE" != 1 ]; then
+      rm -rf "$OUT/visual_ckpt"
+      python /edgellm-scripts/scale_vision.py "$SRC" "$OUT/visual_ckpt" "$VISION_SCALE"
+      VISUAL_CKPT=$OUT/visual_ckpt
+    fi
+    tensorrt-edgellm-export "$VISUAL_CKPT" "$OUT/onnx" --skip-llm
+    rm -rf "$OUT/visual_ckpt"
     [ "$KEEP_QUANTIZED" = 1 ] || rm -rf "$OUT/quantized"
     ls "$OUT/onnx"
   '
