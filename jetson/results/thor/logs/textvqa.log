@@ -1,0 +1,27 @@
+=== 22:02:31 hf 3b textvqa_val 
+    /home/michal/dev/lmms-eval/jetson/results/thor/Qwen2.5-VL-3B-Instruct/textvqa_val/hf-bf16/20260928-220231/: samples 5000, question_marks 0, empty 0, request_failed 0
+=== 22:52:03 hf 7b textvqa_val 
+    /home/michal/dev/lmms-eval/jetson/results/thor/Qwen2.5-VL-7B-Instruct/textvqa_val/hf-bf16/20260928-225203/: samples 5000, question_marks 0, empty 0, request_failed 0
+=== 23:57:25 vllm 3b textvqa_val 
+    /home/michal/dev/lmms-eval/jetson/results/thor/Qwen2.5-VL-3B-Instruct/textvqa_val/vllm-bf16/20260928-235725/: samples 5000, question_marks 0, empty 0, request_failed 0
+=== 00:56:48 vllm 3b-awq textvqa_val 
+    /home/michal/dev/lmms-eval/jetson/results/thor/Qwen2.5-VL-3B-Instruct/textvqa_val/vllm-awq/20260929-005648/: samples 5000, question_marks 0, empty 0, request_failed 0
+=== 02:00:10 vllm 7b textvqa_val 
+    /home/michal/dev/lmms-eval/jetson/results/thor/Qwen2.5-VL-7B-Instruct/textvqa_val/vllm-bf16/20260929-020010/: samples 5000, question_marks 0, empty 0, request_failed 0
+=== 03:15:48 vllm 7b-awq textvqa_val 
+    /home/michal/dev/lmms-eval/jetson/results/thor/Qwen2.5-VL-7B-Instruct/textvqa_val/vllm-awq/20260929-031548/: samples 5000, question_marks 0, empty 0, request_failed 0
+=== 04:36:26 llamacpp 3b-q8_0 textvqa_val 
+    /home/michal/dev/lmms-eval/jetson/results/thor/Qwen2.5-VL-3B-Instruct/textvqa_val/llamacpp-q8_0/20260929-043626/: samples 5000, question_marks 0, empty 0, request_failed 0
+=== 06:36:50 llamacpp 3b-q4_k_m textvqa_val 
+    /home/michal/dev/lmms-eval/jetson/results/thor/Qwen2.5-VL-3B-Instruct/textvqa_val/llamacpp-q4_k_m/20260929-063650/: samples 5000, question_marks 0, empty 0, request_failed 0
+=== 08:40:10 llamacpp 7b-q8_0 textvqa_val 
+    /home/michal/dev/lmms-eval/jetson/results/thor/Qwen2.5-VL-7B-Instruct/textvqa_val/llamacpp-q8_0/20260929-084010/: samples 5000, question_marks 0, empty 0, request_failed 0
+=== 11:13:41 llamacpp 7b-q4_k_m textvqa_val 
+    /home/michal/dev/lmms-eval/jetson/results/thor/Qwen2.5-VL-7B-Instruct/textvqa_val/llamacpp-q4_k_m/20260929-111341/: samples 5000, question_marks 0, empty 0, request_failed 0
+=== 13:52:31 trt_edgellm 3b-fp16 textvqa_val 
+    /home/michal/dev/lmms-eval/jetson/results/thor/Qwen2.5-VL-3B-Instruct/textvqa_val/trt_edgellm-fp16/20260929-135231/: samples 5000, question_marks 0, empty 1006, request_failed 0
+=== 15:29:05 trt_edgellm 3b-fp8 textvqa_val 
+    /home/michal/dev/lmms-eval/jetson/results/thor/Qwen2.5-VL-3B-Instruct/textvqa_val/trt_edgellm-fp8/20260929-152905/: samples 5000, question_marks 0, empty 1011, request_failed 0
+=== 16:38:08 trt_edgellm 3b-int4_awq textvqa_val 
+    /home/michal/dev/lmms-eval/jetson/results/thor/Qwen2.5-VL-3B-Instruct/textvqa_val/trt_edgellm-int4_awq/20260929-163808/: samples 5000, question_marks 0, empty 1005, request_failed 0
+summary: /home/michal/dev/lmms-eval/jetson/results/thor/SUMMARY.md

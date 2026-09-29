@@ -1,0 +1,12 @@
+date:        2026-09-29T02:00:10+02:00
+board:       NVIDIA Jetson AGX Thor Developer Kit
+l4t:         # R39 (release), REVISION: 2.1, GCID: 46758480, BOARD: generic, EABI: aarch64, DATE: Fri Aug  7 05:54:22 AM UTC 2026
+power mode:  NV Power Mode: MAXN
+git commit:  2ad93388 (dirty)
+framework:   vllm
+precision:   bf16
+image:       lmms-eval-jetson:latest (sha256:60ca8d6b1834)
+other containers: 
+other GPU processes: 
+command:     python -m lmms_eval --model vllm --model_args model=/opt/hf-cache/hub/models--Qwen--Qwen2.5-VL-7B-Instruct/snapshots/cc594898137f460bfe9f0759e9844b3ce807cfb5,gpu_memory_utilization=0.17,max_model_len=4096,max_pixels=1605632,mm_processor_kwargs={"min_pixels":200704,"max_pixels":1605632},enable_prefix_caching=False,mm_processor_cache_gb=0 --tasks textvqa_val --batch_size 1 --log_samples --output_path jetson/results/thor/Qwen2.5-VL-7B-Instruct/textvqa_val/vllm-bf16/20260929-020010
+versions:    torch 2.10.0 transformers 4.57.3
