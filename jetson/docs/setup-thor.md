@@ -1,6 +1,6 @@
 # Running the benchmarks on Jetson Thor
 
-Tested on a Jetson AGX Thor Developer Kit (L4T R38.4 / JetPack 7.1, CUDA 13.0, 120 W). Results: [../results/thor/SUMMARY.md](../results/thor/SUMMARY.md); what happened during setup and the runs: [../results/thor/NOTES.md](../results/thor/NOTES.md).
+Tested on a Jetson AGX Thor Developer Kit (L4T R38.4 / JetPack 7.1, CUDA 13.0). Results: [../results/thor/FINDINGS.md](../results/thor/FINDINGS.md); what happened during setup and the runs: [../results/thor/NOTES.md](../results/thor/NOTES.md).
 
 | | Orin | Thor |
 |---|---|---|
@@ -14,14 +14,14 @@ Tested on a Jetson AGX Thor Developer Kit (L4T R38.4 / JetPack 7.1, CUDA 13.0, 1
 ## 1. Prepare the board
 
 ```bash
-sudo nvpmodel -m 0 && nvpmodel -q          # MAXN, as on Orin (the Thor results were taken at 120 W: no sudo)
+sudo nvpmodel -m 0 && nvpmodel -q          # MAXN; run_info.txt records the mode of every run
 docker info | grep -i runtime               # needs the nvidia runtime
 git clone -b jetson-benchmark https://github.com/michalszczepanski91/lmms-eval.git && cd lmms-eval
 export HF_CACHE=/opt/hf-cache               # shared model/dataset cache, about 100 GB
 export SHARED_GROUP=mlusers                 # optional: group added to the containers so the cache stays shared
 ```
 
-Results go to `jetson/results/thor` automatically (board detected from `/proc/device-tree/model`).
+Results go to `jetson/results/thor` automatically (the board is detected from `/proc/device-tree/model`).
 
 ## 2. Build the images
 
@@ -41,6 +41,8 @@ import torch, transformers, vllm, flash_attn; print(torch.__version__, torch.cud
 
 Without `flash_attn`, run HF with `ATTN=sdpa`. If `pip install` fails on a version pin, loosen that line in `jetson/docker/requirements-jetson.txt`; don't replace the image's torch or vLLM.
 
+TensorRT Edge-LLM needs its own image and engines: [tensorrt-edgellm.md](tensorrt-edgellm.md).
+
 ## 3. Download models and data
 
 ```bash
@@ -48,21 +50,21 @@ for spec in "hf 3b" "hf 7b" "vllm 3b-awq" "vllm 7b-awq" "llamacpp 3b-q8_0" "llam
   jetson/scripts/download_assets.sh $spec
 done
 jetson/scripts/download_assets.sh dataset:lmms-lab-encoder/GQA:testdev_balanced_instructions \
-  dataset:lmms-lab-encoder/GQA:testdev_balanced_images dataset:lmms-lab-encoder/LMMs-Eval-Lite:coco2017_cap_val
+  dataset:lmms-lab-encoder/GQA:testdev_balanced_images dataset:lmms-lab-encoder/textvqa \
+  dataset:lmms-lab-encoder/LMMs-Eval-Lite:coco2017_cap_val
 ```
 
 ## 4. Run
 
 ```bash
 SMOKE=1 jetson/experiments/qwen2_5_vl/mme.sh     # 8 samples per framework/precision: all should finish with sensible answers
-jetson/experiments/qwen2_5_vl/mme.sh             # full MME (a full run takes 30-120 min)
+jetson/experiments/qwen2_5_vl/mme.sh             # full MME (30-120 min per run)
 jetson/experiments/qwen2_5_vl/gqa.sh             # full GQA (35 min to 1.5 h per run)
+jetson/experiments/qwen2_5_vl/textvqa.sh         # full TextVQA (25-160 min per run)
 jetson/experiments/qwen2_5_vl/followups.sh       # transport, COCO captioning, resolution sweep
 ```
 
-TensorRT Edge-LLM needs its engines first: [tensorrt-edgellm.md](tensorrt-edgellm.md). Thor has 4× Orin's memory; the vLLM memory budget is a fixed number of GB (13.8, or 21.0 for 7B bf16), so the KV cache is the same size as on Orin.
-
-Watch long runs: if a run's `run.log` stops growing for 30 min while it is still running, it is stuck (a llama.cpp MME run once hung for 27 h on one request). Kill that `run_eval.sh`; its exit handler stops llama-server.
+Thor has 4× Orin's memory, but the vLLM memory budget is a fixed number of GB (13.8, or 21.0 for 7B bf16), so the KV cache is the same size as on Orin.
 
 ## 5. Summarize and commit
 
@@ -71,4 +73,4 @@ python3 jetson/scripts/summarize.py
 git add jetson/results/thor && git commit -m "results(jetson): ..." && git push
 ```
 
-`run_eval.sh` already slims each run dir for git (see [methodology.md](methodology.md#result-files)). Compare like with like: the same framework, precision, image transport (`+pil` / `+png1`) and power mode.
+`run_eval.sh` already slims each run dir for git.

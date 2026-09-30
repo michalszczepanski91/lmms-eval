@@ -1,6 +1,6 @@
 # lmms-eval on Jetson: inference-framework benchmarks
 
-This folder benchmarks vision-language models on NVIDIA Jetson with lmms-eval. It runs the same model and tasks through four inference frameworks and measures accuracy, latency, memory, power and FLOPs the same way for each. So far the model is Qwen2.5-VL-3B/7B-Instruct, on a Jetson AGX Orin 32GB and a Jetson AGX Thor.
+This folder benchmarks vision-language models on NVIDIA Jetson with lmms-eval. The same model and tasks run through four inference frameworks, and accuracy, latency, memory, power and FLOPs are measured the same way for each. So far: Qwen2.5-VL-3B/7B-Instruct on a Jetson AGX Orin 32GB and a Jetson AGX Thor.
 
 | Framework | `<framework>` | Precisions (`<size>-<precision>`, first = default) | How it runs |
 |---|---|---|---|
@@ -11,19 +11,19 @@ This folder benchmarks vision-language models on NVIDIA Jetson with lmms-eval. I
 
 ## Results
 
-| Board | Summary | Notes (setup, deviations, failures) |
+| Board | Results | Notes |
 |---|---|---|
-| Jetson AGX Orin 32GB (MAXN) | [results/orin/SUMMARY.md](results/orin/SUMMARY.md) | full MME: HF 3B/7B, vLLM bf16/AWQ 3B, vLLM AWQ 7B, llama.cpp Q8_0/Q4_K_M 7B; llama.cpp 3B runs marked `INVALID` (fp16 overflow, see [methodology](docs/methodology.md#implementation-notes)) |
-| Jetson AGX Thor (120 W and MAXN, per run) | [results/thor/FINDINGS.md](results/thor/FINDINGS.md) (start here), [REPORT.md](results/thor/REPORT.md) (numbers), [SUMMARY.md](results/thor/SUMMARY.md) (all runs) | [results/thor/NOTES.md](results/thor/NOTES.md) |
+| Jetson AGX Thor | [FINDINGS.md](results/thor/FINDINGS.md) (start here), [REPORT.md](results/thor/REPORT.md) (numbers), [SUMMARY.md](results/thor/SUMMARY.md) (all runs) | [NOTES.md](results/thor/NOTES.md): setup, problems and fixes |
+| Jetson AGX Orin 32GB (MAXN) | [SUMMARY.md](results/orin/SUMMARY.md): full MME for HF 3B/7B, vLLM bf16/AWQ 3B, vLLM AWQ 7B and llama.cpp Q8_0/Q4_K_M 7B | llama.cpp 3B runs are invalid (fp16 overflow; see [methodology](docs/methodology.md#implementation-notes)) |
 
-Each summary has one table of scores, latency, memory and power per run; one latency breakdown (preprocessing / vision encoder / LLM prefill, TTFT p99, throughput, energy per sample); and one table of FLOPs per sample (vision encoder / LLM prefill / LLM decode) with the achieved TFLOP/s. How everything is measured, and which settings keep the frameworks comparable: [docs/methodology.md](docs/methodology.md).
+How everything is measured, and which settings keep the frameworks comparable: [docs/methodology.md](docs/methodology.md).
 
 ## Quick start
 
-All commands run from the repo root. Results go to `jetson/results/<board>` (`orin`, `thor`, detected from the board; override with `RESULTS_DIR`).
+All commands run from the repo root. Results go to `jetson/results/<board>` (`orin` or `thor`, detected from the board; override with `RESULTS_DIR`). On Thor, follow [docs/setup-thor.md](docs/setup-thor.md) for the image build arguments.
 
 ```bash
-# 1. Build the images once (Thor: see docs/setup-thor.md for the build arguments)
+# 1. Build the images once
 docker build -f jetson/docker/Dockerfile -t lmms-eval-jetson:latest .
 docker build -f jetson/frameworks/llamacpp/Dockerfile -t llamacpp-jetson:b11135 jetson/frameworks/llamacpp   # llama.cpp only
 
@@ -38,7 +38,6 @@ jetson/scripts/run_eval.sh vllm 3b-awq mme        # full MME
 # 4. Many runs in a row (SUMMARY.md is refreshed at the end), or a whole experiment
 jetson/scripts/run_matrix.sh mme "" -- hf 3b vllm 3b-awq llamacpp 3b-q8_0
 jetson/experiments/qwen2_5_vl/gqa.sh              # SMOKE=1 for 8 samples per run
-jetson/experiments/qwen2_5_vl/textvqa.sh          # builds missing Edge-LLM 3B engines first (SKIP_ENGINES=1 to skip)
 python3 jetson/scripts/summarize.py               # rebuild SUMMARY.md at any time
 ```
 
@@ -50,9 +49,8 @@ VLLM_GPU_MEM=0.3 jetson/scripts/run_eval.sh vllm 7b mme                         
 EXTRA_MODEL_ARGS=max_pixels=802816 jetson/scripts/run_eval.sh hf 7b mme          # extra --model_args
 RUN_TAG=pil EXTRA_MODEL_ARGS=pass_pil_images=True jetson/scripts/run_eval.sh vllm 3b mme   # variant -> <framework>-<precision>+pil
 OFFLINE=0 jetson/scripts/run_eval.sh hf 3b mme                                   # allow Hub downloads during the run
+WAIT_GPU_IDLE=0 jetson/scripts/run_eval.sh hf 3b mme                             # don't wait for other GPU jobs to finish
 ```
-
-Stop other GPU jobs before measuring: they take unified memory and skew latency. `run_eval.sh` waits until `nvidia-smi` shows no other GPU process (`WAIT_GPU_IDLE=0` to skip) and records other containers and GPU processes in `run_info.txt`.
 
 ## Experiments
 
@@ -62,23 +60,14 @@ One script per question, under [experiments/qwen2_5_vl/](experiments/qwen2_5_vl/
 |---|---|
 | `mme.sh` | Main comparison: MME (2,374 yes/no questions) for every framework and precision, 3B and 7B |
 | `gqa.sh` | Short-answer VQA: GQA testdev-balanced (12,578 questions), same matrix |
-| `textvqa.sh` | Reading text in images (OCR-heavy VQA): TextVQA val (5,000 questions, VQA accuracy), same matrix. Needs `download_assets.sh dataset:lmms-lab-encoder/textvqa` |
+| `textvqa.sh` | Reading text in images: TextVQA val (5,000 questions), same matrix. Builds missing Edge-LLM 3B engines first (`SKIP_ENGINES=1` to skip) |
 | `followups.sh` | Image transport overhead (PIL vs PNG/base64), decode-heavy captioning (COCO), image-resolution sweep |
 
-## Running unattended
-
-A full matrix takes 12–16 h. Run the matrix itself detached, so that it survives a closed SSH session:
+A full matrix takes 12–16 h. Start it detached, so it survives a closed SSH session. It runs unattended: stalled runs are stopped and bad runs are marked (see [methodology](docs/methodology.md#result-files)).
 
 ```bash
 export HF_CACHE=/opt/hf-cache TRT_WORKSPACE=/opt/models/trt-edgellm SHARED_GROUP=mlusers
 nohup setsid jetson/experiments/qwen2_5_vl/textvqa.sh > jetson/results/thor/logs/textvqa.log 2>&1 &
-```
-
-`run_matrix.sh` stops a run whose `run.log` hasn't grown for 30 min (`STALL_MINUTES`) and marks runs with `????` answers `INVALID`, so the matrix finishes without supervision. To also have Claude Code fix failures and write the report, start it on the board in `tmux` (a session tied to an IDE's SSH connection stops when the connection closes):
-
-```bash
-tmux new -s textvqa
-claude "Follow jetson/docs/agent-prompt-textvqa.md"        # detach: Ctrl-b d; reattach: tmux attach -t textvqa
 ```
 
 ## Layout
@@ -89,14 +78,12 @@ jetson/
   docs/
     methodology.md          what is measured and how; fairness settings; FLOPs; result files
     setup-thor.md           building and running on Jetson Thor (JetPack 7)
-    tensorrt-edgellm.md     ONNX export, engine build, evaluation with TensorRT Edge-LLM
-    agent-prompt-thor.md    the prompt used to run the Thor benchmark unattended with Claude Code
-    agent-prompt-textvqa.md the same for the TextVQA experiment (see "Running unattended" below)
+    tensorrt-edgellm.md     TensorRT Edge-LLM: export, engine build, evaluation, known issues
   docker/                   lmms-eval image (Dockerfile, requirements-jetson.txt)
   scripts/
     run_eval.sh             one run: start servers, eval in the container, tegrastats, FLOPs, slim the run dir
-    run_matrix.sh           many runs in a row + summary; stall watchdog (STALL_MINUTES) and answer check per run
-    check_run.py            marks runs with "????" or >= 2% empty answers INVALID; counts failed answers
+    run_matrix.sh           many runs in a row + summary; stall watchdog and answer check per run
+    check_run.py            marks runs with "????" or >= 2% empty answers INVALID
     download_assets.sh      models / datasets into the shared HF cache (offline-ready)
     summarize.py            results/<board>/SUMMARY.md
     compute_flops.sh        analytical FLOPs per sample (runs models/<model>/flops.py in the container)
@@ -105,13 +92,13 @@ jetson/
     common.sh               argument parsing, board / model resolution, Hub cache helpers
     hf.sh, vllm.sh, llamacpp.sh, trt_edgellm.sh   per framework: precisions, assets, backend args, server start/stop
     llamacpp/Dockerfile     llama.cpp server image
-    trt_edgellm/            runtime + export images, export.sh, build_engines.sh, ensure_engines.sh (build missing ones), scale_vision.py (fp16-safe vision encoder)
+    trt_edgellm/            runtime + export images, export.sh, build_engines.sh, ensure_engines.sh, scale_vision.py
   models/
     qwen2_5_vl/
       model.sh              sizes -> Hub repos (base, AWQ, GGUF), image-token range
       flops.py              FLOPs model of Qwen2.5-VL (vision encoder, LLM prefill, decode)
   experiments/qwen2_5_vl/   mme.sh, gqa.sh, textvqa.sh, followups.sh
-  results/<board>/          SUMMARY.md, NOTES.md, logs/, <model>/<task>/<framework>-<precision>[+tag]/<run id>/
+  results/<board>/          SUMMARY.md, notes and reports, logs/, <model>/<task>/<framework>-<precision>[+tag]/<run id>/
 ```
 
 ## Extending

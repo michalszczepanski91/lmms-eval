@@ -33,7 +33,7 @@ Remaining differences are properties of the frameworks and are reported, not rem
 | RAM | Whole-board unified memory from `tegrastats` at 1 Hz: base (before model load) and peak; other processes included |
 | Power | `tegrastats` rails averaged over the run. GPU rail: `VDD_GPU_SOC` on Orin (GPU + SoC), `VDD_GPU` on Thor (GPU only). Module: GPU + CPU/SoC + 5 V system rails, comparable across boards |
 | FLOPs per sample | Analytical, see below |
-| Achieved TFLOP/s | (vision + prefill FLOPs) / mean TTFT, and total FLOPs / mean answer time. A lower bound on GPU throughput, since TTFT includes preprocessing (and HTTP for llama.cpp) |
+| Achieved TFLOP/s | (vision + prefill FLOPs) / mean TTFT, and total FLOPs / mean answer time. A lower bound on GPU throughput, since TTFT includes host overhead (and HTTP for llama.cpp); Edge-LLM's TTFT is GPU time only, so its rate is not a lower bound |
 
 Per-sample numbers are in each run's `lmms_eval/*_samples_<task>.jsonl.gz` under `token_counts`: `input_tokens`, `output_tokens`, `preprocess_seconds`, `time_to_first_token_seconds`, `generation_seconds`. MME, GQA and TextVQA answers are one word or a short phrase (2–4 tokens), so TTFT dominates; use a longer-answer task such as COCO captioning to compare decode speed.
 
@@ -58,7 +58,7 @@ Each run writes `results/<board>/<model>/<tasks>/<framework>-<precision>[+tag]/<
 | `run_info.txt` | board, L4T, power mode, git commit, image IDs, other containers / GPU processes, exact lmms-eval command, versions |
 | `run.log` | console output, without per-request progress bars (see `slim_run.py`) |
 | `server.log.gz` / `trt_profile.json` | llama-server log (verbosity 4) / Edge-LLM runner profile |
-| `INVALID` / `STALLED` / `SUPERSEDED` | run left out of the summary tables and listed under "Excluded runs" with the file's first line as the reason: bad answers (`check_run.py`: `????` or empty), stopped by the `run_matrix.sh` watchdog, or replaced by a later run |
+| `INVALID` / `STALLED` / `SUPERSEDED` | run left out of the summary tables and listed under "Excluded runs" with the file's first line as the reason. `INVALID`: `check_run.py` found ≥ 1% `????` or ≥ 2% empty answers. `STALLED`: `run_matrix.sh` stopped the run because `run.log` had not grown for `STALL_MINUTES` (default 30). `SUPERSEDED`: replaced by a later run (written by hand) |
 | `TIMING_INVALID` | scores kept, timing / memory / power dropped from the summary (e.g. a foreign CPU load during the run) |
 | `tegrastats.log.gz` | 1 Hz RAM, CPU, GPU, temperatures, power rails |
 | `flops.json`, `flops_samples.jsonl.gz`, `flops.log` | FLOPs summary per task / per sample / log |
@@ -73,9 +73,8 @@ Run IDs with `_limitN` are smoke tests; `summarize.py` leaves them out unless `-
 - `download_assets.sh` also prepares the `datasets` Arrow cache, which works offline and avoids the HF login that task configs with `token: True` (MME, GQA) would otherwise require.
 - Models load from local snapshot paths, because transformers 4.57.3 queries the Hub for repo IDs even in offline mode.
 - lmms-eval exits 0 when evaluation fails, so `run_eval.sh` checks the log for `Error during evaluation`.
-- `run_matrix.sh` stops a run whose `run.log` has not grown for `STALL_MINUTES` (default 30): a llama.cpp MME run on Thor once hung on one request for 27 h. The run dir keeps its logs plus a `STALLED` file.
 - The repo is mounted at its host path: `lmms_eval/llm_judge/factory.py` fails when it is mounted at a shallow path such as `/workspace`.
-- llama.cpp runs with `GGML_CUDA_CUBLAS_COMPUTE_TYPE=bf16`: with fp16 accumulation one MME image overflows Qwen2.5-VL-3B and every later answer is `????` until the server restarts. A run found invalid keeps its files plus an `INVALID` file saying why; `summarize.py` skips it.
-- Edge-LLM exports the Qwen2.5-VL vision encoder in fp16 only, and its residual stream exceeds the fp16 range on some photos (fp32 reaches ~76k on 1024x768 TextVQA images): NaN embeddings, NaN logits, empty answers. `trt_edgellm/export.sh` therefore divides the patch embedding and each block's output projections by `VISION_SCALE` (8) before export (`scale_vision.py`); the blocks read the residual stream through RMSNorm, so the encoder output is unchanged. `check_run.py` marks runs with >= 2% empty answers `INVALID`.
+- llama.cpp runs with `GGML_CUDA_CUBLAS_COMPUTE_TYPE=bf16`: with fp16 accumulation one MME image overflows Qwen2.5-VL-3B and every later answer is `????` until the server restarts.
+- TensorRT Edge-LLM specifics (fp16 vision-encoder overflow, image-size limit, AWQ differences): [tensorrt-edgellm.md](tensorrt-edgellm.md#known-issues-thor-edge-llm-v0101).
 - Out of memory on Jetson shows up as `NVML_SUCCESS == r INTERNAL ASSERT FAILED` in PyTorch's CUDA allocator.
 - `docker build` has no GPU driver, so the Dockerfiles do not run CUDA binaries.
