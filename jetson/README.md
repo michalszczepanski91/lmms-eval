@@ -14,7 +14,7 @@ This folder benchmarks vision-language models on NVIDIA Jetson with lmms-eval. I
 | Board | Summary | Notes (setup, deviations, failures) |
 |---|---|---|
 | Jetson AGX Orin 32GB (MAXN) | [results/orin/SUMMARY.md](results/orin/SUMMARY.md) | full MME: HF 3B/7B, vLLM bf16/AWQ 3B, vLLM AWQ 7B, llama.cpp Q8_0/Q4_K_M 7B; llama.cpp 3B runs marked `INVALID` (fp16 overflow, see [methodology](docs/methodology.md#implementation-notes)) |
-| Jetson AGX Thor (MME/GQA at 120 W, TextVQA at MAXN) | [results/thor/SUMMARY.md](results/thor/SUMMARY.md) | [results/thor/NOTES.md](results/thor/NOTES.md); TextVQA report: [results/thor/TEXTVQA_REPORT.md](results/thor/TEXTVQA_REPORT.md) |
+| Jetson AGX Thor (MME/GQA at 120 W; TextVQA and the 2026-09-30 Edge-LLM MME/GQA re-runs at MAXN) | [results/thor/SUMMARY.md](results/thor/SUMMARY.md) | [results/thor/NOTES.md](results/thor/NOTES.md); TextVQA report: [results/thor/TEXTVQA_REPORT.md](results/thor/TEXTVQA_REPORT.md) |
 
 Each summary has one table of scores, latency, memory and power per run; one latency breakdown (preprocessing / vision encoder / LLM prefill, TTFT p99, throughput, energy per sample); and one table of FLOPs per sample (vision encoder / LLM prefill / LLM decode) with the achieved TFLOP/s. How everything is measured, and which settings keep the frameworks comparable: [docs/methodology.md](docs/methodology.md).
 

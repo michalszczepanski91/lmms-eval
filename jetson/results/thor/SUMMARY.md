@@ -12,14 +12,20 @@ llama.cpp is measured client side over HTTP (streaming); TensorRT Edge-LLM only 
 |---|---|---|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---|---|
 | Qwen2.5-VL-3B-Instruct | hf-bf16 | gqa | exact_match: 0.60 | 12578 | 64.3 | 199 / 221 | 265 / 318 | 55 | 37.4 | 42.2 | 27.6 | 53.5 | none | [Qwen2.5-VL-3B-Instruct/gqa/hf-bf16/20260925-062406](Qwen2.5-VL-3B-Instruct/gqa/hf-bf16/20260925-062406) |
 | Qwen2.5-VL-3B-Instruct | trt_edgellm-fp16 | gqa | exact_match: 0.60 | 12578 | 40.8 | ~74 (avg) | - | 15 | 40.2 | 41.7 | 33.6 | 59.0 | none | [Qwen2.5-VL-3B-Instruct/gqa/trt_edgellm-fp16/20260925-073035](Qwen2.5-VL-3B-Instruct/gqa/trt_edgellm-fp16/20260925-073035) |
+| Qwen2.5-VL-3B-Instruct | trt_edgellm-fp16 | gqa | exact_match: 0.60 | 12578 | 41.2 | ~69 (avg) | - | 15 | 21.1 | 36.2 | 35.8 | 59.6 | none | [Qwen2.5-VL-3B-Instruct/gqa/trt_edgellm-fp16/20260930-174243](Qwen2.5-VL-3B-Instruct/gqa/trt_edgellm-fp16/20260930-174243) |
 | Qwen2.5-VL-3B-Instruct | trt_edgellm-fp8 | gqa | exact_match: 0.60 | 12578 | 34.7 | ~59 (avg) | - | 9 | 37.4 | 39.3 | 28.2 | 51.9 | none | [Qwen2.5-VL-3B-Instruct/gqa/trt_edgellm-fp8/20260925-081333](Qwen2.5-VL-3B-Instruct/gqa/trt_edgellm-fp8/20260925-081333) |
+| Qwen2.5-VL-3B-Instruct | trt_edgellm-fp8 | gqa | exact_match: 0.60 | 12578 | 33.6 | ~56 (avg) | - | 9 | 18.5 | 20.5 | 32.7 | 54.0 | none | [Qwen2.5-VL-3B-Instruct/gqa/trt_edgellm-fp8/20260930-182610](Qwen2.5-VL-3B-Instruct/gqa/trt_edgellm-fp8/20260930-182610) |
 | Qwen2.5-VL-3B-Instruct | trt_edgellm-int4_awq | gqa | exact_match: 0.58 | 12578 | 42.7 | ~103 (avg) | - | 6 | 37.0 | 38.8 | 35.6 | 56.8 | none | [Qwen2.5-VL-3B-Instruct/gqa/trt_edgellm-int4_awq/20260925-085025](Qwen2.5-VL-3B-Instruct/gqa/trt_edgellm-int4_awq/20260925-085025) |
+| Qwen2.5-VL-3B-Instruct | trt_edgellm-int4_awq | gqa | exact_match: 0.58 | 12578 | 40.9 | ~97 (avg) | - | 6 | 18.7 | 20.5 | 40.7 | 59.6 | none | [Qwen2.5-VL-3B-Instruct/gqa/trt_edgellm-int4_awq/20260930-190201](Qwen2.5-VL-3B-Instruct/gqa/trt_edgellm-int4_awq/20260930-190201) |
 | Qwen2.5-VL-3B-Instruct | vllm-awq | gqa | exact_match: 0.59 | 12578 | 67.5 | 217 / 239 | 231 / 255 | 12 | 46.9 | 50.9 | 25.2 | 48.1 | none | [Qwen2.5-VL-3B-Instruct/gqa/vllm-awq/20260925-104202](Qwen2.5-VL-3B-Instruct/gqa/vllm-awq/20260925-104202) |
 | Qwen2.5-VL-3B-Instruct | vllm-bf16 | gqa | exact_match: 0.60 | 12578 | 64.6 | 185 / 201 | 216 / 249 | 28 | 36.5 | 52.5 | 23.1 | 50.5 | none | [Qwen2.5-VL-3B-Instruct/gqa/vllm-bf16/20260925-093520](Qwen2.5-VL-3B-Instruct/gqa/vllm-bf16/20260925-093520) |
 | Qwen2.5-VL-3B-Instruct | hf-bf16 | mme | mme_cognition_score: 623.93<br>mme_perception_score: 1548.29 | 2374 | 21.0 | 241 / 907 | 299 / 972 | 57 | 27.2 | 31.1 | 33.3 | 58.6 | none | [Qwen2.5-VL-3B-Instruct/mme/hf-bf16/20260923-215339](Qwen2.5-VL-3B-Instruct/mme/hf-bf16/20260923-215339) |
 | Qwen2.5-VL-3B-Instruct | trt_edgellm-fp16+no-downscale | mme | mme_cognition_score: 613.93<br>mme_perception_score: 1448.41 | 2374 | 30.1 | ~143 (avg) | - | 15 | 32.2 | 32.8 | 16.4 | 33.7 | none | [Qwen2.5-VL-3B-Instruct/mme/trt_edgellm-fp16+no-downscale/20260923-202213](Qwen2.5-VL-3B-Instruct/mme/trt_edgellm-fp16+no-downscale/20260923-202213) |
+| Qwen2.5-VL-3B-Instruct | trt_edgellm-fp16 | mme | mme_cognition_score: 614.29<br>mme_perception_score: 1526.51 | 2374 | 28.1 | ~146 (avg) | - | 14 | 26.4 | 31.8 | 21.2 | 39.2 | none | [Qwen2.5-VL-3B-Instruct/mme/trt_edgellm-fp16/20260930-161411](Qwen2.5-VL-3B-Instruct/mme/trt_edgellm-fp16/20260930-161411) |
 | Qwen2.5-VL-3B-Instruct | trt_edgellm-fp8+no-downscale | mme | mme_cognition_score: 613.93<br>mme_perception_score: 1450.06 | 2374 | 28.7 | ~116 (avg) | - | 10 | 27.5 | 28.8 | 13.3 | 29.8 | none | [Qwen2.5-VL-3B-Instruct/mme/trt_edgellm-fp8+no-downscale/20260923-212441](Qwen2.5-VL-3B-Instruct/mme/trt_edgellm-fp8+no-downscale/20260923-212441) |
+| Qwen2.5-VL-3B-Instruct | trt_edgellm-fp8 | mme | mme_cognition_score: 622.50<br>mme_perception_score: 1522.40 | 2374 | 26.6 | ~121 (avg) | - | 8 | 24.3 | 25.3 | 18.1 | 35.3 | none | [Qwen2.5-VL-3B-Instruct/mme/trt_edgellm-fp8/20260930-164332](Qwen2.5-VL-3B-Instruct/mme/trt_edgellm-fp8/20260930-164332) |
 | Qwen2.5-VL-3B-Instruct | trt_edgellm-int4_awq+no-downscale | mme | mme_cognition_score: 551.79<br>mme_perception_score: 1459.30 | 2374 | 31.8 | ~208 (avg) | - | 7 | 27.5 | 28.9 | 18.0 | 34.4 | none | [Qwen2.5-VL-3B-Instruct/mme/trt_edgellm-int4_awq+no-downscale/20260923-205235](Qwen2.5-VL-3B-Instruct/mme/trt_edgellm-int4_awq+no-downscale/20260923-205235) |
+| Qwen2.5-VL-3B-Instruct | trt_edgellm-int4_awq | mme | mme_cognition_score: 565.71<br>mme_perception_score: 1529.67 | 2374 | 30.1 | ~211 (avg) | - | 6 | 22.6 | 23.5 | 24.1 | 41.3 | none | [Qwen2.5-VL-3B-Instruct/mme/trt_edgellm-int4_awq/20260930-171124](Qwen2.5-VL-3B-Instruct/mme/trt_edgellm-int4_awq/20260930-171124) |
 | Qwen2.5-VL-3B-Instruct | vllm-awq | mme | mme_cognition_score: 602.86<br>mme_perception_score: 1544.02 | 2374 | 44.4 | 282 / 1269 | 295 / 1282 | 13 | 27.3 | 31.4 | 16.7 | 34.7 | none | [Qwen2.5-VL-3B-Instruct/mme/vllm-awq/20260923-232507](Qwen2.5-VL-3B-Instruct/mme/vllm-awq/20260923-232507) |
 | Qwen2.5-VL-3B-Instruct | vllm-bf16 | mme | mme_cognition_score: 613.57<br>mme_perception_score: 1540.61 | 2374 | 43.3 | 241 / 1127 | 285 / 1171 | 44 | 27.2 | 32.6 | 14.8 | 34.0 | none | [Qwen2.5-VL-3B-Instruct/mme/vllm-bf16/20260923-224130](Qwen2.5-VL-3B-Instruct/mme/vllm-bf16/20260923-224130) |
 | Qwen2.5-VL-3B-Instruct | hf-bf16 | textvqa_val | exact_match: 0.79 | 5000 | 48.5 | 397 / 497 | 515 / 689 | 52 | 25.9 | 29.6 | 38.9 | 66.5 | none | [Qwen2.5-VL-3B-Instruct/textvqa_val/hf-bf16/20260928-220231](Qwen2.5-VL-3B-Instruct/textvqa_val/hf-bf16/20260928-220231) |
@@ -55,14 +61,20 @@ energy per sample = average module power x eval wall time / samples (includes pr
 |---|---|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---|
 | Qwen2.5-VL-3B-Instruct | hf-bf16 | gqa | 12578 | 38 | - | - | 199 / 252 | 370 | 2.3 | 18 | 3.26 | 16.4 | - |
 | Qwen2.5-VL-3B-Instruct | trt_edgellm-fp16 | gqa | 12578 | - | 34 | 39 | ~74 (avg) | - | 2.3 | 66 | 5.14 | 11.5 | runner profile (GPU time) |
+| Qwen2.5-VL-3B-Instruct | trt_edgellm-fp16 | gqa | 12578 | - | 30 | 37 | ~69 (avg) | - | 2.3 | 67 | 5.08 | 11.7 | runner profile (GPU time) |
 | Qwen2.5-VL-3B-Instruct | trt_edgellm-fp8 | gqa | 12578 | - | 30 | 27 | ~59 (avg) | - | 2.3 | 114 | 6.05 | 8.6 | runner profile (GPU time) |
+| Qwen2.5-VL-3B-Instruct | trt_edgellm-fp8 | gqa | 12578 | - | 30 | 24 | ~56 (avg) | - | 2.3 | 117 | 6.23 | 8.7 | runner profile (GPU time) |
 | Qwen2.5-VL-3B-Instruct | trt_edgellm-int4_awq | gqa | 12578 | - | 28 | 79 | ~103 (avg) | - | 2.2 | 160 | 4.91 | 11.6 | runner profile (GPU time) |
+| Qwen2.5-VL-3B-Instruct | trt_edgellm-int4_awq | gqa | 12578 | - | 30 | 70 | ~97 (avg) | - | 2.2 | 166 | 5.12 | 11.6 | runner profile (GPU time) |
 | Qwen2.5-VL-3B-Instruct | vllm-awq | gqa | 12578 | 84 | - | - | 217 / 290 | 305 | 2.2 | 87 | 3.11 | 15.5 | - |
 | Qwen2.5-VL-3B-Instruct | vllm-bf16 | gqa | 12578 | 83 | - | - | 185 / 228 | 283 | 2.3 | 36 | 3.25 | 15.6 | - |
 | Qwen2.5-VL-3B-Instruct | hf-bf16 | mme | 2374 | 22 | - | - | 241 / 933 | 998 | 2.0 | 17 | 1.89 | 31.1 | - |
 | Qwen2.5-VL-3B-Instruct | trt_edgellm-fp16+no-downscale | mme | 2374 | - | 45 | 46 | ~143 (avg) | - | 2.2 | 66 | 1.31 | 25.6 | runner profile (GPU time) |
+| Qwen2.5-VL-3B-Instruct | trt_edgellm-fp16 | mme | 2374 | - | 42 | 44 | ~146 (avg) | - | 2.0 | 74 | 1.41 | 27.8 | runner profile (GPU time) |
 | Qwen2.5-VL-3B-Instruct | trt_edgellm-fp8+no-downscale | mme | 2374 | - | 41 | 32 | ~116 (avg) | - | 2.2 | 102 | 1.38 | 21.6 | runner profile (GPU time) |
+| Qwen2.5-VL-3B-Instruct | trt_edgellm-fp8 | mme | 2374 | - | 41 | 30 | ~121 (avg) | - | 2.0 | 127 | 1.49 | 23.8 | runner profile (GPU time) |
 | Qwen2.5-VL-3B-Instruct | trt_edgellm-int4_awq+no-downscale | mme | 2374 | - | 38 | 92 | ~208 (avg) | - | 2.2 | 152 | 1.24 | 27.7 | runner profile (GPU time) |
+| Qwen2.5-VL-3B-Instruct | trt_edgellm-int4_awq | mme | 2374 | - | 42 | 82 | ~211 (avg) | - | 2.0 | 179 | 1.32 | 31.4 | runner profile (GPU time) |
 | Qwen2.5-VL-3B-Instruct | vllm-awq | mme | 2374 | 108 | - | - | 282 / 1830 | 1843 | 2.0 | 76 | 0.89 | 39.0 | - |
 | Qwen2.5-VL-3B-Instruct | vllm-bf16 | mme | 2374 | 109 | - | - | 241 / 1667 | 1713 | 2.0 | 23 | 0.91 | 37.2 | - |
 | Qwen2.5-VL-3B-Instruct | hf-bf16 | textvqa_val | 5000 | 29 | 276 | 119 | 397 / 562 | 958 | 4.1 | 19 | 1.72 | 38.7 | CUDA events |
@@ -97,14 +109,20 @@ time (TensorRT Edge-LLM: from its averages). Means per sample; total = whole run
 |---|---|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|
 | Qwen2.5-VL-3B-Instruct | hf-bf16 | gqa | 12578 | 358 / 41 / 2 | 1892 | 2240 | 8 | 4141 | 52082 | 20.8 | 15.5 |
 | Qwen2.5-VL-3B-Instruct | trt_edgellm-fp16 | gqa | 12578 | 358 / 41 / 2 | 1892 | 2240 | 8 | 4140 | 52074 | 55.9 | 44.5 |
+| Qwen2.5-VL-3B-Instruct | trt_edgellm-fp16 | gqa | 12578 | 358 / 41 / 2 | 1892 | 2240 | 8 | 4140 | 52074 | 59.8 | 47.2 |
 | Qwen2.5-VL-3B-Instruct | trt_edgellm-fp8 | gqa | 12578 | 358 / 41 / 2 | 1892 | 2240 | 8 | 4140 | 52074 | 69.8 | 59.0 |
+| Qwen2.5-VL-3B-Instruct | trt_edgellm-fp8 | gqa | 12578 | 358 / 41 / 2 | 1892 | 2240 | 8 | 4140 | 52074 | 74.4 | 62.4 |
 | Qwen2.5-VL-3B-Instruct | trt_edgellm-int4_awq | gqa | 12578 | 358 / 41 / 2 | 1892 | 2240 | 8 | 4140 | 52071 | 39.9 | 37.3 |
+| Qwen2.5-VL-3B-Instruct | trt_edgellm-int4_awq | gqa | 12578 | 358 / 41 / 2 | 1892 | 2240 | 8 | 4140 | 52071 | 42.6 | 39.7 |
 | Qwen2.5-VL-3B-Instruct | vllm-awq | gqa | 12578 | 358 / 41 / 2 | 1892 | 2240 | 8 | 4140 | 52072 | 19.3 | 18.1 |
 | Qwen2.5-VL-3B-Instruct | vllm-bf16 | gqa | 12578 | 358 / 41 / 2 | 1892 | 2240 | 8 | 4140 | 52074 | 22.6 | 19.0 |
 | Qwen2.5-VL-3B-Instruct | hf-bf16 | mme | 2374 | 868 / 42 / 2 | 4861 | 5233 | 7 | 10100 | 23978 | 24.6 | 21.5 |
 | Qwen2.5-VL-3B-Instruct | trt_edgellm-fp16+no-downscale | mme | 2374 | 868 / 43 / 2 | 4861 | 5239 | 6 | 10106 | 23992 | 70.5 | 64.2 |
+| Qwen2.5-VL-3B-Instruct | trt_edgellm-fp16 | mme | 2374 | 868 / 43 / 2 | 4861 | 5239 | 6 | 10107 | 23993 | 69.1 | 63.2 |
 | Qwen2.5-VL-3B-Instruct | trt_edgellm-fp8+no-downscale | mme | 2374 | 868 / 43 / 2 | 4861 | 5239 | 6 | 10106 | 23992 | 86.8 | 80.5 |
+| Qwen2.5-VL-3B-Instruct | trt_edgellm-fp8 | mme | 2374 | 868 / 43 / 2 | 4861 | 5239 | 6 | 10107 | 23993 | 83.4 | 78.3 |
 | Qwen2.5-VL-3B-Instruct | trt_edgellm-int4_awq+no-downscale | mme | 2374 | 868 / 43 / 2 | 4861 | 5239 | 6 | 10106 | 23992 | 48.6 | 47.3 |
+| Qwen2.5-VL-3B-Instruct | trt_edgellm-int4_awq | mme | 2374 | 868 / 43 / 2 | 4861 | 5239 | 6 | 10107 | 23993 | 47.8 | 46.5 |
 | Qwen2.5-VL-3B-Instruct | vllm-awq | mme | 2374 | 868 / 43 / 2 | 4861 | 5239 | 6 | 10107 | 23993 | 19.4 | 19.0 |
 | Qwen2.5-VL-3B-Instruct | vllm-bf16 | mme | 2374 | 868 / 43 / 2 | 4861 | 5239 | 6 | 10107 | 23993 | 21.7 | 19.8 |
 | Qwen2.5-VL-3B-Instruct | hf-bf16 | textvqa_val | 5000 | 977 / 39 / 4 | 5360 | 5794 | 20 | 11174 | 55869 | 28.1 | 20.4 |

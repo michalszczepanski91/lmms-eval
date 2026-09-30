@@ -212,3 +212,15 @@ Prompt: `jetson/docs/agent-prompt-textvqa.md`. Task `textvqa_val`: 5,000 questio
 - Tests (lmms-eval-jetson image, pytest from a `--target` dir): `test/tools/test_jetson_stage_timing.py`,
   `test/eval/test_token_counts.py`, `test/models/test_trt_edgellm.py`, `test/tools/test_jetson_check_run.py`: 37 passed.
 - Report: `TEXTVQA_REPORT.md`.
+- 2026-09-30, at the user's request: the shared engines in `/opt/models/trt-edgellm` (3B fp16/fp8/int4_awq) were
+  replaced by the fixed ones from `~/trt-edgellm-vscale8` (sha256-identical, 9 files each); the old ones moved to
+  `/opt/models/trt-edgellm/old-unscaled-vision-20260928`. The user deleted `visual-bf16-test`.
+- Edge-LLM 3B MME + GQA re-runs with the fixed engines (MAXN; log `logs/edgellm_mme_gqa_rerun.log`). A queue script
+  waited until the user's dsvlm jobs were gone and the GPU had been idle for 10 min in a row (dsvlm ran until 16:03;
+  start 16:14, end 19:45). No other container or GPU process during any run; 0 empty / `????` / failed answers.
+  - MME perception / cognition: fp16 1526.5 / 614.3, fp8 1522.4 / 622.5, int4_awq 1529.7 / 565.7 (old no-downscale
+    runs: 1448-1459 perception; landmark now 95.8%, HF 96.5%). The rest of the gap to HF (1548.3) is 1-3 questions in
+    a few categories; vLLM bf16 is at 1540.6.
+  - GQA: 60.00 / 60.18 / 57.55 (old: 60.07 / 60.11 / 57.56). TTFT (avg) 69 / 56 / 97 ms at MAXN vs 74 / 59 / 103 at
+    120 W.
+  - The old Edge-LLM MME `+no-downscale` and GQA `20260925-*` runs stay in the results; SUMMARY.md lists both.

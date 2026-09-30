@@ -1,0 +1,18 @@
+2026-09-30 08:49:53 waiting for dsvlm jobs to finish and the GPU to be idle for 10 min
+2026-09-30 16:14:11 GPU idle for 10 min; starting
+NV Power Mode: MAXN
+=== 16:14:11 trt_edgellm 3b-fp16 mme 
+    /home/michal/dev/lmms-eval/jetson/results/thor/Qwen2.5-VL-3B-Instruct/mme/trt_edgellm-fp16/20260930-161411/: samples 2374, question_marks 0, empty 0, request_failed 0
+=== 16:43:32 trt_edgellm 3b-fp8 mme 
+    /home/michal/dev/lmms-eval/jetson/results/thor/Qwen2.5-VL-3B-Instruct/mme/trt_edgellm-fp8/20260930-164332/: samples 2374, question_marks 0, empty 0, request_failed 0
+=== 17:11:24 trt_edgellm 3b-int4_awq mme 
+    /home/michal/dev/lmms-eval/jetson/results/thor/Qwen2.5-VL-3B-Instruct/mme/trt_edgellm-int4_awq/20260930-171124/: samples 2374, question_marks 0, empty 0, request_failed 0
+summary: /home/michal/dev/lmms-eval/jetson/results/thor/SUMMARY.md
+=== 17:42:43 trt_edgellm 3b-fp16 gqa 
+    /home/michal/dev/lmms-eval/jetson/results/thor/Qwen2.5-VL-3B-Instruct/gqa/trt_edgellm-fp16/20260930-174243/: samples 12578, question_marks 0, empty 0, request_failed 0
+=== 18:26:10 trt_edgellm 3b-fp8 gqa 
+    /home/michal/dev/lmms-eval/jetson/results/thor/Qwen2.5-VL-3B-Instruct/gqa/trt_edgellm-fp8/20260930-182610/: samples 12578, question_marks 0, empty 0, request_failed 0
+=== 19:02:01 trt_edgellm 3b-int4_awq gqa 
+    /home/michal/dev/lmms-eval/jetson/results/thor/Qwen2.5-VL-3B-Instruct/gqa/trt_edgellm-int4_awq/20260930-190201/: samples 12578, question_marks 0, empty 0, request_failed 0
+summary: /home/michal/dev/lmms-eval/jetson/results/thor/SUMMARY.md
+2026-09-30 19:45:16 all done

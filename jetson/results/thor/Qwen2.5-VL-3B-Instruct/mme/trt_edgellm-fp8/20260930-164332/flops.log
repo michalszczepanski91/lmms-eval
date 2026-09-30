@@ -1,0 +1,15 @@
+2026-09-30 15:10:33.267 | DEBUG    | lmms_eval.tasks:_get_task_and_group:483 - File _hd_epic_base.yaml in /home/michal/dev/lmms-eval/lmms_eval/tasks/hd_epic could not be loaded as a task or group
+2026-09-30 15:10:33.503 | DEBUG    | lmms_eval.tasks:_get_task_and_group:483 - File _default_template.yaml in /home/michal/dev/lmms-eval/lmms_eval/tasks/video-tt could not be loaded as a task or group
+2026-09-30 15:10:34.243 | DEBUG    | lmms_eval.tasks:_get_task_and_group:483 - File _default_template_mmsearch_plus.yaml in /home/michal/dev/lmms-eval/lmms_eval/tasks/mmsearch_plus could not be loaded as a task or group
+2026-09-30 15:10:34.268 | DEBUG    | lmms_eval.tasks:_get_task_and_group:457 - `group` and `group_alias` keys in tasks' configs will no longer be used in the next release of lmms-eval. `tag` will be used to allow to call a collection of tasks just like `group`. `group` will be removed in order to not cause confusion with the new ConfigurableGroup which will be the offical way to create groups with addition of group-wide configuations.
+2026-09-30 15:10:34.419 | DEBUG    | lmms_eval.tasks:_get_task_and_group:483 - File _default_template.yaml in /home/michal/dev/lmms-eval/lmms_eval/tasks/realunify could not be loaded as a task or group
+2026-09-30 15:10:34.960 | DEBUG    | lmms_eval.tasks:_get_task_and_group:483 - File _default_template.yaml in /home/michal/dev/lmms-eval/lmms_eval/tasks/uni_mmmu could not be loaded as a task or group
+2026-09-30 15:10:35.000 | DEBUG    | lmms_eval.tasks:_get_task_and_group:483 - File illusionvqa.yaml in /home/michal/dev/lmms-eval/lmms_eval/tasks/illusionvqa could not be loaded as a task or group
+2026-09-30 15:10:35.379 | DEBUG    | lmms_eval.tasks:_get_task_and_group:483 - File _default_template.yaml in /home/michal/dev/lmms-eval/lmms_eval/tasks/robo_spatial could not be loaded as a task or group
+2026-09-30 15:10:35.476 | DEBUG    | lmms_eval.tasks:_get_task_and_group:483 - File _default.yaml in /home/michal/dev/lmms-eval/lmms_eval/tasks/videonet could not be loaded as a task or group
+2026-09-30 15:10:35.478 | DEBUG    | lmms_eval.tasks:_get_task_and_group:483 - File _binary.yaml in /home/michal/dev/lmms-eval/lmms_eval/tasks/videonet could not be loaded as a task or group
+2026-09-30 15:10:35.482 | DEBUG    | lmms_eval.tasks:_get_task_and_group:483 - File _mcq.yaml in /home/michal/dev/lmms-eval/lmms_eval/tasks/videonet could not be loaded as a task or group
+2026-09-30 15:10:35.538 | DEBUG    | lmms_eval.caching.fs_detect:detect_fs_type:168 - fs_detect: /opt/hf-cache/datasets -> LOCAL (fs=ext4, mount=/opt/hf-cache)
+Using the latest cached version of the dataset since lmms-lab-encoder/MME couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'default' at /opt/hf-cache/datasets/lmms-lab-encoder___mme/default/0.0.0/d6c9023f017b564f7b3ccccf5348166bce8fdbcd (last modified on Mon Sep 28 13:09:50 2026).
+jetson/results/thor/Qwen2.5-VL-3B-Instruct/mme/trt_edgellm-fp8/20260930-164332 mme: n=2374 mean GFLOPs vision 4860.8 prefill 5239.3 decode 6.5 total 10106.6

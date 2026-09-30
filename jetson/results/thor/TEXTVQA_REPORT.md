@@ -12,7 +12,7 @@ TextVQA val: 5,000 questions about text in 3,166 photos, scored by VQA accuracy 
   - llama.cpp Q4_K_M against Q8_0: −1.1 ± 0.3 (3B) and −0.2 ± 0.2 (7B).
   - **Edge-LLM's own int4 AWQ: −5.7 ± 0.4** against fp16. It is calibrated on text-only news data, which is enough for GQA (−2.5) but not for OCR. It is also slower to the first token than fp16 (232 vs 157 ms).
 - **llama.cpp is the slowest by far** on this workload: TTFT about 1.1 s (3B) and 1.4–1.5 s (7B), and about 72 J / 100 J per sample. Its vision encoder alone takes 640–700 ms, against 87 ms in Edge-LLM and 276 ms in HF.
-- **Bug found and fixed:** Qwen2.5-VL's vision encoder overflows fp16. In Edge-LLM, whose exporter produces only fp16 vision encoders, about 1,000 of 5,000 TextVQA answers were empty for every precision. `export.sh` now rescales the encoder (details under "Failures, deviations and fixes"), and the Edge-LLM runs were repeated. **The shared engines in `/opt/models/trt-edgellm` still have the bug; see "Needs your action".**
+- **Bug found and fixed:** Qwen2.5-VL's vision encoder overflows fp16. In Edge-LLM, whose exporter produces only fp16 vision encoders, about 1,000 of 5,000 TextVQA answers were empty for every precision. `export.sh` now rescales the encoder (details under "Failures, deviations and fixes"), and the Edge-LLM runs were repeated. The shared engines in `/opt/models/trt-edgellm` were replaced with the fixed ones on 2026-09-30, and the Edge-LLM MME/GQA runs were repeated with them: GQA is unchanged, and MME perception is up by about 75 points (see "TextVQA vs MME and GQA").
 
 ## Results per model
 
@@ -116,20 +116,31 @@ Edge-LLM's rates use GPU stage times (no host overhead) and are therefore flatte
 
 ## TextVQA vs MME and GQA
 
-The older Thor MME/GQA runs were at **120 W**, and TextVQA ran at **MAXN**, so compare rankings, not absolute times. TextVQA images are also larger: about 977 image tokens, against 358 for GQA and 868 for MME.
+The HF, vLLM and first Edge-LLM MME/GQA runs on Thor were at **120 W**. TextVQA and the Edge-LLM MME/GQA re-runs with the fixed engines (2026-09-30) ran at **MAXN**. So compare rankings, not absolute times, across the two groups. TextVQA images are also larger: about 977 image tokens, against 358 for GQA and 868 for MME.
 
-- **The latency ranking holds.** 3B TTFT on GQA: Edge-LLM fp8 59 < fp16 74 < int4_awq 103 < vLLM bf16 185 < HF 199 < vLLM AWQ 217 ms. On TextVQA the order is the same: 130 < 157 < 232 < 361 < 397 < 453 ms. vLLM AWQ is slower than bf16 to the first token on all three tasks. llama.cpp has no full MME/GQA runs on Thor to compare (the earlier hang).
+**Edge-LLM MME/GQA re-runs with the fixed engines** (MAXN, 2026-09-30; no other GPU process or container during any run):
+
+| Precision | MME perception / cognition | GQA | MME TTFT (avg) | GQA TTFT (avg) | GQA vision / prefill (ms) |
+|---|---:|---:|---:|---:|---:|
+| fp16 | 1526.5 / 614.3 (before: 1448.4 / 613.9) | 60.00 (before: 60.07) | ~146 ms | ~69 ms (120 W: 74) | 30 / 37 |
+| fp8 | 1522.4 / 622.5 (before: 1450.1 / 613.9) | 60.18 (before: 60.11) | ~121 ms | ~56 ms (120 W: 59) | 30 / 24 |
+| int4_awq | 1529.7 / 565.7 (before: 1459.3 / 551.8) | 57.55 (before: 57.56) | ~211 ms | ~97 ms (120 W: 103) | 30 / 70 |
+| HF bf16 (120 W) | 1548.3 / 623.9 | 60.09 | 241 ms (p50) | 199 ms (p50) | – |
+
+- **GQA is unchanged**, as expected: its small images never overflowed, and the old runs had no empty answers. At MAXN the Edge-LLM GQA TTFT is 5–7% lower than at 120 W.
+- **MME perception rises by about 75 points.** The old runs were the "no-downscale" ones, where 128 landmark questions failed in the runner on images above 4096 px; `max_image_side` (added during the first Thor session) now downscales those images, and landmark accuracy is 95.8% (HF: 96.5%). The remaining ~20-point gap to HF is spread over a few categories (1–3 questions each: color, OCR, celebrity, code reasoning); vLLM bf16 is 8 points below HF too. That's framework-level numeric noise, not a systematic failure.
+- **The latency ranking holds.** 3B TTFT on GQA: Edge-LLM fp8 56 < fp16 69 < int4_awq 97 ms (MAXN), then vLLM bf16 185 < HF 199 < vLLM AWQ 217 ms (120 W). On TextVQA the order is the same: 130 < 157 < 232 < 361 < 397 < 453 ms. vLLM AWQ is slower than bf16 to the first token on all three tasks. llama.cpp has no full MME/GQA runs on Thor to compare (the earlier hang).
 - **Quantization hurts more on OCR, but only for the weaker methods:**
 
-| Quantization (3B unless noted) | GQA Δ | MME Δ | TextVQA Δ |
+| Quantization (3B unless noted) | GQA Δ | MME Δ (perception / cognition) | TextVQA Δ |
 |---|---:|---:|---:|
-| Edge-LLM fp8 vs fp16 | +0.04 | perception +1.7, cognition 0 (no-downscale runs) | +0.14 |
-| Edge-LLM int4_awq vs fp16 | −2.5 | cognition −62 (no-downscale runs) | **−5.7** |
-| vLLM AWQ vs bf16 | −0.5 | perception +3, cognition −11 | −0.3 |
-| vLLM AWQ vs bf16 (7B) | −0.3 | perception −0.5, cognition −10 | −0.7 |
+| Edge-LLM fp8 vs fp16 | +0.18 | −4.1 / +8.2 | +0.14 |
+| Edge-LLM int4_awq vs fp16 | −2.45 | +3.2 / **−48.6** | **−5.7** |
+| vLLM AWQ vs bf16 | −0.5 | +3.4 / −10.7 | −0.3 |
+| vLLM AWQ vs bf16 (7B) | −0.3 | −0.5 / −10.4 | −0.7 |
 
-  Qwen's official AWQ checkpoint loses under one point everywhere. Edge-LLM's own AWQ, calibrated on text-only news data, loses 2.5 points on GQA and more than twice that on TextVQA. Reading small text is where its weight error shows. fp8 costs nothing on any task.
-- The fp16 vision-encoder overflow never showed on GQA (small images, 0 empty answers). On MME it was masked by the landmark-image failures of the no-downscale runs. TextVQA's 1024 px text-heavy photos are what exposed it.
+  Qwen's official AWQ checkpoint loses under one point on GQA and TextVQA. Edge-LLM's own AWQ, calibrated on text-only news data, loses 2.5 points on GQA, 5.7 on TextVQA and 49 on MME cognition (code reasoning, numerical calculation and commonsense reasoning each drop 5–10 points). Reading text and reasoning over it is where its weight error shows. fp8 costs nothing on any task.
+- The fp16 vision-encoder overflow never showed on GQA (small images, 0 empty answers). On MME it was hidden behind the landmark failures of the no-downscale runs; the fixed-engine MME runs have no empty answers either. TextVQA's 1024 px text-heavy photos are what exposed it.
 
 ## Failures, deviations and fixes
 
@@ -141,13 +152,12 @@ The older Thor MME/GQA runs were at **120 W**, and TextVQA ran at **MAXN**, so c
    - **Side finding (Edge-LLM bug, not fixed here):** after a NaN request, later requests in the same runner process can also fail. Doc 0 answers alone but not after docs 14–101. A single bad image therefore corrupts a whole batch file.
    - **What was kept:** the broken runs are marked `INVALID` and kept (`trt_edgellm-*/20260929-135231`, `-152905`, `-163808`). The repeated runs are `-212748`, `-220950` and `-224646`.
 2. **`check_run.py`** now marks runs with 2% or more empty answers `INVALID`, not only `????` runs (`test/tools/test_jetson_check_run.py`). Healthy short-answer runs have none.
-3. **Engines outside the shared workspace:** the repeated runs used engines in `~/trt-edgellm-vscale8`. Replacing `/opt/models/trt-edgellm` was blocked by the session's permission rules, since it's a shared directory.
+3. **Engines:** the TextVQA re-runs used engines in `~/trt-edgellm-vscale8`, since replacing the shared ones was first blocked by the session's permission rules. On 2026-09-30, at your request, the same engines (checksum-identical) replaced those in `/opt/models/trt-edgellm`; the old ones are in `/opt/models/trt-edgellm/old-unscaled-vision-20260928`. The MME/GQA re-runs used the shared ones. They waited until your dsvlm jobs had finished (last one at 16:03) and the GPU had been idle for 10 minutes.
 4. **Other job:** a `dsvlm` job (`~/dev/distilation-edge-ai`, `scripts/run.sh --gpu`) started at 22:13 during the Edge-LLM fp8 run. Its container is listed in that run's `run_info.txt`. It waited for an idle GPU the whole time (`board busy (other GPU work); waiting`) and used no GPU, and the fp8 stage times match the fp16 and int4_awq runs. No other GPU process ran and no foreign process pinned a CPU core.
 5. **Lost time:** the wait loop around the engine rebuild matched its own command line with `pgrep`, so the re-runs started about 3 h later than they could have. No measurement was affected.
 6. **Deviation:** Edge-LLM int4_awq is Edge-LLM's own AWQ of the base checkpoint, not Qwen's AWQ checkpoint (as in the MME/GQA runs; Qwen's checkpoint gives empty answers for every image prompt with Edge-LLM 0.10.1). So "AWQ" means different weights in vLLM and Edge-LLM.
 
 ## Needs your action
 
-- **Rebuild the shared Edge-LLM engines** (fp16, fp8 and int4_awq for 3B in `/opt/models/trt-edgellm`) with the fixed `export.sh`. As they are, they give NaN on large images. Either run `mv` on the three `Qwen2.5-VL-3B-Instruct-*` dirs and then `jetson/frameworks/trt_edgellm/ensure_engines.sh 3b fp16 fp8 int4_awq`, or copy the fixed sets from `~/trt-edgellm-vscale8` (17 GB).
-- **Delete my leftover test directory** `/opt/models/trt-edgellm/visual-bf16-test` (about 2.7 GB), from the bf16 attempt.
-- Re-run the Edge-LLM MME/GQA runs with the fixed engines if you want those tables to match. GQA had no empty answers, so its scores should barely move.
+- Done on 2026-09-30: the shared engines are fixed, the bf16 test directory is deleted, and the Edge-LLM MME/GQA runs are repeated.
+- **Optional disk cleanup (17 GB each):** `/opt/models/trt-edgellm/old-unscaled-vision-20260928` (the broken engines) and `~/trt-edgellm-vscale8` (identical to the shared engines; the TextVQA `run_info.txt` files point to it, but the engines themselves are also in `/opt/models`).
