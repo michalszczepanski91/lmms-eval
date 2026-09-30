@@ -73,6 +73,6 @@ In Edge-LLM, about **1 in 5 TextVQA answers came back empty**.
 
 ## Where to find more
 
-- [TEXTVQA_REPORT.md](TEXTVQA_REPORT.md): full TextVQA analysis with all numbers.
-- [SUMMARY.md](SUMMARY.md): raw table of every run. It also lists older runs that were later replaced (MME `+no-downscale`, Edge-LLM GQA from 2026-09-25), and the HF 7B GQA timings there are not valid.
-- [NOTES.md](NOTES.md): setup, log and every fix.
+- [REPORT.md](REPORT.md): all the numbers behind these findings, per task and per model.
+- [SUMMARY.md](SUMMARY.md): every run, generated automatically; replaced and invalid runs are listed separately, with the reason.
+- [NOTES.md](NOTES.md): setup, every problem and its fix, timeline and open items.

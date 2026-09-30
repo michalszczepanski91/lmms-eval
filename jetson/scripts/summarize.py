@@ -4,6 +4,10 @@
 Expects <results dir>/<model>/<task>/<framework>-<precision>[+tag]/<run_id>/lmms_eval/*_results.json.
 The results dir is $RESULTS_DIR relative to the repo (default jetson/results/<board>: orin, thor), as in run_eval.sh.
 
+Marker files in a run dir (first line = reason) keep the run out of the main tables and list it under "Excluded runs":
+INVALID (bad answers, check_run.py), STALLED (hung, run_matrix.sh watchdog), SUPERSEDED (replaced by a later run).
+TIMING_INVALID keeps the run's scores but drops its timing, memory and power columns (e.g. a foreign CPU load).
+
 Usage: [RESULTS_DIR=jetson/results/thor] python3 jetson/scripts/summarize.py [--include-smoke]
 """
 
@@ -207,6 +211,50 @@ def fmt_ms(row, p50_key, p90_key):
     return "-"
 
 
+EXCLUDE_MARKERS = ("INVALID", "STALLED", "SUPERSEDED")
+
+
+def marker_reason(run_dir, marker):
+    """First line of a marker file, without the "<tool>: " prefix check_run.py writes."""
+    path = os.path.join(run_dir, marker)
+    if not os.path.exists(path):
+        return None
+    line = (open(path).readline().strip() or marker).removeprefix("check_run.py: ")
+    return line
+
+
+def fmt_score(value):
+    if not isinstance(value, float):
+        return str(value)
+    return f"{value:.4f}" if abs(value) <= 1 else f"{value:.2f}"
+
+
+def fmt_scores(scores, sep="<br>"):
+    return sep.join(f"{k}: {fmt_score(v)}" for k, v in scores.items())
+
+
+def result_scores(results_json):
+    """{task: {metric: value}} of an lmms-eval results file, without stderr and empty metrics (e.g. TextVQA's submission writer)."""
+    r = json.load(open(results_json))
+    return {task: {k.split(",")[0]: v for k, v in metrics.items() if k.endswith(",none") and "stderr" not in k and v is not None} for task, metrics in r["results"].items()}
+
+
+def excluded_runs(include_smoke):
+    runs = []
+    for run_dir in sorted(glob.glob(os.path.join(RESULTS, "*", "*", "*", "*"))):
+        if not os.path.isdir(run_dir) or ("_limit" in run_dir and not include_smoke):
+            continue
+        for marker in EXCLUDE_MARKERS:
+            reason = marker_reason(run_dir, marker)
+            if reason is None:
+                continue
+            results = glob.glob(os.path.join(run_dir, "lmms_eval", "*_results.json"))
+            scores = "<br>".join(fmt_scores(m, ", ") for m in result_scores(results[0]).values()) if results else "-"
+            runs.append((os.path.relpath(run_dir, RESULTS), marker, scores, reason))
+            break
+    return runs
+
+
 def main():
     include_smoke = "--include-smoke" in sys.argv
     rows = []
@@ -215,20 +263,21 @@ def main():
         model, _task_dir, framework, run_id = os.path.relpath(run_dir, RESULTS).split(os.sep)
         if "_limit" in run_id and not include_smoke:
             continue
-        if os.path.exists(os.path.join(run_dir, "INVALID")):  # kept as evidence; the file says why
+        if any(os.path.exists(os.path.join(run_dir, m)) for m in EXCLUDE_MARKERS):  # listed under "Excluded runs"
             continue
         r = json.load(open(results_json))
         n = sum(r["n-samples"][t]["effective"] for t in r["n-samples"])
         samples = glob.glob(os.path.join(os.path.dirname(results_json), "*_samples_*.jsonl*"))
-        stats = {
-            **tegrastats_stats(os.path.join(run_dir, "tegrastats.log")),
-            **(latency_stats(samples[0]) if samples else {}),
-            **trt_profile_stats(os.path.join(run_dir, "trt_profile.json")),
-            **llamacpp_server_stats(run_dir),
-        }
-        for task, metrics in r["results"].items():
-            # Metrics without a value (e.g. TextVQA's "submission" file writer) are left out.
-            scores = {k.split(",")[0]: v for k, v in metrics.items() if k.endswith(",none") and "stderr" not in k and v is not None}
+        timing_invalid = marker_reason(run_dir, "TIMING_INVALID")
+        stats = {}
+        if not timing_invalid:
+            stats = {
+                **tegrastats_stats(os.path.join(run_dir, "tegrastats.log")),
+                **(latency_stats(samples[0]) if samples else {}),
+                **trt_profile_stats(os.path.join(run_dir, "trt_profile.json")),
+                **llamacpp_server_stats(run_dir),
+            }
+        for task, scores in result_scores(results_json).items():
             rows.append(
                 {
                     "model": model,
@@ -237,8 +286,8 @@ def main():
                     "run": os.path.relpath(run_dir, RESULTS),
                     "scores": scores,
                     "n": n,
-                    "minutes": float(r["total_evaluation_time_seconds"]) / 60,
-                    "others": other_containers(run_dir),
+                    "minutes": None if timing_invalid else float(r["total_evaluation_time_seconds"]) / 60,
+                    "others": f"timings not valid: {timing_invalid}" if timing_invalid else other_containers(run_dir),
                     "board": run_info_field(run_dir, "board"),
                     "power_mode": (run_info_field(run_dir, "power mode") or "").replace("NV Power Mode:", "").strip(),
                     **stats,
@@ -246,26 +295,24 @@ def main():
                 }
             )
 
+    boards = " / ".join(sorted({row["board"] for row in rows if row["board"]})) or "Jetson"
     lines = [
-        f"# {' / '.join(sorted({row['board'] for row in rows if row['board']})) or 'Jetson'} eval results",
+        f"# {boards} eval results",
         "",
-        f"Generated by `python3 jetson/scripts/summarize.py`. Batch size 1, power mode {' / '.join(sorted({row['power_mode'] for row in rows if row['power_mode']})) or '?'}, same images (256..2048 visual tokens) for every framework.",
-        "RAM is whole-board unified memory from tegrastats (base = before model load; other processes included).",
-        "Power (tegrastats, averaged over the run): GPU rail = VDD_GPU_SOC on Orin (GPU + SoC), VDD_GPU on Thor (GPU only);",
-        "module = sum of the GPU, CPU/SoC and 5V system rails (comparable across boards).",
-        "Latency is per sample: TTFT = model call to first generated token (vision encoder + prefill + 1 step);",
-        "answer = whole model call; decode = time per token after the first. p50 / p90 over all samples.",
-        "llama.cpp is measured client side over HTTP (streaming); TensorRT Edge-LLM only reports averages.",
+        "All runs, generated by `python3 jetson/scripts/summarize.py`: batch size 1, the same images (256..2048 visual tokens) for every framework.",
+        "How each column is measured: [methodology](../../docs/methodology.md). Runs marked invalid, stalled or superseded are listed under",
+        "[Excluded runs](#excluded-runs) at the end, with the reason. TensorRT Edge-LLM reports average TTFT only (its runner profile).",
         "",
-        "| Model | Framework | Task | Scores | N | Wall time (min) | TTFT p50 / p90 (ms) | Answer p50 / p90 (ms) | Decode (ms/token) | Base RAM (GB) | Peak RAM (GB) | Avg GPU rail (W) | Avg module (W) | Other containers / GPU processes | Run dir |",
-        "|---|---|---|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---|---|",
+        "| Model | Framework | Task | Scores | N | Power mode | Wall time (min) | TTFT p50 / p90 (ms) | Answer p50 / p90 (ms) | Decode (ms/token) | Base RAM (GB) | Peak RAM (GB) | Avg GPU rail (W) | Avg module (W) | Other GPU work / notes | Run dir |",
+        "|---|---|---|---|---:|---|---:|---:|---:|---:|---:|---:|---:|---:|---|---|",
     ]
     for row in rows:
-        scores = "<br>".join(f"{k}: {v:.2f}" if isinstance(v, float) else f"{k}: {v}" for k, v in row["scores"].items())
+        scores = fmt_scores(row["scores"])
         power = " | ".join(f"{row[k]:.1f}" if row.get(k) else "-" for k in ("avg_gpu_w", "avg_total_w"))
         decode = f"{row['decode_ms_p50']:.0f}" if row.get("decode_ms_p50") is not None else "-"
+        minutes = f"{row['minutes']:.1f}" if row["minutes"] is not None else "-"
         lines.append(
-            f"| {row['model']} | {row['framework']} | {row['task']} | {scores} | {row['n']} | {row['minutes']:.1f} | "
+            f"| {row['model']} | {row['framework']} | {row['task']} | {scores} | {row['n']} | {row['power_mode'] or '?'} | {minutes} | "
             f"{fmt_ms(row, 'ttft_p50', 'ttft_p90')} | {fmt_ms(row, 'gen_p50', 'gen_p90')} | {decode} | "
             f"{fmt_gb(row.get('base_ram'))} | {fmt_gb(row.get('peak_ram'))} | {power} | {row['others']} | [{row['run']}]({row['run']}) |"
         )
@@ -273,17 +320,15 @@ def main():
         "",
         "## Latency breakdown and efficiency",
         "",
-        "Where the time to the first token goes, per sample (p50). Preprocess = prompt and image preparation before the model call",
-        "(client side; for llama.cpp this includes the PNG/base64 encoding). Vision encoder and LLM prefill (text + image tokens,",
-        "first output token) come from: HF - CUDA events around the vision encoder (`stage_timing=True`), prefill = TTFT - encoder;",
-        "llama.cpp - llama-server's log (server side, without HTTP); TensorRT Edge-LLM - the runner's per-stage GPU time. vLLM runs",
-        "the encoder inside its prefill step and reports only TTFT. TTFT p99 shows the tail. Throughput = samples / eval wall time;",
-        "energy per sample = average module power x eval wall time / samples (includes preprocessing and idle gaps).",
+        "Medians per sample. Preprocess = client-side prompt and image preparation; vision encoder and LLM prefill = the two parts of TTFT",
+        "(vLLM does not separate them). Energy per sample = average module power x wall time / samples.",
         "",
-        "| Model | Framework | Task | N | Preprocess (ms) | Vision encoder (ms) | LLM prefill (ms) | TTFT p50 / p99 (ms) | Answer p99 (ms) | Output tokens (mean) | Decode (tokens/s) | Throughput (samples/s) | Energy (J/sample) | Stage timing source |",
-        "|---|---|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---|",
+        "| Model | Framework | Task | Preprocess (ms) | Vision encoder (ms) | LLM prefill (ms) | TTFT p50 / p99 (ms) | Answer p99 (ms) | Output tokens (mean) | Decode (tokens/s) | Throughput (samples/s) | Energy (J/sample) | Stage timing source |",
+        "|---|---|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---|",
     ]
     for row in rows:
+        if row["minutes"] is None:  # TIMING_INVALID
+            continue
 
         def ms(key):
             return f"{1000 * row[key]:.0f}" if row.get(key) is not None else "-"
@@ -293,29 +338,30 @@ def main():
         decode_tps = f"{1000 / row['decode_ms_p50']:.0f}" if row.get("decode_ms_p50") else "-"
         out_tokens = f"{row['out_tokens_mean']:.1f}" if row.get("out_tokens_mean") is not None else "-"
         lines.append(
-            f"| {row['model']} | {row['framework']} | {row['task']} | {row['n']} | {ms('pre_p50')} | {ms('vision_p50')} | {ms('prefill_p50')} | "
+            f"| {row['model']} | {row['framework']} | {row['task']} | {ms('pre_p50')} | {ms('vision_p50')} | {ms('prefill_p50')} | "
             f"{fmt_ms(row, 'ttft_p50', 'ttft_p99')} | {ms('gen_p99')} | {out_tokens} | {decode_tps} | {row['n'] / seconds:.2f} | {energy} | {row.get('stage_source', '-')} |"
         )
     lines += [
         "",
         "## Compute (FLOPs)",
         "",
-        "Analytical FLOPs per sample from `flops.json` (`jetson/models/<model>/flops.py`): matrix multiplies at 2 FLOPs per multiply-accumulate",
-        "(linear layers + attention), for each sample's actual image grid and prompt / output token counts; identical for every",
-        "framework and precision. Vision = ViT encoder + patch merger; prefill = LLM over the prompt (text + image tokens) incl. the",
-        "first token; decode = the remaining output tokens. Achieved TFLOP/s: (vision + prefill) / mean TTFT, and total / mean answer",
-        "time (TensorRT Edge-LLM: from its averages). Means per sample; total = whole run.",
+        "Analytical FLOPs per sample (means), the same for every framework and precision. Achieved TFLOP/s = (vision + prefill) / mean TTFT,",
+        "and total / mean answer time.",
         "",
-        "| Model | Framework | Task | N | Image / text / output tokens | Vision (GFLOP) | Prefill (GFLOP) | Decode (GFLOP) | Total (GFLOP) | Run total (TFLOP) | TFLOP/s to 1st token | TFLOP/s answer |",
-        "|---|---|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|",
+        "| Model | Framework | Task | Image / text / output tokens | Vision (GFLOP) | Prefill (GFLOP) | Decode (GFLOP) | Total (GFLOP) | Run total (TFLOP) | TFLOP/s to 1st token | TFLOP/s answer |",
+        "|---|---|---|---:|---:|---:|---:|---:|---:|---:|---:|",
     ]
     for row in rows:
         if row.get("flops_total_flops") is None:
             continue
         gflop = " | ".join(f"{row[f'flops_{k}_flops'] / 1e9:.0f}" for k in ("vision", "prefill", "decode", "total"))
         tokens = " / ".join(f"{row[f'flops_{k}_tokens']:.0f}" for k in ("image", "text", "output"))
-        first, answer = flops_rates(row)
-        lines.append(f"| {row['model']} | {row['framework']} | {row['task']} | {row['n']} | {tokens} | {gflop} | {row['flops_total_flops'] * row['n'] / 1e12:.0f} | {first} | {answer} |")
+        first, answer = flops_rates(row) if row["minutes"] is not None else ("-", "-")
+        lines.append(f"| {row['model']} | {row['framework']} | {row['task']} | {tokens} | {gflop} | {row['flops_total_flops'] * row['n'] / 1e12:.0f} | {first} | {answer} |")
+    excluded = excluded_runs(include_smoke)
+    if excluded:
+        lines += ["", "## Excluded runs", "", "Kept as evidence, left out of the tables above.", "", "| Run dir | Marker | Scores | Reason |", "|---|---|---|---|"]
+        lines += [f"| [{run}]({run}) | {marker} | {scores} | {reason} |" for run, marker, scores, reason in excluded]
     os.makedirs(RESULTS, exist_ok=True)
     out = os.path.join(RESULTS, "SUMMARY.md")
     open(out, "w").write("\n".join(lines) + "\n")

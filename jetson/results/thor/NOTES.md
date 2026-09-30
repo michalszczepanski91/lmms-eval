@@ -1,226 +1,109 @@
-# Jetson Thor run notes
+# Jetson Thor: setup and lab notes
 
-Unattended run following `jetson/THOR_PROMPT.md`, started 2026-09-23.
+How the Thor benchmark was run, what went wrong, and how each problem was fixed.
+- The results: [FINDINGS.md](FINDINGS.md) (plain words), [REPORT.md](REPORT.md) (numbers), [SUMMARY.md](SUMMARY.md) (every run).
+- How the measurements work: [methodology](../../docs/methodology.md).
 
-## Environment
-- Board: Jetson AGX Thor, L4T R38.4 (kernel 6.8.12-tegra), 14 CPU cores, 125.8 GB unified memory.
-- **Power mode: 120W (nvpmodel mode 1, the board default), not MAXN.** `sudo -n` needs a password, so
-  `nvpmodel -m 0` was not possible. Orin ran at MAXN. `jetson_clocks` not used (as on Orin).
-- Shared machine: another user (`fabien`) was running a host (non-Docker) lmms-eval job at the start
-  (HF Qwen2.5-VL-7B on GQA, ~9 GB GPU memory). It was not stopped. `run_eval.sh` now waits until no other
-  GPU compute process is listed by `nvidia-smi` before each run and records any in `run_info.txt`.
-  No running Docker containers at the start, so none were stopped.
-- `/opt/hf-cache` exists and is group-writable (`mlusers`): used as `HF_CACHE`.
-- `/opt/models` does not exist and `/opt` is root-owned; without sudo it cannot be created.
-  **`TRT_WORKSPACE` falls back to `$HOME/opt-fallback/models/trt-edgellm`.**
-- `gh` is not installed and the HTTPS remote has no credentials; pushes go over SSH
-  (`git push git@github.com:michalszczepanski91/lmms-eval.git jetson-benchmark`), which works.
-- Disk: 65 GB free on / at the start (93% used), 33 GB after building the images and downloading the models.
-  Edge-LLM ONNX exports are deleted once their engines are built, and engine sets are deleted after their runs
-  when space runs low. (`~/dev/quantize-work`, 35 GB, belongs to other work and was left alone.)
-- **System clock is ~7h13m slow** (NTP active but not synchronized, RTC at 1970; no sudo to fix). Run IDs
-  (timestamps) and commit dates are therefore ~7 h early. apt inside `docker build` rejects the Ubuntu Release
-  files as "not valid yet", hence the new `APT_OPTS` build argument (see below).
-- Orin baseline available in `jetson/results`: full MME only for HF bf16 3B and 7B; vLLM bf16/AWQ and llama.cpp
-  Q8_0 have 8-sample smoke runs only, llama.cpp Q4_K_M none, and the follow-ups were not run on Orin. Thor vs
-  Orin comparisons are therefore complete only for HF.
+## Setup
 
-## Images and versions
-- `lmms-eval-jetson:latest` on `ghcr.io/nvidia-ai-iot/vllm:latest-jetson-thor`: torch 2.10.0 (CUDA, sm_110),
-  transformers 4.57.3, vLLM 0.19.0+cu130, flash-attn 2.8.4, CUDA 13.0. Same torch/transformers/vLLM as Orin;
-  flash-attn is present, so HF runs use `flash_attention_2` as on Orin (no `ATTN=sdpa`). No pins loosened.
-- `llamacpp-jetson:b11135`: llama.cpp b11135, `CUDA_ARCH=110`, built without changes.
-- TensorRT Edge-LLM **v0.10.1** (2026-09-03), the latest release; its support matrix lists Jetson Thor on
-  JetPack 7.0/7.1 with CUDA 13.0 as official. This board: L4T R38.4 (JetPack 7.1), CUDA 13.0, TensorRT 10.13.3.
-  - Runtime image `lmms-eval-trt-edgellm:latest`: `lmms-eval-jetson` + TensorRT 10.13 dev packages from the L4T
-    r38.4 apt repo (`common` + `som`), Edge-LLM built with `EMBEDDED_TARGET=jetson-thor CUDA_CTK_VERSION=13.0
-    ENABLE_CUTE_DSL=ALL`.
-  - Export/quantize image `lmms-eval-trt-export:v0.10.1`: `nvcr.io/nvidia/pytorch:26.05-py3` (torch
-    2.12.0a0 NGC build) + Edge-LLM's `tools` extra (transformers 5.14.1, modelopt 0.45.0), keeping NGC torch.
+**Board**
+- Jetson AGX Thor: L4T R38.4 (JetPack 7.1), CUDA 13.0, TensorRT 10.13.3; 14 CPU cores, 125.8 GB unified memory.
+- **Power mode:** 120 W (the board default) for the runs of 2026-09-23 to 09-25, because `sudo` wasn't available to change it; **MAXN** from 2026-09-28 on (TextVQA and the Edge-LLM re-runs). `jetson_clocks` was never used.
 
-## Script and backend changes
-- `run_eval.sh`: `WAIT_GPU_IDLE` (default 1) waits for other GPU compute processes (via `nvidia-smi`, so host
-  jobs of other users are seen too); `run_info.txt` lists them. Skipped where `nvidia-smi` is unavailable.
-- `jetson/Dockerfile`, `trt_edgellm/Dockerfile`: `APT_OPTS` build argument (default empty), used here as
-  `APT_OPTS="-o Acquire::Check-Date=false"` because of the clock.
-- `run_matrix.sh`: messages use `$RESULTS_DIR` instead of a hard-coded `jetson/results`.
-- `summarize.py`: power is read per board. Orin has `VDD_GPU_SOC`, Thor `VDD_GPU` (GPU only) and
-  `VDD_CPU_SOC_MSS`, so the old `VDD_GPU_SOC` regex gave no power on Thor. Now: "GPU rail" (VDD_GPU_SOC or
-  VDD_GPU) and "module" (sum of GPU, CPU/SoC and 5V system rails, comparable across boards). The header shows
-  the power mode from `run_info.txt` instead of a fixed "MAXN"; the "other" column includes other GPU processes.
-- TensorRT Edge-LLM (untested scripts, rewritten against v0.10.1):
-  - `export.sh`: Edge-LLM 0.8 removed `tensorrt-edgellm-export-llm/-export-visual/-quantize-llm`; now
-    `tensorrt-edgellm-quantize llm` (fp8/nvfp4) + `tensorrt-edgellm-export <ckpt> <out>` (LLM + visual).
-    int4_awq exports Qwen's official AWQ checkpoint (the same one vLLM awq uses) instead of re-quantizing.
-    Checkpoints are read from the shared `$HF_CACHE` (the old script downloaded a second copy into the workspace).
-    Runs in a prebuilt image (`Dockerfile.export`, built on demand) as the calling user.
-  - `Dockerfile.export` (new): Edge-LLM's extras pin `torch==2.13.0`; installed without torch/torchvision so the
-    container's CUDA torch stays. Needs the git submodules (license file of `3rdParty/nlohmannJson`).
-  - `trt_edgellm/Dockerfile`: optional `CUDA_CTK_VERSION` / `ENABLE_CUTE_DSL` build args (required CMake options
-    since Edge-LLM 0.8; empty = not passed, so the Orin v0.6.0 build is unchanged).
-  - Backend `trt_edgellm`: new `encoder_cache_budget_bytes` option. Edge-LLM 0.10 caches vision-encoder outputs
-    across requests by default (256 MiB); `trt_edgellm.sh` passes 0, matching vLLM/llama.cpp with caching off.
-  - `trt_edgellm/Dockerfile`: the Thor vLLM base image carries an unpackaged copy of TensorRT 10.13.2 headers in
-    `/usr/include` (the apt package has 10.13.3 in `/usr/include/aarch64-linux-gnu`). Edge-LLM's FindTensorRT picked
-    `/usr/include`, the resulting `-isystem /usr/include` broke libstdc++'s `#include_next <math.h>` in every CUDA
-    file. Fixed by passing `-DTensorRT_INCLUDE_DIR` from `dpkg -L libnvinfer-headers-dev`.
-  - `trt_edgellm/Dockerfile`: the base image exports `CUDAARCHS=110`, overriding Edge-LLM's toolchain target
-    `110a`; the FP4 kernels then fail in ptxas (`cvt with .e2m1x2 not supported on sm_110`). Unset for the build.
-  - `trt_edgellm/Dockerfile`: `EDGELLM_PLUGIN_PATH` set; otherwise `llm_build`/`llm_inference` look for
-    `build/libNvInfer_edgellm_plugin.so` relative to the working directory ("Plugin not found" for AttentionPlugin).
-  - `export.sh`: int4_awq failed in the visual export (`hidden_size // None`): Qwen's AWQ repos store a vision_config
-    without the fields that have defaults (num_heads, depth, ...). The LLM is now exported from the LLM checkpoint
-    (`--skip-visual`) and the vision encoder always from the base checkpoint (`--skip-llm`). The AWQ repos' 390
-    vision tensors were checked to be bit-identical to the base checkpoint's, so this changes nothing numerically,
-    and every precision uses the same FP16 vision encoder.
-  - `export.sh`: `HF_TOKEN_PATH` points away from `/opt/hf-cache/token` (another user's, unreadable), which the
-    quantizer's calibration download (public `abisee/cnn_dailymail`) otherwise tried to read; `USER`/`LOGNAME` are
-    passed (torch needs a user name for uid 1001 inside the container).
-  - `build_engines.sh`: `REMOVE_ONNX=1` deletes the ONNX export after a successful build (disk).
-  - Build times on Thor (with the other user's job running): export fp16/int4_awq ~2 min; quantize+export fp8/nvfp4
-    ~9 min; engine build ~2 min. 3B engine sets: fp16 7.7 GB, fp8 5.1 GB, int4_awq 3.8 GB, nvfp4 4.0 GB.
-  - Checked with a two-request probe of `llm_inference` (red panda image): output fields `output_text`,
-    `request_idx`, `finish_reason` and profile keys `prefill`, `generation`, `multimodal`, `stages`, `wall_clock`
-    match the backend and `summarize.py`; warmup runs are not counted in the profile.
-  - Backend: the runner exits 1 if any request failed but still writes all responses, with the error text as
-    `output_text` and `finish_reason: "error"`. The backend used `check=True` (one bad sample would abort the run)
-    and would have scored error text as answers. Failed requests are now empty answers, counted in the profile as
-    `failed_requests`. `test/models/test_trt_edgellm.py` covers this and the encoder-cache flag.
+**Software**
+- `lmms-eval-jetson` image, built on `ghcr.io/nvidia-ai-iot/vllm:latest-jetson-thor`: torch 2.10.0, transformers 4.57.3, vLLM 0.19.0, flash-attn 2.8.4. HF uses `flash_attention_2`.
+- `llamacpp-jetson:b11135`: llama.cpp b11135 built for `CUDA_ARCH=110`. It accumulates in bf16, because fp16 overflows (see problem 12).
+- **TensorRT Edge-LLM v0.10.1:**
+  - runtime image `lmms-eval-trt-edgellm`;
+  - export image `lmms-eval-trt-export:v0.10.1` (NGC PyTorch 26.05, transformers 5.14.1, modelopt 0.45.0).
 
-## Log
-- Phase 2, Edge-LLM 3B full MME (fp16/int4_awq/fp8) first attempt: perception ~1450 vs 1547 for HF on Orin. Per
-  category everything matched HF except landmark (64% vs 96%): 128 requests (64 landmark photos x 2 questions)
-  failed in the runner with "Raw image 2848x4288 exceeds the GPU-resize budget of 4096x4096 pixels", so they scored
-  as empty answers (the backend's failed-request handling kept the run alive). Fix: backend option
-  `max_image_side` (4096 in `trt_edgellm.sh`) downscales such images (bicubic, aspect ratio kept) before the runner;
-  every framework resizes them to <= 2048 visual tokens (~1.6 MP) anyway. The first runs are kept as
-  `trt_edgellm-<p>+no-downscale`; the three runs are repeated after the main matrix.
-- Phase 1 (smoke, `mme 8`): the other user's job ended ~19:55 (board clock); all 10 HF/vLLM/llama.cpp combinations
-  finished with sensible Yes/No answers and per-sample timing. Edge-LLM 3B: fp16 and fp8 correct.
-  - `run_eval.sh` fix: lmms-eval writes the trt_edgellm result files directly into the run dir (no model-named
-    subdir), which run_eval.sh did not move into `lmms_eval/`, so summarize.py skipped them.
-  - int4_awq exported from Qwen's AWQ checkpoint (attempt 1, kept as `trt_edgellm-int4_awq+qwen-awq-ckpt`):
-    answers "Hello" to every MME question. Probe: text-only prompts are answered correctly, every image prompt
-    ends immediately with an empty answer (patching `vision_config.dtype` in the engine config changed nothing).
-    Attempt 2: AWQ via `tensorrt-edgellm-quantize` on the base checkpoint (now the default, `AWQ_SOURCE=qwen` for the
-    old path) - correct answers. Note: Edge-LLM int4_awq is therefore not the same AWQ checkpoint as vLLM awq.
-  - nvfp4 (3B, quantized here with `tensorrt-edgellm-quantize --quantization nvfp4`): garbage output even for a
-    text-only prompt ("嚯嚯。 本 1.111..."); fp8 from the same pipeline is fine. Deferred: test the 7B with NVIDIA's
-    pre-quantized `nvidia/Qwen2.5-VL-7B-Instruct-NVFP4` to separate the kernels from the 3B quantization.
-- Disk reached 4.5 GB free after the 3B Edge-LLM engines + calibration data; deleted my calibration dataset cache
-  (2.1 GB, re-downloaded for 7B). Plan: evaluate the Edge-LLM 3B engines early in phase 2 and then delete them.
-- Phase 2 (main MME matrix) stopped at llama.cpp: `llamacpp 3b-q8_0` hung at sample 935/2374 for ~27 h (llama-server
-  stuck on one request, one CPU core at 100%, `run.log` not growing). Killed on 2026-09-25 together with the matrix, so
-  llama.cpp 3B q4_k_m and 7B q8_0 / q4_k_m full MME were never run. The hung run dir
-  (`Qwen2.5-VL-3B-Instruct/mme/llamacpp-q8_0/20260924-015342`) is kept as evidence; it has no results.
-  `THOR_PROMPT.md` now has a watchdog rule (kill a run whose `run.log` hasn't grown for 30 min).
-- FLOPs (2026-09-25): `jetson/flops.py` / `compute_flops.sh` compute analytical FLOPs per sample (vision encoder,
-  LLM prefill, LLM decode) into `flops.json`; `run_eval.sh` runs it after every eval, older runs were backfilled.
-  Validated against torch's `FlopCounterMode` on a scaled-down random Qwen2.5-VL built from the real transformers
-  code (eager attention): vision exact on 4 image shapes; LLM exact except that `flops.py` counts causal attention
-  as L(L+1)/2 (what FlashAttention-style kernels compute), while eager attention computes the full L x L.
-- Phase 5 GQA (2026-09-25, testdev-balanced, 12,578 questions): HF bf16 3B/7B, vLLM bf16/AWQ 3B/7B, Edge-LLM 3B
-  fp16/fp8/int4_awq. llama.cpp left out until its hang is understood.
-  - **HF 7B GQA timings are not valid**: 427 min, ~1.9 s per sample (TTFT ~0.94 s) from start to end, against
-    0.28 s TTFT on MME with 2.4x more image tokens and 83-87 min for vLLM 7B GQA. GPU rail only ~11 W, i.e. the GPU
-    was mostly idle. tegrastats shows one CPU core pinned at 100% @ 2.6 GHz by something outside the run during the
-    GQA runs (also seen during the llama.cpp hang, not during MME); gone by 2026-09-28, cause unknown. Accuracy is
-    unaffected (0.6088); the run is to be repeated.
-- Result size (2026-09-28): `jetson/slim_run.py` (run by `run_eval.sh` after every run) strips per-request progress
-  bars and Edge-LLM profile-switch lines from `run.log`, gzips `tegrastats.log` and `*_samples_*.jsonl`, and moves
-  per-sample FLOPs to `flops_samples.jsonl.gz`. results-thor went from 218 MB to 16 MB; SUMMARY.md is unchanged.
-  Thor `run.log` / `tegrastats.log` had never been committed (`.gitignore` only re-included `results/**/*.log`);
-  fixed, so they are committed from now on.
-- Reorganization (2026-09-28): `jetson/` split into `scripts/`, `docker/`, `docs/`, `models/<model>/` (Qwen2.5-VL repos,
-  image range, FLOPs) and `experiments/<model>/`; results moved to `jetson/results/<board>/` (this file:
-  `results/thor/`, Orin: `results/orin/`), picked from the board automatically. Paths above are the old ones.
-  Orchestration logs moved to `logs/`.
-- Merged the Orin session's fix (2026-09-28, commit fc0079af from 2026-09-24): llama.cpp now accumulates in bf16
-  (`GGML_CUDA_CUBLAS_COMPUTE_TYPE=bf16`) because fp16 overflows on one MME image for 3B and every later answer becomes
-  `????`; vLLM 7B bf16 budget 21.0 GB. The Thor llama.cpp 3B q8_0 MME run that hung (started before this fix, stuck at
-  935/2374) may be the same problem showing differently; re-run it with the fix and check for `??` answers.
+**Edge-LLM 3B engines** in `/opt/models/trt-edgellm`
+- Precisions:
+  - fp16;
+  - fp8, quantized with Edge-LLM's quantizer;
+  - int4_awq: Edge-LLM's own AWQ of the base checkpoint, **not** the Qwen AWQ checkpoint that vLLM uses.
+- Limits: LLM input 2,560 tokens, KV cache 3,072, vision encoder 256–2,048 image tokens.
+- Vision encoder: fp16, scaled by `VISION_SCALE=8` (problem 9).
+- Sizes: fp16 7.7 GB, fp8 5.1 GB, int4_awq 3.8 GB.
 
-## TextVQA (started 2026-09-28)
+**Paths**
+- HF cache: `/opt/hf-cache`.
+- Engines:
+  - `/opt/models/trt-edgellm` for the current ones;
+  - `/opt/models/trt-edgellm/old-unscaled-vision-20260928` for the broken ones;
+  - `~/trt-edgellm-vscale8`, an identical copy used by the TextVQA re-runs.
 
-Prompt: `jetson/docs/agent-prompt-textvqa.md`. Task `textvqa_val`: 5,000 questions on 3,166 images, VQA accuracy
-(`exact_match`), prompt "Answer the question using a single word or phrase."
+**Shared machine**
+- Other people's GPU jobs run here: another user's HF job on 2026-09-23, and your own `dsvlm` experiments on 09-29 and 09-30.
+- `run_eval.sh` waits until no other GPU process is running and records any other containers in `run_info.txt`.
 
-### Setup
-- **Power mode: MAXN** (`nvpmodel -q`: MAXN). The earlier Thor MME/GQA runs were at 120 W, so compare their timings only
-  with that caveat. `jetson_clocks` not used.
-- Board idle at the start: no containers, no GPU processes; 758 GB free on `/`.
-- `/opt/models` is now group-writable (`mlusers`): `TRT_WORKSPACE=/opt/models/trt-edgellm` (no more `$HOME` fallback).
-  The earlier Edge-LLM engines and the export image were gone; rebuilt with the new
-  `jetson/frameworks/trt_edgellm/ensure_engines.sh 3b fp16 fp8 int4_awq` (export image build + 3 exports/builds:
-  21:16-21:44, log `logs/textvqa_engines.log`). int4_awq = Edge-LLM's own AWQ of the base checkpoint, as before.
-- Dataset `lmms-lab-encoder/textvqa` downloaded with `download_assets.sh` (all splits, incl. train).
-- Versions as above: transformers 4.57.3, vLLM 0.19.0, flash-attn 2.8.4, llama.cpp b11135, TensorRT Edge-LLM 0.10.1
-  (TensorRT 10.13.3). Edge-LLM 3B engines: fp16, fp8 (Edge-LLM quantizer), int4_awq (Edge-LLM AWQ of the base
-  checkpoint); LLM max input 2,560, KV cache 3,072; vision encoder 256-2048 image tokens, fp16 (scaled, see Log).
-- `uv`/`ruff`/`pytest` are not installed on the host or in the image; used a standalone `uv` from the session scratch dir.
-- lmms-eval result file names inside the container carry a timestamp 6 h ahead of the board's local time
-  (e.g. `20260929_034639_results.json` for a run at 21:46 CEST); run ids (host clock) are correct.
+**Git**
+- The branch lives only on your fork. `origin` fetches over HTTPS and pushes over SSH, using the deploy key `~/.ssh/id_ed25519_github`, which has write access to this repository only.
 
-### New measurements (commit "feat(jetson): TextVQA experiment, per-stage latency breakdown, stall watchdog")
-- TTFT split into vision encoder and LLM prefill: HF via CUDA events (`stage_timing=True`), llama.cpp via llama-server
-  log verbosity 4 (checked: ~25 lines per request, TTFT unchanged vs verbosity 3), Edge-LLM via its stage profile.
-  vLLM: TTFT only. New SUMMARY.md table "Latency breakdown and efficiency" (also p99, throughput, energy per sample).
-- `run_matrix.sh`: 30-min stall watchdog (tested with a fake hanging run) and `check_run.py` (flags the Orin
-  `????` run correctly).
+## Problems and fixes
 
-### Log
-- Smoke test (21:46-22:02, `logs/textvqa_smoke.log`): all 13 combinations finished, sensible answers, no `????`/empty
-  answers; HF `vision_seconds`, llama.cpp server-log stages and Edge-LLM stages present; FLOPs identical across
-  frameworks (same images and prompts). First look at the TTFT split (3B, 8 samples, ~940 image tokens): vision encoder
-  ~270 ms HF, ~600 ms llama.cpp, ~80 ms Edge-LLM.
-- Full matrix started 22:02 (`SKIP_ENGINES=1 jetson/experiments/qwen2_5_vl/textvqa.sh`, log `logs/textvqa.log`).
-- Full matrix finished 2026-09-29 18:18 (all 13 runs 5,000 samples, no `????`, no failed requests). HF/vLLM/llama.cpp
-  answers clean (0 empty). HF bf16: 78.86 (3B, Qwen reports 79.3) and 82.96 (7B, Qwen 84.9); no image was capped by
-  the 2048-token limit (max 2,028), so no prompt/image-size problem was looked for further.
-- **Edge-LLM 3B fp16 / fp8 / int4_awq: 1,006 / 1,011 / 1,005 empty answers** (the same questions, 980 in all three).
-  Probing `llm_inference` directly with `--numLogprobs 3`: NaN logits from the first token (every top-3 = -FLT_MAX at
-  token 151935, which decodes to ""), generation runs to max length. HF with an fp16 vision tower: the ViT residual
-  stream reaches 46-60k on these 1024x768 photos and overflows at block 31 on some; fp32 reaches ~76k. Edge-LLM exports
-  the Qwen2.5-VL vision encoder in fp16 only (`tensorrt-edgellm-export --dtype bfloat16` still writes FLOAT16 ONNX
-  weights and I/O). Also seen: after a NaN request, later requests in the same runner process can fail too (doc 0
-  answers alone but not after docs 14-101) - an Edge-LLM state bug, not fixed here.
-  - Fix: `jetson/frameworks/trt_edgellm/scale_vision.py` (called by `export.sh`, `VISION_SCALE`, default 8) divides the
-    patch embedding and every block's `attn.proj` / `mlp.down_proj` (weight + bias) by 8 before the visual export. The
-    blocks read the residual stream only through RMSNorm, so the encoder output is unchanged: vs fp32 the scaled fp16
-    encoder is within 2-4.5% (relative L2 of the embeddings; unscaled fp16 on non-overflowing images: the same; bf16:
-    11-27%). Peak residual ~9.4k. Failing samples answer correctly in all three precisions afterwards.
-  - Speed: neutral. On the same 40 images, fresh builds of the unscaled encoder and of encoders scaled by 2 / 4 / 8 all
-    take 75.5-76.7 ms (vision median); the shared engine built 2026-09-28 takes 68-70 ms. Engine build-to-build
-    variance, not the fix.
-  - Replacing the shared engines in `/opt/models/trt-edgellm` was blocked by the session's permission rules (shared
-    dir). The fixed engines were built in `~/trt-edgellm-vscale8` (log `logs/textvqa_engines_vscale8.log`,
-    18:02-18:18); the shared engines still have the bug. Leftover from the bf16 attempt:
-    `/opt/models/trt-edgellm/visual-bf16-test` (not deleted, same reason).
-  - `check_run.py`: runs with >= 2% empty answers are now marked INVALID (test `test/tools/test_jetson_check_run.py`);
-    the three broken runs are marked and kept.
-  - Re-runs 21:27-23:33 with `TRT_WORKSPACE=~/trt-edgellm-vscale8` (log `logs/textvqa_trt_rerun.log`): 0 empty answers;
-    fp16 79.45, fp8 79.59, int4_awq 73.75 (Edge-LLM's own AWQ: -5.7 vs fp16; on GQA it was -2.5).
-  - Lost ~3 h: the wait loop around the engine build used `pgrep -f ensure_engines.sh`, which matched its own command
-    line. Wait on log contents instead.
-- During the Edge-LLM fp8 re-run the user's `dsvlm` job (`~/dev/distilation-edge-ai`, `scripts/run.sh --gpu`) started
-  (22:13) and waited for an idle GPU the whole time; its container is listed in that run's `run_info.txt`. No GPU use,
-  and the fp8 stage times match the other two runs. The board base RAM was 59 GB at the start of the Edge-LLM fp16
-  re-run (memory from the engine builds / probes just before), falling to 33 GB by int4_awq: the tegrastats RAM of the
-  three re-runs is not comparable; the report uses the runner's peak GPU allocation instead.
-- The Edge-LLM backend writes all 5,000 images as PNG before the runner starts: 19.4 min per run (~230 ms/sample, the
-  same as vLLM's / llama.cpp's PNG+base64 "preprocess"). Runner alone: 19.7 / 14.8 / 22.1 min (fp16 / fp8 / int4_awq).
-- Tests (lmms-eval-jetson image, pytest from a `--target` dir): `test/tools/test_jetson_stage_timing.py`,
-  `test/eval/test_token_counts.py`, `test/models/test_trt_edgellm.py`, `test/tools/test_jetson_check_run.py`: 37 passed.
-- Report: `TEXTVQA_REPORT.md`.
-- 2026-09-30, at the user's request: the shared engines in `/opt/models/trt-edgellm` (3B fp16/fp8/int4_awq) were
-  replaced by the fixed ones from `~/trt-edgellm-vscale8` (sha256-identical, 9 files each); the old ones moved to
-  `/opt/models/trt-edgellm/old-unscaled-vision-20260928`. The user deleted `visual-bf16-test`.
-- Edge-LLM 3B MME + GQA re-runs with the fixed engines (MAXN; log `logs/edgellm_mme_gqa_rerun.log`). A queue script
-  waited until the user's dsvlm jobs were gone and the GPU had been idle for 10 min in a row (dsvlm ran until 16:03;
-  start 16:14, end 19:45). No other container or GPU process during any run; 0 empty / `????` / failed answers.
-  - MME perception / cognition: fp16 1526.5 / 614.3, fp8 1522.4 / 622.5, int4_awq 1529.7 / 565.7 (old no-downscale
-    runs: 1448-1459 perception; landmark now 95.8%, HF 96.5%). The rest of the gap to HF (1548.3) is 1-3 questions in
-    a few categories; vLLM bf16 is at 1540.6.
-  - GQA: 60.00 / 60.18 / 57.55 (old: 60.07 / 60.11 / 57.56). TTFT (avg) 69 / 56 / 97 ms at MAXN vs 74 / 59 / 103 at
-    120 W.
-  - The old Edge-LLM MME `+no-downscale` and GQA `20260925-*` runs stay in the results; SUMMARY.md lists both.
+Each problem is described once, grouped by component.
+
+### TensorRT Edge-LLM
+
+1. **Building v0.10.1 on Thor.**
+   - The old export commands were removed in Edge-LLM 0.8, so `export.sh` now uses `tensorrt-edgellm-quantize` + `tensorrt-edgellm-export`.
+   - The base image's stray TensorRT 10.13.2 headers broke CUDA compilation; fixed by passing `-DTensorRT_INCLUDE_DIR`.
+   - `CUDAARCHS=110` broke the FP4 kernels; unset for the build.
+   - `EDGELLM_PLUGIN_PATH` must be set.
+   - `Dockerfile.export` keeps NGC's torch.
+   - The quantizer needs `USER` set and a readable `HF_TOKEN_PATH`.
+   - Typical times: export 2 min (fp16) or 9 min (with quantization), engine build 2 min.
+2. **Qwen's AWQ checkpoints can't be exported directly.**
+   - Their `vision_config` lacks default fields, so the visual export fails. The vision encoder is now always exported from the base checkpoint; its weights are bit-identical anyway.
+   - Even so, an engine built from Qwen's AWQ LLM answered every image prompt with an empty answer. The default is therefore Edge-LLM's own AWQ; `AWQ_SOURCE=qwen` restores the old path.
+3. **nvfp4 is broken (open).** The 3B quantized with Edge-LLM's nvfp4 produces garbage even for text-only prompts; fp8 from the same pipeline is fine. Not investigated further.
+4. **The runner exits 1 if any request fails** and writes the error message as the answer. The backend now turns failed requests into empty answers and counts them (`test/models/test_trt_edgellm.py`).
+5. **Cross-request encoder cache.** Edge-LLM 0.10 caches vision-encoder outputs by default (256 MiB). The backend passes `encoder_cache_budget_bytes=0`, matching vLLM and llama.cpp with caching off.
+6. **Images above 4096 px are rejected** ("exceeds the GPU-resize budget"). This hit 128 MME landmark questions, so perception scored about 1,450 instead of about 1,526. The backend option `max_image_side=4096` now downscales such images first. The old runs are marked `SUPERSEDED`.
+7. **Result files were written to the wrong place** (the run dir root instead of `lmms_eval/`). Fixed in `run_eval.sh`.
+8. **An 8% speed difference between builds.** Rebuilding the same vision engine on different days gave 68–70 ms and 75.5–76.7 ms on the same 40 images. Edge-LLM stage times are therefore good to about ±8%.
+9. **The fp16 vision encoder overflows, causing empty answers.**
+   - **Symptom:** about 1,000 of 5,000 TextVQA answers were empty for fp16, fp8 and int4_awq alike, on the same questions. GQA and MME weren't affected.
+   - **Cause:** the logits are NaN from the first token, and the NaN token (id 151935) decodes to "". Qwen2.5-VL's ViT residual stream goes beyond fp16's range of 65,504: fp32 reaches about 76,000 on 1024×768 photos. Edge-LLM builds this encoder only in fp16; `--dtype bfloat16` is ignored.
+   - **Fix:** `scale_vision.py`, called by `export.sh` (`VISION_SCALE`, default 8), divides the patch embedding and each block's `attn.proj` / `mlp.down_proj` by 8. Each block reads the residual stream through RMSNorm, so the output is unchanged.
+   - **Accuracy:** compared with fp32, the scaled fp16 encoder is off by 2–4.5%, against 11–27% for bf16.
+   - **Speed:** unchanged (see problem 8).
+   - **Old runs:** the three broken runs are marked `INVALID`.
+10. **After one NaN request, later requests in the same runner process can fail too** (open, an Edge-LLM bug). With problem 9 fixed there are no NaNs left, so it no longer matters here.
+
+### llama.cpp
+
+11. **The 3B MME run hung** at sample 935 of 2,374 for about 27 h, with llama-server stuck on one request. Since then, `run_matrix.sh` has a 30-minute stall watchdog. The run is marked `STALLED`. llama.cpp was left out of MME and GQA on Thor.
+12. **fp16 overflow gives `????` answers** (found on Orin): one MME image overflows the 3B, and every later answer becomes `????`. llama.cpp now accumulates in bf16 (`GGML_CUDA_CUBLAS_COMPUTE_TYPE=bf16`), and `check_run.py` marks such runs `INVALID`. This may also explain problem 11.
+
+### Measurements and infrastructure
+
+13. **Other GPU jobs.** `run_eval.sh` waits for an idle GPU (`WAIT_GPU_IDLE`). The 2026-09-30 re-runs also waited until the GPU had been idle for 10 minutes.
+14. **A foreign CPU load.** During the 2026-09-25 GQA runs, something outside the benchmark pinned one CPU core at 100%. HF 7B GQA ran 3× slower with the GPU mostly idle. It is marked `TIMING_INVALID`; its score is still valid. The load was gone by 2026-09-28.
+15. **Memory left over from builds.** Engine builds and tests just before the Edge-LLM TextVQA re-runs left about 35 GB of board memory in use, so those runs' tegrastats RAM figures aren't comparable. REPORT.md uses the runner's peak GPU memory instead.
+16. **Power rails.** Thor reports `VDD_GPU` (GPU only), where Orin reports `VDD_GPU_SOC`. `summarize.py` reads both and also reports a "module" total that is comparable across boards.
+17. **Clock.** In the first session the system clock was 7 h 13 min slow (no sudo to fix it). Run IDs from 2026-09-23 to 09-25 are therefore about 7 h early, and `docker build` needed `APT_OPTS="-o Acquire::Check-Date=false"`. Result file names inside the container carry a timestamp 6 h ahead of local time.
+18. **Result size.** `slim_run.py` strips progress bars and gzips logs and per-sample files, which shrank the Thor results from 218 MB to 16 MB.
+19. **Catching silent failures.**
+    - `check_run.py` marks a run `INVALID` when at least 1% of its answers are `????` or at least 2% are empty.
+    - In `summarize.py`, the markers `SUPERSEDED` (replaced by a later run) and `TIMING_INVALID` (keep the score, drop the timings) leave such runs out of the main tables and list them with their reason.
+20. **Agent pitfall.** A wait loop using `pgrep -f <name>` matched its own command line and never ended, which cost about 3 h. Wait on log contents or on a PID instead.
+
+## Timeline
+
+| Date | What |
+|---|---|
+| 2026-09-23 | Setup, images and Edge-LLM 3B engines built; smoke tests; full MME for HF, vLLM and Edge-LLM (120 W). |
+| 2026-09-24 | llama.cpp 3B MME hangs (problem 11). |
+| 2026-09-25 | Matrix stopped; analytical FLOPs added; full GQA for HF, vLLM and Edge-LLM (120 W). |
+| 2026-09-28 | Results slimmed; `jetson/` reorganized; Orin fixes merged. MAXN from now on. Engines rebuilt; TextVQA smoke test 21:46–22:02; full matrix started 22:02. |
+| 2026-09-29 | Matrix done at 17:45 (13 runs × 5,000). Edge-LLM empty answers diagnosed and fixed (problem 9). Engines rebuilt 17:58–18:18; Edge-LLM TextVQA re-runs 21:27–23:31. |
+| 2026-09-30 | Shared engines replaced by the fixed ones (sha256-identical). Edge-LLM MME and GQA re-run with them, 16:14–19:45, after the dsvlm jobs had finished. Branch pushed to the fork. |
+
+## Open items
+
+- **Not run on Thor:** llama.cpp MME and GQA; Edge-LLM 7B; HF 7B GQA timing (problem 14).
+- **Not solved:** nvfp4 (problem 3); Edge-LLM's NaN state bug (problem 10); an engine built from Qwen's AWQ checkpoint (problem 2).
+- **Not explained:** the 7B TextVQA gap to Qwen's published number (83.0 vs 84.9).
+- **Optional disk cleanup (17 GB each):** `/opt/models/trt-edgellm/old-unscaled-vision-20260928` and `~/trt-edgellm-vscale8`.

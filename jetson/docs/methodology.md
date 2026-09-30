@@ -12,7 +12,7 @@ How the Jetson benchmarks measure accuracy, speed, memory, power and compute, an
 | Cross-request caching off (vLLM prefix + multimodal cache, llama.cpp prompt cache, Edge-LLM encoder cache) | MME asks two questions per image, so a cache would skip the vision encoder and most of the prefill for every second sample, which the HF reference cannot do |
 | Offline runs from a shared, pre-downloaded HF cache | No download time in the measurements; identical checkpoints |
 | No other GPU process during a run | `run_eval.sh` waits for an idle GPU and records other containers and GPU processes in `run_info.txt` |
-| Power mode recorded, `jetson_clocks` not used | Orin ran at MAXN, Thor at its default 120 W (no sudo); compare like with like |
+| Power mode recorded per run, `jetson_clocks` not used | Orin ran at MAXN; Thor at 120 W (2026-09-23 to 09-25) and MAXN (from 09-28). SUMMARY.md shows the mode per run; compare like with like |
 
 Remaining differences are properties of the frameworks and are reported, not removed: quantization (AWQ, GGUF Q4/Q8, FP8), image transport (PNG/base64 over HTTP for llama.cpp and vLLM's default path; `+pil` / `+png1` variants measure that overhead), and Edge-LLM downscaling images with a side above 4096 px before its runner (`max_image_side`; the other frameworks shrink such images to ≤ 2048 visual tokens anyway).
 
@@ -58,7 +58,8 @@ Each run writes `results/<board>/<model>/<tasks>/<framework>-<precision>[+tag]/<
 | `run_info.txt` | board, L4T, power mode, git commit, image IDs, other containers / GPU processes, exact lmms-eval command, versions |
 | `run.log` | console output, without per-request progress bars (see `slim_run.py`) |
 | `server.log.gz` / `trt_profile.json` | llama-server log (verbosity 4) / Edge-LLM runner profile |
-| `INVALID` / `STALLED` | run excluded from the summary: `????` answers (`check_run.py`), or stopped by the `run_matrix.sh` watchdog |
+| `INVALID` / `STALLED` / `SUPERSEDED` | run left out of the summary tables and listed under "Excluded runs" with the file's first line as the reason: bad answers (`check_run.py`: `????` or empty), stopped by the `run_matrix.sh` watchdog, or replaced by a later run |
+| `TIMING_INVALID` | scores kept, timing / memory / power dropped from the summary (e.g. a foreign CPU load during the run) |
 | `tegrastats.log.gz` | 1 Hz RAM, CPU, GPU, temperatures, power rails |
 | `flops.json`, `flops_samples.jsonl.gz`, `flops.log` | FLOPs summary per task / per sample / log |
 | `lmms_eval/*_results.json` | scores and the full lmms-eval config |
