@@ -2,10 +2,10 @@
 # Run several framework/model combinations one after another, then refresh results/SUMMARY.md.
 # A failed run is reported and skipped; the rest continue.
 #
-# Usage: jetson/scripts/run_matrix.sh [tasks=mme] [limit] [-- <framework> <size-precision> ...]
-#   jetson/scripts/run_matrix.sh mme                     # default matrix below
-#   jetson/scripts/run_matrix.sh mme 8                   # smoke test of every combination
-#   jetson/scripts/run_matrix.sh mme "" -- vllm 3b llamacpp 3b-q8_0
+# Usage: jetson/scripts/run_matrix.sh <tasks> [limit] -- <framework> <size-precision> [<framework> <size-precision> ...]
+#   jetson/scripts/run_matrix.sh mme -- vllm 3b llamacpp 3b-q8_0
+#   jetson/scripts/run_matrix.sh mme 8 -- hf 3b vllm 3b             # smoke test, 8 samples each
+# The experiment scripts (jetson/experiments/<model>/*.sh) call it with their full matrix.
 # After each run, check_run.py scans the answers (marks runs with "????" or many empty answers INVALID).
 # Watchdog: a run whose run.log has not grown for STALL_MINUTES (default 30; 0 = off) is stopped and gets a STALLED
 # file (a llama.cpp MME run on Thor once hung on one request for 27 h); the matrix goes on with the next run.
@@ -13,26 +13,20 @@ set -uo pipefail
 
 REPO=$(cd "$(dirname "$0")/../.." && pwd)
 source "$REPO/jetson/frameworks/common.sh"  # RESULTS_DIR
-TASKS=${1:-mme}
-LIMIT=${2:-}
-shift $(($# < 2 ? $# : 2))
+USAGE="usage: $0 <tasks> [limit] -- <framework> <size-precision> [...]"
+TASKS=${1:?$USAGE}
+shift
+LIMIT=
+if [ $# -gt 0 ] && [ "$1" != "--" ]; then LIMIT=$1; shift; fi
 [ "${1:-}" = "--" ] && shift
-
-if [ $# -gt 0 ]; then
-  MATRIX=("$@")
-else
-  MATRIX=(
-    hf 3b          hf 7b
-    vllm 3b        vllm 3b-awq        vllm 7b        vllm 7b-awq
-    llamacpp 3b-q8_0 llamacpp 3b-q4_k_m llamacpp 7b-q8_0 llamacpp 7b-q4_k_m
-  )
-fi
+MATRIX=("$@")
+[ ${#MATRIX[@]} -gt 0 ] && [ $((${#MATRIX[@]} % 2)) -eq 0 ] || { echo "$USAGE" >&2; exit 1; }
 
 STALL_MINUTES=${STALL_MINUTES:-30}
 
 # run_eval.sh in its own process group; returns its exit status, or 124 if the watchdog stopped it.
 run_one() {
-  local start marker log pid status
+  local marker log pid status
   marker=$(mktemp)
   setsid "$REPO/jetson/scripts/run_eval.sh" "$@" >/dev/null 2>&1 &
   pid=$!

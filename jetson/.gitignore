@@ -1,2 +1,4 @@
-# Run logs are part of the benchmark evidence (the repo root ignores *.log).
+# The repo root ignores scripts/, logs/ and *.log; here they are part of the benchmark (code and run evidence).
+!scripts/
+!results/*/logs/
 !results/**/*.log

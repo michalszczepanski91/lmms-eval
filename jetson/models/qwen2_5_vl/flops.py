@@ -27,6 +27,7 @@ import re
 import sys
 from types import SimpleNamespace
 
+# Keep in sync with IMAGE_MIN_TOKENS / IMAGE_MAX_TOKENS in model.sh (256 and 2048 tokens of 28x28 pixels).
 MIN_PIXELS, MAX_PIXELS = 200704, 1605632
 
 

@@ -1,5 +1,5 @@
 # Hugging Face transformers (PyTorch, in process) - the reference implementation.
-# Sourced by run_eval.sh / download_assets.sh; see run_eval.sh for the variables available here.
+# Sourced by run_eval.sh / download_assets.sh; the framework interface is described in frameworks/common.sh.
 FW_PRECISIONS="bf16"
 
 fw_assets() {

@@ -4,8 +4,8 @@ Edge-LLM ships a C++ runner (``llm_inference``) that reads a JSON file of chat r
 so this backend writes every request of a ``generate_until`` call into one input file,
 runs the binary once (engines load once) and maps responses back by ``request_idx``.
 
-Latency is only available as the runner's aggregate profile (vision encoder, prefill,
-per-token decode), not per sample; pass ``profile_output`` to keep it.
+Latency comes from the runner's profile (per-stage GPU-time distributions for the vision
+encoder, prefill and decode, plus averages), not per sample; pass ``profile_output`` to keep it.
 
 ``max_image_side`` downscales larger images (aspect ratio kept) before they reach the runner: Edge-LLM
 rejects raw images with a side above its GPU-resize budget (4096 px in v0.10), e.g. MME's landmark photos.

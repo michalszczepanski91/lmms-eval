@@ -36,7 +36,7 @@ jetson/scripts/run_eval.sh vllm 3b-awq mme 8      # smoke test on 8 samples firs
 jetson/scripts/run_eval.sh vllm 3b-awq mme        # full MME
 
 # 4. Many runs in a row (SUMMARY.md is refreshed at the end), or a whole experiment
-jetson/scripts/run_matrix.sh mme "" -- hf 3b vllm 3b-awq llamacpp 3b-q8_0
+jetson/scripts/run_matrix.sh mme -- hf 3b vllm 3b-awq llamacpp 3b-q8_0
 jetson/experiments/qwen2_5_vl/gqa.sh              # SMOKE=1 for 8 samples per run
 python3 jetson/scripts/summarize.py               # rebuild SUMMARY.md at any time
 ```
