@@ -13,50 +13,134 @@ We also compared **precisions**. A model can store its numbers in full size (bf1
 
 We tested on three benchmarks:
 
-- **TextVQA**: 5,000 questions about text in photos (signs, labels, screens).
-- **MME**: 2,374 yes/no questions.
-- **GQA**: 12,578 short questions about objects in scenes.
+| Benchmark | Questions (images) | Image size, avg (min–max) | Image tokens, avg (min–max) | Question tokens, avg (min–max) | Reference answer: words / tokens, avg (min–max) | Content and scoring |
+|---|---:|---|---:|---:|---:|---|
+| TextVQA | 5,000 (3,166) | 0.8 MP, ~950×820 px (0.26–15.9 MP) | 977 (333–2,028) | 18 (13–49) | 1.6 (1–41) / 3.0 (1–53) | text in photos; vs 10 human answers, full score if ≥ 3 match |
+| MME | 2,374 (1,187) | 1.9 MP (0.01–33 MP) | 868 (256–2,048) | 22 (15–41) | 1 / 1 ("Yes" or "No") | yes/no; exact match |
+| GQA | 12,578 (398) | 0.3 MP, ~580×480 px (0.10–0.41 MP) | 358 (260–529) | 20 (14–36) | 1.1 (1–3) / 1.3 (1–4) | objects in scenes; exact match |
+
+- **Image tokens:** one per 28×28 px, after resizing the image into 256–2,048 tokens.
+- **Reference answer:** the ground truth. 72% of TextVQA's most common human answers are one word; the rest are phrases, numbers or names.
 
 For every run we measured accuracy, speed, energy, memory and compute. All frameworks got the same images and the same questions, and ran one question at a time with nothing else on the GPU.
 
 ## What we found
 
-### 1. Best choices
+### 1. What we measured
 
-| Model | Use | Accuracy (TextVQA) | Time to first word | Energy per question |
-|---|---|---:|---:|---:|
-| 3B | **Edge-LLM fp8** | 79.6% | ~0.13 s | 23 J |
-| 7B | **vLLM bf16** | 83.8% | ~0.46 s | 56 J |
-| (3B, for comparison) | HF bf16 | 78.9% | ~0.40 s | 39 J |
-| (3B, for comparison) | llama.cpp Q8_0 | 79.9% | ~1.1 s | 72 J |
+Full runs at MAXN (the uncapped power mode; 120 W is the board's default capped mode). T = TextVQA, M = MME, G = GQA.
 
-- **Edge-LLM is about 3× faster** than HF and vLLM and uses about 40% less energy, with the same accuracy.
-- **The 7B is about 4.5 points more accurate** than the 3B, for about 0.1 s more per question.
-- **llama.cpp is the slowest:** 3–8× slower than the others and about twice the energy.
+| Weights | Model | HF | vLLM | llama.cpp | Edge-LLM |
+|---|---|---|---|---|---|
+| 16-bit | 3B | bf16: T (M, G at 120 W) | bf16: T (M, G at 120 W) | f16: T | fp16: T M G |
+| 16-bit | 7B | bf16: T (M, G at 120 W) | bf16: T (M, G at 120 W) | f16: T | – |
+| 8-bit int | 3B, 7B | – | – | Q8_0: T | – |
+| 8-bit fp8 | 3B | – | – | not possible (no fp8 in GGUF) | fp8: T M G |
+| 8-bit fp8 | 7B | – | – | not possible | – |
+| 4-bit | 3B | – | Qwen AWQ: T (M, G at 120 W) | Q4_K_M: T | int4_awq (own): T M G |
+| 4-bit | 7B | – | Qwen AWQ: T (M, G at 120 W) | Q4_K_M: T | – |
 
-### 2. All frameworks give the same accuracy
+Only TextVQA has the same configuration in several frameworks: 16-bit in all four for the 3B and in three for the 7B (no Edge-LLM); sections 2 and 3 use it. The gaps can be filled: 8-bit checkpoints exist for HF and vLLM (RedHatAI int8 and fp8, NVIDIA fp8 for the 7B), and Edge-LLM 7B needs its engines built.
 
-With full-size weights, every framework scores within about 1 point of the others. The small differences come from close calls about when to stop answering ("Stop" vs "Stop Global Warming"), not from one framework being better. Our 3B score matches Qwen's published number (78.9% vs 79.3%); our 7B is 1.9 points below it (83.0% vs 84.9%).
+### 2. Frameworks on the same configuration
 
-### 3. Compression: the method matters more than the number of bits
+Qwen2.5-VL-3B, the same 5,000 TextVQA questions, MAXN.
 
-| Compression | Accuracy change |
-|---|---|
-| **8-bit fp8** (Edge-LLM) | none, on every benchmark |
-| **4-bit AWQ from Qwen** (vLLM) | small: under 1 point |
-| **llama.cpp 4-bit vs 8-bit** | small: 0.2–1.1 points |
-| **Edge-LLM's own 4-bit AWQ** | **large: −5.7 on TextVQA, −2.5 on GQA, −49 on MME reasoning** |
+- **TTFT** (time to first token): model call → first answer token. Median; Edge-LLM: mean GPU time.
+- **Energy per question:** average board power × run time ÷ questions (includes image preparation and gaps).
 
-Edge-LLM's own 4-bit version was tuned on plain news text only, so it gets worse at reading text in images and at reasoning. **fp8 is free**; if you want 4-bit, use Qwen's official AWQ model.
+**16-bit weights and activations:**
 
-### 4. Where the time goes
+| Framework | Weights | Accuracy (Δ vs HF) | TTFT | Decode per token | Questions/s | Avg board power | Energy per question |
+|---|---|---:|---:|---:|---:|---:|---:|
+| HF | bf16 | 78.9 (–) | 0.40 s | 53 ms | 1.72 | 67 W | 39 J |
+| vLLM | bf16 | 79.4 (+0.5 ± 0.2) | 0.36 s | 27 ms | 1.43 | 52 W | 37 J |
+| llama.cpp | f16 | 79.8 (+1.0 ± 0.4) | 1.06 s | 28 ms | 0.69 | 53 W | 77 J |
+| Edge-LLM | fp16 | 79.5 (+0.6 ± 0.2) | ~0.16 s | 27 ms | 2.04 | 59 W | 29 J |
 
-- **Most of the waiting is the image, not the answer.** Before answering, the model turns the photo into about 1,000 "image tokens" with its vision encoder. That step takes 55–70% of the time to the first word. The answers are only 2–4 words, so writing them is quick.
-- **Edge-LLM's vision encoder is 3× faster than HF's and 7× faster than llama.cpp's.** That is where its lead comes from.
-- **4-bit makes the first word slower, not faster.** 4-bit only speeds up writing the answer word by word; reading a long input (the image) gets slower. **Only fp8 speeds up reading the input.**
-- **Hidden cost: preparing the image.** vLLM, llama.cpp and our Edge-LLM setup spend about 0.24 s per question converting each photo to PNG before the model sees it, about as long as the model itself. HF passes the image directly (0.03 s).
+**4-bit weights, 16-bit activations** (same bits, different quantizers; HF not run):
 
-### 5. A bug we found and fixed
+| Framework | Weights | Accuracy (Δ vs HF bf16) | TTFT | Decode per token | Questions/s | Avg board power | Energy per question |
+|---|---|---:|---:|---:|---:|---:|---:|
+| vLLM | AWQ (by Qwen) | 79.1 (+0.2 ± 0.3) | 0.45 s | 11 ms | 1.34 | 53 W | 40 J |
+| llama.cpp | Q4_K_M (by ggml-org) | 78.7 (−0.1 ± 0.4) | 1.14 s | 16 ms | 0.68 | 49 W | 72 J |
+| Edge-LLM | int4_awq (own) | 73.8 (**−5.1 ± 0.5**) | ~0.23 s | 11 ms | 1.92 | 59 W | 31 J |
+
+- **Accuracy:** at 16-bit, all within 1 point; the differences are close calls about when to stop answering ("Stop" vs "Stop Global Warming"). At 4-bit it depends on who quantized the model (section 4).
+- **TTFT:** Edge-LLM < vLLM ≈ HF < llama.cpp, in both configurations. Edge-LLM's lead is its vision encoder (section 3).
+- **Decode speed is set by the weight size, not the framework:** 27–28 ms per token at 16-bit (vLLM, llama.cpp, Edge-LLM), 11–16 ms at 4-bit, because each token reads all weights. HF is the exception (53 ms, framework overhead).
+- **llama.cpp f16 vs Q8_0** (same GGUF converter, same f16 vision encoder, only the language model's weights differ):
+  - Accuracy: the same. Q8_0 − f16 = +0.02 ± 0.11 (3B), −0.19 ± 0.11 (7B); about 50 of 5,000 answers differ.
+  - Decode: **Q8_0's faster decode comes from its 8-bit weights.** 18 vs 28 ms per token (3B, 1.5×), 35 vs 59 ms (7B, 1.7×). At f16 each token reads ~6.2 / ~15.2 GB, i.e. 220 / 256 GB/s of Thor's 273 GB/s. At f16, llama.cpp decodes as fast as vLLM and Edge-LLM.
+  - TTFT: **unchanged.** 1.06 vs 1.09 s (3B), 1.45 vs 1.43 s (7B). The vision encoder is the same, and the ~1,000-token prefill is compute-bound, so f16 is even 5–9% faster there (no unpacking: 289 vs 319 ms, 594 vs 620 ms). llama.cpp's slow TTFT is its vision encoder and prefill kernels, not its weight format.
+  - Energy: f16 costs a little more per question (77 vs 72 J for 3B, 114 vs 100 J for 7B), from the slower decode and higher power draw.
+  - Earlier versions of this file gave 12 / 11 ms per token for Q8_0 / Q4_K_M. That came from llama-server's own per-token figure, which counts the first token as a decode step. Measured on the client side, the numbers are 18 / 16 ms.
+- **7B at 16-bit:** llama.cpp f16 82.6 (−0.4 ± 0.3 vs HF), TTFT 1.45 s, decode 59 ms per token (vLLM 63, HF 80), 0.52 questions/s, 114 J per question.
+- **Questions/s:** vLLM, llama.cpp and Edge-LLM convert every image to PNG first (~0.24 s per question). So vLLM answers fewer questions per second than HF despite a lower TTFT, and Edge-LLM only 1.2× more.
+- **Energy follows time:** board power differs little (49–67 W), time per question a lot.
+- **Is the data enough?** Accuracy: yes (standard error 0.2–0.5 points over 5,000 paired questions). Ranking: yes, the gaps (2–7×) are far larger than run-to-run variation (~8%). Exact times: less so (one run per setting, Edge-LLM GPU time only, vLLM no stage breakdown).
+
+### 3. Where the time goes
+
+Per question: the **vision encoder** turns the image into tokens; the **prefill** runs the language model over all input tokens and produces the first token; **decode** produces each further token. Same 5,000 TextVQA questions, mean per stage:
+
+**16-bit:**
+
+![Time per stage, 16-bit](time_16bit.svg)
+
+**4-bit:**
+
+![Time per stage, 4-bit](time_4bit.svg)
+
+**By image size** (HF bf16 and llama.cpp f16, median per stage):
+
+![Time per stage by image size](time_by_image_size.svg)
+
+| Image tokens | Typical image | Questions | HF 3B vision / prefill | HF 7B vision / prefill | llama.cpp f16 3B vision / prefill | llama.cpp f16 7B vision / prefill |
+|---:|---|---:|---:|---:|---:|---:|
+| 740 | 1024×576 px | 344 | 205 / 107 ms | 204 / 162 ms | 466 / 268 ms | 499 / 558 ms |
+| 999 | 1024×768 px | 4,138 | 275 / 119 ms | 275 / 202 ms | 637 / 289 ms | 738 / 593 ms |
+| 1,369 | 1024×1024 px | 512 | 407 / 146 ms | 408 / 289 ms | 1,253 / 389 ms | 1,304 / 798 ms |
+| 2,028 | 2560×3008 px (shrunk) | 5 | 630 / 221 ms | 627 / 389 ms | 2,581 / 520 ms | 2,604 / 1,046 ms |
+
+llama.cpp rounds two images to a slightly different token count, so its middle groups have 4,136 and 514 questions.
+
+vLLM reports no stages; Edge-LLM only means, so it can't be split by image size. Figures: [plot_stages.py](../../scripts/plot_stages.py), e.g. `jetson/scripts/plot_stages.py 3b:hf-bf16 3b:trt_edgellm-fp16 -o out.svg` (`--by-size` for the last form).
+
+- **The vision encoder is the longest stage** in every framework. It is the same for 3B and 7B; only prefill and decode grow with the model.
+- **Image size drives TTFT:** 1.85× more image tokens → 2.0× longer vision encoder in HF (2.7× in llama.cpp), 1.4–1.8× longer prefill. Pixels count only through tokens (large photos are shrunk to 2,048).
+- **Edge-LLM's vision encoder is 3× faster than HF's and 8× faster than llama.cpp's** (86 vs 276 vs ~710 ms).
+- **4-bit makes the first token slower:** prefill 145 vs 71 ms (Edge-LLM), 0.45 vs 0.36 s TTFT (vLLM). 4-bit weights must be unpacked for every prefill; only decode gets faster. **fp8 (8-bit weights and activations) speeds up prefill:** 43 ms.
+- **Decode matters in HF:** 2 tokens after the first take as long as the prefill. Longer answers (captions) would make decode the largest stage everywhere.
+- **Hidden cost:** converting each photo to PNG (~0.24 s) takes about as long as the model itself; HF passes the image directly (0.03 s).
+
+### 4. 4-bit: who compressed the model matters more than the number of bits
+
+All compressed models here are **post-training quantization (PTQ)**: the weights are rounded after training, without retraining. Only the language model is compressed; the vision encoder stays 16-bit everywhere.
+
+| Model | Method | Compressed by | Calibration data | Accuracy change (TextVQA) |
+|---|---|---|---|---:|
+| fp8 (Edge-LLM) | 8-bit weights and activations | Edge-LLM's quantizer (NVIDIA ModelOpt) | news text | +0.1 (none) |
+| AWQ 4-bit (vLLM) | 4-bit weights, 16-bit activations | Qwen (official checkpoint) | not published | −0.3 (3B), −0.7 (7B) |
+| AWQ 4-bit (Edge-LLM) | 4-bit weights, 16-bit activations | Edge-LLM's quantizer | news text | **−5.7** (also −2.5 GQA, −49 MME reasoning) |
+| GGUF Q4_K_M vs Q8_0 (llama.cpp) | block-wise weight rounding | ggml-org | not documented | −1.1 (3B), −0.2 (7B) |
+
+The two AWQ models use the same method and the same 4 bits, yet lose −0.3 vs −5.7 points. AWQ uses sample inputs to decide which weights to keep precise. Edge-LLM's quantizer only shows it news text, so it most likely does not protect the weights that matter for image tokens and reading text. **fp8 is free; for 4-bit, use Qwen's AWQ checkpoint** (it doesn't run in Edge-LLM yet: empty answers on image prompts).
+
+### 5. Best choices
+
+TextVQA, MAXN, among what we measured:
+
+| Model | Use | Accuracy | TTFT | Energy per question | FLOPs to first token |
+|---|---|---:|---:|---:|---:|
+| 3B | **Edge-LLM fp8** | 79.6% | ~0.13 s | 23 J | 11.2 TFLOP |
+| 7B | **vLLM bf16** | 83.8% | 0.46 s | 56 J | 18.9 TFLOP |
+
+- **FLOPs to first token:** analytical, vision encoder + prefill ([methodology](../../docs/methodology.md#flops)); same in every framework; 3.8–23.9 TFLOP per question (3B), with image size. Each further token adds only 6.5 / 14.5 GFLOP (3B / 7B).
+- **Different frameworks only because Edge-LLM has no 7B engine yet.** It would most likely lead for the 7B too (its advantage is the vision encoder, the same in both); not measured.
+- **7B vs 3B** (vLLM bf16): +4.4 points, +0.1 s TTFT, +19 J per question.
+
+### 6. A bug we found and fixed
 
 In Edge-LLM, about **1 in 5 TextVQA answers came back empty**.
 
@@ -68,7 +152,7 @@ In Edge-LLM, about **1 in 5 TextVQA answers came back empty**.
 ## Things to keep in mind
 
 - **Power mode:** the older HF/vLLM MME and GQA runs used the 120 W power mode; TextVQA and the latest Edge-LLM runs used MAXN (full power). Compare which is faster, not exact times, across the two.
-- **Coverage:** Edge-LLM was tested only with the 3B model, and llama.cpp only on TextVQA.
+- **Coverage:** see section 1.
 - **Build variation:** Edge-LLM speed can vary by about 8% between two builds of the same engine.
 
 ## Where to find more

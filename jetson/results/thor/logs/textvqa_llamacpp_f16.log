@@ -1,0 +1,5 @@
+=== 12:01:21 llamacpp 3b-f16 textvqa_val 
+    /home/michal/dev/lmms-eval/jetson/results/thor/Qwen2.5-VL-3B-Instruct/textvqa_val/llamacpp-f16/20261001-120121/: samples 5000, question_marks 0, empty 0, request_failed 0
+=== 14:03:45 llamacpp 7b-f16 textvqa_val 
+    /home/michal/dev/lmms-eval/jetson/results/thor/Qwen2.5-VL-7B-Instruct/textvqa_val/llamacpp-f16/20261001-140345/: samples 5000, question_marks 0, empty 0, request_failed 0
+summary: /home/michal/dev/lmms-eval/jetson/results/thor/SUMMARY.md

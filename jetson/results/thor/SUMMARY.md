@@ -19,6 +19,7 @@ How each column is measured: [methodology](../../docs/methodology.md). Runs mark
 | Qwen2.5-VL-3B-Instruct | vllm-awq | mme | mme_cognition_score: 602.86<br>mme_perception_score: 1544.02 | 2374 | 120W | 44.4 | 282 / 1269 | 295 / 1282 | 13 | 27.3 | 31.4 | 16.7 | 34.7 | none | [Qwen2.5-VL-3B-Instruct/mme/vllm-awq/20260923-232507](Qwen2.5-VL-3B-Instruct/mme/vllm-awq/20260923-232507) |
 | Qwen2.5-VL-3B-Instruct | vllm-bf16 | mme | mme_cognition_score: 613.57<br>mme_perception_score: 1540.61 | 2374 | 120W | 43.3 | 241 / 1127 | 285 / 1171 | 44 | 27.2 | 32.6 | 14.8 | 34.0 | none | [Qwen2.5-VL-3B-Instruct/mme/vllm-bf16/20260923-224130](Qwen2.5-VL-3B-Instruct/mme/vllm-bf16/20260923-224130) |
 | Qwen2.5-VL-3B-Instruct | hf-bf16 | textvqa_val | exact_match: 0.7886 | 5000 | MAXN | 48.5 | 397 / 497 | 515 / 689 | 52 | 25.9 | 29.6 | 38.9 | 66.5 | none | [Qwen2.5-VL-3B-Instruct/textvqa_val/hf-bf16/20260928-220231](Qwen2.5-VL-3B-Instruct/textvqa_val/hf-bf16/20260928-220231) |
+| Qwen2.5-VL-3B-Instruct | llamacpp-f16 | textvqa_val | exact_match: 0.7984 | 5000 | MAXN | 121.4 | 1059 / 1576 | 1160 / 1672 | 28 | 24.0 | 26.1 | 28.1 | 53.1 | none | [Qwen2.5-VL-3B-Instruct/textvqa_val/llamacpp-f16/20261001-120121](Qwen2.5-VL-3B-Instruct/textvqa_val/llamacpp-f16/20261001-120121) |
 | Qwen2.5-VL-3B-Instruct | llamacpp-q4_k_m | textvqa_val | exact_match: 0.7873 | 5000 | MAXN | 122.3 | 1144 / 1626 | 1187 / 1672 | 16 | 26.2 | 28.6 | 28.6 | 49.3 | none | [Qwen2.5-VL-3B-Instruct/textvqa_val/llamacpp-q4_k_m/20260929-063650](Qwen2.5-VL-3B-Instruct/textvqa_val/llamacpp-q4_k_m/20260929-063650) |
 | Qwen2.5-VL-3B-Instruct | llamacpp-q8_0 | textvqa_val | exact_match: 0.7986 | 5000 | MAXN | 119.4 | 1091 / 1565 | 1144 / 1623 | 18 | 26.2 | 28.5 | 28.8 | 50.5 | none | [Qwen2.5-VL-3B-Instruct/textvqa_val/llamacpp-q8_0/20260929-043626](Qwen2.5-VL-3B-Instruct/textvqa_val/llamacpp-q8_0/20260929-043626) |
 | Qwen2.5-VL-3B-Instruct | trt_edgellm-fp16 | textvqa_val | exact_match: 0.7945 | 5000 | MAXN | 40.9 | ~157 (avg) | - | 20 | 59.4 | 60.2 | 35.8 | 59.2 | none | [Qwen2.5-VL-3B-Instruct/textvqa_val/trt_edgellm-fp16/20260929-212748](Qwen2.5-VL-3B-Instruct/textvqa_val/trt_edgellm-fp16/20260929-212748) |
@@ -33,6 +34,7 @@ How each column is measured: [methodology](../../docs/methodology.md). Runs mark
 | Qwen2.5-VL-7B-Instruct | vllm-awq | mme | mme_cognition_score: 610.71<br>mme_perception_score: 1686.57 | 2374 | 120W | 52.4 | 396 / 1698 | 420 / 1724 | 25 | 39.0 | 43.7 | 22.8 | 43.3 | none | [Qwen2.5-VL-7B-Instruct/mme/vllm-awq/20260924-010100](Qwen2.5-VL-7B-Instruct/mme/vllm-awq/20260924-010100) |
 | Qwen2.5-VL-7B-Instruct | vllm-bf16 | mme | mme_cognition_score: 621.07<br>mme_perception_score: 1687.05 | 2374 | 120W | 50.8 | 367 / 1511 | 468 / 1617 | 102 | 27.3 | 43.1 | 18.4 | 40.5 | none | [Qwen2.5-VL-7B-Instruct/mme/vllm-bf16/20260924-000951](Qwen2.5-VL-7B-Instruct/mme/vllm-bf16/20260924-000951) |
 | Qwen2.5-VL-7B-Instruct | hf-bf16 | textvqa_val | exact_match: 0.8296 | 5000 | MAXN | 64.3 | 475 / 600 | 666 / 953 | 80 | 25.8 | 29.3 | 42.4 | 72.9 | none | [Qwen2.5-VL-7B-Instruct/textvqa_val/hf-bf16/20260928-225203](Qwen2.5-VL-7B-Instruct/textvqa_val/hf-bf16/20260928-225203) |
+| Qwen2.5-VL-7B-Instruct | llamacpp-f16 | textvqa_val | exact_match: 0.8258 | 5000 | MAXN | 159.9 | 1449 / 2002 | 1594 / 2265 | 60 | 23.8 | 26.1 | 30.7 | 59.4 | none | [Qwen2.5-VL-7B-Instruct/textvqa_val/llamacpp-f16/20261001-140345](Qwen2.5-VL-7B-Instruct/textvqa_val/llamacpp-f16/20261001-140345) |
 | Qwen2.5-VL-7B-Instruct | llamacpp-q4_k_m | textvqa_val | exact_match: 0.8215 | 5000 | MAXN | 157.8 | 1530 / 2118 | 1622 / 2219 | 29 | 26.4 | 28.6 | 31.7 | 53.0 | none | [Qwen2.5-VL-7B-Instruct/textvqa_val/llamacpp-q4_k_m/20260929-111341](Qwen2.5-VL-7B-Instruct/textvqa_val/llamacpp-q4_k_m/20260929-111341) |
 | Qwen2.5-VL-7B-Instruct | llamacpp-q8_0 | textvqa_val | exact_match: 0.8239 | 5000 | MAXN | 152.5 | 1434 / 1982 | 1543 / 2149 | 36 | 26.4 | 28.6 | 31.8 | 54.6 | none | [Qwen2.5-VL-7B-Instruct/textvqa_val/llamacpp-q8_0/20260929-084010](Qwen2.5-VL-7B-Instruct/textvqa_val/llamacpp-q8_0/20260929-084010) |
 | Qwen2.5-VL-7B-Instruct | vllm-awq | textvqa_val | exact_match: 0.8313 | 5000 | MAXN | 79.6 | 637 / 782 | 676 / 872 | 20 | 26.3 | 31.9 | 38.9 | 65.3 | none | [Qwen2.5-VL-7B-Instruct/textvqa_val/vllm-awq/20260929-031548](Qwen2.5-VL-7B-Instruct/textvqa_val/vllm-awq/20260929-031548) |
@@ -58,6 +60,7 @@ Medians per sample. Preprocess = client-side prompt and image preparation; visio
 | Qwen2.5-VL-3B-Instruct | vllm-awq | mme | 108 | - | - | 282 / 1830 | 1843 | 2.0 | 76 | 0.89 | 39.0 | - |
 | Qwen2.5-VL-3B-Instruct | vllm-bf16 | mme | 109 | - | - | 241 / 1667 | 1713 | 2.0 | 23 | 0.91 | 37.2 | - |
 | Qwen2.5-VL-3B-Instruct | hf-bf16 | textvqa_val | 29 | 276 | 119 | 397 / 562 | 958 | 4.1 | 19 | 1.72 | 38.7 | CUDA events |
+| Qwen2.5-VL-3B-Instruct | llamacpp-f16 | textvqa_val | 231 | 640 | 289 | 1059 / 1848 | 1949 | 3.9 | 35 | 0.69 | 77.3 | server log |
 | Qwen2.5-VL-3B-Instruct | llamacpp-q4_k_m | textvqa_val | 231 | 665 | 352 | 1144 / 1922 | 1976 | 4.1 | 62 | 0.68 | 72.4 | server log |
 | Qwen2.5-VL-3B-Instruct | llamacpp-q8_0 | textvqa_val | 231 | 642 | 319 | 1091 / 1868 | 1928 | 3.9 | 55 | 0.70 | 72.4 | server log |
 | Qwen2.5-VL-3B-Instruct | trt_edgellm-fp16 | textvqa_val | - | 87 | 74 | ~157 (avg) | - | 3.9 | 50 | 2.04 | 29.1 | runner profile (GPU time) |
@@ -71,6 +74,7 @@ Medians per sample. Preprocess = client-side prompt and image preparation; visio
 | Qwen2.5-VL-7B-Instruct | vllm-awq | mme | 107 | - | - | 396 / 2265 | 2289 | 2.0 | 40 | 0.76 | 57.4 | - |
 | Qwen2.5-VL-7B-Instruct | vllm-bf16 | mme | 109 | - | - | 367 / 1976 | 2080 | 2.0 | 10 | 0.78 | 52.1 | - |
 | Qwen2.5-VL-7B-Instruct | hf-bf16 | textvqa_val | 45 | 276 | 202 | 475 / 708 | 1489 | 4.0 | 13 | 1.30 | 56.3 | CUDA events |
+| Qwen2.5-VL-7B-Instruct | llamacpp-f16 | textvqa_val | 231 | 741 | 594 | 1449 / 2273 | 2611 | 4.1 | 17 | 0.52 | 113.9 | server log |
 | Qwen2.5-VL-7B-Instruct | llamacpp-q4_k_m | textvqa_val | 231 | 706 | 699 | 1530 / 2462 | 2578 | 4.1 | 34 | 0.53 | 100.4 | server log |
 | Qwen2.5-VL-7B-Instruct | llamacpp-q8_0 | textvqa_val | 231 | 700 | 620 | 1434 / 2332 | 2490 | 4.1 | 28 | 0.55 | 99.8 | server log |
 | Qwen2.5-VL-7B-Instruct | vllm-awq | textvqa_val | 241 | - | - | 637 / 878 | 985 | 4.0 | 49 | 1.05 | 62.4 | - |
@@ -96,6 +100,7 @@ and total / mean answer time.
 | Qwen2.5-VL-3B-Instruct | vllm-awq | mme | 868 / 43 / 2 | 4861 | 5239 | 6 | 10107 | 23993 | 19.4 | 19.0 |
 | Qwen2.5-VL-3B-Instruct | vllm-bf16 | mme | 868 / 43 / 2 | 4861 | 5239 | 6 | 10107 | 23993 | 21.7 | 19.8 |
 | Qwen2.5-VL-3B-Instruct | hf-bf16 | textvqa_val | 977 / 39 / 4 | 5360 | 5794 | 20 | 11174 | 55869 | 28.1 | 20.4 |
+| Qwen2.5-VL-3B-Instruct | llamacpp-f16 | textvqa_val | 977 / 40 / 4 | 5360 | 5796 | 19 | 11175 | 55874 | 9.8 | 9.2 |
 | Qwen2.5-VL-3B-Instruct | llamacpp-q4_k_m | textvqa_val | 977 / 40 / 4 | 5360 | 5796 | 20 | 11176 | 55880 | 9.4 | 9.1 |
 | Qwen2.5-VL-3B-Instruct | llamacpp-q8_0 | textvqa_val | 977 / 40 / 4 | 5360 | 5796 | 19 | 11175 | 55874 | 9.8 | 9.3 |
 | Qwen2.5-VL-3B-Instruct | trt_edgellm-fp16 | textvqa_val | 977 / 39 / 4 | 5360 | 5794 | 19 | 11173 | 55865 | 71.0 | 51.9 |
@@ -110,6 +115,7 @@ and total / mean answer time.
 | Qwen2.5-VL-7B-Instruct | vllm-awq | mme | 868 / 43 / 2 | 4874 | 12139 | 15 | 17028 | 40425 | 24.1 | 23.3 |
 | Qwen2.5-VL-7B-Instruct | vllm-bf16 | mme | 868 / 43 / 2 | 4874 | 12139 | 15 | 17028 | 40425 | 28.1 | 24.5 |
 | Qwen2.5-VL-7B-Instruct | hf-bf16 | textvqa_val | 977 / 39 / 4 | 5376 | 13471 | 44 | 18891 | 94453 | 39.4 | 26.2 |
+| Qwen2.5-VL-7B-Instruct | llamacpp-f16 | textvqa_val | 977 / 40 / 4 | 5376 | 13475 | 45 | 18896 | 94480 | 12.6 | 11.2 |
 | Qwen2.5-VL-7B-Instruct | llamacpp-q4_k_m | textvqa_val | 977 / 40 / 4 | 5376 | 13475 | 45 | 18896 | 94480 | 12.0 | 11.4 |
 | Qwen2.5-VL-7B-Instruct | llamacpp-q8_0 | textvqa_val | 977 / 40 / 4 | 5376 | 13475 | 46 | 18897 | 94483 | 12.7 | 11.9 |
 | Qwen2.5-VL-7B-Instruct | vllm-awq | textvqa_val | 977 / 39 / 4 | 5376 | 13471 | 43 | 18890 | 94450 | 29.8 | 27.2 |
