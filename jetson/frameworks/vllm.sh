@@ -1,10 +1,13 @@
-# vLLM (in process, lmms-eval `vllm` backend). awq = the model's official AWQ 4-bit checkpoint ($AWQ_REPO).
-FW_PRECISIONS="bf16 awq"
+# vLLM (in process, lmms-eval `vllm` backend). awq = the model's official AWQ 4-bit checkpoint ($AWQ_REPO);
+# fp8 / w8a8 = RedHatAI's 8-bit W8A8 checkpoints ($FP8_REPO / $W8A8_REPO, language model only).
+FW_PRECISIONS="bf16 awq fp8 w8a8"
 
 _vllm_repo() {
   case "$PRECISION" in
     bf16) echo "$HF_REPO" ;;
     awq)  echo "$AWQ_REPO" ;;
+    fp8)  echo "$FP8_REPO" ;;
+    w8a8) echo "$W8A8_REPO" ;;
   esac
 }
 
@@ -18,8 +21,10 @@ fw_setup() {
   # budget in GB (13.8, or 21.0 for 7B bf16: ~0.45 / 0.70 of the Orin 32GB), so boards with more memory (Thor) keep the
   # same KV-cache budget and memory footprint instead of reserving e.g. 57-74 GB.
   # 7B bf16 needs 21.0: with 18.4 (0.6 on Orin) nothing is left for the KV cache after profiling and vLLM refuses to start.
+  # 7B 8-bit (~9.5 GB of weights) gets 16.0, the same headroom over its weights as 7B bf16.
   local budget_gb=13.8
   [ "$SIZE" = 7b ] && [ "$PRECISION" = bf16 ] && budget_gb=21.0
+  [ "$SIZE" = 7b ] && { [ "$PRECISION" = fp8 ] || [ "$PRECISION" = w8a8 ]; } && budget_gb=16.0
   local default_mem
   default_mem=$(awk -v gb="$budget_gb" '/^MemTotal:/ {printf "%.2f", gb * 1048576 / $2}' /proc/meminfo)
   # Same image resolution range as the other frameworks (IMAGE_MIN/MAX_PIXELS from the model file).

@@ -4,7 +4,7 @@
 # Usage: jetson/scripts/run_eval.sh <framework> <size>[-<precision>] [tasks=mme] [limit]
 #   framework  hf | vllm | llamacpp | trt_edgellm   (definitions in jetson/frameworks/<framework>.sh)
 #   size       a size of $MODEL (default qwen2_5_vl: 3b | 7b, see jetson/models/<model>/model.sh)
-#   precision  hf: bf16 | vllm: bf16, awq | llamacpp: q4_k_m, q8_0, f16 | trt_edgellm: fp16, int4_awq, fp8, nvfp4
+#   precision  hf: bf16 | vllm: bf16, awq, fp8, w8a8 | llamacpp: q4_k_m, q8_0, f16 | trt_edgellm: fp16, int4_awq, fp8, nvfp4
 #              (omitted -> first one listed)
 # Examples:
 #   jetson/scripts/run_eval.sh hf 3b mme 8              # smoke test, 8 samples

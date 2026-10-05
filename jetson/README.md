@@ -5,7 +5,7 @@ This folder benchmarks vision-language models on NVIDIA Jetson with lmms-eval. T
 | Framework | `<framework>` | Precisions (`<size>-<precision>`, first = default) | How it runs |
 |---|---|---|---|
 | Hugging Face transformers | `hf` | `bf16` | in process, lmms-eval `qwen2_5_vl` backend; the reference |
-| vLLM | `vllm` | `bf16`, `awq` (official AWQ 4-bit checkpoint) | in process, lmms-eval `vllm` backend |
+| vLLM | `vllm` | `bf16`, `awq` (official AWQ 4-bit checkpoint), `fp8`, `w8a8` (RedHatAI 8-bit W8A8 checkpoints) | in process, lmms-eval `vllm` backend |
 | llama.cpp | `llamacpp` | `q4_k_m`, `q8_0`, `f16` (GGUF + f16 vision projector) | `llama-server` container + lmms-eval `openai` backend, streaming |
 | TensorRT Edge-LLM | `trt_edgellm` | `fp16`, `int4_awq`, `fp8`, `nvfp4` (fp8/nvfp4: Thor only) | C++ runner via lmms-eval `trt_edgellm` backend; see [docs/tensorrt-edgellm.md](docs/tensorrt-edgellm.md) |
 

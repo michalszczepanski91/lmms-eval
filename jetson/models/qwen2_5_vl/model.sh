@@ -4,6 +4,9 @@
 #   MODEL_TAG     result-dir name and Hub model name, e.g. Qwen2.5-VL-3B-Instruct
 #   HF_REPO       base checkpoint (hf, vllm bf16, Edge-LLM export)
 #   AWQ_REPO      official AWQ 4-bit checkpoint (vllm awq)
+#   FP8_REPO      RedHatAI FP8 W8A8 checkpoint (vllm fp8): fp8 weights per channel, dynamic per-token activations
+#   W8A8_REPO     RedHatAI INT8 W8A8 checkpoint (vllm w8a8): same scheme in int8
+#                 (both quantize the language model only; vision encoder and lm_head stay 16-bit)
 #   GGUF_REPO     GGUF weights + vision projector (llamacpp): <MODEL_TAG>-<Q>.gguf, mmproj-<MODEL_TAG>-f16.gguf
 #   HF_BACKEND    lmms-eval model name for the hf framework
 # and the image range shared by every framework: 256..2048 visual tokens of 28x28 pixels
@@ -19,11 +22,12 @@ HF_BACKEND=qwen2_5_vl
 
 model_resolve() {
   case "${1,,}" in
-    3b) MODEL_TAG=Qwen2.5-VL-3B-Instruct ;;
-    7b) MODEL_TAG=Qwen2.5-VL-7B-Instruct ;;
+    3b) MODEL_TAG=Qwen2.5-VL-3B-Instruct FP8_REPO=RedHatAI/Qwen2.5-VL-3B-Instruct-FP8-dynamic ;;
+    7b) MODEL_TAG=Qwen2.5-VL-7B-Instruct FP8_REPO=RedHatAI/Qwen2.5-VL-7B-Instruct-FP8-Dynamic ;;  # capital D on the Hub
     *) echo "unknown model size '$1' (qwen2_5_vl: $MODEL_SIZES)" >&2; return 1 ;;
   esac
   HF_REPO=Qwen/$MODEL_TAG
   AWQ_REPO=Qwen/$MODEL_TAG-AWQ
+  W8A8_REPO=RedHatAI/$MODEL_TAG-quantized.w8a8
   GGUF_REPO=ggml-org/$MODEL_TAG-GGUF
 }
