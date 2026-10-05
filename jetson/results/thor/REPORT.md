@@ -24,6 +24,9 @@ Qwen2.5-VL-3B and 7B on a Jetson AGX Thor, across HF transformers, vLLM, llama.c
 | HF bf16 (reference) | 78.86 | – | 397 / 497 / 562 | 29 / 276 / 119 | 52 | 1.72 | 38.7 | 38.9 / 66.5 |
 | vLLM bf16 | 79.39 | +0.53 ± 0.22 | 361 / 446 / 509 | 240 / – / – | 27 | 1.43 | 36.6 | 27.2 / 52.3 |
 | vLLM AWQ (Qwen's checkpoint) | 79.10 | +0.24 ± 0.32 | 453 / 568 / 647 | 240 / – / – | 11 | 1.34 | 39.8 | 30.3 / 53.2 |
+| vLLM fp8 W8A8 (RedHatAI; torch `_scaled_mm`)† | 79.48 | +0.62 ± 0.24 | 325 / 393 / 448 | 231 / – / – | 15 | 1.64 | 33.1 | 27.3 / 54.4 |
+| vLLM int8 W8A8 (RedHatAI; Triton)† | 79.27 | +0.41 ± 0.28 | 359 / 449 / 513 | 231 / – / – | 16 | 1.54 | 37.0 | 29.0 / 57.1 |
+| vLLM fp8 weights, 16-bit activations (RedHatAI; Marlin)† | 79.46 | +0.60 ± 0.22 | 434 / 545 / 615 | 232 / – / – | 15 | 1.38 | 43.7 | 31.8 / 60.2 |
 | llama.cpp f16 | 79.84 | +0.98 ± 0.35 | 1059 / 1576 / 1848 | 231 / 640 / 289 | 28 | 0.69 | 77.3 | 28.1 / 53.1 |
 | llama.cpp Q8_0 | 79.86 | +1.00 ± 0.35 | 1091 / 1565 / 1868 | 231 / 642 / 319 | 18 | 0.70 | 72.4 | 28.8 / 50.5 |
 | llama.cpp Q4_K_M | 78.73 | −0.13 ± 0.37 | 1144 / 1626 / 1922 | 231 / 665 / 352 | 16 | 0.68 | 72.4 | 28.6 / 49.3 |
@@ -38,6 +41,9 @@ Qwen2.5-VL-3B and 7B on a Jetson AGX Thor, across HF transformers, vLLM, llama.c
 | HF bf16 (reference) | 82.96 | – | 475 / 600 / 708 | 45 / 276 / 202 | 80 | 1.30 | 56.3 | 42.4 / 72.9 |
 | vLLM bf16 | 83.84 | +0.88 ± 0.20 | 456 / 547 / 645 | 240 / – / – | 63 | 1.12 | 55.7 | 32.4 / 62.3 |
 | vLLM AWQ (Qwen's checkpoint) | 83.13 | +0.17 ± 0.27 | 637 / 782 / 878 | 241 / – / – | 20 | 1.05 | 62.4 | 38.9 / 65.3 |
+| vLLM fp8 W8A8 (RedHatAI; torch `_scaled_mm`)† | 83.81 | +0.84 ± 0.21 | 369 / 453 / 530 | 232 / – / – | 33 | 1.40 | 44.6 | 31.9 / 62.4 |
+| vLLM int8 W8A8 (RedHatAI; Triton)† | 83.65 | +0.69 ± 0.24 | 509 / 617 / 712 | 232 / – / – | 33 | 1.17 | 56.7 | 33.3 / 66.3 |
+| vLLM fp8 weights, 16-bit activations (RedHatAI; Marlin)† | 83.74 | +0.78 ± 0.20 | 681 / 840 / 951 | 231 / – / – | 32 | 0.98 | 73.8 | 38.7 / 72.5 |
 | llama.cpp f16 | 82.58 | −0.38 ± 0.31 | 1449 / 2002 / 2273 | 231 / 741 / 594 | 59 | 0.52 | 113.9 | 30.7 / 59.4 |
 | llama.cpp Q8_0 | 82.39 | −0.57 ± 0.32 | 1434 / 1982 / 2332 | 231 / 700 / 620 | 35 | 0.55 | 99.8 | 31.8 / 54.6 |
 | llama.cpp Q4_K_M | 82.15 | −0.81 ± 0.33 | 1530 / 2118 / 2462 | 231 / 706 / 699 | 29 | 0.53 | 100.4 | 31.7 / 53.0 |
@@ -49,7 +55,7 @@ Qwen2.5-VL-3B and 7B on a Jetson AGX Thor, across HF transformers, vLLM, llama.c
 - **Preprocess** (client side, before the model call) is mostly converting the image to PNG/base64 for vLLM and llama.cpp. \*Edge-LLM's backend writes all images as PNG before starting the runner (19.4 min per run). That time counts in samples/s and J/sample, but not in TTFT.
 - **Stage times** (vision / prefill) are medians: CUDA events for HF, the server log for llama.cpp, runner GPU time for Edge-LLM. vLLM doesn't separate them.
 - **Decode** (ms per token after the first) barely affects these numbers: answers are only about 4 tokens long. HF, vLLM and llama.cpp: client side, (answer − TTFT) / (tokens − 1); Edge-LLM: median GPU time of the runner's decode steps. llama-server's own "eval time" per token is about 1.5× too low, because it counts the first token, which comes from the prefill.
-- **vLLM fp8 / w8a8** (RedHatAI W8A8 checkpoints): no rows, because neither runs on Thor with vLLM 0.19.0 (int8 refused on SM110; the fp8 Cutlass kernel supports sm100f only and crashes). Details: NOTES.md, problem 17.
+- **† vLLM 8-bit:** vLLM 0.19.0's default kernels don't run on Thor (int8 refused on SM110; the fp8 Cutlass kernel supports sm100f only and crashes; NOTES.md, problem 17). These runs use vLLM's alternative kernels, chosen with `EVAL_ENV`: `VLLM_DISABLED_KERNELS=CutlassFP8ScaledMMLinearKernel` (fp8 → `ChannelWiseTorchFP8ScaledMMLinearKernel`), `VLLM_DISABLED_KERNELS=CutlassInt8ScaledMMLinearKernel` (int8 → `TritonInt8ScaledMMLinearKernel`), `VLLM_TEST_FORCE_FP8_MARLIN=1` (fp8 weights only → `MarlinFP8ScaledMMLinearKernel`). Result dirs `vllm-fp8+torch`, `vllm-w8a8+triton`, `vllm-fp8+marlin`; each run.log names the selected kernel.
 - **Memory:** Edge-LLM's runner peak GPU allocation is 8.5 / 5.8 / 4.5 GB (3B) and 16.3 / 10.2 / 7.3 GB (7B) for fp16 / fp8 / int4_awq. The other frameworks peak at 28.5–31.9 GB of whole-board memory.
 
 ## 2. MME and GQA
@@ -86,12 +92,18 @@ Current runs only; SUMMARY.md also lists the older ones. GQA has 12,578 question
 | Edge-LLM fp16 → int4_awq, 7B | −1.06 ± 0.27 | – | – |
 | vLLM bf16 → AWQ (Qwen's checkpoint) | −0.30 ± 0.29 | −0.51 | +3.4 / −10.7 |
 | vLLM bf16 → AWQ, 7B | −0.71 ± 0.26 | −0.28 | −0.5 / −10.4 |
+| vLLM bf16 → fp8 W8A8 (torch `_scaled_mm`) | +0.09 ± 0.19 | – | – |
+| vLLM bf16 → fp8 W8A8, 7B | −0.03 ± 0.15 | – | – |
+| vLLM bf16 → int8 W8A8 (Triton) | −0.12 ± 0.23 | – | – |
+| vLLM bf16 → int8 W8A8, 7B | −0.19 ± 0.20 | – | – |
+| vLLM bf16 → fp8 weights only (Marlin) | +0.07 ± 0.17 | – | – |
+| vLLM bf16 → fp8 weights only (Marlin), 7B | −0.10 ± 0.13 | – | – |
 | llama.cpp f16 → Q8_0 | −0.02 ± 0.11 | – | – |
 | llama.cpp f16 → Q8_0, 7B | −0.19 ± 0.11 | – | – |
 | llama.cpp Q8_0 → Q4_K_M | −1.13 ± 0.26 | – | – |
 | llama.cpp Q8_0 → Q4_K_M, 7B | −0.24 ± 0.19 | – | – |
 
-- **fp8 costs nothing** on any task.
+- **8-bit costs nothing:** fp8 on any task, and vLLM's int8 W8A8 on TextVQA (RedHatAI's int8 is GPTQ-calibrated on 512 Flickr30k image–caption pairs; its fp8 needs no calibration).
 - **Qwen's AWQ checkpoint** loses under 1 point on TextVQA and GQA.
 - **Edge-LLM's own AWQ** loses the most where the model reads text or reasons over it. MME cognition falls 49 points: code reasoning −7.5, numerical calculation −5 and commonsense reasoning −5 percentage points. Its calibration data is plain news text. The 7B loses much less with the same quantizer (−1.1 vs −5.7 on TextVQA).
 
@@ -144,5 +156,7 @@ Achieved TFLOP/s on TextVQA, as (vision + prefill FLOPs) / mean TTFT:
 |---|---:|---:|---:|---:|---:|
 | 3B | 28.1 | 30.6 | 24.4 | 9.8 / 9.8 / 9.4 | 71.0 / 86.0 / 48.2 |
 | 7B | 39.4 | 41.6 | 29.8 | 12.6 / 12.7 / 12.0 | 76.7 / 104.4 / 47.5 |
+
+vLLM 8-bit (alternative kernels): fp8 `_scaled_mm` / int8 Triton / fp8 Marlin reach 35.2 / 31.3 / 25.9 TFLOP/s (3B) and 51.4 / 37.6 / 28.0 (7B), against 30.6 and 41.6 for bf16.
 
 Edge-LLM's rates use GPU time only, so they are higher than a wall-clock rate would be.

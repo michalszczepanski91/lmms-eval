@@ -48,13 +48,13 @@ Full runs at MAXN (the uncapped power mode; 120 W is the board's default capped 
 |---|---|---|---|---|---|
 | 16-bit | 3B | bf16: T (M, G at 120 W) | bf16: T (M, G at 120 W) | f16: T | fp16: T M G |
 | 16-bit | 7B | bf16: T (M, G at 120 W) | bf16: T (M, G at 120 W) | f16: T | fp16: T |
-| 8-bit int | 3B, 7B | – | w8a8 (RedHatAI): not supported on Thor (vLLM 0.19.0) | Q8_0: T | – |
-| 8-bit fp8 | 3B | – | fp8 (RedHatAI): not supported on Thor (vLLM 0.19.0) | not possible (no fp8 in GGUF) | fp8: T M G |
-| 8-bit fp8 | 7B | – | fp8 (RedHatAI): not supported on Thor (vLLM 0.19.0) | not possible | fp8: T |
+| 8-bit int | 3B, 7B | – | w8a8 (RedHatAI): T* | Q8_0: T | – |
+| 8-bit fp8 | 3B | – | fp8 (RedHatAI): T* | not possible (no fp8 in GGUF) | fp8: T M G |
+| 8-bit fp8 | 7B | – | fp8 (RedHatAI): T* | not possible | fp8: T |
 | 4-bit | 3B | – | Qwen AWQ: T (M, G at 120 W) | Q4_K_M: T | int4_awq (own): T M G |
 | 4-bit | 7B | – | Qwen AWQ: T (M, G at 120 W) | Q4_K_M: T | int4_awq (own): T |
 
-Only TextVQA has the same configuration in several frameworks: 16-bit in all four, for both sizes; sections 2 and 3 use it. At 8-bit, vLLM 0.19.0 has no working kernel for Thor's GPU (SM110): RedHatAI's int8 checkpoints are refused, and its fp8 kernel only supports data-center Blackwell (sm100f) and crashes ([NOTES.md](NOTES.md), problem 17). So the 8-bit comparison has two frameworks, with different formats.
+Only TextVQA has the same configuration in several frameworks: 16-bit in all four, for both sizes; sections 2 and 3 use it. \* vLLM 0.19.0's default 8-bit kernels don't run on Thor's GPU (SM110): int8 is refused, and the fp8 Cutlass kernel only supports data-center Blackwell (sm100f) and crashes ([NOTES.md](NOTES.md), problem 17). These runs use vLLM's own alternative kernels instead, chosen with its environment switches: fp8 through `torch._scaled_mm` (cuBLASLt), int8 through Triton, and, as a third variant, fp8 weights with 16-bit activations through Marlin.
 
 ### 2. Frameworks on the same configuration
 
@@ -97,18 +97,27 @@ The same 5,000 TextVQA questions, MAXN.
 | llama.cpp | Q4_K_M (by ggml-org) | 82.2 (−0.8 ± 0.3) | 1.53 s | 29 ms | 0.53 | 53 W | 100 J |
 | Edge-LLM | int4_awq (own) | 82.9 (−0.0 ± 0.3) | ~0.40 s | 20 ms | 1.40 | 72 W | 52 J |
 
-**8-bit weights** (the same bit width, but different quantizers and formats: Edge-LLM fp8 also runs activations in 8-bit; llama.cpp Q8_0 is int8 weight blocks with 16-bit activations):
+**8-bit weights** (the same bit width, but different quantizers, formats and kernels):
 
-| Model | Framework | Weights | Accuracy (Δ vs HF bf16) | TTFT | Decode per token | Questions/s | Avg board power | Energy per question |
+| Model | Framework | Weights / activations (kernel) | Accuracy (Δ vs HF bf16) | TTFT | Decode per token | Questions/s | Avg board power | Energy per question |
 |---|---|---|---:|---:|---:|---:|---:|---:|
-| 3B | Edge-LLM | fp8 (own, W8A8) | 79.6 (+0.7 ± 0.3) | ~0.13 s | 16 ms | 2.32 | 54 W | 23 J |
-| 3B | llama.cpp | Q8_0 (by ggml-org) | 79.9 (+1.0 ± 0.4) | 1.09 s | 18 ms | 0.70 | 51 W | 72 J |
-| 7B | Edge-LLM | fp8 (own, W8A8) | 83.9 (+0.9 ± 0.2) | ~0.18 s | 32 ms | 1.88 | 64 W | 34 J |
-| 7B | llama.cpp | Q8_0 (by ggml-org) | 82.4 (−0.6 ± 0.3) | 1.43 s | 35 ms | 0.55 | 55 W | 100 J |
-| 3B, 7B | vLLM | fp8, w8a8 (RedHatAI, W8A8) | not supported on Thor (vLLM 0.19.0) | | | | | |
+| 3B | Edge-LLM | fp8 / fp8 (own quantizer) | 79.6 (+0.7 ± 0.3) | ~0.13 s | 16 ms | 2.32 | 54 W | 23 J |
+| 3B | vLLM | fp8 / fp8 (RedHatAI; torch `_scaled_mm`)* | 79.5 (+0.6 ± 0.2) | 0.33 s | 15 ms | 1.64 | 54 W | 33 J |
+| 3B | vLLM | int8 / int8 (RedHatAI; Triton)* | 79.3 (+0.4 ± 0.3) | 0.36 s | 16 ms | 1.54 | 57 W | 37 J |
+| 3B | vLLM | fp8 / 16-bit (RedHatAI; Marlin)* | 79.5 (+0.6 ± 0.2) | 0.43 s | 15 ms | 1.38 | 60 W | 44 J |
+| 3B | llama.cpp | int8 blocks / 16-bit (Q8_0, by ggml-org) | 79.9 (+1.0 ± 0.4) | 1.09 s | 18 ms | 0.70 | 51 W | 72 J |
+| 7B | Edge-LLM | fp8 / fp8 (own quantizer) | 83.9 (+0.9 ± 0.2) | ~0.18 s | 32 ms | 1.88 | 64 W | 34 J |
+| 7B | vLLM | fp8 / fp8 (RedHatAI; torch `_scaled_mm`)* | 83.8 (+0.8 ± 0.2) | 0.37 s | 33 ms | 1.40 | 62 W | 45 J |
+| 7B | vLLM | int8 / int8 (RedHatAI; Triton)* | 83.7 (+0.7 ± 0.2) | 0.51 s | 33 ms | 1.17 | 66 W | 57 J |
+| 7B | vLLM | fp8 / 16-bit (RedHatAI; Marlin)* | 83.7 (+0.8 ± 0.2) | 0.68 s | 32 ms | 0.98 | 73 W | 74 J |
+| 7B | llama.cpp | int8 blocks / 16-bit (Q8_0, by ggml-org) | 82.4 (−0.6 ± 0.3) | 1.43 s | 35 ms | 0.55 | 55 W | 100 J |
 
-- **8-bit:** both frameworks keep HF's accuracy, and decode is 1.6–1.8× faster than at 16-bit (16–18 vs 27–28 ms for the 3B, 32–35 vs 59 ms for the 7B), since each token reads half the bytes. Only Edge-LLM's fp8 also shortens the first token, because its prefill runs in 8-bit too (section 3); llama.cpp's Q8_0 does not.
-- **Whether vLLM fp8 speeds up prefill like Edge-LLM fp8** can't be answered on Thor yet: no vLLM 8-bit precision runs there (see above).
+\* alternative vLLM kernel, see section 1.
+
+- **Accuracy:** 8-bit costs nothing in any framework. Against vLLM's own bf16, its 8-bit runs differ by −0.2 to +0.1 points (noise).
+- **Decode:** 8-bit weights decode 1.6–1.9× faster than 16-bit in every framework (15–18 vs 27–28 ms for the 3B, 32–35 vs 59–63 ms for the 7B), since each token reads half the bytes.
+- **First token: only real fp8 compute helps, and Edge-LLM gains the most.** vLLM fp8 (`_scaled_mm`) cuts TTFT by 10% (3B, 0.36 → 0.33 s) and 19% (7B, 0.46 → 0.37 s) against vLLM bf16; Edge-LLM fp8 cuts it by 17% and 27% against its fp16, and stays 2–2.5× faster than vLLM fp8 (its vision encoder). vLLM int8 through Triton gains nothing (3B) or is slower (7B, 0.51 s). Weight-only 8-bit with vLLM's Marlin kernel is slower to the first token than bf16 (0.43 vs 0.36 s, 0.68 vs 0.46 s), like 4-bit: the weights are unpacked for every prefill. llama.cpp Q8_0 matches its f16 (section 2 above).
+- **Best vLLM setting on Thor:** fp8 with the `_scaled_mm` kernel: the same accuracy as bf16, 10–19% faster first token, 1.8–1.9× faster decode, 10–20% less energy per question.
 
 - **Accuracy:** at 16-bit, all within 1 point; the differences are close calls about when to stop answering ("Stop" vs "Stop Global Warming"). At 4-bit it depends on who quantized the model (section 4): the 3B loses 5 points with Edge-LLM's own quantizer, while the 7B stays within 1 point with every quantizer.
 - **TTFT:** Edge-LLM < vLLM ≈ HF < llama.cpp, for both sizes and both weight formats. Edge-LLM's lead is its vision encoder (section 3).
@@ -168,7 +177,8 @@ All compressed models here are **post-training quantization (PTQ)**: the weights
 | AWQ 4-bit (vLLM) | 4-bit weights, 16-bit activations | Qwen (official checkpoint) | not published | −0.3 (3B), −0.7 (7B) |
 | AWQ 4-bit (Edge-LLM) | 4-bit weights, 16-bit activations | Edge-LLM's quantizer | news text | **−5.7** (3B; also −2.5 GQA, −49 MME reasoning), −1.1 (7B) |
 | GGUF Q4_K_M vs Q8_0 (llama.cpp) | block-wise weight rounding | ggml-org | not documented | −1.1 (3B), −0.2 (7B) |
-| fp8 / int8 W8A8 (vLLM) | 8-bit weights and activations | RedHatAI (llm-compressor) | not measured | not supported on Thor (vLLM 0.19.0) |
+| fp8 W8A8 (vLLM) | 8-bit weights and activations | RedHatAI (llm-compressor, FP8_DYNAMIC) | none needed (round to nearest) | +0.1 (3B), −0.0 (7B) vs vLLM bf16: none |
+| int8 W8A8 (vLLM) | 8-bit weights and activations | RedHatAI (llm-compressor, GPTQ) | 512 image–caption pairs (Flickr30k) | −0.1 (3B), −0.2 (7B) vs vLLM bf16: none |
 
 The two AWQ models use the same method and the same 4 bits, yet lose −0.3 vs −5.7 points on the 3B. AWQ uses sample inputs to decide which weights to keep precise. Edge-LLM's quantizer only shows it news text, so it most likely does not protect the weights that matter for image tokens and reading text. The 7B suffers much less from the same quantizer (−1.1 vs its own fp16), so the larger model tolerates the poor calibration better. **fp8 is free; for 4-bit, use Qwen's AWQ checkpoint** (it doesn't run in Edge-LLM yet: empty answers on image prompts).
 

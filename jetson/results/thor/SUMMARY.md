@@ -27,6 +27,9 @@ How each column is measured: [methodology](../../docs/methodology.md). Runs mark
 | Qwen2.5-VL-3B-Instruct | trt_edgellm-int4_awq | textvqa_val | exact_match: 0.7375 | 5000 | MAXN | 43.3 | ~232 (avg) | - | 11 | 32.8 | 34.0 | 39.3 | 59.3 | none | [Qwen2.5-VL-3B-Instruct/textvqa_val/trt_edgellm-int4_awq/20260929-224646](Qwen2.5-VL-3B-Instruct/textvqa_val/trt_edgellm-int4_awq/20260929-224646) |
 | Qwen2.5-VL-3B-Instruct | vllm-awq | textvqa_val | exact_match: 0.7910 | 5000 | MAXN | 62.4 | 453 / 568 | 478 / 606 | 11 | 25.6 | 30.4 | 30.3 | 53.2 | none | [Qwen2.5-VL-3B-Instruct/textvqa_val/vllm-awq/20260929-005648](Qwen2.5-VL-3B-Instruct/textvqa_val/vllm-awq/20260929-005648) |
 | Qwen2.5-VL-3B-Instruct | vllm-bf16 | textvqa_val | exact_match: 0.7939 | 5000 | MAXN | 58.3 | 361 / 446 | 426 / 548 | 27 | 25.6 | 31.1 | 27.2 | 52.3 | none | [Qwen2.5-VL-3B-Instruct/textvqa_val/vllm-bf16/20260928-235725](Qwen2.5-VL-3B-Instruct/textvqa_val/vllm-bf16/20260928-235725) |
+| Qwen2.5-VL-3B-Instruct | vllm-fp8+marlin | textvqa_val | exact_match: 0.7946 | 5000 | MAXN | 60.4 | 434 / 545 | 463 / 609 | 15 | 19.9 | 25.8 | 31.8 | 60.2 | none | [Qwen2.5-VL-3B-Instruct/textvqa_val/vllm-fp8+marlin/20261005-192101](Qwen2.5-VL-3B-Instruct/textvqa_val/vllm-fp8+marlin/20261005-192101) |
+| Qwen2.5-VL-3B-Instruct | vllm-fp8+torch | textvqa_val | exact_match: 0.7948 | 5000 | MAXN | 50.7 | 325 / 393 | 354 / 456 | 15 | 18.2 | 23.3 | 27.3 | 54.4 | none | [Qwen2.5-VL-3B-Instruct/textvqa_val/vllm-fp8+torch/20261005-152127](Qwen2.5-VL-3B-Instruct/textvqa_val/vllm-fp8+torch/20261005-152127) |
+| Qwen2.5-VL-3B-Instruct | vllm-w8a8+triton | textvqa_val | exact_match: 0.7927 | 5000 | MAXN | 54.1 | 359 / 449 | 391 / 513 | 16 | 20.6 | 26.2 | 29.0 | 57.1 | none | [Qwen2.5-VL-3B-Instruct/textvqa_val/vllm-w8a8+triton/20261005-171344](Qwen2.5-VL-3B-Instruct/textvqa_val/vllm-w8a8+triton/20261005-171344) |
 | Qwen2.5-VL-7B-Instruct | hf-bf16 | gqa | exact_match: 0.6088 | 12578 | 120W | - | - | - | - | - | - | - | - | timings not valid: A process outside the run pinned one CPU core at 100%; the GPU was mostly idle (see NOTES.md). The score is valid. | [Qwen2.5-VL-7B-Instruct/gqa/hf-bf16/20260925-115139](Qwen2.5-VL-7B-Instruct/gqa/hf-bf16/20260925-115139) |
 | Qwen2.5-VL-7B-Instruct | vllm-awq | gqa | exact_match: 0.6070 | 12578 | 120W | 87.3 | 300 / 324 | 325 / 360 | 21 | 36.4 | 41.9 | 32.2 | 55.7 | none | [Qwen2.5-VL-7B-Instruct/gqa/vllm-awq/20260925-202538](Qwen2.5-VL-7B-Instruct/gqa/vllm-awq/20260925-202538) |
 | Qwen2.5-VL-7B-Instruct | vllm-bf16 | gqa | exact_match: 0.6098 | 12578 | 120W | 83.0 | 223 / 237 | 289 / 360 | 63 | 21.1 | 40.3 | 27.2 | 56.8 | none | [Qwen2.5-VL-7B-Instruct/gqa/vllm-bf16/20260925-190032](Qwen2.5-VL-7B-Instruct/gqa/vllm-bf16/20260925-190032) |
@@ -42,6 +45,9 @@ How each column is measured: [methodology](../../docs/methodology.md). Runs mark
 | Qwen2.5-VL-7B-Instruct | trt_edgellm-int4_awq | textvqa_val | exact_match: 0.8292 | 5000 | MAXN | 59.6 | ~397 (avg) | - | 20 | 21.0 | 22.1 | 51.1 | 72.4 | none | [Qwen2.5-VL-7B-Instruct/textvqa_val/trt_edgellm-int4_awq/20261005-125303](Qwen2.5-VL-7B-Instruct/textvqa_val/trt_edgellm-int4_awq/20261005-125303) |
 | Qwen2.5-VL-7B-Instruct | vllm-awq | textvqa_val | exact_match: 0.8313 | 5000 | MAXN | 79.6 | 637 / 782 | 676 / 872 | 20 | 26.3 | 31.9 | 38.9 | 65.3 | none | [Qwen2.5-VL-7B-Instruct/textvqa_val/vllm-awq/20260929-031548](Qwen2.5-VL-7B-Instruct/textvqa_val/vllm-awq/20260929-031548) |
 | Qwen2.5-VL-7B-Instruct | vllm-bf16 | textvqa_val | exact_match: 0.8384 | 5000 | MAXN | 74.6 | 456 / 547 | 596 / 819 | 63 | 25.6 | 30.9 | 32.4 | 62.3 | none | [Qwen2.5-VL-7B-Instruct/textvqa_val/vllm-bf16/20260929-020010](Qwen2.5-VL-7B-Instruct/textvqa_val/vllm-bf16/20260929-020010) |
+| Qwen2.5-VL-7B-Instruct | vllm-fp8+marlin | textvqa_val | exact_match: 0.8374 | 5000 | MAXN | 84.8 | 681 / 840 | 742 / 963 | 32 | 19.9 | 25.9 | 38.7 | 72.5 | none | [Qwen2.5-VL-7B-Instruct/textvqa_val/vllm-fp8+marlin/20261005-202223](Qwen2.5-VL-7B-Instruct/textvqa_val/vllm-fp8+marlin/20261005-202223) |
+| Qwen2.5-VL-7B-Instruct | vllm-fp8+torch | textvqa_val | exact_match: 0.8381 | 5000 | MAXN | 59.6 | 369 / 453 | 442 / 584 | 33 | 18.6 | 24.3 | 31.9 | 62.4 | none | [Qwen2.5-VL-7B-Instruct/textvqa_val/vllm-fp8+torch/20261005-161309](Qwen2.5-VL-7B-Instruct/textvqa_val/vllm-fp8+torch/20261005-161309) |
+| Qwen2.5-VL-7B-Instruct | vllm-w8a8+triton | textvqa_val | exact_match: 0.8365 | 5000 | MAXN | 71.3 | 509 / 617 | 580 / 745 | 33 | 19.9 | 25.8 | 33.3 | 66.3 | none | [Qwen2.5-VL-7B-Instruct/textvqa_val/vllm-w8a8+triton/20261005-180845](Qwen2.5-VL-7B-Instruct/textvqa_val/vllm-w8a8+triton/20261005-180845) |
 
 ## Latency breakdown and efficiency
 
@@ -71,6 +77,9 @@ Medians per sample. Preprocess = client-side prompt and image preparation; visio
 | Qwen2.5-VL-3B-Instruct | trt_edgellm-int4_awq | textvqa_val | - | 87 | 152 | ~232 (avg) | - | 3.9 | 91 | 1.92 | 30.9 | runner profile (GPU time) |
 | Qwen2.5-VL-3B-Instruct | vllm-awq | textvqa_val | 240 | - | - | 453 / 647 | 691 | 3.9 | 94 | 1.34 | 39.8 | - |
 | Qwen2.5-VL-3B-Instruct | vllm-bf16 | textvqa_val | 240 | - | - | 361 / 509 | 700 | 3.9 | 37 | 1.43 | 36.6 | - |
+| Qwen2.5-VL-3B-Instruct | vllm-fp8+marlin | textvqa_val | 232 | - | - | 434 / 615 | 692 | 4.0 | 66 | 1.38 | 43.7 | - |
+| Qwen2.5-VL-3B-Instruct | vllm-fp8+torch | textvqa_val | 231 | - | - | 325 / 448 | 539 | 4.0 | 65 | 1.64 | 33.1 | - |
+| Qwen2.5-VL-3B-Instruct | vllm-w8a8+triton | textvqa_val | 231 | - | - | 359 / 513 | 595 | 3.9 | 64 | 1.54 | 37.0 | - |
 | Qwen2.5-VL-7B-Instruct | vllm-awq | gqa | 84 | - | - | 300 / 400 | 426 | 2.3 | 48 | 2.40 | 23.2 | - |
 | Qwen2.5-VL-7B-Instruct | vllm-bf16 | gqa | 84 | - | - | 223 / 309 | 465 | 2.3 | 16 | 2.53 | 22.5 | - |
 | Qwen2.5-VL-7B-Instruct | hf-bf16 | mme | 29 | - | - | 283 / 1228 | 1316 | 2.0 | 12 | 1.51 | 43.1 | - |
@@ -85,6 +94,9 @@ Medians per sample. Preprocess = client-side prompt and image preparation; visio
 | Qwen2.5-VL-7B-Instruct | trt_edgellm-int4_awq | textvqa_val | - | 88 | 323 | ~397 (avg) | - | 4.0 | 49 | 1.40 | 51.8 | runner profile (GPU time) |
 | Qwen2.5-VL-7B-Instruct | vllm-awq | textvqa_val | 241 | - | - | 637 / 878 | 985 | 4.0 | 49 | 1.05 | 62.4 | - |
 | Qwen2.5-VL-7B-Instruct | vllm-bf16 | textvqa_val | 240 | - | - | 456 / 645 | 1224 | 3.9 | 16 | 1.12 | 55.7 | - |
+| Qwen2.5-VL-7B-Instruct | vllm-fp8+marlin | textvqa_val | 231 | - | - | 681 / 951 | 1132 | 3.9 | 32 | 0.98 | 73.8 | - |
+| Qwen2.5-VL-7B-Instruct | vllm-fp8+torch | textvqa_val | 232 | - | - | 369 / 530 | 779 | 3.9 | 30 | 1.40 | 44.6 | - |
+| Qwen2.5-VL-7B-Instruct | vllm-w8a8+triton | textvqa_val | 232 | - | - | 509 / 712 | 944 | 3.9 | 31 | 1.17 | 56.7 | - |
 
 ## Compute (FLOPs)
 
@@ -114,6 +126,9 @@ and total / mean answer time.
 | Qwen2.5-VL-3B-Instruct | trt_edgellm-int4_awq | textvqa_val | 977 / 39 / 4 | 5360 | 5794 | 19 | 11173 | 55865 | 48.2 | 42.4 |
 | Qwen2.5-VL-3B-Instruct | vllm-awq | textvqa_val | 977 / 39 / 4 | 5360 | 5794 | 19 | 11173 | 55865 | 24.4 | 22.9 |
 | Qwen2.5-VL-3B-Instruct | vllm-bf16 | textvqa_val | 977 / 39 / 4 | 5360 | 5794 | 19 | 11173 | 55865 | 30.6 | 25.2 |
+| Qwen2.5-VL-3B-Instruct | vllm-fp8+marlin | textvqa_val | 977 / 39 / 4 | 5360 | 5794 | 19 | 11173 | 55867 | 25.9 | 23.4 |
+| Qwen2.5-VL-3B-Instruct | vllm-fp8+torch | textvqa_val | 977 / 39 / 4 | 5360 | 5794 | 19 | 11173 | 55866 | 35.2 | 30.8 |
+| Qwen2.5-VL-3B-Instruct | vllm-w8a8+triton | textvqa_val | 977 / 39 / 4 | 5360 | 5794 | 19 | 11173 | 55866 | 31.3 | 27.7 |
 | Qwen2.5-VL-7B-Instruct | hf-bf16 | gqa | 358 / 41 / 2 | 1898 | 5245 | 18 | 7161 | 90072 | - | - |
 | Qwen2.5-VL-7B-Instruct | vllm-awq | gqa | 358 / 41 / 2 | 1898 | 5243 | 18 | 7160 | 90052 | 24.1 | 22.2 |
 | Qwen2.5-VL-7B-Instruct | vllm-bf16 | gqa | 358 / 41 / 2 | 1898 | 5243 | 18 | 7160 | 90053 | 32.1 | 23.6 |
@@ -129,6 +144,9 @@ and total / mean answer time.
 | Qwen2.5-VL-7B-Instruct | trt_edgellm-int4_awq | textvqa_val | 977 / 39 / 4 | 5376 | 13471 | 43 | 18890 | 94449 | 47.5 | 41.3 |
 | Qwen2.5-VL-7B-Instruct | vllm-awq | textvqa_val | 977 / 39 / 4 | 5376 | 13471 | 43 | 18890 | 94450 | 29.8 | 27.2 |
 | Qwen2.5-VL-7B-Instruct | vllm-bf16 | textvqa_val | 977 / 39 / 4 | 5376 | 13471 | 43 | 18890 | 94448 | 41.6 | 29.7 |
+| Qwen2.5-VL-7B-Instruct | vllm-fp8+marlin | textvqa_val | 977 / 39 / 4 | 5376 | 13471 | 43 | 18890 | 94448 | 28.0 | 24.7 |
+| Qwen2.5-VL-7B-Instruct | vllm-fp8+torch | textvqa_val | 977 / 39 / 4 | 5376 | 13471 | 43 | 18890 | 94448 | 51.4 | 40.8 |
+| Qwen2.5-VL-7B-Instruct | vllm-w8a8+triton | textvqa_val | 977 / 39 / 4 | 5376 | 13471 | 43 | 18890 | 94449 | 37.6 | 31.6 |
 
 ## Excluded runs
 

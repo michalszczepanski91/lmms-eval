@@ -1,0 +1,17 @@
+2026-10-05 15:21:27 start; NV Power Mode: MAXN
+=== 15:21:27 vllm 3b-fp8 textvqa_val 
+    /home/michal/dev/lmms-eval/jetson/results/thor/Qwen2.5-VL-3B-Instruct/textvqa_val/vllm-fp8+torch/20261005-152127/: samples 5000, question_marks 0, empty 0, request_failed 0
+=== 16:13:09 vllm 7b-fp8 textvqa_val 
+    /home/michal/dev/lmms-eval/jetson/results/thor/Qwen2.5-VL-7B-Instruct/textvqa_val/vllm-fp8+torch/20261005-161309/: samples 5000, question_marks 0, empty 0, request_failed 0
+summary: /home/michal/dev/lmms-eval/jetson/results/thor/SUMMARY.md
+=== 17:13:44 vllm 3b-w8a8 textvqa_val 
+    /home/michal/dev/lmms-eval/jetson/results/thor/Qwen2.5-VL-3B-Instruct/textvqa_val/vllm-w8a8+triton/20261005-171344/: samples 5000, question_marks 0, empty 0, request_failed 0
+=== 18:08:45 vllm 7b-w8a8 textvqa_val 
+    /home/michal/dev/lmms-eval/jetson/results/thor/Qwen2.5-VL-7B-Instruct/textvqa_val/vllm-w8a8+triton/20261005-180845/: samples 5000, question_marks 0, empty 0, request_failed 0
+summary: /home/michal/dev/lmms-eval/jetson/results/thor/SUMMARY.md
+=== 19:21:01 vllm 3b-fp8 textvqa_val 
+    /home/michal/dev/lmms-eval/jetson/results/thor/Qwen2.5-VL-3B-Instruct/textvqa_val/vllm-fp8+marlin/20261005-192101/: samples 5000, question_marks 0, empty 0, request_failed 0
+=== 20:22:23 vllm 7b-fp8 textvqa_val 
+    /home/michal/dev/lmms-eval/jetson/results/thor/Qwen2.5-VL-7B-Instruct/textvqa_val/vllm-fp8+marlin/20261005-202223/: samples 5000, question_marks 0, empty 0, request_failed 0
+summary: /home/michal/dev/lmms-eval/jetson/results/thor/SUMMARY.md
+2026-10-05 21:48:09 all done

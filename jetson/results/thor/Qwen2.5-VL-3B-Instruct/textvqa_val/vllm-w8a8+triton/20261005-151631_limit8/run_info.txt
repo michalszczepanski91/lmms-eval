@@ -1,0 +1,14 @@
+date:        2026-10-05T15:16:31+02:00
+board:       NVIDIA Jetson AGX Thor Developer Kit
+l4t:         # R39 (release), REVISION: 2.1, GCID: 46758480, BOARD: generic, EABI: aarch64, DATE: Fri Aug  7 05:54:22 AM UTC 2026
+power mode:  NV Power Mode: MAXN
+git commit:  cf30b0b0
+framework:   vllm
+precision:   w8a8
+run tag:     triton
+eval env:    VLLM_DISABLED_KERNELS=CutlassInt8ScaledMMLinearKernel
+image:       lmms-eval-jetson:latest (sha256:60ca8d6b1834)
+other containers: 
+other GPU processes: 
+command:     python -m lmms_eval --model vllm --model_args model=/opt/hf-cache/hub/models--RedHatAI--Qwen2.5-VL-3B-Instruct-quantized.w8a8/snapshots/fcd4bf97086d0a782ead353e4ea700db0628b568,gpu_memory_utilization=0.11,max_model_len=4096,max_pixels=1605632,mm_processor_kwargs={"min_pixels":200704,"max_pixels":1605632},enable_prefix_caching=False,mm_processor_cache_gb=0 --tasks textvqa_val --batch_size 1 --log_samples --output_path jetson/results/thor/Qwen2.5-VL-3B-Instruct/textvqa_val/vllm-w8a8+triton/20261005-151631_limit8 --limit 8
+versions:    torch 2.10.0 transformers 4.57.3
