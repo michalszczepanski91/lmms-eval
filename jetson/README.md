@@ -60,7 +60,7 @@ One script per question, under [experiments/qwen2_5_vl/](experiments/qwen2_5_vl/
 |---|---|
 | `mme.sh` | Main comparison: MME (2,374 yes/no questions) for every framework and precision, 3B and 7B |
 | `gqa.sh` | Short-answer VQA: GQA testdev-balanced (12,578 questions), same matrix |
-| `textvqa.sh` | Reading text in images: TextVQA val (5,000 questions), same matrix. Builds missing Edge-LLM 3B engines first (`SKIP_ENGINES=1` to skip) |
+| `textvqa.sh` | Reading text in images: TextVQA val (5,000 questions), same matrix. Builds missing Edge-LLM 3B and 7B engines first (`SKIP_ENGINES=1` to skip) |
 | `followups.sh` | Image transport overhead (PIL vs PNG/base64), decode-heavy captioning (COCO), image-resolution sweep |
 
 A full matrix takes 12–16 h. Start it detached, so it survives a closed SSH session. It runs unattended: stalled runs are stopped and bad runs are marked (see [methodology](docs/methodology.md#result-files)).

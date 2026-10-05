@@ -17,14 +17,14 @@ How the Thor benchmark was run, what went wrong, and how each problem was fixed.
   - runtime image `lmms-eval-trt-edgellm`;
   - export image `lmms-eval-trt-export:v0.10.1` (NGC PyTorch 26.05, transformers 5.14.1, modelopt 0.45.0).
 
-**Edge-LLM 3B engines** in `/opt/models/trt-edgellm`
+**Edge-LLM 3B and 7B engines** in `/opt/models/trt-edgellm`
 - Precisions:
   - fp16;
   - fp8, quantized with Edge-LLM's quantizer;
   - int4_awq: Edge-LLM's own AWQ of the base checkpoint, **not** the Qwen AWQ checkpoint that vLLM uses.
 - Limits: LLM input 2,560 tokens, KV cache 3,072, vision encoder 256–2,048 image tokens.
 - Vision encoder: fp16, scaled by `VISION_SCALE=8` (problem 7).
-- Sizes: fp16 7.7 GB, fp8 5.1 GB, int4_awq 3.8 GB.
+- Sizes: 3B fp16 7.7 GB, fp8 5.1 GB, int4_awq 3.8 GB; 7B fp16 16 GB, fp8 9.5 GB, int4_awq 6.5 GB. The 7B set took 53 min to build (fp16 6 min, fp8 7 min, int4_awq 40 min, mostly AWQ calibration).
 
 **Paths**
 - HF cache: `/opt/hf-cache`.
@@ -93,11 +93,11 @@ Details of each issue: [tensorrt-edgellm.md, "Known issues"](../../docs/tensorrt
 | 2026-09-30 | Shared engines replaced by the fixed ones (sha256-identical). Edge-LLM MME and GQA re-run with them, 16:14–19:45, after the dsvlm jobs had finished. Branch pushed to the fork. |
 | 2026-10-01 | llama.cpp f16 TextVQA (16-bit weights, like the other frameworks), MAXN: smoke test 12:00, 3B 12:01–14:03, 7B 14:03–16:44. Both valid (no `????`, no empty answers). |
 | 2026-10-02 | f16 results added to REPORT.md / FINDINGS.md. llama.cpp decode per token found under-reported (problem 16). |
-| 2026-10-05 | Same decode error found in `summarize.py` for Edge-LLM; SUMMARY.md regenerated. |
+| 2026-10-05 | Same decode error found in `summarize.py` for Edge-LLM; SUMMARY.md regenerated. Edge-LLM 7B engines (fp16, fp8, int4_awq, `VISION_SCALE=8`) built 10:14–11:07; smoke tests passed; full TextVQA 11:10–13:55, all three valid (no empty or `????` answers, so no `VISION_SCALE=16` rebuild was needed). Logs `logs/edgellm_7b_engines.log`, `logs/edgellm_7b_textvqa.log`. |
 
 ## Open items
 
-- **Not run on Thor:** llama.cpp MME and GQA; Edge-LLM 7B; HF 7B GQA timing (problem 12).
+- **Not run on Thor:** llama.cpp MME and GQA; Edge-LLM 7B MME and GQA; HF 7B GQA timing (problem 12).
 - **Not solved:** nvfp4 (problem 3); Edge-LLM's NaN state bug (problem 7); an engine built from Qwen's AWQ checkpoint (problem 2).
 - **Not explained:** the 7B TextVQA gap to Qwen's published number (83.0 vs 84.9).
 - **Optional disk cleanup (17 GB each):** `/opt/models/trt-edgellm/old-unscaled-vision-20260928` and `~/trt-edgellm-vscale8`.

@@ -1,13 +1,15 @@
 #!/usr/bin/env bash
 # TextVQA val (5,000 questions about text in 3,166 photos, e.g. signs, labels, screens; VQA accuracy against 10 human
 # answers), 3B and 7B. OCR-heavy, so it tests what quantization and image handling do to reading fine text.
-# Needs dataset:lmms-lab-encoder/textvqa (download_assets.sh). Builds the TensorRT Edge-LLM 3B engines if they are
-# missing (SKIP_ENGINES=1 to skip; the trt_edgellm runs then fail if there are none).
+# Needs dataset:lmms-lab-encoder/textvqa (download_assets.sh). Builds the TensorRT Edge-LLM 3B and 7B engines if they
+# are missing (SKIP_ENGINES=1 to skip; the trt_edgellm runs then fail if there are none).
 # SMOKE=1: 8 samples each. Results: $RESULTS_DIR/<model>/textvqa_val/...
 set -uo pipefail
 
 REPO=$(cd "$(dirname "$0")/../../.." && pwd)
 source "$(dirname "$0")/matrix.sh"
-[ "${SKIP_ENGINES:-0}" = 1 ] || "$REPO/jetson/frameworks/trt_edgellm/ensure_engines.sh" 3b fp16 fp8 int4_awq
+if [ "${SKIP_ENGINES:-0}" != 1 ]; then
+  for size in 3b 7b; do "$REPO/jetson/frameworks/trt_edgellm/ensure_engines.sh" "$size" fp16 fp8 int4_awq; done
+fi
 [ "${SMOKE:-0}" = 1 ] && exec "$REPO/jetson/scripts/run_matrix.sh" textvqa_val 8 -- "${MATRIX[@]}"
 exec "$REPO/jetson/scripts/run_matrix.sh" textvqa_val "" -- "${MATRIX[@]}"

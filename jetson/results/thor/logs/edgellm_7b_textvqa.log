@@ -1,0 +1,7 @@
+=== 11:10:13 trt_edgellm 7b-fp16 textvqa_val 
+    /home/michal/dev/lmms-eval/jetson/results/thor/Qwen2.5-VL-7B-Instruct/textvqa_val/trt_edgellm-fp16/20261005-111014/: samples 5000, question_marks 0, empty 0, request_failed 0
+=== 12:07:46 trt_edgellm 7b-fp8 textvqa_val 
+    /home/michal/dev/lmms-eval/jetson/results/thor/Qwen2.5-VL-7B-Instruct/textvqa_val/trt_edgellm-fp8/20261005-120746/: samples 5000, question_marks 0, empty 0, request_failed 0
+=== 12:53:03 trt_edgellm 7b-int4_awq textvqa_val 
+    /home/michal/dev/lmms-eval/jetson/results/thor/Qwen2.5-VL-7B-Instruct/textvqa_val/trt_edgellm-int4_awq/20261005-125303/: samples 5000, question_marks 0, empty 0, request_failed 0
+summary: /home/michal/dev/lmms-eval/jetson/results/thor/SUMMARY.md
