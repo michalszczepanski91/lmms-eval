@@ -89,7 +89,15 @@ The same 5,000 TextVQA questions, MAXN.
 | llama.cpp | Q4_K_M (by ggml-org) | 78.7 (−0.1 ± 0.4) | 1.14 s | 16 ms | 0.68 | 49 W | 72 J |
 | Edge-LLM | int4_awq (own) | 73.8 (**−5.1 ± 0.5**) | ~0.23 s | 11 ms | 1.92 | 59 W | 31 J |
 
-- **Accuracy:** at 16-bit, all within 1 point; the differences are close calls about when to stop answering ("Stop" vs "Stop Global Warming"). At 4-bit it depends on who quantized the model (section 4).
+**4-bit weights, 16-bit activations, 7B:**
+
+| Framework | Weights | Accuracy (Δ vs HF bf16) | TTFT | Decode per token | Questions/s | Avg board power | Energy per question |
+|---|---|---:|---:|---:|---:|---:|---:|
+| vLLM | AWQ (by Qwen) | 83.1 (+0.2 ± 0.3) | 0.64 s | 20 ms | 1.05 | 65 W | 62 J |
+| llama.cpp | Q4_K_M (by ggml-org) | 82.2 (−0.8 ± 0.3) | 1.53 s | 29 ms | 0.53 | 53 W | 100 J |
+| Edge-LLM | int4_awq (own) | 82.9 (−0.0 ± 0.3) | ~0.40 s | 20 ms | 1.40 | 72 W | 52 J |
+
+- **Accuracy:** at 16-bit, all within 1 point; the differences are close calls about when to stop answering ("Stop" vs "Stop Global Warming"). At 4-bit it depends on who quantized the model (section 4): the 3B loses 5 points with Edge-LLM's own quantizer, while the 7B stays within 1 point with every quantizer.
 - **TTFT:** Edge-LLM < vLLM ≈ HF < llama.cpp, for both sizes and both weight formats. Edge-LLM's lead is its vision encoder (section 3).
 - **Decode speed is set by the weight size, not the framework:** at 16-bit 27–28 ms per token for the 3B and 59–63 ms for the 7B (vLLM, llama.cpp, Edge-LLM), at 4-bit 11–16 ms (3B) and 20–29 ms (7B), because each token reads all weights. HF is the exception (53 / 80 ms, framework overhead).
 - **llama.cpp f16 vs Q8_0** (same GGUF converter, same f16 vision encoder, only the language model's weights differ):
