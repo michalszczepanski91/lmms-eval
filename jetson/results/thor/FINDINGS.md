@@ -11,16 +11,30 @@ We ran the vision-language model **Qwen2.5-VL** (a small 3B and a larger 7B vers
 
 We also compared **precisions**. A model can store its numbers in full size (bf16/fp16) or compressed to 8 or 4 bits. Compressed models are smaller and can be faster, but may lose accuracy.
 
-We tested on three benchmarks:
+We tested on three benchmarks (numbers from [jetson/datasets/reports](../../datasets/reports/)):
 
-| Benchmark | Questions (images) | Image size, avg (min–max) | Image tokens, avg (min–max) | Question tokens, avg (min–max) | Reference answer: words / tokens, avg (min–max) | Content and scoring |
-|---|---:|---|---:|---:|---:|---|
-| TextVQA | 5,000 (3,166) | 0.8 MP, ~950×820 px (0.26–15.9 MP) | 977 (333–2,028) | 18 (13–49) | 1.6 (1–41) / 3.0 (1–53) | text in photos; vs 10 human answers, full score if ≥ 3 match |
-| MME | 2,374 (1,187) | 1.9 MP (0.01–33 MP) | 868 (256–2,048) | 22 (15–41) | 1 / 1 ("Yes" or "No") | yes/no; exact match |
-| GQA | 12,578 (398) | 0.3 MP, ~580×480 px (0.10–0.41 MP) | 358 (260–529) | 20 (14–36) | 1.1 (1–3) / 1.3 (1–4) | objects in scenes; exact match |
+| Benchmark | Questions (images) | Image size, avg (min–max) | Image tokens, avg (min–max) | Question tokens, avg (min–max) | Reference answer: words / tokens, avg (min–max) | Content | Scoring |
+|---|---:|---|---:|---:|---:|---|---|
+| [TextVQA](../../datasets/reports/textvqa_val.md) | 5,000 (3,166) | 0.77 MP, ~950×820 px (0.26–15.9 MP) | 977 (333–2,028) | 18 (13–49) | 1.6 (1–12) / 2.9 (1–22) | text in photos | VQA accuracy: min(1, matching human answers / 3), out of 10 |
+| [MME](../../datasets/reports/mme.md) | 2,374 (1,187) | 1.88 MP, ~1090×950 px (0.01–33.4 MP) | 868 (256–2,048) | 22 (15–41) | 1 / 1 ("Yes" or "No") | yes/no questions | the answer's first word is "Yes"/"No"; score = accuracy + accuracy+ per category |
+| [GQA](../../datasets/reports/gqa.md) | 12,578 (398) | 0.28 MP, ~580×480 px (0.10–0.41 MP) | 358 (260–529) | 20 (14–36) | 1.1 (1–3) / 1.3 (1–4) | objects in scenes | exact match |
 
-- **Image tokens:** one per 28×28 px, after resizing the image into 256–2,048 tokens.
-- **Reference answer:** the ground truth. 72% of TextVQA's most common human answers are one word; the rest are phrases, numbers or names.
+- **Image tokens:** one per 28×28 px, after resizing into 256–2,048 tokens (e.g. 1024×1024 px → 1036×1036 → 1,369 tokens).
+- **Question tokens:** the full prompt text, e.g. "Is it overcast?" + "Answer the question using a single word or phrase." = 15 tokens. MME's own "Please answer yes or no." is replaced by this suffix.
+- **Reference answer:** for TextVQA, the most common of its 10 human answers; 72% are one word, 24% contain a digit. GQA: 94% one word.
+- **Words ≠ tokens:** rare words split into pieces and every digit is a token.
+
+Shortest and longest reference answer in tokens (images and details in the reports):
+
+| Benchmark | Question | Reference | Words / tokens |
+|---|---|---|---:|
+| TextVQA | What kind of beer is this? | ale | 1 / 1 |
+| TextVQA | What brands of beer are there here? | caracu, antartica, itaipava, evassa, paulistania, petra | 6 / 22 |
+| MME | every question, e.g. Is a python code shown in the picture? | Yes / No | 1 / 1 |
+| GQA | Is it overcast? | no | 1 / 1 |
+| GQA | Who rides on the skateboard? | skateboarder (`sk` `ate` `board` `er`) | 1 / 4 |
+
+Regenerate with `jetson/datasets/run.sh <textvqa|mme|gqa>`; add `--run <run dir>` for the model's answers, `--examples <doc id> ...` for other questions.
 
 For every run we measured accuracy, speed, energy, memory and compute. All frameworks got the same images and the same questions, and ran one question at a time with nothing else on the GPU.
 
@@ -111,7 +125,7 @@ vLLM reports no stages; Edge-LLM only means, so it can't be split by image size.
 - **Image size drives TTFT:** 1.85× more image tokens → 2.0× longer vision encoder in HF (2.7× in llama.cpp), 1.4–1.8× longer prefill. Pixels count only through tokens (large photos are shrunk to 2,048).
 - **Edge-LLM's vision encoder is 3× faster than HF's and 8× faster than llama.cpp's** (86 vs 276 vs ~710 ms).
 - **4-bit makes the first token slower:** prefill 145 vs 71 ms (Edge-LLM), 0.45 vs 0.36 s TTFT (vLLM). 4-bit weights must be unpacked for every prefill; only decode gets faster. **fp8 (8-bit weights and activations) speeds up prefill:** 43 ms.
-- **Decode matters in HF:** 2 tokens after the first take as long as the prefill. Longer answers (captions) would make decode the largest stage everywhere.
+- **Answers are short, but decode is not negligible in time.** The model generates 2.0 (MME), 2.3 (GQA) and 4.1 (TextVQA) tokens on average, including the end token (max 16 / 6 / 118). Decode is < 0.2% of the FLOPs but 16–26% of HF's model time, because each step is slow (memory-bound, plus HF overhead). Longer answers (captions) would make decode the largest stage.
 - **Hidden cost:** converting each photo to PNG (~0.24 s) takes about as long as the model itself; HF passes the image directly (0.03 s).
 
 ### 4. 4-bit: who compressed the model matters more than the number of bits

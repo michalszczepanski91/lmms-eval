@@ -43,6 +43,18 @@ The evaluator picks the task class from `lm.is_simple`, so the same task YAML is
 
 **Other surfaces** — `lmms_eval/entrypoints/` is the HTTP eval server (async job queue for training-time eval: `/evaluate`, `/jobs/{id}`, `/queue`); `lmms_eval/tui/` the web/terminal UI; `lmms_eval/mcp/` an MCP server.
 
+## Jetson benchmarks (`jetson/`)
+
+A harness that runs the same model and tasks through HF, vLLM, llama.cpp and TensorRT Edge-LLM on Jetson AGX Orin / Thor, and measures accuracy, latency, memory, power and analytical FLOPs for each. Start with [jetson/README.md](jetson/README.md) (commands, layout, how to add a framework or model); [jetson/docs/methodology.md](jetson/docs/methodology.md) covers what is measured and the fairness settings. Evals run inside the `lmms-eval-jetson` Docker image through `jetson/scripts/run_eval.sh <framework> <size>[-<precision>] [task] [limit]`. Results are written per board to `jetson/results/<board>/`, and `jetson/scripts/summarize.py` builds `SUMMARY.md` from them.
+
+Things you can't see from the code:
+- Runs are offline. Download models and datasets into the shared HF cache (`/opt/hf-cache`) with `jetson/scripts/download_assets.sh` first. It also builds the `datasets` Arrow cache, so tasks that set `token: True` (MME, GQA) don't need an HF login.
+- lmms-eval exits 0 even when evaluation fails, so `run_eval.sh` checks the log for errors. Also check the samples: llama.cpp answers of `????` mean fp16 overflow. Such runs get an `INVALID` file, and `summarize.py` skips them. Smoke runs (`_limitN` run ids) are skipped as well unless you pass `--include-smoke`.
+- Keep the fairness settings: cross-request prefix/image caching stays off, the image range is 256–2048 visual tokens (from `jetson/models/<model>/model.sh`), batch size is 1, and no other GPU process may run. Don't run two benchmarks at once, or a benchmark next to a Docker build.
+- Bash reads a script while it executes it. Don't edit `run_eval.sh` in place during a run: write a copy and `mv` it over.
+- On Jetson, running out of memory shows up as `NVML_SUCCESS == r INTERNAL ASSERT FAILED` from the PyTorch CUDA allocator.
+- The `trt_edgellm` chat backend ([lmms_eval/models/chat/trt_edgellm.py](lmms_eval/models/chat/trt_edgellm.py)) wraps the Edge-LLM C++ runner. Its tests are in `test/models/test_trt_edgellm.py`.
+
 ## Tests
 
 Tests mirror pipeline layers (see [test/README.md](test/README.md)): `test/cli/`, `test/models/` (registry resolution), `test/eval/` (task loading, request construction contract, protocol, evaluator, token counts), `test/cache/`. `test/eval/prompt_stability/` compares prompts for classic benchmarks against golden snapshots — changes to prompt formatting for those tasks will fail these tests intentionally.

@@ -35,7 +35,7 @@ Remaining differences are properties of the frameworks and are reported, not rem
 | FLOPs per sample | Analytical, see below |
 | Achieved TFLOP/s | (vision + prefill FLOPs) / mean TTFT, and total FLOPs / mean answer time. A lower bound on GPU throughput, since TTFT includes host overhead (and HTTP for llama.cpp); Edge-LLM's TTFT is GPU time only, so its rate is not a lower bound |
 
-Per-sample numbers are in each run's `lmms_eval/*_samples_<task>.jsonl.gz` under `token_counts`: `input_tokens`, `output_tokens`, `preprocess_seconds`, `time_to_first_token_seconds`, `generation_seconds`. MME, GQA and TextVQA answers are one word or a short phrase (2–4 tokens), so TTFT dominates; use a longer-answer task such as COCO captioning to compare decode speed.
+Per-sample numbers are in each run's `lmms_eval/*_samples_<task>.jsonl.gz` under `token_counts`: `input_tokens`, `output_tokens`, `preprocess_seconds`, `time_to_first_token_seconds`, `generation_seconds`. MME, GQA and TextVQA answers are one word or a short phrase: 2.0 / 2.3 / 4.1 generated tokens on average, including the end token. Decode is then < 0.2% of the FLOPs but 16–26% of HF's model time; use a longer-answer task such as COCO captioning to compare decode speed.
 
 ## FLOPs
 
