@@ -1,5 +1,6 @@
 # vLLM (in process, lmms-eval `vllm` backend). awq = the model's official AWQ 4-bit checkpoint ($AWQ_REPO);
-# fp8 / w8a8 = RedHatAI's 8-bit W8A8 checkpoints ($FP8_REPO / $W8A8_REPO, language model only).
+# fp8 / w8a8 = RedHatAI's 8-bit W8A8 checkpoints ($FP8_REPO / $W8A8_REPO, language model only). Neither runs on Thor
+# (SM110) with vLLM 0.19.0: no int8 kernel, and the fp8 Cutlass kernel supports sm100f only (results/thor/NOTES.md).
 FW_PRECISIONS="bf16 awq fp8 w8a8"
 
 _vllm_repo() {

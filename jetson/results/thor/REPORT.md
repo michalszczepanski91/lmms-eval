@@ -49,6 +49,7 @@ Qwen2.5-VL-3B and 7B on a Jetson AGX Thor, across HF transformers, vLLM, llama.c
 - **Preprocess** (client side, before the model call) is mostly converting the image to PNG/base64 for vLLM and llama.cpp. \*Edge-LLM's backend writes all images as PNG before starting the runner (19.4 min per run). That time counts in samples/s and J/sample, but not in TTFT.
 - **Stage times** (vision / prefill) are medians: CUDA events for HF, the server log for llama.cpp, runner GPU time for Edge-LLM. vLLM doesn't separate them.
 - **Decode** (ms per token after the first) barely affects these numbers: answers are only about 4 tokens long. HF, vLLM and llama.cpp: client side, (answer − TTFT) / (tokens − 1); Edge-LLM: median GPU time of the runner's decode steps. llama-server's own "eval time" per token is about 1.5× too low, because it counts the first token, which comes from the prefill.
+- **vLLM fp8 / w8a8** (RedHatAI W8A8 checkpoints): no rows, because neither runs on Thor with vLLM 0.19.0 (int8 refused on SM110; the fp8 Cutlass kernel supports sm100f only and crashes). Details: NOTES.md, problem 17.
 - **Memory:** Edge-LLM's runner peak GPU allocation is 8.5 / 5.8 / 4.5 GB (3B) and 16.3 / 10.2 / 7.3 GB (7B) for fp16 / fp8 / int4_awq. The other frameworks peak at 28.5–31.9 GB of whole-board memory.
 
 ## 2. MME and GQA

@@ -79,7 +79,11 @@ Details of each issue: [tensorrt-edgellm.md, "Known issues"](../../docs/tensorrt
     - llama.cpp, via `plot_stages.py` and FINDINGS: 12 / 11 ms for Q8_0 / Q4_K_M, really 18 / 16 ms. The giveaway was 3B f16 at "19 ms" per token, which would read ~6.2 GB of weights at ~320 GB/s, above Thor's 273 GB/s. Per request, dividing by N − 1 gives a flat ~59.5 ms for 7B f16, whatever the answer length, and matches the client-side figure.
     - Edge-LLM, via `summarize.py` and SUMMARY.md: 20 / 12 / 8 ms for fp16 / fp8 / int4_awq, really 27 / 16 / 11 ms (the runner's `llm_generation` stage). FINDINGS already used the correct values.
     - Both scripts are fixed and the figures regenerated. Accuracy, TTFT and stage times were not affected.
-17. **Agent pitfall.** A wait loop using `pgrep -f <name>` matched its own command line and never ended, which cost about 3 h. Wait on log contents or on a PID instead.
+17. **vLLM 8-bit (fp8, w8a8) doesn't run on Thor** (2026-10-05, vLLM 0.19.0+cu130, torch 2.10.0, CUDA 13.0). RedHatAI's W8A8 checkpoints (`*-FP8-dynamic` / `-FP8-Dynamic`, `*-quantized.w8a8`), 3B and 7B, all fail at engine start-up in the 8-sample smoke test:
+    - **w8a8:** vLLM selects `CutlassInt8ScaledMMLinearKernel` for `CompressedTensorsW8A8Int8`, then `RuntimeError: Int8 not supported on SM110. Use FP8 quantization instead, or run on older arch (SM < 100).`
+    - **fp8:** vLLM selects `CutlassFP8ScaledMMLinearKernel` for `CompressedTensorsW8A8Fp8`; the kernel prints "This kernel only supports sm100f." (2,272 times for 3B, 3,616 for 7B) and the engine dies with `torch.AcceleratorError: CUDA error: unspecified launch failure` during memory profiling.
+    - Not worked around (e.g. by forcing another fp8 kernel), as the task required. The failed smoke runs are kept (`vllm-fp8/`, `vllm-w8a8/` `_limit8` dirs, no results). `fp8` and `w8a8` stay available in `vllm.sh` for boards and vLLM versions that support them. Edge-LLM's own fp8 kernels do run on SM110.
+18. **Agent pitfall.** A wait loop using `pgrep -f <name>` matched its own command line and never ended, which cost about 3 h. Wait on log contents or on a PID instead.
 
 ## Timeline
 
@@ -94,10 +98,12 @@ Details of each issue: [tensorrt-edgellm.md, "Known issues"](../../docs/tensorrt
 | 2026-10-01 | llama.cpp f16 TextVQA (16-bit weights, like the other frameworks), MAXN: smoke test 12:00, 3B 12:01–14:03, 7B 14:03–16:44. Both valid (no `????`, no empty answers). |
 | 2026-10-02 | f16 results added to REPORT.md / FINDINGS.md. llama.cpp decode per token found under-reported (problem 16). |
 | 2026-10-05 | Same decode error found in `summarize.py` for Edge-LLM; SUMMARY.md regenerated. Edge-LLM 7B engines (fp16, fp8, int4_awq, `VISION_SCALE=8`) built 10:14–11:07; smoke tests passed; full TextVQA 11:10–13:55, all three valid (no empty or `????` answers, so no `VISION_SCALE=16` rebuild was needed). Logs `logs/edgellm_7b_engines.log`, `logs/edgellm_7b_textvqa.log`. |
+| 2026-10-05 | vLLM `fp8` / `w8a8` precisions added (RedHatAI checkpoints, 3B and 7B downloaded); all four smoke tests fail at engine start-up on SM110 (problem 17), so no full runs. |
 
 ## Open items
 
 - **Not run on Thor:** llama.cpp MME and GQA; Edge-LLM 7B MME and GQA; HF 7B GQA timing (problem 12).
+- **vLLM 8-bit on Thor:** retry `fp8` / `w8a8` with a vLLM release that ships SM110 kernels (problem 17).
 - **Not solved:** nvfp4 (problem 3); Edge-LLM's NaN state bug (problem 7); an engine built from Qwen's AWQ checkpoint (problem 2).
 - **Not explained:** the 7B TextVQA gap to Qwen's published number (83.0 vs 84.9).
 - **Optional disk cleanup (17 GB each):** `/opt/models/trt-edgellm/old-unscaled-vision-20260928` and `~/trt-edgellm-vscale8`.
