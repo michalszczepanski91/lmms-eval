@@ -149,9 +149,13 @@ def trt_profile_stats(path):
     vision_ms = vision.get("average_time_per_token_ms", 0) * vision.get("total_multimodal_tokens", 0) / max(1, vision.get("total_runs", 1))
     ttft = (vision_ms + profile.get("prefill", {}).get("average_time_per_run_ms", 0)) / 1000
     decode = profile.get("generation", {}).get("average_time_per_token_ms")
-    stats = {"ttft_avg": ttft, "decode_ms_p50": decode, "out_tokens_mean": profile.get("generation", {}).get("average_tokens_per_run")}
     # Per-stage GPU time distributions (Edge-LLM >= 0.10): vision_encoder, llm_prefill, llm_generation.
     stages = {stage["stage_id"]: stage.get("gpu_time_stats", {}) for stage in profile.get("stages", [])}
+    # generation.average_time_per_token_ms divides by all generated tokens, but the first one comes from the prefill;
+    # llm_generation has one entry per decode step.
+    if stages.get("llm_generation", {}).get("median_ms") is not None:
+        decode = stages["llm_generation"]["median_ms"]
+    stats = {"ttft_avg": ttft, "decode_ms_p50": decode, "out_tokens_mean": profile.get("generation", {}).get("average_tokens_per_run")}
     if "vision_encoder" in stages and "llm_prefill" in stages:
         stats.update(
             vision_p50=stages["vision_encoder"]["median_ms"] / 1000,

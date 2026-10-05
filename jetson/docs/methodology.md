@@ -23,7 +23,7 @@ Remaining differences are properties of the frameworks and are reported, not rem
 | Scores | lmms-eval task metrics (MME perception / cognition, GQA exact match, TextVQA VQA accuracy (reported as `exact_match`: min(1, matching human answers / 3), averaged over the 10 leave-one-out subsets), COCO CIDEr, ...) |
 | TTFT per sample | From the model call to the first generated token: vision encoder + prefill + first decode step. HF: generation streamer. vLLM: engine request metrics. llama.cpp: first streamed chunk (includes HTTP). Edge-LLM: runner averages only (vision encoder + prefill) |
 | Answer time per sample | Whole model call, all generated tokens |
-| Decode ms/token | (answer − TTFT) / (output tokens − 1) |
+| Decode ms/token | (answer − TTFT) / (output tokens − 1). Edge-LLM: median GPU time of the runner's `llm_generation` stage (one entry per decode step) |
 | Preprocess | Prompt and image preparation before the model call, client side (HF: chat template + processor; vLLM: message building; llama.cpp: message building incl. PNG/base64 encoding) |
 | Vision encoder / LLM prefill | The two parts of TTFT, p50. HF: CUDA events around the vision encoder (`stage_timing=True`, read after `generate`, so no extra syncs), prefill = TTFT − encoder. llama.cpp: server log at verbosity 4, encoder = `encoding mtmd batch` → first `decoding image batch`, prefill = `prompt eval time` − encoder (server side, no HTTP). Edge-LLM: median GPU time of the runner's `vision_encoder` and `llm_prefill` stages. vLLM: not available (the encoder runs inside its prefill step) |
 | TTFT / answer p99 | Tail latency over all samples |
@@ -78,3 +78,4 @@ Run IDs with `_limitN` are smoke tests; `summarize.py` leaves them out unless `-
 - TensorRT Edge-LLM specifics (fp16 vision-encoder overflow, image-size limit, AWQ differences): [tensorrt-edgellm.md](tensorrt-edgellm.md#known-issues-thor-edge-llm-v0101).
 - Out of memory on Jetson shows up as `NVML_SUCCESS == r INTERNAL ASSERT FAILED` in PyTorch's CUDA allocator.
 - `docker build` has no GPU driver, so the Dockerfiles do not run CUDA binaries.
+- Don't use the frameworks' own per-token decode averages. llama-server's `eval time = X ms / N tokens` and Edge-LLM's `generation.average_time_per_token_ms` both divide by all N generated tokens, but the first token comes from the prefill, so there are only N − 1 decode steps. With 2–4-token answers, that makes decode look 1.3–1.5× faster than it is. `summarize.py` and `plot_stages.py` divide by N − 1, or use Edge-LLM's per-step `llm_generation` stage.

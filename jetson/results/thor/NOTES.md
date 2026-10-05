@@ -75,7 +75,11 @@ Details of each issue: [tensorrt-edgellm.md, "Known issues"](../../docs/tensorrt
     - `summarize.py` reads Thor's power rails.
     - `slim_run.py` cut the results from 218 MB to 16 MB.
     - `check_run.py` and the run markers catch silent failures ([methodology](../../docs/methodology.md#result-files)).
-16. **Agent pitfall.** A wait loop using `pgrep -f <name>` matched its own command line and never ended, which cost about 3 h. Wait on log contents or on a PID instead.
+16. **Decode per token was under-reported for llama.cpp and Edge-LLM** (found 2026-10-02 and 10-05). Both servers' own per-token averages divide by every generated token, including the first one, which comes from the prefill ([methodology](../../docs/methodology.md#implementation-notes)).
+    - llama.cpp, via `plot_stages.py` and FINDINGS: 12 / 11 ms for Q8_0 / Q4_K_M, really 18 / 16 ms. The giveaway was 3B f16 at "19 ms" per token, which would read ~6.2 GB of weights at ~320 GB/s, above Thor's 273 GB/s. Per request, dividing by N − 1 gives a flat ~59.5 ms for 7B f16, whatever the answer length, and matches the client-side figure.
+    - Edge-LLM, via `summarize.py` and SUMMARY.md: 20 / 12 / 8 ms for fp16 / fp8 / int4_awq, really 27 / 16 / 11 ms (the runner's `llm_generation` stage). FINDINGS already used the correct values.
+    - Both scripts are fixed and the figures regenerated. Accuracy, TTFT and stage times were not affected.
+17. **Agent pitfall.** A wait loop using `pgrep -f <name>` matched its own command line and never ended, which cost about 3 h. Wait on log contents or on a PID instead.
 
 ## Timeline
 
@@ -87,6 +91,9 @@ Details of each issue: [tensorrt-edgellm.md, "Known issues"](../../docs/tensorrt
 | 2026-09-28 | Results slimmed; `jetson/` reorganized; Orin fixes merged. MAXN from now on. Engines rebuilt; TextVQA smoke test 21:46–22:02; full matrix started 22:02. |
 | 2026-09-29 | Matrix done at 17:45 (13 runs × 5,000). Edge-LLM empty answers diagnosed and fixed (problem 7). Engines rebuilt 17:58–18:18; Edge-LLM TextVQA re-runs 21:27–23:31. |
 | 2026-09-30 | Shared engines replaced by the fixed ones (sha256-identical). Edge-LLM MME and GQA re-run with them, 16:14–19:45, after the dsvlm jobs had finished. Branch pushed to the fork. |
+| 2026-10-01 | llama.cpp f16 TextVQA (16-bit weights, like the other frameworks), MAXN: smoke test 12:00, 3B 12:01–14:03, 7B 14:03–16:44. Both valid (no `????`, no empty answers). |
+| 2026-10-02 | f16 results added to REPORT.md / FINDINGS.md. llama.cpp decode per token found under-reported (problem 16). |
+| 2026-10-05 | Same decode error found in `summarize.py` for Edge-LLM; SUMMARY.md regenerated. |
 
 ## Open items
 
