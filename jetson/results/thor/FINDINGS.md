@@ -112,7 +112,15 @@ The same 5,000 TextVQA questions, MAXN.
 | 7B | vLLM | fp8 / 16-bit (RedHatAI; Marlin)* | 83.7 (+0.8 ± 0.2) | 0.68 s | 32 ms | 0.98 | 73 W | 74 J |
 | 7B | llama.cpp | int8 blocks / 16-bit (Q8_0, by ggml-org) | 82.4 (−0.6 ± 0.3) | 1.43 s | 35 ms | 0.55 | 55 W | 100 J |
 
-\* alternative vLLM kernel, see section 1.
+\* **The three vLLM 8-bit variants.** A *kernel* is the GPU program that does the matrix multiplications, most of the model's work. On Thor, vLLM's default 8-bit kernel (Cutlass) doesn't run, so these runs use vLLM's own switches to pick an alternative ([NOTES.md](NOTES.md), problem 17):
+
+| Variant (result dir) | Kernel | Weights | Activations | The multiplication runs in |
+|---|---|---|---|---|
+| `vllm-fp8+torch` | `torch._scaled_mm` (cuBLASLt) | fp8 | fp8 | 8-bit (fp8) |
+| `vllm-w8a8+triton` | Triton int8 | int8 | int8 | 8-bit (int8) |
+| `vllm-fp8+marlin` | Marlin | fp8 | 16-bit | 16-bit: weights are unpacked first |
+
+*Weights* are the model's stored numbers; *activations* are the numbers computed for each question. All three read 8-bit weights, so all decode about 1.8× faster than bf16 (decode is limited by memory reads). Only real 8-bit multiplication speeds up the first token (the ~1,000-token prefill is limited by compute): fp8 through `_scaled_mm` does; Triton int8 doesn't, because it isn't tuned for this GPU; Marlin is slower than bf16, because unpacking the weights adds work, as with 4-bit.
 
 - **Accuracy:** 8-bit costs nothing in any framework. Against vLLM's own bf16, its 8-bit runs differ by −0.2 to +0.1 points (noise).
 - **Decode:** 8-bit weights decode 1.6–1.9× faster than 16-bit in every framework (15–18 vs 27–28 ms for the 3B, 32–35 vs 59–63 ms for the 7B), since each token reads half the bytes.
