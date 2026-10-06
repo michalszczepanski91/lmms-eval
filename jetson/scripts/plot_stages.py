@@ -15,8 +15,8 @@ Default: one bar per run, mean per stage over all questions. --by-size: one pane
 image-token group (--bins), median per stage. Decode is drawn for --decode-tokens tokens after the first.
 
 Stage sources: HF samples (vision_seconds, needs stage_timing=True), llama.cpp server.log (verbosity 4),
-Edge-LLM trt_profile.json (means only, so not with --by-size). vLLM doesn't split vision encoder and prefill:
-its time to first token is drawn as one grey segment.
+Edge-LLM trt_profile.json (means only, so not with --by-size), vLLM samples (vision_seconds with stage_timing=True;
+runs without it have no vision/prefill split, and their time to first token is drawn as one grey segment).
 """
 
 import argparse
@@ -68,7 +68,7 @@ def hf_stages(run_dir):
 
 
 def vllm_stages(run_dir):
-    """Like hf_stages, but vLLM has no vision/prefill split: (image tokens, None, TTFT ms, decode ms/token or None)."""
+    """Like hf_stages. Runs with stage_timing=True have vision_seconds; without, vision is None and TTFT is one segment."""
     flops = {d["doc_id"]: d for d in map(json.loads, open_text(os.path.join(run_dir, "flops_samples.jsonl.gz")))}
     out = []
     for path in glob.glob(os.path.join(run_dir, "lmms_eval", "*_samples_*.jsonl*")):
@@ -76,7 +76,8 @@ def vllm_stages(run_dir):
             c = d["token_counts"][0]
             ttft = c["time_to_first_token_seconds"] * 1e3
             n = c["output_tokens"] - 1
-            out.append((flops[d["doc_id"]]["image_tokens"], None, ttft, (c["generation_seconds"] * 1e3 - ttft) / n if n > 0 else None))
+            vis = c["vision_seconds"] * 1e3 if c.get("vision_seconds") is not None else None
+            out.append((flops[d["doc_id"]]["image_tokens"], vis, ttft if vis is None else ttft - vis, (c["generation_seconds"] * 1e3 - ttft) / n if n > 0 else None))
     return out
 
 

@@ -8,8 +8,8 @@ Usage: jetson/scripts/stages_table.py [--task textvqa_val] [-n 50] [--start 0] [
       7b:hf-bf16 7b:vllm-bf16 7b:llamacpp-f16 7b:trt_edgellm-fp16 -o jetson/results/thor/stages_textvqa_50.md
 
 One table per model size, one row per question: image and prompt tokens, the model's answer, and per run
-"vision / prefill / decode" in ms (decode = all tokens after the first). vLLM has no vision/prefill split: its cell
-is "TTFT / decode". Edge-LLM records only means: it appears in the summary rows, not per question.
+"vision / prefill / decode" in ms (decode = all tokens after the first). vLLM runs without stage_timing=True have
+no vision/prefill split: their cell is "TTFT / decode". Edge-LLM records only means: it appears in the summary rows, not per question.
 """
 
 import argparse
@@ -103,7 +103,7 @@ def main():
     md = [
         f"# Time per stage per question: {a.task}, questions {ids[0]}–{ids[-1]}",
         "",
-        "- Cells: **vision / prefill / decode** in ms; decode = all generated tokens after the first. **vLLM: TTFT / decode** (it doesn't report the vision encoder separately).",
+        "- Cells: **vision / prefill / decode** in ms; decode = all generated tokens after the first. vLLM runs without stage timing: **TTFT / decode**.",
         "- HF and vLLM: measured by lmms-eval around the model call. llama.cpp: server log, without HTTP. Edge-LLM: GPU time, means only (summary rows).",
         "- Text tokens: prompt + chat template (21). Answer and generated tokens (end token included) from the first run of each table; **≠** lists runs whose answer differs.",
         "- The first question of a run includes warm-up (e.g. vLLM's first TTFT of several seconds); the means include it too.",
