@@ -63,6 +63,22 @@ The same 5,000 TextVQA questions, MAXN.
 - **TTFT** (time to first token): model call → first answer token. Median; Edge-LLM: mean GPU time.
 - **Energy per question:** average board power × run time ÷ questions (includes image preparation and gaps).
 
+**What each framework runs on** (16-bit; the same for 3B and 7B):
+
+| | HF | vLLM | llama.cpp | Edge-LLM |
+|---|---|---|---|---|
+| Matrix multiplies | PyTorch → cuBLAS | PyTorch → cuBLAS, compiled with `torch.compile` | ggml: cuBLAS for the prompt, own kernels per token | TensorRT: kernels picked and fused when the engine is built |
+| Attention | FlashAttention 2 | FlashAttention | ggml's own FlashAttention | Edge-LLM's own (CuTe DSL kernels)¹ |
+| Vision encoder | Qwen's PyTorch code | Qwen's PyTorch code, no CUDA graphs | llama.cpp's own (CLIP/mtmd in ggml) | TensorRT engine |
+| Per-token loop | Python `generate`, no CUDA graphs | CUDA graphs | CUDA graphs | CUDA graphs |
+
+From the run logs; ¹ from direct runner tests (the benchmark logs are slimmed). The differences in the tables below come from these layers, not only from the kernels:
+
+- **TTFT** is mostly the vision encoder's implementation: about 19 TFLOP/s in Qwen's PyTorch code (HF, vLLM), 8 in llama.cpp, 62 in Edge-LLM's TensorRT engine (section 3).
+- **Decode per token** is set by memory bandwidth: every token reads all weights, so vLLM, llama.cpp and Edge-LLM land at the same speed. HF is slower because of Python overhead without CUDA graphs, not a slower kernel.
+- **At 16-bit the matrix-multiply kernels themselves are similar** (cuBLAS or TensorRT). Kernels matter more at 8 and 4 bits, where the format decides which kernel can run (the vLLM 8-bit variants below).
+- **Questions/s** also includes converting each image to PNG (~0.24 s in vLLM, llama.cpp and Edge-LLM; HF passes it directly), which is not the model.
+
 **16-bit weights and activations, 3B:**
 
 | Framework | Weights | Accuracy (Δ vs HF) | TTFT | Decode per token | Questions/s | Avg board power | Energy per question |
