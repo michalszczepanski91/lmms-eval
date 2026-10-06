@@ -1,0 +1,8 @@
+2026-10-06 19:53:57 retry 7B bf16 after moving the stale compile cache aside; NV Power Mode: MAXN
+=== 19:53:58 vllm 7b textvqa_val 
+    /home/michal/dev/lmms-eval/jetson/results/thor/Qwen2.5-VL-7B-Instruct/textvqa_val/vllm-bf16+stages/20261006-195358/: samples 5000, question_marks 0, empty 0, request_failed 0
+summary: /home/michal/dev/lmms-eval/jetson/results/thor/SUMMARY.md
+=== 21:03:04 vllm 7b textvqa_val 
+    /home/michal/dev/lmms-eval/jetson/results/thor/Qwen2.5-VL-7B-Instruct/textvqa_val/vllm-bf16+pil/20261006-210304/: samples 5000, question_marks 0, empty 0, request_failed 0
+summary: /home/michal/dev/lmms-eval/jetson/results/thor/SUMMARY.md
+2026-10-06 21:52:45 all done

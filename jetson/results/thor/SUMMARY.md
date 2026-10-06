@@ -18,17 +18,22 @@ How each column is measured: [methodology](../../docs/methodology.md). Runs mark
 | Qwen2.5-VL-3B-Instruct | trt_edgellm-int4_awq | mme | mme_cognition_score: 565.71<br>mme_perception_score: 1529.67 | 2374 | MAXN | 30.1 | ~211 (avg) | - | 11 | 22.6 | 23.5 | 24.1 | 41.3 | none | [Qwen2.5-VL-3B-Instruct/mme/trt_edgellm-int4_awq/20260930-171124](Qwen2.5-VL-3B-Instruct/mme/trt_edgellm-int4_awq/20260930-171124) |
 | Qwen2.5-VL-3B-Instruct | vllm-awq | mme | mme_cognition_score: 602.86<br>mme_perception_score: 1544.02 | 2374 | 120W | 44.4 | 282 / 1269 | 295 / 1282 | 13 | 27.3 | 31.4 | 16.7 | 34.7 | none | [Qwen2.5-VL-3B-Instruct/mme/vllm-awq/20260923-232507](Qwen2.5-VL-3B-Instruct/mme/vllm-awq/20260923-232507) |
 | Qwen2.5-VL-3B-Instruct | vllm-bf16 | mme | mme_cognition_score: 613.57<br>mme_perception_score: 1540.61 | 2374 | 120W | 43.3 | 241 / 1127 | 285 / 1171 | 44 | 27.2 | 32.6 | 14.8 | 34.0 | none | [Qwen2.5-VL-3B-Instruct/mme/vllm-bf16/20260923-224130](Qwen2.5-VL-3B-Instruct/mme/vllm-bf16/20260923-224130) |
+| Qwen2.5-VL-3B-Instruct | hf-bf16+repeat | textvqa_val | exact_match: 0.7886 | 5000 | MAXN | 44.2 | 387 / 478 | 471 / 635 | 41 | 26.8 | 30.2 | 42.6 | 75.2 | none | [Qwen2.5-VL-3B-Instruct/textvqa_val/hf-bf16+repeat/20261006-172623](Qwen2.5-VL-3B-Instruct/textvqa_val/hf-bf16+repeat/20261006-172623) |
 | Qwen2.5-VL-3B-Instruct | hf-bf16 | textvqa_val | exact_match: 0.7886 | 5000 | MAXN | 48.5 | 397 / 497 | 515 / 689 | 52 | 25.9 | 29.6 | 38.9 | 66.5 | none | [Qwen2.5-VL-3B-Instruct/textvqa_val/hf-bf16/20260928-220231](Qwen2.5-VL-3B-Instruct/textvqa_val/hf-bf16/20260928-220231) |
 | Qwen2.5-VL-3B-Instruct | llamacpp-f16 | textvqa_val | exact_match: 0.7984 | 5000 | MAXN | 121.4 | 1059 / 1576 | 1160 / 1672 | 28 | 24.0 | 26.1 | 28.1 | 53.1 | none | [Qwen2.5-VL-3B-Instruct/textvqa_val/llamacpp-f16/20261001-120121](Qwen2.5-VL-3B-Instruct/textvqa_val/llamacpp-f16/20261001-120121) |
 | Qwen2.5-VL-3B-Instruct | llamacpp-q4_k_m | textvqa_val | exact_match: 0.7873 | 5000 | MAXN | 122.3 | 1144 / 1626 | 1187 / 1672 | 16 | 26.2 | 28.6 | 28.6 | 49.3 | none | [Qwen2.5-VL-3B-Instruct/textvqa_val/llamacpp-q4_k_m/20260929-063650](Qwen2.5-VL-3B-Instruct/textvqa_val/llamacpp-q4_k_m/20260929-063650) |
 | Qwen2.5-VL-3B-Instruct | llamacpp-q8_0 | textvqa_val | exact_match: 0.7986 | 5000 | MAXN | 119.4 | 1091 / 1565 | 1144 / 1623 | 18 | 26.2 | 28.5 | 28.8 | 50.5 | none | [Qwen2.5-VL-3B-Instruct/textvqa_val/llamacpp-q8_0/20260929-043626](Qwen2.5-VL-3B-Instruct/textvqa_val/llamacpp-q8_0/20260929-043626) |
+| Qwen2.5-VL-3B-Instruct | trt_edgellm-fp16+repeat | textvqa_val | exact_match: 0.7945 | 5000 | MAXN | 40.8 | ~159 (avg) | - | 26 | 25.1 | 25.6 | 37.1 | 63.3 | none | [Qwen2.5-VL-3B-Instruct/textvqa_val/trt_edgellm-fp16+repeat/20261006-190506](Qwen2.5-VL-3B-Instruct/textvqa_val/trt_edgellm-fp16+repeat/20261006-190506) |
 | Qwen2.5-VL-3B-Instruct | trt_edgellm-fp16 | textvqa_val | exact_match: 0.7945 | 5000 | MAXN | 40.9 | ~157 (avg) | - | 27 | 59.4 | 60.2 | 35.8 | 59.2 | none | [Qwen2.5-VL-3B-Instruct/textvqa_val/trt_edgellm-fp16/20260929-212748](Qwen2.5-VL-3B-Instruct/textvqa_val/trt_edgellm-fp16/20260929-212748) |
 | Qwen2.5-VL-3B-Instruct | trt_edgellm-fp8 | textvqa_val | exact_match: 0.7959 | 5000 | MAXN | 35.9 | ~130 (avg) | - | 16 | 48.5 | 54.9 | 31.9 | 53.9 | dsvlm-220948-720149 | [Qwen2.5-VL-3B-Instruct/textvqa_val/trt_edgellm-fp8/20260929-220950](Qwen2.5-VL-3B-Instruct/textvqa_val/trt_edgellm-fp8/20260929-220950) |
 | Qwen2.5-VL-3B-Instruct | trt_edgellm-int4_awq | textvqa_val | exact_match: 0.7375 | 5000 | MAXN | 43.3 | ~232 (avg) | - | 11 | 32.8 | 34.0 | 39.3 | 59.3 | none | [Qwen2.5-VL-3B-Instruct/textvqa_val/trt_edgellm-int4_awq/20260929-224646](Qwen2.5-VL-3B-Instruct/textvqa_val/trt_edgellm-int4_awq/20260929-224646) |
 | Qwen2.5-VL-3B-Instruct | vllm-awq | textvqa_val | exact_match: 0.7910 | 5000 | MAXN | 62.4 | 453 / 568 | 478 / 606 | 11 | 25.6 | 30.4 | 30.3 | 53.2 | none | [Qwen2.5-VL-3B-Instruct/textvqa_val/vllm-awq/20260929-005648](Qwen2.5-VL-3B-Instruct/textvqa_val/vllm-awq/20260929-005648) |
+| Qwen2.5-VL-3B-Instruct | vllm-bf16+pil | textvqa_val | exact_match: 0.7939 | 5000 | MAXN | 31.5 | 281 / 354 | 342 / 459 | 26 | 26.4 | 30.8 | 47.4 | 84.6 | none | [Qwen2.5-VL-3B-Instruct/textvqa_val/vllm-bf16+pil/20261006-165248](Qwen2.5-VL-3B-Instruct/textvqa_val/vllm-bf16+pil/20261006-165248) |
+| Qwen2.5-VL-3B-Instruct | vllm-bf16+repeat | textvqa_val | exact_match: 0.7939 | 5000 | MAXN | 52.7 | 308 / 388 | 369 / 488 | 26 | 26.4 | 30.8 | 29.7 | 58.4 | none | [Qwen2.5-VL-3B-Instruct/textvqa_val/vllm-bf16+repeat/20261006-181129](Qwen2.5-VL-3B-Instruct/textvqa_val/vllm-bf16+repeat/20261006-181129) |
+| Qwen2.5-VL-3B-Instruct | vllm-bf16+stages | textvqa_val | exact_match: 0.7939 | 5000 | MAXN | 51.9 | 301 / 381 | 362 / 481 | 26 | 20.7 | 25.4 | 30.0 | 58.7 | none | [Qwen2.5-VL-3B-Instruct/textvqa_val/vllm-bf16+stages/20261006-140845](Qwen2.5-VL-3B-Instruct/textvqa_val/vllm-bf16+stages/20261006-140845) |
 | Qwen2.5-VL-3B-Instruct | vllm-bf16 | textvqa_val | exact_match: 0.7939 | 5000 | MAXN | 58.3 | 361 / 446 | 426 / 548 | 27 | 25.6 | 31.1 | 27.2 | 52.3 | none | [Qwen2.5-VL-3B-Instruct/textvqa_val/vllm-bf16/20260928-235725](Qwen2.5-VL-3B-Instruct/textvqa_val/vllm-bf16/20260928-235725) |
 | Qwen2.5-VL-3B-Instruct | vllm-fp8+marlin | textvqa_val | exact_match: 0.7946 | 5000 | MAXN | 60.4 | 434 / 545 | 463 / 609 | 15 | 19.9 | 25.8 | 31.8 | 60.2 | none | [Qwen2.5-VL-3B-Instruct/textvqa_val/vllm-fp8+marlin/20261005-192101](Qwen2.5-VL-3B-Instruct/textvqa_val/vllm-fp8+marlin/20261005-192101) |
-| Qwen2.5-VL-3B-Instruct | vllm-fp8+torch | textvqa_val | exact_match: 0.7948 | 5000 | MAXN | 50.7 | 325 / 393 | 354 / 456 | 15 | 18.2 | 23.3 | 27.3 | 54.4 | none | [Qwen2.5-VL-3B-Instruct/textvqa_val/vllm-fp8+torch/20261005-152127](Qwen2.5-VL-3B-Instruct/textvqa_val/vllm-fp8+torch/20261005-152127) |
+| Qwen2.5-VL-3B-Instruct | vllm-fp8+torch-stages | textvqa_val | exact_match: 0.7948 | 5000 | MAXN | 49.8 | 318 / 383 | 346 / 446 | 16 | 26.4 | 31.4 | 27.9 | 55.3 | none | [Qwen2.5-VL-3B-Instruct/textvqa_val/vllm-fp8+torch-stages/20261006-150251](Qwen2.5-VL-3B-Instruct/textvqa_val/vllm-fp8+torch-stages/20261006-150251) |
 | Qwen2.5-VL-3B-Instruct | vllm-w8a8+triton | textvqa_val | exact_match: 0.7927 | 5000 | MAXN | 54.1 | 359 / 449 | 391 / 513 | 16 | 20.6 | 26.2 | 29.0 | 57.1 | none | [Qwen2.5-VL-3B-Instruct/textvqa_val/vllm-w8a8+triton/20261005-171344](Qwen2.5-VL-3B-Instruct/textvqa_val/vllm-w8a8+triton/20261005-171344) |
 | Qwen2.5-VL-7B-Instruct | hf-bf16 | gqa | exact_match: 0.6088 | 12578 | 120W | - | - | - | - | - | - | - | - | timings not valid: A process outside the run pinned one CPU core at 100%; the GPU was mostly idle (see NOTES.md). The score is valid. | [Qwen2.5-VL-7B-Instruct/gqa/hf-bf16/20260925-115139](Qwen2.5-VL-7B-Instruct/gqa/hf-bf16/20260925-115139) |
 | Qwen2.5-VL-7B-Instruct | vllm-awq | gqa | exact_match: 0.6070 | 12578 | 120W | 87.3 | 300 / 324 | 325 / 360 | 21 | 36.4 | 41.9 | 32.2 | 55.7 | none | [Qwen2.5-VL-7B-Instruct/gqa/vllm-awq/20260925-202538](Qwen2.5-VL-7B-Instruct/gqa/vllm-awq/20260925-202538) |
@@ -44,9 +49,11 @@ How each column is measured: [methodology](../../docs/methodology.md). Runs mark
 | Qwen2.5-VL-7B-Instruct | trt_edgellm-fp8 | textvqa_val | exact_match: 0.8388 | 5000 | MAXN | 44.2 | ~180 (avg) | - | 32 | 22.1 | 23.2 | 38.9 | 63.6 | none | [Qwen2.5-VL-7B-Instruct/textvqa_val/trt_edgellm-fp8/20261005-120746](Qwen2.5-VL-7B-Instruct/textvqa_val/trt_edgellm-fp8/20261005-120746) |
 | Qwen2.5-VL-7B-Instruct | trt_edgellm-int4_awq | textvqa_val | exact_match: 0.8292 | 5000 | MAXN | 59.6 | ~397 (avg) | - | 20 | 21.0 | 22.1 | 51.1 | 72.4 | none | [Qwen2.5-VL-7B-Instruct/textvqa_val/trt_edgellm-int4_awq/20261005-125303](Qwen2.5-VL-7B-Instruct/textvqa_val/trt_edgellm-int4_awq/20261005-125303) |
 | Qwen2.5-VL-7B-Instruct | vllm-awq | textvqa_val | exact_match: 0.8313 | 5000 | MAXN | 79.6 | 637 / 782 | 676 / 872 | 20 | 26.3 | 31.9 | 38.9 | 65.3 | none | [Qwen2.5-VL-7B-Instruct/textvqa_val/vllm-awq/20260929-031548](Qwen2.5-VL-7B-Instruct/textvqa_val/vllm-awq/20260929-031548) |
+| Qwen2.5-VL-7B-Instruct | vllm-bf16+pil | textvqa_val | exact_match: 0.8384 | 5000 | MAXN | 48.7 | 389 / 468 | 521 / 745 | 61 | 24.9 | 30.7 | 48.2 | 88.8 | none | [Qwen2.5-VL-7B-Instruct/textvqa_val/vllm-bf16+pil/20261006-210304](Qwen2.5-VL-7B-Instruct/textvqa_val/vllm-bf16+pil/20261006-210304) |
+| Qwen2.5-VL-7B-Instruct | vllm-bf16+stages | textvqa_val | exact_match: 0.8380 | 5000 | MAXN | 68.1 | 394 / 482 | 529 / 748 | 61 | 24.7 | 29.4 | 35.3 | 68.9 | none | [Qwen2.5-VL-7B-Instruct/textvqa_val/vllm-bf16+stages/20261006-195358](Qwen2.5-VL-7B-Instruct/textvqa_val/vllm-bf16+stages/20261006-195358) |
 | Qwen2.5-VL-7B-Instruct | vllm-bf16 | textvqa_val | exact_match: 0.8384 | 5000 | MAXN | 74.6 | 456 / 547 | 596 / 819 | 63 | 25.6 | 30.9 | 32.4 | 62.3 | none | [Qwen2.5-VL-7B-Instruct/textvqa_val/vllm-bf16/20260929-020010](Qwen2.5-VL-7B-Instruct/textvqa_val/vllm-bf16/20260929-020010) |
 | Qwen2.5-VL-7B-Instruct | vllm-fp8+marlin | textvqa_val | exact_match: 0.8374 | 5000 | MAXN | 84.8 | 681 / 840 | 742 / 963 | 32 | 19.9 | 25.9 | 38.7 | 72.5 | none | [Qwen2.5-VL-7B-Instruct/textvqa_val/vllm-fp8+marlin/20261005-202223](Qwen2.5-VL-7B-Instruct/textvqa_val/vllm-fp8+marlin/20261005-202223) |
-| Qwen2.5-VL-7B-Instruct | vllm-fp8+torch | textvqa_val | exact_match: 0.8381 | 5000 | MAXN | 59.6 | 369 / 453 | 442 / 584 | 33 | 18.6 | 24.3 | 31.9 | 62.4 | none | [Qwen2.5-VL-7B-Instruct/textvqa_val/vllm-fp8+torch/20261005-161309](Qwen2.5-VL-7B-Instruct/textvqa_val/vllm-fp8+torch/20261005-161309) |
+| Qwen2.5-VL-7B-Instruct | vllm-fp8+torch-stages | textvqa_val | exact_match: 0.8381 | 5000 | MAXN | 58.2 | 361 / 443 | 435 / 575 | 33 | 26.4 | 31.7 | 32.4 | 63.2 | none | [Qwen2.5-VL-7B-Instruct/textvqa_val/vllm-fp8+torch-stages/20261006-155337](Qwen2.5-VL-7B-Instruct/textvqa_val/vllm-fp8+torch-stages/20261006-155337) |
 | Qwen2.5-VL-7B-Instruct | vllm-w8a8+triton | textvqa_val | exact_match: 0.8365 | 5000 | MAXN | 71.3 | 509 / 617 | 580 / 745 | 33 | 19.9 | 25.8 | 33.3 | 66.3 | none | [Qwen2.5-VL-7B-Instruct/textvqa_val/vllm-w8a8+triton/20261005-180845](Qwen2.5-VL-7B-Instruct/textvqa_val/vllm-w8a8+triton/20261005-180845) |
 
 ## Latency breakdown and efficiency
@@ -68,17 +75,22 @@ Medians per sample. Preprocess = client-side prompt and image preparation; visio
 | Qwen2.5-VL-3B-Instruct | trt_edgellm-int4_awq | mme | - | 42 | 82 | ~211 (avg) | - | 2.0 | 90 | 1.32 | 31.4 | runner profile (GPU time) |
 | Qwen2.5-VL-3B-Instruct | vllm-awq | mme | 108 | - | - | 282 / 1830 | 1843 | 2.0 | 76 | 0.89 | 39.0 | - |
 | Qwen2.5-VL-3B-Instruct | vllm-bf16 | mme | 109 | - | - | 241 / 1667 | 1713 | 2.0 | 23 | 0.91 | 37.2 | - |
+| Qwen2.5-VL-3B-Instruct | hf-bf16+repeat | textvqa_val | 22 | 272 | 114 | 387 / 538 | 902 | 4.1 | 24 | 1.88 | 39.9 | CUDA events |
 | Qwen2.5-VL-3B-Instruct | hf-bf16 | textvqa_val | 29 | 276 | 119 | 397 / 562 | 958 | 4.1 | 19 | 1.72 | 38.7 | CUDA events |
 | Qwen2.5-VL-3B-Instruct | llamacpp-f16 | textvqa_val | 231 | 640 | 289 | 1059 / 1848 | 1949 | 3.9 | 35 | 0.69 | 77.3 | server log |
 | Qwen2.5-VL-3B-Instruct | llamacpp-q4_k_m | textvqa_val | 231 | 665 | 352 | 1144 / 1922 | 1976 | 4.1 | 62 | 0.68 | 72.4 | server log |
 | Qwen2.5-VL-3B-Instruct | llamacpp-q8_0 | textvqa_val | 231 | 642 | 319 | 1091 / 1868 | 1928 | 3.9 | 55 | 0.70 | 72.4 | server log |
+| Qwen2.5-VL-3B-Instruct | trt_edgellm-fp16+repeat | textvqa_val | - | 87 | 74 | ~159 (avg) | - | 3.9 | 38 | 2.04 | 31.0 | runner profile (GPU time) |
 | Qwen2.5-VL-3B-Instruct | trt_edgellm-fp16 | textvqa_val | - | 87 | 74 | ~157 (avg) | - | 3.9 | 38 | 2.04 | 29.1 | runner profile (GPU time) |
 | Qwen2.5-VL-3B-Instruct | trt_edgellm-fp8 | textvqa_val | - | 87 | 44 | ~130 (avg) | - | 3.9 | 64 | 2.32 | 23.2 | runner profile (GPU time) |
 | Qwen2.5-VL-3B-Instruct | trt_edgellm-int4_awq | textvqa_val | - | 87 | 152 | ~232 (avg) | - | 3.9 | 91 | 1.92 | 30.9 | runner profile (GPU time) |
 | Qwen2.5-VL-3B-Instruct | vllm-awq | textvqa_val | 240 | - | - | 453 / 647 | 691 | 3.9 | 94 | 1.34 | 39.8 | - |
+| Qwen2.5-VL-3B-Instruct | vllm-bf16+pil | textvqa_val | 7 | - | - | 281 / 412 | 606 | 3.9 | 38 | 2.65 | 31.9 | - |
+| Qwen2.5-VL-3B-Instruct | vllm-bf16+repeat | textvqa_val | 231 | - | - | 308 / 448 | 638 | 3.9 | 38 | 1.58 | 36.9 | - |
+| Qwen2.5-VL-3B-Instruct | vllm-bf16+stages | textvqa_val | 231 | 166 | 138 | 301 / 440 | 631 | 3.9 | 38 | 1.60 | 36.6 | CUDA events |
 | Qwen2.5-VL-3B-Instruct | vllm-bf16 | textvqa_val | 240 | - | - | 361 / 509 | 700 | 3.9 | 37 | 1.43 | 36.6 | - |
 | Qwen2.5-VL-3B-Instruct | vllm-fp8+marlin | textvqa_val | 232 | - | - | 434 / 615 | 692 | 4.0 | 66 | 1.38 | 43.7 | - |
-| Qwen2.5-VL-3B-Instruct | vllm-fp8+torch | textvqa_val | 231 | - | - | 325 / 448 | 539 | 4.0 | 65 | 1.64 | 33.1 | - |
+| Qwen2.5-VL-3B-Instruct | vllm-fp8+torch-stages | textvqa_val | 231 | 165 | 152 | 318 / 437 | 530 | 4.0 | 64 | 1.67 | 33.1 | CUDA events |
 | Qwen2.5-VL-3B-Instruct | vllm-w8a8+triton | textvqa_val | 231 | - | - | 359 / 513 | 595 | 3.9 | 64 | 1.54 | 37.0 | - |
 | Qwen2.5-VL-7B-Instruct | vllm-awq | gqa | 84 | - | - | 300 / 400 | 426 | 2.3 | 48 | 2.40 | 23.2 | - |
 | Qwen2.5-VL-7B-Instruct | vllm-bf16 | gqa | 84 | - | - | 223 / 309 | 465 | 2.3 | 16 | 2.53 | 22.5 | - |
@@ -93,9 +105,11 @@ Medians per sample. Preprocess = client-side prompt and image preparation; visio
 | Qwen2.5-VL-7B-Instruct | trt_edgellm-fp8 | textvqa_val | - | 89 | 91 | ~180 (avg) | - | 3.9 | 31 | 1.88 | 33.8 | runner profile (GPU time) |
 | Qwen2.5-VL-7B-Instruct | trt_edgellm-int4_awq | textvqa_val | - | 88 | 323 | ~397 (avg) | - | 4.0 | 49 | 1.40 | 51.8 | runner profile (GPU time) |
 | Qwen2.5-VL-7B-Instruct | vllm-awq | textvqa_val | 241 | - | - | 637 / 878 | 985 | 4.0 | 49 | 1.05 | 62.4 | - |
+| Qwen2.5-VL-7B-Instruct | vllm-bf16+pil | textvqa_val | 7 | - | - | 389 / 568 | 1123 | 3.9 | 16 | 1.71 | 51.9 | - |
+| Qwen2.5-VL-7B-Instruct | vllm-bf16+stages | textvqa_val | 231 | 166 | 230 | 394 / 578 | 1160 | 4.0 | 16 | 1.22 | 56.3 | CUDA events |
 | Qwen2.5-VL-7B-Instruct | vllm-bf16 | textvqa_val | 240 | - | - | 456 / 645 | 1224 | 3.9 | 16 | 1.12 | 55.7 | - |
 | Qwen2.5-VL-7B-Instruct | vllm-fp8+marlin | textvqa_val | 231 | - | - | 681 / 951 | 1132 | 3.9 | 32 | 0.98 | 73.8 | - |
-| Qwen2.5-VL-7B-Instruct | vllm-fp8+torch | textvqa_val | 232 | - | - | 369 / 530 | 779 | 3.9 | 30 | 1.40 | 44.6 | - |
+| Qwen2.5-VL-7B-Instruct | vllm-fp8+torch-stages | textvqa_val | 231 | 166 | 196 | 361 / 516 | 772 | 3.9 | 30 | 1.43 | 44.1 | CUDA events |
 | Qwen2.5-VL-7B-Instruct | vllm-w8a8+triton | textvqa_val | 232 | - | - | 509 / 712 | 944 | 3.9 | 31 | 1.17 | 56.7 | - |
 
 ## Compute (FLOPs)
@@ -117,17 +131,22 @@ and total / mean answer time.
 | Qwen2.5-VL-3B-Instruct | trt_edgellm-int4_awq | mme | 868 / 43 / 2 | 4861 | 5239 | 6 | 10107 | 23993 | 47.8 | 45.4 |
 | Qwen2.5-VL-3B-Instruct | vllm-awq | mme | 868 / 43 / 2 | 4861 | 5239 | 6 | 10107 | 23993 | 19.4 | 19.0 |
 | Qwen2.5-VL-3B-Instruct | vllm-bf16 | mme | 868 / 43 / 2 | 4861 | 5239 | 6 | 10107 | 23993 | 21.7 | 19.8 |
+| Qwen2.5-VL-3B-Instruct | hf-bf16+repeat | textvqa_val | 977 / 39 / 4 | 5360 | 5794 | 20 | 11174 | 55869 | 29.3 | 22.1 |
 | Qwen2.5-VL-3B-Instruct | hf-bf16 | textvqa_val | 977 / 39 / 4 | 5360 | 5794 | 20 | 11174 | 55869 | 28.1 | 20.4 |
 | Qwen2.5-VL-3B-Instruct | llamacpp-f16 | textvqa_val | 977 / 40 / 4 | 5360 | 5796 | 19 | 11175 | 55874 | 9.8 | 9.2 |
 | Qwen2.5-VL-3B-Instruct | llamacpp-q4_k_m | textvqa_val | 977 / 40 / 4 | 5360 | 5796 | 20 | 11176 | 55880 | 9.4 | 9.1 |
 | Qwen2.5-VL-3B-Instruct | llamacpp-q8_0 | textvqa_val | 977 / 40 / 4 | 5360 | 5796 | 19 | 11175 | 55874 | 9.8 | 9.3 |
+| Qwen2.5-VL-3B-Instruct | trt_edgellm-fp16+repeat | textvqa_val | 977 / 39 / 4 | 5360 | 5794 | 19 | 11173 | 55865 | 70.0 | 47.4 |
 | Qwen2.5-VL-3B-Instruct | trt_edgellm-fp16 | textvqa_val | 977 / 39 / 4 | 5360 | 5794 | 19 | 11173 | 55865 | 71.0 | 47.6 |
 | Qwen2.5-VL-3B-Instruct | trt_edgellm-fp8 | textvqa_val | 977 / 39 / 4 | 5360 | 5794 | 19 | 11173 | 55864 | 86.0 | 63.8 |
 | Qwen2.5-VL-3B-Instruct | trt_edgellm-int4_awq | textvqa_val | 977 / 39 / 4 | 5360 | 5794 | 19 | 11173 | 55865 | 48.2 | 42.4 |
 | Qwen2.5-VL-3B-Instruct | vllm-awq | textvqa_val | 977 / 39 / 4 | 5360 | 5794 | 19 | 11173 | 55865 | 24.4 | 22.9 |
+| Qwen2.5-VL-3B-Instruct | vllm-bf16+pil | textvqa_val | 977 / 39 / 4 | 5360 | 5794 | 19 | 11173 | 55865 | 39.5 | 31.1 |
+| Qwen2.5-VL-3B-Instruct | vllm-bf16+repeat | textvqa_val | 977 / 39 / 4 | 5360 | 5794 | 19 | 11173 | 55865 | 36.1 | 28.9 |
+| Qwen2.5-VL-3B-Instruct | vllm-bf16+stages | textvqa_val | 977 / 39 / 4 | 5360 | 5794 | 19 | 11173 | 55865 | 36.9 | 29.4 |
 | Qwen2.5-VL-3B-Instruct | vllm-bf16 | textvqa_val | 977 / 39 / 4 | 5360 | 5794 | 19 | 11173 | 55865 | 30.6 | 25.2 |
 | Qwen2.5-VL-3B-Instruct | vllm-fp8+marlin | textvqa_val | 977 / 39 / 4 | 5360 | 5794 | 19 | 11173 | 55867 | 25.9 | 23.4 |
-| Qwen2.5-VL-3B-Instruct | vllm-fp8+torch | textvqa_val | 977 / 39 / 4 | 5360 | 5794 | 19 | 11173 | 55866 | 35.2 | 30.8 |
+| Qwen2.5-VL-3B-Instruct | vllm-fp8+torch-stages | textvqa_val | 977 / 39 / 4 | 5360 | 5794 | 19 | 11173 | 55866 | 36.2 | 31.6 |
 | Qwen2.5-VL-3B-Instruct | vllm-w8a8+triton | textvqa_val | 977 / 39 / 4 | 5360 | 5794 | 19 | 11173 | 55866 | 31.3 | 27.7 |
 | Qwen2.5-VL-7B-Instruct | hf-bf16 | gqa | 358 / 41 / 2 | 1898 | 5245 | 18 | 7161 | 90072 | - | - |
 | Qwen2.5-VL-7B-Instruct | vllm-awq | gqa | 358 / 41 / 2 | 1898 | 5243 | 18 | 7160 | 90052 | 24.1 | 22.2 |
@@ -143,9 +162,11 @@ and total / mean answer time.
 | Qwen2.5-VL-7B-Instruct | trt_edgellm-fp8 | textvqa_val | 977 / 39 / 4 | 5376 | 13471 | 43 | 18890 | 94448 | 104.4 | 68.8 |
 | Qwen2.5-VL-7B-Instruct | trt_edgellm-int4_awq | textvqa_val | 977 / 39 / 4 | 5376 | 13471 | 43 | 18890 | 94449 | 47.5 | 41.3 |
 | Qwen2.5-VL-7B-Instruct | vllm-awq | textvqa_val | 977 / 39 / 4 | 5376 | 13471 | 43 | 18890 | 94450 | 29.8 | 27.2 |
+| Qwen2.5-VL-7B-Instruct | vllm-bf16+pil | textvqa_val | 977 / 39 / 4 | 5376 | 13471 | 43 | 18890 | 94448 | 48.9 | 33.5 |
+| Qwen2.5-VL-7B-Instruct | vllm-bf16+stages | textvqa_val | 977 / 39 / 4 | 5376 | 13471 | 43 | 18890 | 94449 | 48.3 | 33.1 |
 | Qwen2.5-VL-7B-Instruct | vllm-bf16 | textvqa_val | 977 / 39 / 4 | 5376 | 13471 | 43 | 18890 | 94448 | 41.6 | 29.7 |
 | Qwen2.5-VL-7B-Instruct | vllm-fp8+marlin | textvqa_val | 977 / 39 / 4 | 5376 | 13471 | 43 | 18890 | 94448 | 28.0 | 24.7 |
-| Qwen2.5-VL-7B-Instruct | vllm-fp8+torch | textvqa_val | 977 / 39 / 4 | 5376 | 13471 | 43 | 18890 | 94448 | 51.4 | 40.8 |
+| Qwen2.5-VL-7B-Instruct | vllm-fp8+torch-stages | textvqa_val | 977 / 39 / 4 | 5376 | 13471 | 43 | 18890 | 94448 | 52.8 | 41.6 |
 | Qwen2.5-VL-7B-Instruct | vllm-w8a8+triton | textvqa_val | 977 / 39 / 4 | 5376 | 13471 | 43 | 18890 | 94449 | 37.6 | 31.6 |
 
 ## Excluded runs
@@ -164,3 +185,5 @@ Kept as evidence, left out of the tables above.
 | [Qwen2.5-VL-3B-Instruct/textvqa_val/trt_edgellm-fp16/20260929-135231](Qwen2.5-VL-3B-Instruct/textvqa_val/trt_edgellm-fp16/20260929-135231) | INVALID | exact_match: 0.6346 | 1006 of 5000 answers are empty (e.g. NaN logits from a numeric overflow); scores are not valid. |
 | [Qwen2.5-VL-3B-Instruct/textvqa_val/trt_edgellm-fp8/20260929-152905](Qwen2.5-VL-3B-Instruct/textvqa_val/trt_edgellm-fp8/20260929-152905) | INVALID | exact_match: 0.6330 | 1011 of 5000 answers are empty (e.g. NaN logits from a numeric overflow); scores are not valid. |
 | [Qwen2.5-VL-3B-Instruct/textvqa_val/trt_edgellm-int4_awq/20260929-163808](Qwen2.5-VL-3B-Instruct/textvqa_val/trt_edgellm-int4_awq/20260929-163808) | INVALID | exact_match: 0.5909 | 1005 of 5000 answers are empty (e.g. NaN logits from a numeric overflow); scores are not valid. |
+| [Qwen2.5-VL-3B-Instruct/textvqa_val/vllm-fp8+torch/20261005-152127](Qwen2.5-VL-3B-Instruct/textvqa_val/vllm-fp8+torch/20261005-152127) | SUPERSEDED | exact_match: 0.7948 | Replaced by textvqa_val/vllm-fp8+torch-stages/20261006-* (same kernel with stage_timing=True): identical answers, TTFT within 2%. |
+| [Qwen2.5-VL-7B-Instruct/textvqa_val/vllm-fp8+torch/20261005-161309](Qwen2.5-VL-7B-Instruct/textvqa_val/vllm-fp8+torch/20261005-161309) | SUPERSEDED | exact_match: 0.8381 | Replaced by textvqa_val/vllm-fp8+torch-stages/20261006-* (same kernel with stage_timing=True): identical answers, TTFT within 2%. |

@@ -1,0 +1,26 @@
+2026-10-06 14:08:45 start; NV Power Mode: MAXN
+=== 14:08:45 vllm 3b textvqa_val 
+    /home/michal/dev/lmms-eval/jetson/results/thor/Qwen2.5-VL-3B-Instruct/textvqa_val/vllm-bf16+stages/20261006-140845/: samples 5000, question_marks 0, empty 0, request_failed 0
+=== 15:01:37 vllm 7b textvqa_val 
+    FAILED (exit 133, see /home/michal/dev/lmms-eval/jetson/results/thor/Qwen2.5-VL-7B-Instruct/textvqa_val/vllm-bf16+stages/20261006-150137/)
+summary: /home/michal/dev/lmms-eval/jetson/results/thor/SUMMARY.md
+failed: vllm 7b
+=== 15:02:51 vllm 3b-fp8 textvqa_val 
+    /home/michal/dev/lmms-eval/jetson/results/thor/Qwen2.5-VL-3B-Instruct/textvqa_val/vllm-fp8+torch-stages/20261006-150251/: samples 5000, question_marks 0, empty 0, request_failed 0
+=== 15:53:37 vllm 7b-fp8 textvqa_val 
+    /home/michal/dev/lmms-eval/jetson/results/thor/Qwen2.5-VL-7B-Instruct/textvqa_val/vllm-fp8+torch-stages/20261006-155337/: samples 5000, question_marks 0, empty 0, request_failed 0
+summary: /home/michal/dev/lmms-eval/jetson/results/thor/SUMMARY.md
+=== 16:52:48 vllm 3b textvqa_val 
+    /home/michal/dev/lmms-eval/jetson/results/thor/Qwen2.5-VL-3B-Instruct/textvqa_val/vllm-bf16+pil/20261006-165248/: samples 5000, question_marks 0, empty 0, request_failed 0
+=== 17:25:09 vllm 7b textvqa_val 
+    FAILED (exit 1, see /home/michal/dev/lmms-eval/jetson/results/thor/Qwen2.5-VL-7B-Instruct/textvqa_val/vllm-bf16+pil/20261006-172509/)
+summary: /home/michal/dev/lmms-eval/jetson/results/thor/SUMMARY.md
+failed: vllm 7b
+=== 17:26:23 hf 3b textvqa_val 
+    /home/michal/dev/lmms-eval/jetson/results/thor/Qwen2.5-VL-3B-Instruct/textvqa_val/hf-bf16+repeat/20261006-172623/: samples 5000, question_marks 0, empty 0, request_failed 0
+=== 18:11:29 vllm 3b textvqa_val 
+    /home/michal/dev/lmms-eval/jetson/results/thor/Qwen2.5-VL-3B-Instruct/textvqa_val/vllm-bf16+repeat/20261006-181129/: samples 5000, question_marks 0, empty 0, request_failed 0
+=== 19:05:06 trt_edgellm 3b-fp16 textvqa_val 
+    /home/michal/dev/lmms-eval/jetson/results/thor/Qwen2.5-VL-3B-Instruct/textvqa_val/trt_edgellm-fp16+repeat/20261006-190506/: samples 5000, question_marks 0, empty 0, request_failed 0
+summary: /home/michal/dev/lmms-eval/jetson/results/thor/SUMMARY.md
+2026-10-06 19:46:56 all done

@@ -1,0 +1,236 @@
+/opt/venv/lib/python3.12/site-packages/transformers/utils/hub.py:110: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+  warnings.warn(
+torch 2.10.0 transformers 4.57.3
+/opt/venv/lib/python3.12/site-packages/transformers/utils/hub.py:110: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+  warnings.warn(
+[32m2026-10-06 13:01:46[0m | [1mINFO    [0m | [36mlmms_eval.__main__[0m:[36mcli_evaluate[0m:[36m516[0m - [1mVerbosity set to INFO[0m
+[32m2026-10-06 13:01:48[0m | [1mINFO    [0m | [36mlmms_eval.__main__[0m:[36mcli_evaluate_single[0m:[36m653[0m - [1mEvaluation tracker args: {'output_path': 'jetson/results/thor/Qwen2.5-VL-7B-Instruct/textvqa_val/vllm-bf16+stages/20261006-150137'}[0m
+[32m2026-10-06 13:01:48[0m | [1mINFO    [0m | [36mlmms_eval.__main__[0m:[36mcli_evaluate_single[0m:[36m737[0m - [1mSelected Tasks: ['textvqa_val'][0m
+[32m2026-10-06 13:01:48[0m | [1mINFO    [0m | [36mlmms_eval.evaluator[0m:[36msimple_evaluate[0m:[36m486[0m - [1mSetting random seed to 0 | Setting numpy seed to 1234 | Setting torch manual seed to 1234[0m
+INFO 10-06 13:01:51 [utils.py:233] non-default args: {'trust_remote_code': True, 'seed': 1, 'max_model_len': 4096, 'enable_prefix_caching': False, 'gpu_memory_utilization': 0.17, 'mm_processor_kwargs': {'min_pixels': 200704, 'max_pixels': 1605632}, 'mm_processor_cache_gb': 0, 'model': '/opt/hf-cache/hub/models--Qwen--Qwen2.5-VL-7B-Instruct/snapshots/cc594898137f460bfe9f0759e9844b3ce807cfb5'}
+WARNING 10-06 13:01:51 [arg_utils.py:1390] The global random seed is set to 1. Since VLLM_ENABLE_V1_MULTIPROCESSING is set to False, this may affect the random state of the Python process that launched vLLM.
+INFO 10-06 13:01:51 [model.py:549] Resolved architecture: Qwen2_5_VLForConditionalGeneration
+INFO 10-06 13:01:51 [model.py:1678] Using max model len 4096
+INFO 10-06 13:01:51 [scheduler.py:238] Chunked prefill is enabled with max_num_batched_tokens=8192.
+INFO 10-06 13:01:51 [vllm.py:790] Asynchronous scheduling is enabled.
+The image processor of type `Qwen2VLImageProcessor` is now loaded as a fast processor by default, even if the model checkpoint was saved with a slow processor. This is a breaking change and may produce slightly different outputs. To continue using the slow processor, instantiate this class with `use_fast=False`. Note that this behavior will be extended to all models in a future release.
+INFO 10-06 13:01:57 [core.py:105] Initializing a V1 LLM engine (v0.19.0) with config: model='/opt/hf-cache/hub/models--Qwen--Qwen2.5-VL-7B-Instruct/snapshots/cc594898137f460bfe9f0759e9844b3ce807cfb5', speculative_config=None, tokenizer='/opt/hf-cache/hub/models--Qwen--Qwen2.5-VL-7B-Instruct/snapshots/cc594898137f460bfe9f0759e9844b3ce807cfb5', skip_tokenizer_init=False, tokenizer_mode=auto, revision=None, tokenizer_revision=None, trust_remote_code=True, dtype=torch.bfloat16, max_seq_len=4096, download_dir=None, load_format=auto, tensor_parallel_size=1, pipeline_parallel_size=1, data_parallel_size=1, decode_context_parallel_size=1, dcp_comm_backend=ag_rs, disable_custom_all_reduce=False, quantization=None, enforce_eager=False, enable_return_routed_experts=False, kv_cache_dtype=auto, device_config=cuda, structured_outputs_config=StructuredOutputsConfig(backend='auto', disable_any_whitespace=False, disable_additional_properties=False, reasoning_parser='', reasoning_parser_plugin='', enable_in_reasoning=False), observability_config=ObservabilityConfig(show_hidden_metrics_for_version=None, otlp_traces_endpoint=None, collect_detailed_traces=None, kv_cache_metrics=False, kv_cache_metrics_sample=0.01, cudagraph_metrics=False, enable_layerwise_nvtx_tracing=False, enable_mfu_metrics=False, enable_mm_processor_stats=False, enable_logging_iteration_details=False), seed=1, served_model_name=/opt/hf-cache/hub/models--Qwen--Qwen2.5-VL-7B-Instruct/snapshots/cc594898137f460bfe9f0759e9844b3ce807cfb5, enable_prefix_caching=False, enable_chunked_prefill=True, pooler_config=None, compilation_config={'mode': <CompilationMode.VLLM_COMPILE: 3>, 'debug_dump_path': None, 'cache_dir': '', 'compile_cache_save_format': 'binary', 'backend': 'inductor', 'custom_ops': ['none'], 'splitting_ops': ['vllm::unified_attention', 'vllm::unified_attention_with_output', 'vllm::unified_mla_attention', 'vllm::unified_mla_attention_with_output', 'vllm::mamba_mixer2', 'vllm::mamba_mixer', 'vllm::short_conv', 'vllm::linear_attention', 'vllm::plamo2_mamba_mixer', 'vllm::gdn_attention_core', 'vllm::olmo_hybrid_gdn_full_forward', 'vllm::kda_attention', 'vllm::sparse_attn_indexer', 'vllm::rocm_aiter_sparse_attn_indexer', 'vllm::unified_kv_cache_update', 'vllm::unified_mla_kv_cache_update'], 'compile_mm_encoder': False, 'cudagraph_mm_encoder': False, 'encoder_cudagraph_token_budgets': [], 'encoder_cudagraph_max_images_per_batch': 0, 'compile_sizes': [], 'compile_ranges_endpoints': [8192], 'inductor_compile_config': {'enable_auto_functionalized_v2': False, 'size_asserts': False, 'alignment_asserts': False, 'scalar_asserts': False, 'combo_kernels': True, 'benchmark_combo_kernel': True}, 'inductor_passes': {}, 'cudagraph_mode': <CUDAGraphMode.FULL_AND_PIECEWISE: (2, 1)>, 'cudagraph_num_of_warmups': 1, 'cudagraph_capture_sizes': [1, 2, 4, 8, 16, 24, 32, 40, 48, 56, 64, 72, 80, 88, 96, 104, 112, 120, 128, 136, 144, 152, 160, 168, 176, 184, 192, 200, 208, 216, 224, 232, 240, 248, 256, 272, 288, 304, 320, 336, 352, 368, 384, 400, 416, 432, 448, 464, 480, 496, 512], 'cudagraph_copy_inputs': False, 'cudagraph_specialize_lora': True, 'use_inductor_graph_partition': False, 'pass_config': {'fuse_norm_quant': False, 'fuse_act_quant': False, 'fuse_attn_quant': False, 'enable_sp': False, 'fuse_gemm_comms': False, 'fuse_allreduce_rms': False}, 'max_cudagraph_capture_size': 512, 'dynamic_shapes_config': {'type': <DynamicShapesType.BACKED: 'backed'>, 'evaluate_guards': False, 'assume_32_bit_indexing': False}, 'local_cache_dir': None, 'fast_moe_cold_start': True, 'static_all_moe_layers': []}
+INFO 10-06 13:01:57 [parallel_state.py:1400] world_size=1 rank=0 local_rank=0 distributed_init_method=tcp://172.17.0.2:50765 backend=nccl
+INFO 10-06 13:01:57 [parallel_state.py:1716] rank 0 in world size 1 is assigned as DP rank 0, PP rank 0, PCP rank 0, TP rank 0, EP rank N/A, EPLB rank N/A
+INFO 10-06 13:01:57 [gpu_model_runner.py:4735] Starting to load model /opt/hf-cache/hub/models--Qwen--Qwen2.5-VL-7B-Instruct/snapshots/cc594898137f460bfe9f0759e9844b3ce807cfb5...
+INFO 10-06 13:01:58 [cuda.py:390] Using backend AttentionBackendEnum.FLASH_ATTN for vit attention
+INFO 10-06 13:01:58 [mm_encoder_attention.py:230] Using AttentionBackendEnum.FLASH_ATTN for MMEncoderAttention.
+INFO 10-06 13:01:59 [cuda.py:334] Using FLASH_ATTN attention backend out of potential backends: ['FLASH_ATTN', 'FLASHINFER', 'TRITON_ATTN', 'FLEX_ATTENTION'].
+INFO 10-06 13:01:59 [flash_attn.py:596] Using FlashAttention version 2
+Loading safetensors checkpoint shards:   0% Completed | 0/5 [00:00<?, ?it/s]
+Loading safetensors checkpoint shards:  20% Completed | 1/5 [00:02<00:09,  2.38s/it]
+Loading safetensors checkpoint shards:  40% Completed | 2/5 [00:05<00:08,  2.72s/it]
+Loading safetensors checkpoint shards:  60% Completed | 3/5 [00:07<00:05,  2.51s/it]
+Loading safetensors checkpoint shards:  80% Completed | 4/5 [00:10<00:02,  2.50s/it]
+Loading safetensors checkpoint shards: 100% Completed | 5/5 [00:10<00:00,  1.92s/it]
+Loading safetensors checkpoint shards: 100% Completed | 5/5 [00:10<00:00,  2.20s/it]
+
+INFO 10-06 13:02:10 [default_loader.py:384] Loading weights took 11.06 seconds
+INFO 10-06 13:02:11 [gpu_model_runner.py:4820] Model loading took 15.63 GiB memory and 12.544051 seconds
+INFO 10-06 13:02:11 [gpu_model_runner.py:5753] Encoder cache will be initialized with a budget of 8192 tokens, and profiled with 2 video items of the maximum feature size.
+INFO 10-06 13:02:18 [backends.py:1051] Using cache directory: /home/michal/dev/lmms-eval/jetson/.cache/vllm/torch_compile_cache/549a44b603/rank_0_0/backbone for vLLM's torch.compile
+INFO 10-06 13:02:18 [backends.py:1111] Dynamo bytecode transform time: 1.76 s
+INFO 10-06 13:02:19 [backends.py:285] Directly load the compiled graph(s) for compile range (1, 8192) from the cache, took 1.137 s
+INFO 10-06 13:02:19 [decorators.py:303] Directly load AOT compilation from path /home/michal/dev/lmms-eval/jetson/.cache/vllm/torch_compile_cache/torch_aot_compile/fcdb4fb9f86d2c52aa2243238bc4a72060001aa6d524daf8de864869191d6d40/rank_0_0/model
+INFO 10-06 13:02:19 [monitor.py:48] torch.compile took 3.09 s in total
+INFO 10-06 13:02:19 [monitor.py:76] Initial profiling/warmup run took 0.03 s
+INFO 10-06 13:02:27 [kv_cache_utils.py:829] Overriding num_gpu_blocks=0 with num_gpu_blocks_override=512
+INFO 10-06 13:02:27 [gpu_model_runner.py:5876] Profiling CUDA graph memory: PIECEWISE=51 (largest=512), FULL=35 (largest=256)
+INFO 10-06 13:02:28 [gpu_model_runner.py:5955] Estimated CUDA graph memory: 0.35 GiB total
+INFO 10-06 13:02:29 [gpu_worker.py:436] Available KV cache memory: 2.81 GiB
+INFO 10-06 13:02:29 [gpu_worker.py:470] In v0.19, CUDA graph memory profiling will be enabled by default (VLLM_MEMORY_PROFILER_ESTIMATE_CUDAGRAPHS=1), which more accurately accounts for CUDA graph memory during KV cache allocation. To try it now, set VLLM_MEMORY_PROFILER_ESTIMATE_CUDAGRAPHS=1 and increase --gpu-memory-utilization from 0.1700 to 0.1729 to maintain the same effective KV cache size.
+INFO 10-06 13:02:29 [kv_cache_utils.py:1319] GPU KV cache size: 52,576 tokens
+INFO 10-06 13:02:29 [kv_cache_utils.py:1324] Maximum concurrency for 4,096 tokens per request: 12.84x
+2026-10-06 13:02:30,605 - INFO - autotuner.py:262 - flashinfer.jit: [Autotuner]: Autotuning process starts ...
+2026-10-06 13:02:43,054 - INFO - autotuner.py:268 - flashinfer.jit: [Autotuner]: Autotuning process ends
+Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  20%|█▉        | 10/51 [00:01<00:04,  8.80it/s]
+Traceback (most recent call last):
+  File "/home/michal/dev/lmms-eval/lmms_eval/__main__.py", line 584, in cli_evaluate
+    results, samples = cli_evaluate_single(args)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/michal/dev/lmms-eval/lmms_eval/__main__.py", line 741, in cli_evaluate_single
+    results = evaluator.simple_evaluate(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/michal/dev/lmms-eval/lmms_eval/utils.py", line 737, in _wrapper
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/home/michal/dev/lmms-eval/lmms_eval/evaluator.py", line 518, in simple_evaluate
+    lm = models.get_model(model, force_simple).create_from_arg_string(
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/michal/dev/lmms-eval/lmms_eval/api/model.py", line 145, in create_from_arg_string
+    return cls(**args, **args2)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/michal/dev/lmms-eval/lmms_eval/models/chat/vllm.py", line 57, in __init__
+    super().__init__(
+  File "/home/michal/dev/lmms-eval/lmms_eval/models/simple/vllm.py", line 239, in __init__
+    self.client = LLM(
+                  ^^^^
+  File "/opt/venv/lib/python3.12/site-packages/vllm/entrypoints/llm.py", line 382, in __init__
+    self.llm_engine = LLMEngine.from_engine_args(
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/venv/lib/python3.12/site-packages/vllm/v1/engine/llm_engine.py", line 177, in from_engine_args
+    return cls(
+           ^^^^
+  File "/opt/venv/lib/python3.12/site-packages/vllm/v1/engine/llm_engine.py", line 111, in __init__
+    self.engine_core = EngineCoreClient.make_client(
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/venv/lib/python3.12/site-packages/vllm/v1/engine/core_client.py", line 103, in make_client
+    return InprocClient(vllm_config, executor_class, log_stats)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/venv/lib/python3.12/site-packages/vllm/v1/engine/core_client.py", line 285, in __init__
+    self.engine_core = EngineCore(*args, **kwargs)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/venv/lib/python3.12/site-packages/vllm/v1/engine/core.py", line 124, in __init__
+    kv_cache_config = self._initialize_kv_caches(vllm_config)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/venv/lib/python3.12/site-packages/vllm/tracing/otel.py", line 178, in sync_wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/venv/lib/python3.12/site-packages/vllm/v1/engine/core.py", line 280, in _initialize_kv_caches
+    self.model_executor.initialize_from_config(kv_cache_configs)
+  File "/opt/venv/lib/python3.12/site-packages/vllm/v1/executor/abstract.py", line 118, in initialize_from_config
+    compilation_times: list[float] = self.collective_rpc("compile_or_warm_up_model")
+                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/venv/lib/python3.12/site-packages/vllm/v1/executor/uniproc_executor.py", line 80, in collective_rpc
+    result = run_method(self.driver_worker, method, args, kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/venv/lib/python3.12/site-packages/vllm/v1/serial_utils.py", line 510, in run_method
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/venv/lib/python3.12/site-packages/vllm/tracing/otel.py", line 178, in sync_wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/venv/lib/python3.12/site-packages/vllm/v1/worker/gpu_worker.py", line 588, in compile_or_warm_up_model
+    cuda_graph_memory_bytes = self.model_runner.capture_model()
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/venv/lib/python3.12/site-packages/vllm/tracing/otel.py", line 178, in sync_wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/venv/lib/python3.12/site-packages/vllm/v1/worker/gpu_model_runner.py", line 6015, in capture_model
+    self._capture_cudagraphs(
+  File "/opt/venv/lib/python3.12/site-packages/vllm/v1/worker/gpu_model_runner.py", line 6130, in _capture_cudagraphs
+    self._warmup_and_capture(
+  File "/opt/venv/lib/python3.12/site-packages/vllm/v1/worker/gpu_model_runner.py", line 6076, in _warmup_and_capture
+    self._dummy_run(
+  File "/opt/venv/lib/python3.12/site-packages/torch/utils/_contextlib.py", line 124, in decorate_context
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/venv/lib/python3.12/site-packages/vllm/v1/worker/gpu_model_runner.py", line 5474, in _dummy_run
+    outputs = self.model(
+              ^^^^^^^^^^^
+  File "/opt/venv/lib/python3.12/site-packages/vllm/compilation/cuda_graph.py", line 254, in __call__
+    return self.runnable(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1776, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1787, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/venv/lib/python3.12/site-packages/vllm/model_executor/models/qwen2_5_vl.py", line 1472, in forward
+    hidden_states = self.language_model.model(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/venv/lib/python3.12/site-packages/vllm/compilation/decorators.py", line 465, in __call__
+    return self.aot_compiled_fn(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/venv/lib/python3.12/site-packages/torch/_dynamo/aot_compile.py", line 124, in __call__
+    return self.fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/venv/lib/python3.12/site-packages/vllm/model_executor/models/qwen2.py", line 422, in forward
+    def forward(
+  File "/opt/venv/lib/python3.12/site-packages/vllm/compilation/caching.py", line 211, in __call__
+    return self.optimized_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/venv/lib/python3.12/site-packages/torch/fx/graph_module.py", line 936, in call_wrapped
+    return self._wrapped_call(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/venv/lib/python3.12/site-packages/torch/fx/graph_module.py", line 455, in __call__
+    raise e
+  File "/opt/venv/lib/python3.12/site-packages/torch/fx/graph_module.py", line 442, in __call__
+    return super(self.cls, obj).__call__(*args, **kwargs)  # type: ignore[misc]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1776, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1787, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<eval_with_key>.63", line 205, in forward
+    submod_0 = self.submod_0(l_self_modules_layers_modules_0_modules_input_layernorm_parameters_weight_, l_inputs_embeds_, s59, l_self_modules_layers_modules_0_modules_self_attn_modules_qkv_proj_parameters_weight_, l_self_modules_layers_modules_0_modules_self_attn_modules_qkv_proj_parameters_bias_, l_self_modules_layers_modules_0_modules_self_attn_modules_rotary_emb_buffers_cos_sin_cache_, l_positions_, s7, s18);  l_self_modules_layers_modules_0_modules_input_layernorm_parameters_weight_ = l_self_modules_layers_modules_0_modules_self_attn_modules_qkv_proj_parameters_weight_ = l_self_modules_layers_modules_0_modules_self_attn_modules_qkv_proj_parameters_bias_ = None
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/venv/lib/python3.12/site-packages/vllm/compilation/cuda_graph.py", line 308, in __call__
+    with torch.cuda.graph(
+         ^^^^^^^^^^^^^^^^^
+  File "/opt/venv/lib/python3.12/site-packages/torch/cuda/graphs.py", line 244, in __enter__
+    torch.cuda.synchronize()
+  File "/opt/venv/lib/python3.12/site-packages/torch/cuda/__init__.py", line 1108, in synchronize
+    return torch._C._cuda_synchronize()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+torch.AcceleratorError: CUDA error: an illegal instruction was encountered
+Search for `cudaErrorIllegalInstruction' in https://docs.nvidia.com/cuda/cuda-runtime-api/group__CUDART__TYPES.html for more information.
+CUDA kernel errors might be asynchronously reported at some other API call, so the stacktrace below might be incorrect.
+For debugging consider passing CUDA_LAUNCH_BLOCKING=1
+Compile with `TORCH_USE_CUDA_DSA` to enable device-side assertions.
+
+[32m2026-10-06 13:02:45[0m | [31m[1mERROR   [0m | [36mlmms_eval.__main__[0m:[36mcli_evaluate[0m:[36m615[0m - [31m[1mError during evaluation: CUDA error: an illegal instruction was encountered
+Search for `cudaErrorIllegalInstruction' in https://docs.nvidia.com/cuda/cuda-runtime-api/group__CUDART__TYPES.html for more information.
+CUDA kernel errors might be asynchronously reported at some other API call, so the stacktrace below might be incorrect.
+For debugging consider passing CUDA_LAUNCH_BLOCKING=1
+Compile with `TORCH_USE_CUDA_DSA` to enable device-side assertions.
+. Please set `--verbosity=DEBUG` to get more information.[0m
+terminate called after throwing an instance of 'c10::AcceleratorError'
+  what():  CUDA error: an illegal instruction was encountered
+Search for `cudaErrorIllegalInstruction' in https://docs.nvidia.com/cuda/cuda-runtime-api/group__CUDART__TYPES.html for more information.
+CUDA kernel errors might be asynchronously reported at some other API call, so the stacktrace below might be incorrect.
+For debugging consider passing CUDA_LAUNCH_BLOCKING=1
+Compile with `TORCH_USE_CUDA_DSA` to enable device-side assertions.
+
+Exception raised from currentStreamCaptureStatusMayInitCtx at /opt/pytorch/c10/cuda/CUDAGraphsC10Utils.h:71 (most recent call first):
+frame #0: c10::Error::Error(c10::SourceLocation, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) + 0xe8 (0xffff57f22d48 in /opt/venv/lib/python3.12/site-packages/torch/lib/libc10.so)
+frame #1: c10::cuda::c10_cuda_check_implementation(int, char const*, char const*, unsigned int, bool) + 0x290 (0xffff58023390 in /opt/venv/lib/python3.12/site-packages/torch/lib/libc10_cuda.so)
+frame #2: <unknown function> + 0xe23f24 (0xffff58ab3f24 in /opt/venv/lib/python3.12/site-packages/torch/lib/libtorch_cuda.so)
+frame #3: <unknown function> + 0x480650 (0xffff57f00650 in /opt/venv/lib/python3.12/site-packages/torch/lib/libc10.so)
+frame #4: c10::TensorImpl::~TensorImpl() + 0x14 (0xffff57eb3504 in /opt/venv/lib/python3.12/site-packages/torch/lib/libc10.so)
+frame #5: <unknown function> + 0x5f25c8 (0xffff719d25c8 in /opt/venv/lib/python3.12/site-packages/torch/lib/libtorch_python.so)
+frame #6: <unknown function> + 0xc1bc3c (0xffff71ffbc3c in /opt/venv/lib/python3.12/site-packages/torch/lib/libtorch_python.so)
+<omitting python frames>
+frame #8: <unknown function> + 0x14f8b8 (0xffff99a8f8b8 in /opt/venv/lib/python3.12/site-packages/numpy/_core/_multiarray_umath.cpython-312-aarch64-linux-gnu.so)
+frame #48: <unknown function> + 0x284c4 (0xffff9a5284c4 in /usr/lib/aarch64-linux-gnu/libc.so.6)
+frame #49: __libc_start_main + 0x98 (0xffff9a528598 in /usr/lib/aarch64-linux-gnu/libc.so.6)
+
+Fatal Python error: Aborted
+
+Thread 0x0000fffba96c7180 (most recent call first):
+  File "/root/.local/share/uv/python/cpython-3.12.13-linux-aarch64-gnu/lib/python3.12/threading.py", line 359 in wait
+  File "/root/.local/share/uv/python/cpython-3.12.13-linux-aarch64-gnu/lib/python3.12/threading.py", line 655 in wait
+  File "/opt/venv/lib/python3.12/site-packages/tqdm/_monitor.py", line 60 in run
+  File "/root/.local/share/uv/python/cpython-3.12.13-linux-aarch64-gnu/lib/python3.12/threading.py", line 1075 in _bootstrap_inner
+  File "/root/.local/share/uv/python/cpython-3.12.13-linux-aarch64-gnu/lib/python3.12/threading.py", line 1032 in _bootstrap
+
+Thread 0x0000fffbaa5d7180 (most recent call first):
+  File "/root/.local/share/uv/python/cpython-3.12.13-linux-aarch64-gnu/lib/python3.12/threading.py", line 359 in wait
+  File "/root/.local/share/uv/python/cpython-3.12.13-linux-aarch64-gnu/lib/python3.12/threading.py", line 655 in wait
+  File "/opt/venv/lib/python3.12/site-packages/tqdm/_monitor.py", line 60 in run
+  File "/root/.local/share/uv/python/cpython-3.12.13-linux-aarch64-gnu/lib/python3.12/threading.py", line 1075 in _bootstrap_inner
+  File "/root/.local/share/uv/python/cpython-3.12.13-linux-aarch64-gnu/lib/python3.12/threading.py", line 1032 in _bootstrap
+
+Thread 0x0000fffbb27cf180 (most recent call first):
+  File "/opt/venv/lib/python3.12/site-packages/vllm/usage/usage_lib.py", line 257 in _report_continuous_usage
+  File "/opt/venv/lib/python3.12/site-packages/vllm/usage/usage_lib.py", line 175 in _report_usage_worker
+  File "/root/.local/share/uv/python/cpython-3.12.13-linux-aarch64-gnu/lib/python3.12/threading.py", line 1012 in run
+  File "/root/.local/share/uv/python/cpython-3.12.13-linux-aarch64-gnu/lib/python3.12/threading.py", line 1075 in _bootstrap_inner
+  File "/root/.local/share/uv/python/cpython-3.12.13-linux-aarch64-gnu/lib/python3.12/threading.py", line 1032 in _bootstrap
+
+Current thread 0x0000ffff9a875020 (most recent call first):
+  File "/home/michal/dev/lmms-eval/lmms_eval/__main__.py", line 616 in cli_evaluate
+  File "/home/michal/dev/lmms-eval/lmms_eval/cli/dispatch.py", line 146 in main
+  File "/home/michal/dev/lmms-eval/lmms_eval/__main__.py", line 8 in <module>
+  File "<frozen runpy>", line 88 in _run_code
+  File "<frozen runpy>", line 198 in _run_module_as_main
+
+Extension modules: numpy._core._multiarray_umath, numpy.linalg._umath_linalg, torch._C, torch._C._dynamo.autograd_compiler, torch._C._dynamo.eval_frame, torch._C._dynamo.guards, torch._C._dynamo.utils, torch._C._fft, torch._C._linalg, torch._C._nested, torch._C._nn, torch._C._sparse, torch._C._special, yaml._yaml, wcwidth._wcwidth_c, lxml._elementpath, lxml.etree, zstandard.backend_c, pyarrow.lib, numpy.random._common, numpy.random.bit_generator, numpy.random._bounded_integers, numpy.random._pcg64, numpy.random._mt19937, numpy.random._generator, numpy.random._philox, numpy.random._sfc64, numpy.random.mtrand, _cyutility, pandas._libs._cyutility, pandas._libs.tslibs.ccalendar, pandas._libs.tslibs.np_datetime, pandas._libs.tslibs.dtypes, pandas._libs.tslibs.base, pandas._libs.tslibs.nattype, pandas._libs.tslibs.timezones, pandas._libs.properties, pandas._libs.tslibs.fields, pandas._libs.tslibs.timedeltas, pandas._libs.tslibs.tzconversion, pandas._libs.tslibs.timestamps, pandas._libs.tslibs.offsets, pandas._libs.tslibs.strptime, pandas._libs.tslibs.parsing, pandas._libs.tslibs.conversion, pandas._libs.tslibs.period, pandas._libs.tslibs.vectorized, pandas._libs.ops_dispatch, pandas._libs.missing, pandas._libs.hashtable, pandas._libs.algos, pandas._libs.interval, pandas._libs.lib, pyarrow._compute, pandas._libs.ops, numexpr.interpreter, pandas._libs.hashing, pandas._libs.arrays, pandas._libs.tslib, pandas._libs.sparse, pandas._libs.internals, pandas._libs.indexing, pandas._libs.index, pandas._libs.writers, pandas._libs.join, pandas._libs.window.aggregations, pandas._libs.window.indexers, pandas._libs.reshape, pandas._libs.groupby, pandas._libs.json, pandas._libs.parsers, pandas._libs.testing, pyarrow._acero, pyarrow._fs, pyarrow._csv, pyarrow._json, pyarrow._substrait, pyarrow._dataset, pyarrow._dataset_orc, pyarrow._parquet, pyarrow._azurefs, pyarrow._hdfs, pyarrow._gcsfs, pyarrow._s3fs, pyarrow._parquet_encryption, pyarrow._dataset_parquet_encryption, pyarrow._dataset_parquet, charset_normalizer.md, charset_normalizer.cd, multidict._multidict, yarl._quoting_c, propcache._helpers_c, aiohttp._http_writer, aiohttp._http_parser, aiohttp._websocket.mask, aiohttp._websocket.reader_c, frozenlist._frozenlist, xxhash._xxhash, regex._regex, markupsafe._speedups, PIL._imaging, PIL._imagingft, av._core, av.logging, av.buffer, av.audio.format, av.error, av.dictionary, av.container.pyio, av.option, av.descriptor, av.format, av.index, av.utils, av.stream, av.container.streams, av.sidedata.encparams, av.sidedata.motionvectors, av.sidedata.sidedata, av.opaque, av.packet, av.container.input, av.container.output, av.container.core, av.codec.context, av.video.format, av.video.reformatter, av.plane, av.video.plane, av.video.frame, av.video.stream, av.codec.hwaccel, av.codec.codec, av.frame, av.audio.layout, av.audio.plane, av.audio.frame, av.audio.stream, av.filter.link, av.filter.context, av.filter.graph, av.filter.filter, av.filter.loudnorm, av.audio.resampler, av.audio.codeccontext, av.audio.fifo, av.bitstream, av.device, av.video.codeccontext, sklearn.__check_build._check_build, cython.cimports.libc.math, scipy._cyutility, scipy._lib._ccallback_c, scipy.sparse._sparsetools, _csparsetools, scipy.sparse._csparsetools, psutil._psutil_linux, scipy.special._ufuncs_cxx, scipy.special._ellip_harm_2, scipy.special._special_ufuncs, scipy.special._gufuncs, scipy.special._ufuncs, scipy.special._specfun, scipy.special._comb, scipy.linalg._fblas, scipy.linalg._flapack, scipy.linalg.cython_lapack, scipy.linalg._cythonized_array_utils, scipy.linalg._solve_toeplitz, scipy.linalg._batched_linalg, scipy.linalg._decomp_lu_cython, scipy.linalg._matfuncs_schur_sqrtm, scipy.linalg._matfuncs_expm, scipy.linalg._linalg_pythran, scipy.linalg.cython_blas, scipy.linalg._decomp_update, scipy.sparse.linalg._dsolve._superlu, scipy.sparse.linalg._eigen.arpack._arpacklib, scipy.sparse.linalg._propack, scipy.spatial._ckdtree, scipy._lib.messagestream, scipy.spatial._qhull, scipy.spatial._voronoi, scipy.spatial._hausdorff, scipy.spatial._distance_wrap, scipy.spatial.transform._rotation_cy, scipy.spatial.transform._rigid_transform_cy, scipy.optimize._group_columns, scipy.optimize._trlib._trlib, scipy.optimize._lbfgsb, _moduleTNC, scipy.optimize._moduleTNC, scipy.optimize._slsqplib, scipy.optimize._minpack, scipy.optimize._lsq.givens_elimination, scipy.optimize._zeros, scipy._lib._uarray._uarray, scipy.linalg._decomp_interpolative, scipy.optimize._bglu_dense, scipy.optimize._lsap, scipy.optimize._direct, scipy.integrate._odepack, scipy.integrate._quadpack, scipy.integrate._vode, scipy.integrate._dop, scipy.interpolate._fitpack, scipy.interpolate._dfitpack, scipy.interpolate._dierckx, scipy.interpolate._ppoly, scipy.interpolate._interpnd, scipy.interpolate._rbfinterp_pythran, scipy.interpolate._rgi_cython, scipy.special.cython_special, scipy.stats._stats, scipy.stats._biasedurn, scipy.stats._stats_pythran, scipy.stats._levy_stable.levyst, scipy.stats._ansari_swilk_statistics, scipy.sparse.csgraph._tools, scipy.sparse.csgraph._shortest_path, scipy.sparse.csgraph._traversal, scipy.sparse.csgraph._min_spanning_tree, scipy.sparse.csgraph._flow, scipy.sparse.csgraph._matching, scipy.sparse.csgraph._reordering, scipy.stats._sobol, scipy.stats._qmc_cy, scipy.stats._rcont.rcont, scipy.stats._qmvnt_cy, scipy.ndimage._nd_image, scipy.ndimage._rank_filter_1d, _ni_label, scipy.ndimage._ni_label, sklearn._cyutility, sklearn.utils._isfinite, sklearn.utils.sparsefuncs_fast, sklearn.utils.murmurhash, sklearn.utils._openmp_helpers, sklearn.metrics.cluster._expected_mutual_info_fast, sklearn.metrics._dist_metrics, sklearn.metrics._pairwise_distances_reduction._datasets_pair, sklearn.utils._cython_blas, sklearn.metrics._pairwise_distances_reduction._base, sklearn.metrics._pairwise_distances_reduction._middle_term_computer, sklearn.utils._heap, sklearn.utils._sorting, sklearn.metrics._pairwise_distances_reduction._argkmin, sklearn.metrics._pairwise_distances_reduction._argkmin_classmode, sklearn.utils._vector_sentinel, sklearn.metrics._pairwise_distances_reduction._radius_neighbors, sklearn.metrics._pairwise_distances_reduction._radius_neighbors_classmode, sklearn.metrics._pairwise_fast, sklearn.preprocessing._csr_polynomial_expansion, sklearn.preprocessing._target_encoder_fast, msgspec._core, _cbor2, sentencepiece._sentencepiece, _cffi_backend, zmq.backend.cython._zmq, pybase64._pybase64, scipy.signal._sigtools, scipy.signal._max_len_seq_inner, scipy.signal._upfirdn_apply, scipy.signal._spline, scipy.signal._sosfilt, scipy.signal._peak_finding_utils, uvloop.loop, Cython.Utils, Cython.Plex.Actions, Cython.Plex.Transitions, Cython.Plex.Machines, Cython.Plex.DFA, Cython.Plex.Scanners, Cython.Compiler.Scanning, Cython.StringIOTree, Cython.Compiler.Code, grpc._cython.cygrpc, google._upb._message, cuda.bindings._bindings.cydriver, cuda.bindings.cydriver, cuda.bindings.driver, cuda.bindings._lib.utils, cuda.bindings._bindings.cyruntime_ptds, cuda.bindings._bindings.cyruntime, cuda.bindings._lib.cyruntime.utils, cuda.bindings._lib.cyruntime.cyruntime, cuda.bindings.cyruntime, cuda.bindings.runtime, cuda.bindings.utils._get_handle, tvm_ffi.core, cuda.bindings._bindings.cynvrtc, cuda.bindings.cynvrtc, cuda.bindings.nvrtc, cuda_utils, __triton_launcher (total: 295)

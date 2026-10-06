@@ -23,8 +23,10 @@ Qwen2.5-VL-3B and 7B on a Jetson AGX Thor, across HF transformers, vLLM, llama.c
 |---|---:|---:|---:|---:|---:|---:|---:|---:|
 | HF bf16 (reference) | 78.86 | – | 397 / 497 / 562 | 29 / 276 / 119 | 52 | 1.72 | 38.7 | 38.9 / 66.5 |
 | vLLM bf16 | 79.39 | +0.53 ± 0.22 | 361 / 446 / 509 | 240 / – / – | 27 | 1.43 | 36.6 | 27.2 / 52.3 |
+| vLLM bf16, stage timing (2026-10-06)‡ | 79.39 | +0.53 ± 0.22 | 301 / 381 / 440 | 231 / 166 / 138 | 26 | 1.60 | 36.6 | 30.0 / 58.7 |
+| vLLM bf16, PIL images (2026-10-06)‡ | 79.39 | +0.53 ± 0.22 | 281 / 354 / 412 | 7 / – / – | 26 | 2.65 | 31.9 | 47.4 / 84.6 |
 | vLLM AWQ (Qwen's checkpoint) | 79.10 | +0.24 ± 0.32 | 453 / 568 / 647 | 240 / – / – | 11 | 1.34 | 39.8 | 30.3 / 53.2 |
-| vLLM fp8 W8A8 (RedHatAI; torch `_scaled_mm`)† | 79.48 | +0.62 ± 0.24 | 325 / 393 / 448 | 231 / – / – | 15 | 1.64 | 33.1 | 27.3 / 54.4 |
+| vLLM fp8 W8A8 (RedHatAI; torch `_scaled_mm`)†‡ | 79.48 | +0.62 ± 0.24 | 318 / 383 / 437 | 231 / 165 / 152 | 16 | 1.67 | 33.1 | 27.9 / 55.3 |
 | vLLM int8 W8A8 (RedHatAI; Triton)† | 79.27 | +0.41 ± 0.28 | 359 / 449 / 513 | 231 / – / – | 16 | 1.54 | 37.0 | 29.0 / 57.1 |
 | vLLM fp8 weights, 16-bit activations (RedHatAI; Marlin)† | 79.46 | +0.60 ± 0.22 | 434 / 545 / 615 | 232 / – / – | 15 | 1.38 | 43.7 | 31.8 / 60.2 |
 | llama.cpp f16 | 79.84 | +0.98 ± 0.35 | 1059 / 1576 / 1848 | 231 / 640 / 289 | 28 | 0.69 | 77.3 | 28.1 / 53.1 |
@@ -40,8 +42,10 @@ Qwen2.5-VL-3B and 7B on a Jetson AGX Thor, across HF transformers, vLLM, llama.c
 |---|---:|---:|---:|---:|---:|---:|---:|---:|
 | HF bf16 (reference) | 82.96 | – | 475 / 600 / 708 | 45 / 276 / 202 | 80 | 1.30 | 56.3 | 42.4 / 72.9 |
 | vLLM bf16 | 83.84 | +0.88 ± 0.20 | 456 / 547 / 645 | 240 / – / – | 63 | 1.12 | 55.7 | 32.4 / 62.3 |
+| vLLM bf16, stage timing (2026-10-06)‡ | 83.80 | +0.84 ± 0.19 | 394 / 482 / 578 | 231 / 166 / 230 | 61 | 1.22 | 56.3 | 35.3 / 68.9 |
+| vLLM bf16, PIL images (2026-10-06)‡ | 83.84 | +0.88 ± 0.20 | 389 / 468 / 568 | 7 / – / – | 61 | 1.71 | 51.9 | 48.2 / 88.8 |
 | vLLM AWQ (Qwen's checkpoint) | 83.13 | +0.17 ± 0.27 | 637 / 782 / 878 | 241 / – / – | 20 | 1.05 | 62.4 | 38.9 / 65.3 |
-| vLLM fp8 W8A8 (RedHatAI; torch `_scaled_mm`)† | 83.81 | +0.84 ± 0.21 | 369 / 453 / 530 | 232 / – / – | 33 | 1.40 | 44.6 | 31.9 / 62.4 |
+| vLLM fp8 W8A8 (RedHatAI; torch `_scaled_mm`)†‡ | 83.81 | +0.84 ± 0.21 | 361 / 443 / 516 | 231 / 166 / 196 | 33 | 1.43 | 44.1 | 32.4 / 63.2 |
 | vLLM int8 W8A8 (RedHatAI; Triton)† | 83.65 | +0.69 ± 0.24 | 509 / 617 / 712 | 232 / – / – | 33 | 1.17 | 56.7 | 33.3 / 66.3 |
 | vLLM fp8 weights, 16-bit activations (RedHatAI; Marlin)† | 83.74 | +0.78 ± 0.20 | 681 / 840 / 951 | 231 / – / – | 32 | 0.98 | 73.8 | 38.7 / 72.5 |
 | llama.cpp f16 | 82.58 | −0.38 ± 0.31 | 1449 / 2002 / 2273 | 231 / 741 / 594 | 59 | 0.52 | 113.9 | 30.7 / 59.4 |
@@ -53,10 +57,24 @@ Qwen2.5-VL-3B and 7B on a Jetson AGX Thor, across HF transformers, vLLM, llama.c
 
 - **Δ vs HF:** the mean per-question score difference over the same 5,000 questions, ± its standard error. A difference smaller than about 2 SE is noise.
 - **Preprocess** (client side, before the model call) is mostly converting the image to PNG/base64 for vLLM and llama.cpp. \*Edge-LLM's backend writes all images as PNG before starting the runner (19.4 min per run). That time counts in samples/s and J/sample, but not in TTFT.
-- **Stage times** (vision / prefill) are medians: CUDA events for HF, the server log for llama.cpp, runner GPU time for Edge-LLM. vLLM doesn't separate them.
+- **Stage times** (vision / prefill) are medians: CUDA events for HF and for vLLM with `stage_timing=True`, the server log for llama.cpp, runner GPU time for Edge-LLM. Other vLLM runs don't separate them.
+- **‡ 2026-10-05/06 runs:** HF and vLLM ran 10–15% faster than on 2026-09-28/29 (see "Run-to-run variation" below), so compare vLLM settings within the same dates: the stage-timing bf16 row is the same-day reference for the PIL and fp8 rows. The fp8 rows are the stage-timing runs (`vllm-fp8+torch-stages`); they replace the 2026-10-05 runs without stage timing (identical answers, TTFT within 2%).
 - **Decode** (ms per token after the first) barely affects these numbers: answers are only about 4 tokens long. HF, vLLM and llama.cpp: client side, (answer − TTFT) / (tokens − 1); Edge-LLM: median GPU time of the runner's decode steps. llama-server's own "eval time" per token is about 1.5× too low, because it counts the first token, which comes from the prefill.
 - **† vLLM 8-bit:** vLLM 0.19.0's default kernels don't run on Thor (int8 refused on SM110; the fp8 Cutlass kernel supports sm100f only and crashes; NOTES.md, problem 17). These runs use vLLM's alternative kernels, chosen with `EVAL_ENV`: `VLLM_DISABLED_KERNELS=CutlassFP8ScaledMMLinearKernel` (fp8 → `ChannelWiseTorchFP8ScaledMMLinearKernel`), `VLLM_DISABLED_KERNELS=CutlassInt8ScaledMMLinearKernel` (int8 → `TritonInt8ScaledMMLinearKernel`), `VLLM_TEST_FORCE_FP8_MARLIN=1` (fp8 weights only → `MarlinFP8ScaledMMLinearKernel`). Result dirs `vllm-fp8+torch`, `vllm-w8a8+triton`, `vllm-fp8+marlin`; each run.log names the selected kernel.
 - **Memory:** Edge-LLM's runner peak GPU allocation is 8.5 / 5.8 / 4.5 GB (3B) and 16.3 / 10.2 / 7.3 GB (7B) for fp16 / fp8 / int4_awq. The other frameworks peak at 28.5–31.9 GB of whole-board memory.
+
+### Run-to-run variation (3B TextVQA, MAXN)
+
+| Setting | First run → repeat | Answers that differ | TTFT p50 | Decode (ms/token) | Questions/s | J/question |
+|---|---|---:|---:|---:|---:|---:|
+| HF bf16 | 2026-09-28 → 10-06 | 0 | 397 → 387 (−3%) | 52 → 41 | 1.72 → 1.88 (+9%) | 38.7 → 39.9 (+3%) |
+| vLLM bf16 | 2026-09-28 → 10-06 | 0 | 361 → 308 (−15%) | 27 → 26 | 1.43 → 1.58 (+10%) | 36.6 → 36.9 (+1%) |
+| Edge-LLM fp16 | 2026-09-29 → 10-06 | 0 | ~157 → ~159 (+1%) | 27 → 26 | 2.04 → 2.04 (0%) | 29.1 → 31.0 (+7%) |
+| vLLM fp8 (`_scaled_mm`) | 2026-10-05 → 10-06 (with stage timing) | 0 | 325 → 318 (−2%) | 15 → 16 | 1.64 → 1.67 (+2%) | 33.1 → 33.1 (0%) |
+| vLLM bf16, 7B | 2026-09-29 → 10-06 (with stage timing) | 86 (Δ −0.04 ± 0.09) | 456 → 394 (−14%) | 63 → 61 | 1.12 → 1.22 (+9%) | 55.7 → 56.3 (+1%) |
+
+- **Accuracy reproduces exactly** within a framework on the same compiled code. The 7B difference (86 answers, no accuracy change) came with a fresh `torch.compile` after the stale cache was moved aside (NOTES.md, problem 19).
+- **Edge-LLM's times reproduce** (TTFT +1%; energy +7% from a slightly higher module power). **HF and vLLM ran 10–15% faster on 2026-10-05/06 than on 2026-09-28/29**, with the same image, board and power mode and no other GPU process or container recorded (CPU load is not recorded); the cause is not known. Runs a day apart agree within 2% (vLLM fp8).
 
 ## 2. MME and GQA
 
@@ -122,19 +140,23 @@ TextVQA medians:
 | Model | Framework | Vision encoder | LLM prefill | Vision share | Vision TFLOP/s | Prefill TFLOP/s |
 |---|---|---:|---:|---:|---:|---:|
 | 3B | HF bf16 | 276 ms | 119 ms | 70% | 19 | 49 |
+| 3B | vLLM bf16 (stage timing) | 166 ms | 138 ms | 55% | 32 | 42 |
+| 3B | vLLM fp8 (`_scaled_mm`, stage timing) | 165 ms | 152 ms | 52% | 32 | 38 |
 | 3B | llama.cpp f16 | 640 ms | 289 ms | 69% | 8 | 20 |
 | 3B | llama.cpp Q8_0 | 642 ms | 319 ms | 67% | 8 | 18 |
 | 3B | Edge-LLM fp16 | 87 ms | 74 ms | 54% | 62 | 78 |
 | 3B | Edge-LLM fp8 | 87 ms | 44 ms | 66% | 62 | 132 |
 | 3B | Edge-LLM int4_awq | 87 ms | 152 ms | 36% | 62 | 38 |
 | 7B | HF bf16 | 276 ms | 202 ms | 58% | 19 | 67 |
+| 7B | vLLM bf16 (stage timing) | 166 ms | 230 ms | 42% | 32 | 59 |
+| 7B | vLLM fp8 (`_scaled_mm`, stage timing) | 166 ms | 196 ms | 46% | 32 | 69 |
 | 7B | llama.cpp f16 | 741 ms | 594 ms | 56% | 7 | 23 |
 | 7B | llama.cpp Q8_0 | 700 ms | 620 ms | 53% | 8 | 22 |
 | 7B | Edge-LLM fp16 | 87 ms | 160 ms | 35% | 62 | 84 |
 | 7B | Edge-LLM fp8 | 89 ms | 91 ms | 49% | 60 | 148 |
 | 7B | Edge-LLM int4_awq | 88 ms | 323 ms | 21% | 61 | 42 |
 
-- **The vision encoder is the bottleneck.** At about 1,000 image tokens, the ViT needs as many FLOPs as the whole 3B prefill (5.4 vs 5.8 TFLOP per question), but HF runs it at a third of its prefill rate. Qwen2.5-VL's window attention makes many small attention calls. Edge-LLM's fused ViT is 3.2× faster than HF's and 7× faster than llama.cpp's. The levers are a faster ViT (TensorRT, or `torch.compile` in the PyTorch stacks) or fewer image tokens. Edge-LLM's `--visualPrune` and a lower `max_pixels` both reduce tokens, but both may cost OCR accuracy.
+- **The vision encoder is the bottleneck.** At about 1,000 image tokens, the ViT needs as many FLOPs as the whole 3B prefill (5.4 vs 5.8 TFLOP per question), but HF runs it at a third of its prefill rate. Qwen2.5-VL's window attention makes many small attention calls. vLLM runs the same model code 1.7× faster (compiled, with its FlashAttention backend); Edge-LLM's fused ViT is 1.9× faster than vLLM's, 3.2× faster than HF's and 7× faster than llama.cpp's. The levers are a faster ViT (TensorRT, or `torch.compile` in the PyTorch stacks) or fewer image tokens. Edge-LLM's `--visualPrune` and a lower `max_pixels` both reduce tokens, but both may cost OCR accuracy.
 - **Weight-only 4-bit slows the first token.** A ~1,000-token prefill is compute-bound, and W4A16 kernels dequantize on the fly. Edge-LLM int4_awq prefill takes 152 ms against 74 ms for fp16 (7B: 323 vs 160 ms), and vLLM AWQ TTFT is 453 ms against 361 ms. Only fp8 (W8A8) speeds prefill up: 44 ms (7B: 91 ms).
 - **Image transport costs as much as the model.** Encoding a ~1024 px photo as PNG/base64 takes 230–240 ms per question in vLLM's default path, in llama.cpp and in the Edge-LLM backend; HF passes PIL images and spends 29 ms. That is why vLLM processes fewer questions per second than HF (1.43 vs 1.72 for 3B) despite a lower TTFT. Passing PIL images (vLLM `pass_pil_images=True`) or JPEG paths would remove most of it.
 - **llama.cpp loses on both stages, whatever the weight format.** Its vision encoder runs at 7–8 TFLOP/s and its prefill is 2.4–3× slower than HF's. f16 weights don't change that: the vision encoder is the same, and f16 prefill is only 4–9% faster than Q8_0's (no unpacking). Q8_0's 8-bit weights speed up only decode, 1.5–1.7×. HTTP, base64 decoding and server-side image preparation add another ~130 ms (TTFT 1,091 ms vs 961 ms for encoder + prefill).
@@ -157,6 +179,6 @@ Achieved TFLOP/s on TextVQA, as (vision + prefill FLOPs) / mean TTFT:
 | 3B | 28.1 | 30.6 | 24.4 | 9.8 / 9.8 / 9.4 | 71.0 / 86.0 / 48.2 |
 | 7B | 39.4 | 41.6 | 29.8 | 12.6 / 12.7 / 12.0 | 76.7 / 104.4 / 47.5 |
 
-vLLM 8-bit (alternative kernels): fp8 `_scaled_mm` / int8 Triton / fp8 Marlin reach 35.2 / 31.3 / 25.9 TFLOP/s (3B) and 51.4 / 37.6 / 28.0 (7B), against 30.6 and 41.6 for bf16.
+vLLM 8-bit (alternative kernels): fp8 `_scaled_mm` / int8 Triton / fp8 Marlin reach 36.2 / 31.3 / 25.9 TFLOP/s (3B) and 52.8 / 37.6 / 28.0 (7B), against 36.9 and 48.3 for bf16 measured on the same days (30.6 and 41.6 in the 2026-09-28/29 runs).
 
 Edge-LLM's rates use GPU time only, so they are higher than a wall-clock rate would be.

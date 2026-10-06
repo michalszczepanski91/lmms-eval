@@ -74,7 +74,7 @@ The same 5,000 TextVQA questions, MAXN.
 
 From the run logs; ¹ from direct runner tests (the benchmark logs are slimmed). The differences in the tables below come from these layers, not only from the kernels:
 
-- **TTFT** is mostly the vision encoder's implementation: about 19 TFLOP/s in Qwen's PyTorch code (HF, vLLM), 8 in llama.cpp, 62 in Edge-LLM's TensorRT engine (section 3).
+- **TTFT** is mostly the vision encoder's implementation: about 19 TFLOP/s in HF, 32 in vLLM (the same Qwen model code, compiled and with vLLM's FlashAttention), 8 in llama.cpp, 62 in Edge-LLM's TensorRT engine (section 3).
 - **Decode per token** is set by memory bandwidth: every token reads all weights, so vLLM, llama.cpp and Edge-LLM land at the same speed. HF is slower because of Python overhead without CUDA graphs, not a slower kernel.
 - **At 16-bit the matrix-multiply kernels themselves are similar** (cuBLAS or TensorRT). Kernels matter more at 8 and 4 bits, where the format decides which kernel can run (the vLLM 8-bit variants below).
 - **Questions/s** also includes converting each image to PNG (~0.24 s in vLLM, llama.cpp and Edge-LLM; HF passes it directly), which is not the model.
@@ -118,12 +118,12 @@ From the run logs; ¹ from direct runner tests (the benchmark logs are slimmed).
 | Model | Framework | Weights / activations (kernel) | Accuracy (Δ vs HF bf16) | TTFT | Decode per token | Questions/s | Avg board power | Energy per question |
 |---|---|---|---:|---:|---:|---:|---:|---:|
 | 3B | Edge-LLM | fp8 / fp8 (own quantizer) | 79.6 (+0.7 ± 0.3) | ~0.13 s | 16 ms | 2.32 | 54 W | 23 J |
-| 3B | vLLM | fp8 / fp8 (RedHatAI; torch `_scaled_mm`)* | 79.5 (+0.6 ± 0.2) | 0.33 s | 15 ms | 1.64 | 54 W | 33 J |
+| 3B | vLLM | fp8 / fp8 (RedHatAI; torch `_scaled_mm`)* | 79.5 (+0.6 ± 0.2) | 0.32 s | 16 ms | 1.67 | 55 W | 33 J |
 | 3B | vLLM | int8 / int8 (RedHatAI; Triton)* | 79.3 (+0.4 ± 0.3) | 0.36 s | 16 ms | 1.54 | 57 W | 37 J |
 | 3B | vLLM | fp8 / 16-bit (RedHatAI; Marlin)* | 79.5 (+0.6 ± 0.2) | 0.43 s | 15 ms | 1.38 | 60 W | 44 J |
 | 3B | llama.cpp | int8 blocks / 16-bit (Q8_0, by ggml-org) | 79.9 (+1.0 ± 0.4) | 1.09 s | 18 ms | 0.70 | 51 W | 72 J |
 | 7B | Edge-LLM | fp8 / fp8 (own quantizer) | 83.9 (+0.9 ± 0.2) | ~0.18 s | 32 ms | 1.88 | 64 W | 34 J |
-| 7B | vLLM | fp8 / fp8 (RedHatAI; torch `_scaled_mm`)* | 83.8 (+0.8 ± 0.2) | 0.37 s | 33 ms | 1.40 | 62 W | 45 J |
+| 7B | vLLM | fp8 / fp8 (RedHatAI; torch `_scaled_mm`)* | 83.8 (+0.8 ± 0.2) | 0.36 s | 33 ms | 1.43 | 63 W | 44 J |
 | 7B | vLLM | int8 / int8 (RedHatAI; Triton)* | 83.7 (+0.7 ± 0.2) | 0.51 s | 33 ms | 1.17 | 66 W | 57 J |
 | 7B | vLLM | fp8 / 16-bit (RedHatAI; Marlin)* | 83.7 (+0.8 ± 0.2) | 0.68 s | 32 ms | 0.98 | 73 W | 74 J |
 | 7B | llama.cpp | int8 blocks / 16-bit (Q8_0, by ggml-org) | 82.4 (−0.6 ± 0.3) | 1.43 s | 35 ms | 0.55 | 55 W | 100 J |
@@ -140,8 +140,8 @@ From the run logs; ¹ from direct runner tests (the benchmark logs are slimmed).
 
 - **Accuracy:** 8-bit costs nothing in any framework. Against vLLM's own bf16, its 8-bit runs differ by −0.2 to +0.1 points (noise).
 - **Decode:** 8-bit weights decode 1.6–1.9× faster than 16-bit in every framework (15–18 vs 27–28 ms for the 3B, 32–35 vs 59–63 ms for the 7B), since each token reads half the bytes.
-- **First token: only real fp8 compute helps, and Edge-LLM gains the most.** vLLM fp8 (`_scaled_mm`) cuts TTFT by 10% (3B, 0.36 → 0.33 s) and 19% (7B, 0.46 → 0.37 s) against vLLM bf16; Edge-LLM fp8 cuts it by 17% and 27% against its fp16, and stays 2–2.5× faster than vLLM fp8 (its vision encoder). vLLM int8 through Triton gains nothing (3B) or is slower (7B, 0.51 s). Weight-only 8-bit with vLLM's Marlin kernel is slower to the first token than bf16 (0.43 vs 0.36 s, 0.68 vs 0.46 s), like 4-bit: the weights are unpacked for every prefill. llama.cpp Q8_0 matches its f16 (section 2 above).
-- **Best vLLM setting on Thor:** fp8 with the `_scaled_mm` kernel: the same accuracy as bf16, 10–19% faster first token, 1.8–1.9× faster decode, 10–20% less energy per question.
+- **First token: Edge-LLM's fp8 helps clearly, vLLM's only for the 7B.** Against vLLM bf16 measured on the same days (2026-10-05/06; the vLLM bf16 rows above are from 2026-09-28/29, when vLLM ran 10–15% slower, see "Is the data enough?"): vLLM fp8 (`_scaled_mm`) is 6% slower for the 3B (0.32 vs 0.30 s: its prefill takes 152 vs 138 ms, the vision encoder is unchanged) and 8% faster for the 7B (0.36 vs 0.39 s: prefill 196 vs 230 ms). Edge-LLM fp8 cuts TTFT by 17% and 27% against its fp16 and is 2–2.5× faster than vLLM fp8. vLLM int8 through Triton is 19% / 29% slower than bf16, and weight-only fp8 through Marlin 44% / 73% slower (the weights are unpacked for every prefill, as with 4-bit). llama.cpp Q8_0 matches its f16 (section 2 above).
+- **Best vLLM setting on Thor:** fp8 with the `_scaled_mm` kernel: the same accuracy as bf16, 1.6–1.8× faster decode and 10–22% less energy per question (same-day bf16: 37 / 56 J); the first token is 8% faster for the 7B, 6% slower for the 3B.
 
 - **Accuracy:** at 16-bit, all within 1 point; the differences are close calls about when to stop answering ("Stop" vs "Stop Global Warming"). At 4-bit it depends on who quantized the model (section 4): the 3B loses 5 points with Edge-LLM's own quantizer, while the 7B stays within 1 point with every quantizer.
 - **TTFT:** Edge-LLM < vLLM ≈ HF < llama.cpp, for both sizes and both weight formats. Edge-LLM's lead is its vision encoder (section 3).
@@ -153,13 +153,14 @@ From the run logs; ¹ from direct runner tests (the benchmark logs are slimmed).
   - Energy: f16 costs a little more per question (77 vs 72 J for 3B, 114 vs 100 J for 7B), from the slower decode and higher power draw.
   - Earlier versions of this file gave 12 / 11 ms per token for Q8_0 / Q4_K_M. That came from llama-server's own per-token figure, which counts the first token as a decode step. Measured on the client side, the numbers are 18 / 16 ms.
 - **7B at 16-bit:** the same ranking as the 3B. Edge-LLM fp16 and vLLM bf16 score the same (+0.1 ± 0.2 apart); Edge-LLM answers in about half vLLM's TTFT and uses 47 vs 56 J per question.
-- **Questions/s:** vLLM, llama.cpp and Edge-LLM convert every image to PNG first (~0.24 s per question). So vLLM answers fewer questions per second than HF despite a lower TTFT, and Edge-LLM only 1.2× more.
+- **Questions/s:** vLLM, llama.cpp and Edge-LLM convert every image to PNG first (~0.24 s per question). So vLLM answers fewer questions per second than HF despite a lower TTFT, and Edge-LLM only 1.2× more. **Passing the image directly** (vLLM `pass_pil_images=True`) removes that cost: 2.65 vs 1.58 questions/s for the 3B (+67%) and 1.71 vs 1.22 for the 7B (+40%), 14% / 8% less energy per question, the same answers (same-day PNG runs as reference).
 - **Energy follows time:** board power differs little (49–67 W), time per question a lot.
-- **Is the data enough?** Accuracy: yes (standard error 0.2–0.5 points over 5,000 paired questions). Ranking: yes, the gaps (2–7×) are far larger than run-to-run variation (~8%). Exact times: less so (one run per setting, Edge-LLM GPU time only, vLLM no stage breakdown).
+- **vLLM stages** (with `stage_timing=True`, 2026-10-06, medians): vision encoder 166 ms for both sizes, prefill 138 ms (3B) and 230 ms (7B). vLLM's encoder is 1.7× faster than HF's (276 ms), with the same model code; Edge-LLM's is another 1.9× faster (87 ms). Timing the encoder costs nothing: TTFT 301 vs 308 ms without it, on the same day.
+- **Is the data enough?** Accuracy: yes. Repeating HF, vLLM and Edge-LLM (3B) gave exactly the same 5,000 answers, and the standard errors of the differences are 0.2–0.5 points. Ranking: yes, the gaps (2–7×) are far larger than run-to-run variation. Exact times: **Edge-LLM repeats within ±1–4%** (TTFT +1%, decode −4%, questions/s ±0%; energy +7%), but **HF and vLLM ran 10–15% faster on 2026-10-06 than on 2026-09-28**: vLLM TTFT 308 vs 361 ms, questions/s +10%; HF questions/s +9%, decode 41 vs 52 ms per token, TTFT −3%. Same image, board and power mode; the cause is not known (CPU load is not recorded; both run Python on the CPU, Edge-LLM's runner is C++). Compare PyTorch-framework times measured on different days with that margin.
 
 ### 3. Where the time goes
 
-Per question: the **vision encoder** turns the image into tokens; the **prefill** runs the language model over all input tokens and produces the first token; **decode** produces each further token. Same 5,000 TextVQA questions, mean per stage, 3B and 7B on the same time scale. vLLM doesn't split vision encoder and prefill, so its time to first token is one grey bar.
+Per question: the **vision encoder** turns the image into tokens; the **prefill** runs the language model over all input tokens and produces the first token; **decode** produces each further token. Same 5,000 TextVQA questions, mean per stage, 3B and 7B on the same time scale. vLLM's 16-bit bars come from its stage-timing runs (2026-10-06); its 4-bit (AWQ) run has no stage timing, so its time to first token is one grey bar.
 
 **16-bit:**
 
@@ -176,8 +177,8 @@ Per question: the **vision encoder** turns the image into tokens; the **prefill*
 Regenerate (same `--xmax` keeps the scale equal; pick any runs as `<size>:<framework>-<precision>`):
 
 ```bash
-jetson/scripts/plot_stages.py --title "Qwen2.5-VL-3B, 16-bit" --xmax 1600 3b:hf-bf16 3b:vllm-bf16 3b:llamacpp-f16 3b:trt_edgellm-fp16 -o jetson/results/thor/time_16bit_3b.svg
-jetson/scripts/plot_stages.py --title "Qwen2.5-VL-7B, 16-bit" --xmax 1600 7b:hf-bf16 7b:vllm-bf16 7b:llamacpp-f16 7b:trt_edgellm-fp16 -o jetson/results/thor/time_16bit_7b.svg
+jetson/scripts/plot_stages.py --title "Qwen2.5-VL-3B, 16-bit" --xmax 1600 3b:hf-bf16 3b:vllm-bf16+stages 3b:llamacpp-f16 3b:trt_edgellm-fp16 -o jetson/results/thor/time_16bit_3b.svg
+jetson/scripts/plot_stages.py --title "Qwen2.5-VL-7B, 16-bit" --xmax 1600 7b:hf-bf16 7b:vllm-bf16+stages 7b:llamacpp-f16 7b:trt_edgellm-fp16 -o jetson/results/thor/time_16bit_7b.svg
 jetson/scripts/plot_stages.py --title "Qwen2.5-VL-3B, 4-bit weights" --xmax 1600 3b:vllm-awq 3b:llamacpp-q4_k_m 3b:trt_edgellm-int4_awq -o jetson/results/thor/time_4bit_3b.svg
 jetson/scripts/plot_stages.py --title "Qwen2.5-VL-7B, 4-bit weights" --xmax 1600 7b:vllm-awq 7b:llamacpp-q4_k_m 7b:trt_edgellm-int4_awq -o jetson/results/thor/time_4bit_7b.svg
 ```
@@ -197,11 +198,11 @@ jetson/scripts/plot_stages.py --title "Qwen2.5-VL-7B, 4-bit weights" --xmax 1600
 
 llama.cpp rounds two images to a slightly different token count, so its middle groups have 4,136 and 514 questions.
 
-Edge-LLM reports only means, so it can't be split by image size; vLLM can, but without the vision/prefill split. Regenerate with [plot_stages.py](../../scripts/plot_stages.py) `--by-size 3b:hf-bf16 7b:hf-bf16 3b:llamacpp-f16 7b:llamacpp-f16`.
+Edge-LLM reports only means, so it can't be split by image size. Per question for the first 50 questions: [stages_textvqa_50.md](stages_textvqa_50.md) (`jetson/scripts/stages_table.py`). Regenerate with [plot_stages.py](../../scripts/plot_stages.py) `--by-size 3b:hf-bf16 7b:hf-bf16 3b:llamacpp-f16 7b:llamacpp-f16`.
 
 - **The vision encoder is the longest stage** in every framework. It is the same for 3B and 7B; only prefill and decode grow with the model.
 - **Image size drives TTFT:** 1.85× more image tokens → 2.0× longer vision encoder in HF (2.7× in llama.cpp), 1.4–1.8× longer prefill. Pixels count only through tokens (large photos are shrunk to 2,048).
-- **Edge-LLM's vision encoder is 3× faster than HF's and 8× faster than llama.cpp's** (86 vs 276 vs ~710 ms), the same for 3B and 7B.
+- **Edge-LLM's vision encoder is 2× faster than vLLM's, 3× faster than HF's and 8× faster than llama.cpp's** (86 vs 166 vs 276 vs ~710 ms), the same for 3B and 7B.
 - **4-bit makes the first token slower:** Edge-LLM prefill 145 vs 71 ms (3B) and 310 vs 159 ms (7B), vLLM TTFT 0.45 vs 0.36 s (3B). 4-bit weights must be unpacked for every prefill; only decode gets faster. **fp8 (8-bit weights and activations) speeds up prefill:** 43 ms (3B), 93 ms (7B).
 - **Answers are short, but decode is not negligible in time.** The model generates 2.0 (MME), 2.3 (GQA) and 4.1 (TextVQA) tokens on average, including the end token (max 16 / 6 / 118). Decode is < 0.2% of the FLOPs but 16–26% of HF's model time, because each step is slow (memory-bound, plus HF overhead). Longer answers (captions) would make decode the largest stage.
 - **Hidden cost:** converting each photo to PNG (~0.24 s) takes about as long as the model itself; HF passes the image directly (0.03 s).

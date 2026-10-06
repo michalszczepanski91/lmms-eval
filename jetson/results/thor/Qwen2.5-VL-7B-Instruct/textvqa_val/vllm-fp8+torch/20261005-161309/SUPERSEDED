@@ -1,0 +1,1 @@
+Replaced by textvqa_val/vllm-fp8+torch-stages/20261006-* (same kernel with stage_timing=True): identical answers, TTFT within 2%.
