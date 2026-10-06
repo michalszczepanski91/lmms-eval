@@ -1,7 +1,6 @@
 import time
-from typing import List, Optional
+from typing import List
 
-import torch
 from loguru import logger as eval_logger
 from tqdm import tqdm
 
@@ -11,6 +10,7 @@ from lmms_eval.api.registry import register_model
 from lmms_eval.imports import optional_import
 from lmms_eval.models.model_utils.gen_metrics import log_metrics
 from lmms_eval.models.model_utils.load_video import _probe_video_metadata
+from lmms_eval.models.model_utils.stage_timing import VisionTimer as _VisionTimer
 from lmms_eval.models.simple.qwen2_5_vl import Qwen2_5_VL as Qwen2_5_VLSimple
 from lmms_eval.protocol import ChatMessages
 
@@ -37,32 +37,6 @@ class _FirstTokenTimer:
 
     def end(self):
         pass
-
-
-class _VisionTimer:
-    """CUDA events around the vision encoder's forward passes (``stage_timing=True``).
-
-    Events are only read after ``generate`` has returned, so timing adds no host syncs.
-    Qwen2.5-VL runs the encoder once per ``generate`` call, inside the prefill step.
-    """
-
-    def __init__(self, visual: torch.nn.Module):
-        self._events = []
-        visual.register_forward_pre_hook(lambda *_: self._record())
-        visual.register_forward_hook(lambda *_: self._record())
-
-    def _record(self):
-        event = torch.cuda.Event(enable_timing=True)
-        event.record()
-        self._events.append(event)
-
-    def pop_seconds(self) -> Optional[float]:
-        """Encoder time since the previous call, or None if the encoder did not run."""
-        events, self._events = self._events, []
-        if len(events) < 2:
-            return None
-        events[-1].synchronize()
-        return sum(start.elapsed_time(end) for start, end in zip(events[::2], events[1::2])) / 1000
 
 
 @register_model("qwen2_5_vl_chat")

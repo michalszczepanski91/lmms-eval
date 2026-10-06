@@ -10,6 +10,7 @@ from lmms_eval.api.instance import GenerationResult, Instance, TokenCounts
 from lmms_eval.api.registry import register_model
 from lmms_eval.imports import optional_import
 from lmms_eval.models.model_utils.gen_metrics import log_metrics
+from lmms_eval.models.model_utils.stage_timing import VisionTimer
 from lmms_eval.models.simple.vllm import VLLM as VLLMSimple
 from lmms_eval.protocol import ChatMessages
 
@@ -24,6 +25,7 @@ class VLLM(VLLMSimple):
     is_simple = False
 
     pass_pil_images = False
+    _vision_timer = None
 
     def __init__(
         self,
@@ -42,8 +44,16 @@ class VLLM(VLLMSimple):
         max_new_tokens: int = 4096,
         is_qwen3_vl: bool = False,
         pass_pil_images: bool = False,
+        stage_timing: bool = False,
         **kwargs,
     ):
+        stage_timing = str(stage_timing).lower() == "true" if isinstance(stage_timing, str) else bool(stage_timing)
+        if stage_timing:
+            # The encoder hooks must live in this process: run vLLM's engine core in-process, not in a worker process.
+            if os.environ.setdefault("VLLM_ENABLE_V1_MULTIPROCESSING", "0") != "0":
+                raise ValueError("stage_timing=True needs VLLM_ENABLE_V1_MULTIPROCESSING=0 (the engine must run in-process)")
+            if int(tensor_parallel_size) != 1 or int(data_parallel_size) != 1:
+                raise ValueError("stage_timing=True supports a single GPU only (tensor_parallel_size=1, data_parallel_size=1)")
         super().__init__(
             model,
             tensor_parallel_size,
@@ -66,6 +76,11 @@ class VLLM(VLLMSimple):
         # Hand images to the in-process engine as PIL objects instead of PNG/base64 data URLs:
         # lossless and skips an encode/decode round trip that costs seconds for large photos on Jetson CPUs.
         self.pass_pil_images = str(pass_pil_images).lower() == "true" if isinstance(pass_pil_images, str) else bool(pass_pil_images)
+        # Vision-encoder time per sample (CUDA events read after each call, batch size 1): TokenCounts.vision_seconds,
+        # so prefill = TTFT - vision, as for the HF backend. vLLM runs the encoder inside its prefill step and doesn't
+        # report it on its own.
+        if stage_timing:
+            self._vision_timer = self.client.apply_model(lambda model: VisionTimer(model.visual))[0]
 
     def make_one_request(self, request: Instance) -> Tuple[list[dict], dict]:
         """
@@ -123,6 +138,8 @@ class VLLM(VLLMSimple):
         batched_requests = [requests[i : i + batch_size] for i in range(0, len(requests), batch_size)]
         total_elapsed_time = 0
         for batch_requests in batched_requests:
+            if self._vision_timer is not None:
+                self._vision_timer.pop_seconds()  # drop encoder calls outside this request (start-up profiling)
             preprocess_start = time.perf_counter()
             batched_messages = []
             batched_sampling_params = []
@@ -161,6 +178,8 @@ class VLLM(VLLMSimple):
                 # Whole-call latency is per sample only when a batch holds one request.
                 responses[0][1].preprocess_seconds = start_time - preprocess_start
                 responses[0][1].generation_seconds = end_time - start_time
+                if self._vision_timer is not None:
+                    responses[0][1].vision_seconds = self._vision_timer.pop_seconds()
 
             # Calculate timing metrics for batch
             total_elapsed_time += end_time - start_time
