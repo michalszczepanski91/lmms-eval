@@ -88,7 +88,8 @@ jetson/
     summarize.py            results/<board>/SUMMARY.md
     compute_flops.sh        analytical FLOPs per sample (runs models/<model>/flops.py in the container)
     slim_run.py             shrink a run dir for git (strip progress bars, gzip per-sample files)
-    plot_stages.py          SVG of time per stage (vision encoder / prefill / decode) for chosen runs
+    plot_stages.py          SVG of time per stage (vision encoder / prefill / decode) for chosen runs; --title, --xmax (shared scale), --by-size
+    stages_table.py         Markdown table of time per stage per question for chosen runs
   datasets/
     run.sh                  dataset numbers + examples (image, prompt, reference, model answer), in the container
     common.py               shared code; textvqa.py, mme.py, gqa.py: one per dataset

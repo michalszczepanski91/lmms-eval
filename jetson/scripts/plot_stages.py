@@ -1,23 +1,26 @@
 #!/usr/bin/env python3
 """Plot time per question split into vision encoder / prefill / decode, as an SVG, for runs you pick.
 
-Usage: jetson/scripts/plot_stages.py [--task textvqa_val] [--by-size] [-o out.svg] <run> [<run> ...]
+Usage: jetson/scripts/plot_stages.py [--task textvqa_val] [--by-size] [--title T] [--xmax MS] [-o out.svg] <run> [<run> ...]
   <run>  <size>:<framework>-<precision>[+tag], e.g. 3b:hf-bf16 7b:llamacpp-q8_0 3b:trt_edgellm-fp8
          (newest valid full run of results/<board>/<model>/<task>/<dir>), or a run directory path.
 
   jetson/scripts/plot_stages.py 3b:hf-bf16 3b:llamacpp-q8_0 3b:trt_edgellm-fp8 7b:hf-bf16 -o same_images.svg
   jetson/scripts/plot_stages.py --by-size 3b:hf-bf16 7b:hf-bf16 -o by_size.svg
+  # 3B and 7B as separate images on the same time scale:
+  jetson/scripts/plot_stages.py --title "Qwen2.5-VL-3B, 16-bit" --xmax 1600 3b:hf-bf16 3b:vllm-bf16 3b:llamacpp-f16 3b:trt_edgellm-fp16 -o 3b.svg
+  jetson/scripts/plot_stages.py --title "Qwen2.5-VL-7B, 16-bit" --xmax 1600 7b:hf-bf16 7b:vllm-bf16 7b:llamacpp-f16 7b:trt_edgellm-fp16 -o 7b.svg
 
 Default: one bar per run, mean per stage over all questions. --by-size: one panel per run, one bar per
 image-token group (--bins), median per stage. Decode is drawn for --decode-tokens tokens after the first.
 
 Stage sources: HF samples (vision_seconds, needs stage_timing=True), llama.cpp server.log (verbosity 4),
-Edge-LLM trt_profile.json (means only, so not with --by-size). vLLM reports no stages and is rejected.
+Edge-LLM trt_profile.json (means only, so not with --by-size). vLLM doesn't split vision encoder and prefill:
+its time to first token is drawn as one grey segment.
 """
 
 import argparse
 import glob
-import gzip
 import json
 import os
 import re
@@ -27,7 +30,7 @@ import sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from summarize import EXCLUDE_MARKERS, LLAMA_TS, RESULTS, open_text  # noqa: E402
 
-COLORS = ["#2a78d6", "#eb6834", "#1baf7a"]
+COLORS = ["#2a78d6", "#eb6834", "#1baf7a", "#8a8981"]  # vision, prefill, decode, vision + prefill (not split)
 INK, MUTED, GRID = "#1f1f1e", "#6b6a63", "#e4e3dc"
 
 
@@ -61,6 +64,19 @@ def hf_stages(run_dir):
             n = c["output_tokens"] - 1
             dec = (c["generation_seconds"] * 1e3 - ttft) / n if n > 0 else None
             out.append((flops[d["doc_id"]]["image_tokens"], c["vision_seconds"] * 1e3, ttft - c["vision_seconds"] * 1e3, dec))
+    return out
+
+
+def vllm_stages(run_dir):
+    """Like hf_stages, but vLLM has no vision/prefill split: (image tokens, None, TTFT ms, decode ms/token or None)."""
+    flops = {d["doc_id"]: d for d in map(json.loads, open_text(os.path.join(run_dir, "flops_samples.jsonl.gz")))}
+    out = []
+    for path in glob.glob(os.path.join(run_dir, "lmms_eval", "*_samples_*.jsonl*")):
+        for d in map(json.loads, open_text(path)):
+            c = d["token_counts"][0]
+            ttft = c["time_to_first_token_seconds"] * 1e3
+            n = c["output_tokens"] - 1
+            out.append((flops[d["doc_id"]]["image_tokens"], None, ttft, (c["generation_seconds"] * 1e3 - ttft) / n if n > 0 else None))
     return out
 
 
@@ -100,15 +116,27 @@ def per_question(run_dir):
     if os.path.exists(os.path.join(run_dir, "server.log")) or os.path.exists(os.path.join(run_dir, "server.log.gz")):
         return llamacpp_stages(run_dir)
     if "/vllm-" in run_dir:
-        sys.exit(f"{run_dir}: vLLM reports no per-stage times")
+        return vllm_stages(run_dir)
     return hf_stages(run_dir)
 
 
-def svg(panels, out, decode_tokens, foot):
-    names = ["Vision encoder", "Prefill (prompt + image tokens, first token)", f"Decode ({decode_tokens} more tokens)"]
-    xmax_ms = max(sum(seg) for _, rows in panels for _, *seg in rows)
+def segments(vis, pre, dec):
+    """Bar segments as (ms, color index); vis None = vision + prefill not split."""
+    first = [(pre, 3)] if vis is None else [(vis, 0), (pre, 1)]
+    return first + [(dec, 2)]
+
+
+def stage_rows(q, agg):
+    vis = None if q[0][1] is None else agg(x[1] for x in q)
+    return segments(vis, agg(x[2] for x in q), agg(x[3] for x in q if x[3]))
+
+
+def svg(panels, out, decode_tokens, foot, title=None, xmax=None):
+    names = ["Vision encoder", "Prefill (prompt + image tokens, first token)", f"Decode ({decode_tokens} more tokens)", "Vision + prefill (not split)"]
+    used = sorted({c for _, rows in panels for _, segs in rows for _, c in segs})
+    xmax_ms = xmax or max(sum(v for v, _ in segs) for _, rows in panels for _, segs in rows)
     step = next(s for s in (50, 100, 200, 250, 500, 1000, 2000, 5000) if xmax_ms / s <= 8)
-    xmax_ms = step * (int(xmax_ms // step) + 1)
+    xmax_ms = xmax or step * (int(xmax_ms // step) + 1)
     width, lx0 = 920, 250
     px = (width - lx0 - 80) / xmax_ms
     o = []
@@ -116,27 +144,34 @@ def svg(panels, out, decode_tokens, foot):
     def text(x, y, s, fs=12, c=INK, a="start", w="normal"):
         o.append(f'<text x="{x:.1f}" y="{y}" font-size="{fs}" fill="{c}" text-anchor="{a}" font-weight="{w}">{s}</text>')
 
-    lx = lx0
-    for i, s in enumerate(names):
-        o.append(f'<rect x="{lx}" y="12" width="12" height="12" rx="2" fill="{COLORS[i]}"/>')
-        text(lx + 17, 22, s)
+    y = 0
+    if title:
+        text(10, 22, title, fs=15, w="bold")
+        y = 26
+    lx, ly = 10, y
+    for i in used:
+        s = names[i]
+        if lx + 17 + 6.2 * len(s) > width:
+            lx, ly = 10, ly + 20
+        o.append(f'<rect x="{lx}" y="{ly + 12}" width="12" height="12" rx="2" fill="{COLORS[i]}"/>')
+        text(lx + 17, ly + 22, s)
         lx += 17 + 6.2 * len(s) + 28
-    y = top = 44
+    y = top = ly + 44
     for title, rows in panels:
         if title:
             y += 18
             text(10, y, title, fs=13, w="bold")
         y += 10
-        for lab, *seg in rows:
+        for lab, segs in rows:
             text(lx0 - 8, y + 15, lab, fs=11.5, a="end")
             x = lx0
-            for i, v in enumerate(seg):
+            for v, c in segs:
                 w = v * px
-                o.append(f'<rect x="{x:.1f}" y="{y + 3}" width="{max(w - 2, 1):.1f}" height="18" rx="3" fill="{COLORS[i]}"/>')
+                o.append(f'<rect x="{x:.1f}" y="{y + 3}" width="{max(w - 2, 1):.1f}" height="18" rx="3" fill="{COLORS[c]}"/>')
                 if w > 28:
                     text(x + w / 2 - 1, y + 16, f"{v:.0f}", fs=10.5, c="#ffffff", a="middle", w="bold")
                 x += w
-            text(x + 6, y + 16, f"{sum(seg):.0f} ms", fs=11)
+            text(x + 6, y + 16, f"{sum(v for v, _ in segs):.0f} ms", fs=11)
             y += 26
         y += 6
     grid = []
@@ -149,7 +184,10 @@ def svg(panels, out, decode_tokens, foot):
         text(10, y + 56 + 16 * k, line, fs=11, c=MUTED)
     h = y + 66 + 16 * (len(foot) - 1)
     with open(out, "w") as f:
-        f.write(f'<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{h}" viewBox="0 0 {width} {h}" font-family="Helvetica, Arial, sans-serif">' f'<rect width="{width}" height="{h}" fill="#ffffff"/>' + "".join(grid) + "".join(o) + "</svg>")
+        f.write(
+            f'<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{h}" viewBox="0 0 {width} {h}" font-family="Helvetica, Arial, sans-serif">'
+            f'<rect width="{width}" height="{h}" fill="#ffffff"/>' + "".join(grid) + "".join(o) + "</svg>"
+        )
 
 
 def main():
@@ -159,6 +197,8 @@ def main():
     p.add_argument("--by-size", action="store_true")
     p.add_argument("--bins", default="400,800,1200,1600", help="image-token group edges (default: %(default)s)")
     p.add_argument("--decode-tokens", type=int, default=2)
+    p.add_argument("--title", help="title above the chart")
+    p.add_argument("--xmax", type=int, help="time axis end in ms (same value = same scale across images)")
     p.add_argument("-o", "--out", default="stages.svg")
     a = p.parse_args()
     dirs = [find_run(r, a.task) for r in a.runs]
@@ -172,14 +212,16 @@ def main():
             q = per_question(d)
             if q is None:
                 vis, pre, dec = edgellm_means(d)
-                rows.append((label(d) + " †", vis, pre, k * dec))
+                rows.append((label(d) + " †", segments(vis, pre, k * dec)))
                 gpu_only = True
             else:
-                rows.append((label(d), st.mean(x[1] for x in q), st.mean(x[2] for x in q), k * st.mean(x[3] for x in q if x[3])))
+                segs = stage_rows(q, st.mean)
+                segs[-1] = (k * segs[-1][0], 2)
+                rows.append((label(d), segs))
         foot[0] = foot[0].replace("Decode", "Mean per stage. Decode")
         if gpu_only:
             foot.append("† Edge-LLM: GPU time only, no host overhead.")
-        svg([("", rows)], a.out, k, foot)
+        svg([("", rows)], a.out, k, foot, a.title, a.xmax)
     else:
         edges = [int(e) for e in a.bins.split(",")]
         groups = list(zip(edges, edges[1:]))
@@ -192,10 +234,12 @@ def main():
             for lo, hi in groups:
                 g = [x for x in q if lo <= x[0] < hi]
                 if g:
-                    rows.append((f"{lo}–{hi - 1} image tok · {len(g):,} q", st.median(x[1] for x in g), st.median(x[2] for x in g), k * st.median(x[3] for x in g if x[3])))
+                    segs = stage_rows(g, st.median)
+                    segs[-1] = (k * segs[-1][0], 2)
+                    rows.append((f"{lo}–{hi - 1} image tok · {len(g):,} q", segs))
             panels.append((label(d), rows))
         foot[0] = foot[0].replace("Decode", "Median per stage and image-token group. Decode")
-        svg(panels, a.out, k, foot)
+        svg(panels, a.out, k, foot, a.title, a.xmax)
     print(f"wrote {a.out}")
 
 

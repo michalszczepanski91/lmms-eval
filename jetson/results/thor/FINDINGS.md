@@ -159,15 +159,30 @@ From the run logs; ¹ from direct runner tests (the benchmark logs are slimmed).
 
 ### 3. Where the time goes
 
-Per question: the **vision encoder** turns the image into tokens; the **prefill** runs the language model over all input tokens and produces the first token; **decode** produces each further token. Same 5,000 TextVQA questions, mean per stage:
+Per question: the **vision encoder** turns the image into tokens; the **prefill** runs the language model over all input tokens and produces the first token; **decode** produces each further token. Same 5,000 TextVQA questions, mean per stage, 3B and 7B on the same time scale. vLLM doesn't split vision encoder and prefill, so its time to first token is one grey bar.
 
 **16-bit:**
 
-![Time per stage, 16-bit](time_16bit.svg)
+![Time per stage, 3B, 16-bit](time_16bit_3b.svg)
 
-**4-bit:**
+![Time per stage, 7B, 16-bit](time_16bit_7b.svg)
 
-![Time per stage, 4-bit](time_4bit.svg)
+**4-bit weights:**
+
+![Time per stage, 3B, 4-bit](time_4bit_3b.svg)
+
+![Time per stage, 7B, 4-bit](time_4bit_7b.svg)
+
+Regenerate (same `--xmax` keeps the scale equal; pick any runs as `<size>:<framework>-<precision>`):
+
+```bash
+jetson/scripts/plot_stages.py --title "Qwen2.5-VL-3B, 16-bit" --xmax 1600 3b:hf-bf16 3b:vllm-bf16 3b:llamacpp-f16 3b:trt_edgellm-fp16 -o jetson/results/thor/time_16bit_3b.svg
+jetson/scripts/plot_stages.py --title "Qwen2.5-VL-7B, 16-bit" --xmax 1600 7b:hf-bf16 7b:vllm-bf16 7b:llamacpp-f16 7b:trt_edgellm-fp16 -o jetson/results/thor/time_16bit_7b.svg
+jetson/scripts/plot_stages.py --title "Qwen2.5-VL-3B, 4-bit weights" --xmax 1600 3b:vllm-awq 3b:llamacpp-q4_k_m 3b:trt_edgellm-int4_awq -o jetson/results/thor/time_4bit_3b.svg
+jetson/scripts/plot_stages.py --title "Qwen2.5-VL-7B, 4-bit weights" --xmax 1600 7b:vllm-awq 7b:llamacpp-q4_k_m 7b:trt_edgellm-int4_awq -o jetson/results/thor/time_4bit_7b.svg
+```
+
+- **3B → 7B:** the vision encoder takes the same time (same encoder); prefill and decode grow. Edge-LLM fp16: prefill 71 → 159 ms, decode 27 → 59 ms per token; it stays the fastest (210 → 365 ms per question).
 
 **By image size** (HF bf16 and llama.cpp f16, median per stage):
 
@@ -182,7 +197,7 @@ Per question: the **vision encoder** turns the image into tokens; the **prefill*
 
 llama.cpp rounds two images to a slightly different token count, so its middle groups have 4,136 and 514 questions.
 
-vLLM reports no stages; Edge-LLM only means, so it can't be split by image size. Figures: [plot_stages.py](../../scripts/plot_stages.py), e.g. `jetson/scripts/plot_stages.py 3b:hf-bf16 3b:trt_edgellm-fp16 -o out.svg` (`--by-size` for the last form).
+Edge-LLM reports only means, so it can't be split by image size; vLLM can, but without the vision/prefill split. Regenerate with [plot_stages.py](../../scripts/plot_stages.py) `--by-size 3b:hf-bf16 7b:hf-bf16 3b:llamacpp-f16 7b:llamacpp-f16`.
 
 - **The vision encoder is the longest stage** in every framework. It is the same for 3B and 7B; only prefill and decode grow with the model.
 - **Image size drives TTFT:** 1.85× more image tokens → 2.0× longer vision encoder in HF (2.7× in llama.cpp), 1.4–1.8× longer prefill. Pixels count only through tokens (large photos are shrunk to 2,048).
