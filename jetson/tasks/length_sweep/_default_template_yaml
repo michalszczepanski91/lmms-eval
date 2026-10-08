@@ -1,0 +1,22 @@
+# Controlled-length sweep for the Jetson text-only benchmark (jetson/models/qwen2_5): prompts of exactly 128 / 512 /
+# 2,048 tokens (Qwen2.5 chat template included) and 256 generated tokens in every framework. The prompt asks the model
+# to count to 1000, so it never ends before the cap: no ignore-EOS option is needed (the Edge-LLM runner has none).
+# Data: jetson/datasets/length_sweep_data.py (16 prompts per length). Score: the answer starts "1\n2\n3" (sanity only).
+dataset_path: json
+output_type: generate_until
+test_split: train
+doc_to_text: "{{prompt}}"
+doc_to_target: "1"
+process_results: !function utils.process_results
+metric_list:
+  - metric: counts
+    aggregation: mean
+    higher_is_better: true
+generation_kwargs:
+  until: []
+  do_sample: false
+  temperature: 0.0
+  max_new_tokens: 256
+repeats: 1
+metadata:
+  version: 1.0

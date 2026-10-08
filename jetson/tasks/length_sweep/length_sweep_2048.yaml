@@ -1,0 +1,4 @@
+include: _default_template_yaml
+task: length_sweep_2048
+dataset_kwargs:
+  data_files: jetson/tasks/length_sweep/data/length_2048.jsonl
