@@ -21,7 +21,7 @@ import statistics as st
 import sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from plot_stages import edgellm_means, find_run, label  # noqa: E402
+from plot_stages import edgellm_means, find_run, label, text_only  # noqa: E402
 from summarize import LLAMA_TS, open_text  # noqa: E402
 
 
@@ -51,7 +51,8 @@ def client_stages(run_dir):
 
 def llamacpp_stages(run_dir):
     """Per doc (requests run one at a time in doc order): (vision, prefill, decode ms, generated tokens), server side."""
-    out, cur = [], {}
+    fresh = {"vis": 0.0} if text_only(run_dir) else {}  # text-only runs have no encoder lines
+    out, cur = [], dict(fresh)
     for line in open_text(os.path.join(run_dir, "server.log")):
         ts = LLAMA_TS.match(line)
         t = (int(ts[1]) * 60 + int(ts[2]) + int(ts[3]) / 1e3 + int(ts[4]) / 1e6) * 1e3 if ts else None
@@ -63,7 +64,7 @@ def llamacpp_stages(run_dir):
             cur["pre"] = float(m[1]) - cur["vis"]
         elif (m := re.search(r"\|\s+eval time =\s+([\d.]+) ms /\s+(\d+) tokens", line)) and "pre" in cur:
             out.append((cur["vis"], cur["pre"], float(m[1]), int(m[2])))
-            cur = {}
+            cur = dict(fresh)
     return dict(enumerate(out))
 
 

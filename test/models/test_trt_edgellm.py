@@ -61,6 +61,31 @@ class TestTRTEdgeLLM(unittest.TestCase):
             self.assertEqual(profiles[32]["profile"]["failed_requests"], 0)
             self.assertEqual(profiles[16]["profile"]["encoder_cache"], "0")
 
+    def test_text_only_requests_without_visual_engine(self):
+        """A text-only model: no multimodal engine, no image, and no system message of our own (system_prompt=none)."""
+        runner_src = """#!{python}
+import json, sys
+args = {{a: sys.argv[i + 1] if i + 1 < len(sys.argv) else None for i, a in enumerate(sys.argv) if a.startswith("--")}}
+data = json.load(open(args["--inputFile"]))
+out = [{{"request_idx": i, "batch_idx": 0, "output_text": json.dumps(req["messages"]), "finish_reason": "stop"}} for i, req in enumerate(data["requests"])]
+json.dump({{"responses": out}}, open(args["--outputFile"], "w"))
+json.dump({{"multimodal_engine": "--multimodalEngineDir" in args}}, open(args["--profileOutputFile"], "w"))
+"""
+        with tempfile.TemporaryDirectory() as tmp:
+            runner = os.path.join(tmp, "llm_inference")
+            with open(runner, "w") as f:
+                f.write(runner_src.format(python=sys.executable))
+            os.chmod(runner, os.stat(runner).st_mode | stat.S_IEXEC)
+            profile_output = os.path.join(tmp, "trt_profile.json")
+            model = TRTEdgeLLM(engine_dir="engines/llm", inference_bin=runner, profile_output=profile_output, system_prompt="none")
+            model.task_dict = {"demo": {"test": [{}]}}
+            text_request = SimpleNamespace(args=("", lambda doc: [{"role": "user", "content": [{"type": "text", "text": "2+2?"}]}], {"max_new_tokens": 8}, 0, "demo", "test"))
+
+            sent = json.loads(model.generate_until([text_request])[0].text)
+
+            self.assertEqual(sent, [{"role": "user", "content": [{"type": "text", "text": "2+2?"}]}])
+            self.assertFalse(json.load(open(profile_output))[0]["profile"]["multimodal_engine"])
+
     def test_large_images_are_downscaled_to_max_image_side(self):
         with tempfile.TemporaryDirectory() as tmp:
             model = TRTEdgeLLM(engine_dir="engines/llm", max_image_side=4096)

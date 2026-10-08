@@ -5,6 +5,11 @@ LLAMACPP_IMAGE=${LLAMACPP_IMAGE:-llamacpp-jetson:b11135}
 LLAMACPP_PORT=${LLAMACPP_PORT:-8090}
 
 _gguf_repo() { echo "$GGUF_REPO"; }
+# The model file may name the files itself (model_gguf_files: lowercase official names, split files); else the
+# ggml-org naming of the Qwen2.5-VL repos.
+_gguf_files() {
+  if declare -F model_gguf_files >/dev/null; then model_gguf_files "$PRECISION"; else _gguf_file; fi
+}
 _gguf_file() {
   case "$PRECISION" in
     q4_k_m) echo "$MODEL_TAG-Q4_K_M.gguf" ;;
@@ -15,8 +20,9 @@ _gguf_file() {
 _mmproj_file() { echo "mmproj-$MODEL_TAG-f16.gguf"; }
 
 fw_assets() {
-  echo "model:$(_gguf_repo):$(_gguf_file)"
-  echo "model:$(_gguf_repo):$(_mmproj_file)"
+  local f
+  for f in $(_gguf_files); do echo "model:$(_gguf_repo):$f"; done
+  [ "${MODEL_MODALITY:-vision}" = text ] || echo "model:$(_gguf_repo):$(_mmproj_file)"
 }
 
 fw_setup() {
@@ -28,9 +34,15 @@ fw_setup() {
 }
 
 fw_start() {
-  local gguf mmproj
-  gguf=$(hf_file "$(_gguf_repo)" "$(_gguf_file)") || return 1
-  mmproj=$(hf_file "$(_gguf_repo)" "$(_mmproj_file)") || return 1
+  local gguf mmproj f vision_args
+  for f in $(_gguf_files); do hf_file "$(_gguf_repo)" "$f" >/dev/null || return 1; done
+  gguf=$(hf_file "$(_gguf_repo)" "$(_gguf_files | cut -d' ' -f1)") || return 1
+  if [ "${MODEL_MODALITY:-vision}" = text ]; then
+    vision_args=()  # text only: no vision projector, no image-token range
+  else
+    mmproj=$(hf_file "$(_gguf_repo)" "$(_mmproj_file)") || return 1
+    vision_args=(--mmproj "$mmproj" --image-min-tokens "$IMAGE_MIN_TOKENS" --image-max-tokens "$IMAGE_MAX_TOKENS")
+  fi
   # Image token range matches the other frameworks (IMAGE_MIN/MAX_TOKENS from the model file). Prompt caching is off, as for vLLM:
   # MME asks two questions per image, so a cache would skip the image work on every second sample.
   # cuBLAS accumulates in bf16 instead of fp16: with fp16, one MME image (commonsense_reasoning/0064.png) overflows
@@ -40,10 +52,10 @@ fw_start() {
   docker run -d --name "$LLAMACPP_CONTAINER" --runtime nvidia --network host \
     -e GGML_CUDA_CUBLAS_COMPUTE_TYPE="${LLAMACPP_CUBLAS_COMPUTE:-bf16}" \
     -v "$HF_CACHE":"$HF_CACHE":ro "$LLAMACPP_IMAGE" \
-    llama-server -m "$gguf" --mmproj "$mmproj" -ngl 999 -c 4096 -np 1 --jinja \
-      --image-min-tokens "$IMAGE_MIN_TOKENS" --image-max-tokens "$IMAGE_MAX_TOKENS" --no-cache-prompt --cache-ram 0 \
+    llama-server -m "$gguf" "${vision_args[@]}" -ngl 999 -c "${MAX_MODEL_LEN:-4096}" -np 1 --jinja \
+      --no-cache-prompt --cache-ram 0 \
       -lv "${LLAMACPP_LOG_VERBOSITY:-4}" --host 127.0.0.1 --port "$LLAMACPP_PORT" >/dev/null
-  echo "llama-server: $LLAMACPP_IMAGE $(_gguf_file) (waiting for /health)"
+  echo "llama-server: $LLAMACPP_IMAGE $(basename "$gguf") (waiting for /health)"
   for _ in $(seq 300); do
     curl -sf "http://127.0.0.1:$LLAMACPP_PORT/health" >/dev/null && return 0
     docker inspect -f '{{.State.Running}}' "$LLAMACPP_CONTAINER" 2>/dev/null | grep -q true || break

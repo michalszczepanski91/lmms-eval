@@ -36,12 +36,11 @@ OFFLINE=1
 source "$REPO/jetson/frameworks/common.sh"
 
 load_model "$SIZE" || exit 1
+source "$JETSON/frameworks/trt_edgellm/recipes.sh"
+edgellm_recipe "$PRECISION" || exit 1
 SRC=$(hf_snapshot "$HF_REPO")
-case "$PRECISION" in
-  fp16|fp8|nvfp4) LLM_CKPT=$SRC ;;
-  int4_awq) [ "${AWQ_SOURCE:-quantize}" = qwen ] && LLM_CKPT=$(hf_snapshot "$AWQ_REPO") || LLM_CKPT=$SRC ;;
-  *) echo "precision must be fp16, int4_awq, fp8 or nvfp4" >&2; exit 1 ;;
-esac
+LLM_CKPT=$SRC
+[ -n "$EDGELLM_IMPORT_REPO" ] && LLM_CKPT=$(hf_snapshot "$EDGELLM_IMPORT_REPO")
 for d in "$SRC" "$LLM_CKPT"; do
   [ -d "$d" ] || { echo "checkpoint $d not in $HF_CACHE - run jetson/scripts/download_assets.sh first" >&2; exit 1; }
 done
@@ -58,17 +57,24 @@ mkdir -p "$OUT"
 docker run --rm $GPU_FLAGS --ipc=host -e HF_TOKEN_PATH=/tmp/no-hf-token \
   --user "$(id -u):$(id -g)" $(shared_group_args) -e HOME=/tmp -e USER="$(id -un)" -e LOGNAME="$(id -un)" \
   -e HF_HOME="$HF_CACHE" -e HF_HUB_CACHE="$HF_CACHE/hub" -v "$HF_CACHE":"$HF_CACHE" -v "$WORKSPACE":"$WORKSPACE" \
-  -e SRC="$SRC" -e LLM_CKPT="$LLM_CKPT" -e AWQ_SOURCE="${AWQ_SOURCE:-quantize}" -e OUT="$OUT" -e PRECISION="$PRECISION" -e KEEP_QUANTIZED="${KEEP_QUANTIZED:-0}" \
+  -e SRC="$SRC" -e LLM_CKPT="$LLM_CKPT" -e OUT="$OUT" -e PRECISION="$PRECISION" -e KEEP_QUANTIZED="${KEEP_QUANTIZED:-0}" \
+  -e QUANT="$EDGELLM_QUANT" -e LM_HEAD="$EDGELLM_LM_HEAD" -e KV="$EDGELLM_KV" -e DATASET="$EDGELLM_DATASET" -e MODALITY="${MODEL_MODALITY:-vision}" \
   -e VISION_SCALE="${VISION_SCALE:-8}" -v "$JETSON/frameworks/trt_edgellm":/edgellm-scripts:ro \
   "$EXPORT_IMAGE" bash -euo pipefail -c '
     umask 002
-    if [ "$PRECISION" = fp8 ] || [ "$PRECISION" = nvfp4 ] || { [ "$PRECISION" = int4_awq ] && [ "$AWQ_SOURCE" != qwen ]; }; then
+    if [ -n "$QUANT" ]; then
       rm -rf "$OUT/quantized"
-      tensorrt-edgellm-quantize llm --model_dir "$SRC" --output_dir "$OUT/quantized" --quantization "$PRECISION"
+      tensorrt-edgellm-quantize llm --model_dir "$SRC" --output_dir "$OUT/quantized" --quantization "$QUANT" \
+        ${LM_HEAD:+--lm_head_quantization "$LM_HEAD"} ${KV:+--kv_cache_quantization "$KV"} ${DATASET:+--text_dataset "$DATASET"}
       LLM_CKPT=$OUT/quantized
     fi
     rm -rf "$OUT/onnx"
     tensorrt-edgellm-export "$LLM_CKPT" "$OUT/onnx" --skip-visual
+    if [ "$MODALITY" = text ]; then  # text-only model: no vision encoder to export
+      [ "$KEEP_QUANTIZED" = 1 ] || rm -rf "$OUT/quantized"
+      ls "$OUT/onnx"
+      exit 0
+    fi
     VISUAL_CKPT=$SRC
     if [ "$VISION_SCALE" != 1 ]; then
       rm -rf "$OUT/visual_ckpt"

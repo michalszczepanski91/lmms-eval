@@ -51,19 +51,26 @@ def label(run_dir):
     return f"{size[1] if size else parts[-4]} {parts[-2]}"
 
 
+def text_only(run_dir):
+    """Runs of a model without a vision encoder (run_info.txt "modality: text"): prefill = the whole TTFT."""
+    info = os.path.join(run_dir, "run_info.txt")
+    return os.path.exists(info) and any(line.split(":", 1)[1].strip() == "text" for line in open(info) if line.startswith("modality:"))
+
+
 def hf_stages(run_dir):
-    """Per question: (image tokens, vision ms, prefill ms, decode ms/token or None)."""
+    """Per question: (image tokens, vision ms, prefill ms, decode ms/token or None). Text-only runs: vision 0."""
     flops = {d["doc_id"]: d for d in map(json.loads, open_text(os.path.join(run_dir, "flops_samples.jsonl.gz")))}
     out = []
     for path in glob.glob(os.path.join(run_dir, "lmms_eval", "*_samples_*.jsonl*")):
         for d in map(json.loads, open_text(path)):
             c = d["token_counts"][0]
-            if "vision_seconds" not in c:
+            if "vision_seconds" not in c and not text_only(run_dir):
                 sys.exit(f"{run_dir}: no vision_seconds (HF needs stage_timing=True)")
+            vis = c["vision_seconds"] * 1e3 if "vision_seconds" in c else 0.0
             ttft = c["time_to_first_token_seconds"] * 1e3
             n = c["output_tokens"] - 1
             dec = (c["generation_seconds"] * 1e3 - ttft) / n if n > 0 else None
-            out.append((flops[d["doc_id"]]["image_tokens"], c["vision_seconds"] * 1e3, ttft - c["vision_seconds"] * 1e3, dec))
+            out.append((flops[d["doc_id"]]["image_tokens"], vis, ttft - vis, dec))
     return out
 
 
@@ -76,14 +83,17 @@ def vllm_stages(run_dir):
             c = d["token_counts"][0]
             ttft = c["time_to_first_token_seconds"] * 1e3
             n = c["output_tokens"] - 1
-            vis = c["vision_seconds"] * 1e3 if c.get("vision_seconds") is not None else None
+            vis = c["vision_seconds"] * 1e3 if c.get("vision_seconds") is not None else (0.0 if text_only(run_dir) else None)
             out.append((flops[d["doc_id"]]["image_tokens"], vis, ttft if vis is None else ttft - vis, (c["generation_seconds"] * 1e3 - ttft) / n if n > 0 else None))
     return out
 
 
 def llamacpp_stages(run_dir):
-    """Same as hf_stages, from llama-server's log: encoder = 'encoding mtmd batch' to the first 'decoding image batch'."""
-    out, cur = [], {}
+    """Same as hf_stages, from llama-server's log: encoder = 'encoding mtmd batch' to the first 'decoding image batch'.
+
+    Text-only runs have no encoder lines: vision 0, prefill = the whole 'prompt eval time'.
+    """
+    out, cur = [], {"img": 0, "vis": 0.0} if text_only(run_dir) else {}
     for line in open_text(os.path.join(run_dir, "server.log")):
         ts = LLAMA_TS.match(line)
         t = (int(ts[1]) * 60 + int(ts[2]) + int(ts[3]) / 1e3 + int(ts[4]) / 1e6) * 1e3 if ts else None
@@ -98,7 +108,7 @@ def llamacpp_stages(run_dir):
             # "eval time / N tokens" counts the first token too, but it comes from the prompt eval: N - 1 decode steps.
             n = int(m[2]) - 1
             out.append((cur["img"], cur["vis"], cur["pre"], float(m[1]) / n if n > 0 else None))
-            cur = {}
+            cur = {"img": 0, "vis": 0.0} if text_only(run_dir) else {}
     return out
 
 
@@ -108,7 +118,8 @@ def edgellm_means(run_dir):
     for r in json.load(open(os.path.join(run_dir, "trt_profile.json"))):
         for s in r["profile"]["stages"]:
             stages.setdefault(s["stage_id"], []).append(s["gpu_time_stats"]["mean_ms"])
-    return tuple(st.mean(stages[k]) for k in ("vision_encoder", "llm_prefill", "llm_generation"))
+    # Text-only engines have no vision_encoder stage: 0.
+    return tuple(st.mean(stages[k]) if k in stages else 0.0 for k in ("vision_encoder", "llm_prefill", "llm_generation"))
 
 
 def per_question(run_dir):
@@ -122,8 +133,8 @@ def per_question(run_dir):
 
 
 def segments(vis, pre, dec):
-    """Bar segments as (ms, color index); vis None = vision + prefill not split."""
-    first = [(pre, 3)] if vis is None else [(vis, 0), (pre, 1)]
+    """Bar segments as (ms, color index); vis None = vision + prefill not split; vis 0 = no vision stage (text only)."""
+    first = [(pre, 3)] if vis is None else [(pre, 1)] if vis == 0 else [(vis, 0), (pre, 1)]
     return first + [(dec, 2)]
 
 
@@ -135,6 +146,8 @@ def stage_rows(q, agg):
 def svg(panels, out, decode_tokens, foot, title=None, xmax=None):
     names = ["Vision encoder", "Prefill (prompt + image tokens, first token)", f"Decode ({decode_tokens} more tokens)", "Vision + prefill (not split)"]
     used = sorted({c for _, rows in panels for _, segs in rows for _, c in segs})
+    if 0 not in used and 3 not in used:  # no vision stage anywhere (text-only models)
+        names[1] = "Prefill (prompt tokens, first token)"
     xmax_ms = xmax or max(sum(v for v, _ in segs) for _, rows in panels for _, segs in rows)
     step = next(s for s in (50, 100, 200, 250, 500, 1000, 2000, 5000) if xmax_ms / s <= 8)
     xmax_ms = xmax or step * (int(xmax_ms // step) + 1)

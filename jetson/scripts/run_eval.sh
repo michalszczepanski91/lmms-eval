@@ -47,6 +47,8 @@ fw_setup || exit 1
 MODEL_ARGS+=${EXTRA_MODEL_ARGS:+,$EXTRA_MODEL_ARGS}
 EVAL_CMD=(python -m lmms_eval --model "$BACKEND" --model_args "$MODEL_ARGS" --tasks "$TASKS"
           --batch_size 1 --log_samples --output_path "$OUT_REL" ${LIMIT:+--limit "$LIMIT"})
+# Task variants kept with the benchmark (e.g. jetson/tasks for the text-only models), if the model file names a path.
+[ -n "${TASK_INCLUDE_PATH:-}" ] && EVAL_CMD+=(--include_path "$TASK_INCLUDE_PATH")
 
 # Other GPU compute processes (host jobs included) would skew latency and memory; wait for them.
 other_gpu_procs() {
@@ -67,6 +69,7 @@ fi
   echo "framework:   $FRAMEWORK"
   echo "precision:   $PRECISION"
   [ -n "${RUN_TAG:-}" ] && echo "run tag:     $RUN_TAG"
+  [ -n "${MODEL_MODALITY:-}" ] && echo "modality:    $MODEL_MODALITY"
   [ -n "${EVAL_ENV:-}" ] && echo "eval env:    $EVAL_ENV"
   echo "image:       $IMAGE ($(docker image inspect -f '{{.Id}}' "$IMAGE" | cut -c1-19))"
   [ -n "${LLAMACPP_IMAGE:-}" ] && echo "server image: $LLAMACPP_IMAGE ($(docker image inspect -f '{{.Id}}' "$LLAMACPP_IMAGE" 2>/dev/null | cut -c1-19))"

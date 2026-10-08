@@ -2,7 +2,8 @@
 # Engines first: trt_edgellm/ensure_engines.sh <size> <precision>... (export on Thor or an x86 GPU host, build on the
 # device; docs/tensorrt-edgellm.md). Latency comes from the runner's profile (trt_profile.json): per-stage GPU-time
 # medians and an average TTFT, not per-sample timings.
-FW_PRECISIONS="fp16 int4_awq fp8 nvfp4"  # fp8 / nvfp4: Thor only
+source "$JETSON/frameworks/trt_edgellm/recipes.sh"
+FW_PRECISIONS=$EDGELLM_PRECISIONS  # first = default; fp8 / nvfp4 / mxfp8: Thor only
 TRT_WORKSPACE=${TRT_WORKSPACE:-/opt/models/trt-edgellm}
 
 fw_assets() {
@@ -13,6 +14,15 @@ fw_setup() {
   IMAGE=${TRT_IMAGE:-lmms-eval-trt-edgellm:latest}
   BACKEND=trt_edgellm
   local dir=$TRT_WORKSPACE/$MODEL_TAG-$PRECISION/engines
+  if [ "${MODEL_MODALITY:-vision}" = text ]; then
+    # Text only: LLM engine alone, no image-side limits.
+    [ -d "$dir/llm" ] || { echo "missing engine in $dir/llm - see jetson/frameworks/trt_edgellm/" >&2; return 1; }
+    # No system message of our own: the runner applies the chat template's default (Qwen2.5: "You are Qwen, created by
+    # Alibaba Cloud. ..."), as HF, vLLM and llama.cpp do; the backend's VL default would differ.
+    MODEL_ARGS="engine_dir=$dir/llm,profile_output=$OUT_REL/trt_profile.json,system_prompt=none"
+    DOCKER_ARGS+=(-v "$TRT_WORKSPACE":"$TRT_WORKSPACE":ro)
+    return 0
+  fi
   [ -d "$dir/llm" ] && [ -d "$dir/visual" ] || { echo "missing engines in $dir - see jetson/frameworks/trt_edgellm/" >&2; return 1; }
   MODEL_ARGS="engine_dir=$dir/llm,multimodal_engine_dir=$dir/visual,profile_output=$OUT_REL/trt_profile.json"
   # No cross-request reuse (as for vLLM / llama.cpp): Edge-LLM >= 0.10 caches vision-encoder outputs by default,

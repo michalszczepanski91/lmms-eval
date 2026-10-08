@@ -56,7 +56,9 @@ class TRTEdgeLLM(lmms):
         self.engine_dir = engine_dir
         self.multimodal_engine_dir = multimodal_engine_dir
         self.inference_bin = inference_bin
-        self.system_prompt = system_prompt
+        # "none" (from model_args) sends no system message: the runner then applies the model chat template's default
+        # system prompt (default_system_prompt in the engine's processed_chat_template.json), as HF / vLLM do.
+        self.system_prompt = None if str(system_prompt).lower() in ("none", "") else system_prompt
         self.profile_output = profile_output
         self.warmup = int(warmup)
         # Edge-LLM >= 0.10 caches vision-encoder outputs across requests (256 MiB by default); 0 disables it.

@@ -10,6 +10,7 @@ from lmms_eval.api.registry import register_model
 from lmms_eval.imports import optional_import
 from lmms_eval.models.model_utils.gen_metrics import log_metrics
 from lmms_eval.models.model_utils.load_video import _probe_video_metadata
+from lmms_eval.models.model_utils.stage_timing import FirstTokenTimer as _FirstTokenTimer
 from lmms_eval.models.model_utils.stage_timing import VisionTimer as _VisionTimer
 from lmms_eval.models.simple.qwen2_5_vl import Qwen2_5_VL as Qwen2_5_VLSimple
 from lmms_eval.protocol import ChatMessages
@@ -17,26 +18,6 @@ from lmms_eval.protocol import ChatMessages
 process_vision_info, _has_qwen_vl = optional_import("qwen_vl_utils", "process_vision_info")
 if not _has_qwen_vl:
     eval_logger.warning("Failed to import qwen_vl_utils; Please install it via `pip install qwen-vl-utils`")
-
-
-class _FirstTokenTimer:
-    """Generation streamer that records when the first new token is produced.
-
-    ``generate`` calls ``put`` once with the prompt ids, then once per decoding step
-    with ids already copied to CPU, so the second call marks the first token.
-    """
-
-    def __init__(self):
-        self._calls = 0
-        self.first_token_time = None
-
-    def put(self, value):
-        self._calls += 1
-        if self._calls == 2:
-            self.first_token_time = time.perf_counter()
-
-    def end(self):
-        pass
 
 
 @register_model("qwen2_5_vl_chat")

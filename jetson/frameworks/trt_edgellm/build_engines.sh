@@ -19,16 +19,23 @@ REPO=$(cd "$(dirname "$0")/../../.." && pwd)
 source "$REPO/jetson/frameworks/common.sh"
 load_model "$SIZE" || exit 1
 DIR=$TRT_WORKSPACE/$MODEL_TAG-$PRECISION
-[ -d "$DIR/onnx/llm" ] && [ -d "$DIR/onnx/visual" ] || { echo "missing $DIR/onnx/{llm,visual} - run export.sh on an x86 GPU host or Thor first" >&2; exit 1; }
+if [ "${MODEL_MODALITY:-vision}" = text ]; then
+  # Text only: the LLM engine alone, sized by the model file (MAX_MODEL_LEN = longest task prompt + its max output).
+  [ -d "$DIR/onnx/llm" ] || { echo "missing $DIR/onnx/llm - run export.sh first" >&2; exit 1; }
+  MAX_INPUT=${EDGELLM_MAX_INPUT_LEN:-$MAX_MODEL_LEN} MAX_KV=${EDGELLM_MAX_KV:-$MAX_MODEL_LEN} VISUAL_BUILD=
+else
+  [ -d "$DIR/onnx/llm" ] && [ -d "$DIR/onnx/visual" ] || { echo "missing $DIR/onnx/{llm,visual} - run export.sh on an x86 GPU host or Thor first" >&2; exit 1; }
+  MAX_INPUT=2560 MAX_KV=3072
+  VISUAL_BUILD="visual_build --onnxDir '$DIR/onnx/visual' --engineDir '$DIR/engines/visual' --minImageTokens $IMAGE_MIN_TOKENS --maxImageTokens $IMAGE_MAX_TOKENS --maxImageTokensPerImage $IMAGE_MAX_TOKENS"
+fi
 
 docker run --rm --runtime nvidia --ipc=host \
   --user "$(id -u):$(id -g)" $(shared_group_args) -e HOME=/tmp \
   -v "$DIR":"$DIR" "$IMAGE" bash -euo pipefail -c "
     umask 002
     llm_build --onnxDir '$DIR/onnx/llm' --engineDir '$DIR/engines/llm' \
-      --maxBatchSize 1 --maxInputLen 2560 --maxKVCacheCapacity 3072
-    visual_build --onnxDir '$DIR/onnx/visual' --engineDir '$DIR/engines/visual' \
-      --minImageTokens $IMAGE_MIN_TOKENS --maxImageTokens $IMAGE_MAX_TOKENS --maxImageTokensPerImage $IMAGE_MAX_TOKENS
+      --maxBatchSize 1 --maxInputLen $MAX_INPUT --maxKVCacheCapacity $MAX_KV
+    $VISUAL_BUILD
   "
-echo "engines: $DIR/engines/{llm,visual}"
+echo "engines: $DIR/engines"
 [ "${REMOVE_ONNX:-0}" = 1 ] && rm -rf "$DIR/onnx" && echo "removed $DIR/onnx"

@@ -19,6 +19,7 @@ from lmms_eval.api.instance import GenerationResult, Instance, TokenCounts
 from lmms_eval.api.model import lmms
 from lmms_eval.api.registry import register_model
 from lmms_eval.models.model_utils.gen_metrics import log_metrics
+from lmms_eval.models.model_utils.stage_timing import FirstTokenTimer
 from lmms_eval.protocol import ChatMessages
 
 try:
@@ -199,6 +200,7 @@ class Huggingface(lmms):
         total_elapsed_time = 0
         total_tokens = 0
         for chunk in chunks:
+            preprocess_start = time.perf_counter()
             ctx, doc_to_messages, all_gen_kwargs, doc_id, task, split = zip(*chunk)
             chat_messages = [doc_to_messages[0](self.task_dict[task][split][ids]) for ids, task, split in zip(doc_id, task, split)]
             if self.system_prompt:
@@ -228,8 +230,13 @@ class Huggingface(lmms):
             images = self.flatten(images)
             videos = self.flatten(videos)
             audios = self.flatten(audios)
-            kwargs = {"images": images, "videos": videos, "audios": audios}
-            inputs = self.processor(text=texts, padding=True, return_tensors="pt", **kwargs)
+            if images or videos or audios:
+                kwargs = {"images": images, "videos": videos, "audios": audios}
+                inputs = self.processor(text=texts, padding=True, return_tensors="pt", **kwargs)
+            else:
+                # Text-only requests: the tokenizer alone (a text model's AutoProcessor may be a bare tokenizer that
+                # rejects media keyword arguments).
+                inputs = self.tokenizer(texts, padding=True, return_tensors="pt")
 
             if self.device_map == "auto":
                 inputs = inputs.to("cuda")
@@ -254,7 +261,9 @@ class Huggingface(lmms):
                 current_gen_kwargs["temperature"] = None
                 current_gen_kwargs["top_p"] = None
 
-            start_time = time.time()
+            # HF streamers support batch size 1 only; per-sample latency is recorded only then.
+            first_token_timer = FirstTokenTimer() if len(texts) == 1 else None
+            start_time = time.perf_counter()
             cont = self.model.generate(
                 **inputs,
                 eos_token_id=self.tokenizer.eos_token_id,
@@ -265,8 +274,16 @@ class Huggingface(lmms):
                 num_beams=current_gen_kwargs["num_beams"],
                 max_new_tokens=current_gen_kwargs["max_new_tokens"],
                 use_cache=self.use_cache,
+                streamer=first_token_timer,
             )
-            end_time = time.time()
+            end_time = time.perf_counter()
+            latency = {}
+            if first_token_timer is not None:
+                latency = {
+                    "preprocess_seconds": start_time - preprocess_start,
+                    "time_to_first_token_seconds": first_token_timer.first_token_time - start_time if first_token_timer.first_token_time else None,
+                    "generation_seconds": end_time - start_time,
+                }
 
             generated_ids_trimmed = [out_ids[len(in_ids) :] for in_ids, out_ids in zip(inputs.input_ids, cont)]
             answers = self.processor.batch_decode(
@@ -280,7 +297,7 @@ class Huggingface(lmms):
             total_tokens += sum(len(ids) for ids in generated_ids_trimmed)
 
             for i, (ans, context) in enumerate(zip(answers, texts)):
-                res.append(GenerationResult(text=ans, token_counts=TokenCounts(output_tokens=len(generated_ids_trimmed[i]))))
+                res.append(GenerationResult(text=ans, token_counts=TokenCounts(input_tokens=int(inputs.attention_mask[i].sum()), output_tokens=len(generated_ids_trimmed[i]), **latency)))
                 self.cache_hook.add_partial("generate_until", (context, gen_kwargs), ans)
                 pbar.update(1)
 

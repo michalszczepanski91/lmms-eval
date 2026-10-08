@@ -31,11 +31,22 @@ fw_setup() {
   local default_mem
   default_mem=$(awk -v gb="$budget_gb" '/^MemTotal:/ {printf "%.2f", gb * 1048576 / $2}' /proc/meminfo)
   # Same image resolution range as the other frameworks (IMAGE_MIN/MAX_PIXELS from the model file).
-  MODEL_ARGS="model=$(hf_snapshot "$(_vllm_repo)"),gpu_memory_utilization=${VLLM_GPU_MEM:-$default_mem},max_model_len=4096,max_pixels=$IMAGE_MAX_PIXELS"
-  MODEL_ARGS+=",mm_processor_kwargs={\"min_pixels\":$IMAGE_MIN_PIXELS,\"max_pixels\":$IMAGE_MAX_PIXELS}"
+  if [ "${MODEL_MODALITY:-vision}" = text ]; then
+    # Text only: no image arguments; context from the model file. The backend generates max(task, own) tokens, so
+    # its own default goes to 1 and the task's max_new_tokens applies, as in the other frameworks.
+    MODEL_ARGS="model=$(hf_snapshot "$(_vllm_repo)"),gpu_memory_utilization=${VLLM_GPU_MEM:-$default_mem},max_model_len=$MAX_MODEL_LEN,max_new_tokens=1"
+  else
+    MODEL_ARGS="model=$(hf_snapshot "$(_vllm_repo)"),gpu_memory_utilization=${VLLM_GPU_MEM:-$default_mem},max_model_len=4096,max_pixels=$IMAGE_MAX_PIXELS"
+    MODEL_ARGS+=",mm_processor_kwargs={\"min_pixels\":$IMAGE_MIN_PIXELS,\"max_pixels\":$IMAGE_MAX_PIXELS}"
+  fi
   # No cross-request reuse: MME asks two questions per image, so prefix/image caches would skip most of the
-  # vision + prefill work for every second sample, which the HF reference cannot do.
-  MODEL_ARGS+=",enable_prefix_caching=False,mm_processor_cache_gb=0"
+  # vision + prefill work for every second sample, which the HF reference cannot do. Text tasks share their few-shot
+  # prefix across questions, so prefix caching stays off there too.
+  if [ "${MODEL_MODALITY:-vision}" = text ]; then
+    MODEL_ARGS+=",enable_prefix_caching=False"
+  else
+    MODEL_ARGS+=",enable_prefix_caching=False,mm_processor_cache_gb=0"
+  fi
   # Keep torch.compile / CUDA graph caches between runs (the container is ephemeral).
   DOCKER_ARGS+=(-e VLLM_CACHE_ROOT="$JETSON/.cache/vllm")
 }

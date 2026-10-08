@@ -72,8 +72,11 @@ def percentile(values, q):
     return values[min(len(values) - 1, int(round(q / 100 * (len(values) - 1))))] if values else None
 
 
-def latency_stats(samples_path):
-    """Per-sample latency recorded by backends that fill TokenCounts timing fields."""
+def latency_stats(samples_path, text_only=False):
+    """Per-sample latency recorded by backends that fill TokenCounts timing fields.
+
+    text_only: the model has no vision encoder, so the prefill is the whole time to first token.
+    """
     ttft, gen, decode_ms, pre, vision, prefill, out_tokens = [], [], [], [], [], [], []
     for line in open_text(samples_path):
         counts = (json.loads(line).get("token_counts") or [None])[0] or {}
@@ -106,17 +109,19 @@ def latency_stats(samples_path):
         "gen_mean": sum(gen) / len(gen),
         **({"pre_p50": percentile(pre, 50)} if pre else {}),
         **({"vision_p50": percentile(vision, 50), "prefill_p50": percentile(prefill, 50), "stage_source": "CUDA events"} if vision else {}),
+        **({"prefill_p50": percentile(ttft, 50), "stage_source": "TTFT (text only)"} if text_only and not vision else {}),
     }
 
 
 LLAMA_TS = re.compile(r"^(\d+)\.(\d+)\.(\d+)\.(\d+) ")
 
 
-def llamacpp_server_stats(run_dir):
+def llamacpp_server_stats(run_dir, text_only=False):
     """Per-request stages from llama-server's log (verbosity 4, llamacpp.sh), in seconds.
 
     Vision encoder = "encoding mtmd batch" to the first "decoding image batch" (the image embeddings are ready);
     LLM prefill = "prompt eval time" (which includes the encoder) minus the encoder. Server side, without HTTP.
+    text_only: no encoder lines; the prefill is the whole "prompt eval time".
     """
     path = os.path.join(run_dir, "server.log")
     if not (os.path.exists(path) or os.path.exists(path + ".gz")):
@@ -135,6 +140,8 @@ def llamacpp_server_stats(run_dir):
         elif m := re.search(r"prompt eval time =\s+([\d.]+) ms", line):
             prefill.append(float(m[1]) / 1000 - (current_vision or 0))
             current_vision = None
+    if text_only and prefill and not vision:
+        return {"prefill_p50": percentile(prefill, 50), "stage_source": "server log"}
     if not vision:
         return {}
     return {"vision_p50": percentile(vision, 50), "prefill_p50": percentile(prefill, 50), "stage_source": "server log"}
@@ -162,6 +169,8 @@ def trt_profile_stats(path):
             prefill_p50=stages["llm_prefill"]["median_ms"] / 1000,
             stage_source="runner profile (GPU time)",
         )
+    elif "llm_prefill" in stages and "vision_encoder" not in stages:  # text-only engine
+        stats.update(prefill_p50=stages["llm_prefill"]["median_ms"] / 1000, stage_source="runner profile (GPU time)")
     return stats
 
 
@@ -273,13 +282,14 @@ def main():
         n = sum(r["n-samples"][t]["effective"] for t in r["n-samples"])
         samples = glob.glob(os.path.join(os.path.dirname(results_json), "*_samples_*.jsonl*"))
         timing_invalid = marker_reason(run_dir, "TIMING_INVALID")
+        text_only = run_info_field(run_dir, "modality") == "text"
         stats = {}
         if not timing_invalid:
             stats = {
                 **tegrastats_stats(os.path.join(run_dir, "tegrastats.log")),
-                **(latency_stats(samples[0]) if samples else {}),
+                **(latency_stats(samples[0], text_only) if samples else {}),
                 **trt_profile_stats(os.path.join(run_dir, "trt_profile.json")),
-                **llamacpp_server_stats(run_dir),
+                **llamacpp_server_stats(run_dir, text_only),
             }
         for task, scores in result_scores(results_json).items():
             rows.append(
