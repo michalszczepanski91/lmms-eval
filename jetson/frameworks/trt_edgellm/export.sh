@@ -59,17 +59,20 @@ docker run --rm $GPU_FLAGS --ipc=host -e HF_TOKEN_PATH=/tmp/no-hf-token \
   -e HF_HOME="$HF_CACHE" -e HF_HUB_CACHE="$HF_CACHE/hub" -v "$HF_CACHE":"$HF_CACHE" -v "$WORKSPACE":"$WORKSPACE" \
   -e SRC="$SRC" -e LLM_CKPT="$LLM_CKPT" -e OUT="$OUT" -e PRECISION="$PRECISION" -e KEEP_QUANTIZED="${KEEP_QUANTIZED:-0}" \
   -e QUANT="$EDGELLM_QUANT" -e LM_HEAD="$EDGELLM_LM_HEAD" -e KV="$EDGELLM_KV" -e DATASET="$EDGELLM_DATASET" -e MODALITY="${MODEL_MODALITY:-vision}" \
+  -e EXPORT_ARGS="$EDGELLM_EXPORT_ARGS" ${EDGELLM_CALIB_FILE:+-e "EDGELLM_QUANT_DATASET_${EDGELLM_DATASET^^}=/edgellm-scripts/$EDGELLM_CALIB_FILE"} \
   -e VISION_SCALE="${VISION_SCALE:-8}" -v "$JETSON/frameworks/trt_edgellm":/edgellm-scripts:ro \
   "$EXPORT_IMAGE" bash -euo pipefail -c '
     umask 002
     if [ -n "$QUANT" ]; then
       rm -rf "$OUT/quantized"
+      start=$(date +%s)
       tensorrt-edgellm-quantize llm --model_dir "$SRC" --output_dir "$OUT/quantized" --quantization "$QUANT" \
         ${LM_HEAD:+--lm_head_quantization "$LM_HEAD"} ${KV:+--kv_cache_quantization "$KV"} ${DATASET:+--text_dataset "$DATASET"}
+      echo "quantize_seconds=$(( $(date +%s) - start ))"
       LLM_CKPT=$OUT/quantized
     fi
     rm -rf "$OUT/onnx"
-    tensorrt-edgellm-export "$LLM_CKPT" "$OUT/onnx" --skip-visual
+    tensorrt-edgellm-export "$LLM_CKPT" "$OUT/onnx" --skip-visual $EXPORT_ARGS
     if [ "$MODALITY" = text ]; then  # text-only model: no vision encoder to export
       [ "$KEEP_QUANTIZED" = 1 ] || rm -rf "$OUT/quantized"
       ls "$OUT/onnx"
