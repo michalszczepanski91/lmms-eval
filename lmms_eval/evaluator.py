@@ -343,7 +343,9 @@ def _process_document_results(item, *, task: Task, filter_key: str, reasoning_ta
             "doc": saved_doc,
             "target": target,
             "arguments": filtered_arguments,
-            "resps": [req.raw_filtered_resps.get(filter_key, req.resps) for req in requests],
+            # The model's own output: raw_filtered_resps holds the output of the filters (e.g. a regex-extracted number),
+            # which the sample writer drops as a duplicate of filtered_resps.
+            "resps": [req.resps[0] if len(req.resps) == 1 else req.resps for req in requests],
             "filtered_resps": [req.filtered_resps[filter_key] for req in requests],
             "token_counts": per_sample_token_counts,
             "doc_hash": hash_string(

@@ -88,6 +88,39 @@ def test_process_document_results_preserves_serial_scoring_and_logging_contract(
     assert processed.logged_sample["accuracy"] == 1.0
 
 
+def test_process_document_results_logs_model_output_not_filter_output():
+    doc = {"target": "42"}
+    request = Instance(
+        request_type="generate_until",
+        arguments=("prompt", {}, None, 0, "test_task", "test"),
+        idx=0,
+        metadata={"task": "test_task", "doc_id": 0, "repeats": 1},
+    )
+    request.doc = doc
+    request.resps = ["6 times 7 is 42."]
+    request.filtered_resps["flexible-extract"] = "42"  # a regex filter's output
+
+    class FakeTask:
+        config = SimpleNamespace(repeats=1)
+
+        def process_results(self, current_doc, results):
+            return {"exact_match": float(results[0] == current_doc["target"])}
+
+        def doc_to_target(self, current_doc):
+            return current_doc["target"]
+
+    processed = _process_document_results(
+        (0, doc, [request]),
+        task=FakeTask(),
+        filter_key="flexible-extract",
+        reasoning_tags=[["<think>", "</think>"]],
+        log_samples=True,
+    )
+
+    assert processed.logged_sample["resps"] == ["6 times 7 is 42."]
+    assert processed.logged_sample["filtered_resps"] == ["42"]
+
+
 def test_process_document_results_computes_repeat_scores():
     doc = {"target": "A"}
     requests = []
