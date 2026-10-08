@@ -1,13 +1,13 @@
 # lmms-eval on Jetson: inference-framework benchmarks
 
-This folder benchmarks vision-language models on NVIDIA Jetson with lmms-eval. The same model and tasks run through four inference frameworks, and accuracy, latency, memory, power and FLOPs are measured the same way for each. So far: Qwen2.5-VL-3B/7B-Instruct on a Jetson AGX Orin 32GB and a Jetson AGX Thor.
+This folder benchmarks vision-language and text-only models on NVIDIA Jetson with lmms-eval. The same model and tasks run through four inference frameworks, and accuracy, latency, memory, power and FLOPs are measured the same way for each. So far: Qwen2.5-VL-3B/7B-Instruct on a Jetson AGX Orin 32GB and a Jetson AGX Thor, and the text-only Qwen2.5-1.5B/3B-Instruct on Thor.
 
 | Framework | `<framework>` | Precisions (`<size>-<precision>`, first = default) | How it runs |
 |---|---|---|---|
-| Hugging Face transformers | `hf` | `bf16` | in process, lmms-eval `qwen2_5_vl` backend; the reference |
+| Hugging Face transformers | `hf` | `bf16` | in process, lmms-eval `qwen2_5_vl` backend (text-only models: the generic `huggingface` chat backend); the reference |
 | vLLM | `vllm` | `bf16`, `awq` (official AWQ 4-bit checkpoint), `fp8`, `w8a8` (RedHatAI 8-bit W8A8 checkpoints) | in process, lmms-eval `vllm` backend |
-| llama.cpp | `llamacpp` | `q4_k_m`, `q8_0`, `f16` (GGUF + f16 vision projector) | `llama-server` container + lmms-eval `openai` backend, streaming |
-| TensorRT Edge-LLM | `trt_edgellm` | `fp16`, `int4_awq`, `fp8`, `nvfp4` (fp8/nvfp4: Thor only) | C++ runner via lmms-eval `trt_edgellm` backend; see [docs/tensorrt-edgellm.md](docs/tensorrt-edgellm.md) |
+| llama.cpp | `llamacpp` | `q4_k_m`, `q8_0`, `f16` (GGUF + f16 vision projector; text-only models: GGUF only) | `llama-server` container + lmms-eval `openai` backend, streaming |
+| TensorRT Edge-LLM | `trt_edgellm` | `fp16`, `int4_awq`, `fp8`, `nvfp4` (fp8/nvfp4: Thor only), and the weight-study variants in [frameworks/trt_edgellm/recipes.sh](frameworks/trt_edgellm/recipes.sh) | C++ runner via lmms-eval `trt_edgellm` backend; see [docs/tensorrt-edgellm.md](docs/tensorrt-edgellm.md) |
 
 ## Results
 
@@ -54,7 +54,7 @@ WAIT_GPU_IDLE=0 jetson/scripts/run_eval.sh hf 3b mme                            
 
 ## Experiments
 
-One script per question, under [experiments/qwen2_5_vl/](experiments/qwen2_5_vl/):
+One script per question. Qwen2.5-VL, under [experiments/qwen2_5_vl/](experiments/qwen2_5_vl/):
 
 | Script | Question |
 |---|---|
@@ -63,7 +63,16 @@ One script per question, under [experiments/qwen2_5_vl/](experiments/qwen2_5_vl/
 | `textvqa.sh` | Reading text in images: TextVQA val (5,000 questions), same matrix. Builds missing Edge-LLM 3B and 7B engines first (`SKIP_ENGINES=1` to skip) |
 | `followups.sh` | Image transport overhead (PIL vs PNG/base64), decode-heavy captioning (COCO), image-resolution sweep |
 
-A full matrix takes 12–16 h. Start it detached, so it survives a closed SSH session. It runs unattended: stalled runs are stopped and bad runs are marked (see [methodology](docs/methodology.md#result-files)).
+Text-only Qwen2.5-1.5B / 3B-Instruct (`MODEL=qwen2_5`, set by the scripts), under [experiments/qwen2_5/](experiments/qwen2_5/). Task variants for these runs are in [tasks/](tasks/) (loaded with `--include_path`; GSM8K 5-shot, MMLU 5-shot generative, the controlled-length sweep); IFEval is lmms-eval's own. Install the IFEval dependencies once with `jetson/scripts/install_text_deps.sh`.
+
+| Script | Question |
+|---|---|
+| `frameworks.sh` | Is TensorRT Edge-LLM also the best framework for a text-only LLM? GSM8K, MMLU and IFEval at 16, 8 and 4 bits in every framework (`matrix.sh`) |
+| `length_sweep.sh` | How prefill and decode scale with the prompt: 128 / 512 / 2,048 prompt tokens, 256 output tokens, 16- and 8-bit |
+| `edgellm_weights.sh` | Which Edge-LLM weight configuration is best: fp16 / fp8 / int8_sq / int4 / nvfp4, fp8 KV cache, quantized LM head, task-matched calibration, Qwen's own int4 checkpoints |
+| `analyze.py` | The tables of the findings (paired accuracy differences, time, energy, the Q1 decision rule) from the result files |
+
+A full matrix takes 12–16 h (the text-only Phase 1: about 3 days). Start it detached, so it survives a closed SSH session. It runs unattended: stalled runs are stopped and bad runs are marked (see [methodology](docs/methodology.md#result-files)).
 
 ```bash
 export HF_CACHE=/opt/hf-cache TRT_WORKSPACE=/opt/models/trt-edgellm SHARED_GROUP=mlusers
@@ -87,6 +96,7 @@ jetson/
     download_assets.sh      models / datasets into the shared HF cache (offline-ready)
     summarize.py            results/<board>/SUMMARY.md
     compute_flops.sh        analytical FLOPs per sample (runs models/<model>/flops.py in the container)
+    install_text_deps.sh    IFEval's Python packages and NLTK data into jetson/.cache (text-only models)
     slim_run.py             shrink a run dir for git (strip progress bars, gzip per-sample files)
     plot_stages.py          SVG of time per stage (vision encoder / prefill / decode) for chosen runs; --title, --xmax (shared scale), --by-size
     stages_table.py         Markdown table of time per stage per question for chosen runs
@@ -94,21 +104,29 @@ jetson/
     run.sh                  dataset numbers + examples (image, prompt, reference, model answer), in the container
     common.py               shared code; textvqa.py, mme.py, gqa.py: one per dataset
     questions.py            one row per question: prompt, image size, image tokens, model answer, token counts
+    text_report.py          text-only tasks (GSM8K, MMLU, IFEval): prompt / answer lengths, example
+    length_sweep_data.py    the length sweep's prompts of exactly 128 / 512 / 2,048 tokens
+    edgellm_calibration.py  task-matched Edge-LLM calibration text (GSM8K train + MMLU validation)
   frameworks/
     common.sh               argument parsing, board / model resolution, Hub cache helpers
     hf.sh, vllm.sh, llamacpp.sh, trt_edgellm.sh   per framework: precisions, assets, backend args, server start/stop
     llamacpp/Dockerfile     llama.cpp server image
-    trt_edgellm/            runtime + export images, export.sh, build_engines.sh, ensure_engines.sh, scale_vision.py
+    trt_edgellm/            runtime + export images, export.sh, build_engines.sh, ensure_engines.sh, recipes.sh (weight
+                            configurations), scale_vision.py, calibration/
   models/
     qwen2_5_vl/
       model.sh              sizes -> Hub repos (base, AWQ, GGUF), image-token range
       flops.py              FLOPs model of Qwen2.5-VL (vision encoder, LLM prefill, decode)
+      docs/                 architecture walkthrough with diagrams (make_diagrams.py, PDF)
+    qwen2_5/                text-only Qwen2.5-Instruct: model.sh (MODEL_MODALITY=text), flops.py, docs/
+  tasks/                    Jetson task variants: gsm8k_jetson, mmlu_jetson, length_sweep
   experiments/qwen2_5_vl/   mme.sh, gqa.sh, textvqa.sh, followups.sh
+  experiments/qwen2_5/      frameworks.sh (+ matrix.sh), length_sweep.sh, edgellm_weights.sh, analyze.py
   results/<board>/          SUMMARY.md, notes and reports, logs/, <model>/<task>/<framework>-<precision>[+tag]/<run id>/
 ```
 
 ## Extending
 
 - **Framework**: add `frameworks/<name>.sh` defining `FW_PRECISIONS`, `fw_assets`, `fw_setup` and, for servers, `fw_start` / `fw_stop`. Use the model variables (`HF_REPO`, `IMAGE_MIN_PIXELS`, ...) rather than repo names.
-- **Model**: add `models/<model>/model.sh` (same variables as `models/qwen2_5_vl/model.sh`) and run with `MODEL=<model>`. `flops.py` is architecture-specific, so a new model family needs its own; without one, set `FLOPS=0`.
+- **Model**: add `models/<model>/model.sh` (same variables as `models/qwen2_5_vl/model.sh`; a text-only model sets `MODEL_MODALITY=text`, see `models/qwen2_5/model.sh`) and run with `MODEL=<model>`. `flops.py` is architecture-specific, so a new model family needs its own; without one, set `FLOPS=0`.
 - **Task**: any lmms-eval task works. Download its dataset first with `download_assets.sh dataset:<repo>[:<config>]`, since runs are offline.

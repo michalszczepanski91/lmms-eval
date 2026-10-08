@@ -1,6 +1,6 @@
 # TensorRT Edge-LLM
 
-[TensorRT Edge-LLM](https://github.com/NVIDIA/TensorRT-Edge-LLM) runs Qwen2.5-VL as TensorRT engines through a C++ runner. It takes three steps: export to ONNX, build engines on the device, then evaluate.
+[TensorRT Edge-LLM](https://github.com/NVIDIA/TensorRT-Edge-LLM) runs Qwen2.5-VL and the text-only Qwen2.5-Instruct as TensorRT engines through a C++ runner. It takes three steps: export to ONNX, build engines on the device, then evaluate.
 
 | | Orin (JetPack 6.2) | Thor (JetPack 7.1, tested) |
 |---|---|---|
@@ -45,6 +45,36 @@ The script headers list the other options: `EDGELLM_REF`, `BASE_IMAGE`, `GPU_FLA
   - Failed requests are scored as empty answers and counted in the profile as `failed_requests`.
   - The encoder cache is off (`encoder_cache_budget_bytes=0`), as it is for the other frameworks.
 
+## Text-only models (Qwen2.5-Instruct)
+
+The same scripts handle a text-only model when its `model.sh` sets `MODEL_MODALITY=text` (`MODEL=qwen2_5`):
+
+- **Export**: the LLM only (no vision encoder, no `scale_vision.py`).
+- **Build**: the LLM engine only, with max input and KV cache = `MAX_MODEL_LEN` (4,096) instead of the VL limits.
+- **Evaluate**: `engine_dir=<engines>/llm`, no multimodal engine, no image options. The engine stores the model's chat template and default system prompt (`processed_chat_template.json`), so the backend's own default system prompt is turned off (`system_prompt=none`).
+
+```bash
+MODEL=qwen2_5 jetson/frameworks/trt_edgellm/ensure_engines.sh 3b fp16 fp8 int4_awq
+MODEL=qwen2_5 jetson/scripts/run_eval.sh trt_edgellm 3b-fp8 gsm8k_jetson 8
+```
+
+**Weight configurations** (`frameworks/trt_edgellm/recipes.sh`; the precision name is the run's `<precision>`). Options of v0.10.1: `tensorrt-edgellm-quantize llm --quantization {fp8, int4_awq, nvfp4, mxfp8, int8_sq}`, `--lm_head_quantization {fp8, int4_awq, nvfp4, mxfp8}`, `--kv_cache_quantization fp8`, `--text_dataset {cnn_dailymail, wikitext, zh_en_mixed}`; no w4a8. The exporter also imports pre-quantized AWQ and GPTQ checkpoints.
+
+| Precision | How | Status (Qwen2.5-1.5B / 3B, Thor) |
+|---|---|---|
+| `fp16` | base checkpoint as is | works |
+| `fp8`, `int4_awq` | quantizer, default calibration (cnn_dailymail, 512 texts × ≤ 512 tokens), LM head 16-bit | work |
+| `int8_sq`, `nvfp4`, `mxfp8` | quantizer | Phase 2, see [FINDINGS_qwen2_5.md](../results/thor/FINDINGS_qwen2_5.md) |
+| `fp8_kv` | fp8 weights + `--kv_cache_quantization fp8` | Phase 2 |
+| `fp8_lmhead`, `int4_awq_lmhead` | LM head quantized too (`--lm_head_quantization`) | Phase 2 |
+| `int4_awq_taskcal` | int4_awq calibrated on 512 texts in the benchmark's format (GSM8K train + MMLU validation, `calibration/gsm8k_mmlu.jsonl`), passed through the documented local override of a built-in dataset (`EDGELLM_QUANT_DATASET_WIKITEXT`) | Phase 2 |
+| `int4_awq_qwen` | Qwen's AWQ checkpoint exported directly | builds and runs, **garbage text** ("100000…", 3B) |
+| `int4_awq_qwen_v1` | the same with the legacy int4 GEMM plugin (`--int4-gemm-plugin-version 1`) | Phase 2 (diagnostic) |
+| `int4_gptq_qwen` | Qwen's GPTQ-Int4 checkpoint exported directly | Phase 2 |
+| Qwen GPTQ-Int8 | not possible: the exporter maps every `quant_method: gptq` checkpoint to int4 and does not read `bits` | – |
+
+`ensure_engines.sh` writes `build_info.txt` in each engine directory: quantize / export / build seconds, peak system memory per step, engine size.
+
 ## Known issues (Thor, Edge-LLM v0.10.1)
 
 - **The fp16 vision encoder overflows (worked around).**
@@ -54,7 +84,7 @@ The script headers list the other options: `EDGELLM_REF`, `BASE_IMAGE`, `GPU_FLA
   - Against fp32, the scaled fp16 encoder is within 2–4.5%, against 11–27% for bf16. Speed is unchanged.
 - **One NaN request can break the next ones.** After a request produces NaN, later requests in the same runner process can fail too. With the workaround above no NaNs occur, so this no longer matters here.
 - **Images with a side above 4096 px are rejected** by the runner ("exceeds the GPU-resize budget"), for example 64 of MME's landmark photos. `trt_edgellm.sh` sets `max_image_side=4096`, which downscales them first (`TRT_MAX_IMAGE_SIDE` to change). Without it, MME perception drops by about 75 points.
-- **int4_awq from Qwen's AWQ checkpoint** (`AWQ_SOURCE=qwen`, the checkpoint vLLM `awq` uses) answers text prompts, but every image prompt returns an empty answer. The default therefore quantizes the base checkpoint with Edge-LLM's own AWQ, so Edge-LLM int4_awq and vLLM awq are **different** 4-bit models. The Edge-LLM version, calibrated on text only, loses 5.7 points on TextVQA for the 3B and 1.1 for the 7B.
+- **int4_awq from Qwen's AWQ checkpoint** (`AWQ_SOURCE=qwen`, the checkpoint vLLM `awq` uses) answers text prompts, but every image prompt returns an empty answer (with the text-only Qwen2.5-3B-Instruct-AWQ, text answers are garbage too). The default therefore quantizes the base checkpoint with Edge-LLM's own AWQ, so Edge-LLM int4_awq and vLLM awq are **different** 4-bit models. The Edge-LLM version, calibrated on text only, loses 5.7 points on TextVQA for the 3B and 1.1 for the 7B.
 - **nvfp4** (3B, quantized here) gives garbage output even for text-only prompts, while fp8 from the same pipeline is fine. NVIDIA's pre-quantized `nvidia/Qwen2.5-VL-7B-Instruct-NVFP4` would show whether the kernels or the quantization are at fault.
 - **Speed varies between builds.** Two builds of the same vision engine, made on different days, differed by about 8% in speed.
 - **Build-image quirks**, handled in the Dockerfiles:
