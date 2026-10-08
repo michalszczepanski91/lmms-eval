@@ -1,0 +1,14 @@
+date:        2026-10-08T15:18:29+02:00
+board:       NVIDIA Jetson AGX Thor Developer Kit
+l4t:         # R39 (release), REVISION: 2.1, GCID: 46758480, BOARD: generic, EABI: aarch64, DATE: Fri Aug  7 05:54:22 AM UTC 2026
+power mode:  NV Power Mode: MAXN
+git commit:  df80923b (dirty)
+framework:   llamacpp
+precision:   f16
+modality:    text
+image:       lmms-eval-jetson:latest (sha256:60ca8d6b1834)
+server image: llamacpp-jetson:b11135 (sha256:40c10cc5b1e7)
+other containers: 
+other GPU processes: 
+command:     python -m lmms_eval --model openai --model_args model_version=Qwen2.5-3B-Instruct-f16,base_url=http://127.0.0.1:8090/v1,api_key=local,stream_timing=True,num_concurrent=1,prefix_aware_queue=False,timeout=600,max_retries=2 --tasks ifeval --batch_size 1 --log_samples --output_path jetson/results/thor/Qwen2.5-3B-Instruct/ifeval/llamacpp-f16/20261008-151829_limit8 --limit 8 --include_path jetson/tasks
+versions:    torch 2.10.0 transformers 4.57.3

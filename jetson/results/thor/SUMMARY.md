@@ -6,51 +6,416 @@ How each column is measured: [methodology](../../docs/methodology.md). Runs mark
 
 | Model | Framework | Task | Scores | N | Power mode | Wall time (min) | TTFT p50 / p90 (ms) | Answer p50 / p90 (ms) | Decode (ms/token) | Base RAM (GB) | Peak RAM (GB) | Avg GPU rail (W) | Avg module (W) | Other GPU work / notes | Run dir |
 |---|---|---|---|---:|---|---:|---:|---:|---:|---:|---:|---:|---:|---|---|
+| Qwen2.5-3B-Instruct | hf-bf16 | gsm8k_jetson |  | 472 | MAXN | 12.5 | 122 / 131 | 1398 / 1408 | 41 | 19.1 | 22.8 | 16.3 | 47.9 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-124531_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-124531_limit8) |
+| Qwen2.5-3B-Instruct | hf-bf16 | ifeval | prompt_level_strict_acc: 0.5000<br>inst_level_strict_acc: 0.6429<br>prompt_level_loose_acc: 0.6250<br>inst_level_loose_acc: 0.7143 | 472 | MAXN | 12.5 | 122 / 131 | 1398 / 1408 | 41 | 19.1 | 22.8 | 16.3 | 47.9 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-124531_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-124531_limit8) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson |  | 472 | MAXN | 12.5 | 122 / 131 | 1398 / 1408 | 41 | 19.1 | 22.8 | 16.3 | 47.9 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-124531_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-124531_limit8) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_abstract_algebra |  | 472 | MAXN | 12.5 | 122 / 131 | 1398 / 1408 | 41 | 19.1 | 22.8 | 16.3 | 47.9 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-124531_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-124531_limit8) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_anatomy |  | 472 | MAXN | 12.5 | 122 / 131 | 1398 / 1408 | 41 | 19.1 | 22.8 | 16.3 | 47.9 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-124531_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-124531_limit8) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_astronomy |  | 472 | MAXN | 12.5 | 122 / 131 | 1398 / 1408 | 41 | 19.1 | 22.8 | 16.3 | 47.9 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-124531_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-124531_limit8) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_business_ethics |  | 472 | MAXN | 12.5 | 122 / 131 | 1398 / 1408 | 41 | 19.1 | 22.8 | 16.3 | 47.9 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-124531_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-124531_limit8) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_clinical_knowledge |  | 472 | MAXN | 12.5 | 122 / 131 | 1398 / 1408 | 41 | 19.1 | 22.8 | 16.3 | 47.9 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-124531_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-124531_limit8) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_college_biology |  | 472 | MAXN | 12.5 | 122 / 131 | 1398 / 1408 | 41 | 19.1 | 22.8 | 16.3 | 47.9 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-124531_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-124531_limit8) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_college_chemistry |  | 472 | MAXN | 12.5 | 122 / 131 | 1398 / 1408 | 41 | 19.1 | 22.8 | 16.3 | 47.9 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-124531_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-124531_limit8) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_college_computer_science |  | 472 | MAXN | 12.5 | 122 / 131 | 1398 / 1408 | 41 | 19.1 | 22.8 | 16.3 | 47.9 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-124531_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-124531_limit8) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_college_mathematics |  | 472 | MAXN | 12.5 | 122 / 131 | 1398 / 1408 | 41 | 19.1 | 22.8 | 16.3 | 47.9 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-124531_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-124531_limit8) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_college_medicine |  | 472 | MAXN | 12.5 | 122 / 131 | 1398 / 1408 | 41 | 19.1 | 22.8 | 16.3 | 47.9 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-124531_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-124531_limit8) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_college_physics |  | 472 | MAXN | 12.5 | 122 / 131 | 1398 / 1408 | 41 | 19.1 | 22.8 | 16.3 | 47.9 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-124531_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-124531_limit8) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_computer_security |  | 472 | MAXN | 12.5 | 122 / 131 | 1398 / 1408 | 41 | 19.1 | 22.8 | 16.3 | 47.9 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-124531_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-124531_limit8) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_conceptual_physics |  | 472 | MAXN | 12.5 | 122 / 131 | 1398 / 1408 | 41 | 19.1 | 22.8 | 16.3 | 47.9 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-124531_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-124531_limit8) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_econometrics |  | 472 | MAXN | 12.5 | 122 / 131 | 1398 / 1408 | 41 | 19.1 | 22.8 | 16.3 | 47.9 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-124531_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-124531_limit8) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_electrical_engineering |  | 472 | MAXN | 12.5 | 122 / 131 | 1398 / 1408 | 41 | 19.1 | 22.8 | 16.3 | 47.9 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-124531_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-124531_limit8) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_elementary_mathematics |  | 472 | MAXN | 12.5 | 122 / 131 | 1398 / 1408 | 41 | 19.1 | 22.8 | 16.3 | 47.9 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-124531_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-124531_limit8) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_formal_logic |  | 472 | MAXN | 12.5 | 122 / 131 | 1398 / 1408 | 41 | 19.1 | 22.8 | 16.3 | 47.9 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-124531_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-124531_limit8) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_global_facts |  | 472 | MAXN | 12.5 | 122 / 131 | 1398 / 1408 | 41 | 19.1 | 22.8 | 16.3 | 47.9 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-124531_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-124531_limit8) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_high_school_biology |  | 472 | MAXN | 12.5 | 122 / 131 | 1398 / 1408 | 41 | 19.1 | 22.8 | 16.3 | 47.9 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-124531_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-124531_limit8) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_high_school_chemistry |  | 472 | MAXN | 12.5 | 122 / 131 | 1398 / 1408 | 41 | 19.1 | 22.8 | 16.3 | 47.9 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-124531_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-124531_limit8) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_high_school_computer_science |  | 472 | MAXN | 12.5 | 122 / 131 | 1398 / 1408 | 41 | 19.1 | 22.8 | 16.3 | 47.9 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-124531_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-124531_limit8) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_high_school_european_history |  | 472 | MAXN | 12.5 | 122 / 131 | 1398 / 1408 | 41 | 19.1 | 22.8 | 16.3 | 47.9 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-124531_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-124531_limit8) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_high_school_geography |  | 472 | MAXN | 12.5 | 122 / 131 | 1398 / 1408 | 41 | 19.1 | 22.8 | 16.3 | 47.9 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-124531_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-124531_limit8) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_high_school_government_and_politics |  | 472 | MAXN | 12.5 | 122 / 131 | 1398 / 1408 | 41 | 19.1 | 22.8 | 16.3 | 47.9 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-124531_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-124531_limit8) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_high_school_macroeconomics |  | 472 | MAXN | 12.5 | 122 / 131 | 1398 / 1408 | 41 | 19.1 | 22.8 | 16.3 | 47.9 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-124531_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-124531_limit8) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_high_school_mathematics |  | 472 | MAXN | 12.5 | 122 / 131 | 1398 / 1408 | 41 | 19.1 | 22.8 | 16.3 | 47.9 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-124531_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-124531_limit8) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_high_school_microeconomics |  | 472 | MAXN | 12.5 | 122 / 131 | 1398 / 1408 | 41 | 19.1 | 22.8 | 16.3 | 47.9 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-124531_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-124531_limit8) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_high_school_physics |  | 472 | MAXN | 12.5 | 122 / 131 | 1398 / 1408 | 41 | 19.1 | 22.8 | 16.3 | 47.9 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-124531_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-124531_limit8) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_high_school_psychology |  | 472 | MAXN | 12.5 | 122 / 131 | 1398 / 1408 | 41 | 19.1 | 22.8 | 16.3 | 47.9 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-124531_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-124531_limit8) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_high_school_statistics |  | 472 | MAXN | 12.5 | 122 / 131 | 1398 / 1408 | 41 | 19.1 | 22.8 | 16.3 | 47.9 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-124531_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-124531_limit8) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_high_school_us_history |  | 472 | MAXN | 12.5 | 122 / 131 | 1398 / 1408 | 41 | 19.1 | 22.8 | 16.3 | 47.9 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-124531_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-124531_limit8) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_high_school_world_history |  | 472 | MAXN | 12.5 | 122 / 131 | 1398 / 1408 | 41 | 19.1 | 22.8 | 16.3 | 47.9 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-124531_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-124531_limit8) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_human_aging |  | 472 | MAXN | 12.5 | 122 / 131 | 1398 / 1408 | 41 | 19.1 | 22.8 | 16.3 | 47.9 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-124531_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-124531_limit8) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_human_sexuality |  | 472 | MAXN | 12.5 | 122 / 131 | 1398 / 1408 | 41 | 19.1 | 22.8 | 16.3 | 47.9 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-124531_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-124531_limit8) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_international_law |  | 472 | MAXN | 12.5 | 122 / 131 | 1398 / 1408 | 41 | 19.1 | 22.8 | 16.3 | 47.9 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-124531_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-124531_limit8) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_jurisprudence |  | 472 | MAXN | 12.5 | 122 / 131 | 1398 / 1408 | 41 | 19.1 | 22.8 | 16.3 | 47.9 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-124531_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-124531_limit8) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_logical_fallacies |  | 472 | MAXN | 12.5 | 122 / 131 | 1398 / 1408 | 41 | 19.1 | 22.8 | 16.3 | 47.9 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-124531_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-124531_limit8) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_machine_learning |  | 472 | MAXN | 12.5 | 122 / 131 | 1398 / 1408 | 41 | 19.1 | 22.8 | 16.3 | 47.9 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-124531_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-124531_limit8) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_management |  | 472 | MAXN | 12.5 | 122 / 131 | 1398 / 1408 | 41 | 19.1 | 22.8 | 16.3 | 47.9 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-124531_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-124531_limit8) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_marketing |  | 472 | MAXN | 12.5 | 122 / 131 | 1398 / 1408 | 41 | 19.1 | 22.8 | 16.3 | 47.9 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-124531_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-124531_limit8) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_medical_genetics |  | 472 | MAXN | 12.5 | 122 / 131 | 1398 / 1408 | 41 | 19.1 | 22.8 | 16.3 | 47.9 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-124531_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-124531_limit8) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_miscellaneous |  | 472 | MAXN | 12.5 | 122 / 131 | 1398 / 1408 | 41 | 19.1 | 22.8 | 16.3 | 47.9 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-124531_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-124531_limit8) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_moral_disputes |  | 472 | MAXN | 12.5 | 122 / 131 | 1398 / 1408 | 41 | 19.1 | 22.8 | 16.3 | 47.9 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-124531_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-124531_limit8) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_moral_scenarios |  | 472 | MAXN | 12.5 | 122 / 131 | 1398 / 1408 | 41 | 19.1 | 22.8 | 16.3 | 47.9 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-124531_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-124531_limit8) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_nutrition |  | 472 | MAXN | 12.5 | 122 / 131 | 1398 / 1408 | 41 | 19.1 | 22.8 | 16.3 | 47.9 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-124531_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-124531_limit8) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_philosophy |  | 472 | MAXN | 12.5 | 122 / 131 | 1398 / 1408 | 41 | 19.1 | 22.8 | 16.3 | 47.9 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-124531_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-124531_limit8) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_prehistory |  | 472 | MAXN | 12.5 | 122 / 131 | 1398 / 1408 | 41 | 19.1 | 22.8 | 16.3 | 47.9 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-124531_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-124531_limit8) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_professional_accounting |  | 472 | MAXN | 12.5 | 122 / 131 | 1398 / 1408 | 41 | 19.1 | 22.8 | 16.3 | 47.9 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-124531_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-124531_limit8) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_professional_law |  | 472 | MAXN | 12.5 | 122 / 131 | 1398 / 1408 | 41 | 19.1 | 22.8 | 16.3 | 47.9 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-124531_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-124531_limit8) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_professional_medicine |  | 472 | MAXN | 12.5 | 122 / 131 | 1398 / 1408 | 41 | 19.1 | 22.8 | 16.3 | 47.9 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-124531_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-124531_limit8) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_professional_psychology |  | 472 | MAXN | 12.5 | 122 / 131 | 1398 / 1408 | 41 | 19.1 | 22.8 | 16.3 | 47.9 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-124531_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-124531_limit8) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_public_relations |  | 472 | MAXN | 12.5 | 122 / 131 | 1398 / 1408 | 41 | 19.1 | 22.8 | 16.3 | 47.9 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-124531_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-124531_limit8) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_security_studies |  | 472 | MAXN | 12.5 | 122 / 131 | 1398 / 1408 | 41 | 19.1 | 22.8 | 16.3 | 47.9 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-124531_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-124531_limit8) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_sociology |  | 472 | MAXN | 12.5 | 122 / 131 | 1398 / 1408 | 41 | 19.1 | 22.8 | 16.3 | 47.9 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-124531_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-124531_limit8) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_us_foreign_policy |  | 472 | MAXN | 12.5 | 122 / 131 | 1398 / 1408 | 41 | 19.1 | 22.8 | 16.3 | 47.9 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-124531_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-124531_limit8) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_virology |  | 472 | MAXN | 12.5 | 122 / 131 | 1398 / 1408 | 41 | 19.1 | 22.8 | 16.3 | 47.9 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-124531_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-124531_limit8) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_world_religions |  | 472 | MAXN | 12.5 | 122 / 131 | 1398 / 1408 | 41 | 19.1 | 22.8 | 16.3 | 47.9 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-124531_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-124531_limit8) |
+| Qwen2.5-3B-Instruct | hf-bf16 | gsm8k_jetson |  | 472 | MAXN | 6.8 | 73 / 74 | 115 / 436 | 41 | 19.0 | 22.9 | 17.8 | 49.1 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-130100_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-130100_limit8) |
+| Qwen2.5-3B-Instruct | hf-bf16 | ifeval | prompt_level_strict_acc: 0.5000<br>inst_level_strict_acc: 0.6429<br>prompt_level_loose_acc: 0.6250<br>inst_level_loose_acc: 0.7143 | 472 | MAXN | 6.8 | 73 / 74 | 115 / 436 | 41 | 19.0 | 22.9 | 17.8 | 49.1 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-130100_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-130100_limit8) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson |  | 472 | MAXN | 6.8 | 73 / 74 | 115 / 436 | 41 | 19.0 | 22.9 | 17.8 | 49.1 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-130100_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-130100_limit8) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_abstract_algebra |  | 472 | MAXN | 6.8 | 73 / 74 | 115 / 436 | 41 | 19.0 | 22.9 | 17.8 | 49.1 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-130100_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-130100_limit8) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_anatomy |  | 472 | MAXN | 6.8 | 73 / 74 | 115 / 436 | 41 | 19.0 | 22.9 | 17.8 | 49.1 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-130100_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-130100_limit8) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_astronomy |  | 472 | MAXN | 6.8 | 73 / 74 | 115 / 436 | 41 | 19.0 | 22.9 | 17.8 | 49.1 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-130100_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-130100_limit8) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_business_ethics |  | 472 | MAXN | 6.8 | 73 / 74 | 115 / 436 | 41 | 19.0 | 22.9 | 17.8 | 49.1 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-130100_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-130100_limit8) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_clinical_knowledge |  | 472 | MAXN | 6.8 | 73 / 74 | 115 / 436 | 41 | 19.0 | 22.9 | 17.8 | 49.1 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-130100_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-130100_limit8) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_college_biology |  | 472 | MAXN | 6.8 | 73 / 74 | 115 / 436 | 41 | 19.0 | 22.9 | 17.8 | 49.1 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-130100_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-130100_limit8) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_college_chemistry |  | 472 | MAXN | 6.8 | 73 / 74 | 115 / 436 | 41 | 19.0 | 22.9 | 17.8 | 49.1 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-130100_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-130100_limit8) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_college_computer_science |  | 472 | MAXN | 6.8 | 73 / 74 | 115 / 436 | 41 | 19.0 | 22.9 | 17.8 | 49.1 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-130100_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-130100_limit8) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_college_mathematics |  | 472 | MAXN | 6.8 | 73 / 74 | 115 / 436 | 41 | 19.0 | 22.9 | 17.8 | 49.1 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-130100_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-130100_limit8) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_college_medicine |  | 472 | MAXN | 6.8 | 73 / 74 | 115 / 436 | 41 | 19.0 | 22.9 | 17.8 | 49.1 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-130100_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-130100_limit8) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_college_physics |  | 472 | MAXN | 6.8 | 73 / 74 | 115 / 436 | 41 | 19.0 | 22.9 | 17.8 | 49.1 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-130100_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-130100_limit8) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_computer_security |  | 472 | MAXN | 6.8 | 73 / 74 | 115 / 436 | 41 | 19.0 | 22.9 | 17.8 | 49.1 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-130100_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-130100_limit8) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_conceptual_physics |  | 472 | MAXN | 6.8 | 73 / 74 | 115 / 436 | 41 | 19.0 | 22.9 | 17.8 | 49.1 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-130100_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-130100_limit8) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_econometrics |  | 472 | MAXN | 6.8 | 73 / 74 | 115 / 436 | 41 | 19.0 | 22.9 | 17.8 | 49.1 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-130100_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-130100_limit8) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_electrical_engineering |  | 472 | MAXN | 6.8 | 73 / 74 | 115 / 436 | 41 | 19.0 | 22.9 | 17.8 | 49.1 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-130100_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-130100_limit8) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_elementary_mathematics |  | 472 | MAXN | 6.8 | 73 / 74 | 115 / 436 | 41 | 19.0 | 22.9 | 17.8 | 49.1 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-130100_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-130100_limit8) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_formal_logic |  | 472 | MAXN | 6.8 | 73 / 74 | 115 / 436 | 41 | 19.0 | 22.9 | 17.8 | 49.1 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-130100_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-130100_limit8) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_global_facts |  | 472 | MAXN | 6.8 | 73 / 74 | 115 / 436 | 41 | 19.0 | 22.9 | 17.8 | 49.1 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-130100_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-130100_limit8) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_high_school_biology |  | 472 | MAXN | 6.8 | 73 / 74 | 115 / 436 | 41 | 19.0 | 22.9 | 17.8 | 49.1 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-130100_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-130100_limit8) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_high_school_chemistry |  | 472 | MAXN | 6.8 | 73 / 74 | 115 / 436 | 41 | 19.0 | 22.9 | 17.8 | 49.1 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-130100_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-130100_limit8) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_high_school_computer_science |  | 472 | MAXN | 6.8 | 73 / 74 | 115 / 436 | 41 | 19.0 | 22.9 | 17.8 | 49.1 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-130100_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-130100_limit8) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_high_school_european_history |  | 472 | MAXN | 6.8 | 73 / 74 | 115 / 436 | 41 | 19.0 | 22.9 | 17.8 | 49.1 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-130100_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-130100_limit8) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_high_school_geography |  | 472 | MAXN | 6.8 | 73 / 74 | 115 / 436 | 41 | 19.0 | 22.9 | 17.8 | 49.1 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-130100_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-130100_limit8) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_high_school_government_and_politics |  | 472 | MAXN | 6.8 | 73 / 74 | 115 / 436 | 41 | 19.0 | 22.9 | 17.8 | 49.1 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-130100_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-130100_limit8) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_high_school_macroeconomics |  | 472 | MAXN | 6.8 | 73 / 74 | 115 / 436 | 41 | 19.0 | 22.9 | 17.8 | 49.1 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-130100_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-130100_limit8) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_high_school_mathematics |  | 472 | MAXN | 6.8 | 73 / 74 | 115 / 436 | 41 | 19.0 | 22.9 | 17.8 | 49.1 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-130100_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-130100_limit8) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_high_school_microeconomics |  | 472 | MAXN | 6.8 | 73 / 74 | 115 / 436 | 41 | 19.0 | 22.9 | 17.8 | 49.1 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-130100_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-130100_limit8) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_high_school_physics |  | 472 | MAXN | 6.8 | 73 / 74 | 115 / 436 | 41 | 19.0 | 22.9 | 17.8 | 49.1 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-130100_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-130100_limit8) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_high_school_psychology |  | 472 | MAXN | 6.8 | 73 / 74 | 115 / 436 | 41 | 19.0 | 22.9 | 17.8 | 49.1 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-130100_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-130100_limit8) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_high_school_statistics |  | 472 | MAXN | 6.8 | 73 / 74 | 115 / 436 | 41 | 19.0 | 22.9 | 17.8 | 49.1 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-130100_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-130100_limit8) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_high_school_us_history |  | 472 | MAXN | 6.8 | 73 / 74 | 115 / 436 | 41 | 19.0 | 22.9 | 17.8 | 49.1 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-130100_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-130100_limit8) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_high_school_world_history |  | 472 | MAXN | 6.8 | 73 / 74 | 115 / 436 | 41 | 19.0 | 22.9 | 17.8 | 49.1 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-130100_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-130100_limit8) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_human_aging |  | 472 | MAXN | 6.8 | 73 / 74 | 115 / 436 | 41 | 19.0 | 22.9 | 17.8 | 49.1 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-130100_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-130100_limit8) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_human_sexuality |  | 472 | MAXN | 6.8 | 73 / 74 | 115 / 436 | 41 | 19.0 | 22.9 | 17.8 | 49.1 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-130100_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-130100_limit8) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_international_law |  | 472 | MAXN | 6.8 | 73 / 74 | 115 / 436 | 41 | 19.0 | 22.9 | 17.8 | 49.1 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-130100_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-130100_limit8) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_jurisprudence |  | 472 | MAXN | 6.8 | 73 / 74 | 115 / 436 | 41 | 19.0 | 22.9 | 17.8 | 49.1 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-130100_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-130100_limit8) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_logical_fallacies |  | 472 | MAXN | 6.8 | 73 / 74 | 115 / 436 | 41 | 19.0 | 22.9 | 17.8 | 49.1 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-130100_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-130100_limit8) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_machine_learning |  | 472 | MAXN | 6.8 | 73 / 74 | 115 / 436 | 41 | 19.0 | 22.9 | 17.8 | 49.1 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-130100_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-130100_limit8) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_management |  | 472 | MAXN | 6.8 | 73 / 74 | 115 / 436 | 41 | 19.0 | 22.9 | 17.8 | 49.1 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-130100_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-130100_limit8) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_marketing |  | 472 | MAXN | 6.8 | 73 / 74 | 115 / 436 | 41 | 19.0 | 22.9 | 17.8 | 49.1 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-130100_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-130100_limit8) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_medical_genetics |  | 472 | MAXN | 6.8 | 73 / 74 | 115 / 436 | 41 | 19.0 | 22.9 | 17.8 | 49.1 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-130100_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-130100_limit8) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_miscellaneous |  | 472 | MAXN | 6.8 | 73 / 74 | 115 / 436 | 41 | 19.0 | 22.9 | 17.8 | 49.1 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-130100_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-130100_limit8) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_moral_disputes |  | 472 | MAXN | 6.8 | 73 / 74 | 115 / 436 | 41 | 19.0 | 22.9 | 17.8 | 49.1 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-130100_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-130100_limit8) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_moral_scenarios |  | 472 | MAXN | 6.8 | 73 / 74 | 115 / 436 | 41 | 19.0 | 22.9 | 17.8 | 49.1 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-130100_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-130100_limit8) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_nutrition |  | 472 | MAXN | 6.8 | 73 / 74 | 115 / 436 | 41 | 19.0 | 22.9 | 17.8 | 49.1 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-130100_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-130100_limit8) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_philosophy |  | 472 | MAXN | 6.8 | 73 / 74 | 115 / 436 | 41 | 19.0 | 22.9 | 17.8 | 49.1 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-130100_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-130100_limit8) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_prehistory |  | 472 | MAXN | 6.8 | 73 / 74 | 115 / 436 | 41 | 19.0 | 22.9 | 17.8 | 49.1 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-130100_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-130100_limit8) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_professional_accounting |  | 472 | MAXN | 6.8 | 73 / 74 | 115 / 436 | 41 | 19.0 | 22.9 | 17.8 | 49.1 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-130100_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-130100_limit8) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_professional_law |  | 472 | MAXN | 6.8 | 73 / 74 | 115 / 436 | 41 | 19.0 | 22.9 | 17.8 | 49.1 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-130100_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-130100_limit8) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_professional_medicine |  | 472 | MAXN | 6.8 | 73 / 74 | 115 / 436 | 41 | 19.0 | 22.9 | 17.8 | 49.1 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-130100_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-130100_limit8) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_professional_psychology |  | 472 | MAXN | 6.8 | 73 / 74 | 115 / 436 | 41 | 19.0 | 22.9 | 17.8 | 49.1 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-130100_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-130100_limit8) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_public_relations |  | 472 | MAXN | 6.8 | 73 / 74 | 115 / 436 | 41 | 19.0 | 22.9 | 17.8 | 49.1 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-130100_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-130100_limit8) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_security_studies |  | 472 | MAXN | 6.8 | 73 / 74 | 115 / 436 | 41 | 19.0 | 22.9 | 17.8 | 49.1 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-130100_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-130100_limit8) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_sociology |  | 472 | MAXN | 6.8 | 73 / 74 | 115 / 436 | 41 | 19.0 | 22.9 | 17.8 | 49.1 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-130100_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-130100_limit8) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_us_foreign_policy |  | 472 | MAXN | 6.8 | 73 / 74 | 115 / 436 | 41 | 19.0 | 22.9 | 17.8 | 49.1 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-130100_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-130100_limit8) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_virology |  | 472 | MAXN | 6.8 | 73 / 74 | 115 / 436 | 41 | 19.0 | 22.9 | 17.8 | 49.1 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-130100_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-130100_limit8) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_world_religions |  | 472 | MAXN | 6.8 | 73 / 74 | 115 / 436 | 41 | 19.0 | 22.9 | 17.8 | 49.1 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-130100_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-130100_limit8) |
+| Qwen2.5-3B-Instruct | llamacpp-f16 | gsm8k_jetson |  | 472 | MAXN | 4.1 | 194 / 196 | 975 / 980 | 25 | 19.0 | 19.9 | 33.6 | 70.0 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/llamacpp-f16/20261008-131340_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/llamacpp-f16/20261008-131340_limit8) |
+| Qwen2.5-3B-Instruct | llamacpp-f16 | ifeval | prompt_level_strict_acc: 0.6250<br>inst_level_strict_acc: 0.7143<br>prompt_level_loose_acc: 0.6250<br>inst_level_loose_acc: 0.7143 | 472 | MAXN | 4.1 | 194 / 196 | 975 / 980 | 25 | 19.0 | 19.9 | 33.6 | 70.0 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/llamacpp-f16/20261008-131340_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/llamacpp-f16/20261008-131340_limit8) |
+| Qwen2.5-3B-Instruct | llamacpp-f16 | mmlu_jetson |  | 472 | MAXN | 4.1 | 194 / 196 | 975 / 980 | 25 | 19.0 | 19.9 | 33.6 | 70.0 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/llamacpp-f16/20261008-131340_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/llamacpp-f16/20261008-131340_limit8) |
+| Qwen2.5-3B-Instruct | llamacpp-f16 | mmlu_jetson_abstract_algebra |  | 472 | MAXN | 4.1 | 194 / 196 | 975 / 980 | 25 | 19.0 | 19.9 | 33.6 | 70.0 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/llamacpp-f16/20261008-131340_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/llamacpp-f16/20261008-131340_limit8) |
+| Qwen2.5-3B-Instruct | llamacpp-f16 | mmlu_jetson_anatomy |  | 472 | MAXN | 4.1 | 194 / 196 | 975 / 980 | 25 | 19.0 | 19.9 | 33.6 | 70.0 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/llamacpp-f16/20261008-131340_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/llamacpp-f16/20261008-131340_limit8) |
+| Qwen2.5-3B-Instruct | llamacpp-f16 | mmlu_jetson_astronomy |  | 472 | MAXN | 4.1 | 194 / 196 | 975 / 980 | 25 | 19.0 | 19.9 | 33.6 | 70.0 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/llamacpp-f16/20261008-131340_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/llamacpp-f16/20261008-131340_limit8) |
+| Qwen2.5-3B-Instruct | llamacpp-f16 | mmlu_jetson_business_ethics |  | 472 | MAXN | 4.1 | 194 / 196 | 975 / 980 | 25 | 19.0 | 19.9 | 33.6 | 70.0 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/llamacpp-f16/20261008-131340_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/llamacpp-f16/20261008-131340_limit8) |
+| Qwen2.5-3B-Instruct | llamacpp-f16 | mmlu_jetson_clinical_knowledge |  | 472 | MAXN | 4.1 | 194 / 196 | 975 / 980 | 25 | 19.0 | 19.9 | 33.6 | 70.0 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/llamacpp-f16/20261008-131340_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/llamacpp-f16/20261008-131340_limit8) |
+| Qwen2.5-3B-Instruct | llamacpp-f16 | mmlu_jetson_college_biology |  | 472 | MAXN | 4.1 | 194 / 196 | 975 / 980 | 25 | 19.0 | 19.9 | 33.6 | 70.0 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/llamacpp-f16/20261008-131340_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/llamacpp-f16/20261008-131340_limit8) |
+| Qwen2.5-3B-Instruct | llamacpp-f16 | mmlu_jetson_college_chemistry |  | 472 | MAXN | 4.1 | 194 / 196 | 975 / 980 | 25 | 19.0 | 19.9 | 33.6 | 70.0 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/llamacpp-f16/20261008-131340_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/llamacpp-f16/20261008-131340_limit8) |
+| Qwen2.5-3B-Instruct | llamacpp-f16 | mmlu_jetson_college_computer_science |  | 472 | MAXN | 4.1 | 194 / 196 | 975 / 980 | 25 | 19.0 | 19.9 | 33.6 | 70.0 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/llamacpp-f16/20261008-131340_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/llamacpp-f16/20261008-131340_limit8) |
+| Qwen2.5-3B-Instruct | llamacpp-f16 | mmlu_jetson_college_mathematics |  | 472 | MAXN | 4.1 | 194 / 196 | 975 / 980 | 25 | 19.0 | 19.9 | 33.6 | 70.0 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/llamacpp-f16/20261008-131340_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/llamacpp-f16/20261008-131340_limit8) |
+| Qwen2.5-3B-Instruct | llamacpp-f16 | mmlu_jetson_college_medicine |  | 472 | MAXN | 4.1 | 194 / 196 | 975 / 980 | 25 | 19.0 | 19.9 | 33.6 | 70.0 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/llamacpp-f16/20261008-131340_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/llamacpp-f16/20261008-131340_limit8) |
+| Qwen2.5-3B-Instruct | llamacpp-f16 | mmlu_jetson_college_physics |  | 472 | MAXN | 4.1 | 194 / 196 | 975 / 980 | 25 | 19.0 | 19.9 | 33.6 | 70.0 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/llamacpp-f16/20261008-131340_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/llamacpp-f16/20261008-131340_limit8) |
+| Qwen2.5-3B-Instruct | llamacpp-f16 | mmlu_jetson_computer_security |  | 472 | MAXN | 4.1 | 194 / 196 | 975 / 980 | 25 | 19.0 | 19.9 | 33.6 | 70.0 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/llamacpp-f16/20261008-131340_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/llamacpp-f16/20261008-131340_limit8) |
+| Qwen2.5-3B-Instruct | llamacpp-f16 | mmlu_jetson_conceptual_physics |  | 472 | MAXN | 4.1 | 194 / 196 | 975 / 980 | 25 | 19.0 | 19.9 | 33.6 | 70.0 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/llamacpp-f16/20261008-131340_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/llamacpp-f16/20261008-131340_limit8) |
+| Qwen2.5-3B-Instruct | llamacpp-f16 | mmlu_jetson_econometrics |  | 472 | MAXN | 4.1 | 194 / 196 | 975 / 980 | 25 | 19.0 | 19.9 | 33.6 | 70.0 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/llamacpp-f16/20261008-131340_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/llamacpp-f16/20261008-131340_limit8) |
+| Qwen2.5-3B-Instruct | llamacpp-f16 | mmlu_jetson_electrical_engineering |  | 472 | MAXN | 4.1 | 194 / 196 | 975 / 980 | 25 | 19.0 | 19.9 | 33.6 | 70.0 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/llamacpp-f16/20261008-131340_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/llamacpp-f16/20261008-131340_limit8) |
+| Qwen2.5-3B-Instruct | llamacpp-f16 | mmlu_jetson_elementary_mathematics |  | 472 | MAXN | 4.1 | 194 / 196 | 975 / 980 | 25 | 19.0 | 19.9 | 33.6 | 70.0 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/llamacpp-f16/20261008-131340_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/llamacpp-f16/20261008-131340_limit8) |
+| Qwen2.5-3B-Instruct | llamacpp-f16 | mmlu_jetson_formal_logic |  | 472 | MAXN | 4.1 | 194 / 196 | 975 / 980 | 25 | 19.0 | 19.9 | 33.6 | 70.0 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/llamacpp-f16/20261008-131340_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/llamacpp-f16/20261008-131340_limit8) |
+| Qwen2.5-3B-Instruct | llamacpp-f16 | mmlu_jetson_global_facts |  | 472 | MAXN | 4.1 | 194 / 196 | 975 / 980 | 25 | 19.0 | 19.9 | 33.6 | 70.0 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/llamacpp-f16/20261008-131340_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/llamacpp-f16/20261008-131340_limit8) |
+| Qwen2.5-3B-Instruct | llamacpp-f16 | mmlu_jetson_high_school_biology |  | 472 | MAXN | 4.1 | 194 / 196 | 975 / 980 | 25 | 19.0 | 19.9 | 33.6 | 70.0 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/llamacpp-f16/20261008-131340_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/llamacpp-f16/20261008-131340_limit8) |
+| Qwen2.5-3B-Instruct | llamacpp-f16 | mmlu_jetson_high_school_chemistry |  | 472 | MAXN | 4.1 | 194 / 196 | 975 / 980 | 25 | 19.0 | 19.9 | 33.6 | 70.0 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/llamacpp-f16/20261008-131340_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/llamacpp-f16/20261008-131340_limit8) |
+| Qwen2.5-3B-Instruct | llamacpp-f16 | mmlu_jetson_high_school_computer_science |  | 472 | MAXN | 4.1 | 194 / 196 | 975 / 980 | 25 | 19.0 | 19.9 | 33.6 | 70.0 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/llamacpp-f16/20261008-131340_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/llamacpp-f16/20261008-131340_limit8) |
+| Qwen2.5-3B-Instruct | llamacpp-f16 | mmlu_jetson_high_school_european_history |  | 472 | MAXN | 4.1 | 194 / 196 | 975 / 980 | 25 | 19.0 | 19.9 | 33.6 | 70.0 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/llamacpp-f16/20261008-131340_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/llamacpp-f16/20261008-131340_limit8) |
+| Qwen2.5-3B-Instruct | llamacpp-f16 | mmlu_jetson_high_school_geography |  | 472 | MAXN | 4.1 | 194 / 196 | 975 / 980 | 25 | 19.0 | 19.9 | 33.6 | 70.0 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/llamacpp-f16/20261008-131340_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/llamacpp-f16/20261008-131340_limit8) |
+| Qwen2.5-3B-Instruct | llamacpp-f16 | mmlu_jetson_high_school_government_and_politics |  | 472 | MAXN | 4.1 | 194 / 196 | 975 / 980 | 25 | 19.0 | 19.9 | 33.6 | 70.0 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/llamacpp-f16/20261008-131340_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/llamacpp-f16/20261008-131340_limit8) |
+| Qwen2.5-3B-Instruct | llamacpp-f16 | mmlu_jetson_high_school_macroeconomics |  | 472 | MAXN | 4.1 | 194 / 196 | 975 / 980 | 25 | 19.0 | 19.9 | 33.6 | 70.0 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/llamacpp-f16/20261008-131340_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/llamacpp-f16/20261008-131340_limit8) |
+| Qwen2.5-3B-Instruct | llamacpp-f16 | mmlu_jetson_high_school_mathematics |  | 472 | MAXN | 4.1 | 194 / 196 | 975 / 980 | 25 | 19.0 | 19.9 | 33.6 | 70.0 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/llamacpp-f16/20261008-131340_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/llamacpp-f16/20261008-131340_limit8) |
+| Qwen2.5-3B-Instruct | llamacpp-f16 | mmlu_jetson_high_school_microeconomics |  | 472 | MAXN | 4.1 | 194 / 196 | 975 / 980 | 25 | 19.0 | 19.9 | 33.6 | 70.0 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/llamacpp-f16/20261008-131340_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/llamacpp-f16/20261008-131340_limit8) |
+| Qwen2.5-3B-Instruct | llamacpp-f16 | mmlu_jetson_high_school_physics |  | 472 | MAXN | 4.1 | 194 / 196 | 975 / 980 | 25 | 19.0 | 19.9 | 33.6 | 70.0 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/llamacpp-f16/20261008-131340_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/llamacpp-f16/20261008-131340_limit8) |
+| Qwen2.5-3B-Instruct | llamacpp-f16 | mmlu_jetson_high_school_psychology |  | 472 | MAXN | 4.1 | 194 / 196 | 975 / 980 | 25 | 19.0 | 19.9 | 33.6 | 70.0 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/llamacpp-f16/20261008-131340_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/llamacpp-f16/20261008-131340_limit8) |
+| Qwen2.5-3B-Instruct | llamacpp-f16 | mmlu_jetson_high_school_statistics |  | 472 | MAXN | 4.1 | 194 / 196 | 975 / 980 | 25 | 19.0 | 19.9 | 33.6 | 70.0 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/llamacpp-f16/20261008-131340_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/llamacpp-f16/20261008-131340_limit8) |
+| Qwen2.5-3B-Instruct | llamacpp-f16 | mmlu_jetson_high_school_us_history |  | 472 | MAXN | 4.1 | 194 / 196 | 975 / 980 | 25 | 19.0 | 19.9 | 33.6 | 70.0 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/llamacpp-f16/20261008-131340_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/llamacpp-f16/20261008-131340_limit8) |
+| Qwen2.5-3B-Instruct | llamacpp-f16 | mmlu_jetson_high_school_world_history |  | 472 | MAXN | 4.1 | 194 / 196 | 975 / 980 | 25 | 19.0 | 19.9 | 33.6 | 70.0 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/llamacpp-f16/20261008-131340_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/llamacpp-f16/20261008-131340_limit8) |
+| Qwen2.5-3B-Instruct | llamacpp-f16 | mmlu_jetson_human_aging |  | 472 | MAXN | 4.1 | 194 / 196 | 975 / 980 | 25 | 19.0 | 19.9 | 33.6 | 70.0 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/llamacpp-f16/20261008-131340_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/llamacpp-f16/20261008-131340_limit8) |
+| Qwen2.5-3B-Instruct | llamacpp-f16 | mmlu_jetson_human_sexuality |  | 472 | MAXN | 4.1 | 194 / 196 | 975 / 980 | 25 | 19.0 | 19.9 | 33.6 | 70.0 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/llamacpp-f16/20261008-131340_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/llamacpp-f16/20261008-131340_limit8) |
+| Qwen2.5-3B-Instruct | llamacpp-f16 | mmlu_jetson_international_law |  | 472 | MAXN | 4.1 | 194 / 196 | 975 / 980 | 25 | 19.0 | 19.9 | 33.6 | 70.0 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/llamacpp-f16/20261008-131340_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/llamacpp-f16/20261008-131340_limit8) |
+| Qwen2.5-3B-Instruct | llamacpp-f16 | mmlu_jetson_jurisprudence |  | 472 | MAXN | 4.1 | 194 / 196 | 975 / 980 | 25 | 19.0 | 19.9 | 33.6 | 70.0 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/llamacpp-f16/20261008-131340_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/llamacpp-f16/20261008-131340_limit8) |
+| Qwen2.5-3B-Instruct | llamacpp-f16 | mmlu_jetson_logical_fallacies |  | 472 | MAXN | 4.1 | 194 / 196 | 975 / 980 | 25 | 19.0 | 19.9 | 33.6 | 70.0 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/llamacpp-f16/20261008-131340_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/llamacpp-f16/20261008-131340_limit8) |
+| Qwen2.5-3B-Instruct | llamacpp-f16 | mmlu_jetson_machine_learning |  | 472 | MAXN | 4.1 | 194 / 196 | 975 / 980 | 25 | 19.0 | 19.9 | 33.6 | 70.0 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/llamacpp-f16/20261008-131340_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/llamacpp-f16/20261008-131340_limit8) |
+| Qwen2.5-3B-Instruct | llamacpp-f16 | mmlu_jetson_management |  | 472 | MAXN | 4.1 | 194 / 196 | 975 / 980 | 25 | 19.0 | 19.9 | 33.6 | 70.0 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/llamacpp-f16/20261008-131340_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/llamacpp-f16/20261008-131340_limit8) |
+| Qwen2.5-3B-Instruct | llamacpp-f16 | mmlu_jetson_marketing |  | 472 | MAXN | 4.1 | 194 / 196 | 975 / 980 | 25 | 19.0 | 19.9 | 33.6 | 70.0 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/llamacpp-f16/20261008-131340_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/llamacpp-f16/20261008-131340_limit8) |
+| Qwen2.5-3B-Instruct | llamacpp-f16 | mmlu_jetson_medical_genetics |  | 472 | MAXN | 4.1 | 194 / 196 | 975 / 980 | 25 | 19.0 | 19.9 | 33.6 | 70.0 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/llamacpp-f16/20261008-131340_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/llamacpp-f16/20261008-131340_limit8) |
+| Qwen2.5-3B-Instruct | llamacpp-f16 | mmlu_jetson_miscellaneous |  | 472 | MAXN | 4.1 | 194 / 196 | 975 / 980 | 25 | 19.0 | 19.9 | 33.6 | 70.0 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/llamacpp-f16/20261008-131340_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/llamacpp-f16/20261008-131340_limit8) |
+| Qwen2.5-3B-Instruct | llamacpp-f16 | mmlu_jetson_moral_disputes |  | 472 | MAXN | 4.1 | 194 / 196 | 975 / 980 | 25 | 19.0 | 19.9 | 33.6 | 70.0 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/llamacpp-f16/20261008-131340_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/llamacpp-f16/20261008-131340_limit8) |
+| Qwen2.5-3B-Instruct | llamacpp-f16 | mmlu_jetson_moral_scenarios |  | 472 | MAXN | 4.1 | 194 / 196 | 975 / 980 | 25 | 19.0 | 19.9 | 33.6 | 70.0 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/llamacpp-f16/20261008-131340_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/llamacpp-f16/20261008-131340_limit8) |
+| Qwen2.5-3B-Instruct | llamacpp-f16 | mmlu_jetson_nutrition |  | 472 | MAXN | 4.1 | 194 / 196 | 975 / 980 | 25 | 19.0 | 19.9 | 33.6 | 70.0 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/llamacpp-f16/20261008-131340_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/llamacpp-f16/20261008-131340_limit8) |
+| Qwen2.5-3B-Instruct | llamacpp-f16 | mmlu_jetson_philosophy |  | 472 | MAXN | 4.1 | 194 / 196 | 975 / 980 | 25 | 19.0 | 19.9 | 33.6 | 70.0 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/llamacpp-f16/20261008-131340_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/llamacpp-f16/20261008-131340_limit8) |
+| Qwen2.5-3B-Instruct | llamacpp-f16 | mmlu_jetson_prehistory |  | 472 | MAXN | 4.1 | 194 / 196 | 975 / 980 | 25 | 19.0 | 19.9 | 33.6 | 70.0 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/llamacpp-f16/20261008-131340_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/llamacpp-f16/20261008-131340_limit8) |
+| Qwen2.5-3B-Instruct | llamacpp-f16 | mmlu_jetson_professional_accounting |  | 472 | MAXN | 4.1 | 194 / 196 | 975 / 980 | 25 | 19.0 | 19.9 | 33.6 | 70.0 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/llamacpp-f16/20261008-131340_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/llamacpp-f16/20261008-131340_limit8) |
+| Qwen2.5-3B-Instruct | llamacpp-f16 | mmlu_jetson_professional_law |  | 472 | MAXN | 4.1 | 194 / 196 | 975 / 980 | 25 | 19.0 | 19.9 | 33.6 | 70.0 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/llamacpp-f16/20261008-131340_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/llamacpp-f16/20261008-131340_limit8) |
+| Qwen2.5-3B-Instruct | llamacpp-f16 | mmlu_jetson_professional_medicine |  | 472 | MAXN | 4.1 | 194 / 196 | 975 / 980 | 25 | 19.0 | 19.9 | 33.6 | 70.0 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/llamacpp-f16/20261008-131340_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/llamacpp-f16/20261008-131340_limit8) |
+| Qwen2.5-3B-Instruct | llamacpp-f16 | mmlu_jetson_professional_psychology |  | 472 | MAXN | 4.1 | 194 / 196 | 975 / 980 | 25 | 19.0 | 19.9 | 33.6 | 70.0 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/llamacpp-f16/20261008-131340_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/llamacpp-f16/20261008-131340_limit8) |
+| Qwen2.5-3B-Instruct | llamacpp-f16 | mmlu_jetson_public_relations |  | 472 | MAXN | 4.1 | 194 / 196 | 975 / 980 | 25 | 19.0 | 19.9 | 33.6 | 70.0 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/llamacpp-f16/20261008-131340_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/llamacpp-f16/20261008-131340_limit8) |
+| Qwen2.5-3B-Instruct | llamacpp-f16 | mmlu_jetson_security_studies |  | 472 | MAXN | 4.1 | 194 / 196 | 975 / 980 | 25 | 19.0 | 19.9 | 33.6 | 70.0 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/llamacpp-f16/20261008-131340_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/llamacpp-f16/20261008-131340_limit8) |
+| Qwen2.5-3B-Instruct | llamacpp-f16 | mmlu_jetson_sociology |  | 472 | MAXN | 4.1 | 194 / 196 | 975 / 980 | 25 | 19.0 | 19.9 | 33.6 | 70.0 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/llamacpp-f16/20261008-131340_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/llamacpp-f16/20261008-131340_limit8) |
+| Qwen2.5-3B-Instruct | llamacpp-f16 | mmlu_jetson_us_foreign_policy |  | 472 | MAXN | 4.1 | 194 / 196 | 975 / 980 | 25 | 19.0 | 19.9 | 33.6 | 70.0 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/llamacpp-f16/20261008-131340_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/llamacpp-f16/20261008-131340_limit8) |
+| Qwen2.5-3B-Instruct | llamacpp-f16 | mmlu_jetson_virology |  | 472 | MAXN | 4.1 | 194 / 196 | 975 / 980 | 25 | 19.0 | 19.9 | 33.6 | 70.0 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/llamacpp-f16/20261008-131340_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/llamacpp-f16/20261008-131340_limit8) |
+| Qwen2.5-3B-Instruct | llamacpp-f16 | mmlu_jetson_world_religions |  | 472 | MAXN | 4.1 | 194 / 196 | 975 / 980 | 25 | 19.0 | 19.9 | 33.6 | 70.0 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/llamacpp-f16/20261008-131340_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/llamacpp-f16/20261008-131340_limit8) |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | gsm8k_jetson |  | 472 | MAXN | 4.4 | ~52 (avg) | - | 26 | 19.0 | 19.8 | 35.0 | 72.5 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/trt_edgellm-fp16/20261008-131804_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/trt_edgellm-fp16/20261008-131804_limit8) |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | ifeval | prompt_level_strict_acc: 0.6250<br>inst_level_strict_acc: 0.7143<br>prompt_level_loose_acc: 0.6250<br>inst_level_loose_acc: 0.7143 | 472 | MAXN | 4.4 | ~52 (avg) | - | 26 | 19.0 | 19.8 | 35.0 | 72.5 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/trt_edgellm-fp16/20261008-131804_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/trt_edgellm-fp16/20261008-131804_limit8) |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | mmlu_jetson |  | 472 | MAXN | 4.4 | ~52 (avg) | - | 26 | 19.0 | 19.8 | 35.0 | 72.5 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/trt_edgellm-fp16/20261008-131804_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/trt_edgellm-fp16/20261008-131804_limit8) |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | mmlu_jetson_abstract_algebra |  | 472 | MAXN | 4.4 | ~52 (avg) | - | 26 | 19.0 | 19.8 | 35.0 | 72.5 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/trt_edgellm-fp16/20261008-131804_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/trt_edgellm-fp16/20261008-131804_limit8) |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | mmlu_jetson_anatomy |  | 472 | MAXN | 4.4 | ~52 (avg) | - | 26 | 19.0 | 19.8 | 35.0 | 72.5 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/trt_edgellm-fp16/20261008-131804_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/trt_edgellm-fp16/20261008-131804_limit8) |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | mmlu_jetson_astronomy |  | 472 | MAXN | 4.4 | ~52 (avg) | - | 26 | 19.0 | 19.8 | 35.0 | 72.5 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/trt_edgellm-fp16/20261008-131804_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/trt_edgellm-fp16/20261008-131804_limit8) |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | mmlu_jetson_business_ethics |  | 472 | MAXN | 4.4 | ~52 (avg) | - | 26 | 19.0 | 19.8 | 35.0 | 72.5 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/trt_edgellm-fp16/20261008-131804_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/trt_edgellm-fp16/20261008-131804_limit8) |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | mmlu_jetson_clinical_knowledge |  | 472 | MAXN | 4.4 | ~52 (avg) | - | 26 | 19.0 | 19.8 | 35.0 | 72.5 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/trt_edgellm-fp16/20261008-131804_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/trt_edgellm-fp16/20261008-131804_limit8) |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | mmlu_jetson_college_biology |  | 472 | MAXN | 4.4 | ~52 (avg) | - | 26 | 19.0 | 19.8 | 35.0 | 72.5 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/trt_edgellm-fp16/20261008-131804_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/trt_edgellm-fp16/20261008-131804_limit8) |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | mmlu_jetson_college_chemistry |  | 472 | MAXN | 4.4 | ~52 (avg) | - | 26 | 19.0 | 19.8 | 35.0 | 72.5 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/trt_edgellm-fp16/20261008-131804_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/trt_edgellm-fp16/20261008-131804_limit8) |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | mmlu_jetson_college_computer_science |  | 472 | MAXN | 4.4 | ~52 (avg) | - | 26 | 19.0 | 19.8 | 35.0 | 72.5 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/trt_edgellm-fp16/20261008-131804_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/trt_edgellm-fp16/20261008-131804_limit8) |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | mmlu_jetson_college_mathematics |  | 472 | MAXN | 4.4 | ~52 (avg) | - | 26 | 19.0 | 19.8 | 35.0 | 72.5 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/trt_edgellm-fp16/20261008-131804_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/trt_edgellm-fp16/20261008-131804_limit8) |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | mmlu_jetson_college_medicine |  | 472 | MAXN | 4.4 | ~52 (avg) | - | 26 | 19.0 | 19.8 | 35.0 | 72.5 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/trt_edgellm-fp16/20261008-131804_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/trt_edgellm-fp16/20261008-131804_limit8) |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | mmlu_jetson_college_physics |  | 472 | MAXN | 4.4 | ~52 (avg) | - | 26 | 19.0 | 19.8 | 35.0 | 72.5 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/trt_edgellm-fp16/20261008-131804_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/trt_edgellm-fp16/20261008-131804_limit8) |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | mmlu_jetson_computer_security |  | 472 | MAXN | 4.4 | ~52 (avg) | - | 26 | 19.0 | 19.8 | 35.0 | 72.5 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/trt_edgellm-fp16/20261008-131804_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/trt_edgellm-fp16/20261008-131804_limit8) |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | mmlu_jetson_conceptual_physics |  | 472 | MAXN | 4.4 | ~52 (avg) | - | 26 | 19.0 | 19.8 | 35.0 | 72.5 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/trt_edgellm-fp16/20261008-131804_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/trt_edgellm-fp16/20261008-131804_limit8) |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | mmlu_jetson_econometrics |  | 472 | MAXN | 4.4 | ~52 (avg) | - | 26 | 19.0 | 19.8 | 35.0 | 72.5 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/trt_edgellm-fp16/20261008-131804_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/trt_edgellm-fp16/20261008-131804_limit8) |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | mmlu_jetson_electrical_engineering |  | 472 | MAXN | 4.4 | ~52 (avg) | - | 26 | 19.0 | 19.8 | 35.0 | 72.5 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/trt_edgellm-fp16/20261008-131804_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/trt_edgellm-fp16/20261008-131804_limit8) |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | mmlu_jetson_elementary_mathematics |  | 472 | MAXN | 4.4 | ~52 (avg) | - | 26 | 19.0 | 19.8 | 35.0 | 72.5 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/trt_edgellm-fp16/20261008-131804_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/trt_edgellm-fp16/20261008-131804_limit8) |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | mmlu_jetson_formal_logic |  | 472 | MAXN | 4.4 | ~52 (avg) | - | 26 | 19.0 | 19.8 | 35.0 | 72.5 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/trt_edgellm-fp16/20261008-131804_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/trt_edgellm-fp16/20261008-131804_limit8) |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | mmlu_jetson_global_facts |  | 472 | MAXN | 4.4 | ~52 (avg) | - | 26 | 19.0 | 19.8 | 35.0 | 72.5 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/trt_edgellm-fp16/20261008-131804_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/trt_edgellm-fp16/20261008-131804_limit8) |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | mmlu_jetson_high_school_biology |  | 472 | MAXN | 4.4 | ~52 (avg) | - | 26 | 19.0 | 19.8 | 35.0 | 72.5 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/trt_edgellm-fp16/20261008-131804_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/trt_edgellm-fp16/20261008-131804_limit8) |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | mmlu_jetson_high_school_chemistry |  | 472 | MAXN | 4.4 | ~52 (avg) | - | 26 | 19.0 | 19.8 | 35.0 | 72.5 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/trt_edgellm-fp16/20261008-131804_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/trt_edgellm-fp16/20261008-131804_limit8) |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | mmlu_jetson_high_school_computer_science |  | 472 | MAXN | 4.4 | ~52 (avg) | - | 26 | 19.0 | 19.8 | 35.0 | 72.5 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/trt_edgellm-fp16/20261008-131804_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/trt_edgellm-fp16/20261008-131804_limit8) |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | mmlu_jetson_high_school_european_history |  | 472 | MAXN | 4.4 | ~52 (avg) | - | 26 | 19.0 | 19.8 | 35.0 | 72.5 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/trt_edgellm-fp16/20261008-131804_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/trt_edgellm-fp16/20261008-131804_limit8) |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | mmlu_jetson_high_school_geography |  | 472 | MAXN | 4.4 | ~52 (avg) | - | 26 | 19.0 | 19.8 | 35.0 | 72.5 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/trt_edgellm-fp16/20261008-131804_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/trt_edgellm-fp16/20261008-131804_limit8) |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | mmlu_jetson_high_school_government_and_politics |  | 472 | MAXN | 4.4 | ~52 (avg) | - | 26 | 19.0 | 19.8 | 35.0 | 72.5 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/trt_edgellm-fp16/20261008-131804_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/trt_edgellm-fp16/20261008-131804_limit8) |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | mmlu_jetson_high_school_macroeconomics |  | 472 | MAXN | 4.4 | ~52 (avg) | - | 26 | 19.0 | 19.8 | 35.0 | 72.5 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/trt_edgellm-fp16/20261008-131804_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/trt_edgellm-fp16/20261008-131804_limit8) |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | mmlu_jetson_high_school_mathematics |  | 472 | MAXN | 4.4 | ~52 (avg) | - | 26 | 19.0 | 19.8 | 35.0 | 72.5 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/trt_edgellm-fp16/20261008-131804_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/trt_edgellm-fp16/20261008-131804_limit8) |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | mmlu_jetson_high_school_microeconomics |  | 472 | MAXN | 4.4 | ~52 (avg) | - | 26 | 19.0 | 19.8 | 35.0 | 72.5 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/trt_edgellm-fp16/20261008-131804_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/trt_edgellm-fp16/20261008-131804_limit8) |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | mmlu_jetson_high_school_physics |  | 472 | MAXN | 4.4 | ~52 (avg) | - | 26 | 19.0 | 19.8 | 35.0 | 72.5 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/trt_edgellm-fp16/20261008-131804_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/trt_edgellm-fp16/20261008-131804_limit8) |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | mmlu_jetson_high_school_psychology |  | 472 | MAXN | 4.4 | ~52 (avg) | - | 26 | 19.0 | 19.8 | 35.0 | 72.5 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/trt_edgellm-fp16/20261008-131804_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/trt_edgellm-fp16/20261008-131804_limit8) |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | mmlu_jetson_high_school_statistics |  | 472 | MAXN | 4.4 | ~52 (avg) | - | 26 | 19.0 | 19.8 | 35.0 | 72.5 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/trt_edgellm-fp16/20261008-131804_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/trt_edgellm-fp16/20261008-131804_limit8) |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | mmlu_jetson_high_school_us_history |  | 472 | MAXN | 4.4 | ~52 (avg) | - | 26 | 19.0 | 19.8 | 35.0 | 72.5 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/trt_edgellm-fp16/20261008-131804_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/trt_edgellm-fp16/20261008-131804_limit8) |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | mmlu_jetson_high_school_world_history |  | 472 | MAXN | 4.4 | ~52 (avg) | - | 26 | 19.0 | 19.8 | 35.0 | 72.5 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/trt_edgellm-fp16/20261008-131804_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/trt_edgellm-fp16/20261008-131804_limit8) |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | mmlu_jetson_human_aging |  | 472 | MAXN | 4.4 | ~52 (avg) | - | 26 | 19.0 | 19.8 | 35.0 | 72.5 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/trt_edgellm-fp16/20261008-131804_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/trt_edgellm-fp16/20261008-131804_limit8) |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | mmlu_jetson_human_sexuality |  | 472 | MAXN | 4.4 | ~52 (avg) | - | 26 | 19.0 | 19.8 | 35.0 | 72.5 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/trt_edgellm-fp16/20261008-131804_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/trt_edgellm-fp16/20261008-131804_limit8) |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | mmlu_jetson_international_law |  | 472 | MAXN | 4.4 | ~52 (avg) | - | 26 | 19.0 | 19.8 | 35.0 | 72.5 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/trt_edgellm-fp16/20261008-131804_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/trt_edgellm-fp16/20261008-131804_limit8) |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | mmlu_jetson_jurisprudence |  | 472 | MAXN | 4.4 | ~52 (avg) | - | 26 | 19.0 | 19.8 | 35.0 | 72.5 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/trt_edgellm-fp16/20261008-131804_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/trt_edgellm-fp16/20261008-131804_limit8) |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | mmlu_jetson_logical_fallacies |  | 472 | MAXN | 4.4 | ~52 (avg) | - | 26 | 19.0 | 19.8 | 35.0 | 72.5 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/trt_edgellm-fp16/20261008-131804_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/trt_edgellm-fp16/20261008-131804_limit8) |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | mmlu_jetson_machine_learning |  | 472 | MAXN | 4.4 | ~52 (avg) | - | 26 | 19.0 | 19.8 | 35.0 | 72.5 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/trt_edgellm-fp16/20261008-131804_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/trt_edgellm-fp16/20261008-131804_limit8) |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | mmlu_jetson_management |  | 472 | MAXN | 4.4 | ~52 (avg) | - | 26 | 19.0 | 19.8 | 35.0 | 72.5 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/trt_edgellm-fp16/20261008-131804_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/trt_edgellm-fp16/20261008-131804_limit8) |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | mmlu_jetson_marketing |  | 472 | MAXN | 4.4 | ~52 (avg) | - | 26 | 19.0 | 19.8 | 35.0 | 72.5 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/trt_edgellm-fp16/20261008-131804_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/trt_edgellm-fp16/20261008-131804_limit8) |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | mmlu_jetson_medical_genetics |  | 472 | MAXN | 4.4 | ~52 (avg) | - | 26 | 19.0 | 19.8 | 35.0 | 72.5 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/trt_edgellm-fp16/20261008-131804_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/trt_edgellm-fp16/20261008-131804_limit8) |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | mmlu_jetson_miscellaneous |  | 472 | MAXN | 4.4 | ~52 (avg) | - | 26 | 19.0 | 19.8 | 35.0 | 72.5 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/trt_edgellm-fp16/20261008-131804_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/trt_edgellm-fp16/20261008-131804_limit8) |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | mmlu_jetson_moral_disputes |  | 472 | MAXN | 4.4 | ~52 (avg) | - | 26 | 19.0 | 19.8 | 35.0 | 72.5 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/trt_edgellm-fp16/20261008-131804_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/trt_edgellm-fp16/20261008-131804_limit8) |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | mmlu_jetson_moral_scenarios |  | 472 | MAXN | 4.4 | ~52 (avg) | - | 26 | 19.0 | 19.8 | 35.0 | 72.5 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/trt_edgellm-fp16/20261008-131804_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/trt_edgellm-fp16/20261008-131804_limit8) |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | mmlu_jetson_nutrition |  | 472 | MAXN | 4.4 | ~52 (avg) | - | 26 | 19.0 | 19.8 | 35.0 | 72.5 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/trt_edgellm-fp16/20261008-131804_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/trt_edgellm-fp16/20261008-131804_limit8) |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | mmlu_jetson_philosophy |  | 472 | MAXN | 4.4 | ~52 (avg) | - | 26 | 19.0 | 19.8 | 35.0 | 72.5 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/trt_edgellm-fp16/20261008-131804_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/trt_edgellm-fp16/20261008-131804_limit8) |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | mmlu_jetson_prehistory |  | 472 | MAXN | 4.4 | ~52 (avg) | - | 26 | 19.0 | 19.8 | 35.0 | 72.5 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/trt_edgellm-fp16/20261008-131804_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/trt_edgellm-fp16/20261008-131804_limit8) |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | mmlu_jetson_professional_accounting |  | 472 | MAXN | 4.4 | ~52 (avg) | - | 26 | 19.0 | 19.8 | 35.0 | 72.5 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/trt_edgellm-fp16/20261008-131804_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/trt_edgellm-fp16/20261008-131804_limit8) |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | mmlu_jetson_professional_law |  | 472 | MAXN | 4.4 | ~52 (avg) | - | 26 | 19.0 | 19.8 | 35.0 | 72.5 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/trt_edgellm-fp16/20261008-131804_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/trt_edgellm-fp16/20261008-131804_limit8) |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | mmlu_jetson_professional_medicine |  | 472 | MAXN | 4.4 | ~52 (avg) | - | 26 | 19.0 | 19.8 | 35.0 | 72.5 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/trt_edgellm-fp16/20261008-131804_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/trt_edgellm-fp16/20261008-131804_limit8) |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | mmlu_jetson_professional_psychology |  | 472 | MAXN | 4.4 | ~52 (avg) | - | 26 | 19.0 | 19.8 | 35.0 | 72.5 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/trt_edgellm-fp16/20261008-131804_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/trt_edgellm-fp16/20261008-131804_limit8) |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | mmlu_jetson_public_relations |  | 472 | MAXN | 4.4 | ~52 (avg) | - | 26 | 19.0 | 19.8 | 35.0 | 72.5 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/trt_edgellm-fp16/20261008-131804_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/trt_edgellm-fp16/20261008-131804_limit8) |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | mmlu_jetson_security_studies |  | 472 | MAXN | 4.4 | ~52 (avg) | - | 26 | 19.0 | 19.8 | 35.0 | 72.5 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/trt_edgellm-fp16/20261008-131804_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/trt_edgellm-fp16/20261008-131804_limit8) |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | mmlu_jetson_sociology |  | 472 | MAXN | 4.4 | ~52 (avg) | - | 26 | 19.0 | 19.8 | 35.0 | 72.5 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/trt_edgellm-fp16/20261008-131804_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/trt_edgellm-fp16/20261008-131804_limit8) |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | mmlu_jetson_us_foreign_policy |  | 472 | MAXN | 4.4 | ~52 (avg) | - | 26 | 19.0 | 19.8 | 35.0 | 72.5 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/trt_edgellm-fp16/20261008-131804_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/trt_edgellm-fp16/20261008-131804_limit8) |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | mmlu_jetson_virology |  | 472 | MAXN | 4.4 | ~52 (avg) | - | 26 | 19.0 | 19.8 | 35.0 | 72.5 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/trt_edgellm-fp16/20261008-131804_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/trt_edgellm-fp16/20261008-131804_limit8) |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | mmlu_jetson_world_religions |  | 472 | MAXN | 4.4 | ~52 (avg) | - | 26 | 19.0 | 19.8 | 35.0 | 72.5 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/trt_edgellm-fp16/20261008-131804_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/trt_edgellm-fp16/20261008-131804_limit8) |
+| Qwen2.5-3B-Instruct | vllm-bf16 | gsm8k_jetson |  | 472 | MAXN | 5.4 | 52 / 52 | 168 / 863 | 26 | 19.1 | 23.0 | 19.7 | 55.4 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/vllm-bf16/20261008-130803_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/vllm-bf16/20261008-130803_limit8) |
+| Qwen2.5-3B-Instruct | vllm-bf16 | ifeval | prompt_level_strict_acc: 0.6250<br>inst_level_strict_acc: 0.7143<br>prompt_level_loose_acc: 0.6250<br>inst_level_loose_acc: 0.7143 | 472 | MAXN | 5.4 | 52 / 52 | 168 / 863 | 26 | 19.1 | 23.0 | 19.7 | 55.4 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/vllm-bf16/20261008-130803_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/vllm-bf16/20261008-130803_limit8) |
+| Qwen2.5-3B-Instruct | vllm-bf16 | mmlu_jetson |  | 472 | MAXN | 5.4 | 52 / 52 | 168 / 863 | 26 | 19.1 | 23.0 | 19.7 | 55.4 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/vllm-bf16/20261008-130803_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/vllm-bf16/20261008-130803_limit8) |
+| Qwen2.5-3B-Instruct | vllm-bf16 | mmlu_jetson_abstract_algebra |  | 472 | MAXN | 5.4 | 52 / 52 | 168 / 863 | 26 | 19.1 | 23.0 | 19.7 | 55.4 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/vllm-bf16/20261008-130803_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/vllm-bf16/20261008-130803_limit8) |
+| Qwen2.5-3B-Instruct | vllm-bf16 | mmlu_jetson_anatomy |  | 472 | MAXN | 5.4 | 52 / 52 | 168 / 863 | 26 | 19.1 | 23.0 | 19.7 | 55.4 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/vllm-bf16/20261008-130803_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/vllm-bf16/20261008-130803_limit8) |
+| Qwen2.5-3B-Instruct | vllm-bf16 | mmlu_jetson_astronomy |  | 472 | MAXN | 5.4 | 52 / 52 | 168 / 863 | 26 | 19.1 | 23.0 | 19.7 | 55.4 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/vllm-bf16/20261008-130803_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/vllm-bf16/20261008-130803_limit8) |
+| Qwen2.5-3B-Instruct | vllm-bf16 | mmlu_jetson_business_ethics |  | 472 | MAXN | 5.4 | 52 / 52 | 168 / 863 | 26 | 19.1 | 23.0 | 19.7 | 55.4 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/vllm-bf16/20261008-130803_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/vllm-bf16/20261008-130803_limit8) |
+| Qwen2.5-3B-Instruct | vllm-bf16 | mmlu_jetson_clinical_knowledge |  | 472 | MAXN | 5.4 | 52 / 52 | 168 / 863 | 26 | 19.1 | 23.0 | 19.7 | 55.4 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/vllm-bf16/20261008-130803_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/vllm-bf16/20261008-130803_limit8) |
+| Qwen2.5-3B-Instruct | vllm-bf16 | mmlu_jetson_college_biology |  | 472 | MAXN | 5.4 | 52 / 52 | 168 / 863 | 26 | 19.1 | 23.0 | 19.7 | 55.4 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/vllm-bf16/20261008-130803_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/vllm-bf16/20261008-130803_limit8) |
+| Qwen2.5-3B-Instruct | vllm-bf16 | mmlu_jetson_college_chemistry |  | 472 | MAXN | 5.4 | 52 / 52 | 168 / 863 | 26 | 19.1 | 23.0 | 19.7 | 55.4 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/vllm-bf16/20261008-130803_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/vllm-bf16/20261008-130803_limit8) |
+| Qwen2.5-3B-Instruct | vllm-bf16 | mmlu_jetson_college_computer_science |  | 472 | MAXN | 5.4 | 52 / 52 | 168 / 863 | 26 | 19.1 | 23.0 | 19.7 | 55.4 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/vllm-bf16/20261008-130803_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/vllm-bf16/20261008-130803_limit8) |
+| Qwen2.5-3B-Instruct | vllm-bf16 | mmlu_jetson_college_mathematics |  | 472 | MAXN | 5.4 | 52 / 52 | 168 / 863 | 26 | 19.1 | 23.0 | 19.7 | 55.4 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/vllm-bf16/20261008-130803_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/vllm-bf16/20261008-130803_limit8) |
+| Qwen2.5-3B-Instruct | vllm-bf16 | mmlu_jetson_college_medicine |  | 472 | MAXN | 5.4 | 52 / 52 | 168 / 863 | 26 | 19.1 | 23.0 | 19.7 | 55.4 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/vllm-bf16/20261008-130803_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/vllm-bf16/20261008-130803_limit8) |
+| Qwen2.5-3B-Instruct | vllm-bf16 | mmlu_jetson_college_physics |  | 472 | MAXN | 5.4 | 52 / 52 | 168 / 863 | 26 | 19.1 | 23.0 | 19.7 | 55.4 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/vllm-bf16/20261008-130803_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/vllm-bf16/20261008-130803_limit8) |
+| Qwen2.5-3B-Instruct | vllm-bf16 | mmlu_jetson_computer_security |  | 472 | MAXN | 5.4 | 52 / 52 | 168 / 863 | 26 | 19.1 | 23.0 | 19.7 | 55.4 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/vllm-bf16/20261008-130803_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/vllm-bf16/20261008-130803_limit8) |
+| Qwen2.5-3B-Instruct | vllm-bf16 | mmlu_jetson_conceptual_physics |  | 472 | MAXN | 5.4 | 52 / 52 | 168 / 863 | 26 | 19.1 | 23.0 | 19.7 | 55.4 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/vllm-bf16/20261008-130803_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/vllm-bf16/20261008-130803_limit8) |
+| Qwen2.5-3B-Instruct | vllm-bf16 | mmlu_jetson_econometrics |  | 472 | MAXN | 5.4 | 52 / 52 | 168 / 863 | 26 | 19.1 | 23.0 | 19.7 | 55.4 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/vllm-bf16/20261008-130803_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/vllm-bf16/20261008-130803_limit8) |
+| Qwen2.5-3B-Instruct | vllm-bf16 | mmlu_jetson_electrical_engineering |  | 472 | MAXN | 5.4 | 52 / 52 | 168 / 863 | 26 | 19.1 | 23.0 | 19.7 | 55.4 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/vllm-bf16/20261008-130803_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/vllm-bf16/20261008-130803_limit8) |
+| Qwen2.5-3B-Instruct | vllm-bf16 | mmlu_jetson_elementary_mathematics |  | 472 | MAXN | 5.4 | 52 / 52 | 168 / 863 | 26 | 19.1 | 23.0 | 19.7 | 55.4 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/vllm-bf16/20261008-130803_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/vllm-bf16/20261008-130803_limit8) |
+| Qwen2.5-3B-Instruct | vllm-bf16 | mmlu_jetson_formal_logic |  | 472 | MAXN | 5.4 | 52 / 52 | 168 / 863 | 26 | 19.1 | 23.0 | 19.7 | 55.4 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/vllm-bf16/20261008-130803_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/vllm-bf16/20261008-130803_limit8) |
+| Qwen2.5-3B-Instruct | vllm-bf16 | mmlu_jetson_global_facts |  | 472 | MAXN | 5.4 | 52 / 52 | 168 / 863 | 26 | 19.1 | 23.0 | 19.7 | 55.4 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/vllm-bf16/20261008-130803_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/vllm-bf16/20261008-130803_limit8) |
+| Qwen2.5-3B-Instruct | vllm-bf16 | mmlu_jetson_high_school_biology |  | 472 | MAXN | 5.4 | 52 / 52 | 168 / 863 | 26 | 19.1 | 23.0 | 19.7 | 55.4 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/vllm-bf16/20261008-130803_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/vllm-bf16/20261008-130803_limit8) |
+| Qwen2.5-3B-Instruct | vllm-bf16 | mmlu_jetson_high_school_chemistry |  | 472 | MAXN | 5.4 | 52 / 52 | 168 / 863 | 26 | 19.1 | 23.0 | 19.7 | 55.4 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/vllm-bf16/20261008-130803_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/vllm-bf16/20261008-130803_limit8) |
+| Qwen2.5-3B-Instruct | vllm-bf16 | mmlu_jetson_high_school_computer_science |  | 472 | MAXN | 5.4 | 52 / 52 | 168 / 863 | 26 | 19.1 | 23.0 | 19.7 | 55.4 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/vllm-bf16/20261008-130803_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/vllm-bf16/20261008-130803_limit8) |
+| Qwen2.5-3B-Instruct | vllm-bf16 | mmlu_jetson_high_school_european_history |  | 472 | MAXN | 5.4 | 52 / 52 | 168 / 863 | 26 | 19.1 | 23.0 | 19.7 | 55.4 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/vllm-bf16/20261008-130803_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/vllm-bf16/20261008-130803_limit8) |
+| Qwen2.5-3B-Instruct | vllm-bf16 | mmlu_jetson_high_school_geography |  | 472 | MAXN | 5.4 | 52 / 52 | 168 / 863 | 26 | 19.1 | 23.0 | 19.7 | 55.4 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/vllm-bf16/20261008-130803_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/vllm-bf16/20261008-130803_limit8) |
+| Qwen2.5-3B-Instruct | vllm-bf16 | mmlu_jetson_high_school_government_and_politics |  | 472 | MAXN | 5.4 | 52 / 52 | 168 / 863 | 26 | 19.1 | 23.0 | 19.7 | 55.4 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/vllm-bf16/20261008-130803_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/vllm-bf16/20261008-130803_limit8) |
+| Qwen2.5-3B-Instruct | vllm-bf16 | mmlu_jetson_high_school_macroeconomics |  | 472 | MAXN | 5.4 | 52 / 52 | 168 / 863 | 26 | 19.1 | 23.0 | 19.7 | 55.4 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/vllm-bf16/20261008-130803_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/vllm-bf16/20261008-130803_limit8) |
+| Qwen2.5-3B-Instruct | vllm-bf16 | mmlu_jetson_high_school_mathematics |  | 472 | MAXN | 5.4 | 52 / 52 | 168 / 863 | 26 | 19.1 | 23.0 | 19.7 | 55.4 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/vllm-bf16/20261008-130803_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/vllm-bf16/20261008-130803_limit8) |
+| Qwen2.5-3B-Instruct | vllm-bf16 | mmlu_jetson_high_school_microeconomics |  | 472 | MAXN | 5.4 | 52 / 52 | 168 / 863 | 26 | 19.1 | 23.0 | 19.7 | 55.4 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/vllm-bf16/20261008-130803_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/vllm-bf16/20261008-130803_limit8) |
+| Qwen2.5-3B-Instruct | vllm-bf16 | mmlu_jetson_high_school_physics |  | 472 | MAXN | 5.4 | 52 / 52 | 168 / 863 | 26 | 19.1 | 23.0 | 19.7 | 55.4 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/vllm-bf16/20261008-130803_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/vllm-bf16/20261008-130803_limit8) |
+| Qwen2.5-3B-Instruct | vllm-bf16 | mmlu_jetson_high_school_psychology |  | 472 | MAXN | 5.4 | 52 / 52 | 168 / 863 | 26 | 19.1 | 23.0 | 19.7 | 55.4 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/vllm-bf16/20261008-130803_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/vllm-bf16/20261008-130803_limit8) |
+| Qwen2.5-3B-Instruct | vllm-bf16 | mmlu_jetson_high_school_statistics |  | 472 | MAXN | 5.4 | 52 / 52 | 168 / 863 | 26 | 19.1 | 23.0 | 19.7 | 55.4 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/vllm-bf16/20261008-130803_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/vllm-bf16/20261008-130803_limit8) |
+| Qwen2.5-3B-Instruct | vllm-bf16 | mmlu_jetson_high_school_us_history |  | 472 | MAXN | 5.4 | 52 / 52 | 168 / 863 | 26 | 19.1 | 23.0 | 19.7 | 55.4 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/vllm-bf16/20261008-130803_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/vllm-bf16/20261008-130803_limit8) |
+| Qwen2.5-3B-Instruct | vllm-bf16 | mmlu_jetson_high_school_world_history |  | 472 | MAXN | 5.4 | 52 / 52 | 168 / 863 | 26 | 19.1 | 23.0 | 19.7 | 55.4 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/vllm-bf16/20261008-130803_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/vllm-bf16/20261008-130803_limit8) |
+| Qwen2.5-3B-Instruct | vllm-bf16 | mmlu_jetson_human_aging |  | 472 | MAXN | 5.4 | 52 / 52 | 168 / 863 | 26 | 19.1 | 23.0 | 19.7 | 55.4 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/vllm-bf16/20261008-130803_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/vllm-bf16/20261008-130803_limit8) |
+| Qwen2.5-3B-Instruct | vllm-bf16 | mmlu_jetson_human_sexuality |  | 472 | MAXN | 5.4 | 52 / 52 | 168 / 863 | 26 | 19.1 | 23.0 | 19.7 | 55.4 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/vllm-bf16/20261008-130803_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/vllm-bf16/20261008-130803_limit8) |
+| Qwen2.5-3B-Instruct | vllm-bf16 | mmlu_jetson_international_law |  | 472 | MAXN | 5.4 | 52 / 52 | 168 / 863 | 26 | 19.1 | 23.0 | 19.7 | 55.4 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/vllm-bf16/20261008-130803_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/vllm-bf16/20261008-130803_limit8) |
+| Qwen2.5-3B-Instruct | vllm-bf16 | mmlu_jetson_jurisprudence |  | 472 | MAXN | 5.4 | 52 / 52 | 168 / 863 | 26 | 19.1 | 23.0 | 19.7 | 55.4 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/vllm-bf16/20261008-130803_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/vllm-bf16/20261008-130803_limit8) |
+| Qwen2.5-3B-Instruct | vllm-bf16 | mmlu_jetson_logical_fallacies |  | 472 | MAXN | 5.4 | 52 / 52 | 168 / 863 | 26 | 19.1 | 23.0 | 19.7 | 55.4 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/vllm-bf16/20261008-130803_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/vllm-bf16/20261008-130803_limit8) |
+| Qwen2.5-3B-Instruct | vllm-bf16 | mmlu_jetson_machine_learning |  | 472 | MAXN | 5.4 | 52 / 52 | 168 / 863 | 26 | 19.1 | 23.0 | 19.7 | 55.4 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/vllm-bf16/20261008-130803_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/vllm-bf16/20261008-130803_limit8) |
+| Qwen2.5-3B-Instruct | vllm-bf16 | mmlu_jetson_management |  | 472 | MAXN | 5.4 | 52 / 52 | 168 / 863 | 26 | 19.1 | 23.0 | 19.7 | 55.4 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/vllm-bf16/20261008-130803_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/vllm-bf16/20261008-130803_limit8) |
+| Qwen2.5-3B-Instruct | vllm-bf16 | mmlu_jetson_marketing |  | 472 | MAXN | 5.4 | 52 / 52 | 168 / 863 | 26 | 19.1 | 23.0 | 19.7 | 55.4 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/vllm-bf16/20261008-130803_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/vllm-bf16/20261008-130803_limit8) |
+| Qwen2.5-3B-Instruct | vllm-bf16 | mmlu_jetson_medical_genetics |  | 472 | MAXN | 5.4 | 52 / 52 | 168 / 863 | 26 | 19.1 | 23.0 | 19.7 | 55.4 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/vllm-bf16/20261008-130803_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/vllm-bf16/20261008-130803_limit8) |
+| Qwen2.5-3B-Instruct | vllm-bf16 | mmlu_jetson_miscellaneous |  | 472 | MAXN | 5.4 | 52 / 52 | 168 / 863 | 26 | 19.1 | 23.0 | 19.7 | 55.4 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/vllm-bf16/20261008-130803_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/vllm-bf16/20261008-130803_limit8) |
+| Qwen2.5-3B-Instruct | vllm-bf16 | mmlu_jetson_moral_disputes |  | 472 | MAXN | 5.4 | 52 / 52 | 168 / 863 | 26 | 19.1 | 23.0 | 19.7 | 55.4 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/vllm-bf16/20261008-130803_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/vllm-bf16/20261008-130803_limit8) |
+| Qwen2.5-3B-Instruct | vllm-bf16 | mmlu_jetson_moral_scenarios |  | 472 | MAXN | 5.4 | 52 / 52 | 168 / 863 | 26 | 19.1 | 23.0 | 19.7 | 55.4 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/vllm-bf16/20261008-130803_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/vllm-bf16/20261008-130803_limit8) |
+| Qwen2.5-3B-Instruct | vllm-bf16 | mmlu_jetson_nutrition |  | 472 | MAXN | 5.4 | 52 / 52 | 168 / 863 | 26 | 19.1 | 23.0 | 19.7 | 55.4 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/vllm-bf16/20261008-130803_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/vllm-bf16/20261008-130803_limit8) |
+| Qwen2.5-3B-Instruct | vllm-bf16 | mmlu_jetson_philosophy |  | 472 | MAXN | 5.4 | 52 / 52 | 168 / 863 | 26 | 19.1 | 23.0 | 19.7 | 55.4 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/vllm-bf16/20261008-130803_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/vllm-bf16/20261008-130803_limit8) |
+| Qwen2.5-3B-Instruct | vllm-bf16 | mmlu_jetson_prehistory |  | 472 | MAXN | 5.4 | 52 / 52 | 168 / 863 | 26 | 19.1 | 23.0 | 19.7 | 55.4 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/vllm-bf16/20261008-130803_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/vllm-bf16/20261008-130803_limit8) |
+| Qwen2.5-3B-Instruct | vllm-bf16 | mmlu_jetson_professional_accounting |  | 472 | MAXN | 5.4 | 52 / 52 | 168 / 863 | 26 | 19.1 | 23.0 | 19.7 | 55.4 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/vllm-bf16/20261008-130803_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/vllm-bf16/20261008-130803_limit8) |
+| Qwen2.5-3B-Instruct | vllm-bf16 | mmlu_jetson_professional_law |  | 472 | MAXN | 5.4 | 52 / 52 | 168 / 863 | 26 | 19.1 | 23.0 | 19.7 | 55.4 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/vllm-bf16/20261008-130803_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/vllm-bf16/20261008-130803_limit8) |
+| Qwen2.5-3B-Instruct | vllm-bf16 | mmlu_jetson_professional_medicine |  | 472 | MAXN | 5.4 | 52 / 52 | 168 / 863 | 26 | 19.1 | 23.0 | 19.7 | 55.4 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/vllm-bf16/20261008-130803_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/vllm-bf16/20261008-130803_limit8) |
+| Qwen2.5-3B-Instruct | vllm-bf16 | mmlu_jetson_professional_psychology |  | 472 | MAXN | 5.4 | 52 / 52 | 168 / 863 | 26 | 19.1 | 23.0 | 19.7 | 55.4 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/vllm-bf16/20261008-130803_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/vllm-bf16/20261008-130803_limit8) |
+| Qwen2.5-3B-Instruct | vllm-bf16 | mmlu_jetson_public_relations |  | 472 | MAXN | 5.4 | 52 / 52 | 168 / 863 | 26 | 19.1 | 23.0 | 19.7 | 55.4 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/vllm-bf16/20261008-130803_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/vllm-bf16/20261008-130803_limit8) |
+| Qwen2.5-3B-Instruct | vllm-bf16 | mmlu_jetson_security_studies |  | 472 | MAXN | 5.4 | 52 / 52 | 168 / 863 | 26 | 19.1 | 23.0 | 19.7 | 55.4 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/vllm-bf16/20261008-130803_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/vllm-bf16/20261008-130803_limit8) |
+| Qwen2.5-3B-Instruct | vllm-bf16 | mmlu_jetson_sociology |  | 472 | MAXN | 5.4 | 52 / 52 | 168 / 863 | 26 | 19.1 | 23.0 | 19.7 | 55.4 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/vllm-bf16/20261008-130803_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/vllm-bf16/20261008-130803_limit8) |
+| Qwen2.5-3B-Instruct | vllm-bf16 | mmlu_jetson_us_foreign_policy |  | 472 | MAXN | 5.4 | 52 / 52 | 168 / 863 | 26 | 19.1 | 23.0 | 19.7 | 55.4 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/vllm-bf16/20261008-130803_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/vllm-bf16/20261008-130803_limit8) |
+| Qwen2.5-3B-Instruct | vllm-bf16 | mmlu_jetson_virology |  | 472 | MAXN | 5.4 | 52 / 52 | 168 / 863 | 26 | 19.1 | 23.0 | 19.7 | 55.4 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/vllm-bf16/20261008-130803_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/vllm-bf16/20261008-130803_limit8) |
+| Qwen2.5-3B-Instruct | vllm-bf16 | mmlu_jetson_world_religions |  | 472 | MAXN | 5.4 | 52 / 52 | 168 / 863 | 26 | 19.1 | 23.0 | 19.7 | 55.4 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/vllm-bf16/20261008-130803_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/vllm-bf16/20261008-130803_limit8) |
+| Qwen2.5-3B-Instruct | hf-bf16 | gsm8k_jetson |  | 8 | MAXN | 1.1 | 83 / 366 | 10110 / 14850 | 40 | 18.4 | 22.1 | 13.3 | 42.1 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson/hf-bf16/20261008-145853_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson/hf-bf16/20261008-145853_limit8) |
+| Qwen2.5-3B-Instruct | llamacpp-f16 | gsm8k_jetson |  | 8 | MAXN | 0.6 | 207 / 573 | 4081 / 7490 | 25 | 18.9 | 19.8 | 24.3 | 55.4 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson/llamacpp-f16/20261008-150523_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson/llamacpp-f16/20261008-150523_limit8) |
+| Qwen2.5-3B-Instruct | llamacpp-q4_k_m | gsm8k_jetson |  | 8 | MAXN | 0.4 | 246 / 515 | 3485 / 3992 | 13 | 18.8 | 19.7 | 24.6 | 50.9 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson/llamacpp-q4_k_m/20261008-150703_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson/llamacpp-q4_k_m/20261008-150703_limit8) |
+| Qwen2.5-3B-Instruct | llamacpp-q8_0 | gsm8k_jetson |  | 8 | MAXN | 0.4 | 220 / 495 | 2587 / 4228 | 15 | 18.8 | 19.6 | 22.0 | 49.9 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson/llamacpp-q8_0/20261008-150623_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson/llamacpp-q8_0/20261008-150623_limit8) |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | gsm8k_jetson |  | 8 | MAXN | 0.7 | ~52 (avg) | - | 26 | 18.9 | 19.7 | 23.1 | 54.3 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson/trt_edgellm-fp16/20261008-150749_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson/trt_edgellm-fp16/20261008-150749_limit8) |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp8 | gsm8k_jetson |  | 8 | MAXN | 0.4 | ~37 (avg) | - | 15 | 18.9 | 19.7 | 15.7 | 44.4 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson/trt_edgellm-fp8/20261008-150849_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson/trt_edgellm-fp8/20261008-150849_limit8) |
+| Qwen2.5-3B-Instruct | trt_edgellm-int4_awq | gsm8k_jetson |  | 8 | MAXN | 0.4 | ~106 (avg) | - | 10 | 18.9 | 19.8 | 19.0 | 44.9 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson/trt_edgellm-int4_awq/20261008-150939_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson/trt_edgellm-int4_awq/20261008-150939_limit8) |
+| Qwen2.5-3B-Instruct | trt_edgellm-int4_awq_qwen | gsm8k_jetson |  | 8 | MAXN | 0.8 | ~105 (avg) | - | 10 | 18.9 | 19.6 | 25.1 | 55.3 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson/trt_edgellm-int4_awq_qwen/20261008-151024_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson/trt_edgellm-int4_awq_qwen/20261008-151024_limit8) |
+| Qwen2.5-3B-Instruct | vllm-awq | gsm8k_jetson |  | 8 | MAXN | 1.4 | 122 / 959 | 2044 / 2568 | 10 | 19.2 | 21.7 | 11.5 | 31.8 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson/vllm-awq/20261008-150338_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson/vllm-awq/20261008-150338_limit8) |
+| Qwen2.5-3B-Instruct | vllm-bf16 | gsm8k_jetson |  | 8 | MAXN | 1.3 | 81 / 907 | 4216 / 7313 | 26 | 17.9 | 23.0 | 11.6 | 38.9 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson/vllm-bf16/20261008-150018_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson/vllm-bf16/20261008-150018_limit8) |
+| Qwen2.5-3B-Instruct | vllm-fp8 | gsm8k_jetson |  | 8 | MAXN | 1.5 | 66 / 1038 | 3082 / 4402 | 15 | 18.9 | 23.2 | 9.4 | 32.7 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson/vllm-fp8/20261008-150153_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson/vllm-fp8/20261008-150153_limit8) |
+| Qwen2.5-3B-Instruct | hf-bf16 | ifeval | prompt_level_strict_acc: 0.5000<br>inst_level_strict_acc: 0.6429<br>prompt_level_loose_acc: 0.6250<br>inst_level_loose_acc: 0.7143 | 8 | MAXN | 1.2 | 48 / 55 | 7399 / 13571 | 40 | 18.9 | 23.0 | 12.8 | 42.2 | none | [Qwen2.5-3B-Instruct/ifeval/hf-bf16/20261008-151143_limit8](Qwen2.5-3B-Instruct/ifeval/hf-bf16/20261008-151143_limit8) |
+| Qwen2.5-3B-Instruct | llamacpp-f16 | ifeval | prompt_level_strict_acc: 0.6250<br>inst_level_strict_acc: 0.7143<br>prompt_level_loose_acc: 0.6250<br>inst_level_loose_acc: 0.7143 | 8 | MAXN | 0.8 | 79 / 82 | 2914 / 9662 | 25 | 18.9 | 19.8 | 25.9 | 58.5 | none | [Qwen2.5-3B-Instruct/ifeval/llamacpp-f16/20261008-151829_limit8](Qwen2.5-3B-Instruct/ifeval/llamacpp-f16/20261008-151829_limit8) |
+| Qwen2.5-3B-Instruct | llamacpp-q4_k_m | ifeval | prompt_level_strict_acc: 0.7500<br>inst_level_strict_acc: 0.7857<br>prompt_level_loose_acc: 0.7500<br>inst_level_loose_acc: 0.7857 | 8 | MAXN | 0.4 | 40 / 48 | 3547 / 4462 | 12 | 18.9 | 19.7 | 24.1 | 50.9 | none | [Qwen2.5-3B-Instruct/ifeval/llamacpp-q4_k_m/20261008-152014_limit8](Qwen2.5-3B-Instruct/ifeval/llamacpp-q4_k_m/20261008-152014_limit8) |
+| Qwen2.5-3B-Instruct | llamacpp-q8_0 | ifeval | prompt_level_strict_acc: 0.6250<br>inst_level_strict_acc: 0.7143<br>prompt_level_loose_acc: 0.6250<br>inst_level_loose_acc: 0.7143 | 8 | MAXN | 0.3 | 39 / 45 | 1787 / 3918 | 15 | 18.9 | 19.6 | 19.7 | 47.1 | none | [Qwen2.5-3B-Instruct/ifeval/llamacpp-q8_0/20261008-151934_limit8](Qwen2.5-3B-Instruct/ifeval/llamacpp-q8_0/20261008-151934_limit8) |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | ifeval | prompt_level_strict_acc: 0.6250<br>inst_level_strict_acc: 0.7143<br>prompt_level_loose_acc: 0.6250<br>inst_level_loose_acc: 0.7143 | 8 | MAXN | 0.9 | ~31 (avg) | - | 26 | 18.9 | 19.7 | 24.9 | 58.0 | none | [Qwen2.5-3B-Instruct/ifeval/trt_edgellm-fp16/20261008-152059_limit8](Qwen2.5-3B-Instruct/ifeval/trt_edgellm-fp16/20261008-152059_limit8) |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp8 | ifeval | prompt_level_strict_acc: 0.6250<br>inst_level_strict_acc: 0.6429<br>prompt_level_loose_acc: 0.7500<br>inst_level_loose_acc: 0.7857 | 8 | MAXN | 1.3 | ~21 (avg) | - | 15 | 18.9 | 19.8 | 20.5 | 54.9 | none | [Qwen2.5-3B-Instruct/ifeval/trt_edgellm-fp8/20261008-152219_limit8](Qwen2.5-3B-Instruct/ifeval/trt_edgellm-fp8/20261008-152219_limit8) |
+| Qwen2.5-3B-Instruct | trt_edgellm-int4_awq | ifeval | prompt_level_strict_acc: 0.6250<br>inst_level_strict_acc: 0.6429<br>prompt_level_loose_acc: 0.6250<br>inst_level_loose_acc: 0.6429 | 8 | MAXN | 0.9 | ~25 (avg) | - | 10 | 19.0 | 19.8 | 24.6 | 55.1 | none | [Qwen2.5-3B-Instruct/ifeval/trt_edgellm-int4_awq/20261008-152359_limit8](Qwen2.5-3B-Instruct/ifeval/trt_edgellm-int4_awq/20261008-152359_limit8) |
+| Qwen2.5-3B-Instruct | trt_edgellm-int4_awq_qwen | ifeval | prompt_level_strict_acc: 0.0000<br>inst_level_strict_acc: 0.2143<br>prompt_level_loose_acc: 0.0000<br>inst_level_loose_acc: 0.2143 | 8 | MAXN | 2.0 | ~25 (avg) | - | 10 | 18.9 | 19.7 | 29.2 | 62.6 | none | [Qwen2.5-3B-Instruct/ifeval/trt_edgellm-int4_awq_qwen/20261008-152514_limit8](Qwen2.5-3B-Instruct/ifeval/trt_edgellm-int4_awq_qwen/20261008-152514_limit8) |
+| Qwen2.5-3B-Instruct | vllm-awq | ifeval | prompt_level_strict_acc: 0.7500<br>inst_level_strict_acc: 0.7857<br>prompt_level_loose_acc: 0.7500<br>inst_level_loose_acc: 0.7857 | 8 | MAXN | 1.6 | 29 / 33 | 2808 / 12797 | 10 | 19.1 | 21.7 | 15.4 | 39.5 | none | [Qwen2.5-3B-Instruct/ifeval/vllm-awq/20261008-151633_limit8](Qwen2.5-3B-Instruct/ifeval/vllm-awq/20261008-151633_limit8) |
+| Qwen2.5-3B-Instruct | vllm-bf16 | ifeval | prompt_level_strict_acc: 0.6250<br>inst_level_strict_acc: 0.7143<br>prompt_level_loose_acc: 0.6250<br>inst_level_loose_acc: 0.7143 | 8 | MAXN | 1.4 | 55 / 55 | 5575 / 10640 | 26 | 18.9 | 23.2 | 12.0 | 40.8 | none | [Qwen2.5-3B-Instruct/ifeval/vllm-bf16/20261008-151313_limit8](Qwen2.5-3B-Instruct/ifeval/vllm-bf16/20261008-151313_limit8) |
+| Qwen2.5-3B-Instruct | vllm-fp8 | ifeval | prompt_level_strict_acc: 0.6250<br>inst_level_strict_acc: 0.7143<br>prompt_level_loose_acc: 0.6250<br>inst_level_loose_acc: 0.7143 | 8 | MAXN | 1.4 | 33 / 35 | 4263 / 6408 | 15 | 18.9 | 22.2 | 11.6 | 39.2 | none | [Qwen2.5-3B-Instruct/ifeval/vllm-fp8/20261008-151453_limit8](Qwen2.5-3B-Instruct/ifeval/vllm-fp8/20261008-151453_limit8) |
+| Qwen2.5-VL-3B-Instruct | hf-bf16 | gqa | exact_match: 0.6250 | 8 | 120W | 2.4 | 298 / 345 | 425 / 582 | 118 | 44.4 | 57.7 | 2.5 | 25.9 | none | [Qwen2.5-VL-3B-Instruct/gqa/hf-bf16/20260925-062049_limit8](Qwen2.5-VL-3B-Instruct/gqa/hf-bf16/20260925-062049_limit8) |
 | Qwen2.5-VL-3B-Instruct | hf-bf16 | gqa | exact_match: 0.6009 | 12578 | 120W | 64.3 | 199 / 221 | 265 / 318 | 55 | 37.4 | 42.2 | 27.6 | 53.5 | none | [Qwen2.5-VL-3B-Instruct/gqa/hf-bf16/20260925-062406](Qwen2.5-VL-3B-Instruct/gqa/hf-bf16/20260925-062406) |
 | Qwen2.5-VL-3B-Instruct | trt_edgellm-fp16 | gqa | exact_match: 0.6000 | 12578 | MAXN | 41.2 | ~69 (avg) | - | 27 | 21.1 | 36.2 | 35.8 | 59.6 | none | [Qwen2.5-VL-3B-Instruct/gqa/trt_edgellm-fp16/20260930-174243](Qwen2.5-VL-3B-Instruct/gqa/trt_edgellm-fp16/20260930-174243) |
 | Qwen2.5-VL-3B-Instruct | trt_edgellm-fp8 | gqa | exact_match: 0.6018 | 12578 | MAXN | 33.6 | ~56 (avg) | - | 15 | 18.5 | 20.5 | 32.7 | 54.0 | none | [Qwen2.5-VL-3B-Instruct/gqa/trt_edgellm-fp8/20260930-182610](Qwen2.5-VL-3B-Instruct/gqa/trt_edgellm-fp8/20260930-182610) |
 | Qwen2.5-VL-3B-Instruct | trt_edgellm-int4_awq | gqa | exact_match: 0.5755 | 12578 | MAXN | 40.9 | ~97 (avg) | - | 11 | 18.7 | 20.5 | 40.7 | 59.6 | none | [Qwen2.5-VL-3B-Instruct/gqa/trt_edgellm-int4_awq/20260930-190201](Qwen2.5-VL-3B-Instruct/gqa/trt_edgellm-int4_awq/20260930-190201) |
 | Qwen2.5-VL-3B-Instruct | vllm-awq | gqa | exact_match: 0.5945 | 12578 | 120W | 67.5 | 217 / 239 | 231 / 255 | 12 | 46.9 | 50.9 | 25.2 | 48.1 | none | [Qwen2.5-VL-3B-Instruct/gqa/vllm-awq/20260925-104202](Qwen2.5-VL-3B-Instruct/gqa/vllm-awq/20260925-104202) |
 | Qwen2.5-VL-3B-Instruct | vllm-bf16 | gqa | exact_match: 0.5996 | 12578 | 120W | 64.6 | 185 / 201 | 216 / 249 | 28 | 36.5 | 52.5 | 23.1 | 50.5 | none | [Qwen2.5-VL-3B-Instruct/gqa/vllm-bf16/20260925-093520](Qwen2.5-VL-3B-Instruct/gqa/vllm-bf16/20260925-093520) |
+| Qwen2.5-VL-3B-Instruct | hf-bf16 | mme | mme_cognition_score: 162.50 | 8 | 120W | 0.2 | 208 / 233 | 278 / 303 | 71 | 36.4 | 39.8 | 5.5 | 19.5 | none | [Qwen2.5-VL-3B-Instruct/mme/hf-bf16/20260923-145913_limit8](Qwen2.5-VL-3B-Instruct/mme/hf-bf16/20260923-145913_limit8) |
 | Qwen2.5-VL-3B-Instruct | hf-bf16 | mme | mme_cognition_score: 623.93<br>mme_perception_score: 1548.29 | 2374 | 120W | 21.0 | 241 / 907 | 299 / 972 | 57 | 27.2 | 31.1 | 33.3 | 58.6 | none | [Qwen2.5-VL-3B-Instruct/mme/hf-bf16/20260923-215339](Qwen2.5-VL-3B-Instruct/mme/hf-bf16/20260923-215339) |
+| Qwen2.5-VL-3B-Instruct | hf-bf16 | mme | mme_cognition_score: 162.50 | 8 | 120W | 0.2 | 203 / 240 | 274 / 313 | 71 | 36.3 | 40.6 | 5.1 | 17.5 | none | [Qwen2.5-VL-3B-Instruct/mme/hf-bf16/20260928-042208_limit8](Qwen2.5-VL-3B-Instruct/mme/hf-bf16/20260928-042208_limit8) |
+| Qwen2.5-VL-3B-Instruct | llamacpp-q4_k_m | mme | mme_cognition_score: 200.00 | 8 | 120W | 0.1 | 318 / 326 | 336 / 344 | 17 | 38.1 | 38.8 | 6.1 | 20.9 | none | [Qwen2.5-VL-3B-Instruct/mme/llamacpp-q4_k_m/20260923-200432_limit8](Qwen2.5-VL-3B-Instruct/mme/llamacpp-q4_k_m/20260923-200432_limit8) |
+| Qwen2.5-VL-3B-Instruct | llamacpp-q8_0 | mme | mme_cognition_score: 162.50 | 8 | 120W | 0.1 | 309 / 321 | 328 / 340 | 19 | 38.2 | 39.1 | 6.2 | 21.4 | none | [Qwen2.5-VL-3B-Instruct/mme/llamacpp-q8_0/20260923-200409_limit8](Qwen2.5-VL-3B-Instruct/mme/llamacpp-q8_0/20260923-200409_limit8) |
+| Qwen2.5-VL-3B-Instruct | llamacpp-q8_0 | mme | mme_cognition_score: 162.50 | 8 | 120W | 0.1 | 308 / 321 | 327 / 340 | 19 | 36.7 | 37.7 | 4.8 | 19.6 | none | [Qwen2.5-VL-3B-Instruct/mme/llamacpp-q8_0/20260928-042445_limit8](Qwen2.5-VL-3B-Instruct/mme/llamacpp-q8_0/20260928-042445_limit8) |
+| Qwen2.5-VL-3B-Instruct | trt_edgellm-fp16 | mme | mme_cognition_score: 162.50 | 8 | 120W | 0.1 | ~75 (avg) | - | 35 | 34.2 | 34.8 | 5.6 | 17.7 | none | [Qwen2.5-VL-3B-Instruct/mme/trt_edgellm-fp16/20260923-200543_limit8](Qwen2.5-VL-3B-Instruct/mme/trt_edgellm-fp16/20260923-200543_limit8) |
+| Qwen2.5-VL-3B-Instruct | trt_edgellm-fp16 | mme | mme_cognition_score: 162.50 | 8 | 120W | 0.1 | ~77 (avg) | - | 36 | 36.7 | 37.6 | 5.1 | 15.5 | none | [Qwen2.5-VL-3B-Instruct/mme/trt_edgellm-fp16/20260928-042518_limit8](Qwen2.5-VL-3B-Instruct/mme/trt_edgellm-fp16/20260928-042518_limit8) |
 | Qwen2.5-VL-3B-Instruct | trt_edgellm-fp16 | mme | mme_cognition_score: 614.29<br>mme_perception_score: 1526.51 | 2374 | MAXN | 28.1 | ~146 (avg) | - | 27 | 26.4 | 31.8 | 21.2 | 39.2 | none | [Qwen2.5-VL-3B-Instruct/mme/trt_edgellm-fp16/20260930-161411](Qwen2.5-VL-3B-Instruct/mme/trt_edgellm-fp16/20260930-161411) |
+| Qwen2.5-VL-3B-Instruct | trt_edgellm-fp8 | mme | mme_cognition_score: 162.50 | 8 | 120W | 0.1 | ~67 (avg) | - | 23 | 33.2 | 33.8 | 4.8 | 16.1 | none | [Qwen2.5-VL-3B-Instruct/mme/trt_edgellm-fp8/20260923-200626_limit8](Qwen2.5-VL-3B-Instruct/mme/trt_edgellm-fp8/20260923-200626_limit8) |
 | Qwen2.5-VL-3B-Instruct | trt_edgellm-fp8 | mme | mme_cognition_score: 622.50<br>mme_perception_score: 1522.40 | 2374 | MAXN | 26.6 | ~121 (avg) | - | 16 | 24.3 | 25.3 | 18.1 | 35.3 | none | [Qwen2.5-VL-3B-Instruct/mme/trt_edgellm-fp8/20260930-164332](Qwen2.5-VL-3B-Instruct/mme/trt_edgellm-fp8/20260930-164332) |
+| Qwen2.5-VL-3B-Instruct | trt_edgellm-int4_awq+qwen-awq-ckpt | mme | mme_cognition_score: 0.0000 | 8 | 120W | 0.1 | ~89 (avg) | - | 14 | 34.0 | 34.5 | 6.8 | 18.1 | none | [Qwen2.5-VL-3B-Instruct/mme/trt_edgellm-int4_awq+qwen-awq-ckpt/20260923-200605_limit8](Qwen2.5-VL-3B-Instruct/mme/trt_edgellm-int4_awq+qwen-awq-ckpt/20260923-200605_limit8) |
+| Qwen2.5-VL-3B-Instruct | trt_edgellm-int4_awq | mme | mme_cognition_score: 162.50 | 8 | 120W | 0.1 | ~92 (avg) | - | 14 | 32.3 | 33.2 | 6.0 | 19.3 | none | [Qwen2.5-VL-3B-Instruct/mme/trt_edgellm-int4_awq/20260923-202127_limit8](Qwen2.5-VL-3B-Instruct/mme/trt_edgellm-int4_awq/20260923-202127_limit8) |
 | Qwen2.5-VL-3B-Instruct | trt_edgellm-int4_awq | mme | mme_cognition_score: 565.71<br>mme_perception_score: 1529.67 | 2374 | MAXN | 30.1 | ~211 (avg) | - | 11 | 22.6 | 23.5 | 24.1 | 41.3 | none | [Qwen2.5-VL-3B-Instruct/mme/trt_edgellm-int4_awq/20260930-171124](Qwen2.5-VL-3B-Instruct/mme/trt_edgellm-int4_awq/20260930-171124) |
+| Qwen2.5-VL-3B-Instruct | trt_edgellm-nvfp4 | mme | mme_cognition_score: 0.0000 | 8 | 120W | 0.1 | ~46 (avg) | - | 14 | 32.9 | 33.4 | 6.4 | 18.9 | none | [Qwen2.5-VL-3B-Instruct/mme/trt_edgellm-nvfp4/20260923-200648_limit8](Qwen2.5-VL-3B-Instruct/mme/trt_edgellm-nvfp4/20260923-200648_limit8) |
+| Qwen2.5-VL-3B-Instruct | vllm-awq | mme | mme_cognition_score: 200.00 | 8 | 120W | 1.7 | 167 / 299 | 182 / 314 | 16 | 36.4 | 41.6 | 5.9 | 20.7 | none | [Qwen2.5-VL-3B-Instruct/mme/vllm-awq/20260923-195813_limit8](Qwen2.5-VL-3B-Instruct/mme/vllm-awq/20260923-195813_limit8) |
 | Qwen2.5-VL-3B-Instruct | vllm-awq | mme | mme_cognition_score: 602.86<br>mme_perception_score: 1544.02 | 2374 | 120W | 44.4 | 282 / 1269 | 295 / 1282 | 13 | 27.3 | 31.4 | 16.7 | 34.7 | none | [Qwen2.5-VL-3B-Instruct/mme/vllm-awq/20260923-232507](Qwen2.5-VL-3B-Instruct/mme/vllm-awq/20260923-232507) |
+| Qwen2.5-VL-3B-Instruct | vllm-awq | mme | mme_cognition_score: 200.00 | 8 | 120W | 1.4 | 151 / 283 | 165 / 298 | 15 | 37.0 | 41.9 | 5.8 | 19.9 | none | [Qwen2.5-VL-3B-Instruct/mme/vllm-awq/20260928-042251_limit8](Qwen2.5-VL-3B-Instruct/mme/vllm-awq/20260928-042251_limit8) |
+| Qwen2.5-VL-3B-Instruct | vllm-bf16 | mme | mme_cognition_score: 162.50 | 8 | 120W | 1.5 | 173 / 307 | 215 / 349 | 42 | 36.4 | 41.8 | 5.1 | 20.3 | none | [Qwen2.5-VL-3B-Instruct/mme/vllm-bf16/20260923-195625_limit8](Qwen2.5-VL-3B-Instruct/mme/vllm-bf16/20260923-195625_limit8) |
 | Qwen2.5-VL-3B-Instruct | vllm-bf16 | mme | mme_cognition_score: 613.57<br>mme_perception_score: 1540.61 | 2374 | 120W | 43.3 | 241 / 1127 | 285 / 1171 | 44 | 27.2 | 32.6 | 14.8 | 34.0 | none | [Qwen2.5-VL-3B-Instruct/mme/vllm-bf16/20260923-224130](Qwen2.5-VL-3B-Instruct/mme/vllm-bf16/20260923-224130) |
 | Qwen2.5-VL-3B-Instruct | hf-bf16+repeat | textvqa_val | exact_match: 0.7886 | 5000 | MAXN | 44.2 | 387 / 478 | 471 / 635 | 41 | 26.8 | 30.2 | 42.6 | 75.2 | none | [Qwen2.5-VL-3B-Instruct/textvqa_val/hf-bf16+repeat/20261006-172623](Qwen2.5-VL-3B-Instruct/textvqa_val/hf-bf16+repeat/20261006-172623) |
+| Qwen2.5-VL-3B-Instruct | hf-bf16 | textvqa_val | exact_match: 0.6125 | 8 | MAXN | 0.2 | 410 / 578 | 650 / 776 | 50 | 18.3 | 22.3 | 7.7 | 22.5 | none | [Qwen2.5-VL-3B-Instruct/textvqa_val/hf-bf16/20260928-214624_limit8](Qwen2.5-VL-3B-Instruct/textvqa_val/hf-bf16/20260928-214624_limit8) |
 | Qwen2.5-VL-3B-Instruct | hf-bf16 | textvqa_val | exact_match: 0.7886 | 5000 | MAXN | 48.5 | 397 / 497 | 515 / 689 | 52 | 25.9 | 29.6 | 38.9 | 66.5 | none | [Qwen2.5-VL-3B-Instruct/textvqa_val/hf-bf16/20260928-220231](Qwen2.5-VL-3B-Instruct/textvqa_val/hf-bf16/20260928-220231) |
+| Qwen2.5-VL-3B-Instruct | llamacpp-f16 | textvqa_val | exact_match: 0.6625 | 8 | MAXN | 0.2 | 1039 / 1523 | 1096 / 1620 | 28 | 25.1 | 25.3 | 9.7 | 27.2 | none | [Qwen2.5-VL-3B-Instruct/textvqa_val/llamacpp-f16/20261001-120021_limit8](Qwen2.5-VL-3B-Instruct/textvqa_val/llamacpp-f16/20261001-120021_limit8) |
 | Qwen2.5-VL-3B-Instruct | llamacpp-f16 | textvqa_val | exact_match: 0.7984 | 5000 | MAXN | 121.4 | 1059 / 1576 | 1160 / 1672 | 28 | 24.0 | 26.1 | 28.1 | 53.1 | none | [Qwen2.5-VL-3B-Instruct/textvqa_val/llamacpp-f16/20261001-120121](Qwen2.5-VL-3B-Instruct/textvqa_val/llamacpp-f16/20261001-120121) |
+| Qwen2.5-VL-3B-Instruct | llamacpp-q4_k_m | textvqa_val | exact_match: 0.5750 | 8 | MAXN | 0.2 | 1047 / 1320 | 1116 / 1375 | 17 | 26.9 | 28.2 | 10.2 | 26.6 | none | [Qwen2.5-VL-3B-Instruct/textvqa_val/llamacpp-q4_k_m/20260928-215735_limit8](Qwen2.5-VL-3B-Instruct/textvqa_val/llamacpp-q4_k_m/20260928-215735_limit8) |
 | Qwen2.5-VL-3B-Instruct | llamacpp-q4_k_m | textvqa_val | exact_match: 0.7873 | 5000 | MAXN | 122.3 | 1144 / 1626 | 1187 / 1672 | 16 | 26.2 | 28.6 | 28.6 | 49.3 | none | [Qwen2.5-VL-3B-Instruct/textvqa_val/llamacpp-q4_k_m/20260929-063650](Qwen2.5-VL-3B-Instruct/textvqa_val/llamacpp-q4_k_m/20260929-063650) |
+| Qwen2.5-VL-3B-Instruct | llamacpp-q8_0 | textvqa_val | exact_match: 0.6625 | 8 | MAXN | 0.2 | 1063 / 1322 | 1101 / 1382 | 19 | 26.8 | 28.3 | 10.3 | 27.1 | none | [Qwen2.5-VL-3B-Instruct/textvqa_val/llamacpp-q8_0/20260928-215650_limit8](Qwen2.5-VL-3B-Instruct/textvqa_val/llamacpp-q8_0/20260928-215650_limit8) |
 | Qwen2.5-VL-3B-Instruct | llamacpp-q8_0 | textvqa_val | exact_match: 0.7986 | 5000 | MAXN | 119.4 | 1091 / 1565 | 1144 / 1623 | 18 | 26.2 | 28.5 | 28.8 | 50.5 | none | [Qwen2.5-VL-3B-Instruct/textvqa_val/llamacpp-q8_0/20260929-043626](Qwen2.5-VL-3B-Instruct/textvqa_val/llamacpp-q8_0/20260929-043626) |
 | Qwen2.5-VL-3B-Instruct | trt_edgellm-fp16+repeat | textvqa_val | exact_match: 0.7945 | 5000 | MAXN | 40.8 | ~159 (avg) | - | 26 | 25.1 | 25.6 | 37.1 | 63.3 | none | [Qwen2.5-VL-3B-Instruct/textvqa_val/trt_edgellm-fp16+repeat/20261006-190506](Qwen2.5-VL-3B-Instruct/textvqa_val/trt_edgellm-fp16+repeat/20261006-190506) |
+| Qwen2.5-VL-3B-Instruct | trt_edgellm-fp16 | textvqa_val | exact_match: 0.7500 | 8 | MAXN | 0.1 | ~141 (avg) | - | 27 | 26.8 | 27.6 | 8.7 | 19.8 | none | [Qwen2.5-VL-3B-Instruct/textvqa_val/trt_edgellm-fp16/20260928-220000_limit8](Qwen2.5-VL-3B-Instruct/textvqa_val/trt_edgellm-fp16/20260928-220000_limit8) |
 | Qwen2.5-VL-3B-Instruct | trt_edgellm-fp16 | textvqa_val | exact_match: 0.7945 | 5000 | MAXN | 40.9 | ~157 (avg) | - | 27 | 59.4 | 60.2 | 35.8 | 59.2 | none | [Qwen2.5-VL-3B-Instruct/textvqa_val/trt_edgellm-fp16/20260929-212748](Qwen2.5-VL-3B-Instruct/textvqa_val/trt_edgellm-fp16/20260929-212748) |
+| Qwen2.5-VL-3B-Instruct | trt_edgellm-fp8 | textvqa_val | exact_match: 0.7500 | 8 | MAXN | 0.1 | ~128 (avg) | - | 16 | 26.7 | 27.3 | 7.7 | 18.8 | none | [Qwen2.5-VL-3B-Instruct/textvqa_val/trt_edgellm-fp8/20260928-220040_limit8](Qwen2.5-VL-3B-Instruct/textvqa_val/trt_edgellm-fp8/20260928-220040_limit8) |
 | Qwen2.5-VL-3B-Instruct | trt_edgellm-fp8 | textvqa_val | exact_match: 0.7959 | 5000 | MAXN | 35.9 | ~130 (avg) | - | 16 | 48.5 | 54.9 | 31.9 | 53.9 | dsvlm-220948-720149 | [Qwen2.5-VL-3B-Instruct/textvqa_val/trt_edgellm-fp8/20260929-220950](Qwen2.5-VL-3B-Instruct/textvqa_val/trt_edgellm-fp8/20260929-220950) |
+| Qwen2.5-VL-3B-Instruct | trt_edgellm-int4_awq | textvqa_val | exact_match: 0.6250 | 8 | MAXN | 0.1 | ~225 (avg) | - | 11 | 26.2 | 26.7 | 9.6 | 19.8 | none | [Qwen2.5-VL-3B-Instruct/textvqa_val/trt_edgellm-int4_awq/20260928-220120_limit8](Qwen2.5-VL-3B-Instruct/textvqa_val/trt_edgellm-int4_awq/20260928-220120_limit8) |
 | Qwen2.5-VL-3B-Instruct | trt_edgellm-int4_awq | textvqa_val | exact_match: 0.7375 | 5000 | MAXN | 43.3 | ~232 (avg) | - | 11 | 32.8 | 34.0 | 39.3 | 59.3 | none | [Qwen2.5-VL-3B-Instruct/textvqa_val/trt_edgellm-int4_awq/20260929-224646](Qwen2.5-VL-3B-Instruct/textvqa_val/trt_edgellm-int4_awq/20260929-224646) |
+| Qwen2.5-VL-3B-Instruct | vllm-awq | textvqa_val | exact_match: 0.6625 | 8 | MAXN | 1.7 | 433 / 1004 | 481 / 1015 | 11 | 23.3 | 27.7 | 7.3 | 21.8 | none | [Qwen2.5-VL-3B-Instruct/textvqa_val/vllm-awq/20260928-215004_limit8](Qwen2.5-VL-3B-Instruct/textvqa_val/vllm-awq/20260928-215004_limit8) |
 | Qwen2.5-VL-3B-Instruct | vllm-awq | textvqa_val | exact_match: 0.7910 | 5000 | MAXN | 62.4 | 453 / 568 | 478 / 606 | 11 | 25.6 | 30.4 | 30.3 | 53.2 | none | [Qwen2.5-VL-3B-Instruct/textvqa_val/vllm-awq/20260929-005648](Qwen2.5-VL-3B-Instruct/textvqa_val/vllm-awq/20260929-005648) |
 | Qwen2.5-VL-3B-Instruct | vllm-bf16+pil | textvqa_val | exact_match: 0.7939 | 5000 | MAXN | 31.5 | 281 / 354 | 342 / 459 | 26 | 26.4 | 30.8 | 47.4 | 84.6 | none | [Qwen2.5-VL-3B-Instruct/textvqa_val/vllm-bf16+pil/20261006-165248](Qwen2.5-VL-3B-Instruct/textvqa_val/vllm-bf16+pil/20261006-165248) |
 | Qwen2.5-VL-3B-Instruct | vllm-bf16+repeat | textvqa_val | exact_match: 0.7939 | 5000 | MAXN | 52.7 | 308 / 388 | 369 / 488 | 26 | 26.4 | 30.8 | 29.7 | 58.4 | none | [Qwen2.5-VL-3B-Instruct/textvqa_val/vllm-bf16+repeat/20261006-181129](Qwen2.5-VL-3B-Instruct/textvqa_val/vllm-bf16+repeat/20261006-181129) |
+| Qwen2.5-VL-3B-Instruct | vllm-bf16+stages | textvqa_val | exact_match: 0.8600 | 50 | MAXN | 1.2 | 296 / 353 | 365 / 467 | 26 | 20.7 | 25.2 | 14.5 | 36.0 | none | [Qwen2.5-VL-3B-Instruct/textvqa_val/vllm-bf16+stages/20261006-140621_limit50](Qwen2.5-VL-3B-Instruct/textvqa_val/vllm-bf16+stages/20261006-140621_limit50) |
 | Qwen2.5-VL-3B-Instruct | vllm-bf16+stages | textvqa_val | exact_match: 0.7939 | 5000 | MAXN | 51.9 | 301 / 381 | 362 / 481 | 26 | 20.7 | 25.4 | 30.0 | 58.7 | none | [Qwen2.5-VL-3B-Instruct/textvqa_val/vllm-bf16+stages/20261006-140845](Qwen2.5-VL-3B-Instruct/textvqa_val/vllm-bf16+stages/20261006-140845) |
+| Qwen2.5-VL-3B-Instruct | vllm-bf16 | textvqa_val | exact_match: 0.7500 | 8 | MAXN | 1.5 | 384 / 936 | 560 / 966 | 30 | 23.4 | 28.7 | 6.0 | 21.5 | none | [Qwen2.5-VL-3B-Instruct/textvqa_val/vllm-bf16/20260928-214804_limit8](Qwen2.5-VL-3B-Instruct/textvqa_val/vllm-bf16/20260928-214804_limit8) |
 | Qwen2.5-VL-3B-Instruct | vllm-bf16 | textvqa_val | exact_match: 0.7939 | 5000 | MAXN | 58.3 | 361 / 446 | 426 / 548 | 27 | 25.6 | 31.1 | 27.2 | 52.3 | none | [Qwen2.5-VL-3B-Instruct/textvqa_val/vllm-bf16/20260928-235725](Qwen2.5-VL-3B-Instruct/textvqa_val/vllm-bf16/20260928-235725) |
+| Qwen2.5-VL-3B-Instruct | vllm-bf16 | textvqa_val | exact_match: 0.8600 | 50 | MAXN | 1.5 | 300 / 351 | 368 / 475 | 26 | 21.4 | 25.7 | 12.9 | 33.6 | none | [Qwen2.5-VL-3B-Instruct/textvqa_val/vllm-bf16/20261006-140428_limit50](Qwen2.5-VL-3B-Instruct/textvqa_val/vllm-bf16/20261006-140428_limit50) |
+| Qwen2.5-VL-3B-Instruct | vllm-fp8+marlin | textvqa_val | exact_match: 0.7500 | 8 | MAXN | 1.5 | 412 / 885 | 487 / 901 | 15 | 18.1 | 23.3 | 8.5 | 27.3 | none | [Qwen2.5-VL-3B-Instruct/textvqa_val/vllm-fp8+marlin/20261005-151853_limit8](Qwen2.5-VL-3B-Instruct/textvqa_val/vllm-fp8+marlin/20261005-151853_limit8) |
 | Qwen2.5-VL-3B-Instruct | vllm-fp8+marlin | textvqa_val | exact_match: 0.7946 | 5000 | MAXN | 60.4 | 434 / 545 | 463 / 609 | 15 | 19.9 | 25.8 | 31.8 | 60.2 | none | [Qwen2.5-VL-3B-Instruct/textvqa_val/vllm-fp8+marlin/20261005-192101](Qwen2.5-VL-3B-Instruct/textvqa_val/vllm-fp8+marlin/20261005-192101) |
 | Qwen2.5-VL-3B-Instruct | vllm-fp8+torch-stages | textvqa_val | exact_match: 0.7948 | 5000 | MAXN | 49.8 | 318 / 383 | 346 / 446 | 16 | 26.4 | 31.4 | 27.9 | 55.3 | none | [Qwen2.5-VL-3B-Instruct/textvqa_val/vllm-fp8+torch-stages/20261006-150251](Qwen2.5-VL-3B-Instruct/textvqa_val/vllm-fp8+torch-stages/20261006-150251) |
+| Qwen2.5-VL-3B-Instruct | vllm-fp8+torch | textvqa_val | exact_match: 0.7500 | 8 | MAXN | 1.5 | 293 / 712 | 370 / 727 | 15 | 17.9 | 24.2 | 7.2 | 25.7 | none | [Qwen2.5-VL-3B-Instruct/textvqa_val/vllm-fp8+torch/20261005-151436_limit8](Qwen2.5-VL-3B-Instruct/textvqa_val/vllm-fp8+torch/20261005-151436_limit8) |
+| Qwen2.5-VL-3B-Instruct | vllm-w8a8+triton | textvqa_val | exact_match: 0.7500 | 8 | MAXN | 1.9 | 332 / 771 | 410 / 786 | 16 | 18.4 | 23.7 | 6.8 | 24.7 | none | [Qwen2.5-VL-3B-Instruct/textvqa_val/vllm-w8a8+triton/20261005-151631_limit8](Qwen2.5-VL-3B-Instruct/textvqa_val/vllm-w8a8+triton/20261005-151631_limit8) |
 | Qwen2.5-VL-3B-Instruct | vllm-w8a8+triton | textvqa_val | exact_match: 0.7927 | 5000 | MAXN | 54.1 | 359 / 449 | 391 / 513 | 16 | 20.6 | 26.2 | 29.0 | 57.1 | none | [Qwen2.5-VL-3B-Instruct/textvqa_val/vllm-w8a8+triton/20261005-171344](Qwen2.5-VL-3B-Instruct/textvqa_val/vllm-w8a8+triton/20261005-171344) |
 | Qwen2.5-VL-7B-Instruct | hf-bf16 | gqa | exact_match: 0.6088 | 12578 | 120W | - | - | - | - | - | - | - | - | timings not valid: A process outside the run pinned one CPU core at 100%; the GPU was mostly idle (see NOTES.md). The score is valid. | [Qwen2.5-VL-7B-Instruct/gqa/hf-bf16/20260925-115139](Qwen2.5-VL-7B-Instruct/gqa/hf-bf16/20260925-115139) |
 | Qwen2.5-VL-7B-Instruct | vllm-awq | gqa | exact_match: 0.6070 | 12578 | 120W | 87.3 | 300 / 324 | 325 / 360 | 21 | 36.4 | 41.9 | 32.2 | 55.7 | none | [Qwen2.5-VL-7B-Instruct/gqa/vllm-awq/20260925-202538](Qwen2.5-VL-7B-Instruct/gqa/vllm-awq/20260925-202538) |
 | Qwen2.5-VL-7B-Instruct | vllm-bf16 | gqa | exact_match: 0.6098 | 12578 | 120W | 83.0 | 223 / 237 | 289 / 360 | 63 | 21.1 | 40.3 | 27.2 | 56.8 | none | [Qwen2.5-VL-7B-Instruct/gqa/vllm-bf16/20260925-190032](Qwen2.5-VL-7B-Instruct/gqa/vllm-bf16/20260925-190032) |
+| Qwen2.5-VL-7B-Instruct | hf-bf16 | mme | mme_cognition_score: 162.50 | 8 | 120W | 0.3 | 294 / 310 | 416 / 432 | 122 | 36.9 | 40.4 | 6.7 | 20.0 | none | [Qwen2.5-VL-7B-Instruct/mme/hf-bf16/20260923-195548_limit8](Qwen2.5-VL-7B-Instruct/mme/hf-bf16/20260923-195548_limit8) |
 | Qwen2.5-VL-7B-Instruct | hf-bf16 | mme | mme_cognition_score: 616.43<br>mme_perception_score: 1680.43 | 2374 | 120W | 26.3 | 283 / 1138 | 373 / 1223 | 83 | 27.2 | 31.6 | 36.8 | 64.9 | none | [Qwen2.5-VL-7B-Instruct/mme/hf-bf16/20260923-221456](Qwen2.5-VL-7B-Instruct/mme/hf-bf16/20260923-221456) |
+| Qwen2.5-VL-7B-Instruct | llamacpp-q4_k_m | mme | mme_cognition_score: 125.00 | 8 | 120W | 0.1 | 471 / 476 | 500 / 507 | 30 | 35.2 | 35.3 | 7.5 | 23.0 | none | [Qwen2.5-VL-7B-Instruct/mme/llamacpp-q4_k_m/20260923-200519_limit8](Qwen2.5-VL-7B-Instruct/mme/llamacpp-q4_k_m/20260923-200519_limit8) |
+| Qwen2.5-VL-7B-Instruct | llamacpp-q8_0 | mme | mme_cognition_score: 162.50 | 8 | 120W | 0.1 | 465 / 474 | 503 / 511 | 37 | 37.7 | 37.9 | 7.0 | 23.0 | none | [Qwen2.5-VL-7B-Instruct/mme/llamacpp-q8_0/20260923-200454_limit8](Qwen2.5-VL-7B-Instruct/mme/llamacpp-q8_0/20260923-200454_limit8) |
+| Qwen2.5-VL-7B-Instruct | vllm-awq | mme | mme_cognition_score: 162.50 | 8 | 120W | 1.8 | 243 / 374 | 273 / 404 | 30 | 39.6 | 44.0 | 8.6 | 24.3 | none | [Qwen2.5-VL-7B-Instruct/mme/vllm-awq/20260923-200201_limit8](Qwen2.5-VL-7B-Instruct/mme/vllm-awq/20260923-200201_limit8) |
 | Qwen2.5-VL-7B-Instruct | vllm-awq | mme | mme_cognition_score: 610.71<br>mme_perception_score: 1686.57 | 2374 | 120W | 52.4 | 396 / 1698 | 420 / 1724 | 25 | 39.0 | 43.7 | 22.8 | 43.3 | none | [Qwen2.5-VL-7B-Instruct/mme/vllm-awq/20260924-010100](Qwen2.5-VL-7B-Instruct/mme/vllm-awq/20260924-010100) |
+| Qwen2.5-VL-7B-Instruct | vllm-bf16 | mme | mme_cognition_score: 162.50 | 8 | 120W | 1.5 | 283 / 403 | 389 / 511 | 108 | 36.5 | 43.2 | 6.9 | 23.3 | none | [Qwen2.5-VL-7B-Instruct/mme/vllm-bf16/20260923-200010_limit8](Qwen2.5-VL-7B-Instruct/mme/vllm-bf16/20260923-200010_limit8) |
 | Qwen2.5-VL-7B-Instruct | vllm-bf16 | mme | mme_cognition_score: 621.07<br>mme_perception_score: 1687.05 | 2374 | 120W | 50.8 | 367 / 1511 | 468 / 1617 | 102 | 27.3 | 43.1 | 18.4 | 40.5 | none | [Qwen2.5-VL-7B-Instruct/mme/vllm-bf16/20260924-000951](Qwen2.5-VL-7B-Instruct/mme/vllm-bf16/20260924-000951) |
+| Qwen2.5-VL-7B-Instruct | hf-bf16 | textvqa_val | exact_match: 0.8500 | 8 | MAXN | 0.4 | 485 / 737 | 820 / 885 | 81 | 18.5 | 25.8 | 9.9 | 23.6 | none | [Qwen2.5-VL-7B-Instruct/textvqa_val/hf-bf16/20260928-214709_limit8](Qwen2.5-VL-7B-Instruct/textvqa_val/hf-bf16/20260928-214709_limit8) |
 | Qwen2.5-VL-7B-Instruct | hf-bf16 | textvqa_val | exact_match: 0.8296 | 5000 | MAXN | 64.3 | 475 / 600 | 666 / 953 | 80 | 25.8 | 29.3 | 42.4 | 72.9 | none | [Qwen2.5-VL-7B-Instruct/textvqa_val/hf-bf16/20260928-225203](Qwen2.5-VL-7B-Instruct/textvqa_val/hf-bf16/20260928-225203) |
 | Qwen2.5-VL-7B-Instruct | llamacpp-f16 | textvqa_val | exact_match: 0.8258 | 5000 | MAXN | 159.9 | 1449 / 2002 | 1594 / 2265 | 60 | 23.8 | 26.1 | 30.7 | 59.4 | none | [Qwen2.5-VL-7B-Instruct/textvqa_val/llamacpp-f16/20261001-140345](Qwen2.5-VL-7B-Instruct/textvqa_val/llamacpp-f16/20261001-140345) |
+| Qwen2.5-VL-7B-Instruct | llamacpp-q4_k_m | textvqa_val | exact_match: 0.6500 | 8 | MAXN | 0.3 | 1413 / 1677 | 1513 / 1804 | 29 | 26.8 | 28.0 | 12.4 | 29.2 | none | [Qwen2.5-VL-7B-Instruct/textvqa_val/llamacpp-q4_k_m/20260928-215910_limit8](Qwen2.5-VL-7B-Instruct/textvqa_val/llamacpp-q4_k_m/20260928-215910_limit8) |
 | Qwen2.5-VL-7B-Instruct | llamacpp-q4_k_m | textvqa_val | exact_match: 0.8215 | 5000 | MAXN | 157.8 | 1530 / 2118 | 1622 / 2219 | 29 | 26.4 | 28.6 | 31.7 | 53.0 | none | [Qwen2.5-VL-7B-Instruct/textvqa_val/llamacpp-q4_k_m/20260929-111341](Qwen2.5-VL-7B-Instruct/textvqa_val/llamacpp-q4_k_m/20260929-111341) |
+| Qwen2.5-VL-7B-Instruct | llamacpp-q8_0 | textvqa_val | exact_match: 0.6500 | 8 | MAXN | 0.3 | 1430 / 1623 | 1607 / 1797 | 36 | 26.8 | 28.0 | 12.0 | 29.6 | none | [Qwen2.5-VL-7B-Instruct/textvqa_val/llamacpp-q8_0/20260928-215820_limit8](Qwen2.5-VL-7B-Instruct/textvqa_val/llamacpp-q8_0/20260928-215820_limit8) |
 | Qwen2.5-VL-7B-Instruct | llamacpp-q8_0 | textvqa_val | exact_match: 0.8239 | 5000 | MAXN | 152.5 | 1434 / 1982 | 1543 / 2149 | 36 | 26.4 | 28.6 | 31.8 | 54.6 | none | [Qwen2.5-VL-7B-Instruct/textvqa_val/llamacpp-q8_0/20260929-084010](Qwen2.5-VL-7B-Instruct/textvqa_val/llamacpp-q8_0/20260929-084010) |
+| Qwen2.5-VL-7B-Instruct | trt_edgellm-fp16 | textvqa_val | exact_match: 0.8500 | 8 | MAXN | 0.2 | ~216 (avg) | - | 59 | 25.5 | 26.2 | 11.1 | 22.3 | none | [Qwen2.5-VL-7B-Instruct/textvqa_val/trt_edgellm-fp16/20261005-110801_limit8](Qwen2.5-VL-7B-Instruct/textvqa_val/trt_edgellm-fp16/20261005-110801_limit8) |
 | Qwen2.5-VL-7B-Instruct | trt_edgellm-fp16 | textvqa_val | exact_match: 0.8398 | 5000 | MAXN | 56.4 | ~246 (avg) | - | 59 | 24.9 | 25.7 | 42.6 | 69.9 | none | [Qwen2.5-VL-7B-Instruct/textvqa_val/trt_edgellm-fp16/20261005-111014](Qwen2.5-VL-7B-Instruct/textvqa_val/trt_edgellm-fp16/20261005-111014) |
+| Qwen2.5-VL-7B-Instruct | trt_edgellm-fp8 | textvqa_val | exact_match: 0.8500 | 8 | MAXN | 0.2 | ~164 (avg) | - | 32 | 25.3 | 26.1 | 9.4 | 21.5 | none | [Qwen2.5-VL-7B-Instruct/textvqa_val/trt_edgellm-fp8/20261005-110846_limit8](Qwen2.5-VL-7B-Instruct/textvqa_val/trt_edgellm-fp8/20261005-110846_limit8) |
 | Qwen2.5-VL-7B-Instruct | trt_edgellm-fp8 | textvqa_val | exact_match: 0.8388 | 5000 | MAXN | 44.2 | ~180 (avg) | - | 32 | 22.1 | 23.2 | 38.9 | 63.6 | none | [Qwen2.5-VL-7B-Instruct/textvqa_val/trt_edgellm-fp8/20261005-120746](Qwen2.5-VL-7B-Instruct/textvqa_val/trt_edgellm-fp8/20261005-120746) |
+| Qwen2.5-VL-7B-Instruct | trt_edgellm-int4_awq | textvqa_val | exact_match: 0.6250 | 8 | MAXN | 0.2 | ~379 (avg) | - | 20 | 25.0 | 25.9 | 13.7 | 25.7 | none | [Qwen2.5-VL-7B-Instruct/textvqa_val/trt_edgellm-int4_awq/20261005-110925_limit8](Qwen2.5-VL-7B-Instruct/textvqa_val/trt_edgellm-int4_awq/20261005-110925_limit8) |
 | Qwen2.5-VL-7B-Instruct | trt_edgellm-int4_awq | textvqa_val | exact_match: 0.8292 | 5000 | MAXN | 59.6 | ~397 (avg) | - | 20 | 21.0 | 22.1 | 51.1 | 72.4 | none | [Qwen2.5-VL-7B-Instruct/textvqa_val/trt_edgellm-int4_awq/20261005-125303](Qwen2.5-VL-7B-Instruct/textvqa_val/trt_edgellm-int4_awq/20261005-125303) |
+| Qwen2.5-VL-7B-Instruct | vllm-awq | textvqa_val | exact_match: 0.8500 | 8 | MAXN | 1.9 | 613 / 1263 | 711 / 1284 | 20 | 26.9 | 32.1 | 10.3 | 26.1 | none | [Qwen2.5-VL-7B-Instruct/textvqa_val/vllm-awq/20260928-215425_limit8](Qwen2.5-VL-7B-Instruct/textvqa_val/vllm-awq/20260928-215425_limit8) |
 | Qwen2.5-VL-7B-Instruct | vllm-awq | textvqa_val | exact_match: 0.8313 | 5000 | MAXN | 79.6 | 637 / 782 | 676 / 872 | 20 | 26.3 | 31.9 | 38.9 | 65.3 | none | [Qwen2.5-VL-7B-Instruct/textvqa_val/vllm-awq/20260929-031548](Qwen2.5-VL-7B-Instruct/textvqa_val/vllm-awq/20260929-031548) |
+| Qwen2.5-VL-7B-Instruct | vllm-bf16+diag-nocache | textvqa_val | exact_match: 0.8500 | 8 | MAXN | 1.4 | 385 / 841 | 643 / 902 | 61 | 24.6 | 29.8 | 10.1 | 30.6 | none | [Qwen2.5-VL-7B-Instruct/textvqa_val/vllm-bf16+diag-nocache/20261006-195153_limit8](Qwen2.5-VL-7B-Instruct/textvqa_val/vllm-bf16+diag-nocache/20261006-195153_limit8) |
 | Qwen2.5-VL-7B-Instruct | vllm-bf16+pil | textvqa_val | exact_match: 0.8384 | 5000 | MAXN | 48.7 | 389 / 468 | 521 / 745 | 61 | 24.9 | 30.7 | 48.2 | 88.8 | none | [Qwen2.5-VL-7B-Instruct/textvqa_val/vllm-bf16+pil/20261006-210304](Qwen2.5-VL-7B-Instruct/textvqa_val/vllm-bf16+pil/20261006-210304) |
 | Qwen2.5-VL-7B-Instruct | vllm-bf16+stages | textvqa_val | exact_match: 0.8380 | 5000 | MAXN | 68.1 | 394 / 482 | 529 / 748 | 61 | 24.7 | 29.4 | 35.3 | 68.9 | none | [Qwen2.5-VL-7B-Instruct/textvqa_val/vllm-bf16+stages/20261006-195358](Qwen2.5-VL-7B-Instruct/textvqa_val/vllm-bf16+stages/20261006-195358) |
+| Qwen2.5-VL-7B-Instruct | vllm-bf16 | textvqa_val | exact_match: 0.8500 | 8 | MAXN | 1.5 | 456 / 998 | 749 / 1059 | 62 | 23.3 | 30.4 | 8.2 | 24.6 | none | [Qwen2.5-VL-7B-Instruct/textvqa_val/vllm-bf16/20260928-215219_limit8](Qwen2.5-VL-7B-Instruct/textvqa_val/vllm-bf16/20260928-215219_limit8) |
 | Qwen2.5-VL-7B-Instruct | vllm-bf16 | textvqa_val | exact_match: 0.8384 | 5000 | MAXN | 74.6 | 456 / 547 | 596 / 819 | 63 | 25.6 | 30.9 | 32.4 | 62.3 | none | [Qwen2.5-VL-7B-Instruct/textvqa_val/vllm-bf16/20260929-020010](Qwen2.5-VL-7B-Instruct/textvqa_val/vllm-bf16/20260929-020010) |
 | Qwen2.5-VL-7B-Instruct | vllm-fp8+marlin | textvqa_val | exact_match: 0.8374 | 5000 | MAXN | 84.8 | 681 / 840 | 742 / 963 | 32 | 19.9 | 25.9 | 38.7 | 72.5 | none | [Qwen2.5-VL-7B-Instruct/textvqa_val/vllm-fp8+marlin/20261005-202223](Qwen2.5-VL-7B-Instruct/textvqa_val/vllm-fp8+marlin/20261005-202223) |
 | Qwen2.5-VL-7B-Instruct | vllm-fp8+torch-stages | textvqa_val | exact_match: 0.8381 | 5000 | MAXN | 58.2 | 361 / 443 | 435 / 575 | 33 | 26.4 | 31.7 | 32.4 | 63.2 | none | [Qwen2.5-VL-7B-Instruct/textvqa_val/vllm-fp8+torch-stages/20261006-155337](Qwen2.5-VL-7B-Instruct/textvqa_val/vllm-fp8+torch-stages/20261006-155337) |
@@ -63,50 +428,415 @@ Medians per sample. Preprocess = client-side prompt and image preparation; visio
 
 | Model | Framework | Task | Preprocess (ms) | Vision encoder (ms) | LLM prefill (ms) | TTFT p50 / p99 (ms) | Answer p99 (ms) | Output tokens (mean) | Decode (tokens/s) | Throughput (samples/s) | Energy (J/sample) | Stage timing source |
 |---|---|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---|
+| Qwen2.5-3B-Instruct | hf-bf16 | gsm8k_jetson | 13 | - | 122 | 122 / 132 | 1410 | 32.0 | 24 | 0.63 | 76.3 | TTFT (text only) |
+| Qwen2.5-3B-Instruct | hf-bf16 | ifeval | 13 | - | 122 | 122 / 132 | 1410 | 32.0 | 24 | 0.63 | 76.3 | TTFT (text only) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson | 13 | - | 122 | 122 / 132 | 1410 | 32.0 | 24 | 0.63 | 76.3 | TTFT (text only) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_abstract_algebra | 13 | - | 122 | 122 / 132 | 1410 | 32.0 | 24 | 0.63 | 76.3 | TTFT (text only) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_anatomy | 13 | - | 122 | 122 / 132 | 1410 | 32.0 | 24 | 0.63 | 76.3 | TTFT (text only) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_astronomy | 13 | - | 122 | 122 / 132 | 1410 | 32.0 | 24 | 0.63 | 76.3 | TTFT (text only) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_business_ethics | 13 | - | 122 | 122 / 132 | 1410 | 32.0 | 24 | 0.63 | 76.3 | TTFT (text only) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_clinical_knowledge | 13 | - | 122 | 122 / 132 | 1410 | 32.0 | 24 | 0.63 | 76.3 | TTFT (text only) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_college_biology | 13 | - | 122 | 122 / 132 | 1410 | 32.0 | 24 | 0.63 | 76.3 | TTFT (text only) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_college_chemistry | 13 | - | 122 | 122 / 132 | 1410 | 32.0 | 24 | 0.63 | 76.3 | TTFT (text only) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_college_computer_science | 13 | - | 122 | 122 / 132 | 1410 | 32.0 | 24 | 0.63 | 76.3 | TTFT (text only) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_college_mathematics | 13 | - | 122 | 122 / 132 | 1410 | 32.0 | 24 | 0.63 | 76.3 | TTFT (text only) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_college_medicine | 13 | - | 122 | 122 / 132 | 1410 | 32.0 | 24 | 0.63 | 76.3 | TTFT (text only) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_college_physics | 13 | - | 122 | 122 / 132 | 1410 | 32.0 | 24 | 0.63 | 76.3 | TTFT (text only) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_computer_security | 13 | - | 122 | 122 / 132 | 1410 | 32.0 | 24 | 0.63 | 76.3 | TTFT (text only) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_conceptual_physics | 13 | - | 122 | 122 / 132 | 1410 | 32.0 | 24 | 0.63 | 76.3 | TTFT (text only) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_econometrics | 13 | - | 122 | 122 / 132 | 1410 | 32.0 | 24 | 0.63 | 76.3 | TTFT (text only) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_electrical_engineering | 13 | - | 122 | 122 / 132 | 1410 | 32.0 | 24 | 0.63 | 76.3 | TTFT (text only) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_elementary_mathematics | 13 | - | 122 | 122 / 132 | 1410 | 32.0 | 24 | 0.63 | 76.3 | TTFT (text only) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_formal_logic | 13 | - | 122 | 122 / 132 | 1410 | 32.0 | 24 | 0.63 | 76.3 | TTFT (text only) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_global_facts | 13 | - | 122 | 122 / 132 | 1410 | 32.0 | 24 | 0.63 | 76.3 | TTFT (text only) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_high_school_biology | 13 | - | 122 | 122 / 132 | 1410 | 32.0 | 24 | 0.63 | 76.3 | TTFT (text only) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_high_school_chemistry | 13 | - | 122 | 122 / 132 | 1410 | 32.0 | 24 | 0.63 | 76.3 | TTFT (text only) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_high_school_computer_science | 13 | - | 122 | 122 / 132 | 1410 | 32.0 | 24 | 0.63 | 76.3 | TTFT (text only) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_high_school_european_history | 13 | - | 122 | 122 / 132 | 1410 | 32.0 | 24 | 0.63 | 76.3 | TTFT (text only) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_high_school_geography | 13 | - | 122 | 122 / 132 | 1410 | 32.0 | 24 | 0.63 | 76.3 | TTFT (text only) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_high_school_government_and_politics | 13 | - | 122 | 122 / 132 | 1410 | 32.0 | 24 | 0.63 | 76.3 | TTFT (text only) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_high_school_macroeconomics | 13 | - | 122 | 122 / 132 | 1410 | 32.0 | 24 | 0.63 | 76.3 | TTFT (text only) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_high_school_mathematics | 13 | - | 122 | 122 / 132 | 1410 | 32.0 | 24 | 0.63 | 76.3 | TTFT (text only) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_high_school_microeconomics | 13 | - | 122 | 122 / 132 | 1410 | 32.0 | 24 | 0.63 | 76.3 | TTFT (text only) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_high_school_physics | 13 | - | 122 | 122 / 132 | 1410 | 32.0 | 24 | 0.63 | 76.3 | TTFT (text only) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_high_school_psychology | 13 | - | 122 | 122 / 132 | 1410 | 32.0 | 24 | 0.63 | 76.3 | TTFT (text only) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_high_school_statistics | 13 | - | 122 | 122 / 132 | 1410 | 32.0 | 24 | 0.63 | 76.3 | TTFT (text only) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_high_school_us_history | 13 | - | 122 | 122 / 132 | 1410 | 32.0 | 24 | 0.63 | 76.3 | TTFT (text only) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_high_school_world_history | 13 | - | 122 | 122 / 132 | 1410 | 32.0 | 24 | 0.63 | 76.3 | TTFT (text only) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_human_aging | 13 | - | 122 | 122 / 132 | 1410 | 32.0 | 24 | 0.63 | 76.3 | TTFT (text only) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_human_sexuality | 13 | - | 122 | 122 / 132 | 1410 | 32.0 | 24 | 0.63 | 76.3 | TTFT (text only) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_international_law | 13 | - | 122 | 122 / 132 | 1410 | 32.0 | 24 | 0.63 | 76.3 | TTFT (text only) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_jurisprudence | 13 | - | 122 | 122 / 132 | 1410 | 32.0 | 24 | 0.63 | 76.3 | TTFT (text only) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_logical_fallacies | 13 | - | 122 | 122 / 132 | 1410 | 32.0 | 24 | 0.63 | 76.3 | TTFT (text only) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_machine_learning | 13 | - | 122 | 122 / 132 | 1410 | 32.0 | 24 | 0.63 | 76.3 | TTFT (text only) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_management | 13 | - | 122 | 122 / 132 | 1410 | 32.0 | 24 | 0.63 | 76.3 | TTFT (text only) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_marketing | 13 | - | 122 | 122 / 132 | 1410 | 32.0 | 24 | 0.63 | 76.3 | TTFT (text only) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_medical_genetics | 13 | - | 122 | 122 / 132 | 1410 | 32.0 | 24 | 0.63 | 76.3 | TTFT (text only) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_miscellaneous | 13 | - | 122 | 122 / 132 | 1410 | 32.0 | 24 | 0.63 | 76.3 | TTFT (text only) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_moral_disputes | 13 | - | 122 | 122 / 132 | 1410 | 32.0 | 24 | 0.63 | 76.3 | TTFT (text only) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_moral_scenarios | 13 | - | 122 | 122 / 132 | 1410 | 32.0 | 24 | 0.63 | 76.3 | TTFT (text only) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_nutrition | 13 | - | 122 | 122 / 132 | 1410 | 32.0 | 24 | 0.63 | 76.3 | TTFT (text only) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_philosophy | 13 | - | 122 | 122 / 132 | 1410 | 32.0 | 24 | 0.63 | 76.3 | TTFT (text only) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_prehistory | 13 | - | 122 | 122 / 132 | 1410 | 32.0 | 24 | 0.63 | 76.3 | TTFT (text only) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_professional_accounting | 13 | - | 122 | 122 / 132 | 1410 | 32.0 | 24 | 0.63 | 76.3 | TTFT (text only) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_professional_law | 13 | - | 122 | 122 / 132 | 1410 | 32.0 | 24 | 0.63 | 76.3 | TTFT (text only) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_professional_medicine | 13 | - | 122 | 122 / 132 | 1410 | 32.0 | 24 | 0.63 | 76.3 | TTFT (text only) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_professional_psychology | 13 | - | 122 | 122 / 132 | 1410 | 32.0 | 24 | 0.63 | 76.3 | TTFT (text only) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_public_relations | 13 | - | 122 | 122 / 132 | 1410 | 32.0 | 24 | 0.63 | 76.3 | TTFT (text only) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_security_studies | 13 | - | 122 | 122 / 132 | 1410 | 32.0 | 24 | 0.63 | 76.3 | TTFT (text only) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_sociology | 13 | - | 122 | 122 / 132 | 1410 | 32.0 | 24 | 0.63 | 76.3 | TTFT (text only) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_us_foreign_policy | 13 | - | 122 | 122 / 132 | 1410 | 32.0 | 24 | 0.63 | 76.3 | TTFT (text only) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_virology | 13 | - | 122 | 122 / 132 | 1410 | 32.0 | 24 | 0.63 | 76.3 | TTFT (text only) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_world_religions | 13 | - | 122 | 122 / 132 | 1410 | 32.0 | 24 | 0.63 | 76.3 | TTFT (text only) |
+| Qwen2.5-3B-Instruct | hf-bf16 | gsm8k_jetson | 11 | - | 73 | 73 / 93 | 657 | 5.0 | 25 | 1.16 | 42.5 | TTFT (text only) |
+| Qwen2.5-3B-Instruct | hf-bf16 | ifeval | 11 | - | 73 | 73 / 93 | 657 | 5.0 | 25 | 1.16 | 42.5 | TTFT (text only) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson | 11 | - | 73 | 73 / 93 | 657 | 5.0 | 25 | 1.16 | 42.5 | TTFT (text only) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_abstract_algebra | 11 | - | 73 | 73 / 93 | 657 | 5.0 | 25 | 1.16 | 42.5 | TTFT (text only) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_anatomy | 11 | - | 73 | 73 / 93 | 657 | 5.0 | 25 | 1.16 | 42.5 | TTFT (text only) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_astronomy | 11 | - | 73 | 73 / 93 | 657 | 5.0 | 25 | 1.16 | 42.5 | TTFT (text only) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_business_ethics | 11 | - | 73 | 73 / 93 | 657 | 5.0 | 25 | 1.16 | 42.5 | TTFT (text only) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_clinical_knowledge | 11 | - | 73 | 73 / 93 | 657 | 5.0 | 25 | 1.16 | 42.5 | TTFT (text only) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_college_biology | 11 | - | 73 | 73 / 93 | 657 | 5.0 | 25 | 1.16 | 42.5 | TTFT (text only) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_college_chemistry | 11 | - | 73 | 73 / 93 | 657 | 5.0 | 25 | 1.16 | 42.5 | TTFT (text only) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_college_computer_science | 11 | - | 73 | 73 / 93 | 657 | 5.0 | 25 | 1.16 | 42.5 | TTFT (text only) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_college_mathematics | 11 | - | 73 | 73 / 93 | 657 | 5.0 | 25 | 1.16 | 42.5 | TTFT (text only) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_college_medicine | 11 | - | 73 | 73 / 93 | 657 | 5.0 | 25 | 1.16 | 42.5 | TTFT (text only) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_college_physics | 11 | - | 73 | 73 / 93 | 657 | 5.0 | 25 | 1.16 | 42.5 | TTFT (text only) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_computer_security | 11 | - | 73 | 73 / 93 | 657 | 5.0 | 25 | 1.16 | 42.5 | TTFT (text only) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_conceptual_physics | 11 | - | 73 | 73 / 93 | 657 | 5.0 | 25 | 1.16 | 42.5 | TTFT (text only) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_econometrics | 11 | - | 73 | 73 / 93 | 657 | 5.0 | 25 | 1.16 | 42.5 | TTFT (text only) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_electrical_engineering | 11 | - | 73 | 73 / 93 | 657 | 5.0 | 25 | 1.16 | 42.5 | TTFT (text only) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_elementary_mathematics | 11 | - | 73 | 73 / 93 | 657 | 5.0 | 25 | 1.16 | 42.5 | TTFT (text only) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_formal_logic | 11 | - | 73 | 73 / 93 | 657 | 5.0 | 25 | 1.16 | 42.5 | TTFT (text only) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_global_facts | 11 | - | 73 | 73 / 93 | 657 | 5.0 | 25 | 1.16 | 42.5 | TTFT (text only) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_high_school_biology | 11 | - | 73 | 73 / 93 | 657 | 5.0 | 25 | 1.16 | 42.5 | TTFT (text only) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_high_school_chemistry | 11 | - | 73 | 73 / 93 | 657 | 5.0 | 25 | 1.16 | 42.5 | TTFT (text only) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_high_school_computer_science | 11 | - | 73 | 73 / 93 | 657 | 5.0 | 25 | 1.16 | 42.5 | TTFT (text only) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_high_school_european_history | 11 | - | 73 | 73 / 93 | 657 | 5.0 | 25 | 1.16 | 42.5 | TTFT (text only) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_high_school_geography | 11 | - | 73 | 73 / 93 | 657 | 5.0 | 25 | 1.16 | 42.5 | TTFT (text only) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_high_school_government_and_politics | 11 | - | 73 | 73 / 93 | 657 | 5.0 | 25 | 1.16 | 42.5 | TTFT (text only) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_high_school_macroeconomics | 11 | - | 73 | 73 / 93 | 657 | 5.0 | 25 | 1.16 | 42.5 | TTFT (text only) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_high_school_mathematics | 11 | - | 73 | 73 / 93 | 657 | 5.0 | 25 | 1.16 | 42.5 | TTFT (text only) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_high_school_microeconomics | 11 | - | 73 | 73 / 93 | 657 | 5.0 | 25 | 1.16 | 42.5 | TTFT (text only) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_high_school_physics | 11 | - | 73 | 73 / 93 | 657 | 5.0 | 25 | 1.16 | 42.5 | TTFT (text only) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_high_school_psychology | 11 | - | 73 | 73 / 93 | 657 | 5.0 | 25 | 1.16 | 42.5 | TTFT (text only) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_high_school_statistics | 11 | - | 73 | 73 / 93 | 657 | 5.0 | 25 | 1.16 | 42.5 | TTFT (text only) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_high_school_us_history | 11 | - | 73 | 73 / 93 | 657 | 5.0 | 25 | 1.16 | 42.5 | TTFT (text only) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_high_school_world_history | 11 | - | 73 | 73 / 93 | 657 | 5.0 | 25 | 1.16 | 42.5 | TTFT (text only) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_human_aging | 11 | - | 73 | 73 / 93 | 657 | 5.0 | 25 | 1.16 | 42.5 | TTFT (text only) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_human_sexuality | 11 | - | 73 | 73 / 93 | 657 | 5.0 | 25 | 1.16 | 42.5 | TTFT (text only) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_international_law | 11 | - | 73 | 73 / 93 | 657 | 5.0 | 25 | 1.16 | 42.5 | TTFT (text only) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_jurisprudence | 11 | - | 73 | 73 / 93 | 657 | 5.0 | 25 | 1.16 | 42.5 | TTFT (text only) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_logical_fallacies | 11 | - | 73 | 73 / 93 | 657 | 5.0 | 25 | 1.16 | 42.5 | TTFT (text only) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_machine_learning | 11 | - | 73 | 73 / 93 | 657 | 5.0 | 25 | 1.16 | 42.5 | TTFT (text only) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_management | 11 | - | 73 | 73 / 93 | 657 | 5.0 | 25 | 1.16 | 42.5 | TTFT (text only) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_marketing | 11 | - | 73 | 73 / 93 | 657 | 5.0 | 25 | 1.16 | 42.5 | TTFT (text only) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_medical_genetics | 11 | - | 73 | 73 / 93 | 657 | 5.0 | 25 | 1.16 | 42.5 | TTFT (text only) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_miscellaneous | 11 | - | 73 | 73 / 93 | 657 | 5.0 | 25 | 1.16 | 42.5 | TTFT (text only) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_moral_disputes | 11 | - | 73 | 73 / 93 | 657 | 5.0 | 25 | 1.16 | 42.5 | TTFT (text only) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_moral_scenarios | 11 | - | 73 | 73 / 93 | 657 | 5.0 | 25 | 1.16 | 42.5 | TTFT (text only) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_nutrition | 11 | - | 73 | 73 / 93 | 657 | 5.0 | 25 | 1.16 | 42.5 | TTFT (text only) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_philosophy | 11 | - | 73 | 73 / 93 | 657 | 5.0 | 25 | 1.16 | 42.5 | TTFT (text only) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_prehistory | 11 | - | 73 | 73 / 93 | 657 | 5.0 | 25 | 1.16 | 42.5 | TTFT (text only) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_professional_accounting | 11 | - | 73 | 73 / 93 | 657 | 5.0 | 25 | 1.16 | 42.5 | TTFT (text only) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_professional_law | 11 | - | 73 | 73 / 93 | 657 | 5.0 | 25 | 1.16 | 42.5 | TTFT (text only) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_professional_medicine | 11 | - | 73 | 73 / 93 | 657 | 5.0 | 25 | 1.16 | 42.5 | TTFT (text only) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_professional_psychology | 11 | - | 73 | 73 / 93 | 657 | 5.0 | 25 | 1.16 | 42.5 | TTFT (text only) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_public_relations | 11 | - | 73 | 73 / 93 | 657 | 5.0 | 25 | 1.16 | 42.5 | TTFT (text only) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_security_studies | 11 | - | 73 | 73 / 93 | 657 | 5.0 | 25 | 1.16 | 42.5 | TTFT (text only) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_sociology | 11 | - | 73 | 73 / 93 | 657 | 5.0 | 25 | 1.16 | 42.5 | TTFT (text only) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_us_foreign_policy | 11 | - | 73 | 73 / 93 | 657 | 5.0 | 25 | 1.16 | 42.5 | TTFT (text only) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_virology | 11 | - | 73 | 73 / 93 | 657 | 5.0 | 25 | 1.16 | 42.5 | TTFT (text only) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_world_religions | 11 | - | 73 | 73 / 93 | 657 | 5.0 | 25 | 1.16 | 42.5 | TTFT (text only) |
+| Qwen2.5-3B-Instruct | llamacpp-f16 | gsm8k_jetson | 8 | - | 140 | 194 / 222 | 1007 | 28.6 | 39 | 1.91 | 36.7 | server log |
+| Qwen2.5-3B-Instruct | llamacpp-f16 | ifeval | 8 | - | 140 | 194 / 222 | 1007 | 28.6 | 39 | 1.91 | 36.7 | server log |
+| Qwen2.5-3B-Instruct | llamacpp-f16 | mmlu_jetson | 8 | - | 140 | 194 / 222 | 1007 | 28.6 | 39 | 1.91 | 36.7 | server log |
+| Qwen2.5-3B-Instruct | llamacpp-f16 | mmlu_jetson_abstract_algebra | 8 | - | 140 | 194 / 222 | 1007 | 28.6 | 39 | 1.91 | 36.7 | server log |
+| Qwen2.5-3B-Instruct | llamacpp-f16 | mmlu_jetson_anatomy | 8 | - | 140 | 194 / 222 | 1007 | 28.6 | 39 | 1.91 | 36.7 | server log |
+| Qwen2.5-3B-Instruct | llamacpp-f16 | mmlu_jetson_astronomy | 8 | - | 140 | 194 / 222 | 1007 | 28.6 | 39 | 1.91 | 36.7 | server log |
+| Qwen2.5-3B-Instruct | llamacpp-f16 | mmlu_jetson_business_ethics | 8 | - | 140 | 194 / 222 | 1007 | 28.6 | 39 | 1.91 | 36.7 | server log |
+| Qwen2.5-3B-Instruct | llamacpp-f16 | mmlu_jetson_clinical_knowledge | 8 | - | 140 | 194 / 222 | 1007 | 28.6 | 39 | 1.91 | 36.7 | server log |
+| Qwen2.5-3B-Instruct | llamacpp-f16 | mmlu_jetson_college_biology | 8 | - | 140 | 194 / 222 | 1007 | 28.6 | 39 | 1.91 | 36.7 | server log |
+| Qwen2.5-3B-Instruct | llamacpp-f16 | mmlu_jetson_college_chemistry | 8 | - | 140 | 194 / 222 | 1007 | 28.6 | 39 | 1.91 | 36.7 | server log |
+| Qwen2.5-3B-Instruct | llamacpp-f16 | mmlu_jetson_college_computer_science | 8 | - | 140 | 194 / 222 | 1007 | 28.6 | 39 | 1.91 | 36.7 | server log |
+| Qwen2.5-3B-Instruct | llamacpp-f16 | mmlu_jetson_college_mathematics | 8 | - | 140 | 194 / 222 | 1007 | 28.6 | 39 | 1.91 | 36.7 | server log |
+| Qwen2.5-3B-Instruct | llamacpp-f16 | mmlu_jetson_college_medicine | 8 | - | 140 | 194 / 222 | 1007 | 28.6 | 39 | 1.91 | 36.7 | server log |
+| Qwen2.5-3B-Instruct | llamacpp-f16 | mmlu_jetson_college_physics | 8 | - | 140 | 194 / 222 | 1007 | 28.6 | 39 | 1.91 | 36.7 | server log |
+| Qwen2.5-3B-Instruct | llamacpp-f16 | mmlu_jetson_computer_security | 8 | - | 140 | 194 / 222 | 1007 | 28.6 | 39 | 1.91 | 36.7 | server log |
+| Qwen2.5-3B-Instruct | llamacpp-f16 | mmlu_jetson_conceptual_physics | 8 | - | 140 | 194 / 222 | 1007 | 28.6 | 39 | 1.91 | 36.7 | server log |
+| Qwen2.5-3B-Instruct | llamacpp-f16 | mmlu_jetson_econometrics | 8 | - | 140 | 194 / 222 | 1007 | 28.6 | 39 | 1.91 | 36.7 | server log |
+| Qwen2.5-3B-Instruct | llamacpp-f16 | mmlu_jetson_electrical_engineering | 8 | - | 140 | 194 / 222 | 1007 | 28.6 | 39 | 1.91 | 36.7 | server log |
+| Qwen2.5-3B-Instruct | llamacpp-f16 | mmlu_jetson_elementary_mathematics | 8 | - | 140 | 194 / 222 | 1007 | 28.6 | 39 | 1.91 | 36.7 | server log |
+| Qwen2.5-3B-Instruct | llamacpp-f16 | mmlu_jetson_formal_logic | 8 | - | 140 | 194 / 222 | 1007 | 28.6 | 39 | 1.91 | 36.7 | server log |
+| Qwen2.5-3B-Instruct | llamacpp-f16 | mmlu_jetson_global_facts | 8 | - | 140 | 194 / 222 | 1007 | 28.6 | 39 | 1.91 | 36.7 | server log |
+| Qwen2.5-3B-Instruct | llamacpp-f16 | mmlu_jetson_high_school_biology | 8 | - | 140 | 194 / 222 | 1007 | 28.6 | 39 | 1.91 | 36.7 | server log |
+| Qwen2.5-3B-Instruct | llamacpp-f16 | mmlu_jetson_high_school_chemistry | 8 | - | 140 | 194 / 222 | 1007 | 28.6 | 39 | 1.91 | 36.7 | server log |
+| Qwen2.5-3B-Instruct | llamacpp-f16 | mmlu_jetson_high_school_computer_science | 8 | - | 140 | 194 / 222 | 1007 | 28.6 | 39 | 1.91 | 36.7 | server log |
+| Qwen2.5-3B-Instruct | llamacpp-f16 | mmlu_jetson_high_school_european_history | 8 | - | 140 | 194 / 222 | 1007 | 28.6 | 39 | 1.91 | 36.7 | server log |
+| Qwen2.5-3B-Instruct | llamacpp-f16 | mmlu_jetson_high_school_geography | 8 | - | 140 | 194 / 222 | 1007 | 28.6 | 39 | 1.91 | 36.7 | server log |
+| Qwen2.5-3B-Instruct | llamacpp-f16 | mmlu_jetson_high_school_government_and_politics | 8 | - | 140 | 194 / 222 | 1007 | 28.6 | 39 | 1.91 | 36.7 | server log |
+| Qwen2.5-3B-Instruct | llamacpp-f16 | mmlu_jetson_high_school_macroeconomics | 8 | - | 140 | 194 / 222 | 1007 | 28.6 | 39 | 1.91 | 36.7 | server log |
+| Qwen2.5-3B-Instruct | llamacpp-f16 | mmlu_jetson_high_school_mathematics | 8 | - | 140 | 194 / 222 | 1007 | 28.6 | 39 | 1.91 | 36.7 | server log |
+| Qwen2.5-3B-Instruct | llamacpp-f16 | mmlu_jetson_high_school_microeconomics | 8 | - | 140 | 194 / 222 | 1007 | 28.6 | 39 | 1.91 | 36.7 | server log |
+| Qwen2.5-3B-Instruct | llamacpp-f16 | mmlu_jetson_high_school_physics | 8 | - | 140 | 194 / 222 | 1007 | 28.6 | 39 | 1.91 | 36.7 | server log |
+| Qwen2.5-3B-Instruct | llamacpp-f16 | mmlu_jetson_high_school_psychology | 8 | - | 140 | 194 / 222 | 1007 | 28.6 | 39 | 1.91 | 36.7 | server log |
+| Qwen2.5-3B-Instruct | llamacpp-f16 | mmlu_jetson_high_school_statistics | 8 | - | 140 | 194 / 222 | 1007 | 28.6 | 39 | 1.91 | 36.7 | server log |
+| Qwen2.5-3B-Instruct | llamacpp-f16 | mmlu_jetson_high_school_us_history | 8 | - | 140 | 194 / 222 | 1007 | 28.6 | 39 | 1.91 | 36.7 | server log |
+| Qwen2.5-3B-Instruct | llamacpp-f16 | mmlu_jetson_high_school_world_history | 8 | - | 140 | 194 / 222 | 1007 | 28.6 | 39 | 1.91 | 36.7 | server log |
+| Qwen2.5-3B-Instruct | llamacpp-f16 | mmlu_jetson_human_aging | 8 | - | 140 | 194 / 222 | 1007 | 28.6 | 39 | 1.91 | 36.7 | server log |
+| Qwen2.5-3B-Instruct | llamacpp-f16 | mmlu_jetson_human_sexuality | 8 | - | 140 | 194 / 222 | 1007 | 28.6 | 39 | 1.91 | 36.7 | server log |
+| Qwen2.5-3B-Instruct | llamacpp-f16 | mmlu_jetson_international_law | 8 | - | 140 | 194 / 222 | 1007 | 28.6 | 39 | 1.91 | 36.7 | server log |
+| Qwen2.5-3B-Instruct | llamacpp-f16 | mmlu_jetson_jurisprudence | 8 | - | 140 | 194 / 222 | 1007 | 28.6 | 39 | 1.91 | 36.7 | server log |
+| Qwen2.5-3B-Instruct | llamacpp-f16 | mmlu_jetson_logical_fallacies | 8 | - | 140 | 194 / 222 | 1007 | 28.6 | 39 | 1.91 | 36.7 | server log |
+| Qwen2.5-3B-Instruct | llamacpp-f16 | mmlu_jetson_machine_learning | 8 | - | 140 | 194 / 222 | 1007 | 28.6 | 39 | 1.91 | 36.7 | server log |
+| Qwen2.5-3B-Instruct | llamacpp-f16 | mmlu_jetson_management | 8 | - | 140 | 194 / 222 | 1007 | 28.6 | 39 | 1.91 | 36.7 | server log |
+| Qwen2.5-3B-Instruct | llamacpp-f16 | mmlu_jetson_marketing | 8 | - | 140 | 194 / 222 | 1007 | 28.6 | 39 | 1.91 | 36.7 | server log |
+| Qwen2.5-3B-Instruct | llamacpp-f16 | mmlu_jetson_medical_genetics | 8 | - | 140 | 194 / 222 | 1007 | 28.6 | 39 | 1.91 | 36.7 | server log |
+| Qwen2.5-3B-Instruct | llamacpp-f16 | mmlu_jetson_miscellaneous | 8 | - | 140 | 194 / 222 | 1007 | 28.6 | 39 | 1.91 | 36.7 | server log |
+| Qwen2.5-3B-Instruct | llamacpp-f16 | mmlu_jetson_moral_disputes | 8 | - | 140 | 194 / 222 | 1007 | 28.6 | 39 | 1.91 | 36.7 | server log |
+| Qwen2.5-3B-Instruct | llamacpp-f16 | mmlu_jetson_moral_scenarios | 8 | - | 140 | 194 / 222 | 1007 | 28.6 | 39 | 1.91 | 36.7 | server log |
+| Qwen2.5-3B-Instruct | llamacpp-f16 | mmlu_jetson_nutrition | 8 | - | 140 | 194 / 222 | 1007 | 28.6 | 39 | 1.91 | 36.7 | server log |
+| Qwen2.5-3B-Instruct | llamacpp-f16 | mmlu_jetson_philosophy | 8 | - | 140 | 194 / 222 | 1007 | 28.6 | 39 | 1.91 | 36.7 | server log |
+| Qwen2.5-3B-Instruct | llamacpp-f16 | mmlu_jetson_prehistory | 8 | - | 140 | 194 / 222 | 1007 | 28.6 | 39 | 1.91 | 36.7 | server log |
+| Qwen2.5-3B-Instruct | llamacpp-f16 | mmlu_jetson_professional_accounting | 8 | - | 140 | 194 / 222 | 1007 | 28.6 | 39 | 1.91 | 36.7 | server log |
+| Qwen2.5-3B-Instruct | llamacpp-f16 | mmlu_jetson_professional_law | 8 | - | 140 | 194 / 222 | 1007 | 28.6 | 39 | 1.91 | 36.7 | server log |
+| Qwen2.5-3B-Instruct | llamacpp-f16 | mmlu_jetson_professional_medicine | 8 | - | 140 | 194 / 222 | 1007 | 28.6 | 39 | 1.91 | 36.7 | server log |
+| Qwen2.5-3B-Instruct | llamacpp-f16 | mmlu_jetson_professional_psychology | 8 | - | 140 | 194 / 222 | 1007 | 28.6 | 39 | 1.91 | 36.7 | server log |
+| Qwen2.5-3B-Instruct | llamacpp-f16 | mmlu_jetson_public_relations | 8 | - | 140 | 194 / 222 | 1007 | 28.6 | 39 | 1.91 | 36.7 | server log |
+| Qwen2.5-3B-Instruct | llamacpp-f16 | mmlu_jetson_security_studies | 8 | - | 140 | 194 / 222 | 1007 | 28.6 | 39 | 1.91 | 36.7 | server log |
+| Qwen2.5-3B-Instruct | llamacpp-f16 | mmlu_jetson_sociology | 8 | - | 140 | 194 / 222 | 1007 | 28.6 | 39 | 1.91 | 36.7 | server log |
+| Qwen2.5-3B-Instruct | llamacpp-f16 | mmlu_jetson_us_foreign_policy | 8 | - | 140 | 194 / 222 | 1007 | 28.6 | 39 | 1.91 | 36.7 | server log |
+| Qwen2.5-3B-Instruct | llamacpp-f16 | mmlu_jetson_virology | 8 | - | 140 | 194 / 222 | 1007 | 28.6 | 39 | 1.91 | 36.7 | server log |
+| Qwen2.5-3B-Instruct | llamacpp-f16 | mmlu_jetson_world_religions | 8 | - | 140 | 194 / 222 | 1007 | 28.6 | 39 | 1.91 | 36.7 | server log |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | gsm8k_jetson | - | - | 46 | ~52 (avg) | - | 12.8 | 39 | 1.77 | 41.0 | runner profile (GPU time) |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | ifeval | - | - | 46 | ~52 (avg) | - | 12.8 | 39 | 1.77 | 41.0 | runner profile (GPU time) |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | mmlu_jetson | - | - | 46 | ~52 (avg) | - | 12.8 | 39 | 1.77 | 41.0 | runner profile (GPU time) |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | mmlu_jetson_abstract_algebra | - | - | 46 | ~52 (avg) | - | 12.8 | 39 | 1.77 | 41.0 | runner profile (GPU time) |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | mmlu_jetson_anatomy | - | - | 46 | ~52 (avg) | - | 12.8 | 39 | 1.77 | 41.0 | runner profile (GPU time) |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | mmlu_jetson_astronomy | - | - | 46 | ~52 (avg) | - | 12.8 | 39 | 1.77 | 41.0 | runner profile (GPU time) |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | mmlu_jetson_business_ethics | - | - | 46 | ~52 (avg) | - | 12.8 | 39 | 1.77 | 41.0 | runner profile (GPU time) |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | mmlu_jetson_clinical_knowledge | - | - | 46 | ~52 (avg) | - | 12.8 | 39 | 1.77 | 41.0 | runner profile (GPU time) |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | mmlu_jetson_college_biology | - | - | 46 | ~52 (avg) | - | 12.8 | 39 | 1.77 | 41.0 | runner profile (GPU time) |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | mmlu_jetson_college_chemistry | - | - | 46 | ~52 (avg) | - | 12.8 | 39 | 1.77 | 41.0 | runner profile (GPU time) |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | mmlu_jetson_college_computer_science | - | - | 46 | ~52 (avg) | - | 12.8 | 39 | 1.77 | 41.0 | runner profile (GPU time) |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | mmlu_jetson_college_mathematics | - | - | 46 | ~52 (avg) | - | 12.8 | 39 | 1.77 | 41.0 | runner profile (GPU time) |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | mmlu_jetson_college_medicine | - | - | 46 | ~52 (avg) | - | 12.8 | 39 | 1.77 | 41.0 | runner profile (GPU time) |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | mmlu_jetson_college_physics | - | - | 46 | ~52 (avg) | - | 12.8 | 39 | 1.77 | 41.0 | runner profile (GPU time) |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | mmlu_jetson_computer_security | - | - | 46 | ~52 (avg) | - | 12.8 | 39 | 1.77 | 41.0 | runner profile (GPU time) |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | mmlu_jetson_conceptual_physics | - | - | 46 | ~52 (avg) | - | 12.8 | 39 | 1.77 | 41.0 | runner profile (GPU time) |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | mmlu_jetson_econometrics | - | - | 46 | ~52 (avg) | - | 12.8 | 39 | 1.77 | 41.0 | runner profile (GPU time) |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | mmlu_jetson_electrical_engineering | - | - | 46 | ~52 (avg) | - | 12.8 | 39 | 1.77 | 41.0 | runner profile (GPU time) |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | mmlu_jetson_elementary_mathematics | - | - | 46 | ~52 (avg) | - | 12.8 | 39 | 1.77 | 41.0 | runner profile (GPU time) |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | mmlu_jetson_formal_logic | - | - | 46 | ~52 (avg) | - | 12.8 | 39 | 1.77 | 41.0 | runner profile (GPU time) |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | mmlu_jetson_global_facts | - | - | 46 | ~52 (avg) | - | 12.8 | 39 | 1.77 | 41.0 | runner profile (GPU time) |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | mmlu_jetson_high_school_biology | - | - | 46 | ~52 (avg) | - | 12.8 | 39 | 1.77 | 41.0 | runner profile (GPU time) |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | mmlu_jetson_high_school_chemistry | - | - | 46 | ~52 (avg) | - | 12.8 | 39 | 1.77 | 41.0 | runner profile (GPU time) |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | mmlu_jetson_high_school_computer_science | - | - | 46 | ~52 (avg) | - | 12.8 | 39 | 1.77 | 41.0 | runner profile (GPU time) |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | mmlu_jetson_high_school_european_history | - | - | 46 | ~52 (avg) | - | 12.8 | 39 | 1.77 | 41.0 | runner profile (GPU time) |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | mmlu_jetson_high_school_geography | - | - | 46 | ~52 (avg) | - | 12.8 | 39 | 1.77 | 41.0 | runner profile (GPU time) |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | mmlu_jetson_high_school_government_and_politics | - | - | 46 | ~52 (avg) | - | 12.8 | 39 | 1.77 | 41.0 | runner profile (GPU time) |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | mmlu_jetson_high_school_macroeconomics | - | - | 46 | ~52 (avg) | - | 12.8 | 39 | 1.77 | 41.0 | runner profile (GPU time) |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | mmlu_jetson_high_school_mathematics | - | - | 46 | ~52 (avg) | - | 12.8 | 39 | 1.77 | 41.0 | runner profile (GPU time) |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | mmlu_jetson_high_school_microeconomics | - | - | 46 | ~52 (avg) | - | 12.8 | 39 | 1.77 | 41.0 | runner profile (GPU time) |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | mmlu_jetson_high_school_physics | - | - | 46 | ~52 (avg) | - | 12.8 | 39 | 1.77 | 41.0 | runner profile (GPU time) |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | mmlu_jetson_high_school_psychology | - | - | 46 | ~52 (avg) | - | 12.8 | 39 | 1.77 | 41.0 | runner profile (GPU time) |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | mmlu_jetson_high_school_statistics | - | - | 46 | ~52 (avg) | - | 12.8 | 39 | 1.77 | 41.0 | runner profile (GPU time) |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | mmlu_jetson_high_school_us_history | - | - | 46 | ~52 (avg) | - | 12.8 | 39 | 1.77 | 41.0 | runner profile (GPU time) |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | mmlu_jetson_high_school_world_history | - | - | 46 | ~52 (avg) | - | 12.8 | 39 | 1.77 | 41.0 | runner profile (GPU time) |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | mmlu_jetson_human_aging | - | - | 46 | ~52 (avg) | - | 12.8 | 39 | 1.77 | 41.0 | runner profile (GPU time) |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | mmlu_jetson_human_sexuality | - | - | 46 | ~52 (avg) | - | 12.8 | 39 | 1.77 | 41.0 | runner profile (GPU time) |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | mmlu_jetson_international_law | - | - | 46 | ~52 (avg) | - | 12.8 | 39 | 1.77 | 41.0 | runner profile (GPU time) |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | mmlu_jetson_jurisprudence | - | - | 46 | ~52 (avg) | - | 12.8 | 39 | 1.77 | 41.0 | runner profile (GPU time) |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | mmlu_jetson_logical_fallacies | - | - | 46 | ~52 (avg) | - | 12.8 | 39 | 1.77 | 41.0 | runner profile (GPU time) |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | mmlu_jetson_machine_learning | - | - | 46 | ~52 (avg) | - | 12.8 | 39 | 1.77 | 41.0 | runner profile (GPU time) |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | mmlu_jetson_management | - | - | 46 | ~52 (avg) | - | 12.8 | 39 | 1.77 | 41.0 | runner profile (GPU time) |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | mmlu_jetson_marketing | - | - | 46 | ~52 (avg) | - | 12.8 | 39 | 1.77 | 41.0 | runner profile (GPU time) |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | mmlu_jetson_medical_genetics | - | - | 46 | ~52 (avg) | - | 12.8 | 39 | 1.77 | 41.0 | runner profile (GPU time) |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | mmlu_jetson_miscellaneous | - | - | 46 | ~52 (avg) | - | 12.8 | 39 | 1.77 | 41.0 | runner profile (GPU time) |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | mmlu_jetson_moral_disputes | - | - | 46 | ~52 (avg) | - | 12.8 | 39 | 1.77 | 41.0 | runner profile (GPU time) |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | mmlu_jetson_moral_scenarios | - | - | 46 | ~52 (avg) | - | 12.8 | 39 | 1.77 | 41.0 | runner profile (GPU time) |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | mmlu_jetson_nutrition | - | - | 46 | ~52 (avg) | - | 12.8 | 39 | 1.77 | 41.0 | runner profile (GPU time) |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | mmlu_jetson_philosophy | - | - | 46 | ~52 (avg) | - | 12.8 | 39 | 1.77 | 41.0 | runner profile (GPU time) |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | mmlu_jetson_prehistory | - | - | 46 | ~52 (avg) | - | 12.8 | 39 | 1.77 | 41.0 | runner profile (GPU time) |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | mmlu_jetson_professional_accounting | - | - | 46 | ~52 (avg) | - | 12.8 | 39 | 1.77 | 41.0 | runner profile (GPU time) |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | mmlu_jetson_professional_law | - | - | 46 | ~52 (avg) | - | 12.8 | 39 | 1.77 | 41.0 | runner profile (GPU time) |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | mmlu_jetson_professional_medicine | - | - | 46 | ~52 (avg) | - | 12.8 | 39 | 1.77 | 41.0 | runner profile (GPU time) |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | mmlu_jetson_professional_psychology | - | - | 46 | ~52 (avg) | - | 12.8 | 39 | 1.77 | 41.0 | runner profile (GPU time) |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | mmlu_jetson_public_relations | - | - | 46 | ~52 (avg) | - | 12.8 | 39 | 1.77 | 41.0 | runner profile (GPU time) |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | mmlu_jetson_security_studies | - | - | 46 | ~52 (avg) | - | 12.8 | 39 | 1.77 | 41.0 | runner profile (GPU time) |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | mmlu_jetson_sociology | - | - | 46 | ~52 (avg) | - | 12.8 | 39 | 1.77 | 41.0 | runner profile (GPU time) |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | mmlu_jetson_us_foreign_policy | - | - | 46 | ~52 (avg) | - | 12.8 | 39 | 1.77 | 41.0 | runner profile (GPU time) |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | mmlu_jetson_virology | - | - | 46 | ~52 (avg) | - | 12.8 | 39 | 1.77 | 41.0 | runner profile (GPU time) |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | mmlu_jetson_world_religions | - | - | 46 | ~52 (avg) | - | 12.8 | 39 | 1.77 | 41.0 | runner profile (GPU time) |
+| Qwen2.5-3B-Instruct | vllm-bf16 | gsm8k_jetson | 9 | - | 52 | 52 / 53 | 864 | 10.9 | 38 | 1.47 | 37.7 | TTFT (text only) |
+| Qwen2.5-3B-Instruct | vllm-bf16 | ifeval | 9 | - | 52 | 52 / 53 | 864 | 10.9 | 38 | 1.47 | 37.7 | TTFT (text only) |
+| Qwen2.5-3B-Instruct | vllm-bf16 | mmlu_jetson | 9 | - | 52 | 52 / 53 | 864 | 10.9 | 38 | 1.47 | 37.7 | TTFT (text only) |
+| Qwen2.5-3B-Instruct | vllm-bf16 | mmlu_jetson_abstract_algebra | 9 | - | 52 | 52 / 53 | 864 | 10.9 | 38 | 1.47 | 37.7 | TTFT (text only) |
+| Qwen2.5-3B-Instruct | vllm-bf16 | mmlu_jetson_anatomy | 9 | - | 52 | 52 / 53 | 864 | 10.9 | 38 | 1.47 | 37.7 | TTFT (text only) |
+| Qwen2.5-3B-Instruct | vllm-bf16 | mmlu_jetson_astronomy | 9 | - | 52 | 52 / 53 | 864 | 10.9 | 38 | 1.47 | 37.7 | TTFT (text only) |
+| Qwen2.5-3B-Instruct | vllm-bf16 | mmlu_jetson_business_ethics | 9 | - | 52 | 52 / 53 | 864 | 10.9 | 38 | 1.47 | 37.7 | TTFT (text only) |
+| Qwen2.5-3B-Instruct | vllm-bf16 | mmlu_jetson_clinical_knowledge | 9 | - | 52 | 52 / 53 | 864 | 10.9 | 38 | 1.47 | 37.7 | TTFT (text only) |
+| Qwen2.5-3B-Instruct | vllm-bf16 | mmlu_jetson_college_biology | 9 | - | 52 | 52 / 53 | 864 | 10.9 | 38 | 1.47 | 37.7 | TTFT (text only) |
+| Qwen2.5-3B-Instruct | vllm-bf16 | mmlu_jetson_college_chemistry | 9 | - | 52 | 52 / 53 | 864 | 10.9 | 38 | 1.47 | 37.7 | TTFT (text only) |
+| Qwen2.5-3B-Instruct | vllm-bf16 | mmlu_jetson_college_computer_science | 9 | - | 52 | 52 / 53 | 864 | 10.9 | 38 | 1.47 | 37.7 | TTFT (text only) |
+| Qwen2.5-3B-Instruct | vllm-bf16 | mmlu_jetson_college_mathematics | 9 | - | 52 | 52 / 53 | 864 | 10.9 | 38 | 1.47 | 37.7 | TTFT (text only) |
+| Qwen2.5-3B-Instruct | vllm-bf16 | mmlu_jetson_college_medicine | 9 | - | 52 | 52 / 53 | 864 | 10.9 | 38 | 1.47 | 37.7 | TTFT (text only) |
+| Qwen2.5-3B-Instruct | vllm-bf16 | mmlu_jetson_college_physics | 9 | - | 52 | 52 / 53 | 864 | 10.9 | 38 | 1.47 | 37.7 | TTFT (text only) |
+| Qwen2.5-3B-Instruct | vllm-bf16 | mmlu_jetson_computer_security | 9 | - | 52 | 52 / 53 | 864 | 10.9 | 38 | 1.47 | 37.7 | TTFT (text only) |
+| Qwen2.5-3B-Instruct | vllm-bf16 | mmlu_jetson_conceptual_physics | 9 | - | 52 | 52 / 53 | 864 | 10.9 | 38 | 1.47 | 37.7 | TTFT (text only) |
+| Qwen2.5-3B-Instruct | vllm-bf16 | mmlu_jetson_econometrics | 9 | - | 52 | 52 / 53 | 864 | 10.9 | 38 | 1.47 | 37.7 | TTFT (text only) |
+| Qwen2.5-3B-Instruct | vllm-bf16 | mmlu_jetson_electrical_engineering | 9 | - | 52 | 52 / 53 | 864 | 10.9 | 38 | 1.47 | 37.7 | TTFT (text only) |
+| Qwen2.5-3B-Instruct | vllm-bf16 | mmlu_jetson_elementary_mathematics | 9 | - | 52 | 52 / 53 | 864 | 10.9 | 38 | 1.47 | 37.7 | TTFT (text only) |
+| Qwen2.5-3B-Instruct | vllm-bf16 | mmlu_jetson_formal_logic | 9 | - | 52 | 52 / 53 | 864 | 10.9 | 38 | 1.47 | 37.7 | TTFT (text only) |
+| Qwen2.5-3B-Instruct | vllm-bf16 | mmlu_jetson_global_facts | 9 | - | 52 | 52 / 53 | 864 | 10.9 | 38 | 1.47 | 37.7 | TTFT (text only) |
+| Qwen2.5-3B-Instruct | vllm-bf16 | mmlu_jetson_high_school_biology | 9 | - | 52 | 52 / 53 | 864 | 10.9 | 38 | 1.47 | 37.7 | TTFT (text only) |
+| Qwen2.5-3B-Instruct | vllm-bf16 | mmlu_jetson_high_school_chemistry | 9 | - | 52 | 52 / 53 | 864 | 10.9 | 38 | 1.47 | 37.7 | TTFT (text only) |
+| Qwen2.5-3B-Instruct | vllm-bf16 | mmlu_jetson_high_school_computer_science | 9 | - | 52 | 52 / 53 | 864 | 10.9 | 38 | 1.47 | 37.7 | TTFT (text only) |
+| Qwen2.5-3B-Instruct | vllm-bf16 | mmlu_jetson_high_school_european_history | 9 | - | 52 | 52 / 53 | 864 | 10.9 | 38 | 1.47 | 37.7 | TTFT (text only) |
+| Qwen2.5-3B-Instruct | vllm-bf16 | mmlu_jetson_high_school_geography | 9 | - | 52 | 52 / 53 | 864 | 10.9 | 38 | 1.47 | 37.7 | TTFT (text only) |
+| Qwen2.5-3B-Instruct | vllm-bf16 | mmlu_jetson_high_school_government_and_politics | 9 | - | 52 | 52 / 53 | 864 | 10.9 | 38 | 1.47 | 37.7 | TTFT (text only) |
+| Qwen2.5-3B-Instruct | vllm-bf16 | mmlu_jetson_high_school_macroeconomics | 9 | - | 52 | 52 / 53 | 864 | 10.9 | 38 | 1.47 | 37.7 | TTFT (text only) |
+| Qwen2.5-3B-Instruct | vllm-bf16 | mmlu_jetson_high_school_mathematics | 9 | - | 52 | 52 / 53 | 864 | 10.9 | 38 | 1.47 | 37.7 | TTFT (text only) |
+| Qwen2.5-3B-Instruct | vllm-bf16 | mmlu_jetson_high_school_microeconomics | 9 | - | 52 | 52 / 53 | 864 | 10.9 | 38 | 1.47 | 37.7 | TTFT (text only) |
+| Qwen2.5-3B-Instruct | vllm-bf16 | mmlu_jetson_high_school_physics | 9 | - | 52 | 52 / 53 | 864 | 10.9 | 38 | 1.47 | 37.7 | TTFT (text only) |
+| Qwen2.5-3B-Instruct | vllm-bf16 | mmlu_jetson_high_school_psychology | 9 | - | 52 | 52 / 53 | 864 | 10.9 | 38 | 1.47 | 37.7 | TTFT (text only) |
+| Qwen2.5-3B-Instruct | vllm-bf16 | mmlu_jetson_high_school_statistics | 9 | - | 52 | 52 / 53 | 864 | 10.9 | 38 | 1.47 | 37.7 | TTFT (text only) |
+| Qwen2.5-3B-Instruct | vllm-bf16 | mmlu_jetson_high_school_us_history | 9 | - | 52 | 52 / 53 | 864 | 10.9 | 38 | 1.47 | 37.7 | TTFT (text only) |
+| Qwen2.5-3B-Instruct | vllm-bf16 | mmlu_jetson_high_school_world_history | 9 | - | 52 | 52 / 53 | 864 | 10.9 | 38 | 1.47 | 37.7 | TTFT (text only) |
+| Qwen2.5-3B-Instruct | vllm-bf16 | mmlu_jetson_human_aging | 9 | - | 52 | 52 / 53 | 864 | 10.9 | 38 | 1.47 | 37.7 | TTFT (text only) |
+| Qwen2.5-3B-Instruct | vllm-bf16 | mmlu_jetson_human_sexuality | 9 | - | 52 | 52 / 53 | 864 | 10.9 | 38 | 1.47 | 37.7 | TTFT (text only) |
+| Qwen2.5-3B-Instruct | vllm-bf16 | mmlu_jetson_international_law | 9 | - | 52 | 52 / 53 | 864 | 10.9 | 38 | 1.47 | 37.7 | TTFT (text only) |
+| Qwen2.5-3B-Instruct | vllm-bf16 | mmlu_jetson_jurisprudence | 9 | - | 52 | 52 / 53 | 864 | 10.9 | 38 | 1.47 | 37.7 | TTFT (text only) |
+| Qwen2.5-3B-Instruct | vllm-bf16 | mmlu_jetson_logical_fallacies | 9 | - | 52 | 52 / 53 | 864 | 10.9 | 38 | 1.47 | 37.7 | TTFT (text only) |
+| Qwen2.5-3B-Instruct | vllm-bf16 | mmlu_jetson_machine_learning | 9 | - | 52 | 52 / 53 | 864 | 10.9 | 38 | 1.47 | 37.7 | TTFT (text only) |
+| Qwen2.5-3B-Instruct | vllm-bf16 | mmlu_jetson_management | 9 | - | 52 | 52 / 53 | 864 | 10.9 | 38 | 1.47 | 37.7 | TTFT (text only) |
+| Qwen2.5-3B-Instruct | vllm-bf16 | mmlu_jetson_marketing | 9 | - | 52 | 52 / 53 | 864 | 10.9 | 38 | 1.47 | 37.7 | TTFT (text only) |
+| Qwen2.5-3B-Instruct | vllm-bf16 | mmlu_jetson_medical_genetics | 9 | - | 52 | 52 / 53 | 864 | 10.9 | 38 | 1.47 | 37.7 | TTFT (text only) |
+| Qwen2.5-3B-Instruct | vllm-bf16 | mmlu_jetson_miscellaneous | 9 | - | 52 | 52 / 53 | 864 | 10.9 | 38 | 1.47 | 37.7 | TTFT (text only) |
+| Qwen2.5-3B-Instruct | vllm-bf16 | mmlu_jetson_moral_disputes | 9 | - | 52 | 52 / 53 | 864 | 10.9 | 38 | 1.47 | 37.7 | TTFT (text only) |
+| Qwen2.5-3B-Instruct | vllm-bf16 | mmlu_jetson_moral_scenarios | 9 | - | 52 | 52 / 53 | 864 | 10.9 | 38 | 1.47 | 37.7 | TTFT (text only) |
+| Qwen2.5-3B-Instruct | vllm-bf16 | mmlu_jetson_nutrition | 9 | - | 52 | 52 / 53 | 864 | 10.9 | 38 | 1.47 | 37.7 | TTFT (text only) |
+| Qwen2.5-3B-Instruct | vllm-bf16 | mmlu_jetson_philosophy | 9 | - | 52 | 52 / 53 | 864 | 10.9 | 38 | 1.47 | 37.7 | TTFT (text only) |
+| Qwen2.5-3B-Instruct | vllm-bf16 | mmlu_jetson_prehistory | 9 | - | 52 | 52 / 53 | 864 | 10.9 | 38 | 1.47 | 37.7 | TTFT (text only) |
+| Qwen2.5-3B-Instruct | vllm-bf16 | mmlu_jetson_professional_accounting | 9 | - | 52 | 52 / 53 | 864 | 10.9 | 38 | 1.47 | 37.7 | TTFT (text only) |
+| Qwen2.5-3B-Instruct | vllm-bf16 | mmlu_jetson_professional_law | 9 | - | 52 | 52 / 53 | 864 | 10.9 | 38 | 1.47 | 37.7 | TTFT (text only) |
+| Qwen2.5-3B-Instruct | vllm-bf16 | mmlu_jetson_professional_medicine | 9 | - | 52 | 52 / 53 | 864 | 10.9 | 38 | 1.47 | 37.7 | TTFT (text only) |
+| Qwen2.5-3B-Instruct | vllm-bf16 | mmlu_jetson_professional_psychology | 9 | - | 52 | 52 / 53 | 864 | 10.9 | 38 | 1.47 | 37.7 | TTFT (text only) |
+| Qwen2.5-3B-Instruct | vllm-bf16 | mmlu_jetson_public_relations | 9 | - | 52 | 52 / 53 | 864 | 10.9 | 38 | 1.47 | 37.7 | TTFT (text only) |
+| Qwen2.5-3B-Instruct | vllm-bf16 | mmlu_jetson_security_studies | 9 | - | 52 | 52 / 53 | 864 | 10.9 | 38 | 1.47 | 37.7 | TTFT (text only) |
+| Qwen2.5-3B-Instruct | vllm-bf16 | mmlu_jetson_sociology | 9 | - | 52 | 52 / 53 | 864 | 10.9 | 38 | 1.47 | 37.7 | TTFT (text only) |
+| Qwen2.5-3B-Instruct | vllm-bf16 | mmlu_jetson_us_foreign_policy | 9 | - | 52 | 52 / 53 | 864 | 10.9 | 38 | 1.47 | 37.7 | TTFT (text only) |
+| Qwen2.5-3B-Instruct | vllm-bf16 | mmlu_jetson_virology | 9 | - | 52 | 52 / 53 | 864 | 10.9 | 38 | 1.47 | 37.7 | TTFT (text only) |
+| Qwen2.5-3B-Instruct | vllm-bf16 | mmlu_jetson_world_religions | 9 | - | 52 | 52 / 53 | 864 | 10.9 | 38 | 1.47 | 37.7 | TTFT (text only) |
+| Qwen2.5-3B-Instruct | hf-bf16 | gsm8k_jetson | 6 | - | 83 | 83 / 366 | 14850 | 194.0 | 25 | 0.12 | 362.2 | TTFT (text only) |
+| Qwen2.5-3B-Instruct | llamacpp-f16 | gsm8k_jetson | 4 | - | 200 | 207 / 573 | 7490 | 169.6 | 39 | 0.21 | 260.8 | server log |
+| Qwen2.5-3B-Instruct | llamacpp-q4_k_m | gsm8k_jetson | 4 | - | 240 | 246 / 515 | 3992 | 210.4 | 80 | 0.32 | 157.1 | server log |
+| Qwen2.5-3B-Instruct | llamacpp-q8_0 | gsm8k_jetson | 4 | - | 214 | 220 / 495 | 4228 | 157.9 | 65 | 0.35 | 142.3 | server log |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | gsm8k_jetson | - | - | 50 | ~52 (avg) | - | 161.5 | 39 | 0.20 | 271.6 | runner profile (GPU time) |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp8 | gsm8k_jetson | - | - | 36 | ~37 (avg) | - | 183.6 | 67 | 0.30 | 149.9 | runner profile (GPU time) |
+| Qwen2.5-3B-Instruct | trt_edgellm-int4_awq | gsm8k_jetson | - | - | 105 | ~106 (avg) | - | 201.0 | 97 | 0.37 | 120.2 | runner profile (GPU time) |
+| Qwen2.5-3B-Instruct | trt_edgellm-int4_awq_qwen | gsm8k_jetson | - | - | 103 | ~105 (avg) | - | 512.0 | 98 | 0.16 | 349.1 | runner profile (GPU time) |
+| Qwen2.5-3B-Instruct | vllm-awq | gsm8k_jetson | 5 | - | 122 | 122 / 959 | 2568 | 157.2 | 101 | 0.09 | 341.7 | TTFT (text only) |
+| Qwen2.5-3B-Instruct | vllm-bf16 | gsm8k_jetson | 5 | - | 81 | 81 / 907 | 7313 | 164.5 | 38 | 0.11 | 365.3 | TTFT (text only) |
+| Qwen2.5-3B-Instruct | vllm-fp8 | gsm8k_jetson | 5 | - | 66 | 66 / 1038 | 4402 | 178.8 | 66 | 0.09 | 362.1 | TTFT (text only) |
+| Qwen2.5-3B-Instruct | hf-bf16 | ifeval | 1 | - | 48 | 48 / 339 | 19689 | 212.9 | 25 | 0.11 | 390.2 | TTFT (text only) |
+| Qwen2.5-3B-Instruct | llamacpp-f16 | ifeval | 0 | - | 74 | 79 / 392 | 19662 | 215.9 | 40 | 0.17 | 334.4 | server log |
+| Qwen2.5-3B-Instruct | llamacpp-q4_k_m | ifeval | 0 | - | 35 | 40 / 316 | 6797 | 220.9 | 81 | 0.34 | 151.8 | server log |
+| Qwen2.5-3B-Instruct | llamacpp-q8_0 | ifeval | 0 | - | 34 | 39 / 317 | 6586 | 142.6 | 66 | 0.41 | 114.0 | server log |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | ifeval | - | - | 31 | ~31 (avg) | - | 211.2 | 39 | 0.14 | 401.5 | runner profile (GPU time) |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp8 | ifeval | - | - | 21 | ~21 (avg) | - | 582.0 | 67 | 0.10 | 530.6 | runner profile (GPU time) |
+| Qwen2.5-3B-Instruct | trt_edgellm-int4_awq | ifeval | - | - | 25 | ~25 (avg) | - | 554.6 | 98 | 0.16 | 353.0 | runner profile (GPU time) |
+| Qwen2.5-3B-Instruct | trt_edgellm-int4_awq_qwen | ifeval | - | - | 25 | ~25 (avg) | - | 1280.0 | 98 | 0.07 | 940.2 | runner profile (GPU time) |
+| Qwen2.5-3B-Instruct | vllm-awq | ifeval | 1 | - | 29 | 29 / 858 | 12801 | 440.5 | 101 | 0.08 | 469.2 | TTFT (text only) |
+| Qwen2.5-3B-Instruct | vllm-bf16 | ifeval | 1 | - | 55 | 55 / 906 | 13247 | 208.2 | 38 | 0.10 | 429.2 | TTFT (text only) |
+| Qwen2.5-3B-Instruct | vllm-fp8 | ifeval | 1 | - | 33 | 33 / 962 | 19530 | 336.1 | 66 | 0.10 | 409.5 | TTFT (text only) |
+| Qwen2.5-VL-3B-Instruct | hf-bf16 | gqa | 24 | - | - | 298 / 2761 | 2971 | 2.2 | 8 | 0.06 | 460.8 | - |
 | Qwen2.5-VL-3B-Instruct | hf-bf16 | gqa | 38 | - | - | 199 / 252 | 370 | 2.3 | 18 | 3.26 | 16.4 | - |
 | Qwen2.5-VL-3B-Instruct | trt_edgellm-fp16 | gqa | - | 30 | 37 | ~69 (avg) | - | 2.3 | 38 | 5.08 | 11.7 | runner profile (GPU time) |
 | Qwen2.5-VL-3B-Instruct | trt_edgellm-fp8 | gqa | - | 30 | 24 | ~56 (avg) | - | 2.3 | 65 | 6.23 | 8.7 | runner profile (GPU time) |
 | Qwen2.5-VL-3B-Instruct | trt_edgellm-int4_awq | gqa | - | 30 | 70 | ~97 (avg) | - | 2.2 | 92 | 5.12 | 11.6 | runner profile (GPU time) |
 | Qwen2.5-VL-3B-Instruct | vllm-awq | gqa | 84 | - | - | 217 / 290 | 305 | 2.2 | 87 | 3.11 | 15.5 | - |
 | Qwen2.5-VL-3B-Instruct | vllm-bf16 | gqa | 83 | - | - | 185 / 228 | 283 | 2.3 | 36 | 3.25 | 15.6 | - |
+| Qwen2.5-VL-3B-Instruct | hf-bf16 | mme | 14 | - | - | 208 / 1402 | 1508 | 2.0 | 14 | 0.69 | 28.1 | - |
 | Qwen2.5-VL-3B-Instruct | hf-bf16 | mme | 22 | - | - | 241 / 933 | 998 | 2.0 | 17 | 1.89 | 31.1 | - |
+| Qwen2.5-VL-3B-Instruct | hf-bf16 | mme | 18 | - | - | 203 / 1255 | 1358 | 2.0 | 14 | 0.70 | 24.9 | - |
+| Qwen2.5-VL-3B-Instruct | llamacpp-q4_k_m | mme | 7 | - | - | 318 / 729 | 746 | 2.0 | 57 | 1.76 | 11.9 | - |
+| Qwen2.5-VL-3B-Instruct | llamacpp-q8_0 | mme | 7 | - | - | 309 / 750 | 772 | 2.0 | 52 | 1.75 | 12.2 | - |
+| Qwen2.5-VL-3B-Instruct | llamacpp-q8_0 | mme | 7 | - | - | 308 / 753 | 777 | 2.0 | 52 | 1.79 | 11.0 | - |
+| Qwen2.5-VL-3B-Instruct | trt_edgellm-fp16 | mme | - | 32 | 48 | ~75 (avg) | - | 2.0 | 28 | 1.34 | 13.1 | runner profile (GPU time) |
+| Qwen2.5-VL-3B-Instruct | trt_edgellm-fp16 | mme | - | 31 | 49 | ~77 (avg) | - | 2.0 | 27 | 1.30 | 11.9 | runner profile (GPU time) |
 | Qwen2.5-VL-3B-Instruct | trt_edgellm-fp16 | mme | - | 42 | 44 | ~146 (avg) | - | 2.0 | 37 | 1.41 | 27.8 | runner profile (GPU time) |
+| Qwen2.5-VL-3B-Instruct | trt_edgellm-fp8 | mme | - | 31 | 36 | ~67 (avg) | - | 2.0 | 43 | 1.80 | 9.0 | runner profile (GPU time) |
 | Qwen2.5-VL-3B-Instruct | trt_edgellm-fp8 | mme | - | 41 | 30 | ~121 (avg) | - | 2.0 | 64 | 1.49 | 23.8 | runner profile (GPU time) |
+| Qwen2.5-VL-3B-Instruct | trt_edgellm-int4_awq+qwen-awq-ckpt | mme | - | 27 | 63 | ~89 (avg) | - | 6.6 | 71 | 1.60 | 11.3 | runner profile (GPU time) |
+| Qwen2.5-VL-3B-Instruct | trt_edgellm-int4_awq | mme | - | 28 | 64 | ~92 (avg) | - | 2.0 | 69 | 1.83 | 10.5 | runner profile (GPU time) |
 | Qwen2.5-VL-3B-Instruct | trt_edgellm-int4_awq | mme | - | 42 | 82 | ~211 (avg) | - | 2.0 | 90 | 1.32 | 31.4 | runner profile (GPU time) |
+| Qwen2.5-VL-3B-Instruct | trt_edgellm-nvfp4 | mme | - | 24 | 21 | ~46 (avg) | - | 14.4 | 71 | 1.39 | 13.5 | runner profile (GPU time) |
+| Qwen2.5-VL-3B-Instruct | vllm-awq | mme | 10 | - | - | 167 / 5411 | 5427 | 2.0 | 64 | 0.08 | 257.5 | - |
 | Qwen2.5-VL-3B-Instruct | vllm-awq | mme | 108 | - | - | 282 / 1830 | 1843 | 2.0 | 76 | 0.89 | 39.0 | - |
+| Qwen2.5-VL-3B-Instruct | vllm-awq | mme | 10 | - | - | 151 / 5331 | 5344 | 2.0 | 68 | 0.10 | 207.8 | - |
+| Qwen2.5-VL-3B-Instruct | vllm-bf16 | mme | 10 | - | - | 173 / 4625 | 4671 | 2.0 | 24 | 0.09 | 224.3 | - |
 | Qwen2.5-VL-3B-Instruct | vllm-bf16 | mme | 109 | - | - | 241 / 1667 | 1713 | 2.0 | 23 | 0.91 | 37.2 | - |
 | Qwen2.5-VL-3B-Instruct | hf-bf16+repeat | textvqa_val | 22 | 272 | 114 | 387 / 538 | 902 | 4.1 | 24 | 1.88 | 39.9 | CUDA events |
+| Qwen2.5-VL-3B-Instruct | hf-bf16 | textvqa_val | 26 | 272 | 146 | 410 / 1492 | 1700 | 4.8 | 20 | 0.57 | 39.6 | CUDA events |
 | Qwen2.5-VL-3B-Instruct | hf-bf16 | textvqa_val | 29 | 276 | 119 | 397 / 562 | 958 | 4.1 | 19 | 1.72 | 38.7 | CUDA events |
+| Qwen2.5-VL-3B-Instruct | llamacpp-f16 | textvqa_val | 196 | 622 | 298 | 1039 / 1732 | 1761 | 4.1 | 35 | 0.62 | 43.7 | server log |
 | Qwen2.5-VL-3B-Instruct | llamacpp-f16 | textvqa_val | 231 | 640 | 289 | 1059 / 1848 | 1949 | 3.9 | 35 | 0.69 | 77.3 | server log |
+| Qwen2.5-VL-3B-Instruct | llamacpp-q4_k_m | textvqa_val | 195 | 591 | 351 | 1047 / 1815 | 1832 | 4.1 | 60 | 0.64 | 41.4 | server log |
 | Qwen2.5-VL-3B-Instruct | llamacpp-q4_k_m | textvqa_val | 231 | 665 | 352 | 1144 / 1922 | 1976 | 4.1 | 62 | 0.68 | 72.4 | server log |
+| Qwen2.5-VL-3B-Instruct | llamacpp-q8_0 | textvqa_val | 196 | 624 | 319 | 1063 / 1782 | 1800 | 4.1 | 53 | 0.65 | 41.5 | server log |
 | Qwen2.5-VL-3B-Instruct | llamacpp-q8_0 | textvqa_val | 231 | 642 | 319 | 1091 / 1868 | 1928 | 3.9 | 55 | 0.70 | 72.4 | server log |
 | Qwen2.5-VL-3B-Instruct | trt_edgellm-fp16+repeat | textvqa_val | - | 87 | 74 | ~159 (avg) | - | 3.9 | 38 | 2.04 | 31.0 | runner profile (GPU time) |
+| Qwen2.5-VL-3B-Instruct | trt_edgellm-fp16 | textvqa_val | - | 76 | 62 | ~141 (avg) | - | 4.2 | 37 | 0.96 | 20.6 | runner profile (GPU time) |
 | Qwen2.5-VL-3B-Instruct | trt_edgellm-fp16 | textvqa_val | - | 87 | 74 | ~157 (avg) | - | 3.9 | 38 | 2.04 | 29.1 | runner profile (GPU time) |
+| Qwen2.5-VL-3B-Instruct | trt_edgellm-fp8 | textvqa_val | - | 84 | 42 | ~128 (avg) | - | 4.2 | 64 | 1.08 | 17.3 | runner profile (GPU time) |
 | Qwen2.5-VL-3B-Instruct | trt_edgellm-fp8 | textvqa_val | - | 87 | 44 | ~130 (avg) | - | 3.9 | 64 | 2.32 | 23.2 | runner profile (GPU time) |
+| Qwen2.5-VL-3B-Instruct | trt_edgellm-int4_awq | textvqa_val | - | 86 | 137 | ~225 (avg) | - | 4.6 | 90 | 1.02 | 19.5 | runner profile (GPU time) |
 | Qwen2.5-VL-3B-Instruct | trt_edgellm-int4_awq | textvqa_val | - | 87 | 152 | ~232 (avg) | - | 3.9 | 91 | 1.92 | 30.9 | runner profile (GPU time) |
+| Qwen2.5-VL-3B-Instruct | vllm-awq | textvqa_val | 205 | - | - | 433 / 5171 | 5209 | 3.8 | 89 | 0.08 | 279.2 | - |
 | Qwen2.5-VL-3B-Instruct | vllm-awq | textvqa_val | 240 | - | - | 453 / 647 | 691 | 3.9 | 94 | 1.34 | 39.8 | - |
 | Qwen2.5-VL-3B-Instruct | vllm-bf16+pil | textvqa_val | 7 | - | - | 281 / 412 | 606 | 3.9 | 38 | 2.65 | 31.9 | - |
 | Qwen2.5-VL-3B-Instruct | vllm-bf16+repeat | textvqa_val | 231 | - | - | 308 / 448 | 638 | 3.9 | 38 | 1.58 | 36.9 | - |
+| Qwen2.5-VL-3B-Instruct | vllm-bf16+stages | textvqa_val | 234 | 162 | 134 | 296 / 3991 | 4068 | 3.7 | 38 | 0.68 | 53.0 | CUDA events |
 | Qwen2.5-VL-3B-Instruct | vllm-bf16+stages | textvqa_val | 231 | 166 | 138 | 301 / 440 | 631 | 3.9 | 38 | 1.60 | 36.6 | CUDA events |
+| Qwen2.5-VL-3B-Instruct | vllm-bf16 | textvqa_val | 207 | - | - | 384 / 4415 | 4518 | 4.2 | 33 | 0.09 | 241.3 | - |
 | Qwen2.5-VL-3B-Instruct | vllm-bf16 | textvqa_val | 240 | - | - | 361 / 509 | 700 | 3.9 | 37 | 1.43 | 36.6 | - |
+| Qwen2.5-VL-3B-Instruct | vllm-bf16 | textvqa_val | 236 | - | - | 300 / 4063 | 4141 | 3.7 | 38 | 0.57 | 59.3 | - |
+| Qwen2.5-VL-3B-Instruct | vllm-fp8+marlin | textvqa_val | 196 | - | - | 412 / 4783 | 4828 | 4.2 | 66 | 0.09 | 304.4 | - |
 | Qwen2.5-VL-3B-Instruct | vllm-fp8+marlin | textvqa_val | 232 | - | - | 434 / 615 | 692 | 4.0 | 66 | 1.38 | 43.7 | - |
 | Qwen2.5-VL-3B-Instruct | vllm-fp8+torch-stages | textvqa_val | 231 | 165 | 152 | 318 / 437 | 530 | 4.0 | 64 | 1.67 | 33.1 | CUDA events |
+| Qwen2.5-VL-3B-Instruct | vllm-fp8+torch | textvqa_val | 197 | - | - | 293 / 4663 | 4707 | 4.2 | 65 | 0.09 | 290.4 | - |
+| Qwen2.5-VL-3B-Instruct | vllm-w8a8+triton | textvqa_val | 197 | - | - | 332 / 4005 | 4051 | 4.2 | 64 | 0.07 | 361.4 | - |
 | Qwen2.5-VL-3B-Instruct | vllm-w8a8+triton | textvqa_val | 231 | - | - | 359 / 513 | 595 | 3.9 | 64 | 1.54 | 37.0 | - |
 | Qwen2.5-VL-7B-Instruct | vllm-awq | gqa | 84 | - | - | 300 / 400 | 426 | 2.3 | 48 | 2.40 | 23.2 | - |
 | Qwen2.5-VL-7B-Instruct | vllm-bf16 | gqa | 84 | - | - | 223 / 309 | 465 | 2.3 | 16 | 2.53 | 22.5 | - |
+| Qwen2.5-VL-7B-Instruct | hf-bf16 | mme | 21 | - | - | 294 / 1257 | 1422 | 2.0 | 8 | 0.39 | 51.4 | - |
 | Qwen2.5-VL-7B-Instruct | hf-bf16 | mme | 29 | - | - | 283 / 1228 | 1316 | 2.0 | 12 | 1.51 | 43.1 | - |
+| Qwen2.5-VL-7B-Instruct | llamacpp-q4_k_m | mme | 7 | - | - | 471 / 900 | 936 | 2.0 | 33 | 1.36 | 16.9 | - |
+| Qwen2.5-VL-7B-Instruct | llamacpp-q8_0 | mme | 7 | - | - | 465 / 886 | 933 | 2.0 | 27 | 1.37 | 16.8 | - |
+| Qwen2.5-VL-7B-Instruct | vllm-awq | mme | 10 | - | - | 243 / 5512 | 5542 | 2.0 | 33 | 0.07 | 333.0 | - |
 | Qwen2.5-VL-7B-Instruct | vllm-awq | mme | 107 | - | - | 396 / 2265 | 2289 | 2.0 | 40 | 0.76 | 57.4 | - |
+| Qwen2.5-VL-7B-Instruct | vllm-bf16 | mme | 11 | - | - | 283 / 4655 | 4763 | 2.0 | 9 | 0.09 | 267.2 | - |
 | Qwen2.5-VL-7B-Instruct | vllm-bf16 | mme | 109 | - | - | 367 / 1976 | 2080 | 2.0 | 10 | 0.78 | 52.1 | - |
+| Qwen2.5-VL-7B-Instruct | hf-bf16 | textvqa_val | 43 | 271 | 214 | 485 / 1682 | 2024 | 3.9 | 12 | 0.34 | 69.2 | CUDA events |
 | Qwen2.5-VL-7B-Instruct | hf-bf16 | textvqa_val | 45 | 276 | 202 | 475 / 708 | 1489 | 4.0 | 13 | 1.30 | 56.3 | CUDA events |
 | Qwen2.5-VL-7B-Instruct | llamacpp-f16 | textvqa_val | 231 | 741 | 594 | 1449 / 2273 | 2611 | 4.1 | 17 | 0.52 | 113.9 | server log |
+| Qwen2.5-VL-7B-Instruct | llamacpp-q4_k_m | textvqa_val | 195 | 634 | 661 | 1413 / 2488 | 2715 | 5.2 | 35 | 0.50 | 58.9 | server log |
 | Qwen2.5-VL-7B-Instruct | llamacpp-q4_k_m | textvqa_val | 231 | 706 | 699 | 1530 / 2462 | 2578 | 4.1 | 34 | 0.53 | 100.4 | server log |
+| Qwen2.5-VL-7B-Instruct | llamacpp-q8_0 | textvqa_val | 195 | 682 | 594 | 1430 / 2261 | 2545 | 5.4 | 28 | 0.50 | 58.8 | server log |
 | Qwen2.5-VL-7B-Instruct | llamacpp-q8_0 | textvqa_val | 231 | 700 | 620 | 1434 / 2332 | 2490 | 4.1 | 28 | 0.55 | 99.8 | server log |
+| Qwen2.5-VL-7B-Instruct | trt_edgellm-fp16 | textvqa_val | - | 75 | 126 | ~216 (avg) | - | 3.9 | 17 | 0.60 | 37.0 | runner profile (GPU time) |
 | Qwen2.5-VL-7B-Instruct | trt_edgellm-fp16 | textvqa_val | - | 87 | 160 | ~246 (avg) | - | 3.9 | 17 | 1.48 | 47.3 | runner profile (GPU time) |
+| Qwen2.5-VL-7B-Instruct | trt_edgellm-fp8 | textvqa_val | - | 84 | 77 | ~164 (avg) | - | 4.0 | 31 | 0.83 | 25.8 | runner profile (GPU time) |
 | Qwen2.5-VL-7B-Instruct | trt_edgellm-fp8 | textvqa_val | - | 89 | 91 | ~180 (avg) | - | 3.9 | 31 | 1.88 | 33.8 | runner profile (GPU time) |
+| Qwen2.5-VL-7B-Instruct | trt_edgellm-int4_awq | textvqa_val | - | 85 | 290 | ~379 (avg) | - | 5.0 | 49 | 0.83 | 31.1 | runner profile (GPU time) |
 | Qwen2.5-VL-7B-Instruct | trt_edgellm-int4_awq | textvqa_val | - | 88 | 323 | ~397 (avg) | - | 4.0 | 49 | 1.40 | 51.8 | runner profile (GPU time) |
+| Qwen2.5-VL-7B-Instruct | vllm-awq | textvqa_val | 206 | - | - | 613 / 5395 | 5497 | 3.8 | 50 | 0.07 | 365.2 | - |
 | Qwen2.5-VL-7B-Instruct | vllm-awq | textvqa_val | 241 | - | - | 637 / 878 | 985 | 4.0 | 49 | 1.05 | 62.4 | - |
+| Qwen2.5-VL-7B-Instruct | vllm-bf16+diag-nocache | textvqa_val | 197 | - | - | 385 / 4024 | 4322 | 4.0 | 16 | 0.10 | 315.8 | - |
 | Qwen2.5-VL-7B-Instruct | vllm-bf16+pil | textvqa_val | 7 | - | - | 389 / 568 | 1123 | 3.9 | 16 | 1.71 | 51.9 | - |
 | Qwen2.5-VL-7B-Instruct | vllm-bf16+stages | textvqa_val | 231 | 166 | 230 | 394 / 578 | 1160 | 4.0 | 16 | 1.22 | 56.3 | CUDA events |
+| Qwen2.5-VL-7B-Instruct | vllm-bf16 | textvqa_val | 205 | - | - | 456 / 4468 | 4782 | 3.9 | 16 | 0.09 | 278.8 | - |
 | Qwen2.5-VL-7B-Instruct | vllm-bf16 | textvqa_val | 240 | - | - | 456 / 645 | 1224 | 3.9 | 16 | 1.12 | 55.7 | - |
 | Qwen2.5-VL-7B-Instruct | vllm-fp8+marlin | textvqa_val | 231 | - | - | 681 / 951 | 1132 | 3.9 | 32 | 0.98 | 73.8 | - |
 | Qwen2.5-VL-7B-Instruct | vllm-fp8+torch-stages | textvqa_val | 231 | 166 | 196 | 361 / 516 | 772 | 3.9 | 30 | 1.43 | 44.1 | CUDA events |
@@ -119,34 +849,372 @@ and total / mean answer time.
 
 | Model | Framework | Task | Image / text / output tokens | Vision (GFLOP) | Prefill (GFLOP) | Decode (GFLOP) | Total (GFLOP) | Run total (TFLOP) | TFLOP/s to 1st token | TFLOP/s answer |
 |---|---|---|---:|---:|---:|---:|---:|---:|---:|---:|
+| Qwen2.5-3B-Instruct | hf-bf16 | gsm8k_jetson | 0 / 748 / 194 | 0 | 4237 | 1241 | 5478 | 2586 | 34.7 | 3.9 |
+| Qwen2.5-3B-Instruct | hf-bf16 | ifeval | 0 / 83 / 213 | 0 | 462 | 1322 | 1784 | 842 | 3.8 | 1.3 |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_abstract_algebra | 0 / 395 / 32 | 0 | 2214 | 195 | 2409 | 1137 | 18.1 | 1.7 |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_anatomy | 0 / 359 / 32 | 0 | 2010 | 195 | 2205 | 1041 | 16.4 | 1.6 |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_astronomy | 0 / 605 / 32 | 0 | 3413 | 197 | 3610 | 1704 | 27.9 | 2.6 |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_business_ethics | 0 / 581 / 32 | 0 | 3277 | 197 | 3473 | 1639 | 26.8 | 2.5 |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_clinical_knowledge | 0 / 408 / 32 | 0 | 2292 | 195 | 2487 | 1174 | 18.8 | 1.8 |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_college_biology | 0 / 481 / 32 | 0 | 2704 | 196 | 2900 | 1369 | 22.1 | 2.1 |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_college_chemistry | 0 / 559 / 32 | 0 | 3149 | 197 | 3346 | 1579 | 25.8 | 2.4 |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_college_computer_science | 0 / 873 / 32 | 0 | 4958 | 199 | 5157 | 2434 | 40.6 | 3.7 |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_college_mathematics | 0 / 626 / 32 | 0 | 3535 | 197 | 3732 | 1761 | 28.9 | 2.7 |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_college_medicine | 0 / 606 / 32 | 0 | 3433 | 197 | 3630 | 1713 | 28.1 | 2.6 |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_college_physics | 0 / 525 / 32 | 0 | 2954 | 196 | 3150 | 1487 | 24.2 | 2.3 |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_computer_security | 0 / 422 / 32 | 0 | 2372 | 195 | 2567 | 1212 | 19.4 | 1.8 |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_conceptual_physics | 0 / 314 / 32 | 0 | 1760 | 194 | 1955 | 923 | 14.4 | 1.4 |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_econometrics | 0 / 632 / 32 | 0 | 3565 | 197 | 3762 | 1776 | 29.2 | 2.7 |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_electrical_engineering | 0 / 484 / 32 | 0 | 2720 | 196 | 2916 | 1376 | 22.3 | 2.1 |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_elementary_mathematics | 0 / 579 / 32 | 0 | 3265 | 197 | 3461 | 1634 | 26.7 | 2.5 |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_formal_logic | 0 / 621 / 32 | 0 | 3503 | 197 | 3700 | 1747 | 28.7 | 2.6 |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_global_facts | 0 / 438 / 32 | 0 | 2461 | 195 | 2656 | 1254 | 20.1 | 1.9 |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_high_school_biology | 0 / 505 / 32 | 0 | 2838 | 196 | 3035 | 1432 | 23.2 | 2.2 |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_high_school_chemistry | 0 / 517 / 30 | 0 | 2911 | 183 | 3094 | 1460 | 23.8 | 2.2 |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_high_school_computer_science | 0 / 906 / 32 | 0 | 5151 | 200 | 5350 | 2525 | 42.1 | 3.8 |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_high_school_european_history | 0 / 2816 / 32 | 0 | 16800 | 217 | 17018 | 8032 | 137.5 | 12.2 |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_high_school_geography | 0 / 379 / 32 | 0 | 2124 | 195 | 2319 | 1095 | 17.4 | 1.7 |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_high_school_government_and_politics | 0 / 482 / 32 | 0 | 2711 | 196 | 2907 | 1372 | 22.2 | 2.1 |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_high_school_macroeconomics | 0 / 385 / 32 | 0 | 2160 | 195 | 2355 | 1111 | 17.7 | 1.7 |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_high_school_mathematics | 0 / 586 / 32 | 0 | 3306 | 197 | 3503 | 1653 | 27.0 | 2.5 |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_high_school_microeconomics | 0 / 415 / 32 | 0 | 2328 | 195 | 2524 | 1191 | 19.0 | 1.8 |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_high_school_physics | 0 / 619 / 32 | 0 | 3491 | 197 | 3688 | 1741 | 28.6 | 2.6 |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_high_school_psychology | 0 / 502 / 32 | 0 | 2824 | 196 | 3020 | 1425 | 23.1 | 2.2 |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_high_school_statistics | 0 / 858 / 32 | 0 | 4870 | 199 | 5069 | 2393 | 39.8 | 3.6 |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_high_school_us_history | 0 / 2222 / 32 | 0 | 13061 | 212 | 13273 | 6265 | 106.9 | 9.5 |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_high_school_world_history | 0 / 1403 / 32 | 0 | 8079 | 204 | 8283 | 3910 | 66.1 | 5.9 |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_human_aging | 0 / 335 / 32 | 0 | 1875 | 195 | 2069 | 977 | 15.3 | 1.5 |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_human_sexuality | 0 / 358 / 32 | 0 | 2004 | 195 | 2199 | 1038 | 16.4 | 1.6 |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_international_law | 0 / 653 / 32 | 0 | 3688 | 197 | 3885 | 1834 | 30.2 | 2.8 |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_jurisprudence | 0 / 409 / 32 | 0 | 2296 | 195 | 2491 | 1176 | 18.8 | 1.8 |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_logical_fallacies | 0 / 466 / 32 | 0 | 2616 | 196 | 2812 | 1327 | 21.4 | 2.0 |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_machine_learning | 0 / 683 / 32 | 0 | 3858 | 198 | 4056 | 1914 | 31.6 | 2.9 |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_management | 0 / 294 / 32 | 0 | 1647 | 194 | 1841 | 869 | 13.5 | 1.3 |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_marketing | 0 / 417 / 32 | 0 | 2341 | 195 | 2536 | 1197 | 19.2 | 1.8 |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_medical_genetics | 0 / 351 / 32 | 0 | 1967 | 195 | 2162 | 1020 | 16.1 | 1.5 |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_miscellaneous | 0 / 316 / 31 | 0 | 1769 | 190 | 1959 | 924 | 14.5 | 1.4 |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_moral_disputes | 0 / 477 / 32 | 0 | 2680 | 196 | 2876 | 1357 | 21.9 | 2.1 |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_moral_scenarios | 0 / 680 / 32 | 0 | 3843 | 198 | 4041 | 1907 | 31.4 | 2.9 |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_nutrition | 0 / 594 / 32 | 0 | 3351 | 197 | 3548 | 1675 | 27.4 | 2.5 |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_philosophy | 0 / 335 / 32 | 0 | 1874 | 195 | 2069 | 976 | 15.3 | 1.5 |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_prehistory | 0 / 538 / 32 | 0 | 3027 | 196 | 3223 | 1521 | 24.8 | 2.3 |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_professional_accounting | 0 / 732 / 32 | 0 | 4144 | 198 | 4342 | 2049 | 33.9 | 3.1 |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_professional_law | 0 / 1621 / 32 | 0 | 9384 | 206 | 9590 | 4527 | 76.8 | 6.9 |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_professional_medicine | 0 / 1146 / 32 | 0 | 6551 | 202 | 6753 | 3188 | 53.6 | 4.8 |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_professional_psychology | 0 / 582 / 32 | 0 | 3282 | 197 | 3479 | 1642 | 26.9 | 2.5 |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_public_relations | 0 / 433 / 32 | 0 | 2429 | 195 | 2625 | 1239 | 19.9 | 1.9 |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_security_studies | 0 / 1162 / 32 | 0 | 6647 | 202 | 6849 | 3233 | 54.4 | 4.9 |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_sociology | 0 / 455 / 32 | 0 | 2555 | 196 | 2750 | 1298 | 20.9 | 2.0 |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_us_foreign_policy | 0 / 439 / 32 | 0 | 2464 | 195 | 2660 | 1255 | 20.2 | 1.9 |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_virology | 0 / 347 / 32 | 0 | 1943 | 195 | 2138 | 1009 | 15.9 | 1.5 |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_world_religions | 0 / 283 / 32 | 0 | 1584 | 194 | 1778 | 839 | 13.0 | 1.3 |
+| Qwen2.5-3B-Instruct | hf-bf16 | gsm8k_jetson | 0 / 748 / 194 | 0 | 4237 | 1241 | 5478 | 2586 | 56.1 | 23.1 |
+| Qwen2.5-3B-Instruct | hf-bf16 | ifeval | 0 / 83 / 213 | 0 | 462 | 1322 | 1784 | 842 | 6.1 | 7.5 |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_abstract_algebra | 0 / 408 / 17 | 0 | 2288 | 102 | 2390 | 1128 | 30.3 | 10.1 |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_anatomy | 0 / 372 / 10 | 0 | 2084 | 53 | 2137 | 1009 | 27.6 | 9.0 |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_astronomy | 0 / 618 / 16 | 0 | 3488 | 97 | 3585 | 1692 | 46.1 | 15.1 |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_business_ethics | 0 / 594 / 9 | 0 | 3351 | 49 | 3400 | 1605 | 44.3 | 14.3 |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_clinical_knowledge | 0 / 422 / 19 | 0 | 2366 | 114 | 2480 | 1171 | 31.3 | 10.4 |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_college_biology | 0 / 494 / 12 | 0 | 2778 | 70 | 2847 | 1344 | 36.8 | 12.0 |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_college_chemistry | 0 / 572 / 6 | 0 | 3224 | 30 | 3254 | 1536 | 42.7 | 13.7 |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_college_computer_science | 0 / 886 / 30 | 0 | 5033 | 188 | 5222 | 2465 | 66.6 | 22.0 |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_college_mathematics | 0 / 639 / 28 | 0 | 3609 | 173 | 3782 | 1785 | 47.7 | 15.9 |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_college_medicine | 0 / 619 / 15 | 0 | 3508 | 88 | 3595 | 1697 | 46.4 | 15.1 |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_college_physics | 0 / 538 / 17 | 0 | 3028 | 101 | 3129 | 1477 | 40.1 | 13.2 |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_computer_security | 0 / 436 / 15 | 0 | 2446 | 89 | 2535 | 1196 | 32.4 | 10.7 |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_conceptual_physics | 0 / 328 / 7 | 0 | 1834 | 35 | 1869 | 882 | 24.3 | 7.9 |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_econometrics | 0 / 645 / 8 | 0 | 3640 | 44 | 3684 | 1739 | 48.2 | 15.5 |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_electrical_engineering | 0 / 497 / 3 | 0 | 2794 | 10 | 2805 | 1324 | 37.0 | 11.8 |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_elementary_mathematics | 0 / 592 / 5 | 0 | 3339 | 25 | 3364 | 1588 | 44.2 | 14.2 |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_formal_logic | 0 / 634 / 32 | 0 | 3578 | 197 | 3775 | 1782 | 47.3 | 15.9 |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_global_facts | 0 / 451 / 29 | 0 | 2535 | 176 | 2711 | 1279 | 33.5 | 11.4 |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_high_school_biology | 0 / 518 / 2 | 0 | 2913 | 6 | 2919 | 1378 | 38.5 | 12.3 |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_high_school_chemistry | 0 / 530 / 18 | 0 | 2985 | 110 | 3095 | 1461 | 39.5 | 13.0 |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_high_school_computer_science | 0 / 919 / 8 | 0 | 5226 | 47 | 5273 | 2489 | 69.1 | 22.2 |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_high_school_european_history | 0 / 2829 / 3 | 0 | 16883 | 13 | 16896 | 7975 | 223.4 | 71.2 |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_high_school_geography | 0 / 392 / 10 | 0 | 2198 | 57 | 2255 | 1064 | 29.1 | 9.5 |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_high_school_government_and_politics | 0 / 495 / 17 | 0 | 2785 | 100 | 2885 | 1362 | 36.8 | 12.2 |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_high_school_macroeconomics | 0 / 398 / 6 | 0 | 2233 | 30 | 2263 | 1068 | 29.5 | 9.5 |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_high_school_mathematics | 0 / 600 / 32 | 0 | 3381 | 197 | 3577 | 1689 | 44.7 | 15.1 |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_high_school_microeconomics | 0 / 428 / 13 | 0 | 2402 | 77 | 2479 | 1170 | 31.8 | 10.4 |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_high_school_physics | 0 / 632 / 14 | 0 | 3566 | 83 | 3649 | 1722 | 47.2 | 15.4 |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_high_school_psychology | 0 / 515 / 12 | 0 | 2898 | 67 | 2965 | 1399 | 38.3 | 12.5 |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_high_school_statistics | 0 / 871 / 26 | 0 | 4946 | 161 | 5106 | 2410 | 65.4 | 21.5 |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_high_school_us_history | 0 / 2235 / 4 | 0 | 13142 | 21 | 13163 | 6213 | 173.9 | 55.4 |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_high_school_world_history | 0 / 1416 / 14 | 0 | 8157 | 84 | 8241 | 3890 | 107.9 | 34.7 |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_human_aging | 0 / 348 / 11 | 0 | 1948 | 62 | 2010 | 949 | 25.8 | 8.5 |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_human_sexuality | 0 / 371 / 8 | 0 | 2078 | 41 | 2118 | 1000 | 27.5 | 8.9 |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_international_law | 0 / 666 / 19 | 0 | 3763 | 112 | 3875 | 1829 | 49.8 | 16.3 |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_jurisprudence | 0 / 422 / 27 | 0 | 2369 | 166 | 2536 | 1197 | 31.3 | 10.7 |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_logical_fallacies | 0 / 478 / 13 | 0 | 2690 | 76 | 2766 | 1305 | 35.6 | 11.6 |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_machine_learning | 0 / 696 / 9 | 0 | 3933 | 49 | 3982 | 1880 | 52.0 | 16.8 |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_management | 0 / 307 / 2 | 0 | 1720 | 6 | 1727 | 815 | 22.8 | 7.3 |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_marketing | 0 / 430 / 12 | 0 | 2415 | 67 | 2482 | 1171 | 31.9 | 10.5 |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_medical_genetics | 0 / 364 / 6 | 0 | 2041 | 30 | 2071 | 977 | 27.0 | 8.7 |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_miscellaneous | 0 / 329 / 12 | 0 | 1842 | 67 | 1910 | 901 | 24.4 | 8.0 |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_moral_disputes | 0 / 490 / 22 | 0 | 2754 | 132 | 2886 | 1362 | 36.4 | 12.2 |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_moral_scenarios | 0 / 693 / 7 | 0 | 3918 | 41 | 3958 | 1868 | 51.8 | 16.7 |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_nutrition | 0 / 607 / 14 | 0 | 3426 | 79 | 3505 | 1654 | 45.3 | 14.8 |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_philosophy | 0 / 348 / 8 | 0 | 1948 | 47 | 1995 | 941 | 25.8 | 8.4 |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_prehistory | 0 / 551 / 10 | 0 | 3101 | 57 | 3158 | 1491 | 41.0 | 13.3 |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_professional_accounting | 0 / 745 / 25 | 0 | 4219 | 154 | 4373 | 2064 | 55.8 | 18.4 |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_professional_law | 0 / 1634 / 13 | 0 | 9462 | 82 | 9544 | 4505 | 125.2 | 40.2 |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_professional_medicine | 0 / 1158 / 3 | 0 | 6628 | 11 | 6638 | 3133 | 87.7 | 28.0 |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_professional_psychology | 0 / 595 / 4 | 0 | 3357 | 17 | 3374 | 1593 | 44.4 | 14.2 |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_public_relations | 0 / 446 / 7 | 0 | 2503 | 40 | 2543 | 1200 | 33.1 | 10.7 |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_security_studies | 0 / 1175 / 10 | 0 | 6724 | 56 | 6779 | 3200 | 89.0 | 28.6 |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_sociology | 0 / 468 / 13 | 0 | 2629 | 77 | 2706 | 1277 | 34.8 | 11.4 |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_us_foreign_policy | 0 / 452 / 20 | 0 | 2538 | 121 | 2660 | 1255 | 33.6 | 11.2 |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_virology | 0 / 360 / 15 | 0 | 2017 | 87 | 2104 | 993 | 26.7 | 8.9 |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson_world_religions | 0 / 296 / 8 | 0 | 1657 | 45 | 1702 | 803 | 21.9 | 7.2 |
+| Qwen2.5-3B-Instruct | llamacpp-f16 | gsm8k_jetson | 0 / 748 / 170 | 0 | 4237 | 1083 | 5320 | 2511 | 21.7 | 5.9 |
+| Qwen2.5-3B-Instruct | llamacpp-f16 | ifeval | 0 / 83 / 216 | 0 | 462 | 1346 | 1808 | 853 | 2.4 | 2.0 |
+| Qwen2.5-3B-Instruct | llamacpp-f16 | mmlu_jetson_abstract_algebra | 0 / 408 / 7 | 0 | 2288 | 39 | 2327 | 1098 | 11.7 | 2.6 |
+| Qwen2.5-3B-Instruct | llamacpp-f16 | mmlu_jetson_anatomy | 0 / 372 / 9 | 0 | 2084 | 49 | 2133 | 1007 | 10.7 | 2.4 |
+| Qwen2.5-3B-Instruct | llamacpp-f16 | mmlu_jetson_astronomy | 0 / 618 / 6 | 0 | 3488 | 33 | 3521 | 1662 | 17.9 | 3.9 |
+| Qwen2.5-3B-Instruct | llamacpp-f16 | mmlu_jetson_business_ethics | 0 / 594 / 4 | 0 | 3351 | 21 | 3373 | 1592 | 17.2 | 3.8 |
+| Qwen2.5-3B-Instruct | llamacpp-f16 | mmlu_jetson_clinical_knowledge | 0 / 422 / 15 | 0 | 2366 | 89 | 2455 | 1159 | 12.1 | 2.7 |
+| Qwen2.5-3B-Instruct | llamacpp-f16 | mmlu_jetson_college_biology | 0 / 494 / 7 | 0 | 2778 | 40 | 2818 | 1330 | 14.2 | 3.2 |
+| Qwen2.5-3B-Instruct | llamacpp-f16 | mmlu_jetson_college_chemistry | 0 / 572 / 2 | 0 | 3224 | 6 | 3230 | 1525 | 16.5 | 3.6 |
+| Qwen2.5-3B-Instruct | llamacpp-f16 | mmlu_jetson_college_computer_science | 0 / 886 / 23 | 0 | 5033 | 144 | 5178 | 2444 | 25.8 | 5.8 |
+| Qwen2.5-3B-Instruct | llamacpp-f16 | mmlu_jetson_college_mathematics | 0 / 639 / 11 | 0 | 3609 | 62 | 3671 | 1733 | 18.5 | 4.1 |
+| Qwen2.5-3B-Instruct | llamacpp-f16 | mmlu_jetson_college_medicine | 0 / 619 / 9 | 0 | 3508 | 48 | 3556 | 1678 | 18.0 | 4.0 |
+| Qwen2.5-3B-Instruct | llamacpp-f16 | mmlu_jetson_college_physics | 0 / 538 / 2 | 0 | 3028 | 6 | 3034 | 1432 | 15.5 | 3.4 |
+| Qwen2.5-3B-Instruct | llamacpp-f16 | mmlu_jetson_computer_security | 0 / 436 / 10 | 0 | 2446 | 57 | 2503 | 1181 | 12.5 | 2.8 |
+| Qwen2.5-3B-Instruct | llamacpp-f16 | mmlu_jetson_conceptual_physics | 0 / 328 / 3 | 0 | 1834 | 12 | 1846 | 871 | 9.4 | 2.1 |
+| Qwen2.5-3B-Instruct | llamacpp-f16 | mmlu_jetson_econometrics | 0 / 645 / 2 | 0 | 3640 | 6 | 3646 | 1721 | 18.7 | 4.1 |
+| Qwen2.5-3B-Instruct | llamacpp-f16 | mmlu_jetson_electrical_engineering | 0 / 497 / 3 | 0 | 2794 | 10 | 2805 | 1324 | 14.3 | 3.1 |
+| Qwen2.5-3B-Instruct | llamacpp-f16 | mmlu_jetson_elementary_mathematics | 0 / 592 / 3 | 0 | 3339 | 13 | 3352 | 1582 | 17.1 | 3.7 |
+| Qwen2.5-3B-Instruct | llamacpp-f16 | mmlu_jetson_formal_logic | 0 / 634 / 29 | 0 | 3578 | 176 | 3753 | 1772 | 18.3 | 4.2 |
+| Qwen2.5-3B-Instruct | llamacpp-f16 | mmlu_jetson_global_facts | 0 / 451 / 23 | 0 | 2535 | 139 | 2674 | 1262 | 13.0 | 3.0 |
+| Qwen2.5-3B-Instruct | llamacpp-f16 | mmlu_jetson_high_school_biology | 0 / 518 / 2 | 0 | 2913 | 6 | 2919 | 1378 | 14.9 | 3.3 |
+| Qwen2.5-3B-Instruct | llamacpp-f16 | mmlu_jetson_high_school_chemistry | 0 / 530 / 14 | 0 | 2985 | 79 | 3065 | 1446 | 15.3 | 3.4 |
+| Qwen2.5-3B-Instruct | llamacpp-f16 | mmlu_jetson_high_school_computer_science | 0 / 919 / 6 | 0 | 5226 | 35 | 5262 | 2483 | 26.8 | 5.9 |
+| Qwen2.5-3B-Instruct | llamacpp-f16 | mmlu_jetson_high_school_european_history | 0 / 2829 / 3 | 0 | 16883 | 13 | 16896 | 7975 | 86.6 | 18.9 |
+| Qwen2.5-3B-Instruct | llamacpp-f16 | mmlu_jetson_high_school_geography | 0 / 392 / 2 | 0 | 2198 | 9 | 2207 | 1041 | 11.3 | 2.5 |
+| Qwen2.5-3B-Instruct | llamacpp-f16 | mmlu_jetson_high_school_government_and_politics | 0 / 495 / 10 | 0 | 2785 | 55 | 2840 | 1340 | 14.3 | 3.2 |
+| Qwen2.5-3B-Instruct | llamacpp-f16 | mmlu_jetson_high_school_macroeconomics | 0 / 398 / 3 | 0 | 2233 | 10 | 2244 | 1059 | 11.5 | 2.5 |
+| Qwen2.5-3B-Instruct | llamacpp-f16 | mmlu_jetson_high_school_mathematics | 0 / 600 / 32 | 0 | 3381 | 197 | 3577 | 1689 | 17.3 | 4.0 |
+| Qwen2.5-3B-Instruct | llamacpp-f16 | mmlu_jetson_high_school_microeconomics | 0 / 428 / 2 | 0 | 2402 | 6 | 2408 | 1137 | 12.3 | 2.7 |
+| Qwen2.5-3B-Instruct | llamacpp-f16 | mmlu_jetson_high_school_physics | 0 / 632 / 7 | 0 | 3566 | 39 | 3605 | 1701 | 18.3 | 4.0 |
+| Qwen2.5-3B-Instruct | llamacpp-f16 | mmlu_jetson_high_school_psychology | 0 / 515 / 3 | 0 | 2898 | 13 | 2911 | 1374 | 14.9 | 3.3 |
+| Qwen2.5-3B-Instruct | llamacpp-f16 | mmlu_jetson_high_school_statistics | 0 / 871 / 17 | 0 | 4946 | 103 | 5048 | 2383 | 25.4 | 5.6 |
+| Qwen2.5-3B-Instruct | llamacpp-f16 | mmlu_jetson_high_school_us_history | 0 / 2235 / 4 | 0 | 13142 | 21 | 13163 | 6213 | 67.4 | 14.7 |
+| Qwen2.5-3B-Instruct | llamacpp-f16 | mmlu_jetson_high_school_world_history | 0 / 1416 / 7 | 0 | 8157 | 40 | 8196 | 3869 | 41.8 | 9.2 |
+| Qwen2.5-3B-Instruct | llamacpp-f16 | mmlu_jetson_human_aging | 0 / 348 / 2 | 0 | 1948 | 6 | 1954 | 923 | 10.0 | 2.2 |
+| Qwen2.5-3B-Instruct | llamacpp-f16 | mmlu_jetson_human_sexuality | 0 / 371 / 9 | 0 | 2078 | 48 | 2126 | 1003 | 10.7 | 2.4 |
+| Qwen2.5-3B-Instruct | llamacpp-f16 | mmlu_jetson_international_law | 0 / 666 / 4 | 0 | 3763 | 20 | 3782 | 1785 | 19.3 | 4.2 |
+| Qwen2.5-3B-Instruct | llamacpp-f16 | mmlu_jetson_jurisprudence | 0 / 422 / 9 | 0 | 2369 | 51 | 2421 | 1143 | 12.2 | 2.7 |
+| Qwen2.5-3B-Instruct | llamacpp-f16 | mmlu_jetson_logical_fallacies | 0 / 478 / 5 | 0 | 2690 | 27 | 2717 | 1282 | 13.8 | 3.0 |
+| Qwen2.5-3B-Instruct | llamacpp-f16 | mmlu_jetson_machine_learning | 0 / 696 / 3 | 0 | 3933 | 13 | 3946 | 1862 | 20.2 | 4.4 |
+| Qwen2.5-3B-Instruct | llamacpp-f16 | mmlu_jetson_management | 0 / 307 / 2 | 0 | 1720 | 6 | 1727 | 815 | 8.8 | 1.9 |
+| Qwen2.5-3B-Instruct | llamacpp-f16 | mmlu_jetson_marketing | 0 / 430 / 4 | 0 | 2415 | 18 | 2433 | 1148 | 12.4 | 2.7 |
+| Qwen2.5-3B-Instruct | llamacpp-f16 | mmlu_jetson_medical_genetics | 0 / 364 / 4 | 0 | 2041 | 16 | 2057 | 971 | 10.5 | 2.3 |
+| Qwen2.5-3B-Instruct | llamacpp-f16 | mmlu_jetson_miscellaneous | 0 / 329 / 11 | 0 | 1842 | 64 | 1907 | 900 | 9.4 | 2.1 |
+| Qwen2.5-3B-Instruct | llamacpp-f16 | mmlu_jetson_moral_disputes | 0 / 490 / 13 | 0 | 2754 | 77 | 2831 | 1336 | 14.1 | 3.2 |
+| Qwen2.5-3B-Instruct | llamacpp-f16 | mmlu_jetson_moral_scenarios | 0 / 693 / 8 | 0 | 3918 | 41 | 3959 | 1869 | 20.1 | 4.4 |
+| Qwen2.5-3B-Instruct | llamacpp-f16 | mmlu_jetson_nutrition | 0 / 607 / 10 | 0 | 3426 | 60 | 3485 | 1645 | 17.6 | 3.9 |
+| Qwen2.5-3B-Instruct | llamacpp-f16 | mmlu_jetson_philosophy | 0 / 348 / 8 | 0 | 1948 | 47 | 1995 | 941 | 10.0 | 2.2 |
+| Qwen2.5-3B-Instruct | llamacpp-f16 | mmlu_jetson_prehistory | 0 / 551 / 3 | 0 | 3101 | 12 | 3113 | 1469 | 15.9 | 3.5 |
+| Qwen2.5-3B-Instruct | llamacpp-f16 | mmlu_jetson_professional_accounting | 0 / 745 / 15 | 0 | 4219 | 92 | 4311 | 2035 | 21.6 | 4.8 |
+| Qwen2.5-3B-Instruct | llamacpp-f16 | mmlu_jetson_professional_law | 0 / 1634 / 2 | 0 | 9462 | 7 | 9469 | 4469 | 48.5 | 10.6 |
+| Qwen2.5-3B-Instruct | llamacpp-f16 | mmlu_jetson_professional_medicine | 0 / 1158 / 2 | 0 | 6628 | 7 | 6634 | 3131 | 34.0 | 7.4 |
+| Qwen2.5-3B-Instruct | llamacpp-f16 | mmlu_jetson_professional_psychology | 0 / 595 / 3 | 0 | 3357 | 13 | 3370 | 1591 | 17.2 | 3.8 |
+| Qwen2.5-3B-Instruct | llamacpp-f16 | mmlu_jetson_public_relations | 0 / 446 / 5 | 0 | 2503 | 24 | 2528 | 1193 | 12.8 | 2.8 |
+| Qwen2.5-3B-Instruct | llamacpp-f16 | mmlu_jetson_security_studies | 0 / 1175 / 2 | 0 | 6724 | 7 | 6730 | 3177 | 34.5 | 7.5 |
+| Qwen2.5-3B-Instruct | llamacpp-f16 | mmlu_jetson_sociology | 0 / 468 / 12 | 0 | 2629 | 72 | 2700 | 1275 | 13.5 | 3.0 |
+| Qwen2.5-3B-Instruct | llamacpp-f16 | mmlu_jetson_us_foreign_policy | 0 / 452 / 14 | 0 | 2538 | 84 | 2623 | 1238 | 13.0 | 2.9 |
+| Qwen2.5-3B-Instruct | llamacpp-f16 | mmlu_jetson_virology | 0 / 360 / 11 | 0 | 2017 | 60 | 2077 | 980 | 10.3 | 2.3 |
+| Qwen2.5-3B-Instruct | llamacpp-f16 | mmlu_jetson_world_religions | 0 / 296 / 2 | 0 | 1657 | 6 | 1663 | 785 | 8.5 | 1.9 |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | gsm8k_jetson | 0 / 748 / 4 | 0 | 4237 | 20 | 4256 | 2009 | 81.5 | 32.5 |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | ifeval | 0 / 83 / 211 | 0 | 462 | 1312 | 1773 | 837 | 8.9 | 0.3 |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | mmlu_jetson_abstract_algebra | 0 / 408 / 2 | 0 | 2288 | 9 | 2297 | 1084 | 44.0 | 25.3 |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | mmlu_jetson_anatomy | 0 / 372 / 2 | 0 | 2084 | 6 | 2090 | 987 | 40.1 | 26.9 |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | mmlu_jetson_astronomy | 0 / 618 / 2 | 0 | 3488 | 8 | 3496 | 1650 | 67.1 | 41.5 |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | mmlu_jetson_business_ethics | 0 / 594 / 2 | 0 | 3351 | 6 | 3357 | 1585 | 64.5 | 43.2 |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | mmlu_jetson_clinical_knowledge | 0 / 422 / 2 | 0 | 2366 | 6 | 2372 | 1120 | 45.5 | 30.5 |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | mmlu_jetson_college_biology | 0 / 494 / 2 | 0 | 2778 | 6 | 2784 | 1314 | 53.4 | 35.8 |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | mmlu_jetson_college_chemistry | 0 / 572 / 2 | 0 | 3224 | 6 | 3230 | 1525 | 62.0 | 41.5 |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | mmlu_jetson_college_computer_science | 0 / 886 / 3 | 0 | 5033 | 11 | 5045 | 2381 | 96.8 | 51.9 |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | mmlu_jetson_college_mathematics | 0 / 639 / 2 | 0 | 3609 | 10 | 3619 | 1708 | 69.4 | 39.9 |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | mmlu_jetson_college_medicine | 0 / 619 / 2 | 0 | 3508 | 8 | 3516 | 1659 | 67.5 | 41.7 |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | mmlu_jetson_college_physics | 0 / 538 / 3 | 0 | 3028 | 13 | 3041 | 1435 | 58.2 | 29.3 |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | mmlu_jetson_computer_security | 0 / 436 / 2 | 0 | 2446 | 6 | 2452 | 1157 | 47.0 | 31.5 |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | mmlu_jetson_conceptual_physics | 0 / 328 / 2 | 0 | 1834 | 6 | 1840 | 869 | 35.3 | 23.7 |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | mmlu_jetson_econometrics | 0 / 645 / 2 | 0 | 3640 | 6 | 3646 | 1721 | 70.0 | 46.9 |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | mmlu_jetson_electrical_engineering | 0 / 497 / 2 | 0 | 2794 | 6 | 2801 | 1322 | 53.7 | 36.0 |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | mmlu_jetson_elementary_mathematics | 0 / 592 / 2 | 0 | 3339 | 6 | 3345 | 1579 | 64.2 | 43.0 |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | mmlu_jetson_formal_logic | 0 / 634 / 2 | 0 | 3578 | 10 | 3587 | 1693 | 68.8 | 39.5 |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | mmlu_jetson_global_facts | 0 / 451 / 3 | 0 | 2535 | 11 | 2546 | 1202 | 48.8 | 26.2 |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | mmlu_jetson_high_school_biology | 0 / 518 / 2 | 0 | 2913 | 6 | 2919 | 1378 | 56.0 | 37.5 |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | mmlu_jetson_high_school_chemistry | 0 / 530 / 2 | 0 | 2985 | 9 | 2995 | 1414 | 57.4 | 33.0 |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | mmlu_jetson_high_school_computer_science | 0 / 919 / 2 | 0 | 5226 | 6 | 5233 | 2470 | 100.5 | 67.3 |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | mmlu_jetson_high_school_european_history | 0 / 2829 / 2 | 0 | 16883 | 7 | 16890 | 7972 | 324.7 | 217.1 |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | mmlu_jetson_high_school_geography | 0 / 392 / 2 | 0 | 2198 | 6 | 2204 | 1040 | 42.3 | 28.3 |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | mmlu_jetson_high_school_government_and_politics | 0 / 495 / 2 | 0 | 2785 | 6 | 2791 | 1318 | 53.6 | 35.9 |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | mmlu_jetson_high_school_macroeconomics | 0 / 398 / 2 | 0 | 2233 | 6 | 2240 | 1057 | 43.0 | 28.8 |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | mmlu_jetson_high_school_mathematics | 0 / 600 / 4 | 0 | 3381 | 19 | 3400 | 1605 | 65.0 | 26.3 |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | mmlu_jetson_high_school_microeconomics | 0 / 428 / 2 | 0 | 2402 | 6 | 2408 | 1137 | 46.2 | 31.0 |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | mmlu_jetson_high_school_physics | 0 / 632 / 2 | 0 | 3566 | 6 | 3572 | 1686 | 68.6 | 45.9 |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | mmlu_jetson_high_school_psychology | 0 / 515 / 2 | 0 | 2898 | 6 | 2904 | 1371 | 55.7 | 37.3 |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | mmlu_jetson_high_school_statistics | 0 / 871 / 2 | 0 | 4946 | 8 | 4954 | 2338 | 95.1 | 58.8 |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | mmlu_jetson_high_school_us_history | 0 / 2235 / 2 | 0 | 13142 | 7 | 13149 | 6206 | 252.8 | 169.0 |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | mmlu_jetson_high_school_world_history | 0 / 1416 / 2 | 0 | 8157 | 7 | 8163 | 3853 | 156.9 | 104.9 |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | mmlu_jetson_human_aging | 0 / 348 / 2 | 0 | 1948 | 6 | 1954 | 923 | 37.5 | 25.1 |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | mmlu_jetson_human_sexuality | 0 / 371 / 2 | 0 | 2078 | 6 | 2084 | 984 | 40.0 | 26.8 |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | mmlu_jetson_international_law | 0 / 666 / 2 | 0 | 3763 | 6 | 3769 | 1779 | 72.4 | 48.4 |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | mmlu_jetson_jurisprudence | 0 / 422 / 2 | 0 | 2369 | 6 | 2376 | 1121 | 45.6 | 30.5 |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | mmlu_jetson_logical_fallacies | 0 / 478 / 2 | 0 | 2690 | 6 | 2696 | 1273 | 51.7 | 34.7 |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | mmlu_jetson_machine_learning | 0 / 696 / 2 | 0 | 3933 | 6 | 3939 | 1859 | 75.6 | 50.6 |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | mmlu_jetson_management | 0 / 307 / 2 | 0 | 1720 | 6 | 1727 | 815 | 33.1 | 22.2 |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | mmlu_jetson_marketing | 0 / 430 / 2 | 0 | 2415 | 6 | 2421 | 1143 | 46.4 | 31.1 |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | mmlu_jetson_medical_genetics | 0 / 364 / 2 | 0 | 2041 | 6 | 2047 | 966 | 39.3 | 26.3 |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | mmlu_jetson_miscellaneous | 0 / 329 / 2 | 0 | 1842 | 6 | 1849 | 873 | 35.4 | 23.8 |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | mmlu_jetson_moral_disputes | 0 / 490 / 2 | 0 | 2754 | 6 | 2760 | 1303 | 53.0 | 35.5 |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | mmlu_jetson_moral_scenarios | 0 / 693 / 2 | 0 | 3918 | 6 | 3924 | 1852 | 75.4 | 50.4 |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | mmlu_jetson_nutrition | 0 / 607 / 2 | 0 | 3426 | 6 | 3432 | 1620 | 65.9 | 44.1 |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | mmlu_jetson_philosophy | 0 / 348 / 2 | 0 | 1948 | 6 | 1954 | 922 | 37.5 | 25.1 |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | mmlu_jetson_prehistory | 0 / 551 / 2 | 0 | 3101 | 6 | 3107 | 1467 | 59.6 | 39.9 |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | mmlu_jetson_professional_accounting | 0 / 745 / 3 | 0 | 4219 | 11 | 4230 | 1997 | 81.1 | 43.5 |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | mmlu_jetson_professional_law | 0 / 1634 / 2 | 0 | 9462 | 7 | 9469 | 4469 | 182.0 | 121.7 |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | mmlu_jetson_professional_medicine | 0 / 1158 / 2 | 0 | 6628 | 7 | 6634 | 3131 | 127.5 | 85.3 |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | mmlu_jetson_professional_psychology | 0 / 595 / 2 | 0 | 3357 | 6 | 3363 | 1587 | 64.6 | 43.2 |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | mmlu_jetson_public_relations | 0 / 446 / 2 | 0 | 2503 | 6 | 2509 | 1184 | 48.1 | 32.3 |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | mmlu_jetson_security_studies | 0 / 1175 / 2 | 0 | 6724 | 7 | 6730 | 3177 | 129.3 | 86.5 |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | mmlu_jetson_sociology | 0 / 468 / 2 | 0 | 2629 | 6 | 2635 | 1244 | 50.6 | 33.9 |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | mmlu_jetson_us_foreign_policy | 0 / 452 / 2 | 0 | 2538 | 6 | 2545 | 1201 | 48.8 | 32.7 |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | mmlu_jetson_virology | 0 / 360 / 2 | 0 | 2017 | 6 | 2023 | 955 | 38.8 | 26.0 |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | mmlu_jetson_world_religions | 0 / 296 / 2 | 0 | 1657 | 6 | 1663 | 785 | 31.9 | 21.4 |
+| Qwen2.5-3B-Instruct | vllm-bf16 | gsm8k_jetson | 0 / 748 / 164 | 0 | 4237 | 1050 | 5287 | 2495 | 87.5 | 17.2 |
+| Qwen2.5-3B-Instruct | vllm-bf16 | ifeval | 0 / 83 / 208 | 0 | 462 | 1294 | 1756 | 829 | 9.5 | 5.7 |
+| Qwen2.5-3B-Instruct | vllm-bf16 | mmlu_jetson_abstract_algebra | 0 / 408 / 14 | 0 | 2288 | 81 | 2369 | 1118 | 47.2 | 7.7 |
+| Qwen2.5-3B-Instruct | vllm-bf16 | mmlu_jetson_anatomy | 0 / 372 / 11 | 0 | 2084 | 64 | 2148 | 1014 | 43.0 | 7.0 |
+| Qwen2.5-3B-Instruct | vllm-bf16 | mmlu_jetson_astronomy | 0 / 618 / 19 | 0 | 3488 | 117 | 3605 | 1701 | 72.0 | 11.7 |
+| Qwen2.5-3B-Instruct | vllm-bf16 | mmlu_jetson_business_ethics | 0 / 594 / 10 | 0 | 3351 | 57 | 3408 | 1609 | 69.2 | 11.1 |
+| Qwen2.5-3B-Instruct | vllm-bf16 | mmlu_jetson_clinical_knowledge | 0 / 422 / 19 | 0 | 2366 | 114 | 2480 | 1171 | 48.9 | 8.1 |
+| Qwen2.5-3B-Instruct | vllm-bf16 | mmlu_jetson_college_biology | 0 / 494 / 11 | 0 | 2778 | 64 | 2842 | 1341 | 57.4 | 9.3 |
+| Qwen2.5-3B-Instruct | vllm-bf16 | mmlu_jetson_college_chemistry | 0 / 572 / 6 | 0 | 3224 | 30 | 3254 | 1536 | 66.6 | 10.6 |
+| Qwen2.5-3B-Instruct | vllm-bf16 | mmlu_jetson_college_computer_science | 0 / 886 / 32 | 0 | 5033 | 200 | 5233 | 2470 | 103.9 | 17.0 |
+| Qwen2.5-3B-Instruct | vllm-bf16 | mmlu_jetson_college_mathematics | 0 / 639 / 28 | 0 | 3609 | 173 | 3782 | 1785 | 74.5 | 12.3 |
+| Qwen2.5-3B-Instruct | vllm-bf16 | mmlu_jetson_college_medicine | 0 / 619 / 15 | 0 | 3508 | 89 | 3596 | 1697 | 72.4 | 11.7 |
+| Qwen2.5-3B-Instruct | vllm-bf16 | mmlu_jetson_college_physics | 0 / 538 / 13 | 0 | 3028 | 78 | 3106 | 1466 | 62.5 | 10.1 |
+| Qwen2.5-3B-Instruct | vllm-bf16 | mmlu_jetson_computer_security | 0 / 436 / 14 | 0 | 2446 | 80 | 2526 | 1192 | 50.5 | 8.2 |
+| Qwen2.5-3B-Instruct | vllm-bf16 | mmlu_jetson_conceptual_physics | 0 / 328 / 2 | 0 | 1834 | 8 | 1842 | 869 | 37.9 | 6.0 |
+| Qwen2.5-3B-Instruct | vllm-bf16 | mmlu_jetson_econometrics | 0 / 645 / 11 | 0 | 3640 | 64 | 3703 | 1748 | 75.2 | 12.1 |
+| Qwen2.5-3B-Instruct | vllm-bf16 | mmlu_jetson_electrical_engineering | 0 / 497 / 3 | 0 | 2794 | 10 | 2805 | 1324 | 57.7 | 9.1 |
+| Qwen2.5-3B-Instruct | vllm-bf16 | mmlu_jetson_elementary_mathematics | 0 / 592 / 5 | 0 | 3339 | 25 | 3364 | 1588 | 68.9 | 11.0 |
+| Qwen2.5-3B-Instruct | vllm-bf16 | mmlu_jetson_formal_logic | 0 / 634 / 32 | 0 | 3578 | 197 | 3775 | 1782 | 73.9 | 12.3 |
+| Qwen2.5-3B-Instruct | vllm-bf16 | mmlu_jetson_global_facts | 0 / 451 / 30 | 0 | 2535 | 183 | 2718 | 1283 | 52.3 | 8.9 |
+| Qwen2.5-3B-Instruct | vllm-bf16 | mmlu_jetson_high_school_biology | 0 / 518 / 2 | 0 | 2913 | 6 | 2919 | 1378 | 60.1 | 9.5 |
+| Qwen2.5-3B-Instruct | vllm-bf16 | mmlu_jetson_high_school_chemistry | 0 / 530 / 20 | 0 | 2985 | 122 | 3107 | 1467 | 61.6 | 10.1 |
+| Qwen2.5-3B-Instruct | vllm-bf16 | mmlu_jetson_high_school_computer_science | 0 / 919 / 6 | 0 | 5226 | 35 | 5262 | 2483 | 107.9 | 17.1 |
+| Qwen2.5-3B-Instruct | vllm-bf16 | mmlu_jetson_high_school_european_history | 0 / 2829 / 3 | 0 | 16883 | 13 | 16896 | 7975 | 348.6 | 55.0 |
+| Qwen2.5-3B-Instruct | vllm-bf16 | mmlu_jetson_high_school_geography | 0 / 392 / 6 | 0 | 2198 | 33 | 2231 | 1053 | 45.4 | 7.3 |
+| Qwen2.5-3B-Instruct | vllm-bf16 | mmlu_jetson_high_school_government_and_politics | 0 / 495 / 19 | 0 | 2785 | 113 | 2898 | 1368 | 57.5 | 9.4 |
+| Qwen2.5-3B-Instruct | vllm-bf16 | mmlu_jetson_high_school_macroeconomics | 0 / 398 / 6 | 0 | 2233 | 30 | 2263 | 1068 | 46.1 | 7.4 |
+| Qwen2.5-3B-Instruct | vllm-bf16 | mmlu_jetson_high_school_mathematics | 0 / 600 / 32 | 0 | 3381 | 197 | 3577 | 1689 | 69.8 | 11.7 |
+| Qwen2.5-3B-Instruct | vllm-bf16 | mmlu_jetson_high_school_microeconomics | 0 / 428 / 13 | 0 | 2402 | 77 | 2479 | 1170 | 49.6 | 8.1 |
+| Qwen2.5-3B-Instruct | vllm-bf16 | mmlu_jetson_high_school_physics | 0 / 632 / 14 | 0 | 3566 | 83 | 3649 | 1722 | 73.6 | 11.9 |
+| Qwen2.5-3B-Instruct | vllm-bf16 | mmlu_jetson_high_school_psychology | 0 / 515 / 6 | 0 | 2898 | 34 | 2932 | 1384 | 59.8 | 9.5 |
+| Qwen2.5-3B-Instruct | vllm-bf16 | mmlu_jetson_high_school_statistics | 0 / 871 / 24 | 0 | 4946 | 151 | 5097 | 2406 | 102.1 | 16.6 |
+| Qwen2.5-3B-Instruct | vllm-bf16 | mmlu_jetson_high_school_us_history | 0 / 2235 / 4 | 0 | 13142 | 21 | 13163 | 6213 | 271.4 | 42.9 |
+| Qwen2.5-3B-Instruct | vllm-bf16 | mmlu_jetson_high_school_world_history | 0 / 1416 / 14 | 0 | 8157 | 84 | 8241 | 3890 | 168.4 | 26.8 |
+| Qwen2.5-3B-Instruct | vllm-bf16 | mmlu_jetson_human_aging | 0 / 348 / 11 | 0 | 1948 | 62 | 2010 | 949 | 40.2 | 6.5 |
+| Qwen2.5-3B-Instruct | vllm-bf16 | mmlu_jetson_human_sexuality | 0 / 371 / 9 | 0 | 2078 | 53 | 2130 | 1005 | 42.9 | 6.9 |
+| Qwen2.5-3B-Instruct | vllm-bf16 | mmlu_jetson_international_law | 0 / 666 / 19 | 0 | 3763 | 112 | 3875 | 1829 | 77.7 | 12.6 |
+| Qwen2.5-3B-Instruct | vllm-bf16 | mmlu_jetson_jurisprudence | 0 / 422 / 25 | 0 | 2369 | 150 | 2519 | 1189 | 48.9 | 8.2 |
+| Qwen2.5-3B-Instruct | vllm-bf16 | mmlu_jetson_logical_fallacies | 0 / 478 / 9 | 0 | 2690 | 51 | 2740 | 1293 | 55.5 | 8.9 |
+| Qwen2.5-3B-Instruct | vllm-bf16 | mmlu_jetson_machine_learning | 0 / 696 / 9 | 0 | 3933 | 49 | 3982 | 1880 | 81.2 | 13.0 |
+| Qwen2.5-3B-Instruct | vllm-bf16 | mmlu_jetson_management | 0 / 307 / 2 | 0 | 1720 | 6 | 1727 | 815 | 35.5 | 5.6 |
+| Qwen2.5-3B-Instruct | vllm-bf16 | mmlu_jetson_marketing | 0 / 430 / 9 | 0 | 2415 | 53 | 2468 | 1165 | 49.9 | 8.0 |
+| Qwen2.5-3B-Instruct | vllm-bf16 | mmlu_jetson_medical_genetics | 0 / 364 / 4 | 0 | 2041 | 16 | 2057 | 971 | 42.1 | 6.7 |
+| Qwen2.5-3B-Instruct | vllm-bf16 | mmlu_jetson_miscellaneous | 0 / 329 / 12 | 0 | 1842 | 67 | 1910 | 901 | 38.0 | 6.2 |
+| Qwen2.5-3B-Instruct | vllm-bf16 | mmlu_jetson_moral_disputes | 0 / 490 / 21 | 0 | 2754 | 126 | 2880 | 1359 | 56.9 | 9.4 |
+| Qwen2.5-3B-Instruct | vllm-bf16 | mmlu_jetson_moral_scenarios | 0 / 693 / 7 | 0 | 3918 | 41 | 3958 | 1868 | 80.9 | 12.9 |
+| Qwen2.5-3B-Instruct | vllm-bf16 | mmlu_jetson_nutrition | 0 / 607 / 12 | 0 | 3426 | 69 | 3495 | 1649 | 70.7 | 11.4 |
+| Qwen2.5-3B-Instruct | vllm-bf16 | mmlu_jetson_philosophy | 0 / 348 / 11 | 0 | 1948 | 64 | 2012 | 950 | 40.2 | 6.6 |
+| Qwen2.5-3B-Instruct | vllm-bf16 | mmlu_jetson_prehistory | 0 / 551 / 10 | 0 | 3101 | 57 | 3158 | 1491 | 64.0 | 10.3 |
+| Qwen2.5-3B-Instruct | vllm-bf16 | mmlu_jetson_professional_accounting | 0 / 745 / 25 | 0 | 4219 | 154 | 4373 | 2064 | 87.1 | 14.2 |
+| Qwen2.5-3B-Instruct | vllm-bf16 | mmlu_jetson_professional_law | 0 / 1634 / 11 | 0 | 9462 | 68 | 9531 | 4498 | 195.4 | 31.0 |
+| Qwen2.5-3B-Instruct | vllm-bf16 | mmlu_jetson_professional_medicine | 0 / 1158 / 3 | 0 | 6628 | 11 | 6638 | 3133 | 136.9 | 21.6 |
+| Qwen2.5-3B-Instruct | vllm-bf16 | mmlu_jetson_professional_psychology | 0 / 595 / 4 | 0 | 3357 | 17 | 3374 | 1593 | 69.3 | 11.0 |
+| Qwen2.5-3B-Instruct | vllm-bf16 | mmlu_jetson_public_relations | 0 / 446 / 7 | 0 | 2503 | 40 | 2543 | 1200 | 51.7 | 8.3 |
+| Qwen2.5-3B-Instruct | vllm-bf16 | mmlu_jetson_security_studies | 0 / 1175 / 10 | 0 | 6724 | 56 | 6779 | 3200 | 138.8 | 22.1 |
+| Qwen2.5-3B-Instruct | vllm-bf16 | mmlu_jetson_sociology | 0 / 468 / 13 | 0 | 2629 | 77 | 2706 | 1277 | 54.3 | 8.8 |
+| Qwen2.5-3B-Instruct | vllm-bf16 | mmlu_jetson_us_foreign_policy | 0 / 452 / 21 | 0 | 2538 | 125 | 2663 | 1257 | 52.4 | 8.7 |
+| Qwen2.5-3B-Instruct | vllm-bf16 | mmlu_jetson_virology | 0 / 360 / 13 | 0 | 2017 | 77 | 2094 | 988 | 41.6 | 6.8 |
+| Qwen2.5-3B-Instruct | vllm-bf16 | mmlu_jetson_world_religions | 0 / 296 / 7 | 0 | 1657 | 35 | 1692 | 799 | 34.2 | 5.5 |
+| Qwen2.5-3B-Instruct | hf-bf16 | gsm8k_jetson | 0 / 748 / 194 | 0 | 4237 | 1241 | 5478 | 44 | 34.8 | 0.7 |
+| Qwen2.5-3B-Instruct | llamacpp-f16 | gsm8k_jetson | 0 / 748 / 170 | 0 | 4237 | 1083 | 5320 | 43 | 16.9 | 1.2 |
+| Qwen2.5-3B-Instruct | llamacpp-q4_k_m | gsm8k_jetson | 0 / 748 / 210 | 0 | 4237 | 1346 | 5583 | 45 | 15.1 | 1.9 |
+| Qwen2.5-3B-Instruct | llamacpp-q8_0 | gsm8k_jetson | 0 / 748 / 158 | 0 | 4237 | 1007 | 5244 | 42 | 16.6 | 2.0 |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | gsm8k_jetson | 0 / 748 / 4 | 0 | 4237 | 20 | 4256 | 34 | 82.2 | 32.5 |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp8 | gsm8k_jetson | 0 / 748 / 4 | 0 | 4237 | 20 | 4256 | 34 | 115.7 | 51.5 |
+| Qwen2.5-3B-Instruct | trt_edgellm-int4_awq | gsm8k_jetson | 0 / 748 / 4 | 0 | 4237 | 18 | 4255 | 34 | 39.8 | 31.5 |
+| Qwen2.5-3B-Instruct | trt_edgellm-int4_awq_qwen | gsm8k_jetson | 0 / 748 / 194 | 0 | 4237 | 1250 | 5487 | 44 | 40.4 | 2.6 |
+| Qwen2.5-3B-Instruct | vllm-awq | gsm8k_jetson | 0 / 748 / 157 | 0 | 4237 | 1003 | 5240 | 42 | 18.7 | 3.0 |
+| Qwen2.5-3B-Instruct | vllm-bf16 | gsm8k_jetson | 0 / 748 / 164 | 0 | 4237 | 1050 | 5287 | 42 | 23.0 | 1.2 |
+| Qwen2.5-3B-Instruct | vllm-fp8 | gsm8k_jetson | 0 / 748 / 179 | 0 | 4237 | 1142 | 5379 | 43 | 22.4 | 1.9 |
+| Qwen2.5-3B-Instruct | hf-bf16 | ifeval | 0 / 83 / 213 | 0 | 462 | 1322 | 1784 | 14 | 5.5 | 0.2 |
+| Qwen2.5-3B-Instruct | llamacpp-f16 | ifeval | 0 / 83 / 216 | 0 | 462 | 1346 | 1808 | 14 | 3.9 | 0.3 |
+| Qwen2.5-3B-Instruct | llamacpp-q4_k_m | ifeval | 0 / 83 / 221 | 0 | 462 | 1374 | 1835 | 15 | 6.0 | 0.7 |
+| Qwen2.5-3B-Instruct | llamacpp-q8_0 | ifeval | 0 / 83 / 143 | 0 | 462 | 883 | 1344 | 11 | 6.1 | 0.6 |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | ifeval | 0 / 83 / 211 | 0 | 462 | 1312 | 1773 | 14 | 14.9 | 0.3 |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp8 | ifeval | 0 / 83 / 582 | 0 | 462 | 3695 | 4156 | 33 | 21.9 | 0.5 |
+| Qwen2.5-3B-Instruct | trt_edgellm-int4_awq | ifeval | 0 / 83 / 555 | 0 | 462 | 3524 | 3986 | 32 | 18.4 | 0.7 |
+| Qwen2.5-3B-Instruct | trt_edgellm-int4_awq_qwen | ifeval | 0 / 83 / 1244 | 0 | 462 | 7933 | 8394 | 67 | 18.6 | 0.7 |
+| Qwen2.5-3B-Instruct | vllm-awq | ifeval | 0 / 83 / 440 | 0 | 462 | 2787 | 3248 | 26 | 3.5 | 0.7 |
+| Qwen2.5-3B-Instruct | vllm-bf16 | ifeval | 0 / 83 / 208 | 0 | 462 | 1294 | 1756 | 14 | 2.9 | 0.3 |
+| Qwen2.5-3B-Instruct | vllm-fp8 | ifeval | 0 / 83 / 336 | 0 | 462 | 2114 | 2575 | 21 | 3.1 | 0.5 |
+| Qwen2.5-VL-3B-Instruct | hf-bf16 | gqa | 332 / 40 / 2 | 1752 | 2089 | 8 | 3849 | 31 | 6.5 | 5.1 |
 | Qwen2.5-VL-3B-Instruct | hf-bf16 | gqa | 358 / 41 / 2 | 1892 | 2240 | 8 | 4141 | 52082 | 20.8 | 15.5 |
 | Qwen2.5-VL-3B-Instruct | trt_edgellm-fp16 | gqa | 358 / 41 / 2 | 1892 | 2240 | 8 | 4140 | 52074 | 59.8 | 40.4 |
 | Qwen2.5-VL-3B-Instruct | trt_edgellm-fp8 | gqa | 358 / 41 / 2 | 1892 | 2240 | 8 | 4140 | 52074 | 74.4 | 55.3 |
 | Qwen2.5-VL-3B-Instruct | trt_edgellm-int4_awq | gqa | 358 / 41 / 2 | 1892 | 2240 | 8 | 4140 | 52071 | 42.6 | 37.5 |
 | Qwen2.5-VL-3B-Instruct | vllm-awq | gqa | 358 / 41 / 2 | 1892 | 2240 | 8 | 4140 | 52072 | 19.3 | 18.1 |
 | Qwen2.5-VL-3B-Instruct | vllm-bf16 | gqa | 358 / 41 / 2 | 1892 | 2240 | 8 | 4140 | 52074 | 22.6 | 19.0 |
+| Qwen2.5-VL-3B-Instruct | hf-bf16 | mme | 276 / 49 / 2 | 1446 | 1817 | 6 | 3269 | 26 | 9.3 | 7.7 |
 | Qwen2.5-VL-3B-Instruct | hf-bf16 | mme | 868 / 42 / 2 | 4861 | 5233 | 7 | 10100 | 23978 | 24.6 | 21.5 |
+| Qwen2.5-VL-3B-Instruct | hf-bf16 | mme | 276 / 49 / 2 | 1446 | 1817 | 6 | 3269 | 26 | 9.9 | 8.1 |
+| Qwen2.5-VL-3B-Instruct | llamacpp-q8_0 | mme | 276 / 46 / 2 | 1446 | 1803 | 6 | 3255 | 26 | 9.0 | 8.5 |
+| Qwen2.5-VL-3B-Instruct | trt_edgellm-fp16 | mme | 276 / 46 / 2 | 1446 | 1803 | 6 | 3255 | 26 | 43.1 | 29.3 |
+| Qwen2.5-VL-3B-Instruct | trt_edgellm-fp16 | mme | 276 / 46 / 2 | 1446 | 1803 | 6 | 3255 | 26 | 42.3 | 28.8 |
 | Qwen2.5-VL-3B-Instruct | trt_edgellm-fp16 | mme | 868 / 43 / 2 | 4861 | 5239 | 6 | 10107 | 23993 | 69.1 | 58.3 |
 | Qwen2.5-VL-3B-Instruct | trt_edgellm-fp8 | mme | 868 / 43 / 2 | 4861 | 5239 | 6 | 10107 | 23993 | 83.4 | 73.8 |
 | Qwen2.5-VL-3B-Instruct | trt_edgellm-int4_awq | mme | 868 / 43 / 2 | 4861 | 5239 | 6 | 10107 | 23993 | 47.8 | 45.4 |
 | Qwen2.5-VL-3B-Instruct | vllm-awq | mme | 868 / 43 / 2 | 4861 | 5239 | 6 | 10107 | 23993 | 19.4 | 19.0 |
+| Qwen2.5-VL-3B-Instruct | vllm-awq | mme | 276 / 46 / 2 | 1446 | 1803 | 6 | 3255 | 26 | 4.0 | 4.0 |
 | Qwen2.5-VL-3B-Instruct | vllm-bf16 | mme | 868 / 43 / 2 | 4861 | 5239 | 6 | 10107 | 23993 | 21.7 | 19.8 |
 | Qwen2.5-VL-3B-Instruct | hf-bf16+repeat | textvqa_val | 977 / 39 / 4 | 5360 | 5794 | 20 | 11174 | 55869 | 29.3 | 22.1 |
+| Qwen2.5-VL-3B-Instruct | hf-bf16 | textvqa_val | 939 / 39 / 5 | 5144 | 5572 | 24 | 10740 | 86 | 19.3 | 14.4 |
 | Qwen2.5-VL-3B-Instruct | hf-bf16 | textvqa_val | 977 / 39 / 4 | 5360 | 5794 | 20 | 11174 | 55869 | 28.1 | 20.4 |
+| Qwen2.5-VL-3B-Instruct | llamacpp-f16 | textvqa_val | 939 / 39 / 4 | 5144 | 5572 | 20 | 10736 | 86 | 9.5 | 8.8 |
 | Qwen2.5-VL-3B-Instruct | llamacpp-f16 | textvqa_val | 977 / 40 / 4 | 5360 | 5796 | 19 | 11175 | 55874 | 9.8 | 9.2 |
+| Qwen2.5-VL-3B-Instruct | llamacpp-q4_k_m | textvqa_val | 939 / 39 / 4 | 5144 | 5572 | 20 | 10736 | 86 | 9.4 | 9.1 |
 | Qwen2.5-VL-3B-Instruct | llamacpp-q4_k_m | textvqa_val | 977 / 40 / 4 | 5360 | 5796 | 20 | 11176 | 55880 | 9.4 | 9.1 |
+| Qwen2.5-VL-3B-Instruct | llamacpp-q8_0 | textvqa_val | 939 / 39 / 4 | 5144 | 5572 | 20 | 10736 | 86 | 9.7 | 9.2 |
 | Qwen2.5-VL-3B-Instruct | llamacpp-q8_0 | textvqa_val | 977 / 40 / 4 | 5360 | 5796 | 19 | 11175 | 55874 | 9.8 | 9.3 |
 | Qwen2.5-VL-3B-Instruct | trt_edgellm-fp16+repeat | textvqa_val | 977 / 39 / 4 | 5360 | 5794 | 19 | 11173 | 55865 | 70.0 | 47.4 |
+| Qwen2.5-VL-3B-Instruct | trt_edgellm-fp16 | textvqa_val | 939 / 39 / 4 | 5144 | 5572 | 21 | 10737 | 86 | 76.2 | 47.0 |
 | Qwen2.5-VL-3B-Instruct | trt_edgellm-fp16 | textvqa_val | 977 / 39 / 4 | 5360 | 5794 | 19 | 11173 | 55865 | 71.0 | 47.6 |
+| Qwen2.5-VL-3B-Instruct | trt_edgellm-fp8 | textvqa_val | 939 / 39 / 4 | 5144 | 5572 | 21 | 10737 | 86 | 83.7 | 60.1 |
 | Qwen2.5-VL-3B-Instruct | trt_edgellm-fp8 | textvqa_val | 977 / 39 / 4 | 5360 | 5794 | 19 | 11173 | 55864 | 86.0 | 63.8 |
+| Qwen2.5-VL-3B-Instruct | trt_edgellm-int4_awq | textvqa_val | 939 / 39 / 5 | 5144 | 5572 | 23 | 10739 | 86 | 47.6 | 40.4 |
 | Qwen2.5-VL-3B-Instruct | trt_edgellm-int4_awq | textvqa_val | 977 / 39 / 4 | 5360 | 5794 | 19 | 11173 | 55865 | 48.2 | 42.4 |
+| Qwen2.5-VL-3B-Instruct | vllm-awq | textvqa_val | 939 / 39 / 4 | 5144 | 5572 | 18 | 10733 | 86 | 9.8 | 9.5 |
 | Qwen2.5-VL-3B-Instruct | vllm-awq | textvqa_val | 977 / 39 / 4 | 5360 | 5794 | 19 | 11173 | 55865 | 24.4 | 22.9 |
 | Qwen2.5-VL-3B-Instruct | vllm-bf16+pil | textvqa_val | 977 / 39 / 4 | 5360 | 5794 | 19 | 11173 | 55865 | 39.5 | 31.1 |
 | Qwen2.5-VL-3B-Instruct | vllm-bf16+repeat | textvqa_val | 977 / 39 / 4 | 5360 | 5794 | 19 | 11173 | 55865 | 36.1 | 28.9 |
+| Qwen2.5-VL-3B-Instruct | vllm-bf16+stages | textvqa_val | 961 / 39 / 4 | 5266 | 5700 | 18 | 10984 | 549 | 29.0 | 24.4 |
 | Qwen2.5-VL-3B-Instruct | vllm-bf16+stages | textvqa_val | 977 / 39 / 4 | 5360 | 5794 | 19 | 11173 | 55865 | 36.9 | 29.4 |
+| Qwen2.5-VL-3B-Instruct | vllm-bf16 | textvqa_val | 939 / 39 / 4 | 5144 | 5572 | 21 | 10737 | 86 | 11.3 | 10.3 |
 | Qwen2.5-VL-3B-Instruct | vllm-bf16 | textvqa_val | 977 / 39 / 4 | 5360 | 5794 | 19 | 11173 | 55865 | 30.6 | 25.2 |
+| Qwen2.5-VL-3B-Instruct | vllm-bf16 | textvqa_val | 961 / 39 / 4 | 5266 | 5700 | 18 | 10984 | 549 | 28.5 | 24.1 |
+| Qwen2.5-VL-3B-Instruct | vllm-fp8+marlin | textvqa_val | 939 / 39 / 4 | 5144 | 5572 | 21 | 10737 | 86 | 10.7 | 10.2 |
 | Qwen2.5-VL-3B-Instruct | vllm-fp8+marlin | textvqa_val | 977 / 39 / 4 | 5360 | 5794 | 19 | 11173 | 55867 | 25.9 | 23.4 |
 | Qwen2.5-VL-3B-Instruct | vllm-fp8+torch-stages | textvqa_val | 977 / 39 / 4 | 5360 | 5794 | 19 | 11173 | 55866 | 36.2 | 31.6 |
+| Qwen2.5-VL-3B-Instruct | vllm-fp8+torch | textvqa_val | 939 / 39 / 4 | 5144 | 5572 | 21 | 10737 | 86 | 12.1 | 11.4 |
+| Qwen2.5-VL-3B-Instruct | vllm-w8a8+triton | textvqa_val | 939 / 39 / 4 | 5144 | 5572 | 21 | 10737 | 86 | 12.8 | 12.1 |
 | Qwen2.5-VL-3B-Instruct | vllm-w8a8+triton | textvqa_val | 977 / 39 / 4 | 5360 | 5794 | 19 | 11173 | 55866 | 31.3 | 27.7 |
 | Qwen2.5-VL-7B-Instruct | hf-bf16 | gqa | 358 / 41 / 2 | 1898 | 5245 | 18 | 7161 | 90072 | - | - |
 | Qwen2.5-VL-7B-Instruct | vllm-awq | gqa | 358 / 41 / 2 | 1898 | 5243 | 18 | 7160 | 90052 | 24.1 | 22.2 |
@@ -154,16 +1222,25 @@ and total / mean answer time.
 | Qwen2.5-VL-7B-Instruct | hf-bf16 | mme | 868 / 42 / 2 | 4874 | 12124 | 15 | 17014 | 40390 | 33.5 | 28.7 |
 | Qwen2.5-VL-7B-Instruct | vllm-awq | mme | 868 / 43 / 2 | 4874 | 12139 | 15 | 17028 | 40425 | 24.1 | 23.3 |
 | Qwen2.5-VL-7B-Instruct | vllm-bf16 | mme | 868 / 43 / 2 | 4874 | 12139 | 15 | 17028 | 40425 | 28.1 | 24.5 |
+| Qwen2.5-VL-7B-Instruct | hf-bf16 | textvqa_val | 939 / 39 / 4 | 5159 | 12959 | 42 | 18160 | 145 | 28.1 | 20.4 |
 | Qwen2.5-VL-7B-Instruct | hf-bf16 | textvqa_val | 977 / 39 / 4 | 5376 | 13471 | 44 | 18891 | 94453 | 39.4 | 26.2 |
 | Qwen2.5-VL-7B-Instruct | llamacpp-f16 | textvqa_val | 977 / 40 / 4 | 5376 | 13475 | 45 | 18896 | 94480 | 12.6 | 11.2 |
+| Qwen2.5-VL-7B-Instruct | llamacpp-q4_k_m | textvqa_val | 939 / 39 / 5 | 5159 | 12959 | 62 | 18180 | 145 | 11.9 | 11.1 |
 | Qwen2.5-VL-7B-Instruct | llamacpp-q4_k_m | textvqa_val | 977 / 40 / 4 | 5376 | 13475 | 45 | 18896 | 94480 | 12.0 | 11.4 |
+| Qwen2.5-VL-7B-Instruct | llamacpp-q8_0 | textvqa_val | 939 / 39 / 5 | 5159 | 12959 | 64 | 18182 | 145 | 12.5 | 11.3 |
 | Qwen2.5-VL-7B-Instruct | llamacpp-q8_0 | textvqa_val | 977 / 40 / 4 | 5376 | 13475 | 46 | 18897 | 94483 | 12.7 | 11.9 |
+| Qwen2.5-VL-7B-Instruct | trt_edgellm-fp16 | textvqa_val | 939 / 39 / 4 | 5159 | 12959 | 42 | 18160 | 145 | 84.1 | 47.1 |
 | Qwen2.5-VL-7B-Instruct | trt_edgellm-fp16 | textvqa_val | 977 / 39 / 4 | 5376 | 13471 | 43 | 18889 | 94447 | 76.7 | 45.0 |
+| Qwen2.5-VL-7B-Instruct | trt_edgellm-fp8 | textvqa_val | 939 / 39 / 4 | 5159 | 12959 | 44 | 18162 | 145 | 110.4 | 69.8 |
 | Qwen2.5-VL-7B-Instruct | trt_edgellm-fp8 | textvqa_val | 977 / 39 / 4 | 5376 | 13471 | 43 | 18890 | 94448 | 104.4 | 68.8 |
+| Qwen2.5-VL-7B-Instruct | trt_edgellm-int4_awq | textvqa_val | 939 / 39 / 5 | 5159 | 12959 | 58 | 18176 | 145 | 47.8 | 39.5 |
 | Qwen2.5-VL-7B-Instruct | trt_edgellm-int4_awq | textvqa_val | 977 / 39 / 4 | 5376 | 13471 | 43 | 18890 | 94449 | 47.5 | 41.3 |
+| Qwen2.5-VL-7B-Instruct | vllm-awq | textvqa_val | 939 / 39 / 4 | 5159 | 12959 | 40 | 18158 | 145 | 14.2 | 13.6 |
 | Qwen2.5-VL-7B-Instruct | vllm-awq | textvqa_val | 977 / 39 / 4 | 5376 | 13471 | 43 | 18890 | 94450 | 29.8 | 27.2 |
+| Qwen2.5-VL-7B-Instruct | vllm-bf16+diag-nocache | textvqa_val | 939 / 39 / 4 | 5159 | 12959 | 44 | 18162 | 145 | 20.5 | 17.1 |
 | Qwen2.5-VL-7B-Instruct | vllm-bf16+pil | textvqa_val | 977 / 39 / 4 | 5376 | 13471 | 43 | 18890 | 94448 | 48.9 | 33.5 |
 | Qwen2.5-VL-7B-Instruct | vllm-bf16+stages | textvqa_val | 977 / 39 / 4 | 5376 | 13471 | 43 | 18890 | 94449 | 48.3 | 33.1 |
+| Qwen2.5-VL-7B-Instruct | vllm-bf16 | textvqa_val | 939 / 39 / 4 | 5159 | 12959 | 42 | 18160 | 145 | 17.9 | 15.1 |
 | Qwen2.5-VL-7B-Instruct | vllm-bf16 | textvqa_val | 977 / 39 / 4 | 5376 | 13471 | 43 | 18890 | 94448 | 41.6 | 29.7 |
 | Qwen2.5-VL-7B-Instruct | vllm-fp8+marlin | textvqa_val | 977 / 39 / 4 | 5376 | 13471 | 43 | 18890 | 94448 | 28.0 | 24.7 |
 | Qwen2.5-VL-7B-Instruct | vllm-fp8+torch-stages | textvqa_val | 977 / 39 / 4 | 5376 | 13471 | 43 | 18890 | 94448 | 52.8 | 41.6 |

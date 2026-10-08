@@ -1,0 +1,132 @@
+/opt/venv/lib/python3.12/site-packages/transformers/utils/hub.py:110: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+  warnings.warn(
+torch 2.10.0 transformers 4.57.3
+/opt/venv/lib/python3.12/site-packages/transformers/utils/hub.py:110: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+  warnings.warn(
+[32m2026-10-08 13:15:03[0m | [1mINFO    [0m | [36mlmms_eval.__main__[0m:[36mcli_evaluate[0m:[36m516[0m - [1mVerbosity set to INFO[0m
+[32m2026-10-08 13:15:03[0m | [1mINFO    [0m | [36mlmms_eval.__main__[0m:[36mcli_evaluate_single[0m:[36m643[0m - [1mIncluding path: jetson/tasks[0m
+[32m2026-10-08 13:15:05[0m | [1mINFO    [0m | [36mlmms_eval.__main__[0m:[36mcli_evaluate_single[0m:[36m653[0m - [1mEvaluation tracker args: {'output_path': 'jetson/results/thor/Qwen2.5-3B-Instruct/ifeval/vllm-fp8/20261008-151453_limit8'}[0m
+[32m2026-10-08 13:15:05[0m | [1mINFO    [0m | [36mlmms_eval.__main__[0m:[36mcli_evaluate_single[0m:[36m677[0m - [1mIncluding path: jetson/tasks[0m
+[32m2026-10-08 13:15:05[0m | [33m[1mWARNING [0m | [36mlmms_eval.__main__[0m:[36mcli_evaluate_single[0m:[36m683[0m - [33m[1m --limit SHOULD ONLY BE USED FOR TESTING.REAL METRICS SHOULD NOT BE COMPUTED USING LIMIT.[0m
+[32m2026-10-08 13:15:05[0m | [1mINFO    [0m | [36mlmms_eval.__main__[0m:[36mcli_evaluate_single[0m:[36m737[0m - [1mSelected Tasks: ['ifeval'][0m
+[32m2026-10-08 13:15:05[0m | [1mINFO    [0m | [36mlmms_eval.evaluator[0m:[36msimple_evaluate[0m:[36m486[0m - [1mSetting random seed to 0 | Setting numpy seed to 1234 | Setting torch manual seed to 1234[0m
+INFO 10-08 13:15:08 [utils.py:233] non-default args: {'trust_remote_code': True, 'seed': 1, 'max_model_len': 4096, 'enable_prefix_caching': False, 'gpu_memory_utilization': 0.11, 'model': '/opt/hf-cache/hub/models--RedHatAI--Qwen2.5-3B-Instruct-FP8-dynamic/snapshots/f04ac08d8c9fe2568713896952fa8175f8716157'}
+INFO 10-08 13:15:08 [model.py:549] Resolved architecture: Qwen2ForCausalLM
+INFO 10-08 13:15:08 [model.py:1678] Using max model len 4096
+INFO 10-08 13:15:10 [scheduler.py:238] Chunked prefill is enabled with max_num_batched_tokens=8192.
+INFO 10-08 13:15:10 [vllm.py:790] Asynchronous scheduling is enabled.
+/opt/venv/lib/python3.12/site-packages/transformers/utils/hub.py:110: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+  warnings.warn(
+(EngineCore pid=110) INFO 10-08 13:15:19 [core.py:105] Initializing a V1 LLM engine (v0.19.0) with config: model='/opt/hf-cache/hub/models--RedHatAI--Qwen2.5-3B-Instruct-FP8-dynamic/snapshots/f04ac08d8c9fe2568713896952fa8175f8716157', speculative_config=None, tokenizer='/opt/hf-cache/hub/models--RedHatAI--Qwen2.5-3B-Instruct-FP8-dynamic/snapshots/f04ac08d8c9fe2568713896952fa8175f8716157', skip_tokenizer_init=False, tokenizer_mode=auto, revision=None, tokenizer_revision=None, trust_remote_code=True, dtype=torch.bfloat16, max_seq_len=4096, download_dir=None, load_format=auto, tensor_parallel_size=1, pipeline_parallel_size=1, data_parallel_size=1, decode_context_parallel_size=1, dcp_comm_backend=ag_rs, disable_custom_all_reduce=False, quantization=compressed-tensors, enforce_eager=False, enable_return_routed_experts=False, kv_cache_dtype=auto, device_config=cuda, structured_outputs_config=StructuredOutputsConfig(backend='auto', disable_any_whitespace=False, disable_additional_properties=False, reasoning_parser='', reasoning_parser_plugin='', enable_in_reasoning=False), observability_config=ObservabilityConfig(show_hidden_metrics_for_version=None, otlp_traces_endpoint=None, collect_detailed_traces=None, kv_cache_metrics=False, kv_cache_metrics_sample=0.01, cudagraph_metrics=False, enable_layerwise_nvtx_tracing=False, enable_mfu_metrics=False, enable_mm_processor_stats=False, enable_logging_iteration_details=False), seed=1, served_model_name=/opt/hf-cache/hub/models--RedHatAI--Qwen2.5-3B-Instruct-FP8-dynamic/snapshots/f04ac08d8c9fe2568713896952fa8175f8716157, enable_prefix_caching=False, enable_chunked_prefill=True, pooler_config=None, compilation_config={'mode': <CompilationMode.VLLM_COMPILE: 3>, 'debug_dump_path': None, 'cache_dir': '', 'compile_cache_save_format': 'binary', 'backend': 'inductor', 'custom_ops': ['none'], 'splitting_ops': ['vllm::unified_attention', 'vllm::unified_attention_with_output', 'vllm::unified_mla_attention', 'vllm::unified_mla_attention_with_output', 'vllm::mamba_mixer2', 'vllm::mamba_mixer', 'vllm::short_conv', 'vllm::linear_attention', 'vllm::plamo2_mamba_mixer', 'vllm::gdn_attention_core', 'vllm::olmo_hybrid_gdn_full_forward', 'vllm::kda_attention', 'vllm::sparse_attn_indexer', 'vllm::rocm_aiter_sparse_attn_indexer', 'vllm::unified_kv_cache_update', 'vllm::unified_mla_kv_cache_update'], 'compile_mm_encoder': False, 'cudagraph_mm_encoder': False, 'encoder_cudagraph_token_budgets': [], 'encoder_cudagraph_max_images_per_batch': 0, 'compile_sizes': [], 'compile_ranges_endpoints': [8192], 'inductor_compile_config': {'enable_auto_functionalized_v2': False, 'size_asserts': False, 'alignment_asserts': False, 'scalar_asserts': False, 'combo_kernels': True, 'benchmark_combo_kernel': True}, 'inductor_passes': {}, 'cudagraph_mode': <CUDAGraphMode.FULL_AND_PIECEWISE: (2, 1)>, 'cudagraph_num_of_warmups': 1, 'cudagraph_capture_sizes': [1, 2, 4, 8, 16, 24, 32, 40, 48, 56, 64, 72, 80, 88, 96, 104, 112, 120, 128, 136, 144, 152, 160, 168, 176, 184, 192, 200, 208, 216, 224, 232, 240, 248, 256, 272, 288, 304, 320, 336, 352, 368, 384, 400, 416, 432, 448, 464, 480, 496, 512], 'cudagraph_copy_inputs': False, 'cudagraph_specialize_lora': True, 'use_inductor_graph_partition': False, 'pass_config': {'fuse_norm_quant': False, 'fuse_act_quant': False, 'fuse_attn_quant': False, 'enable_sp': False, 'fuse_gemm_comms': False, 'fuse_allreduce_rms': False}, 'max_cudagraph_capture_size': 512, 'dynamic_shapes_config': {'type': <DynamicShapesType.BACKED: 'backed'>, 'evaluate_guards': False, 'assume_32_bit_indexing': False}, 'local_cache_dir': None, 'fast_moe_cold_start': True, 'static_all_moe_layers': []}
+(EngineCore pid=110) INFO 10-08 13:15:20 [parallel_state.py:1400] world_size=1 rank=0 local_rank=0 distributed_init_method=tcp://172.17.0.2:46195 backend=nccl
+(EngineCore pid=110) INFO 10-08 13:15:20 [parallel_state.py:1716] rank 0 in world size 1 is assigned as DP rank 0, PP rank 0, PCP rank 0, TP rank 0, EP rank N/A, EPLB rank N/A
+(EngineCore pid=110) INFO 10-08 13:15:20 [gpu_model_runner.py:4735] Starting to load model /opt/hf-cache/hub/models--RedHatAI--Qwen2.5-3B-Instruct-FP8-dynamic/snapshots/f04ac08d8c9fe2568713896952fa8175f8716157...
+(EngineCore pid=110) INFO 10-08 13:15:21 [__init__.py:261] Selected ChannelWiseTorchFP8ScaledMMLinearKernel for CompressedTensorsW8A8Fp8
+(EngineCore pid=110) INFO 10-08 13:15:21 [cuda.py:334] Using FLASH_ATTN attention backend out of potential backends: ['FLASH_ATTN', 'FLASHINFER', 'TRITON_ATTN', 'FLEX_ATTENTION'].
+(EngineCore pid=110) INFO 10-08 13:15:21 [flash_attn.py:596] Using FlashAttention version 2
+Loading safetensors checkpoint shards:   0% Completed | 0/1 [00:00<?, ?it/s]
+Loading safetensors checkpoint shards: 100% Completed | 1/1 [00:01<00:00,  1.46s/it]
+Loading safetensors checkpoint shards: 100% Completed | 1/1 [00:01<00:00,  1.46s/it]
+(EngineCore pid=110) 
+(EngineCore pid=110) INFO 10-08 13:15:24 [default_loader.py:384] Loading weights took 1.64 seconds
+(EngineCore pid=110) INFO 10-08 13:15:24 [gpu_model_runner.py:4820] Model loading took 3.23 GiB memory and 3.036501 seconds
+(EngineCore pid=110) INFO 10-08 13:15:28 [backends.py:1051] Using cache directory: /home/michal/dev/lmms-eval/jetson/.cache/vllm/torch_compile_cache/0c47a1c3e1/rank_0_0/backbone for vLLM's torch.compile
+(EngineCore pid=110) INFO 10-08 13:15:28 [backends.py:1111] Dynamo bytecode transform time: 3.44 s
+(EngineCore pid=110) INFO 10-08 13:15:30 [backends.py:285] Directly load the compiled graph(s) for compile range (1, 8192) from the cache, took 1.457 s
+(EngineCore pid=110) INFO 10-08 13:15:30 [decorators.py:303] Directly load AOT compilation from path /home/michal/dev/lmms-eval/jetson/.cache/vllm/torch_compile_cache/torch_aot_compile/ccfd2770f2d0ab99910f320fc84bb545c507d0097a9a8e3caa208a6e0b53291a/rank_0_0/model
+(EngineCore pid=110) INFO 10-08 13:15:30 [monitor.py:48] torch.compile took 5.28 s in total
+(EngineCore pid=110) INFO 10-08 13:15:31 [monitor.py:76] Initial profiling/warmup run took 1.13 s
+(EngineCore pid=110) INFO 10-08 13:15:38 [kv_cache_utils.py:829] Overriding num_gpu_blocks=0 with num_gpu_blocks_override=512
+(EngineCore pid=110) INFO 10-08 13:15:38 [gpu_model_runner.py:5876] Profiling CUDA graph memory: PIECEWISE=51 (largest=512), FULL=35 (largest=256)
+(EngineCore pid=110) INFO 10-08 13:15:39 [gpu_model_runner.py:5955] Estimated CUDA graph memory: 0.93 GiB total
+(EngineCore pid=110) INFO 10-08 13:15:40 [gpu_worker.py:436] Available KV cache memory: 7.85 GiB
+(EngineCore pid=110) INFO 10-08 13:15:40 [gpu_worker.py:470] In v0.19, CUDA graph memory profiling will be enabled by default (VLLM_MEMORY_PROFILER_ESTIMATE_CUDAGRAPHS=1), which more accurately accounts for CUDA graph memory during KV cache allocation. To try it now, set VLLM_MEMORY_PROFILER_ESTIMATE_CUDAGRAPHS=1 and increase --gpu-memory-utilization from 0.1100 to 0.1176 to maintain the same effective KV cache size.
+(EngineCore pid=110) INFO 10-08 13:15:40 [kv_cache_utils.py:1319] GPU KV cache size: 228,672 tokens
+(EngineCore pid=110) INFO 10-08 13:15:40 [kv_cache_utils.py:1324] Maximum concurrency for 4,096 tokens per request: 55.83x
+(EngineCore pid=110) 2026-10-08 13:15:40,414 - INFO - autotuner.py:262 - flashinfer.jit: [Autotuner]: Autotuning process starts ...
+(EngineCore pid=110) 2026-10-08 13:15:40,444 - INFO - autotuner.py:268 - flashinfer.jit: [Autotuner]: Autotuning process ends
+Capturing CUDA graphs (mixed prefill-decode, PIECEWISE): 100%|██████████| 51/51 [00:02<00:00, 19.12it/s]
+Capturing CUDA graphs (decode, FULL): 100%|██████████| 35/35 [00:01<00:00, 27.54it/s]
+(EngineCore pid=110) INFO 10-08 13:15:45 [gpu_model_runner.py:6046] Graph capturing finished in 5 secs, took 0.86 GiB
+(EngineCore pid=110) INFO 10-08 13:15:45 [gpu_worker.py:597] CUDA graph pool memory: 0.86 GiB (actual), 0.93 GiB (estimated), difference: 0.07 GiB (7.5%).
+(EngineCore pid=110) INFO 10-08 13:15:45 [core.py:283] init engine (profile, create kv cache, warmup model) took 20.70 seconds
+(EngineCore pid=110) INFO 10-08 13:15:46 [vllm.py:790] Asynchronous scheduling is enabled.
+Using the latest cached version of the dataset since wis-k/instruction-following-eval couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'default' at /opt/hf-cache/datasets/wis-k___instruction-following-eval/default/0.0.0/5a5661c2a35488308556cf4453dc074d1eba91a0 (last modified on Thu Oct  8 10:30:11 2026).
+2026-10-08T13:15:46.467833+0000 | evaluate | INFO - Running on rank 0 (local rank 0)
+2026-10-08T13:15:46.468118+0000 | build_all_requests | INFO - Building contexts for ifeval on rank 0...
+100%|██████████| 8/8 [00:00<00:00, 13513.67it/s]
+2026-10-08T13:15:46.469171+0000 | evaluate | INFO - Running generate_until requests
+Model Responding:   0%|          | 0/8 [00:00<?, ?it/s]
+
+
+Model Responding:  12%|█▎        | 1/8 [00:06<00:44,  6.41s/it]
+
+INFO 10-08 13:16:07 [loggers.py:259] Engine 000: Avg prompt throughput: 0.0 tokens/s, Avg generation throughput: 65.6 tokens/s, Running: 1 reqs, Waiting: 0 reqs, GPU KV cache usage: 0.4%, Prefix cache hit rate: 0.0%
+
+Model Responding:  25%|██▌       | 2/8 [00:25<01:24, 14.13s/it]
+
+
+Model Responding:  38%|███▊      | 3/8 [00:31<00:52, 10.44s/it]
+
+Model Responding:  50%|█████     | 4/8 [00:32<00:26,  6.50s/it]
+
+Model Responding:  62%|██████▎   | 5/8 [00:32<00:12,  4.22s/it]
+
+Model Responding:  75%|███████▌  | 6/8 [00:34<00:06,  3.44s/it]
+
+Model Responding:  88%|████████▊ | 7/8 [00:37<00:03,  3.34s/it]
+
+
+Model Responding: 100%|██████████| 8/8 [00:41<00:00,  3.63s/it]2026-10-08T13:16:28.414005+0000 | log_metrics | INFO - Metric summary - Total elapsed time: 41.936s, Total gen tokens: 2689, Avg speed: 64.1 tokens/s, Additional metrics: ttft: 0.1477, tpot: 0.0152, rank: 0
+Postprocessing:   0%|          | 0/8 [00:00<?, ?it/s]2026-10-08T13:16:28.989512+0000 | process_results | WARNING - This task is meant for chat-finetuned models, and may not give meaningful results for models other than `openai` or `anthropic` if `doc_to_text` in its YAML is not wrapped in the appropriate chat template string. This warning will be removed when chat templating support is added natively to local models
+2026-10-08T13:16:28.990534+0000 | process_results | WARNING - This task is meant for chat-finetuned models, and may not give meaningful results for models other than `openai` or `anthropic` if `doc_to_text` in its YAML is not wrapped in the appropriate chat template string. This warning will be removed when chat templating support is added natively to local models
+2026-10-08T13:16:28.991182+0000 | process_results | WARNING - This task is meant for chat-finetuned models, and may not give meaningful results for models other than `openai` or `anthropic` if `doc_to_text` in its YAML is not wrapped in the appropriate chat template string. This warning will be removed when chat templating support is added natively to local models
+2026-10-08T13:16:28.991381+0000 | process_results | WARNING - This task is meant for chat-finetuned models, and may not give meaningful results for models other than `openai` or `anthropic` if `doc_to_text` in its YAML is not wrapped in the appropriate chat template string. This warning will be removed when chat templating support is added natively to local models
+2026-10-08T13:16:28.991945+0000 | process_results | WARNING - This task is meant for chat-finetuned models, and may not give meaningful results for models other than `openai` or `anthropic` if `doc_to_text` in its YAML is not wrapped in the appropriate chat template string. This warning will be removed when chat templating support is added natively to local models
+2026-10-08T13:16:28.992697+0000 | process_results | WARNING - This task is meant for chat-finetuned models, and may not give meaningful results for models other than `openai` or `anthropic` if `doc_to_text` in its YAML is not wrapped in the appropriate chat template string. This warning will be removed when chat templating support is added natively to local models
+2026-10-08T13:16:28.992955+0000 | process_results | WARNING - This task is meant for chat-finetuned models, and may not give meaningful results for models other than `openai` or `anthropic` if `doc_to_text` in its YAML is not wrapped in the appropriate chat template string. This warning will be removed when chat templating support is added natively to local models
+ERROR:root:Unable to detect language for text PARAGRAPH 1: I CAPITALIZE THE SENTENCE "IF THE LAW IS BAD, YOU SHOULD NOT FOLLOW IT". THIS STATEMENT IS CRITICALLY FLAWED AS IT IMPLIES THAT THE VIOLATION OF LAWS IS JUSTIFIED BASED ON THE QUALITY OF THE LAW ITSELF. SUCH A PRINCIPLE UNDERMINES THE FOUNDATIONS OF JUSTICE AND ORDER, AS IT ENCOURAGES DISRUPTION AND DISREGARD FOR LEGAL STRUCTURES.
+
+PARAGRAPH 2: THE SENTENCE ALSO FAILS TO CONSIDER THE CONTEXT AND INTENT OF THE LAW. EVEN IF A LAW IS PERCEIVED AS BAD, FOLLOWING IT CAN BE NECESSARY TO AVOID MORE SERIOUS CONSEQUENCES OR TO AVOID CAUSING HARM TO OTHERS. THEREFORE, THE CRITIQUE SHOULD NOT BE DIRECTED AT FOLLOWING THE LAW, BUT RATHER AT THE NEED TO ENSURE THAT LAWS THEMSELVES ARE JUST AND EFFECTIVE. due to Need to load profiles.
+ERROR:root:Unable to detect language for text PARAGRAPH 1: I CAPITALIZE THE SENTENCE "IF THE LAW IS BAD, YOU SHOULD NOT FOLLOW IT". THIS STATEMENT IS CRITICALLY FLAWED AS IT IMPLIES THAT THE VIOLATION OF LAWS IS JUSTIFIED BASED ON THE QUALITY OF THE LAW ITSELF. SUCH A PRINCIPLE UNDERMINES THE FOUNDATIONS OF JUSTICE AND ORDER, AS IT ENCOURAGES DISRUPTION AND DISREGARD FOR LEGAL STRUCTURES.
+
+PARAGRAPH 2: THE SENTENCE ALSO FAILS TO CONSIDER THE CONTEXT AND INTENT OF THE LAW. EVEN IF A LAW IS PERCEIVED AS BAD, FOLLOWING IT CAN BE NECESSARY TO AVOID MORE SERIOUS CONSEQUENCES OR TO AVOID CAUSING HARM TO OTHERS. THEREFORE, THE CRITIQUE SHOULD NOT BE DIRECTED AT FOLLOWING THE LAW, BUT RATHER AT THE NEED TO ENSURE THAT LAWS THEMSELVES ARE JUST AND EFFECTIVE. due to Need to load profiles.
+2026-10-08T13:16:28.993612+0000 | process_results | WARNING - This task is meant for chat-finetuned models, and may not give meaningful results for models other than `openai` or `anthropic` if `doc_to_text` in its YAML is not wrapped in the appropriate chat template string. This warning will be removed when chat templating support is added natively to local models
+Postprocessing: 100%|██████████| 8/8 [00:00<00:00, 38.74it/s]
+2026-10-08T13:16:29.195502+0000 | evaluate | INFO - Postprocessed 8 docs for ifeval/none with 4 worker(s) in 0.21s
+2026-10-08T13:16:29.217472+0000 | save_results_aggregated | INFO - Saving results aggregated
+2026-10-08T13:16:29.218419+0000 | save_results_samples | INFO - Saving samples to jetson/results/thor/Qwen2.5-3B-Instruct/ifeval/vllm-fp8/20261008-151453_limit8/snapshots__f04ac08d8c9fe2568713896952fa8175f8716157/20261008_211505_samples_ifeval.jsonl
+vllm (model=/opt/hf-cache/hub/models--RedHatAI--Qwen2.5-3B-Instruct-FP8-dynamic/snapshots/f04ac08d8c9fe2568713896952fa8175f8716157,gpu_memory_utilization=0.11,max_model_len=4096,max_new_tokens=1,enable_prefix_caching=False), gen_kwargs: (), limit: 8.0, offset: 0, num_fewshot: None, batch_size: 1
+
+LMMs-Eval: Probing Intelligence in the Real World
+> Good evaluation shapes what we build next.
+
+branch: jetson-benchmark
+commit: v0.6-287-gdf80923b
+
+|Tasks |Filter|n-shot|        Metric         |   |Value |   |Stderr|Stderr_CLT|
+|------|------|-----:|-----------------------|---|-----:|---|------|----------|
+|ifeval|none  |     0|inst_level_loose_acc   |↑  |0.7143|±  |N/A   |N/A       |
+|ifeval|none  |     0|inst_level_strict_acc  |↑  |0.7143|±  |N/A   |N/A       |
+|ifeval|none  |     0|prompt_level_loose_acc |↑  |0.6250|±  |0.1830|0.1830    |
+|ifeval|none  |     0|prompt_level_strict_acc|↑  |0.6250|±  |0.1830|0.1830    |
+
+
+Throughput Summary
+
+|      Metric      |  Value  |  Unit  |
+|------------------|--------:|--------|
+|total_gen_tokens  |2689.0000|tokens  |
+|total_elapsed_time|  41.9359|seconds |
+|avg_speed         |  64.1216|tokens/s|
+|avg_rank          |   0.0000|varies  |
+|avg_tpot          |   0.0152|varies  |
+|avg_ttft          |   0.1477|varies  |
+
+(EngineCore pid=110) INFO 10-08 13:16:29 [core.py:1210] Shutdown initiated (timeout=0)
+(EngineCore pid=110) INFO 10-08 13:16:29 [core.py:1233] Shutdown complete
+[rank0]:[W1008 13:16:29.155761013 ProcessGroupNCCL.cpp:1553] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())
+ERROR 10-08 13:16:29 [core_client.py:667] Engine core proc EngineCore died unexpectedly, shutting down client.
+
+[slim_run.py: dropped 34 per-request progress/profile lines]

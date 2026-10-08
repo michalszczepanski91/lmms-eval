@@ -1,0 +1,13 @@
+date:        2026-10-08T15:14:53+02:00
+board:       NVIDIA Jetson AGX Thor Developer Kit
+l4t:         # R39 (release), REVISION: 2.1, GCID: 46758480, BOARD: generic, EABI: aarch64, DATE: Fri Aug  7 05:54:22 AM UTC 2026
+power mode:  NV Power Mode: MAXN
+git commit:  df80923b (dirty)
+framework:   vllm
+precision:   fp8
+modality:    text
+image:       lmms-eval-jetson:latest (sha256:60ca8d6b1834)
+other containers: 
+other GPU processes: 
+command:     python -m lmms_eval --model vllm --model_args model=/opt/hf-cache/hub/models--RedHatAI--Qwen2.5-3B-Instruct-FP8-dynamic/snapshots/f04ac08d8c9fe2568713896952fa8175f8716157,gpu_memory_utilization=0.11,max_model_len=4096,max_new_tokens=1,enable_prefix_caching=False --tasks ifeval --batch_size 1 --log_samples --output_path jetson/results/thor/Qwen2.5-3B-Instruct/ifeval/vllm-fp8/20261008-151453_limit8 --limit 8 --include_path jetson/tasks
+versions:    torch 2.10.0 transformers 4.57.3

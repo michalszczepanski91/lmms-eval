@@ -1,0 +1,64 @@
+/opt/venv/lib/python3.12/site-packages/transformers/utils/hub.py:110: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+  warnings.warn(
+torch 2.10.0 transformers 4.57.3
+/opt/venv/lib/python3.12/site-packages/transformers/utils/hub.py:110: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+  warnings.warn(
+[32m2026-10-08 13:20:25[0m | [1mINFO    [0m | [36mlmms_eval.__main__[0m:[36mcli_evaluate[0m:[36m516[0m - [1mVerbosity set to INFO[0m
+[32m2026-10-08 13:20:25[0m | [1mINFO    [0m | [36mlmms_eval.__main__[0m:[36mcli_evaluate_single[0m:[36m643[0m - [1mIncluding path: jetson/tasks[0m
+[32m2026-10-08 13:20:28[0m | [1mINFO    [0m | [36mlmms_eval.__main__[0m:[36mcli_evaluate_single[0m:[36m653[0m - [1mEvaluation tracker args: {'output_path': 'jetson/results/thor/Qwen2.5-3B-Instruct/ifeval/llamacpp-q4_k_m/20261008-152014_limit8'}[0m
+[32m2026-10-08 13:20:28[0m | [1mINFO    [0m | [36mlmms_eval.__main__[0m:[36mcli_evaluate_single[0m:[36m677[0m - [1mIncluding path: jetson/tasks[0m
+[32m2026-10-08 13:20:28[0m | [33m[1mWARNING [0m | [36mlmms_eval.__main__[0m:[36mcli_evaluate_single[0m:[36m683[0m - [33m[1m --limit SHOULD ONLY BE USED FOR TESTING.REAL METRICS SHOULD NOT BE COMPUTED USING LIMIT.[0m
+[32m2026-10-08 13:20:28[0m | [1mINFO    [0m | [36mlmms_eval.__main__[0m:[36mcli_evaluate_single[0m:[36m737[0m - [1mSelected Tasks: ['ifeval'][0m
+[32m2026-10-08 13:20:28[0m | [1mINFO    [0m | [36mlmms_eval.evaluator[0m:[36msimple_evaluate[0m:[36m486[0m - [1mSetting random seed to 0 | Setting numpy seed to 1234 | Setting torch manual seed to 1234[0m
+Using the latest cached version of the dataset since wis-k/instruction-following-eval couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'default' at /opt/hf-cache/datasets/wis-k___instruction-following-eval/default/0.0.0/5a5661c2a35488308556cf4453dc074d1eba91a0 (last modified on Thu Oct  8 10:30:11 2026).
+[32m2026-10-08 13:20:29[0m | [1mINFO    [0m | [36mlmms_eval.evaluator[0m:[36mevaluate[0m:[36m1047[0m - [1mRunning on rank 0 (local rank 0)[0m
+[32m2026-10-08 13:20:29[0m | [1mINFO    [0m | [36mlmms_eval.api.task[0m:[36mbuild_all_requests[0m:[36m473[0m - [1mBuilding contexts for ifeval on rank 0...[0m
+100%|██████████| 8/8 [00:00<00:00, 12109.14it/s]
+[32m2026-10-08 13:20:29[0m | [1mINFO    [0m | [36mlmms_eval.evaluator[0m:[36mevaluate[0m:[36m1202[0m - [1mRunning generate_until requests[0m
+Model Responding: 100%|██████████| 8/8 [00:22<00:00,  3.01s/it, tokens=2,430][32m2026-10-08 13:20:51[0m | [1mINFO    [0m | [36mlmms_eval.models.model_utils.gen_metrics[0m:[36mlog_metrics[0m:[36m136[0m - [1mMetric summary - Total elapsed time: 22.366s, Total gen tokens: 1767, Avg speed: 79.0 tokens/s[0m
+Postprocessing:   0%|          | 0/8 [00:00<?, ?it/s][32m2026-10-08 13:20:51[0m | [33m[1mWARNING [0m | [36mutils[0m:[36mprocess_results[0m:[36m113[0m - [33m[1mThis task is meant for chat-finetuned models, and may not give meaningful results for models other than `openai` or `anthropic` if `doc_to_text` in its YAML is not wrapped in the appropriate chat template string. This warning will be removed when chat templating support is added natively to local models[0m
+[32m2026-10-08 13:20:51[0m | [33m[1mWARNING [0m | [36mutils[0m:[36mprocess_results[0m:[36m113[0m - [33m[1mThis task is meant for chat-finetuned models, and may not give meaningful results for models other than `openai` or `anthropic` if `doc_to_text` in its YAML is not wrapped in the appropriate chat template string. This warning will be removed when chat templating support is added natively to local models[0m
+[32m2026-10-08 13:20:51[0m | [33m[1mWARNING [0m | [36mutils[0m:[36mprocess_results[0m:[36m113[0m - [33m[1mThis task is meant for chat-finetuned models, and may not give meaningful results for models other than `openai` or `anthropic` if `doc_to_text` in its YAML is not wrapped in the appropriate chat template string. This warning will be removed when chat templating support is added natively to local models[0m
+[32m2026-10-08 13:20:51[0m | [33m[1mWARNING [0m | [36mutils[0m:[36mprocess_results[0m:[36m113[0m - [33m[1mThis task is meant for chat-finetuned models, and may not give meaningful results for models other than `openai` or `anthropic` if `doc_to_text` in its YAML is not wrapped in the appropriate chat template string. This warning will be removed when chat templating support is added natively to local models[0m
+[32m2026-10-08 13:20:51[0m | [33m[1mWARNING [0m | [36mutils[0m:[36mprocess_results[0m:[36m113[0m - [33m[1mThis task is meant for chat-finetuned models, and may not give meaningful results for models other than `openai` or `anthropic` if `doc_to_text` in its YAML is not wrapped in the appropriate chat template string. This warning will be removed when chat templating support is added natively to local models[0m
+[32m2026-10-08 13:20:51[0m | [33m[1mWARNING [0m | [36mutils[0m:[36mprocess_results[0m:[36m113[0m - [33m[1mThis task is meant for chat-finetuned models, and may not give meaningful results for models other than `openai` or `anthropic` if `doc_to_text` in its YAML is not wrapped in the appropriate chat template string. This warning will be removed when chat templating support is added natively to local models[0m
+[32m2026-10-08 13:20:51[0m | [33m[1mWARNING [0m | [36mutils[0m:[36mprocess_results[0m:[36m113[0m - [33m[1mThis task is meant for chat-finetuned models, and may not give meaningful results for models other than `openai` or `anthropic` if `doc_to_text` in its YAML is not wrapped in the appropriate chat template string. This warning will be removed when chat templating support is added natively to local models[0m
+ERROR:root:Unable to detect language for text PARAGRAPH 1: "IF THE LAW IS BAD, YOU SHOULD NOT FOLLOW IT" THIS SENTENCE IS A CRITIQUE OF LEGAL SYSTEMS AND THE ETHICAL CONDUCT OF FOLLOWING LAWS EVEN IF THEY ARE INCONSISTENT WITH ONE'S MORAL BELIEFS. IT CHALLENGES THE CONVENTIONAL VIEW THAT LAW MUST BE FOLLOWED UNLESS SPECIFICALLY PROHIBITED, STRESSING THE IMPORTANCE OF ETHICAL AND MORAL CONSCIOUSNESS IN THE APPLICATION OF LEGAL GUIDELINES.
+
+PARAGRAPH 2: HOWEVER, THIS CRITIQUE OF THE SENTENCE IS CRITICALLY FLAWED. IT OVERSIMPLIFIES THE COMPLEXITIES OF LEGAL SYSTEMS AND THE ROLE OF ETHICAL CONSCIOUSNESS IN LAW. FOLLOWING LAWS IS NOT JUST A MATTER OF MORAL CONSCIOUSNESS BUT ALSO A WAY TO ENSURE ORDER, SECURITY, AND JUSTICE IN SOCIETY. BREAKING LAWS CAN HAVE SEVERE CONSEQUENCES, INCLUDING LEGAL PENALTIES AND SOCIAL DISCRIMINATION, WHICH CAN HAVE NEGATIVE IMPACTS ON INDIVIDUALS AND SOCIETY AS A WHOLE. THEREFORE, THE SENTENCE SHOULD BE MODIFIED TO INCLUDE THE NEED FOR BALANCED CONSIDERATION OF BOTH LEGAL AND ETHICAL ASPECTS. due to Need to load profiles.
+[32m2026-10-08 13:20:51[0m | [33m[1mWARNING [0m | [36mutils[0m:[36mprocess_results[0m:[36m113[0m - [33m[1mThis task is meant for chat-finetuned models, and may not give meaningful results for models other than `openai` or `anthropic` if `doc_to_text` in its YAML is not wrapped in the appropriate chat template string. This warning will be removed when chat templating support is added natively to local models[0m
+ERROR:root:Unable to detect language for text PARAGRAPH 1: "IF THE LAW IS BAD, YOU SHOULD NOT FOLLOW IT" THIS SENTENCE IS A CRITIQUE OF LEGAL SYSTEMS AND THE ETHICAL CONDUCT OF FOLLOWING LAWS EVEN IF THEY ARE INCONSISTENT WITH ONE'S MORAL BELIEFS. IT CHALLENGES THE CONVENTIONAL VIEW THAT LAW MUST BE FOLLOWED UNLESS SPECIFICALLY PROHIBITED, STRESSING THE IMPORTANCE OF ETHICAL AND MORAL CONSCIOUSNESS IN THE APPLICATION OF LEGAL GUIDELINES.
+
+PARAGRAPH 2: HOWEVER, THIS CRITIQUE OF THE SENTENCE IS CRITICALLY FLAWED. IT OVERSIMPLIFIES THE COMPLEXITIES OF LEGAL SYSTEMS AND THE ROLE OF ETHICAL CONSCIOUSNESS IN LAW. FOLLOWING LAWS IS NOT JUST A MATTER OF MORAL CONSCIOUSNESS BUT ALSO A WAY TO ENSURE ORDER, SECURITY, AND JUSTICE IN SOCIETY. BREAKING LAWS CAN HAVE SEVERE CONSEQUENCES, INCLUDING LEGAL PENALTIES AND SOCIAL DISCRIMINATION, WHICH CAN HAVE NEGATIVE IMPACTS ON INDIVIDUALS AND SOCIETY AS A WHOLE. THEREFORE, THE SENTENCE SHOULD BE MODIFIED TO INCLUDE THE NEED FOR BALANCED CONSIDERATION OF BOTH LEGAL AND ETHICAL ASPECTS. due to Need to load profiles.
+Postprocessing: 100%|██████████| 8/8 [00:00<00:00, 36.86it/s]
+[32m2026-10-08 13:20:52[0m | [1mINFO    [0m | [36mlmms_eval.evaluator[0m:[36mevaluate[0m:[36m1402[0m - [1mPostprocessed 8 docs for ifeval/none with 4 worker(s) in 0.22s[0m
+[32m2026-10-08 13:20:52[0m | [1mINFO    [0m | [36mlmms_eval.__main__[0m:[36mcli_evaluate_single[0m:[36m788[0m - [1mToken Usage - Input: 663 | Output: 1,767 | Reasoning: 0 | Total: 2,430 | API Calls: 8[0m
+[32m2026-10-08 13:20:52[0m | [1mINFO    [0m | [36mlmms_eval.loggers.evaluation_tracker[0m:[36msave_results_aggregated[0m:[36m187[0m - [1mSaving results aggregated[0m
+[32m2026-10-08 13:20:52[0m | [1mINFO    [0m | [36mlmms_eval.loggers.evaluation_tracker[0m:[36msave_results_samples[0m:[36m300[0m - [1mSaving samples to jetson/results/thor/Qwen2.5-3B-Instruct/ifeval/llamacpp-q4_k_m/20261008-152014_limit8/Qwen2.5-3B-Instruct-q4_k_m/20261008_212028_samples_ifeval.jsonl[0m
+openai (model_version=Qwen2.5-3B-Instruct-q4_k_m,base_url=http://127.0.0.1:8090/v1,api_key=local,stream_timing=True,num_concurrent=1,prefix_aware_queue=False,timeout=600,max_retries=2), gen_kwargs: (), limit: 8.0, offset: 0, num_fewshot: None, batch_size: 1
+
+LMMs-Eval: Probing Intelligence in the Real World
+> Good evaluation shapes what we build next.
+
+branch: jetson-benchmark
+commit: v0.6-287-gdf80923b
+
+|Tasks |Filter|n-shot|        Metric         |   |Value |   |Stderr|Stderr_CLT|
+|------|------|-----:|-----------------------|---|-----:|---|------|----------|
+|ifeval|none  |     0|inst_level_loose_acc   |↑  |0.7857|±  |N/A   |N/A       |
+|ifeval|none  |     0|inst_level_strict_acc  |↑  |0.7857|±  |N/A   |N/A       |
+|ifeval|none  |     0|prompt_level_loose_acc |↑  |0.7500|±  |0.1637|0.1637    |
+|ifeval|none  |     0|prompt_level_strict_acc|↑  |0.7500|±  |0.1637|0.1637    |
+
+
+Throughput Summary
+
+|      Metric      | Value  |  Unit  |
+|------------------|-------:|--------|
+|total_gen_tokens  |1767.000|tokens  |
+|total_elapsed_time|  22.366|seconds |
+|avg_speed         |  79.004|tokens/s|
+
+
+[slim_run.py: dropped 1 per-request progress/profile lines]

@@ -21,6 +21,8 @@ Plan, decisions, problems and fixes, timeline, open items. Template: the Qwen2.5
 
 **Runtime estimate** (from the VL per-token times; refined after the smoke tests): per 3B run, MMLU 5-shot ~1 h, GSM8K ~2 h (HF ~4 h), IFEval ~1.3 h (HF ~3 h); 1.5B ~0.6×. Phase 1 ~80 h, length sweep and repeats ~15 h, Phase 2 ~35–45 h, engine builds ~5 h: **~4–4.5 days**.
 
+**Runtime estimate, revised 2026-10-08 from the 3B smoke tests** (s/question incl. model load: HF 0.87, vLLM 0.68, Edge-LLM 0.57, llama.cpp 0.52, mostly MMLU): MMLU 0.3–0.55 s/question, GSM8K 2–4 s at 16-bit. Phase 1 ~68 h (3B ~41 h, 1.5B ~27 h), Phase 2 extras ~29 h, sweep / repeats / builds ~11 h: **~4.5 days**. User decision: go ahead with full splits; re-check before Phase 2.
+
 ## Decisions
 
 1. Tasks are loaded through the chat path: for text-only tasks lmms-eval puts the full few-shot context into one user turn, so every backend gets the same messages and the same chat template.
@@ -40,6 +42,7 @@ Plan, decisions, problems and fixes, timeline, open items. Template: the Qwen2.5
 2. **Text-model chat templates reject list content.** Qwen2.5-Instruct's template concatenates the message content as a string (`can only concatenate str (not "list") to str`); the backend passed the multimodal parts list. Fixed for text-only requests (they also go through the tokenizer, not the multimodal processor).
 3. **Few-shot text tasks had no sampler in the chat path** (`'ConfigurableMessagesTask' object has no attribute 'sampler'`): fixed in the task variant with `fewshot_config: {sampler: first_n}` (decision 5).
 4. **MMLU answers ran to the cap** (the model answered all six questions): decision 6.
+6. **Edge-LLM int4 from Qwen's AWQ checkpoint produces garbage** (3B smoke test, 2026-10-08): GSM8K and IFEval answers such as "100000000000…" (0 / 8 correct), while Edge-LLM's own int4_awq of the base checkpoint answers normally (6 / 8 GSM8K). The engine builds and runs, so the weights are imported wrongly (packing or zero-point convention); with Qwen2.5-VL it gave empty answers on every image prompt. Following the plan, `int4_awq_qwen` is not in the Phase 1 matrix; it appears in the tables as "produces garbage". Smoke runs kept (`trt_edgellm-int4_awq_qwen/*_limit8`).
 5. **The HF backend recorded no per-question timing**: added the generation-streamer first-token timer the VL backend uses (now shared in `lmms_eval/models/model_utils/stage_timing.py`).
 
 ## Timeline
@@ -50,6 +53,7 @@ Plan, decisions, problems and fixes, timeline, open items. Template: the Qwen2.5
 
 ## Open items
 
-- **Next:** verify the Edge-LLM system prompt with a direct runner probe; refine the runtime estimate (HF MMLU ~1.3 s/question before the MMLU fix); start Phase 1 with `nohup setsid jetson/experiments/qwen2_5/frameworks.sh > jetson/results/thor/logs/qwen2_5_phase1.log 2>&1 &`.
+- Edge-LLM system prompt verified with a direct runner probe: `<|im_start|>system\nYou are Qwen, created by Alibaba Cloud. You are a helpful assistant.<|im_end|>`, as in HF. HF, vLLM and llama.cpp record identical prompt token counts per question (smoke runs).
+- **Next:** start Phase 1 with `nohup setsid jetson/experiments/qwen2_5/frameworks.sh > jetson/results/thor/logs/qwen2_5_phase1.log 2>&1 &`.
 - Still to do: length sweep task, dataset reports, Phase 2, model docs, FINDINGS / REPORT, README / methodology / tensorrt-edgellm updates.
 

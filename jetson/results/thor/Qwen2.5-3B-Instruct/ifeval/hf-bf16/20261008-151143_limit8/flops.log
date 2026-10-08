@@ -1,0 +1,1 @@
+jetson/results/thor/Qwen2.5-3B-Instruct/ifeval/hf-bf16/20261008-151143_limit8 ifeval: n=8 mean GFLOPs prefill 461.6 decode 1322.0 total 1783.6

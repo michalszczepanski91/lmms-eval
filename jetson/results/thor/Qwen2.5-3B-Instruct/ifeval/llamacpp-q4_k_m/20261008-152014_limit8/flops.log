@@ -1,0 +1,1 @@
+jetson/results/thor/Qwen2.5-3B-Instruct/ifeval/llamacpp-q4_k_m/20261008-152014_limit8 ifeval: n=8 mean GFLOPs prefill 461.6 decode 1373.9 total 1835.5
