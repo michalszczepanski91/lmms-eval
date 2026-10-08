@@ -1,0 +1,10 @@
+group: mmlu_jetson
+group_alias: mmlu (5-shot, generative, Jetson)
+task:
+  - mmlu_jetson_subjects
+aggregate_metric_list:
+  - metric: exact_match
+    filter_list: first-letter
+    weight_by_size: True
+metadata:
+  version: 1.0

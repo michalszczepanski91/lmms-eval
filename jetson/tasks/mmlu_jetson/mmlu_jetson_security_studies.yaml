@@ -1,0 +1,7 @@
+"dataset_name": "security_studies"
+"description": "The following are multiple choice questions (with answers) about security\
+  \ studies.\n\n"
+"tag": "mmlu_jetson_subjects"
+"include": "_default_template_yaml"
+"task": "mmlu_jetson_security_studies"
+"task_alias": "security studies"

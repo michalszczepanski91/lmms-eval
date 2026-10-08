@@ -1,0 +1,31 @@
+# MMLU generative, 5-shot, for the Jetson text-only benchmark: the prompt of lmms_eval/tasks/mmlu/generative with the
+# 5 dev examples (first_n) before each question, so the prompt is long and the answer one letter (prefill-heavy).
+# Generation stops only at the end-of-turn token (cap 32 tokens) in every framework; the first A-D letter is scored.
+dataset_path: hails/mmlu_no_train
+test_split: test
+fewshot_split: dev
+fewshot_config:
+  sampler: first_n
+num_fewshot: 5
+output_type: generate_until
+doc_to_text: "{{question.strip()}}\nA. {{choices[0]}}\nB. {{choices[1]}}\nC. {{choices[2]}}\nD. {{choices[3]}}\nAnswer:"
+doc_to_target: "{{['A', 'B', 'C', 'D'][answer]}}"
+generation_kwargs:
+  until: []
+  do_sample: false
+  temperature: 0.0
+  max_new_tokens: 32
+filter_list:
+  - name: "first-letter"
+    filter:
+      - function: "regex"
+        regex_pattern: "\\b([ABCD])\\b"
+      - function: "take_first"
+metric_list:
+  - metric: exact_match
+    aggregation: mean
+    higher_is_better: true
+metadata:
+  version: 1.0
+dataset_kwargs:
+  trust_remote_code: true

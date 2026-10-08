@@ -12,12 +12,16 @@
 # MODEL_MODALITY=text: no vision part (frameworks skip mmproj, image pixels and the visual engine).
 # MAX_MODEL_LEN: context for vLLM / llama.cpp and the Edge-LLM engine; the longest task prompt plus its max output.
 # FLOPs per sample: models/qwen2_5/flops.py. Task variants used by the experiments: TASK_INCLUDE_PATH.
+# EXTRA_PYTHONPATH / EXTRA_NLTK_DATA: added to the eval container for the text tasks' extra dependencies.
 
 MODEL_SIZES="1.5b 3b"
 MODEL_MODALITY=text
 MAX_MODEL_LEN=4096
 HF_BACKEND=huggingface
 TASK_INCLUDE_PATH=jetson/tasks
+# Python packages / NLTK data for the text tasks (IFEval), installed by jetson/scripts/install_text_deps.sh.
+EXTRA_PYTHONPATH=jetson/.cache/text-deps
+EXTRA_NLTK_DATA=jetson/.cache/nltk_data
 
 model_resolve() {
   case "${1,,}" in

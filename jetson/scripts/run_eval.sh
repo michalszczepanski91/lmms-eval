@@ -43,6 +43,9 @@ mkdir -p "$OUT"
 
 DOCKER_ARGS=()
 for kv in ${EVAL_ENV:-}; do DOCKER_ARGS+=(-e "$kv"); done
+# Extra Python packages / NLTK data on the repo mount (text-only tasks, jetson/scripts/install_text_deps.sh).
+EVAL_PYTHONPATH=$REPO${EXTRA_PYTHONPATH:+:$REPO/$EXTRA_PYTHONPATH}
+[ -n "${EXTRA_NLTK_DATA:-}" ] && DOCKER_ARGS+=(-e NLTK_DATA="$REPO/$EXTRA_NLTK_DATA")
 fw_setup || exit 1
 MODEL_ARGS+=${EXTRA_MODEL_ARGS:+,$EXTRA_MODEL_ARGS}
 EVAL_CMD=(python -m lmms_eval --model "$BACKEND" --model_args "$MODEL_ARGS" --tasks "$TASKS"
@@ -96,7 +99,7 @@ docker run --rm --runtime nvidia --ipc=host "${DOCKER_ARGS[@]}" \
   -e HOME=/tmp -e USER="$(id -un)" -e LOGNAME="$(id -un)" -e HF_HOME="$HF_CACHE" -e HF_HUB_CACHE="$HF_CACHE/hub" -e HUGGINGFACE_HUB_CACHE="$HF_CACHE/hub" \
   -e TRANSFORMERS_CACHE="$HF_CACHE/hub" -e HF_HUB_ENABLE_HF_TRANSFER=1 \
   -e HF_HUB_OFFLINE="$OFFLINE" -e HF_DATASETS_OFFLINE="$OFFLINE" -e TRANSFORMERS_OFFLINE="$OFFLINE" \
-  -v "$REPO":"$REPO" -w "$REPO" -e PYTHONPATH="$REPO" -v "$HF_CACHE":"$HF_CACHE" \
+  -v "$REPO":"$REPO" -w "$REPO" -e PYTHONPATH="$EVAL_PYTHONPATH" -v "$HF_CACHE":"$HF_CACHE" \
   "$IMAGE" bash -c 'umask 002; python -c "import torch,transformers;print(\"torch\",torch.__version__,\"transformers\",transformers.__version__)"; exec "$@"' _ "${EVAL_CMD[@]}" \
   2>&1 | tee "$OUT/run.log"
 STATUS=${PIPESTATUS[0]}
