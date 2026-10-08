@@ -2,6 +2,7 @@
 # Dataset statistics and examples (image, prompt, reference, model answer), in the eval container: offline, CPU only.
 #
 # Usage: jetson/datasets/run.sh <textvqa|mme|gqa> [--run <run dir>] [--examples <doc id> ...] [--out DIR] [--limit N]
+#        jetson/datasets/run.sh text_report <gsm8k_jetson|mmlu_jetson|ifeval> [--run <run dir> ...]      # text-only tasks
 #        jetson/datasets/run.sh questions <textvqa|mme|gqa> [-n 50] [--run <run dir>]     # one row per question
 #   jetson/datasets/run.sh mme
 #   jetson/datasets/run.sh textvqa --examples 10 4042
@@ -18,5 +19,5 @@ shift
 docker run --rm --user "$(id -u):$(id -g)" $(shared_group_args) \
   -e HOME=/tmp -e USER="$(id -un)" -e LOGNAME="$(id -un)" -e HF_HOME="$HF_CACHE" -e HF_HUB_CACHE="$HF_CACHE/hub" -e HUGGINGFACE_HUB_CACHE="$HF_CACHE/hub" \
   -e HF_HUB_OFFLINE="$OFFLINE" -e HF_DATASETS_OFFLINE="$OFFLINE" -e TRANSFORMERS_OFFLINE="$OFFLINE" -e CUDA_VISIBLE_DEVICES= \
-  -v "$REPO":"$REPO" -w "$REPO" -e PYTHONPATH="$REPO:$REPO/jetson/datasets" -v "$HF_CACHE":"$HF_CACHE" \
+  -v "$REPO":"$REPO" -w "$REPO" -e PYTHONPATH="$REPO:$REPO/jetson/datasets:$REPO/jetson/.cache/text-deps" -e NLTK_DATA="$REPO/jetson/.cache/nltk_data" -v "$HF_CACHE":"$HF_CACHE" \
   "$IMAGE" python "jetson/datasets/$NAME.py" "$@"
