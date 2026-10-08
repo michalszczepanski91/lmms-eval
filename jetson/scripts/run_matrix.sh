@@ -7,6 +7,8 @@
 #   jetson/scripts/run_matrix.sh mme 8 -- hf 3b vllm 3b             # smoke test, 8 samples each
 # The experiment scripts (jetson/experiments/<model>/*.sh) call it with their full matrix.
 # After each run, check_run.py scans the answers (marks runs with "????" or many empty answers INVALID).
+# SKIP_DONE=1: skip a combination that already has a valid full run (results, no INVALID / STALLED / SUPERSEDED file)
+# for this task and RUN_TAG, so an interrupted matrix can be restarted.
 # Watchdog: a run whose run.log has not grown for STALL_MINUTES (default 30; 0 = off) is stopped and gets a STALLED
 # file (a llama.cpp MME run on Thor once hung on one request for 27 h); the matrix goes on with the next run.
 set -uo pipefail
@@ -54,9 +56,24 @@ run_one() {
   return $status
 }
 
+# Newest valid full run dir of <framework> <spec> for TASKS (and RUN_TAG), or nothing.
+done_run() {
+  ( resolve_framework "$1" "$2" >/dev/null 2>&1 || exit 0
+    for d in $(ls -dt "$REPO/$RESULTS_DIR/$MODEL_TAG/${TASKS//,/+}/$1-$PRECISION${RUN_TAG:++$RUN_TAG}"/*/ 2>/dev/null); do
+      case "$d" in *_limit*/) continue ;; esac
+      ls "$d"lmms_eval/*_results.json >/dev/null 2>&1 || continue
+      [ -e "$d/INVALID" ] || [ -e "$d/STALLED" ] || [ -e "$d/SUPERSEDED" ] && continue
+      echo "$d"; exit 0
+    done )
+}
+
 failed=()
 for ((i = 0; i < ${#MATRIX[@]}; i += 2)); do
   framework=${MATRIX[i]} spec=${MATRIX[i + 1]}
+  if [ "${SKIP_DONE:-0}" = 1 ] && [ -z "$LIMIT" ] && [ -n "$(done_run "$framework" "$spec")" ]; then
+    echo "=== $(date +%H:%M:%S) $framework $spec $TASKS: done ($(done_run "$framework" "$spec")), skipped"
+    continue
+  fi
   echo "=== $(date +%H:%M:%S) $framework $spec $TASKS ${LIMIT:+limit=$LIMIT}"
   run_one "$framework" "$spec" "$TASKS" $LIMIT
   status=$?

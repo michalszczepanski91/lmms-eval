@@ -1,0 +1,1047 @@
+Generating train split:   0%|          | 0/7473 [00:00<?, ? examples/s]Generating train split: 100%|██████████| 7473/7473 [00:00<00:00, 483778.88 examples/s]
+Generating test split:   0%|          | 0/1319 [00:00<?, ? examples/s]Generating test split: 100%|██████████| 1319/1319 [00:00<00:00, 423119.46 examples/s]
+    DatasetDict({
+    train: Dataset({
+        features: ['question', 'answer'],
+        num_rows: 7473
+    })
+    test: Dataset({
+        features: ['question', 'answer'],
+        num_rows: 1319
+    })
+})
+ok  dataset:gsm8k:main -> /opt/hf-cache/hub/datasets--gsm8k/snapshots/740312add88f781978c0658806c59bc2815b9866
+Generating train split:   0%|          | 0/541 [00:00<?, ? examples/s]Generating train split: 100%|██████████| 541/541 [00:00<00:00, 91110.96 examples/s]
+    DatasetDict({
+    train: Dataset({
+        features: ['key', 'prompt', 'instruction_id_list', 'kwargs'],
+        num_rows: 541
+    })
+})
+ok  dataset:wis-k/instruction-following-eval -> /opt/hf-cache/hub/datasets--wis-k--instruction-following-eval/snapshots/5a5661c2a35488308556cf4453dc074d1eba91a0
+Generating test split:   0%|          | 0/100 [00:00<?, ? examples/s]Generating test split: 100%|██████████| 100/100 [00:00<00:00, 43749.91 examples/s]
+Generating validation split:   0%|          | 0/11 [00:00<?, ? examples/s]Generating validation split: 100%|██████████| 11/11 [00:00<00:00, 6851.40 examples/s]
+Generating dev split:   0%|          | 0/5 [00:00<?, ? examples/s]Generating dev split: 100%|██████████| 5/5 [00:00<00:00, 3573.88 examples/s]
+    DatasetDict({
+    test: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 100
+    })
+    validation: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 11
+    })
+    dev: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 5
+    })
+})
+ok  dataset:hails/mmlu_no_train:abstract_algebra -> /opt/hf-cache/hub/datasets--hails--mmlu_no_train/snapshots/b2e1ec9aa795adafe68e8e983248dbd4b52a1c60
+Generating test split:   0%|          | 0/135 [00:00<?, ? examples/s]Generating test split: 100%|██████████| 135/135 [00:00<00:00, 55885.42 examples/s]
+Generating validation split:   0%|          | 0/14 [00:00<?, ? examples/s]Generating validation split: 100%|██████████| 14/14 [00:00<00:00, 8538.64 examples/s]
+Generating dev split:   0%|          | 0/5 [00:00<?, ? examples/s]Generating dev split: 100%|██████████| 5/5 [00:00<00:00, 3387.42 examples/s]
+    DatasetDict({
+    test: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 135
+    })
+    validation: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 14
+    })
+    dev: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 5
+    })
+})
+ok  dataset:hails/mmlu_no_train:anatomy -> /opt/hf-cache/hub/datasets--hails--mmlu_no_train/snapshots/b2e1ec9aa795adafe68e8e983248dbd4b52a1c60
+Generating test split:   0%|          | 0/152 [00:00<?, ? examples/s]Generating test split: 100%|██████████| 152/152 [00:00<00:00, 64612.77 examples/s]
+Generating validation split:   0%|          | 0/16 [00:00<?, ? examples/s]Generating validation split: 100%|██████████| 16/16 [00:00<00:00, 9815.54 examples/s]
+Generating dev split:   0%|          | 0/5 [00:00<?, ? examples/s]Generating dev split: 100%|██████████| 5/5 [00:00<00:00, 3472.11 examples/s]
+    DatasetDict({
+    test: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 152
+    })
+    validation: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 16
+    })
+    dev: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 5
+    })
+})
+ok  dataset:hails/mmlu_no_train:astronomy -> /opt/hf-cache/hub/datasets--hails--mmlu_no_train/snapshots/b2e1ec9aa795adafe68e8e983248dbd4b52a1c60
+Generating test split:   0%|          | 0/100 [00:00<?, ? examples/s]Generating test split: 100%|██████████| 100/100 [00:00<00:00, 37065.25 examples/s]
+Generating validation split:   0%|          | 0/11 [00:00<?, ? examples/s]Generating validation split: 100%|██████████| 11/11 [00:00<00:00, 6232.25 examples/s]
+Generating dev split:   0%|          | 0/5 [00:00<?, ? examples/s]Generating dev split: 100%|██████████| 5/5 [00:00<00:00, 3386.87 examples/s]
+    DatasetDict({
+    test: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 100
+    })
+    validation: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 11
+    })
+    dev: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 5
+    })
+})
+ok  dataset:hails/mmlu_no_train:business_ethics -> /opt/hf-cache/hub/datasets--hails--mmlu_no_train/snapshots/b2e1ec9aa795adafe68e8e983248dbd4b52a1c60
+Generating test split:   0%|          | 0/265 [00:00<?, ? examples/s]Generating test split: 100%|██████████| 265/265 [00:00<00:00, 104689.70 examples/s]
+Generating validation split:   0%|          | 0/29 [00:00<?, ? examples/s]Generating validation split: 100%|██████████| 29/29 [00:00<00:00, 16603.17 examples/s]
+Generating dev split:   0%|          | 0/5 [00:00<?, ? examples/s]Generating dev split: 100%|██████████| 5/5 [00:00<00:00, 3254.93 examples/s]
+    DatasetDict({
+    test: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 265
+    })
+    validation: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 29
+    })
+    dev: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 5
+    })
+})
+ok  dataset:hails/mmlu_no_train:clinical_knowledge -> /opt/hf-cache/hub/datasets--hails--mmlu_no_train/snapshots/b2e1ec9aa795adafe68e8e983248dbd4b52a1c60
+Generating test split:   0%|          | 0/144 [00:00<?, ? examples/s]Generating test split: 100%|██████████| 144/144 [00:00<00:00, 16925.79 examples/s]
+Generating validation split:   0%|          | 0/16 [00:00<?, ? examples/s]Generating validation split: 100%|██████████| 16/16 [00:00<00:00, 8312.75 examples/s]
+Generating dev split:   0%|          | 0/5 [00:00<?, ? examples/s]Generating dev split: 100%|██████████| 5/5 [00:00<00:00, 3058.41 examples/s]
+    DatasetDict({
+    test: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 144
+    })
+    validation: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 16
+    })
+    dev: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 5
+    })
+})
+ok  dataset:hails/mmlu_no_train:college_biology -> /opt/hf-cache/hub/datasets--hails--mmlu_no_train/snapshots/b2e1ec9aa795adafe68e8e983248dbd4b52a1c60
+Generating test split:   0%|          | 0/100 [00:00<?, ? examples/s]Generating test split: 100%|██████████| 100/100 [00:00<00:00, 44257.72 examples/s]
+Generating validation split:   0%|          | 0/8 [00:00<?, ? examples/s]Generating validation split: 100%|██████████| 8/8 [00:00<00:00, 4733.98 examples/s]
+Generating dev split:   0%|          | 0/5 [00:00<?, ? examples/s]Generating dev split: 100%|██████████| 5/5 [00:00<00:00, 3398.40 examples/s]
+    DatasetDict({
+    test: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 100
+    })
+    validation: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 8
+    })
+    dev: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 5
+    })
+})
+ok  dataset:hails/mmlu_no_train:college_chemistry -> /opt/hf-cache/hub/datasets--hails--mmlu_no_train/snapshots/b2e1ec9aa795adafe68e8e983248dbd4b52a1c60
+Generating test split:   0%|          | 0/100 [00:00<?, ? examples/s]Generating test split: 100%|██████████| 100/100 [00:00<00:00, 15894.14 examples/s]
+Generating validation split:   0%|          | 0/11 [00:00<?, ? examples/s]Generating validation split: 100%|██████████| 11/11 [00:00<00:00, 5785.25 examples/s]
+Generating dev split:   0%|          | 0/5 [00:00<?, ? examples/s]Generating dev split: 100%|██████████| 5/5 [00:00<00:00, 1065.03 examples/s]
+    DatasetDict({
+    test: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 100
+    })
+    validation: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 11
+    })
+    dev: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 5
+    })
+})
+ok  dataset:hails/mmlu_no_train:college_computer_science -> /opt/hf-cache/hub/datasets--hails--mmlu_no_train/snapshots/b2e1ec9aa795adafe68e8e983248dbd4b52a1c60
+Generating test split:   0%|          | 0/100 [00:00<?, ? examples/s]Generating test split: 100%|██████████| 100/100 [00:00<00:00, 43993.12 examples/s]
+Generating validation split:   0%|          | 0/11 [00:00<?, ? examples/s]Generating validation split: 100%|██████████| 11/11 [00:00<00:00, 6782.91 examples/s]
+Generating dev split:   0%|          | 0/5 [00:00<?, ? examples/s]Generating dev split: 100%|██████████| 5/5 [00:00<00:00, 3443.03 examples/s]
+    DatasetDict({
+    test: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 100
+    })
+    validation: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 11
+    })
+    dev: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 5
+    })
+})
+ok  dataset:hails/mmlu_no_train:college_mathematics -> /opt/hf-cache/hub/datasets--hails--mmlu_no_train/snapshots/b2e1ec9aa795adafe68e8e983248dbd4b52a1c60
+Generating test split:   0%|          | 0/173 [00:00<?, ? examples/s]Generating test split: 100%|██████████| 173/173 [00:00<00:00, 18146.26 examples/s]
+Generating validation split:   0%|          | 0/22 [00:00<?, ? examples/s]Generating validation split: 100%|██████████| 22/22 [00:00<00:00, 12566.35 examples/s]
+Generating dev split:   0%|          | 0/5 [00:00<?, ? examples/s]Generating dev split: 100%|██████████| 5/5 [00:00<00:00, 3333.05 examples/s]
+    DatasetDict({
+    test: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 173
+    })
+    validation: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 22
+    })
+    dev: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 5
+    })
+})
+ok  dataset:hails/mmlu_no_train:college_medicine -> /opt/hf-cache/hub/datasets--hails--mmlu_no_train/snapshots/b2e1ec9aa795adafe68e8e983248dbd4b52a1c60
+Generating test split:   0%|          | 0/102 [00:00<?, ? examples/s]Generating test split: 100%|██████████| 102/102 [00:00<00:00, 45109.55 examples/s]
+Generating validation split:   0%|          | 0/11 [00:00<?, ? examples/s]Generating validation split: 100%|██████████| 11/11 [00:00<00:00, 6766.99 examples/s]
+Generating dev split:   0%|          | 0/5 [00:00<?, ? examples/s]Generating dev split: 100%|██████████| 5/5 [00:00<00:00, 3387.42 examples/s]
+    DatasetDict({
+    test: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 102
+    })
+    validation: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 11
+    })
+    dev: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 5
+    })
+})
+ok  dataset:hails/mmlu_no_train:college_physics -> /opt/hf-cache/hub/datasets--hails--mmlu_no_train/snapshots/b2e1ec9aa795adafe68e8e983248dbd4b52a1c60
+Generating test split:   0%|          | 0/100 [00:00<?, ? examples/s]Generating test split: 100%|██████████| 100/100 [00:00<00:00, 18219.47 examples/s]
+Generating validation split:   0%|          | 0/11 [00:00<?, ? examples/s]Generating validation split: 100%|██████████| 11/11 [00:00<00:00, 6386.68 examples/s]
+Generating dev split:   0%|          | 0/5 [00:00<?, ? examples/s]Generating dev split: 100%|██████████| 5/5 [00:00<00:00, 3320.38 examples/s]
+    DatasetDict({
+    test: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 100
+    })
+    validation: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 11
+    })
+    dev: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 5
+    })
+})
+ok  dataset:hails/mmlu_no_train:computer_security -> /opt/hf-cache/hub/datasets--hails--mmlu_no_train/snapshots/b2e1ec9aa795adafe68e8e983248dbd4b52a1c60
+Generating test split:   0%|          | 0/235 [00:00<?, ? examples/s]Generating test split: 100%|██████████| 235/235 [00:00<00:00, 102077.61 examples/s]
+Generating validation split:   0%|          | 0/26 [00:00<?, ? examples/s]Generating validation split: 100%|██████████| 26/26 [00:00<00:00, 15426.78 examples/s]
+Generating dev split:   0%|          | 0/5 [00:00<?, ? examples/s]Generating dev split: 100%|██████████| 5/5 [00:00<00:00, 3363.52 examples/s]
+    DatasetDict({
+    test: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 235
+    })
+    validation: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 26
+    })
+    dev: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 5
+    })
+})
+ok  dataset:hails/mmlu_no_train:conceptual_physics -> /opt/hf-cache/hub/datasets--hails--mmlu_no_train/snapshots/b2e1ec9aa795adafe68e8e983248dbd4b52a1c60
+Generating test split:   0%|          | 0/114 [00:00<?, ? examples/s]Generating test split: 100%|██████████| 114/114 [00:00<00:00, 49162.11 examples/s]
+Generating validation split:   0%|          | 0/12 [00:00<?, ? examples/s]Generating validation split: 100%|██████████| 12/12 [00:00<00:00, 7383.25 examples/s]
+Generating dev split:   0%|          | 0/5 [00:00<?, ? examples/s]Generating dev split: 100%|██████████| 5/5 [00:00<00:00, 3372.71 examples/s]
+    DatasetDict({
+    test: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 114
+    })
+    validation: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 12
+    })
+    dev: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 5
+    })
+})
+ok  dataset:hails/mmlu_no_train:econometrics -> /opt/hf-cache/hub/datasets--hails--mmlu_no_train/snapshots/b2e1ec9aa795adafe68e8e983248dbd4b52a1c60
+Generating test split:   0%|          | 0/145 [00:00<?, ? examples/s]Generating test split: 100%|██████████| 145/145 [00:00<00:00, 63883.83 examples/s]
+Generating validation split:   0%|          | 0/16 [00:00<?, ? examples/s]Generating validation split: 100%|██████████| 16/16 [00:00<00:00, 9364.90 examples/s]
+Generating dev split:   0%|          | 0/5 [00:00<?, ? examples/s]Generating dev split: 100%|██████████| 5/5 [00:00<00:00, 3356.52 examples/s]
+    DatasetDict({
+    test: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 145
+    })
+    validation: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 16
+    })
+    dev: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 5
+    })
+})
+ok  dataset:hails/mmlu_no_train:electrical_engineering -> /opt/hf-cache/hub/datasets--hails--mmlu_no_train/snapshots/b2e1ec9aa795adafe68e8e983248dbd4b52a1c60
+Generating test split:   0%|          | 0/378 [00:00<?, ? examples/s]Generating test split: 100%|██████████| 378/378 [00:00<00:00, 159952.27 examples/s]
+Generating validation split:   0%|          | 0/41 [00:00<?, ? examples/s]Generating validation split: 100%|██████████| 41/41 [00:00<00:00, 25405.00 examples/s]
+Generating dev split:   0%|          | 0/5 [00:00<?, ? examples/s]Generating dev split: 100%|██████████| 5/5 [00:00<00:00, 3414.44 examples/s]
+    DatasetDict({
+    test: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 378
+    })
+    validation: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 41
+    })
+    dev: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 5
+    })
+})
+ok  dataset:hails/mmlu_no_train:elementary_mathematics -> /opt/hf-cache/hub/datasets--hails--mmlu_no_train/snapshots/b2e1ec9aa795adafe68e8e983248dbd4b52a1c60
+Generating test split:   0%|          | 0/126 [00:00<?, ? examples/s]Generating test split: 100%|██████████| 126/126 [00:00<00:00, 16409.95 examples/s]
+Generating validation split:   0%|          | 0/14 [00:00<?, ? examples/s]Generating validation split: 100%|██████████| 14/14 [00:00<00:00, 8218.37 examples/s]
+Generating dev split:   0%|          | 0/5 [00:00<?, ? examples/s]Generating dev split: 100%|██████████| 5/5 [00:00<00:00, 3489.44 examples/s]
+    DatasetDict({
+    test: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 126
+    })
+    validation: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 14
+    })
+    dev: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 5
+    })
+})
+ok  dataset:hails/mmlu_no_train:formal_logic -> /opt/hf-cache/hub/datasets--hails--mmlu_no_train/snapshots/b2e1ec9aa795adafe68e8e983248dbd4b52a1c60
+Generating test split:   0%|          | 0/100 [00:00<?, ? examples/s]Generating test split: 100%|██████████| 100/100 [00:00<00:00, 20373.56 examples/s]
+Generating validation split:   0%|          | 0/10 [00:00<?, ? examples/s]Generating validation split: 100%|██████████| 10/10 [00:00<00:00, 6100.81 examples/s]
+Generating dev split:   0%|          | 0/5 [00:00<?, ? examples/s]Generating dev split: 100%|██████████| 5/5 [00:00<00:00, 3433.45 examples/s]
+    DatasetDict({
+    test: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 100
+    })
+    validation: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 10
+    })
+    dev: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 5
+    })
+})
+ok  dataset:hails/mmlu_no_train:global_facts -> /opt/hf-cache/hub/datasets--hails--mmlu_no_train/snapshots/b2e1ec9aa795adafe68e8e983248dbd4b52a1c60
+Generating test split:   0%|          | 0/310 [00:00<?, ? examples/s]Generating test split: 100%|██████████| 310/310 [00:00<00:00, 56773.83 examples/s]
+Generating validation split:   0%|          | 0/32 [00:00<?, ? examples/s]Generating validation split: 100%|██████████| 32/32 [00:00<00:00, 19239.93 examples/s]
+Generating dev split:   0%|          | 0/5 [00:00<?, ? examples/s]Generating dev split: 100%|██████████| 5/5 [00:00<00:00, 3365.13 examples/s]
+    DatasetDict({
+    test: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 310
+    })
+    validation: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 32
+    })
+    dev: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 5
+    })
+})
+ok  dataset:hails/mmlu_no_train:high_school_biology -> /opt/hf-cache/hub/datasets--hails--mmlu_no_train/snapshots/b2e1ec9aa795adafe68e8e983248dbd4b52a1c60
+Generating test split:   0%|          | 0/203 [00:00<?, ? examples/s]Generating test split: 100%|██████████| 203/203 [00:00<00:00, 89957.07 examples/s]
+Generating validation split:   0%|          | 0/22 [00:00<?, ? examples/s]Generating validation split: 100%|██████████| 22/22 [00:00<00:00, 12958.11 examples/s]
+Generating dev split:   0%|          | 0/5 [00:00<?, ? examples/s]Generating dev split: 100%|██████████| 5/5 [00:00<00:00, 3404.47 examples/s]
+    DatasetDict({
+    test: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 203
+    })
+    validation: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 22
+    })
+    dev: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 5
+    })
+})
+ok  dataset:hails/mmlu_no_train:high_school_chemistry -> /opt/hf-cache/hub/datasets--hails--mmlu_no_train/snapshots/b2e1ec9aa795adafe68e8e983248dbd4b52a1c60
+Generating test split:   0%|          | 0/100 [00:00<?, ? examples/s]Generating test split: 100%|██████████| 100/100 [00:00<00:00, 10616.88 examples/s]
+Generating validation split:   0%|          | 0/9 [00:00<?, ? examples/s]Generating validation split: 100%|██████████| 9/9 [00:00<00:00, 5195.97 examples/s]
+Generating dev split:   0%|          | 0/5 [00:00<?, ? examples/s]Generating dev split: 100%|██████████| 5/5 [00:00<00:00, 3244.36 examples/s]
+    DatasetDict({
+    test: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 100
+    })
+    validation: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 9
+    })
+    dev: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 5
+    })
+})
+ok  dataset:hails/mmlu_no_train:high_school_computer_science -> /opt/hf-cache/hub/datasets--hails--mmlu_no_train/snapshots/b2e1ec9aa795adafe68e8e983248dbd4b52a1c60
+Generating test split:   0%|          | 0/165 [00:00<?, ? examples/s]Generating test split: 100%|██████████| 165/165 [00:00<00:00, 11133.89 examples/s]
+Generating validation split:   0%|          | 0/18 [00:00<?, ? examples/s]Generating validation split: 100%|██████████| 18/18 [00:00<00:00, 9337.97 examples/s]
+Generating dev split:   0%|          | 0/5 [00:00<?, ? examples/s]Generating dev split: 100%|██████████| 5/5 [00:00<00:00, 3244.36 examples/s]
+    DatasetDict({
+    test: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 165
+    })
+    validation: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 18
+    })
+    dev: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 5
+    })
+})
+ok  dataset:hails/mmlu_no_train:high_school_european_history -> /opt/hf-cache/hub/datasets--hails--mmlu_no_train/snapshots/b2e1ec9aa795adafe68e8e983248dbd4b52a1c60
+Generating test split:   0%|          | 0/198 [00:00<?, ? examples/s]Generating test split: 100%|██████████| 198/198 [00:00<00:00, 83221.99 examples/s]
+Generating validation split:   0%|          | 0/22 [00:00<?, ? examples/s]Generating validation split: 100%|██████████| 22/22 [00:00<00:00, 13163.29 examples/s]
+Generating dev split:   0%|          | 0/5 [00:00<?, ? examples/s]Generating dev split: 100%|██████████| 5/5 [00:00<00:00, 3465.79 examples/s]
+    DatasetDict({
+    test: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 198
+    })
+    validation: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 22
+    })
+    dev: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 5
+    })
+})
+ok  dataset:hails/mmlu_no_train:high_school_geography -> /opt/hf-cache/hub/datasets--hails--mmlu_no_train/snapshots/b2e1ec9aa795adafe68e8e983248dbd4b52a1c60
+Generating test split:   0%|          | 0/193 [00:00<?, ? examples/s]Generating test split: 100%|██████████| 193/193 [00:00<00:00, 82796.43 examples/s]
+Generating validation split:   0%|          | 0/21 [00:00<?, ? examples/s]Generating validation split: 100%|██████████| 21/21 [00:00<00:00, 12539.92 examples/s]
+Generating dev split:   0%|          | 0/5 [00:00<?, ? examples/s]Generating dev split: 100%|██████████| 5/5 [00:00<00:00, 3238.84 examples/s]
+    DatasetDict({
+    test: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 193
+    })
+    validation: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 21
+    })
+    dev: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 5
+    })
+})
+ok  dataset:hails/mmlu_no_train:high_school_government_and_politics -> /opt/hf-cache/hub/datasets--hails--mmlu_no_train/snapshots/b2e1ec9aa795adafe68e8e983248dbd4b52a1c60
+Generating test split:   0%|          | 0/390 [00:00<?, ? examples/s]Generating test split: 100%|██████████| 390/390 [00:00<00:00, 59625.96 examples/s]
+Generating validation split:   0%|          | 0/43 [00:00<?, ? examples/s]Generating validation split: 100%|██████████| 43/43 [00:00<00:00, 24108.42 examples/s]
+Generating dev split:   0%|          | 0/5 [00:00<?, ? examples/s]Generating dev split: 100%|██████████| 5/5 [00:00<00:00, 3237.84 examples/s]
+    DatasetDict({
+    test: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 390
+    })
+    validation: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 43
+    })
+    dev: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 5
+    })
+})
+ok  dataset:hails/mmlu_no_train:high_school_macroeconomics -> /opt/hf-cache/hub/datasets--hails--mmlu_no_train/snapshots/b2e1ec9aa795adafe68e8e983248dbd4b52a1c60
+Generating test split:   0%|          | 0/270 [00:00<?, ? examples/s]Generating test split: 100%|██████████| 270/270 [00:00<00:00, 116257.27 examples/s]
+Generating validation split:   0%|          | 0/29 [00:00<?, ? examples/s]Generating validation split: 100%|██████████| 29/29 [00:00<00:00, 17587.45 examples/s]
+Generating dev split:   0%|          | 0/5 [00:00<?, ? examples/s]Generating dev split: 100%|██████████| 5/5 [00:00<00:00, 3427.84 examples/s]
+    DatasetDict({
+    test: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 270
+    })
+    validation: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 29
+    })
+    dev: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 5
+    })
+})
+ok  dataset:hails/mmlu_no_train:high_school_mathematics -> /opt/hf-cache/hub/datasets--hails--mmlu_no_train/snapshots/b2e1ec9aa795adafe68e8e983248dbd4b52a1c60
+Generating test split:   0%|          | 0/238 [00:00<?, ? examples/s]Generating test split: 100%|██████████| 238/238 [00:00<00:00, 59426.38 examples/s]
+Generating validation split:   0%|          | 0/26 [00:00<?, ? examples/s]Generating validation split: 100%|██████████| 26/26 [00:00<00:00, 15269.10 examples/s]
+Generating dev split:   0%|          | 0/5 [00:00<?, ? examples/s]Generating dev split: 100%|██████████| 5/5 [00:00<00:00, 3399.50 examples/s]
+    DatasetDict({
+    test: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 238
+    })
+    validation: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 26
+    })
+    dev: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 5
+    })
+})
+ok  dataset:hails/mmlu_no_train:high_school_microeconomics -> /opt/hf-cache/hub/datasets--hails--mmlu_no_train/snapshots/b2e1ec9aa795adafe68e8e983248dbd4b52a1c60
+Generating test split:   0%|          | 0/151 [00:00<?, ? examples/s]Generating test split: 100%|██████████| 151/151 [00:00<00:00, 64200.70 examples/s]
+Generating validation split:   0%|          | 0/17 [00:00<?, ? examples/s]Generating validation split: 100%|██████████| 17/17 [00:00<00:00, 10115.36 examples/s]
+Generating dev split:   0%|          | 0/5 [00:00<?, ? examples/s]Generating dev split: 100%|██████████| 5/5 [00:00<00:00, 3493.51 examples/s]
+    DatasetDict({
+    test: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 151
+    })
+    validation: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 17
+    })
+    dev: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 5
+    })
+})
+ok  dataset:hails/mmlu_no_train:high_school_physics -> /opt/hf-cache/hub/datasets--hails--mmlu_no_train/snapshots/b2e1ec9aa795adafe68e8e983248dbd4b52a1c60
+Generating test split:   0%|          | 0/545 [00:00<?, ? examples/s]Generating test split: 100%|██████████| 545/545 [00:00<00:00, 117605.38 examples/s]
+Generating validation split:   0%|          | 0/60 [00:00<?, ? examples/s]Generating validation split: 100%|██████████| 60/60 [00:00<00:00, 33078.11 examples/s]
+Generating dev split:   0%|          | 0/5 [00:00<?, ? examples/s]Generating dev split: 100%|██████████| 5/5 [00:00<00:00, 3377.06 examples/s]
+    DatasetDict({
+    test: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 545
+    })
+    validation: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 60
+    })
+    dev: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 5
+    })
+})
+ok  dataset:hails/mmlu_no_train:high_school_psychology -> /opt/hf-cache/hub/datasets--hails--mmlu_no_train/snapshots/b2e1ec9aa795adafe68e8e983248dbd4b52a1c60
+Generating test split:   0%|          | 0/216 [00:00<?, ? examples/s]Generating test split: 100%|██████████| 216/216 [00:00<00:00, 86978.65 examples/s]
+Generating validation split:   0%|          | 0/23 [00:00<?, ? examples/s]Generating validation split: 100%|██████████| 23/23 [00:00<00:00, 13666.10 examples/s]
+Generating dev split:   0%|          | 0/5 [00:00<?, ? examples/s]Generating dev split: 100%|██████████| 5/5 [00:00<00:00, 3522.85 examples/s]
+    DatasetDict({
+    test: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 216
+    })
+    validation: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 23
+    })
+    dev: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 5
+    })
+})
+ok  dataset:hails/mmlu_no_train:high_school_statistics -> /opt/hf-cache/hub/datasets--hails--mmlu_no_train/snapshots/b2e1ec9aa795adafe68e8e983248dbd4b52a1c60
+Generating test split:   0%|          | 0/204 [00:00<?, ? examples/s]Generating test split: 100%|██████████| 204/204 [00:00<00:00, 73432.72 examples/s]
+Generating validation split:   0%|          | 0/22 [00:00<?, ? examples/s]Generating validation split: 100%|██████████| 22/22 [00:00<00:00, 12650.77 examples/s]
+Generating dev split:   0%|          | 0/5 [00:00<?, ? examples/s]Generating dev split: 100%|██████████| 5/5 [00:00<00:00, 3386.87 examples/s]
+    DatasetDict({
+    test: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 204
+    })
+    validation: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 22
+    })
+    dev: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 5
+    })
+})
+ok  dataset:hails/mmlu_no_train:high_school_us_history -> /opt/hf-cache/hub/datasets--hails--mmlu_no_train/snapshots/b2e1ec9aa795adafe68e8e983248dbd4b52a1c60
+Generating test split:   0%|          | 0/237 [00:00<?, ? examples/s]Generating test split: 100%|██████████| 237/237 [00:00<00:00, 82132.53 examples/s]
+Generating validation split:   0%|          | 0/26 [00:00<?, ? examples/s]Generating validation split: 100%|██████████| 26/26 [00:00<00:00, 14762.68 examples/s]
+Generating dev split:   0%|          | 0/5 [00:00<?, ? examples/s]Generating dev split: 100%|██████████| 5/5 [00:00<00:00, 3241.35 examples/s]
+    DatasetDict({
+    test: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 237
+    })
+    validation: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 26
+    })
+    dev: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 5
+    })
+})
+ok  dataset:hails/mmlu_no_train:high_school_world_history -> /opt/hf-cache/hub/datasets--hails--mmlu_no_train/snapshots/b2e1ec9aa795adafe68e8e983248dbd4b52a1c60
+Generating test split:   0%|          | 0/223 [00:00<?, ? examples/s]Generating test split: 100%|██████████| 223/223 [00:00<00:00, 90396.23 examples/s]
+Generating validation split:   0%|          | 0/23 [00:00<?, ? examples/s]Generating validation split: 100%|██████████| 23/23 [00:00<00:00, 13797.05 examples/s]
+Generating dev split:   0%|          | 0/5 [00:00<?, ? examples/s]Generating dev split: 100%|██████████| 5/5 [00:00<00:00, 3469.81 examples/s]
+    DatasetDict({
+    test: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 223
+    })
+    validation: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 23
+    })
+    dev: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 5
+    })
+})
+ok  dataset:hails/mmlu_no_train:human_aging -> /opt/hf-cache/hub/datasets--hails--mmlu_no_train/snapshots/b2e1ec9aa795adafe68e8e983248dbd4b52a1c60
+Generating test split:   0%|          | 0/131 [00:00<?, ? examples/s]Generating test split: 100%|██████████| 131/131 [00:00<00:00, 54042.87 examples/s]
+Generating validation split:   0%|          | 0/12 [00:00<?, ? examples/s]Generating validation split: 100%|██████████| 12/12 [00:00<00:00, 7378.93 examples/s]
+Generating dev split:   0%|          | 0/5 [00:00<?, ? examples/s]Generating dev split: 100%|██████████| 5/5 [00:00<00:00, 3559.93 examples/s]
+    DatasetDict({
+    test: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 131
+    })
+    validation: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 12
+    })
+    dev: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 5
+    })
+})
+ok  dataset:hails/mmlu_no_train:human_sexuality -> /opt/hf-cache/hub/datasets--hails--mmlu_no_train/snapshots/b2e1ec9aa795adafe68e8e983248dbd4b52a1c60
+Generating test split:   0%|          | 0/121 [00:00<?, ? examples/s]Generating test split: 100%|██████████| 121/121 [00:00<00:00, 48570.27 examples/s]
+Generating validation split:   0%|          | 0/13 [00:00<?, ? examples/s]Generating validation split: 100%|██████████| 13/13 [00:00<00:00, 8086.30 examples/s]
+Generating dev split:   0%|          | 0/5 [00:00<?, ? examples/s]Generating dev split: 100%|██████████| 5/5 [00:00<00:00, 3437.95 examples/s]
+    DatasetDict({
+    test: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 121
+    })
+    validation: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 13
+    })
+    dev: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 5
+    })
+})
+ok  dataset:hails/mmlu_no_train:international_law -> /opt/hf-cache/hub/datasets--hails--mmlu_no_train/snapshots/b2e1ec9aa795adafe68e8e983248dbd4b52a1c60
+Generating test split:   0%|          | 0/108 [00:00<?, ? examples/s]Generating test split: 100%|██████████| 108/108 [00:00<00:00, 46147.60 examples/s]
+Generating validation split:   0%|          | 0/11 [00:00<?, ? examples/s]Generating validation split: 100%|██████████| 11/11 [00:00<00:00, 6628.93 examples/s]
+Generating dev split:   0%|          | 0/5 [00:00<?, ? examples/s]Generating dev split: 100%|██████████| 5/5 [00:00<00:00, 3511.64 examples/s]
+    DatasetDict({
+    test: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 108
+    })
+    validation: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 11
+    })
+    dev: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 5
+    })
+})
+ok  dataset:hails/mmlu_no_train:jurisprudence -> /opt/hf-cache/hub/datasets--hails--mmlu_no_train/snapshots/b2e1ec9aa795adafe68e8e983248dbd4b52a1c60
+Generating test split:   0%|          | 0/163 [00:00<?, ? examples/s]Generating test split: 100%|██████████| 163/163 [00:00<00:00, 69190.52 examples/s]
+Generating validation split:   0%|          | 0/18 [00:00<?, ? examples/s]Generating validation split: 100%|██████████| 18/18 [00:00<00:00, 10836.44 examples/s]
+Generating dev split:   0%|          | 0/5 [00:00<?, ? examples/s]Generating dev split: 100%|██████████| 5/5 [00:00<00:00, 3362.98 examples/s]
+    DatasetDict({
+    test: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 163
+    })
+    validation: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 18
+    })
+    dev: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 5
+    })
+})
+ok  dataset:hails/mmlu_no_train:logical_fallacies -> /opt/hf-cache/hub/datasets--hails--mmlu_no_train/snapshots/b2e1ec9aa795adafe68e8e983248dbd4b52a1c60
+Generating test split:   0%|          | 0/112 [00:00<?, ? examples/s]Generating test split: 100%|██████████| 112/112 [00:00<00:00, 49391.45 examples/s]
+Generating validation split:   0%|          | 0/11 [00:00<?, ? examples/s]Generating validation split: 100%|██████████| 11/11 [00:00<00:00, 6622.27 examples/s]
+Generating dev split:   0%|          | 0/5 [00:00<?, ? examples/s]Generating dev split: 100%|██████████| 5/5 [00:00<00:00, 3328.81 examples/s]
+    DatasetDict({
+    test: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 112
+    })
+    validation: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 11
+    })
+    dev: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 5
+    })
+})
+ok  dataset:hails/mmlu_no_train:machine_learning -> /opt/hf-cache/hub/datasets--hails--mmlu_no_train/snapshots/b2e1ec9aa795adafe68e8e983248dbd4b52a1c60
+Generating test split:   0%|          | 0/103 [00:00<?, ? examples/s]Generating test split: 100%|██████████| 103/103 [00:00<00:00, 40914.23 examples/s]
+Generating validation split:   0%|          | 0/11 [00:00<?, ? examples/s]Generating validation split: 100%|██████████| 11/11 [00:00<00:00, 5467.81 examples/s]
+Generating dev split:   0%|          | 0/5 [00:00<?, ? examples/s]Generating dev split: 100%|██████████| 5/5 [00:00<00:00, 2696.26 examples/s]
+    DatasetDict({
+    test: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 103
+    })
+    validation: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 11
+    })
+    dev: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 5
+    })
+})
+ok  dataset:hails/mmlu_no_train:management -> /opt/hf-cache/hub/datasets--hails--mmlu_no_train/snapshots/b2e1ec9aa795adafe68e8e983248dbd4b52a1c60
+Generating test split:   0%|          | 0/234 [00:00<?, ? examples/s]Generating test split: 100%|██████████| 234/234 [00:00<00:00, 28264.81 examples/s]
+Generating validation split:   0%|          | 0/25 [00:00<?, ? examples/s]Generating validation split: 100%|██████████| 25/25 [00:00<00:00, 13110.48 examples/s]
+Generating dev split:   0%|          | 0/5 [00:00<?, ? examples/s]Generating dev split: 100%|██████████| 5/5 [00:00<00:00, 3122.62 examples/s]
+    DatasetDict({
+    test: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 234
+    })
+    validation: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 25
+    })
+    dev: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 5
+    })
+})
+ok  dataset:hails/mmlu_no_train:marketing -> /opt/hf-cache/hub/datasets--hails--mmlu_no_train/snapshots/b2e1ec9aa795adafe68e8e983248dbd4b52a1c60
+Generating test split:   0%|          | 0/100 [00:00<?, ? examples/s]Generating test split: 100%|██████████| 100/100 [00:00<00:00, 43351.98 examples/s]
+Generating validation split:   0%|          | 0/11 [00:00<?, ? examples/s]Generating validation split: 100%|██████████| 11/11 [00:00<00:00, 7010.69 examples/s]
+Generating dev split:   0%|          | 0/5 [00:00<?, ? examples/s]Generating dev split: 100%|██████████| 5/5 [00:00<00:00, 3473.26 examples/s]
+    DatasetDict({
+    test: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 100
+    })
+    validation: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 11
+    })
+    dev: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 5
+    })
+})
+ok  dataset:hails/mmlu_no_train:medical_genetics -> /opt/hf-cache/hub/datasets--hails--mmlu_no_train/snapshots/b2e1ec9aa795adafe68e8e983248dbd4b52a1c60
+Generating test split:   0%|          | 0/783 [00:00<?, ? examples/s]Generating test split: 100%|██████████| 783/783 [00:00<00:00, 84016.99 examples/s]
+Generating validation split:   0%|          | 0/86 [00:00<?, ? examples/s]Generating validation split: 100%|██████████| 86/86 [00:00<00:00, 37613.15 examples/s]
+Generating dev split:   0%|          | 0/5 [00:00<?, ? examples/s]Generating dev split: 100%|██████████| 5/5 [00:00<00:00, 2634.94 examples/s]
+    DatasetDict({
+    test: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 783
+    })
+    validation: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 86
+    })
+    dev: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 5
+    })
+})
+ok  dataset:hails/mmlu_no_train:miscellaneous -> /opt/hf-cache/hub/datasets--hails--mmlu_no_train/snapshots/b2e1ec9aa795adafe68e8e983248dbd4b52a1c60
+Generating test split:   0%|          | 0/346 [00:00<?, ? examples/s]Generating test split: 100%|██████████| 346/346 [00:00<00:00, 42444.77 examples/s]
+Generating validation split:   0%|          | 0/38 [00:00<?, ? examples/s]Generating validation split: 100%|██████████| 38/38 [00:00<00:00, 20293.30 examples/s]
+Generating dev split:   0%|          | 0/5 [00:00<?, ? examples/s]Generating dev split: 100%|██████████| 5/5 [00:00<00:00, 3335.70 examples/s]
+    DatasetDict({
+    test: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 346
+    })
+    validation: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 38
+    })
+    dev: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 5
+    })
+})
+ok  dataset:hails/mmlu_no_train:moral_disputes -> /opt/hf-cache/hub/datasets--hails--mmlu_no_train/snapshots/b2e1ec9aa795adafe68e8e983248dbd4b52a1c60
+Generating test split:   0%|          | 0/895 [00:00<?, ? examples/s]Generating test split: 100%|██████████| 895/895 [00:00<00:00, 90409.72 examples/s]
+Generating validation split:   0%|          | 0/100 [00:00<?, ? examples/s]Generating validation split: 100%|██████████| 100/100 [00:00<00:00, 43071.51 examples/s]
+Generating dev split:   0%|          | 0/5 [00:00<?, ? examples/s]Generating dev split: 100%|██████████| 5/5 [00:00<00:00, 3216.00 examples/s]
+    DatasetDict({
+    test: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 895
+    })
+    validation: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 100
+    })
+    dev: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 5
+    })
+})
+ok  dataset:hails/mmlu_no_train:moral_scenarios -> /opt/hf-cache/hub/datasets--hails--mmlu_no_train/snapshots/b2e1ec9aa795adafe68e8e983248dbd4b52a1c60
+Generating test split:   0%|          | 0/306 [00:00<?, ? examples/s]Generating test split: 100%|██████████| 306/306 [00:00<00:00, 42495.76 examples/s]
+Generating validation split:   0%|          | 0/33 [00:00<?, ? examples/s]Generating validation split: 100%|██████████| 33/33 [00:00<00:00, 17799.90 examples/s]
+Generating dev split:   0%|          | 0/5 [00:00<?, ? examples/s]Generating dev split: 100%|██████████| 5/5 [00:00<00:00, 3352.76 examples/s]
+    DatasetDict({
+    test: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 306
+    })
+    validation: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 33
+    })
+    dev: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 5
+    })
+})
+ok  dataset:hails/mmlu_no_train:nutrition -> /opt/hf-cache/hub/datasets--hails--mmlu_no_train/snapshots/b2e1ec9aa795adafe68e8e983248dbd4b52a1c60
+Generating test split:   0%|          | 0/311 [00:00<?, ? examples/s]Generating test split: 100%|██████████| 311/311 [00:00<00:00, 122297.82 examples/s]
+Generating validation split:   0%|          | 0/34 [00:00<?, ? examples/s]Generating validation split: 100%|██████████| 34/34 [00:00<00:00, 20398.56 examples/s]
+Generating dev split:   0%|          | 0/5 [00:00<?, ? examples/s]Generating dev split: 100%|██████████| 5/5 [00:00<00:00, 3424.48 examples/s]
+    DatasetDict({
+    test: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 311
+    })
+    validation: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 34
+    })
+    dev: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 5
+    })
+})
+ok  dataset:hails/mmlu_no_train:philosophy -> /opt/hf-cache/hub/datasets--hails--mmlu_no_train/snapshots/b2e1ec9aa795adafe68e8e983248dbd4b52a1c60
+Generating test split:   0%|          | 0/324 [00:00<?, ? examples/s]Generating test split: 100%|██████████| 324/324 [00:00<00:00, 35903.69 examples/s]
+Generating validation split:   0%|          | 0/35 [00:00<?, ? examples/s]Generating validation split: 100%|██████████| 35/35 [00:00<00:00, 19886.30 examples/s]
+Generating dev split:   0%|          | 0/5 [00:00<?, ? examples/s]Generating dev split: 100%|██████████| 5/5 [00:00<00:00, 3411.67 examples/s]
+    DatasetDict({
+    test: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 324
+    })
+    validation: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 35
+    })
+    dev: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 5
+    })
+})
+ok  dataset:hails/mmlu_no_train:prehistory -> /opt/hf-cache/hub/datasets--hails--mmlu_no_train/snapshots/b2e1ec9aa795adafe68e8e983248dbd4b52a1c60
+Generating test split:   0%|          | 0/282 [00:00<?, ? examples/s]Generating test split: 100%|██████████| 282/282 [00:00<00:00, 113872.51 examples/s]
+Generating validation split:   0%|          | 0/31 [00:00<?, ? examples/s]Generating validation split: 100%|██████████| 31/31 [00:00<00:00, 18492.88 examples/s]
+Generating dev split:   0%|          | 0/5 [00:00<?, ? examples/s]Generating dev split: 100%|██████████| 5/5 [00:00<00:00, 3545.48 examples/s]
+    DatasetDict({
+    test: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 282
+    })
+    validation: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 31
+    })
+    dev: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 5
+    })
+})
+ok  dataset:hails/mmlu_no_train:professional_accounting -> /opt/hf-cache/hub/datasets--hails--mmlu_no_train/snapshots/b2e1ec9aa795adafe68e8e983248dbd4b52a1c60
+Generating test split:   0%|          | 0/1534 [00:00<?, ? examples/s]Generating test split: 100%|██████████| 1534/1534 [00:00<00:00, 17659.06 examples/s]
+Generating validation split:   0%|          | 0/170 [00:00<?, ? examples/s]Generating validation split: 100%|██████████| 170/170 [00:00<00:00, 80450.38 examples/s]
+Generating dev split:   0%|          | 0/5 [00:00<?, ? examples/s]Generating dev split: 100%|██████████| 5/5 [00:00<00:00, 3257.96 examples/s]
+    DatasetDict({
+    test: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 1534
+    })
+    validation: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 170
+    })
+    dev: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 5
+    })
+})
+ok  dataset:hails/mmlu_no_train:professional_law -> /opt/hf-cache/hub/datasets--hails--mmlu_no_train/snapshots/b2e1ec9aa795adafe68e8e983248dbd4b52a1c60
+Generating test split:   0%|          | 0/272 [00:00<?, ? examples/s]Generating test split: 100%|██████████| 272/272 [00:00<00:00, 58882.62 examples/s]
+Generating validation split:   0%|          | 0/31 [00:00<?, ? examples/s]Generating validation split: 100%|██████████| 31/31 [00:00<00:00, 17782.20 examples/s]
+Generating dev split:   0%|          | 0/5 [00:00<?, ? examples/s]Generating dev split: 100%|██████████| 5/5 [00:00<00:00, 3362.98 examples/s]
+    DatasetDict({
+    test: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 272
+    })
+    validation: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 31
+    })
+    dev: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 5
+    })
+})
+ok  dataset:hails/mmlu_no_train:professional_medicine -> /opt/hf-cache/hub/datasets--hails--mmlu_no_train/snapshots/b2e1ec9aa795adafe68e8e983248dbd4b52a1c60
+Generating test split:   0%|          | 0/612 [00:00<?, ? examples/s]Generating test split: 100%|██████████| 612/612 [00:00<00:00, 91977.71 examples/s]
+Generating validation split:   0%|          | 0/69 [00:00<?, ? examples/s]Generating validation split: 100%|██████████| 69/69 [00:00<00:00, 38418.56 examples/s]
+Generating dev split:   0%|          | 0/5 [00:00<?, ? examples/s]Generating dev split: 100%|██████████| 5/5 [00:00<00:00, 3406.13 examples/s]
+    DatasetDict({
+    test: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 612
+    })
+    validation: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 69
+    })
+    dev: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 5
+    })
+})
+ok  dataset:hails/mmlu_no_train:professional_psychology -> /opt/hf-cache/hub/datasets--hails--mmlu_no_train/snapshots/b2e1ec9aa795adafe68e8e983248dbd4b52a1c60
+Generating test split:   0%|          | 0/110 [00:00<?, ? examples/s]Generating test split: 100%|██████████| 110/110 [00:00<00:00, 45012.04 examples/s]
+Generating validation split:   0%|          | 0/12 [00:00<?, ? examples/s]Generating validation split: 100%|██████████| 12/12 [00:00<00:00, 7272.31 examples/s]
+Generating dev split:   0%|          | 0/5 [00:00<?, ? examples/s]Generating dev split: 100%|██████████| 5/5 [00:00<00:00, 3389.06 examples/s]
+    DatasetDict({
+    test: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 110
+    })
+    validation: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 12
+    })
+    dev: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 5
+    })
+})
+ok  dataset:hails/mmlu_no_train:public_relations -> /opt/hf-cache/hub/datasets--hails--mmlu_no_train/snapshots/b2e1ec9aa795adafe68e8e983248dbd4b52a1c60
+Generating test split:   0%|          | 0/245 [00:00<?, ? examples/s]Generating test split: 100%|██████████| 245/245 [00:00<00:00, 69152.39 examples/s]
+Generating validation split:   0%|          | 0/27 [00:00<?, ? examples/s]Generating validation split: 100%|██████████| 27/27 [00:00<00:00, 14291.55 examples/s]
+Generating dev split:   0%|          | 0/5 [00:00<?, ? examples/s]Generating dev split: 100%|██████████| 5/5 [00:00<00:00, 3239.85 examples/s]
+    DatasetDict({
+    test: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 245
+    })
+    validation: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 27
+    })
+    dev: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 5
+    })
+})
+ok  dataset:hails/mmlu_no_train:security_studies -> /opt/hf-cache/hub/datasets--hails--mmlu_no_train/snapshots/b2e1ec9aa795adafe68e8e983248dbd4b52a1c60
+Generating test split:   0%|          | 0/201 [00:00<?, ? examples/s]Generating test split: 100%|██████████| 201/201 [00:00<00:00, 79744.15 examples/s]
+Generating validation split:   0%|          | 0/22 [00:00<?, ? examples/s]Generating validation split: 100%|██████████| 22/22 [00:00<00:00, 13425.68 examples/s]
+Generating dev split:   0%|          | 0/5 [00:00<?, ? examples/s]Generating dev split: 100%|██████████| 5/5 [00:00<00:00, 3583.04 examples/s]
+    DatasetDict({
+    test: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 201
+    })
+    validation: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 22
+    })
+    dev: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 5
+    })
+})
+ok  dataset:hails/mmlu_no_train:sociology -> /opt/hf-cache/hub/datasets--hails--mmlu_no_train/snapshots/b2e1ec9aa795adafe68e8e983248dbd4b52a1c60
+Generating test split:   0%|          | 0/100 [00:00<?, ? examples/s]Generating test split: 100%|██████████| 100/100 [00:00<00:00, 40988.02 examples/s]
+Generating validation split:   0%|          | 0/11 [00:00<?, ? examples/s]Generating validation split: 100%|██████████| 11/11 [00:00<00:00, 6460.91 examples/s]
+Generating dev split:   0%|          | 0/5 [00:00<?, ? examples/s]Generating dev split: 100%|██████████| 5/5 [00:00<00:00, 3133.82 examples/s]
+    DatasetDict({
+    test: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 100
+    })
+    validation: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 11
+    })
+    dev: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 5
+    })
+})
+ok  dataset:hails/mmlu_no_train:us_foreign_policy -> /opt/hf-cache/hub/datasets--hails--mmlu_no_train/snapshots/b2e1ec9aa795adafe68e8e983248dbd4b52a1c60
+Generating test split:   0%|          | 0/166 [00:00<?, ? examples/s]Generating test split: 100%|██████████| 166/166 [00:00<00:00, 67656.64 examples/s]
+Generating validation split:   0%|          | 0/18 [00:00<?, ? examples/s]Generating validation split: 100%|██████████| 18/18 [00:00<00:00, 11216.38 examples/s]
+Generating dev split:   0%|          | 0/5 [00:00<?, ? examples/s]Generating dev split: 100%|██████████| 5/5 [00:00<00:00, 3567.80 examples/s]
+    DatasetDict({
+    test: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 166
+    })
+    validation: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 18
+    })
+    dev: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 5
+    })
+})
+ok  dataset:hails/mmlu_no_train:virology -> /opt/hf-cache/hub/datasets--hails--mmlu_no_train/snapshots/b2e1ec9aa795adafe68e8e983248dbd4b52a1c60
+Generating test split:   0%|          | 0/171 [00:00<?, ? examples/s]Generating test split: 100%|██████████| 171/171 [00:00<00:00, 73659.85 examples/s]
+Generating validation split:   0%|          | 0/19 [00:00<?, ? examples/s]Generating validation split: 100%|██████████| 19/19 [00:00<00:00, 11255.90 examples/s]
+Generating dev split:   0%|          | 0/5 [00:00<?, ? examples/s]Generating dev split: 100%|██████████| 5/5 [00:00<00:00, 3377.60 examples/s]
+    DatasetDict({
+    test: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 171
+    })
+    validation: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 19
+    })
+    dev: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 5
+    })
+})
+ok  dataset:hails/mmlu_no_train:world_religions -> /opt/hf-cache/hub/datasets--hails--mmlu_no_train/snapshots/b2e1ec9aa795adafe68e8e983248dbd4b52a1c60

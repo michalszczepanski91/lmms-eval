@@ -49,4 +49,9 @@ fw_setup() {
   fi
   # Keep torch.compile / CUDA graph caches between runs (the container is ephemeral).
   DOCKER_ARGS+=(-e VLLM_CACHE_ROOT="$JETSON/.cache/vllm")
+  # Text models on Thor (SM110): vLLM 0.19's default fp8 kernel (Cutlass) supports sm100f only; use torch._scaled_mm
+  # (results/thor/NOTES.md, problem 17). The Qwen2.5-VL runs passed this switch explicitly (RUN_TAG=torch).
+  if [ "${MODEL_MODALITY:-vision}" = text ] && [ "$PRECISION" = fp8 ] && [ "$(board_name)" = thor ]; then
+    DOCKER_ARGS+=(-e VLLM_DISABLED_KERNELS=CutlassFP8ScaledMMLinearKernel)
+  fi
 }

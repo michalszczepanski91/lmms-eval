@@ -27,16 +27,29 @@ Plan, decisions, problems and fixes, timeline, open items. Template: the Qwen2.5
 2. GGUF weights from `Qwen/<tag>-GGUF` (official; `ggml-org` has no Qwen2.5 text GGUFs). File names are lowercase (`qwen2.5-3b-instruct-q8_0.gguf`); the 3B fp16 is split in two files.
 3. Edge-LLM v0.10.1 quantizer (`tensorrt-edgellm-quantize llm --help`): `--quantization {fp8,int4_awq,nvfp4,mxfp8,int8_sq}`, `--lm_head_quantization {fp8,int4_awq,nvfp4,mxfp8}`, `--kv_cache_quantization {fp8}`, `--text_dataset {cnn_dailymail,wikitext,zh_en_mixed}` (custom datasets need its customization guide). No w4a8.
 
+4. **Generation length is set by the task, the same in every framework.** No backend applies a task's `until` stop strings, and their default caps differ (HF 4,096, vLLM max(task, 1,024), llama.cpp 1,024, Edge-LLM 128). The Jetson task variants therefore generate until the end-of-turn token with an explicit cap (GSM8K 512, MMLU 32, IFEval 1,280 as in the original), and `vllm.sh` lowers vLLM's own default for text models so the task's cap applies.
+5. **Fixed few-shot examples** (`first_n`: the first 5 training / dev examples before every question). lmms-eval only creates a few-shot sampler when a task has a `fewshot_config`, and the random default would draw different examples per framework, since vLLM builds its prompts in a thread pool. For MMLU, `first_n` from the dev split is the standard 5-shot setup; for GSM8K it differs from lm-eval's random 5-shot.
+6. **MMLU instruction.** With the five examples and the question in one user turn, the chat model worked through all six questions ("Let's address each question one by one"). Each subject description now ends with "Answer the last question with the letter of the correct option only." The answer is the first A-D letter in the output.
+7. **Same system prompt everywhere.** Qwen2.5's template adds "You are Qwen, created by Alibaba Cloud. You are a helpful assistant." when there is no system message; HF, vLLM and llama.cpp apply the template, and the Edge-LLM engine stores the same default (`default_system_prompt` in `processed_chat_template.json`). The Edge-LLM backend's own default ("You are a helpful assistant.", right for Qwen2.5-VL) is turned off for text models (`system_prompt=none`).
+8. **Context 4,096 tokens** for every framework and the Edge-LLM engine (max input 4,096, KV 4,096). Measured prompt lengths (chat template, Qwen2.5 tokenizer): GSM8K mean 752 / max 879, IFEval 75 / 390, MMLU 725 / 3,125 (+13 with the instruction); with the caps, the longest request is MMLU's ~3,170 tokens.
+9. **IFEval dependencies** (langdetect, immutabledict, NLTK punkt) are installed into `jetson/.cache` by `jetson/scripts/install_text_deps.sh` and added to the eval container only for text models, so the images and the VL runs stay unchanged.
+
 ## Problems and fixes
 
-(none yet)
+1. **The generic HF chat backend loaded the bare decoder.** `lmms_eval/models/chat/huggingface.py` picked the model class with `config.model_type in AutoModelForCausalLM._model_mapping.keys()`, but those keys are config classes, so the check never matched and every model fell back to `AutoModel` (`'Qwen2Model' object has no attribute 'generate'`). Fixed: `model_class_for(config)` checks the config class (test in `test/models/test_huggingface_chat_text.py`).
+2. **Text-model chat templates reject list content.** Qwen2.5-Instruct's template concatenates the message content as a string (`can only concatenate str (not "list") to str`); the backend passed the multimodal parts list. Fixed for text-only requests (they also go through the tokenizer, not the multimodal processor).
+3. **Few-shot text tasks had no sampler in the chat path** (`'ConfigurableMessagesTask' object has no attribute 'sampler'`): fixed in the task variant with `fewshot_config: {sampler: first_n}` (decision 5).
+4. **MMLU answers ran to the cap** (the model answered all six questions): decision 6.
+5. **The HF backend recorded no per-question timing**: added the generation-streamer first-token timer the VL backend uses (now shared in `lmms_eval/models/model_utils/stage_timing.py`).
 
 ## Timeline
 
 | Date | What |
 |---|---|
-| 2026-10-08 | Plan written; Hub repos checked (all Qwen / RedHatAI repos exist; GGUF from Qwen). |
+| 2026-10-08 | Plan written; Hub repos checked (all Qwen / RedHatAI repos exist; GGUF from Qwen). Harness changes (Phase 0), task variants, downloads (11:57–13:00). First Edge-LLM text engine (3B fp16) built in 2 min 44 s. HF 3B smoke test: fixed problems 1–4. 3B smoke tests (8 questions per task) pass in HF, vLLM, llama.cpp f16 and Edge-LLM fp16: GSM8K 0.50–0.63, IFEval 0.50–0.63, MMLU 0.64–0.65. |
 
 ## Open items
 
-- Choose the GSM8K variant and the MMLU answer extraction after end-to-end checks.
+- **Next:** verify the Edge-LLM system prompt with a direct runner probe; refine the runtime estimate (HF MMLU ~1.3 s/question before the MMLU fix); start Phase 1 with `nohup setsid jetson/experiments/qwen2_5/frameworks.sh > jetson/results/thor/logs/qwen2_5_phase1.log 2>&1 &`.
+- Still to do: length sweep task, dataset reports, Phase 2, model docs, FINDINGS / REPORT, README / methodology / tensorrt-edgellm updates.
+

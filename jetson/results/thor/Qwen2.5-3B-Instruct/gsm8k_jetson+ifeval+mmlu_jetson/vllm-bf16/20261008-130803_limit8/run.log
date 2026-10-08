@@ -1,0 +1,1387 @@
+/opt/venv/lib/python3.12/site-packages/transformers/utils/hub.py:110: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+  warnings.warn(
+torch 2.10.0 transformers 4.57.3
+/opt/venv/lib/python3.12/site-packages/transformers/utils/hub.py:110: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+  warnings.warn(
+[32m2026-10-08 11:08:12[0m | [1mINFO    [0m | [36mlmms_eval.__main__[0m:[36mcli_evaluate[0m:[36m516[0m - [1mVerbosity set to INFO[0m
+[32m2026-10-08 11:08:12[0m | [1mINFO    [0m | [36mlmms_eval.__main__[0m:[36mcli_evaluate_single[0m:[36m643[0m - [1mIncluding path: jetson/tasks[0m
+[32m2026-10-08 11:08:15[0m | [1mINFO    [0m | [36mlmms_eval.__main__[0m:[36mcli_evaluate_single[0m:[36m653[0m - [1mEvaluation tracker args: {'output_path': 'jetson/results/thor/Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/vllm-bf16/20261008-130803_limit8'}[0m
+[32m2026-10-08 11:08:15[0m | [1mINFO    [0m | [36mlmms_eval.__main__[0m:[36mcli_evaluate_single[0m:[36m677[0m - [1mIncluding path: jetson/tasks[0m
+[32m2026-10-08 11:08:15[0m | [33m[1mWARNING [0m | [36mlmms_eval.__main__[0m:[36mcli_evaluate_single[0m:[36m683[0m - [33m[1m --limit SHOULD ONLY BE USED FOR TESTING.REAL METRICS SHOULD NOT BE COMPUTED USING LIMIT.[0m
+[32m2026-10-08 11:08:15[0m | [1mINFO    [0m | [36mlmms_eval.__main__[0m:[36mcli_evaluate_single[0m:[36m737[0m - [1mSelected Tasks: ['gsm8k_jetson', 'ifeval', 'mmlu_jetson'][0m
+[32m2026-10-08 11:08:15[0m | [1mINFO    [0m | [36mlmms_eval.evaluator[0m:[36msimple_evaluate[0m:[36m486[0m - [1mSetting random seed to 0 | Setting numpy seed to 1234 | Setting torch manual seed to 1234[0m
+INFO 10-08 11:08:18 [utils.py:233] non-default args: {'trust_remote_code': True, 'seed': 1, 'max_model_len': 4096, 'enable_prefix_caching': False, 'gpu_memory_utilization': 0.11, 'model': '/opt/hf-cache/hub/models--Qwen--Qwen2.5-3B-Instruct/snapshots/aa8e72537993ba99e69dfaafa59ed015b17504d1'}
+INFO 10-08 11:08:29 [model.py:549] Resolved architecture: Qwen2ForCausalLM
+INFO 10-08 11:08:29 [model.py:1678] Using max model len 4096
+INFO 10-08 11:08:29 [scheduler.py:238] Chunked prefill is enabled with max_num_batched_tokens=8192.
+INFO 10-08 11:08:29 [vllm.py:790] Asynchronous scheduling is enabled.
+/opt/venv/lib/python3.12/site-packages/transformers/utils/hub.py:110: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+  warnings.warn(
+(EngineCore pid=153) INFO 10-08 11:08:37 [core.py:105] Initializing a V1 LLM engine (v0.19.0) with config: model='/opt/hf-cache/hub/models--Qwen--Qwen2.5-3B-Instruct/snapshots/aa8e72537993ba99e69dfaafa59ed015b17504d1', speculative_config=None, tokenizer='/opt/hf-cache/hub/models--Qwen--Qwen2.5-3B-Instruct/snapshots/aa8e72537993ba99e69dfaafa59ed015b17504d1', skip_tokenizer_init=False, tokenizer_mode=auto, revision=None, tokenizer_revision=None, trust_remote_code=True, dtype=torch.bfloat16, max_seq_len=4096, download_dir=None, load_format=auto, tensor_parallel_size=1, pipeline_parallel_size=1, data_parallel_size=1, decode_context_parallel_size=1, dcp_comm_backend=ag_rs, disable_custom_all_reduce=False, quantization=None, enforce_eager=False, enable_return_routed_experts=False, kv_cache_dtype=auto, device_config=cuda, structured_outputs_config=StructuredOutputsConfig(backend='auto', disable_any_whitespace=False, disable_additional_properties=False, reasoning_parser='', reasoning_parser_plugin='', enable_in_reasoning=False), observability_config=ObservabilityConfig(show_hidden_metrics_for_version=None, otlp_traces_endpoint=None, collect_detailed_traces=None, kv_cache_metrics=False, kv_cache_metrics_sample=0.01, cudagraph_metrics=False, enable_layerwise_nvtx_tracing=False, enable_mfu_metrics=False, enable_mm_processor_stats=False, enable_logging_iteration_details=False), seed=1, served_model_name=/opt/hf-cache/hub/models--Qwen--Qwen2.5-3B-Instruct/snapshots/aa8e72537993ba99e69dfaafa59ed015b17504d1, enable_prefix_caching=False, enable_chunked_prefill=True, pooler_config=None, compilation_config={'mode': <CompilationMode.VLLM_COMPILE: 3>, 'debug_dump_path': None, 'cache_dir': '', 'compile_cache_save_format': 'binary', 'backend': 'inductor', 'custom_ops': ['none'], 'splitting_ops': ['vllm::unified_attention', 'vllm::unified_attention_with_output', 'vllm::unified_mla_attention', 'vllm::unified_mla_attention_with_output', 'vllm::mamba_mixer2', 'vllm::mamba_mixer', 'vllm::short_conv', 'vllm::linear_attention', 'vllm::plamo2_mamba_mixer', 'vllm::gdn_attention_core', 'vllm::olmo_hybrid_gdn_full_forward', 'vllm::kda_attention', 'vllm::sparse_attn_indexer', 'vllm::rocm_aiter_sparse_attn_indexer', 'vllm::unified_kv_cache_update', 'vllm::unified_mla_kv_cache_update'], 'compile_mm_encoder': False, 'cudagraph_mm_encoder': False, 'encoder_cudagraph_token_budgets': [], 'encoder_cudagraph_max_images_per_batch': 0, 'compile_sizes': [], 'compile_ranges_endpoints': [8192], 'inductor_compile_config': {'enable_auto_functionalized_v2': False, 'size_asserts': False, 'alignment_asserts': False, 'scalar_asserts': False, 'combo_kernels': True, 'benchmark_combo_kernel': True}, 'inductor_passes': {}, 'cudagraph_mode': <CUDAGraphMode.FULL_AND_PIECEWISE: (2, 1)>, 'cudagraph_num_of_warmups': 1, 'cudagraph_capture_sizes': [1, 2, 4, 8, 16, 24, 32, 40, 48, 56, 64, 72, 80, 88, 96, 104, 112, 120, 128, 136, 144, 152, 160, 168, 176, 184, 192, 200, 208, 216, 224, 232, 240, 248, 256, 272, 288, 304, 320, 336, 352, 368, 384, 400, 416, 432, 448, 464, 480, 496, 512], 'cudagraph_copy_inputs': False, 'cudagraph_specialize_lora': True, 'use_inductor_graph_partition': False, 'pass_config': {'fuse_norm_quant': False, 'fuse_act_quant': False, 'fuse_attn_quant': False, 'enable_sp': False, 'fuse_gemm_comms': False, 'fuse_allreduce_rms': False}, 'max_cudagraph_capture_size': 512, 'dynamic_shapes_config': {'type': <DynamicShapesType.BACKED: 'backed'>, 'evaluate_guards': False, 'assume_32_bit_indexing': False}, 'local_cache_dir': None, 'fast_moe_cold_start': True, 'static_all_moe_layers': []}
+(EngineCore pid=153) INFO 10-08 11:08:39 [parallel_state.py:1400] world_size=1 rank=0 local_rank=0 distributed_init_method=tcp://172.17.0.2:40235 backend=nccl
+(EngineCore pid=153) INFO 10-08 11:08:39 [parallel_state.py:1716] rank 0 in world size 1 is assigned as DP rank 0, PP rank 0, PCP rank 0, TP rank 0, EP rank N/A, EPLB rank N/A
+(EngineCore pid=153) INFO 10-08 11:08:39 [gpu_model_runner.py:4735] Starting to load model /opt/hf-cache/hub/models--Qwen--Qwen2.5-3B-Instruct/snapshots/aa8e72537993ba99e69dfaafa59ed015b17504d1...
+(EngineCore pid=153) INFO 10-08 11:08:40 [cuda.py:334] Using FLASH_ATTN attention backend out of potential backends: ['FLASH_ATTN', 'FLASHINFER', 'TRITON_ATTN', 'FLEX_ATTENTION'].
+(EngineCore pid=153) INFO 10-08 11:08:40 [flash_attn.py:596] Using FlashAttention version 2
+Loading safetensors checkpoint shards:   0% Completed | 0/2 [00:00<?, ?it/s]
+Loading safetensors checkpoint shards:  50% Completed | 1/2 [00:02<00:02,  2.12s/it]
+Loading safetensors checkpoint shards: 100% Completed | 2/2 [00:03<00:00,  1.68s/it]
+Loading safetensors checkpoint shards: 100% Completed | 2/2 [00:03<00:00,  1.75s/it]
+(EngineCore pid=153) 
+(EngineCore pid=153) INFO 10-08 11:08:44 [default_loader.py:384] Loading weights took 3.67 seconds
+(EngineCore pid=153) INFO 10-08 11:08:45 [gpu_model_runner.py:4820] Model loading took 5.79 GiB memory and 4.836247 seconds
+(EngineCore pid=153) INFO 10-08 11:08:51 [backends.py:1051] Using cache directory: /home/michal/dev/lmms-eval/jetson/.cache/vllm/torch_compile_cache/f6d92c986a/rank_0_0/backbone for vLLM's torch.compile
+(EngineCore pid=153) INFO 10-08 11:08:51 [backends.py:1111] Dynamo bytecode transform time: 6.08 s
+(EngineCore pid=153) INFO 10-08 11:08:55 [backends.py:372] Cache the graph of compile range (1, 8192) for later use
+(EngineCore pid=153) [rank0]:W1008 11:08:55.934000 153 torch/_inductor/utils.py:1679] Not enough SMs to use max_autotune_gemm mode
+(EngineCore pid=153) INFO 10-08 11:08:58 [backends.py:390] Compiling a graph for compile range (1, 8192) takes 6.93 s
+(EngineCore pid=153) INFO 10-08 11:09:00 [decorators.py:640] saved AOT compiled function to /home/michal/dev/lmms-eval/jetson/.cache/vllm/torch_compile_cache/torch_aot_compile/adb07d540e7ebe55b8b5b9c2e5d7f3a78c4e94ed7a31f5ddd50c81e71734d5c0/rank_0_0/model
+(EngineCore pid=153) INFO 10-08 11:09:00 [monitor.py:48] torch.compile took 14.73 s in total
+(EngineCore pid=153) INFO 10-08 11:09:00 [monitor.py:76] Initial profiling/warmup run took 0.53 s
+(EngineCore pid=153) INFO 10-08 11:09:08 [kv_cache_utils.py:829] Overriding num_gpu_blocks=0 with num_gpu_blocks_override=512
+(EngineCore pid=153) INFO 10-08 11:09:08 [gpu_model_runner.py:5876] Profiling CUDA graph memory: PIECEWISE=51 (largest=512), FULL=35 (largest=256)
+(EngineCore pid=153) INFO 10-08 11:09:09 [gpu_model_runner.py:5955] Estimated CUDA graph memory: 0.71 GiB total
+(EngineCore pid=153) INFO 10-08 11:09:09 [gpu_worker.py:436] Available KV cache memory: 6.03 GiB
+(EngineCore pid=153) INFO 10-08 11:09:09 [gpu_worker.py:470] In v0.19, CUDA graph memory profiling will be enabled by default (VLLM_MEMORY_PROFILER_ESTIMATE_CUDAGRAPHS=1), which more accurately accounts for CUDA graph memory during KV cache allocation. To try it now, set VLLM_MEMORY_PROFILER_ESTIMATE_CUDAGRAPHS=1 and increase --gpu-memory-utilization from 0.1100 to 0.1158 to maintain the same effective KV cache size.
+(EngineCore pid=153) INFO 10-08 11:09:09 [kv_cache_utils.py:1319] GPU KV cache size: 175,584 tokens
+(EngineCore pid=153) INFO 10-08 11:09:09 [kv_cache_utils.py:1324] Maximum concurrency for 4,096 tokens per request: 42.87x
+(EngineCore pid=153) 2026-10-08 11:09:09,998 - INFO - autotuner.py:262 - flashinfer.jit: [Autotuner]: Autotuning process starts ...
+(EngineCore pid=153) 2026-10-08 11:09:10,026 - INFO - autotuner.py:268 - flashinfer.jit: [Autotuner]: Autotuning process ends
+Capturing CUDA graphs (mixed prefill-decode, PIECEWISE): 100%|██████████| 51/51 [00:02<00:00, 17.40it/s]
+Capturing CUDA graphs (decode, FULL): 100%|██████████| 35/35 [00:01<00:00, 22.69it/s]
+(EngineCore pid=153) INFO 10-08 11:09:15 [gpu_model_runner.py:6046] Graph capturing finished in 6 secs, took 0.75 GiB
+(EngineCore pid=153) INFO 10-08 11:09:15 [gpu_worker.py:597] CUDA graph pool memory: 0.75 GiB (actual), 0.71 GiB (estimated), difference: 0.04 GiB (5.2%).
+(EngineCore pid=153) INFO 10-08 11:09:15 [core.py:283] init engine (profile, create kv cache, warmup model) took 30.22 seconds
+(EngineCore pid=153) INFO 10-08 11:09:16 [vllm.py:790] Asynchronous scheduling is enabled.
+Using the latest cached version of the dataset since gsm8k couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'main' at /opt/hf-cache/datasets/gsm8k/main/0.0.0/740312add88f781978c0658806c59bc2815b9866 (last modified on Thu Oct  8 10:30:09 2026).
+Using the latest cached version of the dataset since wis-k/instruction-following-eval couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'default' at /opt/hf-cache/datasets/wis-k___instruction-following-eval/default/0.0.0/5a5661c2a35488308556cf4453dc074d1eba91a0 (last modified on Thu Oct  8 10:30:11 2026).
+`trust_remote_code` is not supported anymore.
+Please check that the Hugging Face dataset 'hails/mmlu_no_train' isn't based on a loading script and remove `trust_remote_code`.
+If the dataset is based on a loading script, please ask the dataset author to remove it and convert it to a standard format like Parquet.
+Using the latest cached version of the dataset since hails/mmlu_no_train couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'philosophy' at /opt/hf-cache/datasets/hails___mmlu_no_train/philosophy/0.0.0/b2e1ec9aa795adafe68e8e983248dbd4b52a1c60 (last modified on Thu Oct  8 10:32:10 2026).
+`trust_remote_code` is not supported anymore.
+Please check that the Hugging Face dataset 'hails/mmlu_no_train' isn't based on a loading script and remove `trust_remote_code`.
+If the dataset is based on a loading script, please ask the dataset author to remove it and convert it to a standard format like Parquet.
+Using the latest cached version of the dataset since hails/mmlu_no_train couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'high_school_microeconomics' at /opt/hf-cache/datasets/hails___mmlu_no_train/high_school_microeconomics/0.0.0/b2e1ec9aa795adafe68e8e983248dbd4b52a1c60 (last modified on Thu Oct  8 10:31:20 2026).
+`trust_remote_code` is not supported anymore.
+Please check that the Hugging Face dataset 'hails/mmlu_no_train' isn't based on a loading script and remove `trust_remote_code`.
+If the dataset is based on a loading script, please ask the dataset author to remove it and convert it to a standard format like Parquet.
+Using the latest cached version of the dataset since hails/mmlu_no_train couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'computer_security' at /opt/hf-cache/datasets/hails___mmlu_no_train/computer_security/0.0.0/b2e1ec9aa795adafe68e8e983248dbd4b52a1c60 (last modified on Thu Oct  8 10:30:43 2026).
+`trust_remote_code` is not supported anymore.
+Please check that the Hugging Face dataset 'hails/mmlu_no_train' isn't based on a loading script and remove `trust_remote_code`.
+If the dataset is based on a loading script, please ask the dataset author to remove it and convert it to a standard format like Parquet.
+Using the latest cached version of the dataset since hails/mmlu_no_train couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'world_religions' at /opt/hf-cache/datasets/hails___mmlu_no_train/world_religions/0.0.0/b2e1ec9aa795adafe68e8e983248dbd4b52a1c60 (last modified on Thu Oct  8 10:32:38 2026).
+`trust_remote_code` is not supported anymore.
+Please check that the Hugging Face dataset 'hails/mmlu_no_train' isn't based on a loading script and remove `trust_remote_code`.
+If the dataset is based on a loading script, please ask the dataset author to remove it and convert it to a standard format like Parquet.
+Using the latest cached version of the dataset since hails/mmlu_no_train couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'college_computer_science' at /opt/hf-cache/datasets/hails___mmlu_no_train/college_computer_science/0.0.0/b2e1ec9aa795adafe68e8e983248dbd4b52a1c60 (last modified on Thu Oct  8 10:30:33 2026).
+`trust_remote_code` is not supported anymore.
+Please check that the Hugging Face dataset 'hails/mmlu_no_train' isn't based on a loading script and remove `trust_remote_code`.
+If the dataset is based on a loading script, please ask the dataset author to remove it and convert it to a standard format like Parquet.
+Using the latest cached version of the dataset since hails/mmlu_no_train couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'high_school_european_history' at /opt/hf-cache/datasets/hails___mmlu_no_train/high_school_european_history/0.0.0/b2e1ec9aa795adafe68e8e983248dbd4b52a1c60 (last modified on Thu Oct  8 10:31:08 2026).
+`trust_remote_code` is not supported anymore.
+Please check that the Hugging Face dataset 'hails/mmlu_no_train' isn't based on a loading script and remove `trust_remote_code`.
+If the dataset is based on a loading script, please ask the dataset author to remove it and convert it to a standard format like Parquet.
+Using the latest cached version of the dataset since hails/mmlu_no_train couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'jurisprudence' at /opt/hf-cache/datasets/hails___mmlu_no_train/jurisprudence/0.0.0/b2e1ec9aa795adafe68e8e983248dbd4b52a1c60 (last modified on Thu Oct  8 10:31:42 2026).
+`trust_remote_code` is not supported anymore.
+Please check that the Hugging Face dataset 'hails/mmlu_no_train' isn't based on a loading script and remove `trust_remote_code`.
+If the dataset is based on a loading script, please ask the dataset author to remove it and convert it to a standard format like Parquet.
+Using the latest cached version of the dataset since hails/mmlu_no_train couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'abstract_algebra' at /opt/hf-cache/datasets/hails___mmlu_no_train/abstract_algebra/0.0.0/b2e1ec9aa795adafe68e8e983248dbd4b52a1c60 (last modified on Thu Oct  8 10:30:14 2026).
+`trust_remote_code` is not supported anymore.
+Please check that the Hugging Face dataset 'hails/mmlu_no_train' isn't based on a loading script and remove `trust_remote_code`.
+If the dataset is based on a loading script, please ask the dataset author to remove it and convert it to a standard format like Parquet.
+Using the latest cached version of the dataset since hails/mmlu_no_train couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'high_school_biology' at /opt/hf-cache/datasets/hails___mmlu_no_train/high_school_biology/0.0.0/b2e1ec9aa795adafe68e8e983248dbd4b52a1c60 (last modified on Thu Oct  8 10:31:00 2026).
+`trust_remote_code` is not supported anymore.
+Please check that the Hugging Face dataset 'hails/mmlu_no_train' isn't based on a loading script and remove `trust_remote_code`.
+If the dataset is based on a loading script, please ask the dataset author to remove it and convert it to a standard format like Parquet.
+Using the latest cached version of the dataset since hails/mmlu_no_train couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'college_biology' at /opt/hf-cache/datasets/hails___mmlu_no_train/college_biology/0.0.0/b2e1ec9aa795adafe68e8e983248dbd4b52a1c60 (last modified on Thu Oct  8 10:30:28 2026).
+`trust_remote_code` is not supported anymore.
+Please check that the Hugging Face dataset 'hails/mmlu_no_train' isn't based on a loading script and remove `trust_remote_code`.
+If the dataset is based on a loading script, please ask the dataset author to remove it and convert it to a standard format like Parquet.
+Using the latest cached version of the dataset since hails/mmlu_no_train couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'high_school_geography' at /opt/hf-cache/datasets/hails___mmlu_no_train/high_school_geography/0.0.0/b2e1ec9aa795adafe68e8e983248dbd4b52a1c60 (last modified on Thu Oct  8 10:31:10 2026).
+`trust_remote_code` is not supported anymore.
+Please check that the Hugging Face dataset 'hails/mmlu_no_train' isn't based on a loading script and remove `trust_remote_code`.
+If the dataset is based on a loading script, please ask the dataset author to remove it and convert it to a standard format like Parquet.
+Using the latest cached version of the dataset since hails/mmlu_no_train couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'marketing' at /opt/hf-cache/datasets/hails___mmlu_no_train/marketing/0.0.0/b2e1ec9aa795adafe68e8e983248dbd4b52a1c60 (last modified on Thu Oct  8 10:31:52 2026).
+`trust_remote_code` is not supported anymore.
+Please check that the Hugging Face dataset 'hails/mmlu_no_train' isn't based on a loading script and remove `trust_remote_code`.
+If the dataset is based on a loading script, please ask the dataset author to remove it and convert it to a standard format like Parquet.
+Using the latest cached version of the dataset since hails/mmlu_no_train couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'professional_law' at /opt/hf-cache/datasets/hails___mmlu_no_train/professional_law/0.0.0/b2e1ec9aa795adafe68e8e983248dbd4b52a1c60 (last modified on Thu Oct  8 10:32:18 2026).
+`trust_remote_code` is not supported anymore.
+Please check that the Hugging Face dataset 'hails/mmlu_no_train' isn't based on a loading script and remove `trust_remote_code`.
+If the dataset is based on a loading script, please ask the dataset author to remove it and convert it to a standard format like Parquet.
+Using the latest cached version of the dataset since hails/mmlu_no_train couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'college_medicine' at /opt/hf-cache/datasets/hails___mmlu_no_train/college_medicine/0.0.0/b2e1ec9aa795adafe68e8e983248dbd4b52a1c60 (last modified on Thu Oct  8 10:30:38 2026).
+`trust_remote_code` is not supported anymore.
+Please check that the Hugging Face dataset 'hails/mmlu_no_train' isn't based on a loading script and remove `trust_remote_code`.
+If the dataset is based on a loading script, please ask the dataset author to remove it and convert it to a standard format like Parquet.
+Using the latest cached version of the dataset since hails/mmlu_no_train couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'high_school_physics' at /opt/hf-cache/datasets/hails___mmlu_no_train/high_school_physics/0.0.0/b2e1ec9aa795adafe68e8e983248dbd4b52a1c60 (last modified on Thu Oct  8 10:31:22 2026).
+`trust_remote_code` is not supported anymore.
+Please check that the Hugging Face dataset 'hails/mmlu_no_train' isn't based on a loading script and remove `trust_remote_code`.
+If the dataset is based on a loading script, please ask the dataset author to remove it and convert it to a standard format like Parquet.
+Using the latest cached version of the dataset since hails/mmlu_no_train couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'machine_learning' at /opt/hf-cache/datasets/hails___mmlu_no_train/machine_learning/0.0.0/b2e1ec9aa795adafe68e8e983248dbd4b52a1c60 (last modified on Thu Oct  8 10:31:46 2026).
+`trust_remote_code` is not supported anymore.
+Please check that the Hugging Face dataset 'hails/mmlu_no_train' isn't based on a loading script and remove `trust_remote_code`.
+If the dataset is based on a loading script, please ask the dataset author to remove it and convert it to a standard format like Parquet.
+Using the latest cached version of the dataset since hails/mmlu_no_train couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'prehistory' at /opt/hf-cache/datasets/hails___mmlu_no_train/prehistory/0.0.0/b2e1ec9aa795adafe68e8e983248dbd4b52a1c60 (last modified on Thu Oct  8 10:32:12 2026).
+`trust_remote_code` is not supported anymore.
+Please check that the Hugging Face dataset 'hails/mmlu_no_train' isn't based on a loading script and remove `trust_remote_code`.
+If the dataset is based on a loading script, please ask the dataset author to remove it and convert it to a standard format like Parquet.
+Using the latest cached version of the dataset since hails/mmlu_no_train couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'electrical_engineering' at /opt/hf-cache/datasets/hails___mmlu_no_train/electrical_engineering/0.0.0/b2e1ec9aa795adafe68e8e983248dbd4b52a1c60 (last modified on Thu Oct  8 10:30:51 2026).
+`trust_remote_code` is not supported anymore.
+Please check that the Hugging Face dataset 'hails/mmlu_no_train' isn't based on a loading script and remove `trust_remote_code`.
+If the dataset is based on a loading script, please ask the dataset author to remove it and convert it to a standard format like Parquet.
+Using the latest cached version of the dataset since hails/mmlu_no_train couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'professional_accounting' at /opt/hf-cache/datasets/hails___mmlu_no_train/professional_accounting/0.0.0/b2e1ec9aa795adafe68e8e983248dbd4b52a1c60 (last modified on Thu Oct  8 10:32:15 2026).
+`trust_remote_code` is not supported anymore.
+Please check that the Hugging Face dataset 'hails/mmlu_no_train' isn't based on a loading script and remove `trust_remote_code`.
+If the dataset is based on a loading script, please ask the dataset author to remove it and convert it to a standard format like Parquet.
+Using the latest cached version of the dataset since hails/mmlu_no_train couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'high_school_mathematics' at /opt/hf-cache/datasets/hails___mmlu_no_train/high_school_mathematics/0.0.0/b2e1ec9aa795adafe68e8e983248dbd4b52a1c60 (last modified on Thu Oct  8 10:31:17 2026).
+`trust_remote_code` is not supported anymore.
+Please check that the Hugging Face dataset 'hails/mmlu_no_train' isn't based on a loading script and remove `trust_remote_code`.
+If the dataset is based on a loading script, please ask the dataset author to remove it and convert it to a standard format like Parquet.
+Using the latest cached version of the dataset since hails/mmlu_no_train couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'nutrition' at /opt/hf-cache/datasets/hails___mmlu_no_train/nutrition/0.0.0/b2e1ec9aa795adafe68e8e983248dbd4b52a1c60 (last modified on Thu Oct  8 10:32:07 2026).
+`trust_remote_code` is not supported anymore.
+Please check that the Hugging Face dataset 'hails/mmlu_no_train' isn't based on a loading script and remove `trust_remote_code`.
+If the dataset is based on a loading script, please ask the dataset author to remove it and convert it to a standard format like Parquet.
+Using the latest cached version of the dataset since hails/mmlu_no_train couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'high_school_psychology' at /opt/hf-cache/datasets/hails___mmlu_no_train/high_school_psychology/0.0.0/b2e1ec9aa795adafe68e8e983248dbd4b52a1c60 (last modified on Thu Oct  8 10:31:25 2026).
+`trust_remote_code` is not supported anymore.
+Please check that the Hugging Face dataset 'hails/mmlu_no_train' isn't based on a loading script and remove `trust_remote_code`.
+If the dataset is based on a loading script, please ask the dataset author to remove it and convert it to a standard format like Parquet.
+Using the latest cached version of the dataset since hails/mmlu_no_train couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'security_studies' at /opt/hf-cache/datasets/hails___mmlu_no_train/security_studies/0.0.0/b2e1ec9aa795adafe68e8e983248dbd4b52a1c60 (last modified on Thu Oct  8 10:32:29 2026).
+`trust_remote_code` is not supported anymore.
+Please check that the Hugging Face dataset 'hails/mmlu_no_train' isn't based on a loading script and remove `trust_remote_code`.
+If the dataset is based on a loading script, please ask the dataset author to remove it and convert it to a standard format like Parquet.
+Using the latest cached version of the dataset since hails/mmlu_no_train couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'high_school_world_history' at /opt/hf-cache/datasets/hails___mmlu_no_train/high_school_world_history/0.0.0/b2e1ec9aa795adafe68e8e983248dbd4b52a1c60 (last modified on Thu Oct  8 10:31:33 2026).
+`trust_remote_code` is not supported anymore.
+Please check that the Hugging Face dataset 'hails/mmlu_no_train' isn't based on a loading script and remove `trust_remote_code`.
+If the dataset is based on a loading script, please ask the dataset author to remove it and convert it to a standard format like Parquet.
+Using the latest cached version of the dataset since hails/mmlu_no_train couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'virology' at /opt/hf-cache/datasets/hails___mmlu_no_train/virology/0.0.0/b2e1ec9aa795adafe68e8e983248dbd4b52a1c60 (last modified on Thu Oct  8 10:32:36 2026).
+`trust_remote_code` is not supported anymore.
+Please check that the Hugging Face dataset 'hails/mmlu_no_train' isn't based on a loading script and remove `trust_remote_code`.
+If the dataset is based on a loading script, please ask the dataset author to remove it and convert it to a standard format like Parquet.
+Using the latest cached version of the dataset since hails/mmlu_no_train couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'business_ethics' at /opt/hf-cache/datasets/hails___mmlu_no_train/business_ethics/0.0.0/b2e1ec9aa795adafe68e8e983248dbd4b52a1c60 (last modified on Thu Oct  8 10:30:22 2026).
+`trust_remote_code` is not supported anymore.
+Please check that the Hugging Face dataset 'hails/mmlu_no_train' isn't based on a loading script and remove `trust_remote_code`.
+If the dataset is based on a loading script, please ask the dataset author to remove it and convert it to a standard format like Parquet.
+Using the latest cached version of the dataset since hails/mmlu_no_train couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'public_relations' at /opt/hf-cache/datasets/hails___mmlu_no_train/public_relations/0.0.0/b2e1ec9aa795adafe68e8e983248dbd4b52a1c60 (last modified on Thu Oct  8 10:32:26 2026).
+`trust_remote_code` is not supported anymore.
+Please check that the Hugging Face dataset 'hails/mmlu_no_train' isn't based on a loading script and remove `trust_remote_code`.
+If the dataset is based on a loading script, please ask the dataset author to remove it and convert it to a standard format like Parquet.
+Using the latest cached version of the dataset since hails/mmlu_no_train couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'human_sexuality' at /opt/hf-cache/datasets/hails___mmlu_no_train/human_sexuality/0.0.0/b2e1ec9aa795adafe68e8e983248dbd4b52a1c60 (last modified on Thu Oct  8 10:31:37 2026).
+`trust_remote_code` is not supported anymore.
+Please check that the Hugging Face dataset 'hails/mmlu_no_train' isn't based on a loading script and remove `trust_remote_code`.
+If the dataset is based on a loading script, please ask the dataset author to remove it and convert it to a standard format like Parquet.
+Using the latest cached version of the dataset since hails/mmlu_no_train couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'elementary_mathematics' at /opt/hf-cache/datasets/hails___mmlu_no_train/elementary_mathematics/0.0.0/b2e1ec9aa795adafe68e8e983248dbd4b52a1c60 (last modified on Thu Oct  8 10:30:53 2026).
+`trust_remote_code` is not supported anymore.
+Please check that the Hugging Face dataset 'hails/mmlu_no_train' isn't based on a loading script and remove `trust_remote_code`.
+If the dataset is based on a loading script, please ask the dataset author to remove it and convert it to a standard format like Parquet.
+Using the latest cached version of the dataset since hails/mmlu_no_train couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'conceptual_physics' at /opt/hf-cache/datasets/hails___mmlu_no_train/conceptual_physics/0.0.0/b2e1ec9aa795adafe68e8e983248dbd4b52a1c60 (last modified on Thu Oct  8 10:30:46 2026).
+`trust_remote_code` is not supported anymore.
+Please check that the Hugging Face dataset 'hails/mmlu_no_train' isn't based on a loading script and remove `trust_remote_code`.
+If the dataset is based on a loading script, please ask the dataset author to remove it and convert it to a standard format like Parquet.
+Using the latest cached version of the dataset since hails/mmlu_no_train couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'high_school_chemistry' at /opt/hf-cache/datasets/hails___mmlu_no_train/high_school_chemistry/0.0.0/b2e1ec9aa795adafe68e8e983248dbd4b52a1c60 (last modified on Thu Oct  8 10:31:03 2026).
+`trust_remote_code` is not supported anymore.
+Please check that the Hugging Face dataset 'hails/mmlu_no_train' isn't based on a loading script and remove `trust_remote_code`.
+If the dataset is based on a loading script, please ask the dataset author to remove it and convert it to a standard format like Parquet.
+Using the latest cached version of the dataset since hails/mmlu_no_train couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'college_physics' at /opt/hf-cache/datasets/hails___mmlu_no_train/college_physics/0.0.0/b2e1ec9aa795adafe68e8e983248dbd4b52a1c60 (last modified on Thu Oct  8 10:30:41 2026).
+`trust_remote_code` is not supported anymore.
+Please check that the Hugging Face dataset 'hails/mmlu_no_train' isn't based on a loading script and remove `trust_remote_code`.
+If the dataset is based on a loading script, please ask the dataset author to remove it and convert it to a standard format like Parquet.
+Using the latest cached version of the dataset since hails/mmlu_no_train couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'high_school_government_and_politics' at /opt/hf-cache/datasets/hails___mmlu_no_train/high_school_government_and_politics/0.0.0/b2e1ec9aa795adafe68e8e983248dbd4b52a1c60 (last modified on Thu Oct  8 10:31:12 2026).
+`trust_remote_code` is not supported anymore.
+Please check that the Hugging Face dataset 'hails/mmlu_no_train' isn't based on a loading script and remove `trust_remote_code`.
+If the dataset is based on a loading script, please ask the dataset author to remove it and convert it to a standard format like Parquet.
+Using the latest cached version of the dataset since hails/mmlu_no_train couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'college_mathematics' at /opt/hf-cache/datasets/hails___mmlu_no_train/college_mathematics/0.0.0/b2e1ec9aa795adafe68e8e983248dbd4b52a1c60 (last modified on Thu Oct  8 10:30:36 2026).
+`trust_remote_code` is not supported anymore.
+Please check that the Hugging Face dataset 'hails/mmlu_no_train' isn't based on a loading script and remove `trust_remote_code`.
+If the dataset is based on a loading script, please ask the dataset author to remove it and convert it to a standard format like Parquet.
+Using the latest cached version of the dataset since hails/mmlu_no_train couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'high_school_macroeconomics' at /opt/hf-cache/datasets/hails___mmlu_no_train/high_school_macroeconomics/0.0.0/b2e1ec9aa795adafe68e8e983248dbd4b52a1c60 (last modified on Thu Oct  8 10:31:15 2026).
+`trust_remote_code` is not supported anymore.
+Please check that the Hugging Face dataset 'hails/mmlu_no_train' isn't based on a loading script and remove `trust_remote_code`.
+If the dataset is based on a loading script, please ask the dataset author to remove it and convert it to a standard format like Parquet.
+Using the latest cached version of the dataset since hails/mmlu_no_train couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'econometrics' at /opt/hf-cache/datasets/hails___mmlu_no_train/econometrics/0.0.0/b2e1ec9aa795adafe68e8e983248dbd4b52a1c60 (last modified on Thu Oct  8 10:30:48 2026).
+`trust_remote_code` is not supported anymore.
+Please check that the Hugging Face dataset 'hails/mmlu_no_train' isn't based on a loading script and remove `trust_remote_code`.
+If the dataset is based on a loading script, please ask the dataset author to remove it and convert it to a standard format like Parquet.
+Using the latest cached version of the dataset since hails/mmlu_no_train couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'college_chemistry' at /opt/hf-cache/datasets/hails___mmlu_no_train/college_chemistry/0.0.0/b2e1ec9aa795adafe68e8e983248dbd4b52a1c60 (last modified on Thu Oct  8 10:30:31 2026).
+`trust_remote_code` is not supported anymore.
+Please check that the Hugging Face dataset 'hails/mmlu_no_train' isn't based on a loading script and remove `trust_remote_code`.
+If the dataset is based on a loading script, please ask the dataset author to remove it and convert it to a standard format like Parquet.
+Using the latest cached version of the dataset since hails/mmlu_no_train couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'professional_medicine' at /opt/hf-cache/datasets/hails___mmlu_no_train/professional_medicine/0.0.0/b2e1ec9aa795adafe68e8e983248dbd4b52a1c60 (last modified on Thu Oct  8 10:32:21 2026).
+`trust_remote_code` is not supported anymore.
+Please check that the Hugging Face dataset 'hails/mmlu_no_train' isn't based on a loading script and remove `trust_remote_code`.
+If the dataset is based on a loading script, please ask the dataset author to remove it and convert it to a standard format like Parquet.
+Using the latest cached version of the dataset since hails/mmlu_no_train couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'high_school_us_history' at /opt/hf-cache/datasets/hails___mmlu_no_train/high_school_us_history/0.0.0/b2e1ec9aa795adafe68e8e983248dbd4b52a1c60 (last modified on Thu Oct  8 10:31:30 2026).
+`trust_remote_code` is not supported anymore.
+Please check that the Hugging Face dataset 'hails/mmlu_no_train' isn't based on a loading script and remove `trust_remote_code`.
+If the dataset is based on a loading script, please ask the dataset author to remove it and convert it to a standard format like Parquet.
+Using the latest cached version of the dataset since hails/mmlu_no_train couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'management' at /opt/hf-cache/datasets/hails___mmlu_no_train/management/0.0.0/b2e1ec9aa795adafe68e8e983248dbd4b52a1c60 (last modified on Thu Oct  8 10:31:49 2026).
+`trust_remote_code` is not supported anymore.
+Please check that the Hugging Face dataset 'hails/mmlu_no_train' isn't based on a loading script and remove `trust_remote_code`.
+If the dataset is based on a loading script, please ask the dataset author to remove it and convert it to a standard format like Parquet.
+Using the latest cached version of the dataset since hails/mmlu_no_train couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'medical_genetics' at /opt/hf-cache/datasets/hails___mmlu_no_train/medical_genetics/0.0.0/b2e1ec9aa795adafe68e8e983248dbd4b52a1c60 (last modified on Thu Oct  8 10:31:54 2026).
+`trust_remote_code` is not supported anymore.
+Please check that the Hugging Face dataset 'hails/mmlu_no_train' isn't based on a loading script and remove `trust_remote_code`.
+If the dataset is based on a loading script, please ask the dataset author to remove it and convert it to a standard format like Parquet.
+Using the latest cached version of the dataset since hails/mmlu_no_train couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'human_aging' at /opt/hf-cache/datasets/hails___mmlu_no_train/human_aging/0.0.0/b2e1ec9aa795adafe68e8e983248dbd4b52a1c60 (last modified on Thu Oct  8 10:31:35 2026).
+`trust_remote_code` is not supported anymore.
+Please check that the Hugging Face dataset 'hails/mmlu_no_train' isn't based on a loading script and remove `trust_remote_code`.
+If the dataset is based on a loading script, please ask the dataset author to remove it and convert it to a standard format like Parquet.
+Using the latest cached version of the dataset since hails/mmlu_no_train couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'astronomy' at /opt/hf-cache/datasets/hails___mmlu_no_train/astronomy/0.0.0/b2e1ec9aa795adafe68e8e983248dbd4b52a1c60 (last modified on Thu Oct  8 10:30:19 2026).
+`trust_remote_code` is not supported anymore.
+Please check that the Hugging Face dataset 'hails/mmlu_no_train' isn't based on a loading script and remove `trust_remote_code`.
+If the dataset is based on a loading script, please ask the dataset author to remove it and convert it to a standard format like Parquet.
+Using the latest cached version of the dataset since hails/mmlu_no_train couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'anatomy' at /opt/hf-cache/datasets/hails___mmlu_no_train/anatomy/0.0.0/b2e1ec9aa795adafe68e8e983248dbd4b52a1c60 (last modified on Thu Oct  8 10:30:16 2026).
+`trust_remote_code` is not supported anymore.
+Please check that the Hugging Face dataset 'hails/mmlu_no_train' isn't based on a loading script and remove `trust_remote_code`.
+If the dataset is based on a loading script, please ask the dataset author to remove it and convert it to a standard format like Parquet.
+Using the latest cached version of the dataset since hails/mmlu_no_train couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'high_school_computer_science' at /opt/hf-cache/datasets/hails___mmlu_no_train/high_school_computer_science/0.0.0/b2e1ec9aa795adafe68e8e983248dbd4b52a1c60 (last modified on Thu Oct  8 10:31:05 2026).
+`trust_remote_code` is not supported anymore.
+Please check that the Hugging Face dataset 'hails/mmlu_no_train' isn't based on a loading script and remove `trust_remote_code`.
+If the dataset is based on a loading script, please ask the dataset author to remove it and convert it to a standard format like Parquet.
+Using the latest cached version of the dataset since hails/mmlu_no_train couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'global_facts' at /opt/hf-cache/datasets/hails___mmlu_no_train/global_facts/0.0.0/b2e1ec9aa795adafe68e8e983248dbd4b52a1c60 (last modified on Thu Oct  8 10:30:58 2026).
+`trust_remote_code` is not supported anymore.
+Please check that the Hugging Face dataset 'hails/mmlu_no_train' isn't based on a loading script and remove `trust_remote_code`.
+If the dataset is based on a loading script, please ask the dataset author to remove it and convert it to a standard format like Parquet.
+Using the latest cached version of the dataset since hails/mmlu_no_train couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'us_foreign_policy' at /opt/hf-cache/datasets/hails___mmlu_no_train/us_foreign_policy/0.0.0/b2e1ec9aa795adafe68e8e983248dbd4b52a1c60 (last modified on Thu Oct  8 10:32:34 2026).
+`trust_remote_code` is not supported anymore.
+Please check that the Hugging Face dataset 'hails/mmlu_no_train' isn't based on a loading script and remove `trust_remote_code`.
+If the dataset is based on a loading script, please ask the dataset author to remove it and convert it to a standard format like Parquet.
+Using the latest cached version of the dataset since hails/mmlu_no_train couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'moral_disputes' at /opt/hf-cache/datasets/hails___mmlu_no_train/moral_disputes/0.0.0/b2e1ec9aa795adafe68e8e983248dbd4b52a1c60 (last modified on Thu Oct  8 10:32:00 2026).
+`trust_remote_code` is not supported anymore.
+Please check that the Hugging Face dataset 'hails/mmlu_no_train' isn't based on a loading script and remove `trust_remote_code`.
+If the dataset is based on a loading script, please ask the dataset author to remove it and convert it to a standard format like Parquet.
+Using the latest cached version of the dataset since hails/mmlu_no_train couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'international_law' at /opt/hf-cache/datasets/hails___mmlu_no_train/international_law/0.0.0/b2e1ec9aa795adafe68e8e983248dbd4b52a1c60 (last modified on Thu Oct  8 10:31:39 2026).
+`trust_remote_code` is not supported anymore.
+Please check that the Hugging Face dataset 'hails/mmlu_no_train' isn't based on a loading script and remove `trust_remote_code`.
+If the dataset is based on a loading script, please ask the dataset author to remove it and convert it to a standard format like Parquet.
+Using the latest cached version of the dataset since hails/mmlu_no_train couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'high_school_statistics' at /opt/hf-cache/datasets/hails___mmlu_no_train/high_school_statistics/0.0.0/b2e1ec9aa795adafe68e8e983248dbd4b52a1c60 (last modified on Thu Oct  8 10:31:27 2026).
+`trust_remote_code` is not supported anymore.
+Please check that the Hugging Face dataset 'hails/mmlu_no_train' isn't based on a loading script and remove `trust_remote_code`.
+If the dataset is based on a loading script, please ask the dataset author to remove it and convert it to a standard format like Parquet.
+Using the latest cached version of the dataset since hails/mmlu_no_train couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'professional_psychology' at /opt/hf-cache/datasets/hails___mmlu_no_train/professional_psychology/0.0.0/b2e1ec9aa795adafe68e8e983248dbd4b52a1c60 (last modified on Thu Oct  8 10:32:23 2026).
+`trust_remote_code` is not supported anymore.
+Please check that the Hugging Face dataset 'hails/mmlu_no_train' isn't based on a loading script and remove `trust_remote_code`.
+If the dataset is based on a loading script, please ask the dataset author to remove it and convert it to a standard format like Parquet.
+Using the latest cached version of the dataset since hails/mmlu_no_train couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'clinical_knowledge' at /opt/hf-cache/datasets/hails___mmlu_no_train/clinical_knowledge/0.0.0/b2e1ec9aa795adafe68e8e983248dbd4b52a1c60 (last modified on Thu Oct  8 10:30:25 2026).
+`trust_remote_code` is not supported anymore.
+Please check that the Hugging Face dataset 'hails/mmlu_no_train' isn't based on a loading script and remove `trust_remote_code`.
+If the dataset is based on a loading script, please ask the dataset author to remove it and convert it to a standard format like Parquet.
+Using the latest cached version of the dataset since hails/mmlu_no_train couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'sociology' at /opt/hf-cache/datasets/hails___mmlu_no_train/sociology/0.0.0/b2e1ec9aa795adafe68e8e983248dbd4b52a1c60 (last modified on Thu Oct  8 10:32:31 2026).
+`trust_remote_code` is not supported anymore.
+Please check that the Hugging Face dataset 'hails/mmlu_no_train' isn't based on a loading script and remove `trust_remote_code`.
+If the dataset is based on a loading script, please ask the dataset author to remove it and convert it to a standard format like Parquet.
+Using the latest cached version of the dataset since hails/mmlu_no_train couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'moral_scenarios' at /opt/hf-cache/datasets/hails___mmlu_no_train/moral_scenarios/0.0.0/b2e1ec9aa795adafe68e8e983248dbd4b52a1c60 (last modified on Thu Oct  8 10:32:03 2026).
+`trust_remote_code` is not supported anymore.
+Please check that the Hugging Face dataset 'hails/mmlu_no_train' isn't based on a loading script and remove `trust_remote_code`.
+If the dataset is based on a loading script, please ask the dataset author to remove it and convert it to a standard format like Parquet.
+Using the latest cached version of the dataset since hails/mmlu_no_train couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'formal_logic' at /opt/hf-cache/datasets/hails___mmlu_no_train/formal_logic/0.0.0/b2e1ec9aa795adafe68e8e983248dbd4b52a1c60 (last modified on Thu Oct  8 10:30:56 2026).
+`trust_remote_code` is not supported anymore.
+Please check that the Hugging Face dataset 'hails/mmlu_no_train' isn't based on a loading script and remove `trust_remote_code`.
+If the dataset is based on a loading script, please ask the dataset author to remove it and convert it to a standard format like Parquet.
+Using the latest cached version of the dataset since hails/mmlu_no_train couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'logical_fallacies' at /opt/hf-cache/datasets/hails___mmlu_no_train/logical_fallacies/0.0.0/b2e1ec9aa795adafe68e8e983248dbd4b52a1c60 (last modified on Thu Oct  8 10:31:44 2026).
+`trust_remote_code` is not supported anymore.
+Please check that the Hugging Face dataset 'hails/mmlu_no_train' isn't based on a loading script and remove `trust_remote_code`.
+If the dataset is based on a loading script, please ask the dataset author to remove it and convert it to a standard format like Parquet.
+Using the latest cached version of the dataset since hails/mmlu_no_train couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'miscellaneous' at /opt/hf-cache/datasets/hails___mmlu_no_train/miscellaneous/0.0.0/b2e1ec9aa795adafe68e8e983248dbd4b52a1c60 (last modified on Thu Oct  8 10:31:57 2026).
+[32m2026-10-08 11:09:17[0m | [1mINFO    [0m | [36mlmms_eval.evaluator[0m:[36mevaluate[0m:[36m1047[0m - [1mRunning on rank 0 (local rank 0)[0m
+[32m2026-10-08 11:09:17[0m | [1mINFO    [0m | [36mlmms_eval.api.task[0m:[36mbuild_all_requests[0m:[36m473[0m - [1mBuilding contexts for mmlu_jetson_miscellaneous on rank 0...[0m
+100%|██████████| 8/8 [00:00<00:00, 144.96it/s]
+[32m2026-10-08 11:09:17[0m | [1mINFO    [0m | [36mlmms_eval.api.task[0m:[36mbuild_all_requests[0m:[36m473[0m - [1mBuilding contexts for mmlu_jetson_logical_fallacies on rank 0...[0m
+100%|██████████| 8/8 [00:00<00:00, 147.48it/s]
+[32m2026-10-08 11:09:17[0m | [1mINFO    [0m | [36mlmms_eval.api.task[0m:[36mbuild_all_requests[0m:[36m473[0m - [1mBuilding contexts for mmlu_jetson_formal_logic on rank 0...[0m
+100%|██████████| 8/8 [00:00<00:00, 144.80it/s]
+[32m2026-10-08 11:09:17[0m | [1mINFO    [0m | [36mlmms_eval.api.task[0m:[36mbuild_all_requests[0m:[36m473[0m - [1mBuilding contexts for mmlu_jetson_moral_scenarios on rank 0...[0m
+100%|██████████| 8/8 [00:00<00:00, 148.47it/s]
+[32m2026-10-08 11:09:17[0m | [1mINFO    [0m | [36mlmms_eval.api.task[0m:[36mbuild_all_requests[0m:[36m473[0m - [1mBuilding contexts for mmlu_jetson_sociology on rank 0...[0m
+100%|██████████| 8/8 [00:00<00:00, 148.72it/s]
+[32m2026-10-08 11:09:17[0m | [1mINFO    [0m | [36mlmms_eval.api.task[0m:[36mbuild_all_requests[0m:[36m473[0m - [1mBuilding contexts for mmlu_jetson_clinical_knowledge on rank 0...[0m
+100%|██████████| 8/8 [00:00<00:00, 148.31it/s]
+[32m2026-10-08 11:09:17[0m | [1mINFO    [0m | [36mlmms_eval.api.task[0m:[36mbuild_all_requests[0m:[36m473[0m - [1mBuilding contexts for mmlu_jetson_professional_psychology on rank 0...[0m
+100%|██████████| 8/8 [00:00<00:00, 148.01it/s]
+[32m2026-10-08 11:09:17[0m | [1mINFO    [0m | [36mlmms_eval.api.task[0m:[36mbuild_all_requests[0m:[36m473[0m - [1mBuilding contexts for mmlu_jetson_high_school_statistics on rank 0...[0m
+100%|██████████| 8/8 [00:00<00:00, 147.87it/s]
+[32m2026-10-08 11:09:17[0m | [1mINFO    [0m | [36mlmms_eval.api.task[0m:[36mbuild_all_requests[0m:[36m473[0m - [1mBuilding contexts for mmlu_jetson_international_law on rank 0...[0m
+100%|██████████| 8/8 [00:00<00:00, 148.55it/s]
+[32m2026-10-08 11:09:17[0m | [1mINFO    [0m | [36mlmms_eval.api.task[0m:[36mbuild_all_requests[0m:[36m473[0m - [1mBuilding contexts for mmlu_jetson_moral_disputes on rank 0...[0m
+100%|██████████| 8/8 [00:00<00:00, 148.06it/s]
+[32m2026-10-08 11:09:17[0m | [1mINFO    [0m | [36mlmms_eval.api.task[0m:[36mbuild_all_requests[0m:[36m473[0m - [1mBuilding contexts for mmlu_jetson_us_foreign_policy on rank 0...[0m
+100%|██████████| 8/8 [00:00<00:00, 148.67it/s]
+[32m2026-10-08 11:09:17[0m | [1mINFO    [0m | [36mlmms_eval.api.task[0m:[36mbuild_all_requests[0m:[36m473[0m - [1mBuilding contexts for mmlu_jetson_global_facts on rank 0...[0m
+100%|██████████| 8/8 [00:00<00:00, 148.59it/s]
+[32m2026-10-08 11:09:18[0m | [1mINFO    [0m | [36mlmms_eval.api.task[0m:[36mbuild_all_requests[0m:[36m473[0m - [1mBuilding contexts for mmlu_jetson_high_school_computer_science on rank 0...[0m
+100%|██████████| 8/8 [00:00<00:00, 149.82it/s]
+[32m2026-10-08 11:09:18[0m | [1mINFO    [0m | [36mlmms_eval.api.task[0m:[36mbuild_all_requests[0m:[36m473[0m - [1mBuilding contexts for mmlu_jetson_anatomy on rank 0...[0m
+100%|██████████| 8/8 [00:00<00:00, 148.50it/s]
+[32m2026-10-08 11:09:18[0m | [1mINFO    [0m | [36mlmms_eval.api.task[0m:[36mbuild_all_requests[0m:[36m473[0m - [1mBuilding contexts for mmlu_jetson_astronomy on rank 0...[0m
+100%|██████████| 8/8 [00:00<00:00, 146.87it/s]
+[32m2026-10-08 11:09:18[0m | [1mINFO    [0m | [36mlmms_eval.api.task[0m:[36mbuild_all_requests[0m:[36m473[0m - [1mBuilding contexts for mmlu_jetson_human_aging on rank 0...[0m
+100%|██████████| 8/8 [00:00<00:00, 146.90it/s]
+[32m2026-10-08 11:09:18[0m | [1mINFO    [0m | [36mlmms_eval.api.task[0m:[36mbuild_all_requests[0m:[36m473[0m - [1mBuilding contexts for mmlu_jetson_medical_genetics on rank 0...[0m
+100%|██████████| 8/8 [00:00<00:00, 148.61it/s]
+[32m2026-10-08 11:09:18[0m | [1mINFO    [0m | [36mlmms_eval.api.task[0m:[36mbuild_all_requests[0m:[36m473[0m - [1mBuilding contexts for mmlu_jetson_management on rank 0...[0m
+100%|██████████| 8/8 [00:00<00:00, 146.35it/s]
+[32m2026-10-08 11:09:18[0m | [1mINFO    [0m | [36mlmms_eval.api.task[0m:[36mbuild_all_requests[0m:[36m473[0m - [1mBuilding contexts for mmlu_jetson_high_school_us_history on rank 0...[0m
+100%|██████████| 8/8 [00:00<00:00, 145.18it/s]
+[32m2026-10-08 11:09:18[0m | [1mINFO    [0m | [36mlmms_eval.api.task[0m:[36mbuild_all_requests[0m:[36m473[0m - [1mBuilding contexts for mmlu_jetson_professional_medicine on rank 0...[0m
+100%|██████████| 8/8 [00:00<00:00, 146.41it/s]
+[32m2026-10-08 11:09:18[0m | [1mINFO    [0m | [36mlmms_eval.api.task[0m:[36mbuild_all_requests[0m:[36m473[0m - [1mBuilding contexts for mmlu_jetson_college_chemistry on rank 0...[0m
+100%|██████████| 8/8 [00:00<00:00, 147.11it/s]
+[32m2026-10-08 11:09:18[0m | [1mINFO    [0m | [36mlmms_eval.api.task[0m:[36mbuild_all_requests[0m:[36m473[0m - [1mBuilding contexts for mmlu_jetson_econometrics on rank 0...[0m
+100%|██████████| 8/8 [00:00<00:00, 146.74it/s]
+[32m2026-10-08 11:09:18[0m | [1mINFO    [0m | [36mlmms_eval.api.task[0m:[36mbuild_all_requests[0m:[36m473[0m - [1mBuilding contexts for mmlu_jetson_high_school_macroeconomics on rank 0...[0m
+100%|██████████| 8/8 [00:00<00:00, 147.41it/s]
+[32m2026-10-08 11:09:18[0m | [1mINFO    [0m | [36mlmms_eval.api.task[0m:[36mbuild_all_requests[0m:[36m473[0m - [1mBuilding contexts for mmlu_jetson_college_mathematics on rank 0...[0m
+100%|██████████| 8/8 [00:00<00:00, 146.42it/s]
+[32m2026-10-08 11:09:18[0m | [1mINFO    [0m | [36mlmms_eval.api.task[0m:[36mbuild_all_requests[0m:[36m473[0m - [1mBuilding contexts for mmlu_jetson_high_school_government_and_politics on rank 0...[0m
+100%|██████████| 8/8 [00:00<00:00, 147.19it/s]
+[32m2026-10-08 11:09:18[0m | [1mINFO    [0m | [36mlmms_eval.api.task[0m:[36mbuild_all_requests[0m:[36m473[0m - [1mBuilding contexts for mmlu_jetson_college_physics on rank 0...[0m
+100%|██████████| 8/8 [00:00<00:00, 147.61it/s]
+[32m2026-10-08 11:09:18[0m | [1mINFO    [0m | [36mlmms_eval.api.task[0m:[36mbuild_all_requests[0m:[36m473[0m - [1mBuilding contexts for mmlu_jetson_high_school_chemistry on rank 0...[0m
+100%|██████████| 8/8 [00:00<00:00, 147.56it/s]
+[32m2026-10-08 11:09:18[0m | [1mINFO    [0m | [36mlmms_eval.api.task[0m:[36mbuild_all_requests[0m:[36m473[0m - [1mBuilding contexts for mmlu_jetson_conceptual_physics on rank 0...[0m
+100%|██████████| 8/8 [00:00<00:00, 147.78it/s]
+[32m2026-10-08 11:09:18[0m | [1mINFO    [0m | [36mlmms_eval.api.task[0m:[36mbuild_all_requests[0m:[36m473[0m - [1mBuilding contexts for mmlu_jetson_elementary_mathematics on rank 0...[0m
+100%|██████████| 8/8 [00:00<00:00, 146.50it/s]
+[32m2026-10-08 11:09:18[0m | [1mINFO    [0m | [36mlmms_eval.api.task[0m:[36mbuild_all_requests[0m:[36m473[0m - [1mBuilding contexts for mmlu_jetson_human_sexuality on rank 0...[0m
+100%|██████████| 8/8 [00:00<00:00, 146.98it/s]
+[32m2026-10-08 11:09:18[0m | [1mINFO    [0m | [36mlmms_eval.api.task[0m:[36mbuild_all_requests[0m:[36m473[0m - [1mBuilding contexts for mmlu_jetson_public_relations on rank 0...[0m
+100%|██████████| 8/8 [00:00<00:00, 147.40it/s]
+[32m2026-10-08 11:09:19[0m | [1mINFO    [0m | [36mlmms_eval.api.task[0m:[36mbuild_all_requests[0m:[36m473[0m - [1mBuilding contexts for mmlu_jetson_business_ethics on rank 0...[0m
+100%|██████████| 8/8 [00:00<00:00, 145.48it/s]
+[32m2026-10-08 11:09:19[0m | [1mINFO    [0m | [36mlmms_eval.api.task[0m:[36mbuild_all_requests[0m:[36m473[0m - [1mBuilding contexts for mmlu_jetson_virology on rank 0...[0m
+100%|██████████| 8/8 [00:00<00:00, 145.78it/s]
+[32m2026-10-08 11:09:19[0m | [1mINFO    [0m | [36mlmms_eval.api.task[0m:[36mbuild_all_requests[0m:[36m473[0m - [1mBuilding contexts for mmlu_jetson_high_school_world_history on rank 0...[0m
+100%|██████████| 8/8 [00:00<00:00, 146.08it/s]
+[32m2026-10-08 11:09:19[0m | [1mINFO    [0m | [36mlmms_eval.api.task[0m:[36mbuild_all_requests[0m:[36m473[0m - [1mBuilding contexts for mmlu_jetson_security_studies on rank 0...[0m
+100%|██████████| 8/8 [00:00<00:00, 146.35it/s]
+[32m2026-10-08 11:09:19[0m | [1mINFO    [0m | [36mlmms_eval.api.task[0m:[36mbuild_all_requests[0m:[36m473[0m - [1mBuilding contexts for mmlu_jetson_high_school_psychology on rank 0...[0m
+100%|██████████| 8/8 [00:00<00:00, 147.79it/s]
+[32m2026-10-08 11:09:19[0m | [1mINFO    [0m | [36mlmms_eval.api.task[0m:[36mbuild_all_requests[0m:[36m473[0m - [1mBuilding contexts for mmlu_jetson_nutrition on rank 0...[0m
+100%|██████████| 8/8 [00:00<00:00, 147.51it/s]
+[32m2026-10-08 11:09:19[0m | [1mINFO    [0m | [36mlmms_eval.api.task[0m:[36mbuild_all_requests[0m:[36m473[0m - [1mBuilding contexts for mmlu_jetson_high_school_mathematics on rank 0...[0m
+100%|██████████| 8/8 [00:00<00:00, 147.73it/s]
+[32m2026-10-08 11:09:19[0m | [1mINFO    [0m | [36mlmms_eval.api.task[0m:[36mbuild_all_requests[0m:[36m473[0m - [1mBuilding contexts for mmlu_jetson_professional_accounting on rank 0...[0m
+100%|██████████| 8/8 [00:00<00:00, 146.44it/s]
+[32m2026-10-08 11:09:19[0m | [1mINFO    [0m | [36mlmms_eval.api.task[0m:[36mbuild_all_requests[0m:[36m473[0m - [1mBuilding contexts for mmlu_jetson_electrical_engineering on rank 0...[0m
+100%|██████████| 8/8 [00:00<00:00, 147.22it/s]
+[32m2026-10-08 11:09:19[0m | [1mINFO    [0m | [36mlmms_eval.api.task[0m:[36mbuild_all_requests[0m:[36m473[0m - [1mBuilding contexts for mmlu_jetson_prehistory on rank 0...[0m
+100%|██████████| 8/8 [00:00<00:00, 148.09it/s]
+[32m2026-10-08 11:09:19[0m | [1mINFO    [0m | [36mlmms_eval.api.task[0m:[36mbuild_all_requests[0m:[36m473[0m - [1mBuilding contexts for mmlu_jetson_machine_learning on rank 0...[0m
+100%|██████████| 8/8 [00:00<00:00, 146.85it/s]
+[32m2026-10-08 11:09:19[0m | [1mINFO    [0m | [36mlmms_eval.api.task[0m:[36mbuild_all_requests[0m:[36m473[0m - [1mBuilding contexts for mmlu_jetson_high_school_physics on rank 0...[0m
+100%|██████████| 8/8 [00:00<00:00, 147.55it/s]
+[32m2026-10-08 11:09:19[0m | [1mINFO    [0m | [36mlmms_eval.api.task[0m:[36mbuild_all_requests[0m:[36m473[0m - [1mBuilding contexts for mmlu_jetson_college_medicine on rank 0...[0m
+100%|██████████| 8/8 [00:00<00:00, 147.16it/s]
+[32m2026-10-08 11:09:19[0m | [1mINFO    [0m | [36mlmms_eval.api.task[0m:[36mbuild_all_requests[0m:[36m473[0m - [1mBuilding contexts for mmlu_jetson_professional_law on rank 0...[0m
+100%|██████████| 8/8 [00:00<00:00, 147.05it/s]
+[32m2026-10-08 11:09:19[0m | [1mINFO    [0m | [36mlmms_eval.api.task[0m:[36mbuild_all_requests[0m:[36m473[0m - [1mBuilding contexts for mmlu_jetson_marketing on rank 0...[0m
+100%|██████████| 8/8 [00:00<00:00, 147.08it/s]
+[32m2026-10-08 11:09:19[0m | [1mINFO    [0m | [36mlmms_eval.api.task[0m:[36mbuild_all_requests[0m:[36m473[0m - [1mBuilding contexts for mmlu_jetson_high_school_geography on rank 0...[0m
+100%|██████████| 8/8 [00:00<00:00, 146.67it/s]
+[32m2026-10-08 11:09:19[0m | [1mINFO    [0m | [36mlmms_eval.api.task[0m:[36mbuild_all_requests[0m:[36m473[0m - [1mBuilding contexts for mmlu_jetson_college_biology on rank 0...[0m
+100%|██████████| 8/8 [00:00<00:00, 147.84it/s]
+[32m2026-10-08 11:09:19[0m | [1mINFO    [0m | [36mlmms_eval.api.task[0m:[36mbuild_all_requests[0m:[36m473[0m - [1mBuilding contexts for mmlu_jetson_high_school_biology on rank 0...[0m
+100%|██████████| 8/8 [00:00<00:00, 147.13it/s]
+[32m2026-10-08 11:09:20[0m | [1mINFO    [0m | [36mlmms_eval.api.task[0m:[36mbuild_all_requests[0m:[36m473[0m - [1mBuilding contexts for mmlu_jetson_abstract_algebra on rank 0...[0m
+100%|██████████| 8/8 [00:00<00:00, 146.24it/s]
+[32m2026-10-08 11:09:20[0m | [1mINFO    [0m | [36mlmms_eval.api.task[0m:[36mbuild_all_requests[0m:[36m473[0m - [1mBuilding contexts for mmlu_jetson_jurisprudence on rank 0...[0m
+100%|██████████| 8/8 [00:00<00:00, 147.65it/s]
+[32m2026-10-08 11:09:20[0m | [1mINFO    [0m | [36mlmms_eval.api.task[0m:[36mbuild_all_requests[0m:[36m473[0m - [1mBuilding contexts for mmlu_jetson_high_school_european_history on rank 0...[0m
+100%|██████████| 8/8 [00:00<00:00, 143.84it/s]
+[32m2026-10-08 11:09:20[0m | [1mINFO    [0m | [36mlmms_eval.api.task[0m:[36mbuild_all_requests[0m:[36m473[0m - [1mBuilding contexts for mmlu_jetson_college_computer_science on rank 0...[0m
+100%|██████████| 8/8 [00:00<00:00, 147.13it/s]
+[32m2026-10-08 11:09:20[0m | [1mINFO    [0m | [36mlmms_eval.api.task[0m:[36mbuild_all_requests[0m:[36m473[0m - [1mBuilding contexts for mmlu_jetson_world_religions on rank 0...[0m
+100%|██████████| 8/8 [00:00<00:00, 146.75it/s]
+[32m2026-10-08 11:09:20[0m | [1mINFO    [0m | [36mlmms_eval.api.task[0m:[36mbuild_all_requests[0m:[36m473[0m - [1mBuilding contexts for mmlu_jetson_computer_security on rank 0...[0m
+100%|██████████| 8/8 [00:00<00:00, 146.82it/s]
+[32m2026-10-08 11:09:20[0m | [1mINFO    [0m | [36mlmms_eval.api.task[0m:[36mbuild_all_requests[0m:[36m473[0m - [1mBuilding contexts for mmlu_jetson_high_school_microeconomics on rank 0...[0m
+100%|██████████| 8/8 [00:00<00:00, 147.62it/s]
+[32m2026-10-08 11:09:20[0m | [1mINFO    [0m | [36mlmms_eval.api.task[0m:[36mbuild_all_requests[0m:[36m473[0m - [1mBuilding contexts for mmlu_jetson_philosophy on rank 0...[0m
+100%|██████████| 8/8 [00:00<00:00, 146.45it/s]
+[32m2026-10-08 11:09:20[0m | [1mINFO    [0m | [36mlmms_eval.api.task[0m:[36mbuild_all_requests[0m:[36m473[0m - [1mBuilding contexts for ifeval on rank 0...[0m
+100%|██████████| 8/8 [00:00<00:00, 14230.04it/s]
+[32m2026-10-08 11:09:20[0m | [1mINFO    [0m | [36mlmms_eval.api.task[0m:[36mbuild_all_requests[0m:[36m473[0m - [1mBuilding contexts for gsm8k_jetson on rank 0...[0m
+100%|██████████| 8/8 [00:00<00:00, 379.75it/s]
+[32m2026-10-08 11:09:20[0m | [1mINFO    [0m | [36mlmms_eval.evaluator[0m:[36mevaluate[0m:[36m1202[0m - [1mRunning generate_until requests[0m
+Model Responding:   0%|          | 0/472 [00:00<?, ?it/s]
+
+
+
+
+
+Model Responding:   1%|          | 3/472 [00:01<02:49,  2.77it/s]
+
+
+
+
+
+
+Model Responding:   2%|▏         | 8/472 [00:03<03:28,  2.22it/s]
+
+
+
+
+
+
+
+Model Responding:   3%|▎         | 13/472 [00:04<01:54,  4.00it/s]
+
+
+
+
+
+
+Model Responding:   4%|▎         | 17/472 [00:06<03:01,  2.51it/s]
+
+
+
+
+
+
+Model Responding:   5%|▍         | 22/472 [00:11<05:39,  1.32it/s]
+
+
+
+
+Model Responding:   6%|▌         | 26/472 [00:13<04:00,  1.85it/s]
+
+
+
+
+
+Model Responding:   7%|▋         | 31/472 [00:14<02:08,  3.42it/s]
+
+
+
+
+
+
+
+Model Responding:   8%|▊         | 36/472 [00:15<01:52,  3.89it/s]
+
+
+
+
+
+
+
+Model Responding:   9%|▊         | 41/472 [00:18<02:49,  2.54it/s]
+
+
+
+
+
+Model Responding:  10%|▉         | 45/472 [00:20<03:07,  2.28it/s]
+
+
+
+
+
+
+
+Model Responding:  11%|█         | 50/472 [00:22<02:32,  2.77it/s]
+
+
+
+
+
+Model Responding:  12%|█▏        | 55/472 [00:23<01:17,  5.36it/s]
+
+
+
+
+
+Model Responding:  13%|█▎        | 60/472 [00:26<03:17,  2.08it/s]
+
+
+
+
+Model Responding:  14%|█▎        | 64/472 [00:29<04:41,  1.45it/s]
+
+
+
+
+
+
+
+Model Responding:  15%|█▍        | 69/472 [00:31<03:46,  1.78it/s]
+
+
+
+
+
+Model Responding:  16%|█▌        | 74/472 [00:34<03:35,  1.85it/s]
+
+
+
+
+Model Responding:  17%|█▋        | 78/472 [00:36<04:06,  1.60it/s]
+
+
+
+
+
+Model Responding:  18%|█▊        | 83/472 [00:40<05:19,  1.22it/s]
+
+
+
+
+
+
+
+Model Responding:  19%|█▊        | 88/472 [00:42<03:20,  1.92it/s]
+
+
+
+
+
+Model Responding:  20%|█▉        | 93/472 [00:46<05:00,  1.26it/s]
+
+
+
+
+Model Responding:  21%|██        | 97/472 [00:49<03:22,  1.85it/s]
+
+
+
+
+
+Model Responding:  22%|██▏       | 102/472 [00:49<01:16,  4.85it/s]
+
+
+
+
+
+
+
+Model Responding:  23%|██▎       | 107/472 [00:51<01:14,  4.91it/s]
+
+
+
+
+
+
+
+Model Responding:  24%|██▎       | 112/472 [00:53<02:15,  2.66it/s]
+
+
+
+
+Model Responding:  25%|██▍       | 116/472 [00:56<03:23,  1.75it/s]
+
+
+
+
+
+
+
+Model Responding:  26%|██▌       | 121/472 [00:58<02:27,  2.38it/s]
+
+
+
+
+
+
+
+Model Responding:  27%|██▋       | 126/472 [00:59<01:35,  3.62it/s]
+
+
+
+
+
+Model Responding:  28%|██▊       | 130/472 [01:00<01:23,  4.07it/s]
+
+
+
+
+
+
+
+
+
+
+Model Responding:  29%|██▉       | 136/472 [01:01<01:03,  5.31it/s]
+
+
+
+
+
+
+Model Responding:  30%|██▉       | 140/472 [01:01<00:44,  7.45it/s]
+
+
+
+
+
+
+Model Responding:  31%|███       | 144/472 [01:02<00:35,  9.16it/s]
+
+
+
+
+
+
+Model Responding:  32%|███▏      | 149/472 [01:03<01:04,  4.98it/s]
+
+
+
+
+
+Model Responding:  33%|███▎      | 154/472 [01:04<00:58,  5.43it/s]
+
+
+
+
+
+Model Responding:  34%|███▎      | 159/472 [01:05<00:54,  5.80it/s]
+
+
+
+
+Model Responding:  35%|███▍      | 163/472 [01:05<00:37,  8.15it/s]
+
+
+
+
+
+
+Model Responding:  36%|███▌      | 168/472 [01:07<00:53,  5.69it/s]
+
+
+
+
+
+Model Responding:  37%|███▋      | 173/472 [01:09<02:38,  1.89it/s]
+
+
+
+
+
+
+
+Model Responding:  38%|███▊      | 178/472 [01:10<01:46,  2.76it/s]
+
+
+
+
+
+
+
+Model Responding:  39%|███▊      | 182/472 [01:11<00:57,  5.01it/s]
+
+
+
+
+
+
+Model Responding:  40%|███▉      | 187/472 [01:14<02:31,  1.88it/s]
+
+
+
+
+
+
+Model Responding:  41%|████      | 192/472 [01:17<03:07,  1.50it/s]
+
+
+
+
+
+
+Model Responding:  42%|████▏     | 196/472 [01:19<02:31,  1.82it/s]
+
+
+
+
+
+
+
+
+
+Model Responding:  43%|████▎     | 202/472 [01:22<01:45,  2.57it/s]
+
+
+
+
+
+Model Responding:  44%|████▎     | 206/472 [01:23<01:43,  2.57it/s]
+
+
+
+
+
+Model Responding:  45%|████▍     | 211/472 [01:26<02:30,  1.73it/s]
+
+
+
+
+
+Model Responding:  46%|████▌     | 215/472 [01:28<02:01,  2.11it/s]
+
+
+
+
+
+
+
+Model Responding:  47%|████▋     | 220/472 [01:29<01:05,  3.82it/s]
+
+
+
+
+
+
+
+Model Responding:  48%|████▊     | 225/472 [01:30<00:38,  6.42it/s]
+
+
+
+
+
+Model Responding:  49%|████▊     | 229/472 [01:31<00:53,  4.51it/s]
+
+
+
+
+
+
+
+Model Responding:  50%|████▉     | 235/472 [01:32<00:52,  4.52it/s]
+
+
+
+
+
+
+Model Responding:  51%|█████     | 240/472 [01:33<01:01,  3.76it/s]
+
+
+
+
+
+Model Responding:  52%|█████▏    | 244/472 [01:34<00:46,  4.86it/s]
+
+
+
+
+
+Model Responding:  53%|█████▎    | 248/472 [01:35<00:53,  4.18it/s]
+
+
+
+
+
+Model Responding:  54%|█████▎    | 253/472 [01:37<01:01,  3.55it/s]
+
+
+
+
+
+
+
+Model Responding:  55%|█████▍    | 259/472 [01:38<00:41,  5.08it/s]
+
+
+
+Model Responding:  56%|█████▌    | 262/472 [01:41<01:51,  1.89it/s]
+
+
+
+
+
+
+
+Model Responding:  57%|█████▋    | 267/472 [01:42<01:33,  2.18it/s]
+
+
+
+
+
+Model Responding:  58%|█████▊    | 272/472 [01:45<01:18,  2.55it/s]
+
+
+
+
+
+Model Responding:  59%|█████▊    | 277/472 [01:46<01:20,  2.41it/s]
+
+
+
+
+
+
+Model Responding:  60%|█████▉    | 282/472 [01:47<00:51,  3.71it/s]
+
+
+
+
+
+
+Model Responding:  61%|██████    | 286/472 [01:49<00:56,  3.28it/s]
+
+
+
+
+
+
+Model Responding:  62%|██████▏   | 291/472 [01:51<01:19,  2.28it/s]
+
+
+
+
+
+Model Responding:  63%|██████▎   | 296/472 [01:52<00:39,  4.50it/s]
+
+
+
+
+Model Responding:  64%|██████▎   | 300/472 [01:55<02:03,  1.39it/s]
+
+
+
+
+
+Model Responding:  65%|██████▍   | 305/472 [02:00<02:22,  1.17it/s]
+
+
+
+
+
+
+Model Responding:  66%|██████▌   | 310/472 [02:03<01:47,  1.50it/s]
+
+
+
+
+
+Model Responding:  67%|██████▋   | 314/472 [02:05<01:12,  2.19it/s]
+
+
+
+
+
+
+
+
+Model Responding:  68%|██████▊   | 320/472 [02:05<00:26,  5.78it/s]
+
+
+
+
+
+Model Responding:  69%|██████▊   | 324/472 [02:06<00:44,  3.30it/s]
+
+
+
+
+
+
+Model Responding:  70%|██████▉   | 329/472 [02:08<00:38,  3.73it/s]
+
+
+
+
+Model Responding:  71%|███████   | 333/472 [02:09<00:49,  2.79it/s]
+
+
+
+
+
+
+Model Responding:  72%|███████▏  | 338/472 [02:11<00:54,  2.47it/s]
+
+
+
+
+
+
+
+Model Responding:  73%|███████▎  | 343/472 [02:13<00:46,  2.75it/s]
+
+
+
+
+Model Responding:  74%|███████▎  | 347/472 [02:14<00:53,  2.36it/s]
+
+
+
+
+
+Model Responding:  75%|███████▍  | 352/472 [02:17<00:48,  2.47it/s]
+
+
+
+
+
+Model Responding:  76%|███████▌  | 357/472 [02:20<01:03,  1.81it/s]
+
+
+
+
+
+
+
+Model Responding:  77%|███████▋  | 363/472 [02:21<00:24,  4.45it/s]
+
+
+
+
+
+Model Responding:  78%|███████▊  | 366/472 [02:22<00:27,  3.84it/s]
+
+
+
+
+
+
+
+
+
+Model Responding:  79%|███████▉  | 372/472 [02:23<00:17,  5.67it/s]
+
+
+
+
+
+
+Model Responding:  80%|███████▉  | 376/472 [02:24<00:21,  4.43it/s]
+
+
+
+
+
+
+
+Model Responding:  81%|████████  | 381/472 [02:26<00:33,  2.72it/s]
+
+
+
+
+
+
+
+Model Responding:  82%|████████▏ | 386/472 [02:27<00:19,  4.33it/s]
+
+
+
+
+
+
+Model Responding:  83%|████████▎ | 390/472 [02:27<00:12,  6.40it/s]
+
+
+
+
+
+
+
+Model Responding:  84%|████████▎ | 395/472 [02:28<00:19,  3.86it/s]
+
+
+
+
+
+Model Responding:  85%|████████▍ | 399/472 [02:30<00:19,  3.83it/s]
+
+
+
+
+
+
+Model Responding:  86%|████████▌ | 404/472 [02:34<00:47,  1.42it/s]
+
+
+
+
+
+Model Responding:  87%|████████▋ | 409/472 [02:36<00:32,  1.92it/s]
+
+
+
+
+Model Responding:  88%|████████▊ | 413/472 [02:37<00:19,  3.10it/s]
+
+
+
+
+
+Model Responding:  89%|████████▊ | 418/472 [02:40<00:32,  1.65it/s]
+
+
+
+
+
+
+Model Responding:  90%|████████▉ | 423/472 [02:44<00:41,  1.18it/s]
+
+
+
+
+
+
+
+
+Model Responding:  91%|█████████ | 429/472 [02:46<00:14,  2.89it/s]
+
+
+
+
+Model Responding:  92%|█████████▏| 432/472 [02:47<00:10,  3.75it/s]
+
+
+
+
+
+
+Model Responding:  93%|█████████▎| 437/472 [02:50<00:16,  2.08it/s]
+
+
+
+
+
+
+
+
+Model Responding:  94%|█████████▎| 442/472 [02:51<00:11,  2.68it/s]
+
+
+
+
+
+
+
+
+
+Model Responding:  95%|█████████▍| 448/472 [02:53<00:08,  2.79it/s]
+
+
+
+
+Model Responding:  96%|█████████▌| 451/472 [02:54<00:06,  3.21it/s]
+
+
+
+
+
+
+
+
+
+Model Responding:  97%|█████████▋| 457/472 [03:05<00:30,  2.05s/it]
+
+
+
+
+
+
+Model Responding:  98%|█████████▊| 461/472 [03:25<00:34,  3.11s/it]
+
+
+
+
+
+
+Model Responding:  99%|█████████▊| 465/472 [03:43<00:28,  4.11s/it]
+
+
+
+
+
+
+
+Model Responding: 100%|█████████▉| 470/472 [04:05<00:09,  4.52s/it]
+
+
+
+Postprocessing: 100%|██████████| 8/8 [00:00<00:00, 832.45it/s]
+[32m2026-10-08 11:13:35[0m | [1mINFO    [0m | [36mlmms_eval.evaluator[0m:[36mevaluate[0m:[36m1402[0m - [1mPostprocessed 8 docs for mmlu_jetson_miscellaneous/first-letter with 4 worker(s) in 0.01s[0m
+[32m2026-10-08 11:13:35[0m | [1mINFO    [0m | [36mlmms_eval.evaluator[0m:[36mevaluate[0m:[36m1402[0m - [1mPostprocessed 8 docs for mmlu_jetson_logical_fallacies/first-letter with 4 worker(s) in 0.01s[0m
+[32m2026-10-08 11:13:35[0m | [1mINFO    [0m | [36mlmms_eval.evaluator[0m:[36mevaluate[0m:[36m1402[0m - [1mPostprocessed 8 docs for mmlu_jetson_formal_logic/first-letter with 4 worker(s) in 0.01s[0m
+[32m2026-10-08 11:13:35[0m | [1mINFO    [0m | [36mlmms_eval.evaluator[0m:[36mevaluate[0m:[36m1402[0m - [1mPostprocessed 8 docs for mmlu_jetson_moral_scenarios/first-letter with 4 worker(s) in 0.01s[0m
+[32m2026-10-08 11:13:35[0m | [1mINFO    [0m | [36mlmms_eval.evaluator[0m:[36mevaluate[0m:[36m1402[0m - [1mPostprocessed 8 docs for mmlu_jetson_sociology/first-letter with 4 worker(s) in 0.01s[0m
+[32m2026-10-08 11:13:35[0m | [1mINFO    [0m | [36mlmms_eval.evaluator[0m:[36mevaluate[0m:[36m1402[0m - [1mPostprocessed 8 docs for mmlu_jetson_clinical_knowledge/first-letter with 4 worker(s) in 0.01s[0m
+[32m2026-10-08 11:13:35[0m | [1mINFO    [0m | [36mlmms_eval.evaluator[0m:[36mevaluate[0m:[36m1402[0m - [1mPostprocessed 8 docs for mmlu_jetson_professional_psychology/first-letter with 4 worker(s) in 0.01s[0m
+[32m2026-10-08 11:13:35[0m | [1mINFO    [0m | [36mlmms_eval.evaluator[0m:[36mevaluate[0m:[36m1402[0m - [1mPostprocessed 8 docs for mmlu_jetson_high_school_statistics/first-letter with 4 worker(s) in 0.01s[0m
+[32m2026-10-08 11:13:35[0m | [1mINFO    [0m | [36mlmms_eval.evaluator[0m:[36mevaluate[0m:[36m1402[0m - [1mPostprocessed 8 docs for mmlu_jetson_international_law/first-letter with 4 worker(s) in 0.01s[0m
+[32m2026-10-08 11:13:35[0m | [1mINFO    [0m | [36mlmms_eval.evaluator[0m:[36mevaluate[0m:[36m1402[0m - [1mPostprocessed 8 docs for mmlu_jetson_moral_disputes/first-letter with 4 worker(s) in 0.01s[0m
+[32m2026-10-08 11:13:35[0m | [1mINFO    [0m | [36mlmms_eval.evaluator[0m:[36mevaluate[0m:[36m1402[0m - [1mPostprocessed 8 docs for mmlu_jetson_us_foreign_policy/first-letter with 4 worker(s) in 0.01s[0m
+[32m2026-10-08 11:13:35[0m | [1mINFO    [0m | [36mlmms_eval.evaluator[0m:[36mevaluate[0m:[36m1402[0m - [1mPostprocessed 8 docs for mmlu_jetson_global_facts/first-letter with 4 worker(s) in 0.01s[0m
+[32m2026-10-08 11:13:35[0m | [1mINFO    [0m | [36mlmms_eval.evaluator[0m:[36mevaluate[0m:[36m1402[0m - [1mPostprocessed 8 docs for mmlu_jetson_high_school_computer_science/first-letter with 4 worker(s) in 0.01s[0m
+[32m2026-10-08 11:13:35[0m | [1mINFO    [0m | [36mlmms_eval.evaluator[0m:[36mevaluate[0m:[36m1402[0m - [1mPostprocessed 8 docs for mmlu_jetson_anatomy/first-letter with 4 worker(s) in 0.01s[0m
+[32m2026-10-08 11:13:36[0m | [1mINFO    [0m | [36mlmms_eval.evaluator[0m:[36mevaluate[0m:[36m1402[0m - [1mPostprocessed 8 docs for mmlu_jetson_astronomy/first-letter with 4 worker(s) in 0.01s[0m
+[32m2026-10-08 11:13:36[0m | [1mINFO    [0m | [36mlmms_eval.evaluator[0m:[36mevaluate[0m:[36m1402[0m - [1mPostprocessed 8 docs for mmlu_jetson_human_aging/first-letter with 4 worker(s) in 0.01s[0m
+[32m2026-10-08 11:13:36[0m | [1mINFO    [0m | [36mlmms_eval.evaluator[0m:[36mevaluate[0m:[36m1402[0m - [1mPostprocessed 8 docs for mmlu_jetson_medical_genetics/first-letter with 4 worker(s) in 0.01s[0m
+[32m2026-10-08 11:13:36[0m | [1mINFO    [0m | [36mlmms_eval.evaluator[0m:[36mevaluate[0m:[36m1402[0m - [1mPostprocessed 8 docs for mmlu_jetson_management/first-letter with 4 worker(s) in 0.01s[0m
+[32m2026-10-08 11:13:36[0m | [1mINFO    [0m | [36mlmms_eval.evaluator[0m:[36mevaluate[0m:[36m1402[0m - [1mPostprocessed 8 docs for mmlu_jetson_high_school_us_history/first-letter with 4 worker(s) in 0.01s[0m
+[32m2026-10-08 11:13:36[0m | [1mINFO    [0m | [36mlmms_eval.evaluator[0m:[36mevaluate[0m:[36m1402[0m - [1mPostprocessed 8 docs for mmlu_jetson_professional_medicine/first-letter with 4 worker(s) in 0.01s[0m
+[32m2026-10-08 11:13:36[0m | [1mINFO    [0m | [36mlmms_eval.evaluator[0m:[36mevaluate[0m:[36m1402[0m - [1mPostprocessed 8 docs for mmlu_jetson_college_chemistry/first-letter with 4 worker(s) in 0.01s[0m
+[32m2026-10-08 11:13:36[0m | [1mINFO    [0m | [36mlmms_eval.evaluator[0m:[36mevaluate[0m:[36m1402[0m - [1mPostprocessed 8 docs for mmlu_jetson_econometrics/first-letter with 4 worker(s) in 0.01s[0m
+[32m2026-10-08 11:13:36[0m | [1mINFO    [0m | [36mlmms_eval.evaluator[0m:[36mevaluate[0m:[36m1402[0m - [1mPostprocessed 8 docs for mmlu_jetson_high_school_macroeconomics/first-letter with 4 worker(s) in 0.01s[0m
+[32m2026-10-08 11:13:36[0m | [1mINFO    [0m | [36mlmms_eval.evaluator[0m:[36mevaluate[0m:[36m1402[0m - [1mPostprocessed 8 docs for mmlu_jetson_college_mathematics/first-letter with 4 worker(s) in 0.01s[0m
+[32m2026-10-08 11:13:36[0m | [1mINFO    [0m | [36mlmms_eval.evaluator[0m:[36mevaluate[0m:[36m1402[0m - [1mPostprocessed 8 docs for mmlu_jetson_high_school_government_and_politics/first-letter with 4 worker(s) in 0.01s[0m
+[32m2026-10-08 11:13:36[0m | [1mINFO    [0m | [36mlmms_eval.evaluator[0m:[36mevaluate[0m:[36m1402[0m - [1mPostprocessed 8 docs for mmlu_jetson_college_physics/first-letter with 4 worker(s) in 0.01s[0m
+[32m2026-10-08 11:13:36[0m | [1mINFO    [0m | [36mlmms_eval.evaluator[0m:[36mevaluate[0m:[36m1402[0m - [1mPostprocessed 8 docs for mmlu_jetson_high_school_chemistry/first-letter with 4 worker(s) in 0.01s[0m
+[32m2026-10-08 11:13:36[0m | [1mINFO    [0m | [36mlmms_eval.evaluator[0m:[36mevaluate[0m:[36m1402[0m - [1mPostprocessed 8 docs for mmlu_jetson_conceptual_physics/first-letter with 4 worker(s) in 0.01s[0m
+[32m2026-10-08 11:13:36[0m | [1mINFO    [0m | [36mlmms_eval.evaluator[0m:[36mevaluate[0m:[36m1402[0m - [1mPostprocessed 8 docs for mmlu_jetson_elementary_mathematics/first-letter with 4 worker(s) in 0.01s[0m
+[32m2026-10-08 11:13:36[0m | [1mINFO    [0m | [36mlmms_eval.evaluator[0m:[36mevaluate[0m:[36m1402[0m - [1mPostprocessed 8 docs for mmlu_jetson_human_sexuality/first-letter with 4 worker(s) in 0.01s[0m
+[32m2026-10-08 11:13:36[0m | [1mINFO    [0m | [36mlmms_eval.evaluator[0m:[36mevaluate[0m:[36m1402[0m - [1mPostprocessed 8 docs for mmlu_jetson_public_relations/first-letter with 4 worker(s) in 0.01s[0m
+[32m2026-10-08 11:13:36[0m | [1mINFO    [0m | [36mlmms_eval.evaluator[0m:[36mevaluate[0m:[36m1402[0m - [1mPostprocessed 8 docs for mmlu_jetson_business_ethics/first-letter with 4 worker(s) in 0.01s[0m
+[32m2026-10-08 11:13:36[0m | [1mINFO    [0m | [36mlmms_eval.evaluator[0m:[36mevaluate[0m:[36m1402[0m - [1mPostprocessed 8 docs for mmlu_jetson_virology/first-letter with 4 worker(s) in 0.01s[0m
+[32m2026-10-08 11:13:36[0m | [1mINFO    [0m | [36mlmms_eval.evaluator[0m:[36mevaluate[0m:[36m1402[0m - [1mPostprocessed 8 docs for mmlu_jetson_high_school_world_history/first-letter with 4 worker(s) in 0.01s[0m
+[32m2026-10-08 11:13:36[0m | [1mINFO    [0m | [36mlmms_eval.evaluator[0m:[36mevaluate[0m:[36m1402[0m - [1mPostprocessed 8 docs for mmlu_jetson_security_studies/first-letter with 4 worker(s) in 0.01s[0m
+[32m2026-10-08 11:13:36[0m | [1mINFO    [0m | [36mlmms_eval.evaluator[0m:[36mevaluate[0m:[36m1402[0m - [1mPostprocessed 8 docs for mmlu_jetson_high_school_psychology/first-letter with 4 worker(s) in 0.01s[0m
+[32m2026-10-08 11:13:36[0m | [1mINFO    [0m | [36mlmms_eval.evaluator[0m:[36mevaluate[0m:[36m1402[0m - [1mPostprocessed 8 docs for mmlu_jetson_nutrition/first-letter with 4 worker(s) in 0.01s[0m
+[32m2026-10-08 11:13:36[0m | [1mINFO    [0m | [36mlmms_eval.evaluator[0m:[36mevaluate[0m:[36m1402[0m - [1mPostprocessed 8 docs for mmlu_jetson_high_school_mathematics/first-letter with 4 worker(s) in 0.01s[0m
+[32m2026-10-08 11:13:36[0m | [1mINFO    [0m | [36mlmms_eval.evaluator[0m:[36mevaluate[0m:[36m1402[0m - [1mPostprocessed 8 docs for mmlu_jetson_professional_accounting/first-letter with 4 worker(s) in 0.01s[0m
+[32m2026-10-08 11:13:36[0m | [1mINFO    [0m | [36mlmms_eval.evaluator[0m:[36mevaluate[0m:[36m1402[0m - [1mPostprocessed 8 docs for mmlu_jetson_electrical_engineering/first-letter with 4 worker(s) in 0.01s[0m
+[32m2026-10-08 11:13:36[0m | [1mINFO    [0m | [36mlmms_eval.evaluator[0m:[36mevaluate[0m:[36m1402[0m - [1mPostprocessed 8 docs for mmlu_jetson_prehistory/first-letter with 4 worker(s) in 0.01s[0m
+[32m2026-10-08 11:13:36[0m | [1mINFO    [0m | [36mlmms_eval.evaluator[0m:[36mevaluate[0m:[36m1402[0m - [1mPostprocessed 8 docs for mmlu_jetson_machine_learning/first-letter with 4 worker(s) in 0.01s[0m
+[32m2026-10-08 11:13:36[0m | [1mINFO    [0m | [36mlmms_eval.evaluator[0m:[36mevaluate[0m:[36m1402[0m - [1mPostprocessed 8 docs for mmlu_jetson_high_school_physics/first-letter with 4 worker(s) in 0.01s[0m
+[32m2026-10-08 11:13:36[0m | [1mINFO    [0m | [36mlmms_eval.evaluator[0m:[36mevaluate[0m:[36m1402[0m - [1mPostprocessed 8 docs for mmlu_jetson_college_medicine/first-letter with 4 worker(s) in 0.01s[0m
+[32m2026-10-08 11:13:36[0m | [1mINFO    [0m | [36mlmms_eval.evaluator[0m:[36mevaluate[0m:[36m1402[0m - [1mPostprocessed 8 docs for mmlu_jetson_professional_law/first-letter with 4 worker(s) in 0.01s[0m
+[32m2026-10-08 11:13:36[0m | [1mINFO    [0m | [36mlmms_eval.evaluator[0m:[36mevaluate[0m:[36m1402[0m - [1mPostprocessed 8 docs for mmlu_jetson_marketing/first-letter with 4 worker(s) in 0.01s[0m
+[32m2026-10-08 11:13:36[0m | [1mINFO    [0m | [36mlmms_eval.evaluator[0m:[36mevaluate[0m:[36m1402[0m - [1mPostprocessed 8 docs for mmlu_jetson_high_school_geography/first-letter with 4 worker(s) in 0.01s[0m
+[32m2026-10-08 11:13:36[0m | [1mINFO    [0m | [36mlmms_eval.evaluator[0m:[36mevaluate[0m:[36m1402[0m - [1mPostprocessed 8 docs for mmlu_jetson_college_biology/first-letter with 4 worker(s) in 0.01s[0m
+[32m2026-10-08 11:13:36[0m | [1mINFO    [0m | [36mlmms_eval.evaluator[0m:[36mevaluate[0m:[36m1402[0m - [1mPostprocessed 8 docs for mmlu_jetson_high_school_biology/first-letter with 4 worker(s) in 0.01s[0m
+[32m2026-10-08 11:13:36[0m | [1mINFO    [0m | [36mlmms_eval.evaluator[0m:[36mevaluate[0m:[36m1402[0m - [1mPostprocessed 8 docs for mmlu_jetson_abstract_algebra/first-letter with 4 worker(s) in 0.01s[0m
+[32m2026-10-08 11:13:36[0m | [1mINFO    [0m | [36mlmms_eval.evaluator[0m:[36mevaluate[0m:[36m1402[0m - [1mPostprocessed 8 docs for mmlu_jetson_jurisprudence/first-letter with 4 worker(s) in 0.01s[0m
+[32m2026-10-08 11:13:36[0m | [1mINFO    [0m | [36mlmms_eval.evaluator[0m:[36mevaluate[0m:[36m1402[0m - [1mPostprocessed 8 docs for mmlu_jetson_high_school_european_history/first-letter with 4 worker(s) in 0.01s[0m
+[32m2026-10-08 11:13:36[0m | [1mINFO    [0m | [36mlmms_eval.evaluator[0m:[36mevaluate[0m:[36m1402[0m - [1mPostprocessed 8 docs for mmlu_jetson_college_computer_science/first-letter with 4 worker(s) in 0.01s[0m
+[32m2026-10-08 11:13:36[0m | [1mINFO    [0m | [36mlmms_eval.evaluator[0m:[36mevaluate[0m:[36m1402[0m - [1mPostprocessed 8 docs for mmlu_jetson_world_religions/first-letter with 4 worker(s) in 0.01s[0m
+[32m2026-10-08 11:13:36[0m | [1mINFO    [0m | [36mlmms_eval.evaluator[0m:[36mevaluate[0m:[36m1402[0m - [1mPostprocessed 8 docs for mmlu_jetson_computer_security/first-letter with 4 worker(s) in 0.01s[0m
+[32m2026-10-08 11:13:36[0m | [1mINFO    [0m | [36mlmms_eval.evaluator[0m:[36mevaluate[0m:[36m1402[0m - [1mPostprocessed 8 docs for mmlu_jetson_high_school_microeconomics/first-letter with 4 worker(s) in 0.01s[0m
+[32m2026-10-08 11:13:36[0m | [1mINFO    [0m | [36mlmms_eval.evaluator[0m:[36mevaluate[0m:[36m1402[0m - [1mPostprocessed 8 docs for mmlu_jetson_philosophy/first-letter with 4 worker(s) in 0.01s[0m
+Postprocessing:   0%|          | 0/8 [00:00<?, ?it/s][32m2026-10-08 11:13:36[0m | [33m[1mWARNING [0m | [36mutils[0m:[36mprocess_results[0m:[36m113[0m - [33m[1mThis task is meant for chat-finetuned models, and may not give meaningful results for models other than `openai` or `anthropic` if `doc_to_text` in its YAML is not wrapped in the appropriate chat template string. This warning will be removed when chat templating support is added natively to local models[0m
+[32m2026-10-08 11:13:36[0m | [33m[1mWARNING [0m | [36mutils[0m:[36mprocess_results[0m:[36m113[0m - [33m[1mThis task is meant for chat-finetuned models, and may not give meaningful results for models other than `openai` or `anthropic` if `doc_to_text` in its YAML is not wrapped in the appropriate chat template string. This warning will be removed when chat templating support is added natively to local models[0m
+[32m2026-10-08 11:13:36[0m | [33m[1mWARNING [0m | [36mutils[0m:[36mprocess_results[0m:[36m113[0m - [33m[1mThis task is meant for chat-finetuned models, and may not give meaningful results for models other than `openai` or `anthropic` if `doc_to_text` in its YAML is not wrapped in the appropriate chat template string. This warning will be removed when chat templating support is added natively to local models[0m
+[32m2026-10-08 11:13:36[0m | [33m[1mWARNING [0m | [36mutils[0m:[36mprocess_results[0m:[36m113[0m - [33m[1mThis task is meant for chat-finetuned models, and may not give meaningful results for models other than `openai` or `anthropic` if `doc_to_text` in its YAML is not wrapped in the appropriate chat template string. This warning will be removed when chat templating support is added natively to local models[0m
+[32m2026-10-08 11:13:36[0m | [33m[1mWARNING [0m | [36mutils[0m:[36mprocess_results[0m:[36m113[0m - [33m[1mThis task is meant for chat-finetuned models, and may not give meaningful results for models other than `openai` or `anthropic` if `doc_to_text` in its YAML is not wrapped in the appropriate chat template string. This warning will be removed when chat templating support is added natively to local models[0m
+[32m2026-10-08 11:13:36[0m | [33m[1mWARNING [0m | [36mutils[0m:[36mprocess_results[0m:[36m113[0m - [33m[1mThis task is meant for chat-finetuned models, and may not give meaningful results for models other than `openai` or `anthropic` if `doc_to_text` in its YAML is not wrapped in the appropriate chat template string. This warning will be removed when chat templating support is added natively to local models[0m
+[32m2026-10-08 11:13:36[0m | [33m[1mWARNING [0m | [36mutils[0m:[36mprocess_results[0m:[36m113[0m - [33m[1mThis task is meant for chat-finetuned models, and may not give meaningful results for models other than `openai` or `anthropic` if `doc_to_text` in its YAML is not wrapped in the appropriate chat template string. This warning will be removed when chat templating support is added natively to local models[0m
+ERROR:root:Unable to detect language for text PARAGRAPH 1: I TINK TIS A BAD SENSE OF LITIGATION TOTALLY. TIS A STATEMENT TOTALLY CONTRADICTIONAL TO THE VERY BASIS OF LITIGATION AND LAW. TIS A STATEMENT TOTALLY CONTRADICTIONAL TO THE VERY BASIS OF LITIGATION AND LAW.
+
+PARAGRAPH 2: TIS A STATEMENT TOTALLY CONTRADICTIONAL TO THE VERY BASIS OF LITIGATION AND LAW. TIS A STATEMENT TOTALLY CONTRADICTIONAL TO THE VERY BASIS OF LITIGATION AND LAW. due to Need to load profiles.
+ERROR:root:Unable to detect language for text PARAGRAPH 1: I TINK TIS A BAD SENSE OF LITIGATION TOTALLY. TIS A STATEMENT TOTALLY CONTRADICTIONAL TO THE VERY BASIS OF LITIGATION AND LAW. TIS A STATEMENT TOTALLY CONTRADICTIONAL TO THE VERY BASIS OF LITIGATION AND LAW.
+
+PARAGRAPH 2: TIS A STATEMENT TOTALLY CONTRADICTIONAL TO THE VERY BASIS OF LITIGATION AND LAW. TIS A STATEMENT TOTALLY CONTRADICTIONAL TO THE VERY BASIS OF LITIGATION AND LAW. due to Need to load profiles.
+[32m2026-10-08 11:13:36[0m | [33m[1mWARNING [0m | [36mutils[0m:[36mprocess_results[0m:[36m113[0m - [33m[1mThis task is meant for chat-finetuned models, and may not give meaningful results for models other than `openai` or `anthropic` if `doc_to_text` in its YAML is not wrapped in the appropriate chat template string. This warning will be removed when chat templating support is added natively to local models[0m
+Postprocessing: 100%|██████████| 8/8 [00:00<00:00, 39.27it/s]
+[32m2026-10-08 11:13:36[0m | [1mINFO    [0m | [36mlmms_eval.evaluator[0m:[36mevaluate[0m:[36m1402[0m - [1mPostprocessed 8 docs for ifeval/none with 4 worker(s) in 0.20s[0m
+[32m2026-10-08 11:13:36[0m | [1mINFO    [0m | [36mlmms_eval.evaluator[0m:[36mevaluate[0m:[36m1402[0m - [1mPostprocessed 8 docs for gsm8k_jetson/strict-match with 4 worker(s) in 0.01s[0m
+[32m2026-10-08 11:13:36[0m | [1mINFO    [0m | [36mlmms_eval.evaluator[0m:[36mevaluate[0m:[36m1402[0m - [1mPostprocessed 8 docs for gsm8k_jetson/flexible-extract with 4 worker(s) in 0.01s[0m
+[32m2026-10-08 11:13:36[0m | [1mINFO    [0m | [36mlmms_eval.loggers.evaluation_tracker[0m:[36msave_results_aggregated[0m:[36m187[0m - [1mSaving results aggregated[0m
+[32m2026-10-08 11:13:36[0m | [1mINFO    [0m | [36mlmms_eval.loggers.evaluation_tracker[0m:[36msave_results_samples[0m:[36m300[0m - [1mSaving samples to jetson/results/thor/Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/vllm-bf16/20261008-130803_limit8/snapshots__aa8e72537993ba99e69dfaafa59ed015b17504d1/20261008_190815_samples_gsm8k_jetson.jsonl[0m
+[32m2026-10-08 11:13:36[0m | [1mINFO    [0m | [36mlmms_eval.loggers.evaluation_tracker[0m:[36msave_results_samples[0m:[36m300[0m - [1mSaving samples to jetson/results/thor/Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/vllm-bf16/20261008-130803_limit8/snapshots__aa8e72537993ba99e69dfaafa59ed015b17504d1/20261008_190815_samples_ifeval.jsonl[0m
+[32m2026-10-08 11:13:36[0m | [1mINFO    [0m | [36mlmms_eval.loggers.evaluation_tracker[0m:[36msave_results_samples[0m:[36m300[0m - [1mSaving samples to jetson/results/thor/Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/vllm-bf16/20261008-130803_limit8/snapshots__aa8e72537993ba99e69dfaafa59ed015b17504d1/20261008_190815_samples_mmlu_jetson_abstract_algebra.jsonl[0m
+[32m2026-10-08 11:13:36[0m | [1mINFO    [0m | [36mlmms_eval.loggers.evaluation_tracker[0m:[36msave_results_samples[0m:[36m300[0m - [1mSaving samples to jetson/results/thor/Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/vllm-bf16/20261008-130803_limit8/snapshots__aa8e72537993ba99e69dfaafa59ed015b17504d1/20261008_190815_samples_mmlu_jetson_anatomy.jsonl[0m
+[32m2026-10-08 11:13:36[0m | [1mINFO    [0m | [36mlmms_eval.loggers.evaluation_tracker[0m:[36msave_results_samples[0m:[36m300[0m - [1mSaving samples to jetson/results/thor/Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/vllm-bf16/20261008-130803_limit8/snapshots__aa8e72537993ba99e69dfaafa59ed015b17504d1/20261008_190815_samples_mmlu_jetson_astronomy.jsonl[0m
+[32m2026-10-08 11:13:36[0m | [1mINFO    [0m | [36mlmms_eval.loggers.evaluation_tracker[0m:[36msave_results_samples[0m:[36m300[0m - [1mSaving samples to jetson/results/thor/Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/vllm-bf16/20261008-130803_limit8/snapshots__aa8e72537993ba99e69dfaafa59ed015b17504d1/20261008_190815_samples_mmlu_jetson_business_ethics.jsonl[0m
+[32m2026-10-08 11:13:36[0m | [1mINFO    [0m | [36mlmms_eval.loggers.evaluation_tracker[0m:[36msave_results_samples[0m:[36m300[0m - [1mSaving samples to jetson/results/thor/Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/vllm-bf16/20261008-130803_limit8/snapshots__aa8e72537993ba99e69dfaafa59ed015b17504d1/20261008_190815_samples_mmlu_jetson_clinical_knowledge.jsonl[0m
+[32m2026-10-08 11:13:36[0m | [1mINFO    [0m | [36mlmms_eval.loggers.evaluation_tracker[0m:[36msave_results_samples[0m:[36m300[0m - [1mSaving samples to jetson/results/thor/Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/vllm-bf16/20261008-130803_limit8/snapshots__aa8e72537993ba99e69dfaafa59ed015b17504d1/20261008_190815_samples_mmlu_jetson_college_biology.jsonl[0m
+[32m2026-10-08 11:13:36[0m | [1mINFO    [0m | [36mlmms_eval.loggers.evaluation_tracker[0m:[36msave_results_samples[0m:[36m300[0m - [1mSaving samples to jetson/results/thor/Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/vllm-bf16/20261008-130803_limit8/snapshots__aa8e72537993ba99e69dfaafa59ed015b17504d1/20261008_190815_samples_mmlu_jetson_college_chemistry.jsonl[0m
+[32m2026-10-08 11:13:36[0m | [1mINFO    [0m | [36mlmms_eval.loggers.evaluation_tracker[0m:[36msave_results_samples[0m:[36m300[0m - [1mSaving samples to jetson/results/thor/Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/vllm-bf16/20261008-130803_limit8/snapshots__aa8e72537993ba99e69dfaafa59ed015b17504d1/20261008_190815_samples_mmlu_jetson_college_computer_science.jsonl[0m
+[32m2026-10-08 11:13:36[0m | [1mINFO    [0m | [36mlmms_eval.loggers.evaluation_tracker[0m:[36msave_results_samples[0m:[36m300[0m - [1mSaving samples to jetson/results/thor/Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/vllm-bf16/20261008-130803_limit8/snapshots__aa8e72537993ba99e69dfaafa59ed015b17504d1/20261008_190815_samples_mmlu_jetson_college_mathematics.jsonl[0m
+[32m2026-10-08 11:13:36[0m | [1mINFO    [0m | [36mlmms_eval.loggers.evaluation_tracker[0m:[36msave_results_samples[0m:[36m300[0m - [1mSaving samples to jetson/results/thor/Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/vllm-bf16/20261008-130803_limit8/snapshots__aa8e72537993ba99e69dfaafa59ed015b17504d1/20261008_190815_samples_mmlu_jetson_college_medicine.jsonl[0m
+[32m2026-10-08 11:13:36[0m | [1mINFO    [0m | [36mlmms_eval.loggers.evaluation_tracker[0m:[36msave_results_samples[0m:[36m300[0m - [1mSaving samples to jetson/results/thor/Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/vllm-bf16/20261008-130803_limit8/snapshots__aa8e72537993ba99e69dfaafa59ed015b17504d1/20261008_190815_samples_mmlu_jetson_college_physics.jsonl[0m
+[32m2026-10-08 11:13:36[0m | [1mINFO    [0m | [36mlmms_eval.loggers.evaluation_tracker[0m:[36msave_results_samples[0m:[36m300[0m - [1mSaving samples to jetson/results/thor/Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/vllm-bf16/20261008-130803_limit8/snapshots__aa8e72537993ba99e69dfaafa59ed015b17504d1/20261008_190815_samples_mmlu_jetson_computer_security.jsonl[0m
+[32m2026-10-08 11:13:36[0m | [1mINFO    [0m | [36mlmms_eval.loggers.evaluation_tracker[0m:[36msave_results_samples[0m:[36m300[0m - [1mSaving samples to jetson/results/thor/Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/vllm-bf16/20261008-130803_limit8/snapshots__aa8e72537993ba99e69dfaafa59ed015b17504d1/20261008_190815_samples_mmlu_jetson_conceptual_physics.jsonl[0m
+[32m2026-10-08 11:13:36[0m | [1mINFO    [0m | [36mlmms_eval.loggers.evaluation_tracker[0m:[36msave_results_samples[0m:[36m300[0m - [1mSaving samples to jetson/results/thor/Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/vllm-bf16/20261008-130803_limit8/snapshots__aa8e72537993ba99e69dfaafa59ed015b17504d1/20261008_190815_samples_mmlu_jetson_econometrics.jsonl[0m
+[32m2026-10-08 11:13:36[0m | [1mINFO    [0m | [36mlmms_eval.loggers.evaluation_tracker[0m:[36msave_results_samples[0m:[36m300[0m - [1mSaving samples to jetson/results/thor/Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/vllm-bf16/20261008-130803_limit8/snapshots__aa8e72537993ba99e69dfaafa59ed015b17504d1/20261008_190815_samples_mmlu_jetson_electrical_engineering.jsonl[0m
+[32m2026-10-08 11:13:36[0m | [1mINFO    [0m | [36mlmms_eval.loggers.evaluation_tracker[0m:[36msave_results_samples[0m:[36m300[0m - [1mSaving samples to jetson/results/thor/Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/vllm-bf16/20261008-130803_limit8/snapshots__aa8e72537993ba99e69dfaafa59ed015b17504d1/20261008_190815_samples_mmlu_jetson_elementary_mathematics.jsonl[0m
+[32m2026-10-08 11:13:36[0m | [1mINFO    [0m | [36mlmms_eval.loggers.evaluation_tracker[0m:[36msave_results_samples[0m:[36m300[0m - [1mSaving samples to jetson/results/thor/Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/vllm-bf16/20261008-130803_limit8/snapshots__aa8e72537993ba99e69dfaafa59ed015b17504d1/20261008_190815_samples_mmlu_jetson_formal_logic.jsonl[0m
+[32m2026-10-08 11:13:36[0m | [1mINFO    [0m | [36mlmms_eval.loggers.evaluation_tracker[0m:[36msave_results_samples[0m:[36m300[0m - [1mSaving samples to jetson/results/thor/Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/vllm-bf16/20261008-130803_limit8/snapshots__aa8e72537993ba99e69dfaafa59ed015b17504d1/20261008_190815_samples_mmlu_jetson_global_facts.jsonl[0m
+[32m2026-10-08 11:13:36[0m | [1mINFO    [0m | [36mlmms_eval.loggers.evaluation_tracker[0m:[36msave_results_samples[0m:[36m300[0m - [1mSaving samples to jetson/results/thor/Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/vllm-bf16/20261008-130803_limit8/snapshots__aa8e72537993ba99e69dfaafa59ed015b17504d1/20261008_190815_samples_mmlu_jetson_high_school_biology.jsonl[0m
+[32m2026-10-08 11:13:36[0m | [1mINFO    [0m | [36mlmms_eval.loggers.evaluation_tracker[0m:[36msave_results_samples[0m:[36m300[0m - [1mSaving samples to jetson/results/thor/Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/vllm-bf16/20261008-130803_limit8/snapshots__aa8e72537993ba99e69dfaafa59ed015b17504d1/20261008_190815_samples_mmlu_jetson_high_school_chemistry.jsonl[0m
+[32m2026-10-08 11:13:36[0m | [1mINFO    [0m | [36mlmms_eval.loggers.evaluation_tracker[0m:[36msave_results_samples[0m:[36m300[0m - [1mSaving samples to jetson/results/thor/Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/vllm-bf16/20261008-130803_limit8/snapshots__aa8e72537993ba99e69dfaafa59ed015b17504d1/20261008_190815_samples_mmlu_jetson_high_school_computer_science.jsonl[0m
+[32m2026-10-08 11:13:36[0m | [1mINFO    [0m | [36mlmms_eval.loggers.evaluation_tracker[0m:[36msave_results_samples[0m:[36m300[0m - [1mSaving samples to jetson/results/thor/Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/vllm-bf16/20261008-130803_limit8/snapshots__aa8e72537993ba99e69dfaafa59ed015b17504d1/20261008_190815_samples_mmlu_jetson_high_school_european_history.jsonl[0m
+[32m2026-10-08 11:13:36[0m | [1mINFO    [0m | [36mlmms_eval.loggers.evaluation_tracker[0m:[36msave_results_samples[0m:[36m300[0m - [1mSaving samples to jetson/results/thor/Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/vllm-bf16/20261008-130803_limit8/snapshots__aa8e72537993ba99e69dfaafa59ed015b17504d1/20261008_190815_samples_mmlu_jetson_high_school_geography.jsonl[0m
+[32m2026-10-08 11:13:36[0m | [1mINFO    [0m | [36mlmms_eval.loggers.evaluation_tracker[0m:[36msave_results_samples[0m:[36m300[0m - [1mSaving samples to jetson/results/thor/Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/vllm-bf16/20261008-130803_limit8/snapshots__aa8e72537993ba99e69dfaafa59ed015b17504d1/20261008_190815_samples_mmlu_jetson_high_school_government_and_politics.jsonl[0m
+[32m2026-10-08 11:13:36[0m | [1mINFO    [0m | [36mlmms_eval.loggers.evaluation_tracker[0m:[36msave_results_samples[0m:[36m300[0m - [1mSaving samples to jetson/results/thor/Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/vllm-bf16/20261008-130803_limit8/snapshots__aa8e72537993ba99e69dfaafa59ed015b17504d1/20261008_190815_samples_mmlu_jetson_high_school_macroeconomics.jsonl[0m
+[32m2026-10-08 11:13:36[0m | [1mINFO    [0m | [36mlmms_eval.loggers.evaluation_tracker[0m:[36msave_results_samples[0m:[36m300[0m - [1mSaving samples to jetson/results/thor/Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/vllm-bf16/20261008-130803_limit8/snapshots__aa8e72537993ba99e69dfaafa59ed015b17504d1/20261008_190815_samples_mmlu_jetson_high_school_mathematics.jsonl[0m
+[32m2026-10-08 11:13:36[0m | [1mINFO    [0m | [36mlmms_eval.loggers.evaluation_tracker[0m:[36msave_results_samples[0m:[36m300[0m - [1mSaving samples to jetson/results/thor/Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/vllm-bf16/20261008-130803_limit8/snapshots__aa8e72537993ba99e69dfaafa59ed015b17504d1/20261008_190815_samples_mmlu_jetson_high_school_microeconomics.jsonl[0m
+[32m2026-10-08 11:13:36[0m | [1mINFO    [0m | [36mlmms_eval.loggers.evaluation_tracker[0m:[36msave_results_samples[0m:[36m300[0m - [1mSaving samples to jetson/results/thor/Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/vllm-bf16/20261008-130803_limit8/snapshots__aa8e72537993ba99e69dfaafa59ed015b17504d1/20261008_190815_samples_mmlu_jetson_high_school_physics.jsonl[0m
+[32m2026-10-08 11:13:36[0m | [1mINFO    [0m | [36mlmms_eval.loggers.evaluation_tracker[0m:[36msave_results_samples[0m:[36m300[0m - [1mSaving samples to jetson/results/thor/Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/vllm-bf16/20261008-130803_limit8/snapshots__aa8e72537993ba99e69dfaafa59ed015b17504d1/20261008_190815_samples_mmlu_jetson_high_school_psychology.jsonl[0m
+[32m2026-10-08 11:13:36[0m | [1mINFO    [0m | [36mlmms_eval.loggers.evaluation_tracker[0m:[36msave_results_samples[0m:[36m300[0m - [1mSaving samples to jetson/results/thor/Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/vllm-bf16/20261008-130803_limit8/snapshots__aa8e72537993ba99e69dfaafa59ed015b17504d1/20261008_190815_samples_mmlu_jetson_high_school_statistics.jsonl[0m
+[32m2026-10-08 11:13:36[0m | [1mINFO    [0m | [36mlmms_eval.loggers.evaluation_tracker[0m:[36msave_results_samples[0m:[36m300[0m - [1mSaving samples to jetson/results/thor/Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/vllm-bf16/20261008-130803_limit8/snapshots__aa8e72537993ba99e69dfaafa59ed015b17504d1/20261008_190815_samples_mmlu_jetson_high_school_us_history.jsonl[0m
+[32m2026-10-08 11:13:36[0m | [1mINFO    [0m | [36mlmms_eval.loggers.evaluation_tracker[0m:[36msave_results_samples[0m:[36m300[0m - [1mSaving samples to jetson/results/thor/Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/vllm-bf16/20261008-130803_limit8/snapshots__aa8e72537993ba99e69dfaafa59ed015b17504d1/20261008_190815_samples_mmlu_jetson_high_school_world_history.jsonl[0m
+[32m2026-10-08 11:13:36[0m | [1mINFO    [0m | [36mlmms_eval.loggers.evaluation_tracker[0m:[36msave_results_samples[0m:[36m300[0m - [1mSaving samples to jetson/results/thor/Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/vllm-bf16/20261008-130803_limit8/snapshots__aa8e72537993ba99e69dfaafa59ed015b17504d1/20261008_190815_samples_mmlu_jetson_human_aging.jsonl[0m
+[32m2026-10-08 11:13:36[0m | [1mINFO    [0m | [36mlmms_eval.loggers.evaluation_tracker[0m:[36msave_results_samples[0m:[36m300[0m - [1mSaving samples to jetson/results/thor/Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/vllm-bf16/20261008-130803_limit8/snapshots__aa8e72537993ba99e69dfaafa59ed015b17504d1/20261008_190815_samples_mmlu_jetson_human_sexuality.jsonl[0m
+[32m2026-10-08 11:13:36[0m | [1mINFO    [0m | [36mlmms_eval.loggers.evaluation_tracker[0m:[36msave_results_samples[0m:[36m300[0m - [1mSaving samples to jetson/results/thor/Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/vllm-bf16/20261008-130803_limit8/snapshots__aa8e72537993ba99e69dfaafa59ed015b17504d1/20261008_190815_samples_mmlu_jetson_international_law.jsonl[0m
+[32m2026-10-08 11:13:36[0m | [1mINFO    [0m | [36mlmms_eval.loggers.evaluation_tracker[0m:[36msave_results_samples[0m:[36m300[0m - [1mSaving samples to jetson/results/thor/Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/vllm-bf16/20261008-130803_limit8/snapshots__aa8e72537993ba99e69dfaafa59ed015b17504d1/20261008_190815_samples_mmlu_jetson_jurisprudence.jsonl[0m
+[32m2026-10-08 11:13:36[0m | [1mINFO    [0m | [36mlmms_eval.loggers.evaluation_tracker[0m:[36msave_results_samples[0m:[36m300[0m - [1mSaving samples to jetson/results/thor/Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/vllm-bf16/20261008-130803_limit8/snapshots__aa8e72537993ba99e69dfaafa59ed015b17504d1/20261008_190815_samples_mmlu_jetson_logical_fallacies.jsonl[0m
+[32m2026-10-08 11:13:36[0m | [1mINFO    [0m | [36mlmms_eval.loggers.evaluation_tracker[0m:[36msave_results_samples[0m:[36m300[0m - [1mSaving samples to jetson/results/thor/Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/vllm-bf16/20261008-130803_limit8/snapshots__aa8e72537993ba99e69dfaafa59ed015b17504d1/20261008_190815_samples_mmlu_jetson_machine_learning.jsonl[0m
+[32m2026-10-08 11:13:36[0m | [1mINFO    [0m | [36mlmms_eval.loggers.evaluation_tracker[0m:[36msave_results_samples[0m:[36m300[0m - [1mSaving samples to jetson/results/thor/Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/vllm-bf16/20261008-130803_limit8/snapshots__aa8e72537993ba99e69dfaafa59ed015b17504d1/20261008_190815_samples_mmlu_jetson_management.jsonl[0m
+[32m2026-10-08 11:13:36[0m | [1mINFO    [0m | [36mlmms_eval.loggers.evaluation_tracker[0m:[36msave_results_samples[0m:[36m300[0m - [1mSaving samples to jetson/results/thor/Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/vllm-bf16/20261008-130803_limit8/snapshots__aa8e72537993ba99e69dfaafa59ed015b17504d1/20261008_190815_samples_mmlu_jetson_marketing.jsonl[0m
+[32m2026-10-08 11:13:36[0m | [1mINFO    [0m | [36mlmms_eval.loggers.evaluation_tracker[0m:[36msave_results_samples[0m:[36m300[0m - [1mSaving samples to jetson/results/thor/Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/vllm-bf16/20261008-130803_limit8/snapshots__aa8e72537993ba99e69dfaafa59ed015b17504d1/20261008_190815_samples_mmlu_jetson_medical_genetics.jsonl[0m
+[32m2026-10-08 11:13:36[0m | [1mINFO    [0m | [36mlmms_eval.loggers.evaluation_tracker[0m:[36msave_results_samples[0m:[36m300[0m - [1mSaving samples to jetson/results/thor/Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/vllm-bf16/20261008-130803_limit8/snapshots__aa8e72537993ba99e69dfaafa59ed015b17504d1/20261008_190815_samples_mmlu_jetson_miscellaneous.jsonl[0m
+[32m2026-10-08 11:13:36[0m | [1mINFO    [0m | [36mlmms_eval.loggers.evaluation_tracker[0m:[36msave_results_samples[0m:[36m300[0m - [1mSaving samples to jetson/results/thor/Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/vllm-bf16/20261008-130803_limit8/snapshots__aa8e72537993ba99e69dfaafa59ed015b17504d1/20261008_190815_samples_mmlu_jetson_moral_disputes.jsonl[0m
+[32m2026-10-08 11:13:36[0m | [1mINFO    [0m | [36mlmms_eval.loggers.evaluation_tracker[0m:[36msave_results_samples[0m:[36m300[0m - [1mSaving samples to jetson/results/thor/Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/vllm-bf16/20261008-130803_limit8/snapshots__aa8e72537993ba99e69dfaafa59ed015b17504d1/20261008_190815_samples_mmlu_jetson_moral_scenarios.jsonl[0m
+[32m2026-10-08 11:13:36[0m | [1mINFO    [0m | [36mlmms_eval.loggers.evaluation_tracker[0m:[36msave_results_samples[0m:[36m300[0m - [1mSaving samples to jetson/results/thor/Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/vllm-bf16/20261008-130803_limit8/snapshots__aa8e72537993ba99e69dfaafa59ed015b17504d1/20261008_190815_samples_mmlu_jetson_nutrition.jsonl[0m
+[32m2026-10-08 11:13:36[0m | [1mINFO    [0m | [36mlmms_eval.loggers.evaluation_tracker[0m:[36msave_results_samples[0m:[36m300[0m - [1mSaving samples to jetson/results/thor/Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/vllm-bf16/20261008-130803_limit8/snapshots__aa8e72537993ba99e69dfaafa59ed015b17504d1/20261008_190815_samples_mmlu_jetson_philosophy.jsonl[0m
+[32m2026-10-08 11:13:36[0m | [1mINFO    [0m | [36mlmms_eval.loggers.evaluation_tracker[0m:[36msave_results_samples[0m:[36m300[0m - [1mSaving samples to jetson/results/thor/Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/vllm-bf16/20261008-130803_limit8/snapshots__aa8e72537993ba99e69dfaafa59ed015b17504d1/20261008_190815_samples_mmlu_jetson_prehistory.jsonl[0m
+[32m2026-10-08 11:13:36[0m | [1mINFO    [0m | [36mlmms_eval.loggers.evaluation_tracker[0m:[36msave_results_samples[0m:[36m300[0m - [1mSaving samples to jetson/results/thor/Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/vllm-bf16/20261008-130803_limit8/snapshots__aa8e72537993ba99e69dfaafa59ed015b17504d1/20261008_190815_samples_mmlu_jetson_professional_accounting.jsonl[0m
+[32m2026-10-08 11:13:36[0m | [1mINFO    [0m | [36mlmms_eval.loggers.evaluation_tracker[0m:[36msave_results_samples[0m:[36m300[0m - [1mSaving samples to jetson/results/thor/Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/vllm-bf16/20261008-130803_limit8/snapshots__aa8e72537993ba99e69dfaafa59ed015b17504d1/20261008_190815_samples_mmlu_jetson_professional_law.jsonl[0m
+[32m2026-10-08 11:13:36[0m | [1mINFO    [0m | [36mlmms_eval.loggers.evaluation_tracker[0m:[36msave_results_samples[0m:[36m300[0m - [1mSaving samples to jetson/results/thor/Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/vllm-bf16/20261008-130803_limit8/snapshots__aa8e72537993ba99e69dfaafa59ed015b17504d1/20261008_190815_samples_mmlu_jetson_professional_medicine.jsonl[0m
+[32m2026-10-08 11:13:36[0m | [1mINFO    [0m | [36mlmms_eval.loggers.evaluation_tracker[0m:[36msave_results_samples[0m:[36m300[0m - [1mSaving samples to jetson/results/thor/Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/vllm-bf16/20261008-130803_limit8/snapshots__aa8e72537993ba99e69dfaafa59ed015b17504d1/20261008_190815_samples_mmlu_jetson_professional_psychology.jsonl[0m
+[32m2026-10-08 11:13:36[0m | [1mINFO    [0m | [36mlmms_eval.loggers.evaluation_tracker[0m:[36msave_results_samples[0m:[36m300[0m - [1mSaving samples to jetson/results/thor/Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/vllm-bf16/20261008-130803_limit8/snapshots__aa8e72537993ba99e69dfaafa59ed015b17504d1/20261008_190815_samples_mmlu_jetson_public_relations.jsonl[0m
+[32m2026-10-08 11:13:36[0m | [1mINFO    [0m | [36mlmms_eval.loggers.evaluation_tracker[0m:[36msave_results_samples[0m:[36m300[0m - [1mSaving samples to jetson/results/thor/Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/vllm-bf16/20261008-130803_limit8/snapshots__aa8e72537993ba99e69dfaafa59ed015b17504d1/20261008_190815_samples_mmlu_jetson_security_studies.jsonl[0m
+[32m2026-10-08 11:13:36[0m | [1mINFO    [0m | [36mlmms_eval.loggers.evaluation_tracker[0m:[36msave_results_samples[0m:[36m300[0m - [1mSaving samples to jetson/results/thor/Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/vllm-bf16/20261008-130803_limit8/snapshots__aa8e72537993ba99e69dfaafa59ed015b17504d1/20261008_190815_samples_mmlu_jetson_sociology.jsonl[0m
+[32m2026-10-08 11:13:36[0m | [1mINFO    [0m | [36mlmms_eval.loggers.evaluation_tracker[0m:[36msave_results_samples[0m:[36m300[0m - [1mSaving samples to jetson/results/thor/Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/vllm-bf16/20261008-130803_limit8/snapshots__aa8e72537993ba99e69dfaafa59ed015b17504d1/20261008_190815_samples_mmlu_jetson_us_foreign_policy.jsonl[0m
+[32m2026-10-08 11:13:36[0m | [1mINFO    [0m | [36mlmms_eval.loggers.evaluation_tracker[0m:[36msave_results_samples[0m:[36m300[0m - [1mSaving samples to jetson/results/thor/Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/vllm-bf16/20261008-130803_limit8/snapshots__aa8e72537993ba99e69dfaafa59ed015b17504d1/20261008_190815_samples_mmlu_jetson_virology.jsonl[0m
+[32m2026-10-08 11:13:36[0m | [1mINFO    [0m | [36mlmms_eval.loggers.evaluation_tracker[0m:[36msave_results_samples[0m:[36m300[0m - [1mSaving samples to jetson/results/thor/Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/vllm-bf16/20261008-130803_limit8/snapshots__aa8e72537993ba99e69dfaafa59ed015b17504d1/20261008_190815_samples_mmlu_jetson_world_religions.jsonl[0m
+vllm (model=/opt/hf-cache/hub/models--Qwen--Qwen2.5-3B-Instruct/snapshots/aa8e72537993ba99e69dfaafa59ed015b17504d1,gpu_memory_utilization=0.11,max_model_len=4096,max_new_tokens=1,enable_prefix_caching=False), gen_kwargs: (), limit: 8.0, offset: 0, num_fewshot: None, batch_size: 1
+
+LMMs-Eval: Probing Intelligence in the Real World
+> Good evaluation shapes what we build next.
+
+branch: jetson-benchmark
+commit: v0.6-285-gaef4e837
+
+|                Tasks                 |     Filter     |n-shot|        Metric         |   |Value |   |Stderr|Stderr_CLT|
+|--------------------------------------|----------------|-----:|-----------------------|---|-----:|---|------|----------|
+|gsm8k_jetson                          |flexible-extract|     5|exact_match            |↑  |0.6250|±  | 0.183|     0.183|
+|gsm8k_jetson                          |strict-match    |     5|exact_match            |↑  |0.0000|±  |     0|         0|
+|ifeval                                |none            |     0|inst_level_loose_acc   |↑  |0.7143|±  |N/A   |N/A       |
+|ifeval                                |none            |     0|inst_level_strict_acc  |↑  |0.7143|±  |N/A   |N/A       |
+|ifeval                                |none            |     0|prompt_level_loose_acc |↑  |0.6250|±  |0.1830|0.1830    |
+|ifeval                                |none            |     0|prompt_level_strict_acc|↑  |0.6250|±  |0.1830|0.1830    |
+|mmlu (5-shot, generative, Jetson)     |first-letter    |      |exact_match            |↑  |0.6404|±  |0.0210|N/A       |
+| - abstract algebra                   |first-letter    |     5|exact_match            |↑  |0.1250|±  |0.1250|0.1250    |
+| - anatomy                            |first-letter    |     5|exact_match            |↑  |0.3750|±  |0.1830|0.1830    |
+| - astronomy                          |first-letter    |     5|exact_match            |↑  |0.8750|±  |0.1250|0.1250    |
+| - business ethics                    |first-letter    |     5|exact_match            |↑  |0.7500|±  |0.1637|0.1637    |
+| - clinical knowledge                 |first-letter    |     5|exact_match            |↑  |0.6250|±  |0.1830|0.1830    |
+| - college biology                    |first-letter    |     5|exact_match            |↑  |0.8750|±  |0.1250|0.1250    |
+| - college chemistry                  |first-letter    |     5|exact_match            |↑  |0.7500|±  |0.1637|0.1637    |
+| - college computer science           |first-letter    |     5|exact_match            |↑  |0.1250|±  |0.1250|0.1250    |
+| - college mathematics                |first-letter    |     5|exact_match            |↑  |0.3750|±  |0.1830|0.1830    |
+| - college medicine                   |first-letter    |     5|exact_match            |↑  |0.7500|±  |0.1637|0.1637    |
+| - college physics                    |first-letter    |     5|exact_match            |↑  |0.2500|±  |0.1637|0.1637    |
+| - computer security                  |first-letter    |     5|exact_match            |↑  |0.6250|±  |0.1830|0.1830    |
+| - conceptual physics                 |first-letter    |     5|exact_match            |↑  |0.7500|±  |0.1637|0.1637    |
+| - econometrics                       |first-letter    |     5|exact_match            |↑  |0.5000|±  |0.1890|0.1890    |
+| - electrical engineering             |first-letter    |     5|exact_match            |↑  |0.6250|±  |0.1830|0.1830    |
+| - elementary mathematics             |first-letter    |     5|exact_match            |↑  |0.7500|±  |0.1637|0.1637    |
+| - formal logic                       |first-letter    |     5|exact_match            |↑  |0.3750|±  |0.1830|0.1830    |
+| - global facts                       |first-letter    |     5|exact_match            |↑  |0.2500|±  |0.1637|0.1637    |
+| - high school biology                |first-letter    |     5|exact_match            |↑  |0.6250|±  |0.1830|0.1830    |
+| - high school chemistry              |first-letter    |     5|exact_match            |↑  |0.7500|±  |0.1637|0.1637    |
+| - high school computer science       |first-letter    |     5|exact_match            |↑  |0.7500|±  |0.1637|0.1637    |
+| - high school european history       |first-letter    |     5|exact_match            |↑  |1.0000|±  |0.0000|0.0000    |
+| - high school geography              |first-letter    |     5|exact_match            |↑  |0.6250|±  |0.1830|0.1830    |
+| - high school government and politics|first-letter    |     5|exact_match            |↑  |0.7500|±  |0.1637|0.1637    |
+| - high school macroeconomics         |first-letter    |     5|exact_match            |↑  |0.8750|±  |0.1250|0.1250    |
+| - high school mathematics            |first-letter    |     5|exact_match            |↑  |0.0000|±  |0.0000|0.0000    |
+| - high school microeconomics         |first-letter    |     5|exact_match            |↑  |0.6250|±  |0.1830|0.1830    |
+| - high school physics                |first-letter    |     5|exact_match            |↑  |0.3750|±  |0.1830|0.1830    |
+| - high school psychology             |first-letter    |     5|exact_match            |↑  |0.7500|±  |0.1637|0.1637    |
+| - high school statistics             |first-letter    |     5|exact_match            |↑  |0.6250|±  |0.1830|0.1830    |
+| - high school us history             |first-letter    |     5|exact_match            |↑  |0.8750|±  |0.1250|0.1250    |
+| - high school world history          |first-letter    |     5|exact_match            |↑  |0.7500|±  |0.1637|0.1637    |
+| - human aging                        |first-letter    |     5|exact_match            |↑  |0.6250|±  |0.1830|0.1830    |
+| - human sexuality                    |first-letter    |     5|exact_match            |↑  |0.8750|±  |0.1250|0.1250    |
+| - international law                  |first-letter    |     5|exact_match            |↑  |0.8750|±  |0.1250|0.1250    |
+| - jurisprudence                      |first-letter    |     5|exact_match            |↑  |0.5000|±  |0.1890|0.1890    |
+| - logical fallacies                  |first-letter    |     5|exact_match            |↑  |1.0000|±  |0.0000|0.0000    |
+| - machine learning                   |first-letter    |     5|exact_match            |↑  |0.3750|±  |0.1830|0.1830    |
+| - management                         |first-letter    |     5|exact_match            |↑  |0.8750|±  |0.1250|0.1250    |
+| - marketing                          |first-letter    |     5|exact_match            |↑  |0.6250|±  |0.1830|0.1830    |
+| - medical genetics                   |first-letter    |     5|exact_match            |↑  |0.6250|±  |0.1830|0.1830    |
+| - miscellaneous                      |first-letter    |     5|exact_match            |↑  |0.8750|±  |0.1250|0.1250    |
+| - moral disputes                     |first-letter    |     5|exact_match            |↑  |0.3750|±  |0.1830|0.1830    |
+| - moral scenarios                    |first-letter    |     5|exact_match            |↑  |0.5000|±  |0.1890|0.1890    |
+| - nutrition                          |first-letter    |     5|exact_match            |↑  |0.8750|±  |0.1250|0.1250    |
+| - philosophy                         |first-letter    |     5|exact_match            |↑  |0.8750|±  |0.1250|0.1250    |
+| - prehistory                         |first-letter    |     5|exact_match            |↑  |0.3750|±  |0.1830|0.1830    |
+| - professional accounting            |first-letter    |     5|exact_match            |↑  |0.2500|±  |0.1637|0.1637    |
+| - professional law                   |first-letter    |     5|exact_match            |↑  |0.7500|±  |0.1637|0.1637    |
+| - professional medicine              |first-letter    |     5|exact_match            |↑  |0.8750|±  |0.1250|0.1250    |
+| - professional psychology            |first-letter    |     5|exact_match            |↑  |0.8750|±  |0.1250|0.1250    |
+| - public relations                   |first-letter    |     5|exact_match            |↑  |0.6250|±  |0.1830|0.1830    |
+| - security studies                   |first-letter    |     5|exact_match            |↑  |0.7500|±  |0.1637|0.1637    |
+| - sociology                          |first-letter    |     5|exact_match            |↑  |0.7500|±  |0.1637|0.1637    |
+| - us foreign policy                  |first-letter    |     5|exact_match            |↑  |0.6250|±  |0.1830|0.1830    |
+| - virology                           |first-letter    |     5|exact_match            |↑  |0.7500|±  |0.1637|0.1637    |
+| - world religions                    |first-letter    |     5|exact_match            |↑  |0.8750|±  |0.1250|0.1250    |
+
+
+Throughput Summary
+
+|      Metric      |  Value  |  Unit  |
+|------------------|--------:|--------|
+|total_gen_tokens  |8817.0000|tokens  |
+|total_elapsed_time| 250.8264|seconds |
+|avg_speed         |  35.1518|tokens/s|
+|avg_rank          |   0.0000|varies  |
+|avg_tpot          |   0.0262|varies  |
+|avg_ttft          |   0.0681|varies  |
+
+|             Groups              |   Filter   |n-shot|  Metric   |   |Value |   |Stderr|
+|---------------------------------|------------|------|-----------|---|-----:|---|-----:|
+|mmlu (5-shot, generative, Jetson)|first-letter|      |exact_match|↑  |0.6404|±  | 0.021|
+
+(EngineCore pid=153) INFO 10-08 11:13:36 [core.py:1210] Shutdown initiated (timeout=0)
+(EngineCore pid=153) INFO 10-08 11:13:36 [core.py:1233] Shutdown complete
+[rank0]:[W1008 11:13:36.629645074 ProcessGroupNCCL.cpp:1553] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())
+ERROR 10-08 11:13:37 [core_client.py:667] Engine core proc EngineCore died unexpectedly, shutting down client.
+
+[slim_run.py: dropped 2058 per-request progress/profile lines]

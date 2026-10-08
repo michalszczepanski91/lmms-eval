@@ -1,0 +1,9 @@
+=== 13:01:00 hf 3b
+    exit 0
+=== 13:08:03 vllm 3b
+    exit 0
+=== 13:13:40 llamacpp 3b-f16
+    exit 0
+=== 13:18:04 trt_edgellm 3b-fp16
+    exit 0
+all done

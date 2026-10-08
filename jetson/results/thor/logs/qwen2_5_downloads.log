@@ -1,0 +1,890 @@
+ok  model:Qwen/Qwen2.5-1.5B-Instruct -> /opt/hf-cache/hub/models--Qwen--Qwen2.5-1.5B-Instruct/snapshots/989aa7980e4cf806f80c7fef2b1adb7bc71aa306
+ok  model:Qwen/Qwen2.5-1.5B-Instruct-AWQ -> /opt/hf-cache/hub/models--Qwen--Qwen2.5-1.5B-Instruct-AWQ/snapshots/3ecffa0ceb27851800f45519bab9c457a04405e1
+ok  model:Qwen/Qwen2.5-1.5B-Instruct-GPTQ-Int4 -> /opt/hf-cache/hub/models--Qwen--Qwen2.5-1.5B-Instruct-GPTQ-Int4/snapshots/4f5a0e31008e2966e8f787964bcc4e1105e03dc3
+ok  model:Qwen/Qwen2.5-1.5B-Instruct-GPTQ-Int8 -> /opt/hf-cache/hub/models--Qwen--Qwen2.5-1.5B-Instruct-GPTQ-Int8/snapshots/a4d4d713148f198ad81770c44a6fb14426ce7479
+ok  model:RedHatAI/Qwen2.5-1.5B-Instruct-FP8-dynamic -> /opt/hf-cache/hub/models--RedHatAI--Qwen2.5-1.5B-Instruct-FP8-dynamic/snapshots/456414a5559323a5431e5c65e3437a45f940dcdb
+ok  model:Qwen/Qwen2.5-1.5B-Instruct-GGUF:qwen2.5-1.5b-instruct-q4_k_m.gguf -> /opt/hf-cache/hub/models--Qwen--Qwen2.5-1.5B-Instruct-GGUF/snapshots/91cad51170dc346986eccefdc2dd33a9da36ead9/qwen2.5-1.5b-instruct-q4_k_m.gguf
+ok  model:Qwen/Qwen2.5-1.5B-Instruct-GGUF:qwen2.5-1.5b-instruct-q8_0.gguf -> /opt/hf-cache/hub/models--Qwen--Qwen2.5-1.5B-Instruct-GGUF/snapshots/91cad51170dc346986eccefdc2dd33a9da36ead9/qwen2.5-1.5b-instruct-q8_0.gguf
+ok  model:Qwen/Qwen2.5-3B-Instruct -> /opt/hf-cache/hub/models--Qwen--Qwen2.5-3B-Instruct/snapshots/aa8e72537993ba99e69dfaafa59ed015b17504d1
+ok  model:Qwen/Qwen2.5-3B-Instruct-AWQ -> /opt/hf-cache/hub/models--Qwen--Qwen2.5-3B-Instruct-AWQ/snapshots/3559b226e8ce77211e2c1bd7ddfb7686fec4d6dd
+ok  model:Qwen/Qwen2.5-3B-Instruct-GPTQ-Int4 -> /opt/hf-cache/hub/models--Qwen--Qwen2.5-3B-Instruct-GPTQ-Int4/snapshots/68c4276063d1496cdf13d0b8e8221f899bfa77f7
+ok  model:Qwen/Qwen2.5-3B-Instruct-GPTQ-Int8 -> /opt/hf-cache/hub/models--Qwen--Qwen2.5-3B-Instruct-GPTQ-Int8/snapshots/1fed15cb34975bc0bd699e62b95a539bb06eed42
+ok  model:RedHatAI/Qwen2.5-3B-Instruct-FP8-dynamic -> /opt/hf-cache/hub/models--RedHatAI--Qwen2.5-3B-Instruct-FP8-dynamic/snapshots/f04ac08d8c9fe2568713896952fa8175f8716157
+ok  model:Qwen/Qwen2.5-3B-Instruct-GGUF:qwen2.5-3b-instruct-q4_k_m.gguf -> /opt/hf-cache/hub/models--Qwen--Qwen2.5-3B-Instruct-GGUF/snapshots/7dabda4d13d513e3e842b20f0d435c732f172cbe/qwen2.5-3b-instruct-q4_k_m.gguf
+ok  model:Qwen/Qwen2.5-3B-Instruct-GGUF:qwen2.5-3b-instruct-q8_0.gguf -> /opt/hf-cache/hub/models--Qwen--Qwen2.5-3B-Instruct-GGUF/snapshots/7dabda4d13d513e3e842b20f0d435c732f172cbe/qwen2.5-3b-instruct-q8_0.gguf
+ok  model:Qwen/Qwen2.5-1.5B-Instruct-GGUF:qwen2.5-1.5b-instruct-fp16.gguf -> /opt/hf-cache/hub/models--Qwen--Qwen2.5-1.5B-Instruct-GGUF/snapshots/91cad51170dc346986eccefdc2dd33a9da36ead9/qwen2.5-1.5b-instruct-fp16.gguf
+ok  model:Qwen/Qwen2.5-3B-Instruct-GGUF:qwen2.5-3b-instruct-fp16-00001-of-00002.gguf -> /opt/hf-cache/hub/models--Qwen--Qwen2.5-3B-Instruct-GGUF/snapshots/7dabda4d13d513e3e842b20f0d435c732f172cbe/qwen2.5-3b-instruct-fp16-00001-of-00002.gguf
+ok  model:Qwen/Qwen2.5-3B-Instruct-GGUF:qwen2.5-3b-instruct-fp16-00002-of-00002.gguf -> /opt/hf-cache/hub/models--Qwen--Qwen2.5-3B-Instruct-GGUF/snapshots/7dabda4d13d513e3e842b20f0d435c732f172cbe/qwen2.5-3b-instruct-fp16-00002-of-00002.gguf
+    DatasetDict({
+    train: Dataset({
+        features: ['question', 'answer'],
+        num_rows: 7473
+    })
+    test: Dataset({
+        features: ['question', 'answer'],
+        num_rows: 1319
+    })
+})
+ok  dataset:gsm8k:main -> /opt/hf-cache/hub/datasets--gsm8k/snapshots/740312add88f781978c0658806c59bc2815b9866
+    DatasetDict({
+    train: Dataset({
+        features: ['key', 'prompt', 'instruction_id_list', 'kwargs'],
+        num_rows: 541
+    })
+})
+ok  dataset:wis-k/instruction-following-eval -> /opt/hf-cache/hub/datasets--wis-k--instruction-following-eval/snapshots/5a5661c2a35488308556cf4453dc074d1eba91a0
+    DatasetDict({
+    test: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 100
+    })
+    validation: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 11
+    })
+    dev: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 5
+    })
+})
+ok  dataset:hails/mmlu_no_train:abstract_algebra -> /opt/hf-cache/hub/datasets--hails--mmlu_no_train/snapshots/b2e1ec9aa795adafe68e8e983248dbd4b52a1c60
+    DatasetDict({
+    test: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 135
+    })
+    validation: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 14
+    })
+    dev: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 5
+    })
+})
+ok  dataset:hails/mmlu_no_train:anatomy -> /opt/hf-cache/hub/datasets--hails--mmlu_no_train/snapshots/b2e1ec9aa795adafe68e8e983248dbd4b52a1c60
+    DatasetDict({
+    test: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 152
+    })
+    validation: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 16
+    })
+    dev: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 5
+    })
+})
+ok  dataset:hails/mmlu_no_train:astronomy -> /opt/hf-cache/hub/datasets--hails--mmlu_no_train/snapshots/b2e1ec9aa795adafe68e8e983248dbd4b52a1c60
+    DatasetDict({
+    test: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 100
+    })
+    validation: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 11
+    })
+    dev: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 5
+    })
+})
+ok  dataset:hails/mmlu_no_train:business_ethics -> /opt/hf-cache/hub/datasets--hails--mmlu_no_train/snapshots/b2e1ec9aa795adafe68e8e983248dbd4b52a1c60
+    DatasetDict({
+    test: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 265
+    })
+    validation: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 29
+    })
+    dev: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 5
+    })
+})
+ok  dataset:hails/mmlu_no_train:clinical_knowledge -> /opt/hf-cache/hub/datasets--hails--mmlu_no_train/snapshots/b2e1ec9aa795adafe68e8e983248dbd4b52a1c60
+    DatasetDict({
+    test: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 144
+    })
+    validation: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 16
+    })
+    dev: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 5
+    })
+})
+ok  dataset:hails/mmlu_no_train:college_biology -> /opt/hf-cache/hub/datasets--hails--mmlu_no_train/snapshots/b2e1ec9aa795adafe68e8e983248dbd4b52a1c60
+    DatasetDict({
+    test: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 100
+    })
+    validation: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 8
+    })
+    dev: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 5
+    })
+})
+ok  dataset:hails/mmlu_no_train:college_chemistry -> /opt/hf-cache/hub/datasets--hails--mmlu_no_train/snapshots/b2e1ec9aa795adafe68e8e983248dbd4b52a1c60
+    DatasetDict({
+    test: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 100
+    })
+    validation: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 11
+    })
+    dev: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 5
+    })
+})
+ok  dataset:hails/mmlu_no_train:college_computer_science -> /opt/hf-cache/hub/datasets--hails--mmlu_no_train/snapshots/b2e1ec9aa795adafe68e8e983248dbd4b52a1c60
+    DatasetDict({
+    test: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 100
+    })
+    validation: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 11
+    })
+    dev: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 5
+    })
+})
+ok  dataset:hails/mmlu_no_train:college_mathematics -> /opt/hf-cache/hub/datasets--hails--mmlu_no_train/snapshots/b2e1ec9aa795adafe68e8e983248dbd4b52a1c60
+    DatasetDict({
+    test: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 173
+    })
+    validation: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 22
+    })
+    dev: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 5
+    })
+})
+ok  dataset:hails/mmlu_no_train:college_medicine -> /opt/hf-cache/hub/datasets--hails--mmlu_no_train/snapshots/b2e1ec9aa795adafe68e8e983248dbd4b52a1c60
+    DatasetDict({
+    test: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 102
+    })
+    validation: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 11
+    })
+    dev: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 5
+    })
+})
+ok  dataset:hails/mmlu_no_train:college_physics -> /opt/hf-cache/hub/datasets--hails--mmlu_no_train/snapshots/b2e1ec9aa795adafe68e8e983248dbd4b52a1c60
+    DatasetDict({
+    test: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 100
+    })
+    validation: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 11
+    })
+    dev: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 5
+    })
+})
+ok  dataset:hails/mmlu_no_train:computer_security -> /opt/hf-cache/hub/datasets--hails--mmlu_no_train/snapshots/b2e1ec9aa795adafe68e8e983248dbd4b52a1c60
+    DatasetDict({
+    test: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 235
+    })
+    validation: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 26
+    })
+    dev: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 5
+    })
+})
+ok  dataset:hails/mmlu_no_train:conceptual_physics -> /opt/hf-cache/hub/datasets--hails--mmlu_no_train/snapshots/b2e1ec9aa795adafe68e8e983248dbd4b52a1c60
+    DatasetDict({
+    test: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 114
+    })
+    validation: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 12
+    })
+    dev: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 5
+    })
+})
+ok  dataset:hails/mmlu_no_train:econometrics -> /opt/hf-cache/hub/datasets--hails--mmlu_no_train/snapshots/b2e1ec9aa795adafe68e8e983248dbd4b52a1c60
+    DatasetDict({
+    test: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 145
+    })
+    validation: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 16
+    })
+    dev: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 5
+    })
+})
+ok  dataset:hails/mmlu_no_train:electrical_engineering -> /opt/hf-cache/hub/datasets--hails--mmlu_no_train/snapshots/b2e1ec9aa795adafe68e8e983248dbd4b52a1c60
+    DatasetDict({
+    test: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 378
+    })
+    validation: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 41
+    })
+    dev: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 5
+    })
+})
+ok  dataset:hails/mmlu_no_train:elementary_mathematics -> /opt/hf-cache/hub/datasets--hails--mmlu_no_train/snapshots/b2e1ec9aa795adafe68e8e983248dbd4b52a1c60
+    DatasetDict({
+    test: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 126
+    })
+    validation: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 14
+    })
+    dev: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 5
+    })
+})
+ok  dataset:hails/mmlu_no_train:formal_logic -> /opt/hf-cache/hub/datasets--hails--mmlu_no_train/snapshots/b2e1ec9aa795adafe68e8e983248dbd4b52a1c60
+    DatasetDict({
+    test: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 100
+    })
+    validation: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 10
+    })
+    dev: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 5
+    })
+})
+ok  dataset:hails/mmlu_no_train:global_facts -> /opt/hf-cache/hub/datasets--hails--mmlu_no_train/snapshots/b2e1ec9aa795adafe68e8e983248dbd4b52a1c60
+    DatasetDict({
+    test: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 310
+    })
+    validation: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 32
+    })
+    dev: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 5
+    })
+})
+ok  dataset:hails/mmlu_no_train:high_school_biology -> /opt/hf-cache/hub/datasets--hails--mmlu_no_train/snapshots/b2e1ec9aa795adafe68e8e983248dbd4b52a1c60
+    DatasetDict({
+    test: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 203
+    })
+    validation: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 22
+    })
+    dev: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 5
+    })
+})
+ok  dataset:hails/mmlu_no_train:high_school_chemistry -> /opt/hf-cache/hub/datasets--hails--mmlu_no_train/snapshots/b2e1ec9aa795adafe68e8e983248dbd4b52a1c60
+    DatasetDict({
+    test: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 100
+    })
+    validation: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 9
+    })
+    dev: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 5
+    })
+})
+ok  dataset:hails/mmlu_no_train:high_school_computer_science -> /opt/hf-cache/hub/datasets--hails--mmlu_no_train/snapshots/b2e1ec9aa795adafe68e8e983248dbd4b52a1c60
+    DatasetDict({
+    test: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 165
+    })
+    validation: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 18
+    })
+    dev: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 5
+    })
+})
+ok  dataset:hails/mmlu_no_train:high_school_european_history -> /opt/hf-cache/hub/datasets--hails--mmlu_no_train/snapshots/b2e1ec9aa795adafe68e8e983248dbd4b52a1c60
+    DatasetDict({
+    test: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 198
+    })
+    validation: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 22
+    })
+    dev: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 5
+    })
+})
+ok  dataset:hails/mmlu_no_train:high_school_geography -> /opt/hf-cache/hub/datasets--hails--mmlu_no_train/snapshots/b2e1ec9aa795adafe68e8e983248dbd4b52a1c60
+    DatasetDict({
+    test: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 193
+    })
+    validation: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 21
+    })
+    dev: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 5
+    })
+})
+ok  dataset:hails/mmlu_no_train:high_school_government_and_politics -> /opt/hf-cache/hub/datasets--hails--mmlu_no_train/snapshots/b2e1ec9aa795adafe68e8e983248dbd4b52a1c60
+    DatasetDict({
+    test: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 390
+    })
+    validation: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 43
+    })
+    dev: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 5
+    })
+})
+ok  dataset:hails/mmlu_no_train:high_school_macroeconomics -> /opt/hf-cache/hub/datasets--hails--mmlu_no_train/snapshots/b2e1ec9aa795adafe68e8e983248dbd4b52a1c60
+    DatasetDict({
+    test: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 270
+    })
+    validation: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 29
+    })
+    dev: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 5
+    })
+})
+ok  dataset:hails/mmlu_no_train:high_school_mathematics -> /opt/hf-cache/hub/datasets--hails--mmlu_no_train/snapshots/b2e1ec9aa795adafe68e8e983248dbd4b52a1c60
+    DatasetDict({
+    test: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 238
+    })
+    validation: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 26
+    })
+    dev: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 5
+    })
+})
+ok  dataset:hails/mmlu_no_train:high_school_microeconomics -> /opt/hf-cache/hub/datasets--hails--mmlu_no_train/snapshots/b2e1ec9aa795adafe68e8e983248dbd4b52a1c60
+    DatasetDict({
+    test: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 151
+    })
+    validation: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 17
+    })
+    dev: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 5
+    })
+})
+ok  dataset:hails/mmlu_no_train:high_school_physics -> /opt/hf-cache/hub/datasets--hails--mmlu_no_train/snapshots/b2e1ec9aa795adafe68e8e983248dbd4b52a1c60
+    DatasetDict({
+    test: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 545
+    })
+    validation: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 60
+    })
+    dev: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 5
+    })
+})
+ok  dataset:hails/mmlu_no_train:high_school_psychology -> /opt/hf-cache/hub/datasets--hails--mmlu_no_train/snapshots/b2e1ec9aa795adafe68e8e983248dbd4b52a1c60
+    DatasetDict({
+    test: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 216
+    })
+    validation: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 23
+    })
+    dev: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 5
+    })
+})
+ok  dataset:hails/mmlu_no_train:high_school_statistics -> /opt/hf-cache/hub/datasets--hails--mmlu_no_train/snapshots/b2e1ec9aa795adafe68e8e983248dbd4b52a1c60
+    DatasetDict({
+    test: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 204
+    })
+    validation: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 22
+    })
+    dev: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 5
+    })
+})
+ok  dataset:hails/mmlu_no_train:high_school_us_history -> /opt/hf-cache/hub/datasets--hails--mmlu_no_train/snapshots/b2e1ec9aa795adafe68e8e983248dbd4b52a1c60
+    DatasetDict({
+    test: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 237
+    })
+    validation: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 26
+    })
+    dev: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 5
+    })
+})
+ok  dataset:hails/mmlu_no_train:high_school_world_history -> /opt/hf-cache/hub/datasets--hails--mmlu_no_train/snapshots/b2e1ec9aa795adafe68e8e983248dbd4b52a1c60
+    DatasetDict({
+    test: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 223
+    })
+    validation: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 23
+    })
+    dev: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 5
+    })
+})
+ok  dataset:hails/mmlu_no_train:human_aging -> /opt/hf-cache/hub/datasets--hails--mmlu_no_train/snapshots/b2e1ec9aa795adafe68e8e983248dbd4b52a1c60
+    DatasetDict({
+    test: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 131
+    })
+    validation: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 12
+    })
+    dev: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 5
+    })
+})
+ok  dataset:hails/mmlu_no_train:human_sexuality -> /opt/hf-cache/hub/datasets--hails--mmlu_no_train/snapshots/b2e1ec9aa795adafe68e8e983248dbd4b52a1c60
+    DatasetDict({
+    test: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 121
+    })
+    validation: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 13
+    })
+    dev: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 5
+    })
+})
+ok  dataset:hails/mmlu_no_train:international_law -> /opt/hf-cache/hub/datasets--hails--mmlu_no_train/snapshots/b2e1ec9aa795adafe68e8e983248dbd4b52a1c60
+    DatasetDict({
+    test: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 108
+    })
+    validation: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 11
+    })
+    dev: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 5
+    })
+})
+ok  dataset:hails/mmlu_no_train:jurisprudence -> /opt/hf-cache/hub/datasets--hails--mmlu_no_train/snapshots/b2e1ec9aa795adafe68e8e983248dbd4b52a1c60
+    DatasetDict({
+    test: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 163
+    })
+    validation: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 18
+    })
+    dev: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 5
+    })
+})
+ok  dataset:hails/mmlu_no_train:logical_fallacies -> /opt/hf-cache/hub/datasets--hails--mmlu_no_train/snapshots/b2e1ec9aa795adafe68e8e983248dbd4b52a1c60
+    DatasetDict({
+    test: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 112
+    })
+    validation: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 11
+    })
+    dev: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 5
+    })
+})
+ok  dataset:hails/mmlu_no_train:machine_learning -> /opt/hf-cache/hub/datasets--hails--mmlu_no_train/snapshots/b2e1ec9aa795adafe68e8e983248dbd4b52a1c60
+    DatasetDict({
+    test: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 103
+    })
+    validation: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 11
+    })
+    dev: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 5
+    })
+})
+ok  dataset:hails/mmlu_no_train:management -> /opt/hf-cache/hub/datasets--hails--mmlu_no_train/snapshots/b2e1ec9aa795adafe68e8e983248dbd4b52a1c60
+    DatasetDict({
+    test: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 234
+    })
+    validation: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 25
+    })
+    dev: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 5
+    })
+})
+ok  dataset:hails/mmlu_no_train:marketing -> /opt/hf-cache/hub/datasets--hails--mmlu_no_train/snapshots/b2e1ec9aa795adafe68e8e983248dbd4b52a1c60
+    DatasetDict({
+    test: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 100
+    })
+    validation: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 11
+    })
+    dev: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 5
+    })
+})
+ok  dataset:hails/mmlu_no_train:medical_genetics -> /opt/hf-cache/hub/datasets--hails--mmlu_no_train/snapshots/b2e1ec9aa795adafe68e8e983248dbd4b52a1c60
+    DatasetDict({
+    test: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 783
+    })
+    validation: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 86
+    })
+    dev: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 5
+    })
+})
+ok  dataset:hails/mmlu_no_train:miscellaneous -> /opt/hf-cache/hub/datasets--hails--mmlu_no_train/snapshots/b2e1ec9aa795adafe68e8e983248dbd4b52a1c60
+    DatasetDict({
+    test: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 346
+    })
+    validation: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 38
+    })
+    dev: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 5
+    })
+})
+ok  dataset:hails/mmlu_no_train:moral_disputes -> /opt/hf-cache/hub/datasets--hails--mmlu_no_train/snapshots/b2e1ec9aa795adafe68e8e983248dbd4b52a1c60
+    DatasetDict({
+    test: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 895
+    })
+    validation: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 100
+    })
+    dev: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 5
+    })
+})
+ok  dataset:hails/mmlu_no_train:moral_scenarios -> /opt/hf-cache/hub/datasets--hails--mmlu_no_train/snapshots/b2e1ec9aa795adafe68e8e983248dbd4b52a1c60
+    DatasetDict({
+    test: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 306
+    })
+    validation: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 33
+    })
+    dev: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 5
+    })
+})
+ok  dataset:hails/mmlu_no_train:nutrition -> /opt/hf-cache/hub/datasets--hails--mmlu_no_train/snapshots/b2e1ec9aa795adafe68e8e983248dbd4b52a1c60
+    DatasetDict({
+    test: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 311
+    })
+    validation: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 34
+    })
+    dev: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 5
+    })
+})
+ok  dataset:hails/mmlu_no_train:philosophy -> /opt/hf-cache/hub/datasets--hails--mmlu_no_train/snapshots/b2e1ec9aa795adafe68e8e983248dbd4b52a1c60
+    DatasetDict({
+    test: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 324
+    })
+    validation: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 35
+    })
+    dev: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 5
+    })
+})
+ok  dataset:hails/mmlu_no_train:prehistory -> /opt/hf-cache/hub/datasets--hails--mmlu_no_train/snapshots/b2e1ec9aa795adafe68e8e983248dbd4b52a1c60
+    DatasetDict({
+    test: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 282
+    })
+    validation: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 31
+    })
+    dev: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 5
+    })
+})
+ok  dataset:hails/mmlu_no_train:professional_accounting -> /opt/hf-cache/hub/datasets--hails--mmlu_no_train/snapshots/b2e1ec9aa795adafe68e8e983248dbd4b52a1c60
+    DatasetDict({
+    test: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 1534
+    })
+    validation: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 170
+    })
+    dev: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 5
+    })
+})
+ok  dataset:hails/mmlu_no_train:professional_law -> /opt/hf-cache/hub/datasets--hails--mmlu_no_train/snapshots/b2e1ec9aa795adafe68e8e983248dbd4b52a1c60
+    DatasetDict({
+    test: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 272
+    })
+    validation: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 31
+    })
+    dev: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 5
+    })
+})
+ok  dataset:hails/mmlu_no_train:professional_medicine -> /opt/hf-cache/hub/datasets--hails--mmlu_no_train/snapshots/b2e1ec9aa795adafe68e8e983248dbd4b52a1c60
+    DatasetDict({
+    test: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 612
+    })
+    validation: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 69
+    })
+    dev: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 5
+    })
+})
+ok  dataset:hails/mmlu_no_train:professional_psychology -> /opt/hf-cache/hub/datasets--hails--mmlu_no_train/snapshots/b2e1ec9aa795adafe68e8e983248dbd4b52a1c60
+    DatasetDict({
+    test: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 110
+    })
+    validation: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 12
+    })
+    dev: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 5
+    })
+})
+ok  dataset:hails/mmlu_no_train:public_relations -> /opt/hf-cache/hub/datasets--hails--mmlu_no_train/snapshots/b2e1ec9aa795adafe68e8e983248dbd4b52a1c60
+    DatasetDict({
+    test: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 245
+    })
+    validation: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 27
+    })
+    dev: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 5
+    })
+})
+ok  dataset:hails/mmlu_no_train:security_studies -> /opt/hf-cache/hub/datasets--hails--mmlu_no_train/snapshots/b2e1ec9aa795adafe68e8e983248dbd4b52a1c60
+    DatasetDict({
+    test: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 201
+    })
+    validation: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 22
+    })
+    dev: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 5
+    })
+})
+ok  dataset:hails/mmlu_no_train:sociology -> /opt/hf-cache/hub/datasets--hails--mmlu_no_train/snapshots/b2e1ec9aa795adafe68e8e983248dbd4b52a1c60
+    DatasetDict({
+    test: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 100
+    })
+    validation: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 11
+    })
+    dev: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 5
+    })
+})
+ok  dataset:hails/mmlu_no_train:us_foreign_policy -> /opt/hf-cache/hub/datasets--hails--mmlu_no_train/snapshots/b2e1ec9aa795adafe68e8e983248dbd4b52a1c60
+    DatasetDict({
+    test: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 166
+    })
+    validation: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 18
+    })
+    dev: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 5
+    })
+})
+ok  dataset:hails/mmlu_no_train:virology -> /opt/hf-cache/hub/datasets--hails--mmlu_no_train/snapshots/b2e1ec9aa795adafe68e8e983248dbd4b52a1c60
+    DatasetDict({
+    test: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 171
+    })
+    validation: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 19
+    })
+    dev: Dataset({
+        features: ['question', 'subject', 'choices', 'answer'],
+        num_rows: 5
+    })
+})
+ok  dataset:hails/mmlu_no_train:world_religions -> /opt/hf-cache/hub/datasets--hails--mmlu_no_train/snapshots/b2e1ec9aa795adafe68e8e983248dbd4b52a1c60

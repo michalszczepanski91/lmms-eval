@@ -1,0 +1,585 @@
+12:40:13 Qwen2.5-3B-Instruct-fp16: export + build
+/etc/bash.bashrc: line 9: PS1: unbound variable
+10:40:19  INFO      tensorrt_edgellm.scripts.export: ============================================================
+10:40:19  INFO      tensorrt_edgellm.scripts.export: Model type    : qwen2
+10:40:19  INFO      tensorrt_edgellm.scripts.export: Checkpoint    : /opt/hf-cache/hub/models--Qwen--Qwen2.5-3B-Instruct/snapshots/aa8e72537993ba99e69dfaafa59ed015b17504d1
+10:40:19  INFO      tensorrt_edgellm.scripts.export: Output dir    : /opt/models/trt-edgellm/Qwen2.5-3B-Instruct-fp16/onnx
+10:40:19  INFO      tensorrt_edgellm.scripts.export:   thinker        : yes
+10:40:19  INFO      tensorrt_edgellm.scripts.export:   mtp_draft      : no
+10:40:19  INFO      tensorrt_edgellm.scripts.export:   mtp_draft      : no
+10:40:19  INFO      tensorrt_edgellm.scripts.export:   dflash_draft   : no
+10:40:19  INFO      tensorrt_edgellm.scripts.export:   jetspec_draft  : no
+10:40:19  INFO      tensorrt_edgellm.scripts.export:   dspark_draft   : no
+10:40:19  INFO      tensorrt_edgellm.scripts.export:   talker         : no
+10:40:19  INFO      tensorrt_edgellm.scripts.export:   code_predictor : no
+10:40:19  INFO      tensorrt_edgellm.scripts.export:   visual         : no
+10:40:19  INFO      tensorrt_edgellm.scripts.export:   audio          : no
+10:40:19  INFO      tensorrt_edgellm.scripts.export:   rnnt_decoder   : no
+10:40:19  INFO      tensorrt_edgellm.scripts.export:   code2wav       : no
+10:40:19  INFO      tensorrt_edgellm.scripts.export:   action         : no
+10:40:19  INFO      tensorrt_edgellm.scripts.export: FP8 embedding : no
+10:40:19  INFO      tensorrt_edgellm.scripts.export: MTP capable   : no
+10:40:19  INFO      tensorrt_edgellm.scripts.export: MTP export    : no
+10:40:19  INFO      tensorrt_edgellm.scripts.export: Gemma4 MTP    : no
+10:40:19  INFO      tensorrt_edgellm.scripts.export: DFlash base   : no
+10:40:19  INFO      tensorrt_edgellm.scripts.export: DFlash draft  : no
+10:40:19  INFO      tensorrt_edgellm.scripts.export: JetSpec base  : no
+10:40:19  INFO      tensorrt_edgellm.scripts.export: JetSpec draft : no
+10:40:19  INFO      tensorrt_edgellm.scripts.export: DSpark base   : no
+10:40:19  INFO      tensorrt_edgellm.scripts.export: DSpark draft  : no
+10:40:19  INFO      tensorrt_edgellm.scripts.export: Reduced vocab : no
+10:40:19  INFO      tensorrt_edgellm.scripts.export: External weights: no
+10:40:19  INFO      tensorrt_edgellm.scripts.export: TP size       : 1
+10:40:19  INFO      tensorrt_edgellm.scripts.export: ============================================================
+10:40:19  INFO      tensorrt_edgellm.scripts.export: [LLM] Loading checkpoint from /opt/hf-cache/hub/models--Qwen--Qwen2.5-3B-Instruct/snapshots/aa8e72537993ba99e69dfaafa59ed015b17504d1
+10:40:26  INFO      tensorrt_edgellm.checkpoint.loader: Loaded 434 tensors, skipped 0 from /opt/hf-cache/hub/models--Qwen--Qwen2.5-3B-Instruct/snapshots/aa8e72537993ba99e69dfaafa59ed015b17504d1
+10:40:26  INFO      tensorrt_edgellm.checkpoint.repacking: Repacked GPTQ weights
+10:40:27  INFO      tensorrt_edgellm.checkpoint.loader: Tied lm_head.weight to embed_tokens.weight
+10:40:27  INFO      tensorrt_edgellm.models.default.modeling_default: Fused attention QKV projections in 36 layer(s)
+10:40:27  INFO      tensorrt_edgellm.scripts.export: [LLM] Exporting to /opt/models/trt-edgellm/Qwen2.5-3B-Instruct-fp16/onnx/llm/model.onnx
+10:40:27  INFO      tensorrt_edgellm.onnx.export: Exporting ONNX to /opt/models/trt-edgellm/Qwen2.5-3B-Instruct-fp16/onnx/llm/model.onnx (opset 24, dynamo) ...
+/usr/lib/python3.12/contextlib.py:144: UserWarning: The tensor attribute self._model.model.last_pre_norm_hidden_states was assigned during export. Such attributes must be registered as buffers using the `register_buffer` API (https://pytorch.org/docs/stable/generated/torch.nn.Module.html#torch.nn.Module.register_buffer).
+  next(self.gen)
+/usr/lib/python3.12/copyreg.py:99: FutureWarning: `isinstance(treespec, LeafSpec)` is deprecated, use `isinstance(treespec, TreeSpec) and treespec.is_leaf()` instead.
+  return cls.__new__(cls, *args)
+10:40:36  INFO      onnx_ir.passes.common.unused_removal: No unused functions to remove
+10:40:36  INFO      onnx_ir.passes.common.unused_removal: Removed 1 unused nodes
+10:40:36  INFO      onnx_ir.passes.common.unused_removal: No unused functions to remove
+10:40:36  INFO      onnxscript.optimizer._constant_folding: Skipping constant folding for node 'node_Shape_0' because it is graph input to preserve graph signature
+10:40:36  INFO      onnxscript.optimizer._constant_folding: Skipping constant folding for node 'node_Shape_1' because it is graph input to preserve graph signature
+10:40:36  INFO      onnxscript.optimizer._constant_folding: Skipping constant folding for node 'node__to_copy' because it is graph input to preserve graph signature
+10:40:36  INFO      onnxscript.optimizer._constant_folding: Skipping constant folding for node 'n4' because it is graph input to preserve graph signature
+10:40:36  INFO      onnxscript.optimizer._constant_folding: Skipping constant folding for node 'node_add_56' because it is graph input to preserve graph signature
+10:40:36  INFO      onnxscript.optimizer._constant_folding: Skipping constant folding for node 'n4_2' because it is graph input to preserve graph signature
+10:40:36  INFO      onnxscript.optimizer._constant_folding: Skipping constant folding for node 'n4_3' because it is graph input to preserve graph signature
+10:40:36  INFO      onnxscript.optimizer._constant_folding: Skipping constant folding for node 'n4_4' because it is graph input to preserve graph signature
+10:40:36  INFO      onnxscript.optimizer._constant_folding: Skipping constant folding for node 'n4_5' because it is graph input to preserve graph signature
+10:40:36  INFO      onnxscript.optimizer._constant_folding: Skipping constant folding for node 'n4_6' because it is graph input to preserve graph signature
+10:40:36  INFO      onnxscript.optimizer._constant_folding: Skipping constant folding for node 'n4_7' because it is graph input to preserve graph signature
+10:40:36  INFO      onnxscript.optimizer._constant_folding: Skipping constant folding for node 'n4_8' because it is graph input to preserve graph signature
+10:40:36  INFO      onnxscript.optimizer._constant_folding: Skipping constant folding for node 'n4_9' because it is graph input to preserve graph signature
+10:40:36  INFO      onnxscript.optimizer._constant_folding: Skipping constant folding for node 'n4_10' because it is graph input to preserve graph signature
+10:40:36  INFO      onnxscript.optimizer._constant_folding: Skipping constant folding for node 'n4_11' because it is graph input to preserve graph signature
+10:40:36  INFO      onnxscript.optimizer._constant_folding: Skipping constant folding for node 'n4_12' because it is graph input to preserve graph signature
+10:40:36  INFO      onnxscript.optimizer._constant_folding: Skipping constant folding for node 'n4_13' because it is graph input to preserve graph signature
+10:40:36  INFO      onnxscript.optimizer._constant_folding: Skipping constant folding for node 'n4_14' because it is graph input to preserve graph signature
+10:40:36  INFO      onnxscript.optimizer._constant_folding: Skipping constant folding for node 'n4_15' because it is graph input to preserve graph signature
+10:40:36  INFO      onnxscript.optimizer._constant_folding: Skipping constant folding for node 'n4_16' because it is graph input to preserve graph signature
+10:40:36  INFO      onnxscript.optimizer._constant_folding: Skipping constant folding for node 'n4_17' because it is graph input to preserve graph signature
+10:40:36  INFO      onnxscript.optimizer._constant_folding: Skipping constant folding for node 'n4_18' because it is graph input to preserve graph signature
+10:40:36  INFO      onnxscript.optimizer._constant_folding: Skipping constant folding for node 'n4_19' because it is graph input to preserve graph signature
+10:40:36  INFO      onnxscript.optimizer._constant_folding: Skipping constant folding for node 'n4_20' because it is graph input to preserve graph signature
+10:40:36  INFO      onnxscript.optimizer._constant_folding: Skipping constant folding for node 'n4_21' because it is graph input to preserve graph signature
+10:40:36  INFO      onnxscript.optimizer._constant_folding: Skipping constant folding for node 'n4_22' because it is graph input to preserve graph signature
+10:40:36  INFO      onnxscript.optimizer._constant_folding: Skipping constant folding for node 'n4_23' because it is graph input to preserve graph signature
+10:40:36  INFO      onnxscript.optimizer._constant_folding: Skipping constant folding for node 'n4_24' because it is graph input to preserve graph signature
+10:40:36  INFO      onnxscript.optimizer._constant_folding: Skipping constant folding for node 'n4_25' because it is graph input to preserve graph signature
+10:40:36  INFO      onnxscript.optimizer._constant_folding: Skipping constant folding for node 'n4_26' because it is graph input to preserve graph signature
+10:40:36  INFO      onnxscript.optimizer._constant_folding: Skipping constant folding for node 'n4_27' because it is graph input to preserve graph signature
+10:40:36  INFO      onnxscript.optimizer._constant_folding: Skipping constant folding for node 'n4_28' because it is graph input to preserve graph signature
+10:40:36  INFO      onnxscript.optimizer._constant_folding: Skipping constant folding for node 'n4_29' because it is graph input to preserve graph signature
+10:40:36  INFO      onnxscript.optimizer._constant_folding: Skipping constant folding for node 'n4_30' because it is graph input to preserve graph signature
+10:40:36  INFO      onnxscript.optimizer._constant_folding: Skipping constant folding for node 'n4_31' because it is graph input to preserve graph signature
+10:40:36  INFO      onnxscript.optimizer._constant_folding: Skipping constant folding for node 'n4_32' because it is graph input to preserve graph signature
+10:40:36  INFO      onnxscript.optimizer._constant_folding: Skipping constant folding for node 'n4_33' because it is graph input to preserve graph signature
+10:40:36  INFO      onnxscript.optimizer._constant_folding: Skipping constant folding for node 'n4_34' because it is graph input to preserve graph signature
+10:40:36  INFO      onnxscript.optimizer._constant_folding: Skipping constant folding for node 'n4_35' because it is graph input to preserve graph signature
+10:40:36  INFO      onnxscript.optimizer._constant_folding: Skipping constant folding for node 'n4_36' because it is graph input to preserve graph signature
+10:40:36  INFO      onnxscript.optimizer._constant_folding: Skipping constant folding for node 'n1_37' because it is graph input to preserve graph signature
+10:40:37  INFO      onnx_ir.passes.common.unused_removal: Removed 256 unused nodes
+10:40:37  INFO      onnxscript.rewriter: Applied 72 of general pattern rewrite rules.
+10:40:37  INFO      onnx_ir.passes.common.unused_removal: No unused functions to remove
+10:40:37  INFO      onnxscript.optimizer._constant_folding: Skipping constant folding for node 'node_Shape_0' because it is graph input to preserve graph signature
+10:40:37  INFO      onnxscript.optimizer._constant_folding: Skipping constant folding for node 'node_Shape_1' because it is graph input to preserve graph signature
+10:40:37  INFO      onnxscript.optimizer._constant_folding: Skipping constant folding for node 'node__to_copy' because it is graph input to preserve graph signature
+10:40:37  INFO      onnxscript.optimizer._constant_folding: Skipping constant folding for node 'n4' because it is graph input to preserve graph signature
+10:40:37  INFO      onnxscript.optimizer._constant_folding: Skipping constant folding for node 'node_add_56' because it is graph input to preserve graph signature
+10:40:37  INFO      onnxscript.optimizer._constant_folding: Skipping constant folding for node 'n4_2' because it is graph input to preserve graph signature
+10:40:37  INFO      onnxscript.optimizer._constant_folding: Skipping constant folding for node 'n4_3' because it is graph input to preserve graph signature
+10:40:37  INFO      onnxscript.optimizer._constant_folding: Skipping constant folding for node 'n4_4' because it is graph input to preserve graph signature
+10:40:37  INFO      onnxscript.optimizer._constant_folding: Skipping constant folding for node 'n4_5' because it is graph input to preserve graph signature
+10:40:37  INFO      onnxscript.optimizer._constant_folding: Skipping constant folding for node 'n4_6' because it is graph input to preserve graph signature
+10:40:37  INFO      onnxscript.optimizer._constant_folding: Skipping constant folding for node 'n4_7' because it is graph input to preserve graph signature
+10:40:37  INFO      onnxscript.optimizer._constant_folding: Skipping constant folding for node 'n4_8' because it is graph input to preserve graph signature
+10:40:37  INFO      onnxscript.optimizer._constant_folding: Skipping constant folding for node 'n4_9' because it is graph input to preserve graph signature
+10:40:37  INFO      onnxscript.optimizer._constant_folding: Skipping constant folding for node 'n4_10' because it is graph input to preserve graph signature
+10:40:37  INFO      onnxscript.optimizer._constant_folding: Skipping constant folding for node 'n4_11' because it is graph input to preserve graph signature
+10:40:37  INFO      onnxscript.optimizer._constant_folding: Skipping constant folding for node 'n4_12' because it is graph input to preserve graph signature
+10:40:37  INFO      onnxscript.optimizer._constant_folding: Skipping constant folding for node 'n4_13' because it is graph input to preserve graph signature
+10:40:37  INFO      onnxscript.optimizer._constant_folding: Skipping constant folding for node 'n4_14' because it is graph input to preserve graph signature
+10:40:37  INFO      onnxscript.optimizer._constant_folding: Skipping constant folding for node 'n4_15' because it is graph input to preserve graph signature
+10:40:37  INFO      onnxscript.optimizer._constant_folding: Skipping constant folding for node 'n4_16' because it is graph input to preserve graph signature
+10:40:37  INFO      onnxscript.optimizer._constant_folding: Skipping constant folding for node 'n4_17' because it is graph input to preserve graph signature
+10:40:37  INFO      onnxscript.optimizer._constant_folding: Skipping constant folding for node 'n4_18' because it is graph input to preserve graph signature
+10:40:37  INFO      onnxscript.optimizer._constant_folding: Skipping constant folding for node 'n4_19' because it is graph input to preserve graph signature
+10:40:37  INFO      onnxscript.optimizer._constant_folding: Skipping constant folding for node 'n4_20' because it is graph input to preserve graph signature
+10:40:37  INFO      onnxscript.optimizer._constant_folding: Skipping constant folding for node 'n4_21' because it is graph input to preserve graph signature
+10:40:37  INFO      onnxscript.optimizer._constant_folding: Skipping constant folding for node 'n4_22' because it is graph input to preserve graph signature
+10:40:37  INFO      onnxscript.optimizer._constant_folding: Skipping constant folding for node 'n4_23' because it is graph input to preserve graph signature
+10:40:37  INFO      onnxscript.optimizer._constant_folding: Skipping constant folding for node 'n4_24' because it is graph input to preserve graph signature
+10:40:37  INFO      onnxscript.optimizer._constant_folding: Skipping constant folding for node 'n4_25' because it is graph input to preserve graph signature
+10:40:37  INFO      onnxscript.optimizer._constant_folding: Skipping constant folding for node 'n4_26' because it is graph input to preserve graph signature
+10:40:37  INFO      onnxscript.optimizer._constant_folding: Skipping constant folding for node 'n4_27' because it is graph input to preserve graph signature
+10:40:37  INFO      onnxscript.optimizer._constant_folding: Skipping constant folding for node 'n4_28' because it is graph input to preserve graph signature
+10:40:37  INFO      onnxscript.optimizer._constant_folding: Skipping constant folding for node 'n4_29' because it is graph input to preserve graph signature
+10:40:37  INFO      onnxscript.optimizer._constant_folding: Skipping constant folding for node 'n4_30' because it is graph input to preserve graph signature
+10:40:37  INFO      onnxscript.optimizer._constant_folding: Skipping constant folding for node 'n4_31' because it is graph input to preserve graph signature
+10:40:37  INFO      onnxscript.optimizer._constant_folding: Skipping constant folding for node 'n4_32' because it is graph input to preserve graph signature
+10:40:37  INFO      onnxscript.optimizer._constant_folding: Skipping constant folding for node 'n4_33' because it is graph input to preserve graph signature
+10:40:37  INFO      onnxscript.optimizer._constant_folding: Skipping constant folding for node 'n4_34' because it is graph input to preserve graph signature
+10:40:37  INFO      onnxscript.optimizer._constant_folding: Skipping constant folding for node 'n4_35' because it is graph input to preserve graph signature
+10:40:37  INFO      onnxscript.optimizer._constant_folding: Skipping constant folding for node 'n4_36' because it is graph input to preserve graph signature
+10:40:37  INFO      onnxscript.optimizer._constant_folding: Skipping constant folding for node 'n1_37' because it is graph input to preserve graph signature
+10:40:38  INFO      onnx_ir.passes.common.unused_removal: Removed 72 unused nodes
+10:40:38  INFO      onnx_ir.passes.common.unused_removal: No unused functions to remove
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'k_norm_gamma_fp16' with existing initializer 'q_norm_gamma_fp16'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'val_18' with existing initializer 'val_5'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'val_26' with existing initializer 'val_5'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'q_norm_gamma_fp16_2' with existing initializer 'q_norm_gamma_fp16'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'k_norm_gamma_fp16_2' with existing initializer 'q_norm_gamma_fp16'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'val_38' with existing initializer 'val_5'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'val_46' with existing initializer 'val_5'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'q_norm_gamma_fp16_3' with existing initializer 'q_norm_gamma_fp16'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'k_norm_gamma_fp16_3' with existing initializer 'q_norm_gamma_fp16'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'val_58' with existing initializer 'val_5'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'val_66' with existing initializer 'val_5'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'q_norm_gamma_fp16_4' with existing initializer 'q_norm_gamma_fp16'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'k_norm_gamma_fp16_4' with existing initializer 'q_norm_gamma_fp16'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'val_78' with existing initializer 'val_5'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'val_86' with existing initializer 'val_5'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'q_norm_gamma_fp16_5' with existing initializer 'q_norm_gamma_fp16'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'k_norm_gamma_fp16_5' with existing initializer 'q_norm_gamma_fp16'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'val_98' with existing initializer 'val_5'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'val_106' with existing initializer 'val_5'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'q_norm_gamma_fp16_6' with existing initializer 'q_norm_gamma_fp16'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'k_norm_gamma_fp16_6' with existing initializer 'q_norm_gamma_fp16'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'val_118' with existing initializer 'val_5'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'val_126' with existing initializer 'val_5'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'q_norm_gamma_fp16_7' with existing initializer 'q_norm_gamma_fp16'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'k_norm_gamma_fp16_7' with existing initializer 'q_norm_gamma_fp16'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'val_138' with existing initializer 'val_5'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'val_146' with existing initializer 'val_5'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'q_norm_gamma_fp16_8' with existing initializer 'q_norm_gamma_fp16'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'k_norm_gamma_fp16_8' with existing initializer 'q_norm_gamma_fp16'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'val_158' with existing initializer 'val_5'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'val_166' with existing initializer 'val_5'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'q_norm_gamma_fp16_9' with existing initializer 'q_norm_gamma_fp16'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'k_norm_gamma_fp16_9' with existing initializer 'q_norm_gamma_fp16'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'val_178' with existing initializer 'val_5'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'val_186' with existing initializer 'val_5'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'q_norm_gamma_fp16_10' with existing initializer 'q_norm_gamma_fp16'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'k_norm_gamma_fp16_10' with existing initializer 'q_norm_gamma_fp16'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'val_198' with existing initializer 'val_5'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'val_206' with existing initializer 'val_5'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'q_norm_gamma_fp16_11' with existing initializer 'q_norm_gamma_fp16'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'k_norm_gamma_fp16_11' with existing initializer 'q_norm_gamma_fp16'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'val_218' with existing initializer 'val_5'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'val_226' with existing initializer 'val_5'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'q_norm_gamma_fp16_12' with existing initializer 'q_norm_gamma_fp16'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'k_norm_gamma_fp16_12' with existing initializer 'q_norm_gamma_fp16'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'val_238' with existing initializer 'val_5'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'val_246' with existing initializer 'val_5'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'q_norm_gamma_fp16_13' with existing initializer 'q_norm_gamma_fp16'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'k_norm_gamma_fp16_13' with existing initializer 'q_norm_gamma_fp16'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'val_258' with existing initializer 'val_5'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'val_266' with existing initializer 'val_5'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'q_norm_gamma_fp16_14' with existing initializer 'q_norm_gamma_fp16'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'k_norm_gamma_fp16_14' with existing initializer 'q_norm_gamma_fp16'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'val_278' with existing initializer 'val_5'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'val_286' with existing initializer 'val_5'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'q_norm_gamma_fp16_15' with existing initializer 'q_norm_gamma_fp16'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'k_norm_gamma_fp16_15' with existing initializer 'q_norm_gamma_fp16'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'val_298' with existing initializer 'val_5'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'val_306' with existing initializer 'val_5'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'q_norm_gamma_fp16_16' with existing initializer 'q_norm_gamma_fp16'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'k_norm_gamma_fp16_16' with existing initializer 'q_norm_gamma_fp16'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'val_318' with existing initializer 'val_5'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'val_326' with existing initializer 'val_5'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'q_norm_gamma_fp16_17' with existing initializer 'q_norm_gamma_fp16'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'k_norm_gamma_fp16_17' with existing initializer 'q_norm_gamma_fp16'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'val_338' with existing initializer 'val_5'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'val_346' with existing initializer 'val_5'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'q_norm_gamma_fp16_18' with existing initializer 'q_norm_gamma_fp16'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'k_norm_gamma_fp16_18' with existing initializer 'q_norm_gamma_fp16'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'val_358' with existing initializer 'val_5'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'val_366' with existing initializer 'val_5'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'q_norm_gamma_fp16_19' with existing initializer 'q_norm_gamma_fp16'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'k_norm_gamma_fp16_19' with existing initializer 'q_norm_gamma_fp16'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'val_378' with existing initializer 'val_5'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'val_386' with existing initializer 'val_5'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'q_norm_gamma_fp16_20' with existing initializer 'q_norm_gamma_fp16'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'k_norm_gamma_fp16_20' with existing initializer 'q_norm_gamma_fp16'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'val_398' with existing initializer 'val_5'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'val_406' with existing initializer 'val_5'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'q_norm_gamma_fp16_21' with existing initializer 'q_norm_gamma_fp16'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'k_norm_gamma_fp16_21' with existing initializer 'q_norm_gamma_fp16'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'val_418' with existing initializer 'val_5'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'val_426' with existing initializer 'val_5'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'q_norm_gamma_fp16_22' with existing initializer 'q_norm_gamma_fp16'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'k_norm_gamma_fp16_22' with existing initializer 'q_norm_gamma_fp16'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'val_438' with existing initializer 'val_5'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'val_446' with existing initializer 'val_5'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'q_norm_gamma_fp16_23' with existing initializer 'q_norm_gamma_fp16'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'k_norm_gamma_fp16_23' with existing initializer 'q_norm_gamma_fp16'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'val_458' with existing initializer 'val_5'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'val_466' with existing initializer 'val_5'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'q_norm_gamma_fp16_24' with existing initializer 'q_norm_gamma_fp16'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'k_norm_gamma_fp16_24' with existing initializer 'q_norm_gamma_fp16'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'val_478' with existing initializer 'val_5'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'val_486' with existing initializer 'val_5'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'q_norm_gamma_fp16_25' with existing initializer 'q_norm_gamma_fp16'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'k_norm_gamma_fp16_25' with existing initializer 'q_norm_gamma_fp16'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'val_498' with existing initializer 'val_5'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'val_506' with existing initializer 'val_5'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'q_norm_gamma_fp16_26' with existing initializer 'q_norm_gamma_fp16'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'k_norm_gamma_fp16_26' with existing initializer 'q_norm_gamma_fp16'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'val_518' with existing initializer 'val_5'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'val_526' with existing initializer 'val_5'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'q_norm_gamma_fp16_27' with existing initializer 'q_norm_gamma_fp16'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'k_norm_gamma_fp16_27' with existing initializer 'q_norm_gamma_fp16'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'val_538' with existing initializer 'val_5'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'val_546' with existing initializer 'val_5'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'q_norm_gamma_fp16_28' with existing initializer 'q_norm_gamma_fp16'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'k_norm_gamma_fp16_28' with existing initializer 'q_norm_gamma_fp16'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'val_558' with existing initializer 'val_5'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'val_566' with existing initializer 'val_5'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'q_norm_gamma_fp16_29' with existing initializer 'q_norm_gamma_fp16'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'k_norm_gamma_fp16_29' with existing initializer 'q_norm_gamma_fp16'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'val_578' with existing initializer 'val_5'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'val_586' with existing initializer 'val_5'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'q_norm_gamma_fp16_30' with existing initializer 'q_norm_gamma_fp16'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'k_norm_gamma_fp16_30' with existing initializer 'q_norm_gamma_fp16'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'val_598' with existing initializer 'val_5'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'val_606' with existing initializer 'val_5'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'q_norm_gamma_fp16_31' with existing initializer 'q_norm_gamma_fp16'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'k_norm_gamma_fp16_31' with existing initializer 'q_norm_gamma_fp16'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'val_618' with existing initializer 'val_5'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'val_626' with existing initializer 'val_5'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'q_norm_gamma_fp16_32' with existing initializer 'q_norm_gamma_fp16'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'k_norm_gamma_fp16_32' with existing initializer 'q_norm_gamma_fp16'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'val_638' with existing initializer 'val_5'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'val_646' with existing initializer 'val_5'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'q_norm_gamma_fp16_33' with existing initializer 'q_norm_gamma_fp16'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'k_norm_gamma_fp16_33' with existing initializer 'q_norm_gamma_fp16'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'val_658' with existing initializer 'val_5'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'val_666' with existing initializer 'val_5'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'q_norm_gamma_fp16_34' with existing initializer 'q_norm_gamma_fp16'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'k_norm_gamma_fp16_34' with existing initializer 'q_norm_gamma_fp16'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'val_678' with existing initializer 'val_5'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'val_686' with existing initializer 'val_5'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'q_norm_gamma_fp16_35' with existing initializer 'q_norm_gamma_fp16'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'k_norm_gamma_fp16_35' with existing initializer 'q_norm_gamma_fp16'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'val_698' with existing initializer 'val_5'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'val_706' with existing initializer 'val_5'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'q_norm_gamma_fp16_36' with existing initializer 'q_norm_gamma_fp16'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'k_norm_gamma_fp16_36' with existing initializer 'q_norm_gamma_fp16'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'val_718' with existing initializer 'val_5'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'val_726' with existing initializer 'val_5'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'val_16' with existing initializer 'val_2'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'val_24' with existing initializer 'val_2'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'val_33' with existing initializer 'val_13'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'val_36' with existing initializer 'val_2'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'val_44' with existing initializer 'val_2'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'val_53' with existing initializer 'val_13'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'val_56' with existing initializer 'val_2'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'val_64' with existing initializer 'val_2'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'val_73' with existing initializer 'val_13'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'val_76' with existing initializer 'val_2'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'val_84' with existing initializer 'val_2'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'val_93' with existing initializer 'val_13'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'val_96' with existing initializer 'val_2'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'val_104' with existing initializer 'val_2'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'val_113' with existing initializer 'val_13'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'val_116' with existing initializer 'val_2'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'val_124' with existing initializer 'val_2'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'val_133' with existing initializer 'val_13'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'val_136' with existing initializer 'val_2'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'val_144' with existing initializer 'val_2'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'val_153' with existing initializer 'val_13'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'val_156' with existing initializer 'val_2'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'val_164' with existing initializer 'val_2'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'val_173' with existing initializer 'val_13'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'val_176' with existing initializer 'val_2'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'val_184' with existing initializer 'val_2'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'val_193' with existing initializer 'val_13'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'val_196' with existing initializer 'val_2'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'val_204' with existing initializer 'val_2'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'val_213' with existing initializer 'val_13'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'val_216' with existing initializer 'val_2'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'val_224' with existing initializer 'val_2'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'val_233' with existing initializer 'val_13'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'val_236' with existing initializer 'val_2'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'val_244' with existing initializer 'val_2'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'val_253' with existing initializer 'val_13'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'val_256' with existing initializer 'val_2'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'val_264' with existing initializer 'val_2'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'val_273' with existing initializer 'val_13'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'val_276' with existing initializer 'val_2'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'val_284' with existing initializer 'val_2'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'val_293' with existing initializer 'val_13'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'val_296' with existing initializer 'val_2'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'val_304' with existing initializer 'val_2'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'val_313' with existing initializer 'val_13'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'val_316' with existing initializer 'val_2'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'val_324' with existing initializer 'val_2'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'val_333' with existing initializer 'val_13'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'val_336' with existing initializer 'val_2'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'val_344' with existing initializer 'val_2'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'val_353' with existing initializer 'val_13'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'val_356' with existing initializer 'val_2'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'val_364' with existing initializer 'val_2'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'val_373' with existing initializer 'val_13'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'val_376' with existing initializer 'val_2'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'val_384' with existing initializer 'val_2'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'val_393' with existing initializer 'val_13'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'val_396' with existing initializer 'val_2'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'val_404' with existing initializer 'val_2'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'val_413' with existing initializer 'val_13'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'val_416' with existing initializer 'val_2'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'val_424' with existing initializer 'val_2'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'val_433' with existing initializer 'val_13'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'val_436' with existing initializer 'val_2'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'val_444' with existing initializer 'val_2'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'val_453' with existing initializer 'val_13'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'val_456' with existing initializer 'val_2'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'val_464' with existing initializer 'val_2'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'val_473' with existing initializer 'val_13'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'val_476' with existing initializer 'val_2'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'val_484' with existing initializer 'val_2'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'val_493' with existing initializer 'val_13'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'val_496' with existing initializer 'val_2'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'val_504' with existing initializer 'val_2'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'val_513' with existing initializer 'val_13'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'val_516' with existing initializer 'val_2'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'val_524' with existing initializer 'val_2'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'val_533' with existing initializer 'val_13'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'val_536' with existing initializer 'val_2'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'val_544' with existing initializer 'val_2'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'val_553' with existing initializer 'val_13'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'val_556' with existing initializer 'val_2'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'val_564' with existing initializer 'val_2'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'val_573' with existing initializer 'val_13'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'val_576' with existing initializer 'val_2'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'val_584' with existing initializer 'val_2'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'val_593' with existing initializer 'val_13'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'val_596' with existing initializer 'val_2'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'val_604' with existing initializer 'val_2'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'val_613' with existing initializer 'val_13'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'val_616' with existing initializer 'val_2'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'val_624' with existing initializer 'val_2'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'val_633' with existing initializer 'val_13'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'val_636' with existing initializer 'val_2'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'val_644' with existing initializer 'val_2'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'val_653' with existing initializer 'val_13'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'val_656' with existing initializer 'val_2'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'val_664' with existing initializer 'val_2'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'val_673' with existing initializer 'val_13'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'val_676' with existing initializer 'val_2'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'val_684' with existing initializer 'val_2'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'val_693' with existing initializer 'val_13'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'val_696' with existing initializer 'val_2'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'val_704' with existing initializer 'val_2'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'val_713' with existing initializer 'val_13'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'val_716' with existing initializer 'val_2'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'val_724' with existing initializer 'val_2'
+10:40:38  INFO      onnx_ir.passes.common.initializer_deduplication: Replaced initializer 'axes' with existing initializer 'val_5'
+/usr/local/lib/python3.12/dist-packages/torch/onnx/_internal/exporter/_onnx_program.py:486: UserWarning: # The axis name: num_pages will not be used, since it shares the same shape constraints with another axis: num_pages.
+  rename_mapping = _dynamic_shapes.create_rename_mapping(
+/usr/local/lib/python3.12/dist-packages/torch/onnx/_internal/exporter/_onnx_program.py:486: UserWarning: # The axis name: batch will not be used, since it shares the same shape constraints with another axis: batch.
+  rename_mapping = _dynamic_shapes.create_rename_mapping(
+10:41:49  INFO      tensorrt_edgellm.onnx.export: _fix_initializer_dtypes: no dtype fixup required; skipped external tensor load
+10:41:49  INFO      tensorrt_edgellm.onnx.export: TRT fix: normalized optional inputs on 36 AttentionPlugin node(s)
+10:41:49  INFO      tensorrt_edgellm.onnx.export: Export complete: /opt/models/trt-edgellm/Qwen2.5-3B-Instruct-fp16/onnx/llm/model.onnx
+10:41:49  INFO      tensorrt_edgellm.checkpoint.checkpoint_utils: Wrote config.json to /opt/models/trt-edgellm/Qwen2.5-3B-Instruct-fp16/onnx/llm
+10:41:50  INFO      tensorrt_edgellm.checkpoint.checkpoint_utils: Wrote embedding.safetensors ([151936, 2048])
+10:41:50  INFO      tensorrt_edgellm.checkpoint.checkpoint_utils: Copied tokenizer.json
+10:41:50  INFO      tensorrt_edgellm.checkpoint.checkpoint_utils: Copied tokenizer_config.json
+W1008 10:41:50.410000 61 torch/utils/_pytree.py:630] <enum 'KernelPreference'> is an Enum subclass and is now natively supported by torch.compile as an opaque value type. Calling register_constant() on Enum subclasses is deprecated and will be an error in a future release.
+W1008 10:41:50.433000 61 torch/utils/_pytree.py:630] <enum 'ScaleCalculationMode'> is an Enum subclass and is now natively supported by torch.compile as an opaque value type. Calling register_constant() on Enum subclasses is deprecated and will be an error in a future release.
+10:41:50  INFO      tensorrt_edgellm.chat_template: Chat template saved to /opt/models/trt-edgellm/Qwen2.5-3B-Instruct-fp16/onnx/llm/processed_chat_template.json
+10:41:50  INFO      tensorrt_edgellm.scripts.export: [LLM] Done: /opt/models/trt-edgellm/Qwen2.5-3B-Instruct-fp16/onnx/llm/model.onnx
+[torch.onnx] Obtain model graph for `_Wrapper([...]` with `torch.export.export(..., strict=False)`...
+[torch.onnx] Obtain model graph for `_Wrapper([...]` with `torch.export.export(..., strict=False)`... ✅
+[torch.onnx] Run decompositions...
+[torch.onnx] Run decompositions... ✅
+[torch.onnx] Translate the graph into ONNX...
+[torch.onnx] Translate the graph into ONNX... ✅
+[torch.onnx] Optimize the ONNX graph...
+[torch.onnx] Optimize the ONNX graph... ✅
+
+============================================================
+Export complete
+  output dir: /opt/models/trt-edgellm/Qwen2.5-3B-Instruct-fp16/onnx
+  thinker        : /opt/models/trt-edgellm/Qwen2.5-3B-Instruct-fp16/onnx/llm/model.onnx  (2.4 MB)
+                   + embedding.safetensors  (622.3 MB)
+============================================================
+llm
+exported: /opt/models/trt-edgellm/Qwen2.5-3B-Instruct-fp16/onnx - next: jetson/frameworks/trt_edgellm/build_engines.sh 3b fp16
+[10:41:54.210] [INFO] [llmBuilder.cpp:282:build] Using TRT_VERSION=10.13.3
+[10:41:54.210] [INFO] [llmBuilder.cpp:286:build] Using __LUNOWUD=-peep:match_dual_gemm=off -peep:fc_h_fusion=off
+[10:41:54.210] [INFO] [trtUtils.h:71:loadEdgellmPluginLib] EDGELLM_PLUGIN_PATH: /opt/TensorRT-Edge-LLM/build/libNvInfer_edgellm_plugin.so
+[10:41:54.396] [INFO] [TensorRT] [MemUsageChange] Init CUDA: CPU +22, GPU +0, now: CPU 30, GPU 99020 (MiB)
+[10:41:55.879] [INFO] [TensorRT] [MemUsageChange] Init builder kernel library: CPU +1228, GPU +2212, now: CPU 1460, GPU 101466 (MiB)
+[10:41:55.879] [INFO] [llmBuilder.cpp:338:build] Parsing ONNX model: /opt/models/trt-edgellm/Qwen2.5-3B-Instruct-fp16/onnx/llm/model.onnx
+[10:41:55.883] [INFO] [TensorRT] ----------------------------------------------------------------
+[10:41:55.883] [INFO] [TensorRT] Input filename:   /opt/models/trt-edgellm/Qwen2.5-3B-Instruct-fp16/onnx/llm/model.onnx
+[10:41:55.883] [INFO] [TensorRT] ONNX IR version:  0.0.10
+[10:41:55.883] [INFO] [TensorRT] Opset version:    24
+[10:41:55.883] [INFO] [TensorRT] Producer name:    pytorch
+[10:41:55.883] [INFO] [TensorRT] Producer version: 2.12.0a0+5aff3928d8.nv26.05
+[10:41:55.883] [INFO] [TensorRT] Domain:           
+[10:41:55.883] [INFO] [TensorRT] Model version:    0
+[10:41:55.883] [INFO] [TensorRT] Doc string:       
+[10:41:55.883] [INFO] [TensorRT] ----------------------------------------------------------------
+[10:41:55.884] [WARNING] [TensorRT] ModelImporter.cpp:653: Make sure input last_token_ids has Int64 binding.
+[10:41:55.887] [INFO] [TensorRT] Searching for plugin: AttentionPlugin, plugin_version: 1, plugin_namespace: 
+[10:41:55.888] [WARNING] [TensorRT] onnxOpImporters.cpp:6854: Attribute xqa_jit_kernels not found in plugin node! Ensure that the plugin creator has a default value defined or the engine may fail to build.
+[10:41:56.838] [INFO] [pluginJitCompiler.cpp:138:compilePluginJitKernel] Compiled XQA kernel for SM101, dtype=1, kv_dtype=1, head_dim=128, q_heads_per_kv=8, tokens_per_page=128, sliding_window=0, spec_decode=0 with NVRTC (107000 bytes, 948 ms)
+[10:41:56.839] [INFO] [TensorRT] Successfully created plugin: AttentionPlugin
+[10:41:56.840] [WARNING] [TensorRT] onnxOpImporters.cpp:6854: Attribute xqa_jit_kernels not found in plugin node! Ensure that the plugin creator has a default value defined or the engine may fail to build.
+[10:41:56.840] [INFO] [TensorRT] Searching for plugin: AttentionPlugin, plugin_version: 1, plugin_namespace: 
+[10:41:56.840] [INFO] [TensorRT] Successfully created plugin: AttentionPlugin
+[10:41:56.841] [INFO] [TensorRT] Searching for plugin: AttentionPlugin, plugin_version: 1, plugin_namespace: 
+[10:41:56.841] [WARNING] [TensorRT] onnxOpImporters.cpp:6854: Attribute xqa_jit_kernels not found in plugin node! Ensure that the plugin creator has a default value defined or the engine may fail to build.
+[10:41:56.841] [INFO] [TensorRT] Successfully created plugin: AttentionPlugin
+[10:41:56.841] [INFO] [TensorRT] Searching for plugin: AttentionPlugin, plugin_version: 1, plugin_namespace: 
+[10:41:56.841] [WARNING] [TensorRT] onnxOpImporters.cpp:6854: Attribute xqa_jit_kernels not found in plugin node! Ensure that the plugin creator has a default value defined or the engine may fail to build.
+[10:41:56.841] [INFO] [TensorRT] Successfully created plugin: AttentionPlugin
+[10:41:56.842] [INFO] [TensorRT] Searching for plugin: AttentionPlugin, plugin_version: 1, plugin_namespace: 
+[10:41:56.842] [WARNING] [TensorRT] onnxOpImporters.cpp:6854: Attribute xqa_jit_kernels not found in plugin node! Ensure that the plugin creator has a default value defined or the engine may fail to build.
+[10:41:56.842] [INFO] [TensorRT] Successfully created plugin: AttentionPlugin
+[10:41:56.843] [INFO] [TensorRT] Searching for plugin: AttentionPlugin, plugin_version: 1, plugin_namespace: 
+[10:41:56.843] [WARNING] [TensorRT] onnxOpImporters.cpp:6854: Attribute xqa_jit_kernels not found in plugin node! Ensure that the plugin creator has a default value defined or the engine may fail to build.
+[10:41:56.843] [INFO] [TensorRT] Successfully created plugin: AttentionPlugin
+[10:41:56.843] [INFO] [TensorRT] Searching for plugin: AttentionPlugin, plugin_version: 1, plugin_namespace: 
+[10:41:56.843] [WARNING] [TensorRT] onnxOpImporters.cpp:6854: Attribute xqa_jit_kernels not found in plugin node! Ensure that the plugin creator has a default value defined or the engine may fail to build.
+[10:41:56.843] [INFO] [TensorRT] Successfully created plugin: AttentionPlugin
+[10:41:56.844] [INFO] [TensorRT] Searching for plugin: AttentionPlugin, plugin_version: 1, plugin_namespace: 
+[10:41:56.844] [WARNING] [TensorRT] onnxOpImporters.cpp:6854: Attribute xqa_jit_kernels not found in plugin node! Ensure that the plugin creator has a default value defined or the engine may fail to build.
+[10:41:56.844] [INFO] [TensorRT] Successfully created plugin: AttentionPlugin
+[10:41:56.845] [INFO] [TensorRT] Searching for plugin: AttentionPlugin, plugin_version: 1, plugin_namespace: 
+[10:41:56.845] [WARNING] [TensorRT] onnxOpImporters.cpp:6854: Attribute xqa_jit_kernels not found in plugin node! Ensure that the plugin creator has a default value defined or the engine may fail to build.
+[10:41:56.845] [INFO] [TensorRT] Successfully created plugin: AttentionPlugin
+[10:41:56.845] [INFO] [TensorRT] Searching for plugin: AttentionPlugin, plugin_version: 1, plugin_namespace: 
+[10:41:56.845] [WARNING] [TensorRT] onnxOpImporters.cpp:6854: Attribute xqa_jit_kernels not found in plugin node! Ensure that the plugin creator has a default value defined or the engine may fail to build.
+[10:41:56.845] [INFO] [TensorRT] Successfully created plugin: AttentionPlugin
+[10:41:56.846] [WARNING] [TensorRT] onnxOpImporters.cpp:6854: Attribute xqa_jit_kernels not found in plugin node! Ensure that the plugin creator has a default value defined or the engine may fail to build.
+[10:41:56.846] [INFO] [TensorRT] Searching for plugin: AttentionPlugin, plugin_version: 1, plugin_namespace: 
+[10:41:56.846] [INFO] [TensorRT] Successfully created plugin: AttentionPlugin
+[10:41:56.847] [INFO] [TensorRT] Searching for plugin: AttentionPlugin, plugin_version: 1, plugin_namespace: 
+[10:41:56.847] [WARNING] [TensorRT] onnxOpImporters.cpp:6854: Attribute xqa_jit_kernels not found in plugin node! Ensure that the plugin creator has a default value defined or the engine may fail to build.
+[10:41:56.847] [INFO] [TensorRT] Successfully created plugin: AttentionPlugin
+[10:41:56.848] [INFO] [TensorRT] Searching for plugin: AttentionPlugin, plugin_version: 1, plugin_namespace: 
+[10:41:56.848] [WARNING] [TensorRT] onnxOpImporters.cpp:6854: Attribute xqa_jit_kernels not found in plugin node! Ensure that the plugin creator has a default value defined or the engine may fail to build.
+[10:41:56.848] [INFO] [TensorRT] Successfully created plugin: AttentionPlugin
+[10:41:56.848] [INFO] [TensorRT] Searching for plugin: AttentionPlugin, plugin_version: 1, plugin_namespace: 
+[10:41:56.848] [WARNING] [TensorRT] onnxOpImporters.cpp:6854: Attribute xqa_jit_kernels not found in plugin node! Ensure that the plugin creator has a default value defined or the engine may fail to build.
+[10:41:56.848] [INFO] [TensorRT] Successfully created plugin: AttentionPlugin
+[10:41:56.849] [INFO] [TensorRT] Searching for plugin: AttentionPlugin, plugin_version: 1, plugin_namespace: 
+[10:41:56.849] [WARNING] [TensorRT] onnxOpImporters.cpp:6854: Attribute xqa_jit_kernels not found in plugin node! Ensure that the plugin creator has a default value defined or the engine may fail to build.
+[10:41:56.849] [INFO] [TensorRT] Successfully created plugin: AttentionPlugin
+[10:41:56.849] [INFO] [TensorRT] Searching for plugin: AttentionPlugin, plugin_version: 1, plugin_namespace: 
+[10:41:56.849] [WARNING] [TensorRT] onnxOpImporters.cpp:6854: Attribute xqa_jit_kernels not found in plugin node! Ensure that the plugin creator has a default value defined or the engine may fail to build.
+[10:41:56.849] [INFO] [TensorRT] Successfully created plugin: AttentionPlugin
+[10:41:56.850] [INFO] [TensorRT] Searching for plugin: AttentionPlugin, plugin_version: 1, plugin_namespace: 
+[10:41:56.850] [WARNING] [TensorRT] onnxOpImporters.cpp:6854: Attribute xqa_jit_kernels not found in plugin node! Ensure that the plugin creator has a default value defined or the engine may fail to build.
+[10:41:56.850] [INFO] [TensorRT] Successfully created plugin: AttentionPlugin
+[10:41:56.851] [INFO] [TensorRT] Searching for plugin: AttentionPlugin, plugin_version: 1, plugin_namespace: 
+[10:41:56.851] [WARNING] [TensorRT] onnxOpImporters.cpp:6854: Attribute xqa_jit_kernels not found in plugin node! Ensure that the plugin creator has a default value defined or the engine may fail to build.
+[10:41:56.851] [INFO] [TensorRT] Successfully created plugin: AttentionPlugin
+[10:41:56.851] [INFO] [TensorRT] Searching for plugin: AttentionPlugin, plugin_version: 1, plugin_namespace: 
+[10:41:56.851] [WARNING] [TensorRT] onnxOpImporters.cpp:6854: Attribute xqa_jit_kernels not found in plugin node! Ensure that the plugin creator has a default value defined or the engine may fail to build.
+[10:41:56.852] [INFO] [TensorRT] Successfully created plugin: AttentionPlugin
+[10:41:56.852] [INFO] [TensorRT] Searching for plugin: AttentionPlugin, plugin_version: 1, plugin_namespace: 
+[10:41:56.852] [WARNING] [TensorRT] onnxOpImporters.cpp:6854: Attribute xqa_jit_kernels not found in plugin node! Ensure that the plugin creator has a default value defined or the engine may fail to build.
+[10:41:56.852] [INFO] [TensorRT] Successfully created plugin: AttentionPlugin
+[10:41:56.853] [INFO] [TensorRT] Searching for plugin: AttentionPlugin, plugin_version: 1, plugin_namespace: 
+[10:41:56.853] [WARNING] [TensorRT] onnxOpImporters.cpp:6854: Attribute xqa_jit_kernels not found in plugin node! Ensure that the plugin creator has a default value defined or the engine may fail to build.
+[10:41:56.853] [INFO] [TensorRT] Successfully created plugin: AttentionPlugin
+[10:41:56.854] [INFO] [TensorRT] Searching for plugin: AttentionPlugin, plugin_version: 1, plugin_namespace: 
+[10:41:56.854] [WARNING] [TensorRT] onnxOpImporters.cpp:6854: Attribute xqa_jit_kernels not found in plugin node! Ensure that the plugin creator has a default value defined or the engine may fail to build.
+[10:41:56.854] [INFO] [TensorRT] Successfully created plugin: AttentionPlugin
+[10:41:56.854] [INFO] [TensorRT] Searching for plugin: AttentionPlugin, plugin_version: 1, plugin_namespace: 
+[10:41:56.854] [WARNING] [TensorRT] onnxOpImporters.cpp:6854: Attribute xqa_jit_kernels not found in plugin node! Ensure that the plugin creator has a default value defined or the engine may fail to build.
+[10:41:56.854] [INFO] [TensorRT] Successfully created plugin: AttentionPlugin
+[10:41:56.855] [INFO] [TensorRT] Searching for plugin: AttentionPlugin, plugin_version: 1, plugin_namespace: 
+[10:41:56.855] [WARNING] [TensorRT] onnxOpImporters.cpp:6854: Attribute xqa_jit_kernels not found in plugin node! Ensure that the plugin creator has a default value defined or the engine may fail to build.
+[10:41:56.855] [INFO] [TensorRT] Successfully created plugin: AttentionPlugin
+[10:41:56.856] [INFO] [TensorRT] Searching for plugin: AttentionPlugin, plugin_version: 1, plugin_namespace: 
+[10:41:56.856] [WARNING] [TensorRT] onnxOpImporters.cpp:6854: Attribute xqa_jit_kernels not found in plugin node! Ensure that the plugin creator has a default value defined or the engine may fail to build.
+[10:41:56.856] [INFO] [TensorRT] Successfully created plugin: AttentionPlugin
+[10:41:56.856] [INFO] [TensorRT] Searching for plugin: AttentionPlugin, plugin_version: 1, plugin_namespace: 
+[10:41:56.856] [WARNING] [TensorRT] onnxOpImporters.cpp:6854: Attribute xqa_jit_kernels not found in plugin node! Ensure that the plugin creator has a default value defined or the engine may fail to build.
+[10:41:56.856] [INFO] [TensorRT] Successfully created plugin: AttentionPlugin
+[10:41:56.857] [INFO] [TensorRT] Searching for plugin: AttentionPlugin, plugin_version: 1, plugin_namespace: 
+[10:41:56.857] [WARNING] [TensorRT] onnxOpImporters.cpp:6854: Attribute xqa_jit_kernels not found in plugin node! Ensure that the plugin creator has a default value defined or the engine may fail to build.
+[10:41:56.857] [INFO] [TensorRT] Successfully created plugin: AttentionPlugin
+[10:41:56.858] [INFO] [TensorRT] Searching for plugin: AttentionPlugin, plugin_version: 1, plugin_namespace: 
+[10:41:56.858] [WARNING] [TensorRT] onnxOpImporters.cpp:6854: Attribute xqa_jit_kernels not found in plugin node! Ensure that the plugin creator has a default value defined or the engine may fail to build.
+[10:41:56.858] [INFO] [TensorRT] Successfully created plugin: AttentionPlugin
+[10:41:56.858] [INFO] [TensorRT] Searching for plugin: AttentionPlugin, plugin_version: 1, plugin_namespace: 
+[10:41:56.858] [WARNING] [TensorRT] onnxOpImporters.cpp:6854: Attribute xqa_jit_kernels not found in plugin node! Ensure that the plugin creator has a default value defined or the engine may fail to build.
+[10:41:56.858] [INFO] [TensorRT] Successfully created plugin: AttentionPlugin
+[10:41:56.859] [INFO] [TensorRT] Searching for plugin: AttentionPlugin, plugin_version: 1, plugin_namespace: 
+[10:41:56.859] [WARNING] [TensorRT] onnxOpImporters.cpp:6854: Attribute xqa_jit_kernels not found in plugin node! Ensure that the plugin creator has a default value defined or the engine may fail to build.
+[10:41:56.859] [INFO] [TensorRT] Successfully created plugin: AttentionPlugin
+[10:41:56.860] [INFO] [TensorRT] Searching for plugin: AttentionPlugin, plugin_version: 1, plugin_namespace: 
+[10:41:56.860] [WARNING] [TensorRT] onnxOpImporters.cpp:6854: Attribute xqa_jit_kernels not found in plugin node! Ensure that the plugin creator has a default value defined or the engine may fail to build.
+[10:41:56.860] [INFO] [TensorRT] Successfully created plugin: AttentionPlugin
+[10:41:56.860] [INFO] [TensorRT] Searching for plugin: AttentionPlugin, plugin_version: 1, plugin_namespace: 
+[10:41:56.860] [INFO] [TensorRT] Successfully created plugin: AttentionPlugin
+[10:41:56.860] [WARNING] [TensorRT] onnxOpImporters.cpp:6854: Attribute xqa_jit_kernels not found in plugin node! Ensure that the plugin creator has a default value defined or the engine may fail to build.
+[10:41:56.861] [INFO] [TensorRT] Searching for plugin: AttentionPlugin, plugin_version: 1, plugin_namespace: 
+[10:41:56.861] [WARNING] [TensorRT] onnxOpImporters.cpp:6854: Attribute xqa_jit_kernels not found in plugin node! Ensure that the plugin creator has a default value defined or the engine may fail to build.
+[10:41:56.861] [INFO] [TensorRT] Successfully created plugin: AttentionPlugin
+[10:41:56.862] [INFO] [TensorRT] Searching for plugin: AttentionPlugin, plugin_version: 1, plugin_namespace: 
+[10:41:56.862] [WARNING] [TensorRT] onnxOpImporters.cpp:6854: Attribute xqa_jit_kernels not found in plugin node! Ensure that the plugin creator has a default value defined or the engine may fail to build.
+[10:41:56.862] [INFO] [TensorRT] Successfully created plugin: AttentionPlugin
+[10:41:56.862] [INFO] [TensorRT] Searching for plugin: AttentionPlugin, plugin_version: 1, plugin_namespace: 
+[10:41:56.862] [WARNING] [TensorRT] onnxOpImporters.cpp:6854: Attribute xqa_jit_kernels not found in plugin node! Ensure that the plugin creator has a default value defined or the engine may fail to build.
+[10:41:56.862] [INFO] [TensorRT] Successfully created plugin: AttentionPlugin
+[10:41:56.863] [INFO] [TensorRT] Searching for plugin: AttentionPlugin, plugin_version: 1, plugin_namespace: 
+[10:41:56.863] [INFO] [TensorRT] Successfully created plugin: AttentionPlugin
+[10:41:56.863] [WARNING] [TensorRT] onnxOpImporters.cpp:6854: Attribute xqa_jit_kernels not found in plugin node! Ensure that the plugin creator has a default value defined or the engine may fail to build.
+[10:41:56.870] [INFO] [llmBuilder.cpp:384:build] Created directory /opt/models/trt-edgellm/Qwen2.5-3B-Instruct-fp16/engines/llm for saving LLM engine.
+[10:41:56.875] [WARNING] [TensorRT] Unused Input: skip_softmax_scale
+[10:41:56.962] [WARNING] [TensorRT] [RemoveDeadLayers] Input Tensor skip_softmax_scale is unused or used only at compile-time, but is not being removed.
+[10:41:56.968] [INFO] [TensorRT] Local timing cache in use. Profiling results in this builder pass will not be stored.
+[10:41:57.021] [INFO] [TensorRT] Compiler backend is used during engine build.
+[10:42:29.988] [INFO] [TensorRT] Detected 43 inputs and 37 output network tensors.
+[10:42:30.384] [INFO] [TensorRT] Total Host Persistent Memory: 80 bytes
+[10:42:30.384] [INFO] [TensorRT] Total Device Persistent Memory: 0 bytes
+[10:42:30.384] [INFO] [TensorRT] Max Scratch Memory: 337641472 bytes
+[10:42:30.384] [INFO] [TensorRT] [BlockAssignment] Started assigning block shifts. This will take 1 steps to complete.
+[10:42:30.384] [INFO] [TensorRT] [BlockAssignment] Algorithm ShiftNTopDown took 0.004398ms to assign 1 blocks to 1 nodes requiring 337641472 bytes.
+[10:42:30.384] [INFO] [TensorRT] Total Activation Memory: 337641472 bytes
+[10:42:46.315] [INFO] [TensorRT] Detected 43 inputs and 37 output network tensors.
+[10:42:46.722] [INFO] [TensorRT] Total Host Persistent Memory: 80 bytes
+[10:42:46.722] [INFO] [TensorRT] Total Device Persistent Memory: 0 bytes
+[10:42:46.722] [INFO] [TensorRT] Max Scratch Memory: 4216320 bytes
+[10:42:46.722] [INFO] [TensorRT] [BlockAssignment] Started assigning block shifts. This will take 1 steps to complete.
+[10:42:46.722] [INFO] [TensorRT] [BlockAssignment] Algorithm ShiftNTopDown took 0.004888ms to assign 1 blocks to 1 nodes requiring 4216320 bytes.
+[10:42:46.722] [INFO] [TensorRT] Total Activation Memory: 4216320 bytes
+[10:42:46.908] [INFO] [TensorRT] Total Weights Memory: 6171879680 bytes
+[10:42:46.911] [INFO] [TensorRT] Compiler backend is used during engine execution.
+[10:42:46.912] [INFO] [TensorRT] Engine generation completed in 49.9452 seconds.
+[10:42:46.917] [INFO] [TensorRT] [MemUsageStats] Peak memory usage of TRT CPU/GPU memory allocators: CPU 0 MiB, GPU 5886 MiB
+[10:42:48.580] [INFO] [TensorRT] [MemUsageStats] Peak memory usage during Engine building and serialization: CPU: 19367 MiB
+[10:42:52.428] [INFO] [builderUtils.cpp:384:buildAndSerializeEngine] Engine saved to /opt/models/trt-edgellm/Qwen2.5-3B-Instruct-fp16/engines/llm/llm.engine
+[10:42:52.682] [INFO] [llmBuilder.cpp:1835:copyConfig] Copied config.json with builder config to /opt/models/trt-edgellm/Qwen2.5-3B-Instruct-fp16/engines/llm/config.json
+[10:42:52.682] [INFO] [fileUtils.cpp:48:copyFile] Successfully copied /opt/models/trt-edgellm/Qwen2.5-3B-Instruct-fp16/onnx/llm/tokenizer_config.json to /opt/models/trt-edgellm/Qwen2.5-3B-Instruct-fp16/engines/llm/tokenizer_config.json
+[10:42:52.682] [INFO] [llmBuilder.cpp:1866:copyTokenizerFiles] Copied tokenizer file: tokenizer_config.json
+[10:42:52.685] [INFO] [fileUtils.cpp:48:copyFile] Successfully copied /opt/models/trt-edgellm/Qwen2.5-3B-Instruct-fp16/onnx/llm/tokenizer.json to /opt/models/trt-edgellm/Qwen2.5-3B-Instruct-fp16/engines/llm/tokenizer.json
+[10:42:52.685] [INFO] [llmBuilder.cpp:1866:copyTokenizerFiles] Copied tokenizer file: tokenizer.json
+[10:42:52.685] [INFO] [fileUtils.cpp:48:copyFile] Successfully copied /opt/models/trt-edgellm/Qwen2.5-3B-Instruct-fp16/onnx/llm/processed_chat_template.json to /opt/models/trt-edgellm/Qwen2.5-3B-Instruct-fp16/engines/llm/processed_chat_template.json
+[10:42:52.685] [INFO] [llmBuilder.cpp:1866:copyTokenizerFiles] Copied tokenizer file: processed_chat_template.json
+[10:42:52.971] [INFO] [fileUtils.cpp:48:copyFile] Successfully copied /opt/models/trt-edgellm/Qwen2.5-3B-Instruct-fp16/onnx/llm/embedding.safetensors to /opt/models/trt-edgellm/Qwen2.5-3B-Instruct-fp16/engines/llm/embedding.safetensors
+[10:42:52.971] [INFO] [llmBuilder.cpp:2068:copyEmbeddingFile] Copied embedding.safetensors to /opt/models/trt-edgellm/Qwen2.5-3B-Instruct-fp16/engines/llm/embedding.safetensors
+[10:42:53.884] [INFO] [llm_build.cpp:380:main] [TP rank 0/1] LLM engine built successfully.
+engines: /opt/models/trt-edgellm/Qwen2.5-3B-Instruct-fp16/engines
+removed /opt/models/trt-edgellm/Qwen2.5-3B-Instruct-fp16/onnx
+12:42:57 Qwen2.5-3B-Instruct-fp16: done
+
+real	2m44.030s
+user	0m0.048s
+sys	0m0.975s
