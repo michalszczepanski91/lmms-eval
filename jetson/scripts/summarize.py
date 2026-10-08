@@ -72,13 +72,15 @@ def percentile(values, q):
     return values[min(len(values) - 1, int(round(q / 100 * (len(values) - 1))))] if values else None
 
 
-def latency_stats(samples_path, text_only=False):
-    """Per-sample latency recorded by backends that fill TokenCounts timing fields.
+def latency_stats(samples_paths, text_only=False):
+    """Per-sample latency recorded by backends that fill TokenCounts timing fields, over all samples files of a run
+    (a group such as MMLU writes one per subtask).
 
     text_only: the model has no vision encoder, so the prefill is the whole time to first token.
     """
     ttft, gen, decode_ms, pre, vision, prefill, out_tokens = [], [], [], [], [], [], []
-    for line in open_text(samples_path):
+    lines = (line for path in samples_paths for line in open_text(path))
+    for line in lines:
         counts = (json.loads(line).get("token_counts") or [None])[0] or {}
         if counts.get("output_tokens") is not None:
             out_tokens.append(counts["output_tokens"])
@@ -247,9 +249,23 @@ def fmt_scores(scores, sep="<br>"):
 
 
 def result_scores(results_json):
-    """{task: {metric: value}} of an lmms-eval results file, without stderr and empty metrics (e.g. TextVQA's submission writer)."""
+    """{task: {metric: value}} of an lmms-eval results file, without stderr and empty metrics (e.g. TextVQA's submission writer).
+
+    Metrics of a named filter are reported as "metric (filter)" (GSM8K: strict-match, flexible-extract). The subtasks
+    of a group (MMLU's 57 subjects) are left out: the group row has the aggregate.
+    """
     r = json.load(open(results_json))
-    return {task: {k.split(",")[0]: v for k, v in metrics.items() if k.endswith(",none") and "stderr" not in k and v is not None} for task, metrics in r["results"].items()}
+    subtasks = {t for members in r.get("group_subtasks", {}).values() for t in members}
+
+    def name(key):
+        metric, filt = key.split(",", 1)
+        return metric if filt == "none" else f"{metric} ({filt})"
+
+    return {
+        task: {name(k): v for k, v in metrics.items() if "," in k and "stderr" not in k and v is not None and v != "N/A"}
+        for task, metrics in r["results"].items()
+        if task not in subtasks
+    }
 
 
 def excluded_runs(include_smoke):
@@ -287,7 +303,7 @@ def main():
         if not timing_invalid:
             stats = {
                 **tegrastats_stats(os.path.join(run_dir, "tegrastats.log")),
-                **(latency_stats(samples[0], text_only) if samples else {}),
+                **(latency_stats(samples, text_only) if samples else {}),
                 **trt_profile_stats(os.path.join(run_dir, "trt_profile.json")),
                 **llamacpp_server_stats(run_dir, text_only),
             }
