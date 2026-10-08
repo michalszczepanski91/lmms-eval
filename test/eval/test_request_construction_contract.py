@@ -1,10 +1,12 @@
 """Production request-construction contracts without dataset initialization."""
 
 from types import SimpleNamespace
+from unittest.mock import Mock
 
 import pytest
 
-from lmms_eval.api.task import ConfigurableMessagesTask, ConfigurableTask
+from lmms_eval.api.task import ConfigurableMessagesTask, ConfigurableTask, TaskConfig
+from lmms_eval.caching import cache as request_cache
 
 
 def _doc_to_text(doc, lmms_eval_specific_kwargs=None):
@@ -119,3 +121,198 @@ def test_messages_task_agentic_constructs_chat_multi_step_layout():
     assert request.args[4] == 17
     assert request.args[5] == "request-contract"
     assert request.args[6] == "validation"
+
+
+def _likelihood_task(task_class, output_type):
+    task = object.__new__(task_class)
+    task.OUTPUT_TYPE = output_type
+    task._config = TaskConfig(
+        task="mmlu-contract",
+        output_type=output_type,
+        doc_to_text="question",
+        doc_to_target="answer",
+        doc_to_choice=["A", "B", "C", "D"],
+        doc_to_visual=lambda doc: [],
+    )
+    task.lmms_eval_specific_kwargs = None
+    task.model_specific_target_kwargs = None
+    task.multiple_input = False
+    task.multiple_target = False
+    task._metric_fn_list = {"acc": None}
+    task.dataset = {"test": [{"question": "Current question", "answer": 1}]}
+    task.features = {"question": None, "answer": None}
+    return task
+
+
+@pytest.mark.parametrize("output_type", ["loglikelihood", "multiple_choice"])
+def test_messages_likelihood_requests_preserve_simple_scoring_protocol(output_type):
+    tasks = [_likelihood_task(cls, output_type) for cls in (ConfigurableTask, ConfigurableMessagesTask)]
+    metadata = {"task": "mmlu-contract", "doc_id": 0, "split": "test", "repeats": 1}
+    context = "Description\nFive-shot examples\nCurrent question\nAnswer:"
+    requests = [task.construct_requests(0, context, metadata=metadata) for task in tasks]
+    lists = [items if isinstance(items, list) else [items] for items in requests]
+    assert len(lists[0]) == len(lists[1]) == (4 if output_type == "multiple_choice" else 1)
+    for simple, chat in zip(*lists):
+        assert simple.request_type == chat.request_type == "loglikelihood"
+        assert simple.idx == chat.idx
+        assert simple.args[0] == chat.args[0] == context
+        assert simple.args[3:] == chat.args[3:] == (0, "mmlu-contract", "test")
+        assert chat.args[2](tasks[1].dataset["test"][0]) == []
+        if output_type == "multiple_choice":
+            assert simple.args[1] == chat.args[1] == " " + "ABCD"[simple.idx]
+        else:
+            assert chat.args[1](tasks[1].dataset["test"][0]) == 1
+    if output_type == "multiple_choice":
+        assert tasks[1].process_results(tasks[1].dataset["test"][0], [(4.0, False), (0.5, True), (2.0, False), (3.0, False)]) == {"acc": 1.0}
+
+
+@pytest.mark.parametrize("output_type", ["loglikelihood", "multiple_choice"])
+def test_messages_likelihood_rejects_custom_messages_instead_of_dropping_them(output_type):
+    task = _likelihood_task(ConfigurableMessagesTask, output_type)
+    task.config.doc_to_messages = lambda doc: [{"role": "user", "content": [{"type": "image", "url": "image.png"}]}]
+    with pytest.raises(NotImplementedError, match="doc_to_messages"):
+        task.construct_requests(0, "context", metadata={"task": "mmlu-contract", "doc_id": 0, "split": "test", "repeats": 1})
+
+
+def _cached_task(task_class=ConfigurableTask, output_type="generate_until"):
+    task = object.__new__(task_class)
+    task.OUTPUT_TYPE = output_type
+    task._config = TaskConfig(
+        task="cache-contract",
+        output_type=output_type,
+        test_split="test",
+        num_fewshot=0,
+        doc_to_text=_doc_to_text,
+        doc_to_visual=lambda doc: [doc["media"]],
+        doc_to_target=lambda doc: doc["answer"],
+        doc_to_messages=None if output_type == "loglikelihood" else lambda doc: [{"role": "user", "content": [{"type": "text", "text": doc["question"]}]}],
+        generation_kwargs={"temperature": 0},
+    )
+    task.lmms_eval_specific_kwargs = None
+    task.model_specific_target_kwargs = None
+    task.dataset = {"test": [{"question": f"question{i}", "answer": "yes", "media": f"media{i}"} for i in range(6)]}
+    task.dataset_no_image = task.dataset
+    task.fewshot_context = Mock(side_effect=lambda doc, *args: doc["question"])
+    return task
+
+
+@pytest.mark.parametrize(
+    "task_class,output_type",
+    [
+        (ConfigurableTask, "generate_until"),
+        (ConfigurableTask, "loglikelihood"),
+        (ConfigurableTask, "generate_until_multi_round"),
+        (ConfigurableTask, "generate_until_agentic"),
+        (ConfigurableMessagesTask, "generate_until"),
+        (ConfigurableMessagesTask, "loglikelihood"),
+        (ConfigurableMessagesTask, "generate_until_multi_round"),
+        (ConfigurableMessagesTask, "generate_until_agentic"),
+    ],
+)
+def test_request_cache_cold_and_warm_preserve_live_callbacks(tmp_path, monkeypatch, task_class, output_type):
+    monkeypatch.setattr(request_cache, "PATH", str(tmp_path))
+    cold = _cached_task(task_class, output_type)
+    cold.build_all_requests(cache_requests=True, limit=2)
+    expected = _cached_task(task_class, output_type)
+    expected.build_all_requests(cache_requests=False, limit=2)
+    warm = _cached_task(task_class, output_type)
+    warm.build_all_requests(cache_requests=True, limit=2)
+    warm.fewshot_context.assert_not_called()
+
+    for task in (cold, warm):
+        assert [request.doc_id for request in task.instances] == [0, 1]
+        for actual, reference in zip(task.instances, expected.instances):
+            doc = task.dataset["test"][actual.doc_id]
+            assert len(actual.args) == len(reference.args)
+            for arg, ref in zip(actual.args, reference.args):
+                if callable(ref):
+                    assert callable(arg)
+                    assert arg(doc) == ref(doc)
+                    if hasattr(arg, "__self__"):
+                        assert arg.__self__ is task
+                else:
+                    assert arg == ref
+
+
+@pytest.mark.parametrize("enabled,refresh", [(False, False), (False, True), (True, True)])
+def test_disabled_or_refresh_request_cache_never_reads(monkeypatch, tmp_path, enabled, refresh):
+    monkeypatch.setattr(request_cache, "PATH", str(tmp_path))
+    load = Mock(side_effect=AssertionError("must not deserialize a cache"))
+    monkeypatch.setattr("lmms_eval.api.task.load_from_cache", load)
+    task = _cached_task()
+    task.build_all_requests(cache_requests=enabled, rewrite_requests_cache=refresh, limit=2)
+    load.assert_not_called()
+    assert [request.doc_id for request in task.instances] == [0, 1]
+    assert bool(list(tmp_path.iterdir())) is enabled
+
+
+@pytest.mark.parametrize("rank", [0, 1, 2])
+def test_request_cache_preserves_global_limit_and_offset(tmp_path, monkeypatch, rank):
+    monkeypatch.setattr(request_cache, "PATH", str(tmp_path))
+    for enabled in (False, True, True):
+        task = _cached_task()
+        task.build_all_requests(cache_requests=enabled, limit=4, offset=1, rank=rank, world_size=3)
+        assert [request.doc_id for request in task.instances] == list(range(1 + rank, 5, 3))
+
+
+def test_request_cache_separates_simple_and_chat_tasks(tmp_path, monkeypatch):
+    monkeypatch.setattr(request_cache, "PATH", str(tmp_path))
+    simple = _cached_task()
+    simple.build_all_requests(cache_requests=True, limit=1)
+    chat = _cached_task(ConfigurableMessagesTask)
+    chat.build_all_requests(cache_requests=True, limit=1)
+    assert chat.fewshot_context.called
+    assert len(list(tmp_path.iterdir())) == 2
+
+
+def test_request_cache_bounds_filename_with_system_instruction(tmp_path, monkeypatch):
+    monkeypatch.setattr(request_cache, "PATH", str(tmp_path))
+    for _ in range(2):
+        task = _cached_task(ConfigurableMessagesTask)
+        task.build_all_requests(cache_requests=True, limit=1, system_instruction="Be precise", tokenizer_name="organization/" + "model" * 60)
+        assert len(task.instances) == 1
+    task.fewshot_context.assert_not_called()
+    assert len(next(tmp_path.iterdir()).name.encode()) <= 255
+
+
+def test_request_cache_save_preserves_contexts_and_previous_file(tmp_path, monkeypatch):
+    monkeypatch.setattr(request_cache, "PATH", str(tmp_path / "nested" / "cache"))
+    contexts = [{"doc_id": 0, "context": "original"}]
+    request_cache.save_to_cache("test", contexts)
+    assert request_cache.load_from_cache("test") == contexts
+    path = next((tmp_path / "nested" / "cache").iterdir())
+    before = path.read_bytes()
+    monkeypatch.setattr(request_cache.os, "replace", Mock(side_effect=OSError("publication failed")))
+    with pytest.raises(OSError, match="publication failed"):
+        request_cache.save_to_cache("test", [{"doc_id": 0, "context": "replacement"}])
+    assert path.read_bytes() == before
+    assert list(path.parent.iterdir()) == [path]
+
+
+def test_request_cache_rebuilds_current_metadata(tmp_path, monkeypatch):
+    monkeypatch.setattr(request_cache, "PATH", str(tmp_path))
+    cold = _cached_task()
+    cold.config.metadata = {"sample_frames": 8, "old_key": True, "repeats": 3}
+    cold.build_all_requests(cache_requests=True, limit=1)
+    for metadata in (cold.config.metadata, {"sample_frames": 32, "repeats": 2}):
+        warm = _cached_task()
+        warm.config.metadata = metadata
+        warm.build_all_requests(cache_requests=True, limit=1)
+        reference = _cached_task()
+        reference.config.metadata = metadata
+        reference.build_all_requests(limit=1)
+        assert warm.instances[0].metadata == reference.instances[0].metadata
+        assert warm.instances[0].repeats == metadata["repeats"]
+
+
+def test_request_cache_preserves_context_before_custom_construction(tmp_path, monkeypatch):
+    class PrefixTask(ConfigurableTask):
+        def construct_requests(self, doc_id, ctx, **kwargs):
+            return super().construct_requests(doc_id, f"prefix {ctx}", **kwargs)
+
+    monkeypatch.setattr(request_cache, "PATH", str(tmp_path))
+    for _ in range(2):
+        task = _cached_task(PrefixTask)
+        task.build_all_requests(cache_requests=True, limit=1)
+        assert task.instances[0].args[0] == "prefix question0"
+    task.fewshot_context.assert_not_called()
