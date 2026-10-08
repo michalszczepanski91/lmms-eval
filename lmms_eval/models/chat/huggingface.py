@@ -85,12 +85,7 @@ class Huggingface(lmms):
 
         self.trust_remote_code = trust_remote_code
         config = AutoConfig.from_pretrained(pretrained, trust_remote_code=trust_remote_code)
-        if config.model_type in AutoModelForCausalLM._model_mapping.keys():
-            model_cls = AutoModelForCausalLM
-        elif config.model_type in AutoModelForImageTextToText._model_mapping.keys():
-            model_cls = AutoModelForImageTextToText
-        else:
-            model_cls = AutoModel
+        model_cls = self.model_class_for(config)
 
         self._model = model_cls.from_pretrained(pretrained, trust_remote_code=trust_remote_code, **model_kwargs).eval()
         self.max_num_frames = max_num_frames
@@ -126,6 +121,15 @@ class Huggingface(lmms):
         else:
             self._rank = 0
             self._world_size = 1
+
+    @staticmethod
+    def model_class_for(config):
+        """Auto class with a generation head for this config. The auto mappings are keyed by config class, not model_type."""
+        if type(config) in AutoModelForCausalLM._model_mapping:
+            return AutoModelForCausalLM
+        if type(config) in AutoModelForImageTextToText._model_mapping:
+            return AutoModelForImageTextToText
+        return AutoModel
 
     @property
     def config(self):
@@ -218,6 +222,12 @@ class Huggingface(lmms):
 
             # Apply chat template
             batched_messages = [chat_message.to_hf_messages() for chat_message in chat_messages]
+            if not (visuals or videos):
+                # Text-only requests: text-model chat templates (e.g. Qwen2.5-Instruct) expect string content, not
+                # the list of {"type": "text"} parts that multimodal templates accept.
+                batched_messages = [
+                    [{**m, "content": "".join(part["text"] for part in m["content"])} if isinstance(m["content"], list) and all(p.get("type") == "text" for p in m["content"]) else m for m in msgs] for msgs in batched_messages
+                ]
             texts = [self.processor.apply_chat_template(msg, tokenize=False, add_generation_prompt=True) for msg in batched_messages]
             images = []
             videos = []

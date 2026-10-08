@@ -1,6 +1,5 @@
 "dataset_name": "formal_logic"
-"description": "The following are multiple choice questions (with answers) about formal\
-  \ logic.\n\n"
+"description": "The following are multiple choice questions (with answers) about formal logic. Answer the last question with the letter of the correct option only.\n\n"
 "tag": "mmlu_jetson_subjects"
 "include": "_default_template_yaml"
 "task": "mmlu_jetson_formal_logic"

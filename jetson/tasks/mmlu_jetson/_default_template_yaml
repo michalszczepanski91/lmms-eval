@@ -1,5 +1,7 @@
 # MMLU generative, 5-shot, for the Jetson text-only benchmark: the prompt of lmms_eval/tasks/mmlu/generative with the
-# 5 dev examples (first_n) before each question, so the prompt is long and the answer one letter (prefill-heavy).
+# 5 dev examples (first_n) before each question, so the prompt is long and the answer one letter (prefill-heavy). The
+# subject description also asks to answer only the last question: in one user turn a chat model otherwise works
+# through all six questions.
 # Generation stops only at the end-of-turn token (cap 32 tokens) in every framework; the first A-D letter is scored.
 dataset_path: hails/mmlu_no_train
 test_split: test

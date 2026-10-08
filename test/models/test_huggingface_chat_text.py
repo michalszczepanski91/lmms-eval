@@ -34,7 +34,8 @@ class FakeTokenizer:
 
 class FakeProcessor:
     def apply_chat_template(self, messages, tokenize=False, add_generation_prompt=True):
-        return "<chat>" + messages[0]["content"][0]["text"]
+        # Like a text-model template (Qwen2.5-Instruct): content must be a string.
+        return "<chat>" + messages[0]["content"]
 
     def __call__(self, **kwargs):
         raise AssertionError("text-only requests must not go through the multimodal processor")
@@ -86,6 +87,14 @@ class TestHuggingfaceTextOnly(unittest.TestCase):
         for field in ("preprocess_seconds", "time_to_first_token_seconds", "generation_seconds"):
             self.assertIsNotNone(getattr(counts, field), field)
         self.assertLessEqual(counts.time_to_first_token_seconds, counts.generation_seconds)
+
+
+class TestModelClass(unittest.TestCase):
+    def test_text_model_gets_causal_lm_head(self):
+        from transformers import AutoModelForCausalLM, AutoModelForImageTextToText, Qwen2_5_VLConfig, Qwen2Config
+
+        self.assertIs(Huggingface.model_class_for(Qwen2Config()), AutoModelForCausalLM)
+        self.assertIs(Huggingface.model_class_for(Qwen2_5_VLConfig()), AutoModelForImageTextToText)
 
 
 if __name__ == "__main__":

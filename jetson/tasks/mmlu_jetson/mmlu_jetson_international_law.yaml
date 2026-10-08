@@ -1,6 +1,5 @@
 "dataset_name": "international_law"
-"description": "The following are multiple choice questions (with answers) about international\
-  \ law.\n\n"
+"description": "The following are multiple choice questions (with answers) about international law. Answer the last question with the letter of the correct option only.\n\n"
 "tag": "mmlu_jetson_subjects"
 "include": "_default_template_yaml"
 "task": "mmlu_jetson_international_law"
