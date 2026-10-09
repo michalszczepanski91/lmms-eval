@@ -1,0 +1,3 @@
+/opt/venv/lib/python3.12/site-packages/transformers/utils/hub.py:110: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+  warnings.warn(
+jetson/results/thor/Qwen2.5-3B-Instruct/gsm8k_jetson/trt_edgellm-fp8/20261009-043800 gsm8k_jetson: n=2638 mean GFLOPs prefill 4257.3 decode 1276.1 total 5533.4

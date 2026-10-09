@@ -1,0 +1,48 @@
+/opt/venv/lib/python3.12/site-packages/transformers/utils/hub.py:110: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+  warnings.warn(
+torch 2.10.0 transformers 4.57.3
+/opt/venv/lib/python3.12/site-packages/transformers/utils/hub.py:110: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+  warnings.warn(
+[32m2026-10-08 20:33:25[0m | [1mINFO    [0m | [36mlmms_eval.__main__[0m:[36mcli_evaluate[0m:[36m516[0m - [1mVerbosity set to INFO[0m
+[32m2026-10-08 20:33:25[0m | [1mINFO    [0m | [36mlmms_eval.__main__[0m:[36mcli_evaluate_single[0m:[36m643[0m - [1mIncluding path: jetson/tasks[0m
+[32m2026-10-08 20:33:28[0m | [1mINFO    [0m | [36mlmms_eval.__main__[0m:[36mcli_evaluate_single[0m:[36m653[0m - [1mEvaluation tracker args: {'output_path': 'jetson/results/thor/Qwen2.5-3B-Instruct/gsm8k_jetson/llamacpp-f16/20261008-223314'}[0m
+[32m2026-10-08 20:33:28[0m | [1mINFO    [0m | [36mlmms_eval.__main__[0m:[36mcli_evaluate_single[0m:[36m677[0m - [1mIncluding path: jetson/tasks[0m
+[32m2026-10-08 20:33:28[0m | [1mINFO    [0m | [36mlmms_eval.__main__[0m:[36mcli_evaluate_single[0m:[36m737[0m - [1mSelected Tasks: ['gsm8k_jetson'][0m
+[32m2026-10-08 20:33:28[0m | [1mINFO    [0m | [36mlmms_eval.evaluator[0m:[36msimple_evaluate[0m:[36m488[0m - [1mSetting random seed to 0 | Setting numpy seed to 1234 | Setting torch manual seed to 1234[0m
+Using the latest cached version of the dataset since gsm8k couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'main' at /opt/hf-cache/datasets/gsm8k/main/0.0.0/740312add88f781978c0658806c59bc2815b9866 (last modified on Thu Oct  8 10:30:09 2026).
+[32m2026-10-08 20:33:28[0m | [1mINFO    [0m | [36mlmms_eval.evaluator[0m:[36mevaluate[0m:[36m1049[0m - [1mRunning on rank 0 (local rank 0)[0m
+[32m2026-10-08 20:33:28[0m | [1mINFO    [0m | [36mlmms_eval.api.task[0m:[36mbuild_all_requests[0m:[36m473[0m - [1mBuilding contexts for gsm8k_jetson on rank 0...[0m
+100%|██████████| 1319/1319 [00:03<00:00, 396.17it/s]
+[32m2026-10-08 20:33:32[0m | [1mINFO    [0m | [36mlmms_eval.evaluator[0m:[36mevaluate[0m:[36m1204[0m - [1mRunning generate_until requests[0m
+Model Responding: 100%|██████████| 1319/1319 [1:53:32<00:00,  5.78s/it, tokens=1,251,288][32m2026-10-08 22:27:04[0m | [1mINFO    [0m | [36mlmms_eval.models.model_utils.gen_metrics[0m:[36mlog_metrics[0m:[36m136[0m - [1mMetric summary - Total elapsed time: 6807.516s, Total gen tokens: 259359, Avg speed: 38.1 tokens/s[0m
+Postprocessing: 100%|██████████| 1319/1319 [00:00<00:00, 1814.86it/s]
+[32m2026-10-08 22:27:06[0m | [1mINFO    [0m | [36mlmms_eval.evaluator[0m:[36mevaluate[0m:[36m1404[0m - [1mPostprocessed 1319 docs for gsm8k_jetson/strict-match with 4 worker(s) in 0.73s[0m
+[32m2026-10-08 22:27:06[0m | [1mINFO    [0m | [36mlmms_eval.evaluator[0m:[36mevaluate[0m:[36m1404[0m - [1mPostprocessed 1319 docs for gsm8k_jetson/flexible-extract with 4 worker(s) in 0.72s[0m
+[32m2026-10-08 22:27:06[0m | [1mINFO    [0m | [36mlmms_eval.__main__[0m:[36mcli_evaluate_single[0m:[36m788[0m - [1mToken Usage - Input: 991,929 | Output: 259,359 | Reasoning: 0 | Total: 1,251,288 | API Calls: 1,319[0m
+[32m2026-10-08 22:27:06[0m | [1mINFO    [0m | [36mlmms_eval.loggers.evaluation_tracker[0m:[36msave_results_aggregated[0m:[36m187[0m - [1mSaving results aggregated[0m
+[32m2026-10-08 22:27:07[0m | [1mINFO    [0m | [36mlmms_eval.loggers.evaluation_tracker[0m:[36msave_results_samples[0m:[36m300[0m - [1mSaving samples to jetson/results/thor/Qwen2.5-3B-Instruct/gsm8k_jetson/llamacpp-f16/20261008-223314/Qwen2.5-3B-Instruct-f16/20261009_043328_samples_gsm8k_jetson.jsonl[0m
+openai (model_version=Qwen2.5-3B-Instruct-f16,base_url=http://127.0.0.1:8090/v1,api_key=local,stream_timing=True,num_concurrent=1,prefix_aware_queue=False,timeout=600,max_retries=2), gen_kwargs: (), limit: None, offset: 0, num_fewshot: None, batch_size: 1
+
+LMMs-Eval: Probing Intelligence in the Real World
+> Good evaluation shapes what we build next.
+
+branch: jetson-benchmark
+commit: v0.6-294-g6de18756
+
+|   Tasks    |     Filter     |n-shot|  Metric   |   |Value |   |Stderr|Stderr_CLT|
+|------------|----------------|-----:|-----------|---|-----:|---|-----:|---------:|
+|gsm8k_jetson|flexible-extract|     5|exact_match|↑  |0.7407|±  |0.0121|    0.0121|
+|gsm8k_jetson|strict-match    |     5|exact_match|↑  |0.0227|±  |0.0041|    0.0041|
+
+
+Throughput Summary
+
+|      Metric      |   Value   |  Unit  |
+|------------------|----------:|--------|
+|total_gen_tokens  |259359.0000|tokens  |
+|total_elapsed_time|  6807.5158|seconds |
+|avg_speed         |    38.0989|tokens/s|
+
+
+[slim_run.py: dropped 2 per-request progress/profile lines]
