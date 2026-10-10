@@ -1,0 +1,224 @@
+{
+  "results": {
+    "ifeval": {
+      "alias": "ifeval",
+      "prompt_level_strict_acc,none": 0.5859519408502772,
+      "prompt_level_strict_acc_stderr,none": 0.021196272552471317,
+      "prompt_level_strict_acc_stderr_clt,none": 0.02119627255247132,
+      "prompt_level_strict_acc_stderr_clustered,none": "N/A",
+      "inst_level_strict_acc,none": 0.6798561151079137,
+      "inst_level_strict_acc_stderr,none": "N/A",
+      "inst_level_strict_acc_stderr_clt,none": "N/A",
+      "inst_level_strict_acc_stderr_clustered,none": "N/A",
+      "prompt_level_loose_acc,none": 0.6284658040665434,
+      "prompt_level_loose_acc_stderr,none": 0.020794253888707582,
+      "prompt_level_loose_acc_stderr_clt,none": 0.020794253888707582,
+      "prompt_level_loose_acc_stderr_clustered,none": "N/A",
+      "inst_level_loose_acc,none": 0.7170263788968825,
+      "inst_level_loose_acc_stderr,none": "N/A",
+      "inst_level_loose_acc_stderr_clt,none": "N/A",
+      "inst_level_loose_acc_stderr_clustered,none": "N/A"
+    }
+  },
+  "group_subtasks": {
+    "ifeval": []
+  },
+  "configs": {
+    "ifeval": {
+      "task": "ifeval",
+      "dataset_path": "wis-k/instruction-following-eval",
+      "test_split": "train",
+      "full_docs": false,
+      "process_results_use_image": false,
+      "doc_to_text": "prompt",
+      "doc_to_target": 0,
+      "process_results": "<function process_results at 0xfffc14ba8fe0>",
+      "description": "",
+      "target_delimiter": " ",
+      "fewshot_delimiter": "\n\n",
+      "num_fewshot": 0,
+      "metric_list": [
+        {
+          "metric": "prompt_level_strict_acc",
+          "aggregation": "mean",
+          "higher_is_better": true
+        },
+        {
+          "metric": "inst_level_strict_acc",
+          "aggregation": "<function agg_inst_level_acc at 0xfffc14ba99e0>",
+          "higher_is_better": true
+        },
+        {
+          "metric": "prompt_level_loose_acc",
+          "aggregation": "mean",
+          "higher_is_better": true
+        },
+        {
+          "metric": "inst_level_loose_acc",
+          "aggregation": "<function agg_inst_level_acc at 0xfffc14baa340>",
+          "higher_is_better": true
+        }
+      ],
+      "output_type": "generate_until",
+      "generation_kwargs": {
+        "until": [],
+        "do_sample": false,
+        "temperature": 0.0,
+        "max_new_tokens": 1280
+      },
+      "repeats": 1,
+      "should_decontaminate": false,
+      "score_key": "score",
+      "metadata": {
+        "version": 2.0
+      },
+      "auto_strip_thinking": false
+    }
+  },
+  "versions": {
+    "ifeval": 2.0
+  },
+  "n-shot": {
+    "ifeval": 0
+  },
+  "higher_is_better": {
+    "ifeval": {
+      "prompt_level_strict_acc": true,
+      "inst_level_strict_acc": true,
+      "prompt_level_loose_acc": true,
+      "inst_level_loose_acc": true
+    }
+  },
+  "n-samples": {
+    "ifeval": {
+      "original": 541,
+      "effective": 541
+    }
+  },
+  "config": {
+    "model": "vllm",
+    "model_args": "model=/opt/hf-cache/hub/models--Qwen--Qwen2.5-3B-Instruct-AWQ/snapshots/3559b226e8ce77211e2c1bd7ddfb7686fec4d6dd,gpu_memory_utilization=0.11,max_model_len=4096,max_new_tokens=1,enable_prefix_caching=False",
+    "model_backend": "lmms_eval.models.chat.vllm.VLLM (chat)",
+    "batch_size": "1",
+    "batch_sizes": [],
+    "device": null,
+    "use_cache": null,
+    "limit": null,
+    "offset": 0,
+    "bootstrap_iters": 100000,
+    "process_docs_parallel": 4,
+    "gen_kwargs": "",
+    "random_seed": 0,
+    "numpy_seed": 1234,
+    "torch_seed": 1234,
+    "fewshot_seed": 1234,
+    "resolved_cli_args": {
+      "config": "",
+      "model": "vllm",
+      "tasks": "ifeval",
+      "model_args": "model=/opt/hf-cache/hub/models--Qwen--Qwen2.5-3B-Instruct-AWQ/snapshots/3559b226e8ce77211e2c1bd7ddfb7686fec4d6dd,gpu_memory_utilization=0.11,max_model_len=4096,max_new_tokens=1,enable_prefix_caching=False",
+      "launcher_args": null,
+      "num_fewshot": null,
+      "batch_size": "1",
+      "max_batch_size": null,
+      "device": null,
+      "output_path": "jetson/results/thor/Qwen2.5-3B-Instruct/ifeval/vllm-awq/20261010-000815",
+      "limit": null,
+      "offset": 0,
+      "use_cache": null,
+      "cache_requests": null,
+      "check_integrity": false,
+      "write_out": false,
+      "log_samples": true,
+      "wandb_log_samples": false,
+      "swanlab_log_samples": false,
+      "log_samples_suffix": "model_outputs",
+      "system_instruction": null,
+      "apply_chat_template": false,
+      "fewshot_as_multiturn": false,
+      "show_config": false,
+      "include_path": "jetson/tasks",
+      "gen_kwargs": "",
+      "reasoning_tags": "[[\"<think>\", \"</think>\"], [\"<analysis>\", \"</analysis>\"]]",
+      "verbosity": "INFO",
+      "wandb_args": "",
+      "swanlab_args": "",
+      "timezone": "Asia/Singapore",
+      "hf_hub_log_args": ",output_path=jetson/results/thor/Qwen2.5-3B-Instruct/ifeval/vllm-awq/20261010-000815",
+      "predict_only": false,
+      "seed": [
+        0,
+        1234,
+        1234,
+        1234
+      ],
+      "trust_remote_code": false,
+      "process_with_media": false,
+      "process_docs_parallel": 4,
+      "agentic_trace_mode": "basic",
+      "force_simple": false,
+      "tui": false,
+      "repeats": 1,
+      "baseline": null,
+      "max_tokens": null,
+      "power_analysis": false,
+      "effect_size": 0.03,
+      "alpha": 0.05,
+      "power": 0.8,
+      "correlation": 0.5,
+      "std_a": null,
+      "std_b": null
+    }
+  },
+  "git_hash": "v0.6-296-g0a7d8de8",
+  "git_branch": "jetson-benchmark",
+  "lmms_eval_version": "jetson-benchmark@v0.6-296",
+  "date": "20261010_060827",
+  "throughput": {
+    "total_gen_tokens": 173371,
+    "total_elapsed_time": 1733.4492589149158,
+    "avg_speed": 100.01504174891438,
+    "avg_ttft": 0.029207805608865735,
+    "avg_tpot": 0.009893880507746042,
+    "avg_rank": 0.0
+  },
+  "usage": {},
+  "efficiency": {
+    "by_task": {
+      "ifeval": {
+        "docs": 541.0,
+        "docs_with_token_counts": 541.0,
+        "total_input_tokens": 40787.0,
+        "total_output_tokens": 173371.0,
+        "total_tokens": 214158.0,
+        "total_correct_score": 0.0,
+        "avg_output_tokens_per_sample": 320.46395563770795,
+        "tokens_per_correct_answer": null
+      }
+    },
+    "overall": {
+      "docs": 541.0,
+      "docs_with_token_counts": 541.0,
+      "total_input_tokens": 40787.0,
+      "total_output_tokens": 173371.0,
+      "total_tokens": 214158.0,
+      "total_correct_score": 0.0,
+      "avg_output_tokens_per_sample": 320.46395563770795,
+      "tokens_per_correct_answer": null
+    }
+  },
+  "task_hashes": {
+    "ifeval": "9156845a710711d5e0bda766cf57a4a0ae17ab5dc152b282a34caa94a6155d34"
+  },
+  "model_source": "vllm",
+  "model_name": "/opt/hf-cache/hub/models--Qwen--Qwen2.5-3B-Instruct-AWQ/snapshots/3559b226e8ce77211e2c1bd7ddfb7686fec4d6dd",
+  "model_name_sanitized": "snapshots__3559b226e8ce77211e2c1bd7ddfb7686fec4d6dd",
+  "system_instruction": null,
+  "system_instruction_sha": null,
+  "fewshot_as_multiturn": false,
+  "chat_template": null,
+  "chat_template_sha": null,
+  "start_time": 1241865.068241218,
+  "end_time": 1243659.243208744,
+  "total_evaluation_time_seconds": "1794.1749675259925"
+}
