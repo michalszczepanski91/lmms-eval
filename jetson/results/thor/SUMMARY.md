@@ -6,7 +6,15 @@ How each column is measured: [methodology](../../docs/methodology.md). Runs mark
 
 | Model | Framework | Task | Scores | N | Power mode | Wall time (min) | TTFT p50 / p90 (ms) | Answer p50 / p90 (ms) | Decode (ms/token) | Base RAM (GB) | Peak RAM (GB) | Avg GPU rail (W) | Avg module (W) | Other GPU work / notes | Run dir |
 |---|---|---|---|---:|---|---:|---:|---:|---:|---:|---:|---:|---:|---|---|
-| Qwen2.5-3B-Instruct | hf-bf16 | gsm8k_jetson | exact_match (strict-match): 0.0091<br>exact_match (flexible-extract): 0.7445 | 1319 | MAXN | 183.0 | 82 / 95 | 7884 / 12796 | 40 | 19.0 | 22.5 | 16.2 | 49.4 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson/hf-bf16/20261008-153016](Qwen2.5-3B-Instruct/gsm8k_jetson/hf-bf16/20261008-153016) |
+| Qwen2.5-1.5B-Instruct | llamacpp-f16 | gsm8k_jetson | exact_match (strict-match): 0.3366<br>exact_match (flexible-extract): 0.6429 | 1319 | MAXN | 53.0 | 102 / 106 | 2128 / 3915 | 15 | 18.4 | 19.3 | 34.1 | 69.6 | none | [Qwen2.5-1.5B-Instruct/gsm8k_jetson/llamacpp-f16/20261010-091943](Qwen2.5-1.5B-Instruct/gsm8k_jetson/llamacpp-f16/20261010-091943) |
+| Qwen2.5-1.5B-Instruct | llamacpp-q4_k_m | gsm8k_jetson | exact_match (strict-match): 0.1941<br>exact_match (flexible-extract): 0.6058 | 1319 | MAXN | 27.1 | 129 / 137 | 1068 / 2024 | 8 | 18.1 | 18.9 | 34.1 | 64.9 | none | [Qwen2.5-1.5B-Instruct/gsm8k_jetson/llamacpp-q4_k_m/20261010-104631](Qwen2.5-1.5B-Instruct/gsm8k_jetson/llamacpp-q4_k_m/20261010-104631) |
+| Qwen2.5-1.5B-Instruct | llamacpp-q8_0 | gsm8k_jetson | exact_match (strict-match): 0.3480<br>exact_match (flexible-extract): 0.6452 | 1319 | MAXN | 33.1 | 118 / 125 | 1323 / 2396 | 9 | 18.4 | 18.9 | 33.7 | 68.0 | none | [Qwen2.5-1.5B-Instruct/gsm8k_jetson/llamacpp-q8_0/20261010-101305](Qwen2.5-1.5B-Instruct/gsm8k_jetson/llamacpp-q8_0/20261010-101305) |
+| Qwen2.5-1.5B-Instruct | trt_edgellm-fp16 | gsm8k_jetson | exact_match (strict-match): 0.3359<br>exact_match (flexible-extract): 0.6740 | 1319 | MAXN | 44.7 | ~28 (avg) | - | 13 | 18.2 | 19.0 | 24.9 | 63.9 | none | [Qwen2.5-1.5B-Instruct/gsm8k_jetson/trt_edgellm-fp16/20261010-111357](Qwen2.5-1.5B-Instruct/gsm8k_jetson/trt_edgellm-fp16/20261010-111357) |
+| Qwen2.5-1.5B-Instruct | trt_edgellm-fp8 | gsm8k_jetson | exact_match (strict-match): 0.3541<br>exact_match (flexible-extract): 0.6513 | 1319 | MAXN | 28.6 | ~22 (avg) | - | 8 | 18.2 | 19.0 | 29.7 | 67.5 | none | [Qwen2.5-1.5B-Instruct/gsm8k_jetson/trt_edgellm-fp8/20261010-115908](Qwen2.5-1.5B-Instruct/gsm8k_jetson/trt_edgellm-fp8/20261010-115908) |
+| Qwen2.5-1.5B-Instruct | trt_edgellm-int4_awq | gsm8k_jetson | exact_match (strict-match): 0.4359<br>exact_match (flexible-extract): 0.3078 | 1319 | MAXN | 40.1 | ~56 (avg) | - | 6 | 18.2 | 19.0 | 34.3 | 69.8 | none | [Qwen2.5-1.5B-Instruct/gsm8k_jetson/trt_edgellm-int4_awq/20261010-122809](Qwen2.5-1.5B-Instruct/gsm8k_jetson/trt_edgellm-int4_awq/20261010-122809) |
+| Qwen2.5-1.5B-Instruct | vllm-awq | gsm8k_jetson | exact_match (strict-match): 0.1372<br>exact_match (flexible-extract): 0.5868 | 1319 | MAXN | 23.9 | 64 / 67 | 928 / 1710 | 6 | 18.5 | 21.2 | 28.6 | 64.1 | none | [Qwen2.5-1.5B-Instruct/gsm8k_jetson/vllm-awq/20261010-085532](Qwen2.5-1.5B-Instruct/gsm8k_jetson/vllm-awq/20261010-085532) |
+| Qwen2.5-1.5B-Instruct | vllm-bf16 | gsm8k_jetson | exact_match (strict-match): 0.3487<br>exact_match (flexible-extract): 0.6672 | 1319 | MAXN | 45.7 | 36 / 41 | 1784 / 3376 | 13 | 16.4 | 21.2 | 20.1 | 61.1 | none | [Qwen2.5-1.5B-Instruct/gsm8k_jetson/vllm-bf16/20261010-073925](Qwen2.5-1.5B-Instruct/gsm8k_jetson/vllm-bf16/20261010-073925) |
+| Qwen2.5-1.5B-Instruct | vllm-fp8 | gsm8k_jetson | exact_match (strict-match): 0.2616<br>exact_match (flexible-extract): 0.6634 | 1319 | MAXN | 29.9 | 36 / 41 | 1144 / 2144 | 8 | 18.5 | 21.8 | 19.8 | 58.1 | none | [Qwen2.5-1.5B-Instruct/gsm8k_jetson/vllm-fp8/20261010-082521](Qwen2.5-1.5B-Instruct/gsm8k_jetson/vllm-fp8/20261010-082521) |
 | Qwen2.5-3B-Instruct | llamacpp-f16 | gsm8k_jetson | exact_match (strict-match): 0.0227<br>exact_match (flexible-extract): 0.7407 | 1319 | MAXN | 113.6 | 198 / 201 | 4861 / 7888 | 25 | 18.6 | 19.5 | 35.3 | 75.0 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson/llamacpp-f16/20261008-223314](Qwen2.5-3B-Instruct/gsm8k_jetson/llamacpp-f16/20261008-223314) |
 | Qwen2.5-3B-Instruct | llamacpp-q4_k_m | gsm8k_jetson | exact_match (strict-match): 0.0174<br>exact_match (flexible-extract): 0.7263 | 1319 | MAXN | 64.0 | 245 / 258 | 2736 / 4317 | 13 | 18.6 | 19.4 | 39.8 | 73.7 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson/llamacpp-q4_k_m/20261009-013759](Qwen2.5-3B-Instruct/gsm8k_jetson/llamacpp-q4_k_m/20261009-013759) |
 | Qwen2.5-3B-Instruct | llamacpp-q8_0 | gsm8k_jetson | exact_match (strict-match): 0.0425<br>exact_match (flexible-extract): 0.7339 | 1319 | MAXN | 70.4 | 219 / 231 | 2964 / 4818 | 15 | 18.5 | 19.4 | 36.2 | 73.7 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson/llamacpp-q8_0/20261009-002712](Qwen2.5-3B-Instruct/gsm8k_jetson/llamacpp-q8_0/20261009-002712) |
@@ -16,7 +24,6 @@ How each column is measured: [methodology](../../docs/methodology.md). Runs mark
 | Qwen2.5-3B-Instruct | vllm-awq | gsm8k_jetson | exact_match (strict-match): 0.0205<br>exact_match (flexible-extract): 0.7248 | 1319 | MAXN | 46.0 | 123 / 128 | 1911 / 3076 | 10 | 18.6 | 21.3 | 32.2 | 69.6 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson/vllm-awq/20261008-214657](Qwen2.5-3B-Instruct/gsm8k_jetson/vllm-awq/20261008-214657) |
 | Qwen2.5-3B-Instruct | vllm-bf16 | gsm8k_jetson | exact_match (strict-match): 0.0144<br>exact_match (flexible-extract): 0.7415 | 1319 | MAXN | 118.3 | 78 / 91 | 4966 / 8345 | 26 | 18.6 | 23.1 | 19.9 | 61.7 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson/vllm-bf16/20261008-183331](Qwen2.5-3B-Instruct/gsm8k_jetson/vllm-bf16/20261008-183331) |
 | Qwen2.5-3B-Instruct | vllm-fp8 | gsm8k_jetson | exact_match (strict-match): 0.0038<br>exact_match (flexible-extract): 0.7536 | 1319 | MAXN | 74.6 | 65 / 74 | 3199 / 5119 | 15 | 18.6 | 22.6 | 20.2 | 60.7 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson/vllm-fp8/20261008-203205](Qwen2.5-3B-Instruct/gsm8k_jetson/vllm-fp8/20261008-203205) |
-| Qwen2.5-3B-Instruct | hf-bf16 | ifeval | prompt_level_strict_acc: 0.6155<br>inst_level_strict_acc: 0.7050<br>prompt_level_loose_acc: 0.6488<br>inst_level_loose_acc: 0.7338 | 541 | MAXN | 100.7 | 44 / 46 | 8002 / 25626 | 39 | 20.3 | 24.3 | 14.7 | 47.1 | none | [Qwen2.5-3B-Instruct/ifeval/hf-bf16/20261009-202018](Qwen2.5-3B-Instruct/ifeval/hf-bf16/20261009-202018) |
 | Qwen2.5-3B-Instruct | llamacpp-f16 | ifeval | prompt_level_strict_acc: 0.6026<br>inst_level_strict_acc: 0.6990<br>prompt_level_loose_acc: 0.6414<br>inst_level_loose_acc: 0.7302 | 541 | MAXN | 73.0 | 75 / 79 | 4822 / 21974 | 25 | 20.3 | 21.2 | 34.9 | 74.6 | none | [Qwen2.5-3B-Instruct/ifeval/llamacpp-f16/20261010-003826](Qwen2.5-3B-Instruct/ifeval/llamacpp-f16/20261010-003826) |
 | Qwen2.5-3B-Instruct | llamacpp-q4_k_m | ifeval | prompt_level_strict_acc: 0.5933<br>inst_level_strict_acc: 0.6859<br>prompt_level_loose_acc: 0.6303<br>inst_level_loose_acc: 0.7206 | 541 | MAXN | 39.8 | 39 / 48 | 2554 / 15991 | 12 | 20.2 | 21.1 | 39.4 | 74.5 | none | [Qwen2.5-3B-Instruct/ifeval/llamacpp-q4_k_m/20261010-023525](Qwen2.5-3B-Instruct/ifeval/llamacpp-q4_k_m/20261010-023525) |
 | Qwen2.5-3B-Instruct | llamacpp-q8_0 | ifeval | prompt_level_strict_acc: 0.5878<br>inst_level_strict_acc: 0.6799<br>prompt_level_loose_acc: 0.6192<br>inst_level_loose_acc: 0.7146 | 541 | MAXN | 43.3 | 39 / 45 | 2743 / 11533 | 15 | 20.2 | 21.0 | 35.7 | 74.1 | none | [Qwen2.5-3B-Instruct/ifeval/llamacpp-q8_0/20261010-015148](Qwen2.5-3B-Instruct/ifeval/llamacpp-q8_0/20261010-015148) |
@@ -26,7 +33,6 @@ How each column is measured: [methodology](../../docs/methodology.md). Runs mark
 | Qwen2.5-3B-Instruct | vllm-awq | ifeval | prompt_level_strict_acc: 0.5860<br>inst_level_strict_acc: 0.6799<br>prompt_level_loose_acc: 0.6285<br>inst_level_loose_acc: 0.7170 | 541 | MAXN | 29.9 | 28 / 32 | 1897 / 8318 | 10 | 20.3 | 23.1 | 29.5 | 66.8 | none | [Qwen2.5-3B-Instruct/ifeval/vllm-awq/20261010-000815](Qwen2.5-3B-Instruct/ifeval/vllm-awq/20261010-000815) |
 | Qwen2.5-3B-Instruct | vllm-bf16 | ifeval | prompt_level_strict_acc: 0.5952<br>inst_level_strict_acc: 0.6930<br>prompt_level_loose_acc: 0.6396<br>inst_level_loose_acc: 0.7290 | 541 | MAXN | 77.6 | 54 / 55 | 5285 / 20562 | 26 | 20.3 | 25.5 | 18.5 | 60.0 | none | [Qwen2.5-3B-Instruct/ifeval/vllm-bf16/20261009-220116](Qwen2.5-3B-Instruct/ifeval/vllm-bf16/20261009-220116) |
 | Qwen2.5-3B-Instruct | vllm-fp8 | ifeval | prompt_level_strict_acc: 0.5693<br>inst_level_strict_acc: 0.6715<br>prompt_level_loose_acc: 0.6081<br>inst_level_loose_acc: 0.7050 | 541 | MAXN | 48.7 | 32 / 34 | 3264 / 15621 | 15 | 20.3 | 23.5 | 18.5 | 58.4 | none | [Qwen2.5-3B-Instruct/ifeval/vllm-fp8/20261009-231914](Qwen2.5-3B-Instruct/ifeval/vllm-fp8/20261009-231914) |
-| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson | exact_match (first-letter): 0.6102 | 14042 | MAXN | 141.1 | 71 / 160 | 298 / 1330 | 40 | 18.6 | 22.6 | 20.9 | 52.8 | none | [Qwen2.5-3B-Instruct/mmlu_jetson/hf-bf16/20261009-063553](Qwen2.5-3B-Instruct/mmlu_jetson/hf-bf16/20261009-063553) |
 | Qwen2.5-3B-Instruct | llamacpp-f16 | mmlu_jetson | exact_match (first-letter): 0.6185 | 14042 | MAXN | 87.3 | 179 / 405 | 222 / 893 | 26 | 20.3 | 21.5 | 36.3 | 73.4 | none | [Qwen2.5-3B-Instruct/mmlu_jetson/llamacpp-f16/20261009-122025](Qwen2.5-3B-Instruct/mmlu_jetson/llamacpp-f16/20261009-122025) |
 | Qwen2.5-3B-Instruct | llamacpp-q4_k_m | mmlu_jetson | exact_match (first-letter): 0.5855 | 14042 | MAXN | 88.4 | 193 / 531 | 280 / 650 | 13 | 20.3 | 21.1 | 38.3 | 63.1 | none | [Qwen2.5-3B-Instruct/mmlu_jetson/llamacpp-q4_k_m/20261009-150500](Qwen2.5-3B-Instruct/mmlu_jetson/llamacpp-q4_k_m/20261009-150500) |
 | Qwen2.5-3B-Instruct | llamacpp-q8_0 | mmlu_jetson | exact_match (first-letter): 0.6179 | 14042 | MAXN | 76.6 | 175 / 474 | 210 / 645 | 16 | 20.3 | 21.2 | 38.3 | 65.4 | none | [Qwen2.5-3B-Instruct/mmlu_jetson/llamacpp-q8_0/20261009-134803](Qwen2.5-3B-Instruct/mmlu_jetson/llamacpp-q8_0/20261009-134803) |
@@ -93,7 +99,15 @@ Medians per sample. Preprocess = client-side prompt and image preparation; visio
 
 | Model | Framework | Task | Preprocess (ms) | Vision encoder (ms) | LLM prefill (ms) | TTFT p50 / p99 (ms) | Answer p99 (ms) | Output tokens (mean) | Decode (tokens/s) | Throughput (samples/s) | Energy (J/sample) | Stage timing source |
 |---|---|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---|
-| Qwen2.5-3B-Instruct | hf-bf16 | gsm8k_jetson | 6 | - | 82 | 82 / 98 | 19316 | 207.7 | 25 | 0.12 | 411.4 | TTFT (text only) |
+| Qwen2.5-1.5B-Instruct | llamacpp-f16 | gsm8k_jetson | 3 | - | 96 | 102 / 108 | 6515 | 149.9 | 65 | 0.41 | 167.8 | server log |
+| Qwen2.5-1.5B-Instruct | llamacpp-q4_k_m | gsm8k_jetson | 3 | - | 123 | 129 / 143 | 3326 | 145.0 | 132 | 0.81 | 80.0 | server log |
+| Qwen2.5-1.5B-Instruct | llamacpp-q8_0 | gsm8k_jetson | 3 | - | 111 | 118 / 130 | 4821 | 150.8 | 109 | 0.66 | 102.4 | server log |
+| Qwen2.5-1.5B-Instruct | trt_edgellm-fp16 | gsm8k_jetson | - | - | 28 | ~28 (avg) | - | 152.3 | 76 | 0.49 | 130.0 | runner profile (GPU time) |
+| Qwen2.5-1.5B-Instruct | trt_edgellm-fp8 | gsm8k_jetson | - | - | 21 | ~22 (avg) | - | 152.2 | 119 | 0.77 | 87.8 | runner profile (GPU time) |
+| Qwen2.5-1.5B-Instruct | trt_edgellm-int4_awq | gsm8k_jetson | - | - | 54 | ~56 (avg) | - | 296.8 | 169 | 0.55 | 127.3 | runner profile (GPU time) |
+| Qwen2.5-1.5B-Instruct | vllm-awq | gsm8k_jetson | 4 | - | 64 | 64 / 69 | 3075 | 164.5 | 170 | 0.92 | 69.6 | TTFT (text only) |
+| Qwen2.5-1.5B-Instruct | vllm-bf16 | gsm8k_jetson | 4 | - | 36 | 36 / 43 | 5792 | 150.7 | 75 | 0.48 | 126.9 | TTFT (text only) |
+| Qwen2.5-1.5B-Instruct | vllm-fp8 | gsm8k_jetson | 4 | - | 36 | 36 / 42 | 4327 | 152.0 | 119 | 0.74 | 79.0 | TTFT (text only) |
 | Qwen2.5-3B-Instruct | llamacpp-f16 | gsm8k_jetson | 3 | - | 191 | 198 / 207 | 12148 | 196.6 | 39 | 0.19 | 387.7 | server log |
 | Qwen2.5-3B-Instruct | llamacpp-q4_k_m | gsm8k_jetson | 3 | - | 239 | 245 / 269 | 6595 | 212.2 | 80 | 0.34 | 214.5 | server log |
 | Qwen2.5-3B-Instruct | llamacpp-q8_0 | gsm8k_jetson | 3 | - | 213 | 219 / 240 | 7335 | 193.5 | 65 | 0.31 | 236.2 | server log |
@@ -103,7 +117,6 @@ Medians per sample. Preprocess = client-side prompt and image preparation; visio
 | Qwen2.5-3B-Instruct | vllm-awq | gsm8k_jetson | 4 | - | 123 | 123 / 133 | 5021 | 192.9 | 100 | 0.48 | 145.6 | TTFT (text only) |
 | Qwen2.5-3B-Instruct | vllm-bf16 | gsm8k_jetson | 4 | - | 78 | 78 / 92 | 12925 | 201.0 | 38 | 0.19 | 332.0 | TTFT (text only) |
 | Qwen2.5-3B-Instruct | vllm-fp8 | gsm8k_jetson | 4 | - | 65 | 65 / 77 | 7879 | 215.9 | 65 | 0.29 | 206.0 | TTFT (text only) |
-| Qwen2.5-3B-Instruct | hf-bf16 | ifeval | 1 | - | 44 | 44 / 55 | 50509 | 281.7 | 25 | 0.09 | 525.9 | TTFT (text only) |
 | Qwen2.5-3B-Instruct | llamacpp-f16 | ifeval | 0 | - | 70 | 75 / 101 | 32449 | 319.0 | 40 | 0.12 | 604.3 | server log |
 | Qwen2.5-3B-Instruct | llamacpp-q4_k_m | ifeval | 0 | - | 34 | 39 / 63 | 16039 | 352.5 | 81 | 0.23 | 328.6 | server log |
 | Qwen2.5-3B-Instruct | llamacpp-q8_0 | ifeval | 0 | - | 34 | 39 / 60 | 19730 | 311.6 | 66 | 0.21 | 355.7 | server log |
@@ -113,7 +126,6 @@ Medians per sample. Preprocess = client-side prompt and image preparation; visio
 | Qwen2.5-3B-Instruct | vllm-awq | ifeval | 1 | - | 28 | 28 / 38 | 12814 | 320.5 | 101 | 0.30 | 221.4 | TTFT (text only) |
 | Qwen2.5-3B-Instruct | vllm-bf16 | ifeval | 1 | - | 54 | 54 / 56 | 33493 | 326.2 | 38 | 0.12 | 516.4 | TTFT (text only) |
 | Qwen2.5-3B-Instruct | vllm-fp8 | ifeval | 1 | - | 32 | 32 / 36 | 19585 | 348.2 | 66 | 0.19 | 315.5 | TTFT (text only) |
-| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson | 11 | - | 71 | 71 / 268 | 1437 | 13.5 | 25 | 1.66 | 31.9 | TTFT (text only) |
 | Qwen2.5-3B-Instruct | llamacpp-f16 | mmlu_jetson | 8 | - | 173 | 179 / 637 | 1105 | 7.3 | 38 | 2.68 | 27.4 | server log |
 | Qwen2.5-3B-Instruct | llamacpp-q4_k_m | mmlu_jetson | 8 | - | 187 | 193 / 878 | 998 | 10.0 | 76 | 2.65 | 23.8 | server log |
 | Qwen2.5-3B-Instruct | llamacpp-q8_0 | mmlu_jetson | 8 | - | 169 | 175 / 784 | 919 | 6.7 | 61 | 3.05 | 21.4 | server log |
@@ -179,7 +191,15 @@ and total / mean answer time.
 
 | Model | Framework | Task | Image / text / output tokens | Vision (GFLOP) | Prefill (GFLOP) | Decode (GFLOP) | Total (GFLOP) | Run total (TFLOP) | TFLOP/s to 1st token | TFLOP/s answer |
 |---|---|---|---:|---:|---:|---:|---:|---:|---:|---:|
-| Qwen2.5-3B-Instruct | hf-bf16 | gsm8k_jetson | 0 / 752 / 208 | 0 | 4257 | 1329 | 5586 | 7368 | 51.0 | 0.7 |
+| Qwen2.5-1.5B-Instruct | llamacpp-f16 | gsm8k_jetson | 0 / 752 / 150 | 0 | 2020 | 482 | 2501 | 3299 | 19.6 | 1.0 |
+| Qwen2.5-1.5B-Instruct | llamacpp-q4_k_m | gsm8k_jetson | 0 / 752 / 145 | 0 | 2020 | 466 | 2485 | 3278 | 15.5 | 2.0 |
+| Qwen2.5-1.5B-Instruct | llamacpp-q8_0 | gsm8k_jetson | 0 / 752 / 151 | 0 | 2020 | 485 | 2504 | 3303 | 17.0 | 1.7 |
+| Qwen2.5-1.5B-Instruct | trt_edgellm-fp16 | gsm8k_jetson | 0 / 752 / 152 | 0 | 2020 | 489 | 2509 | 3309 | 71.9 | 1.2 |
+| Qwen2.5-1.5B-Instruct | trt_edgellm-fp8 | gsm8k_jetson | 0 / 752 / 152 | 0 | 2020 | 489 | 2509 | 3309 | 92.5 | 1.9 |
+| Qwen2.5-1.5B-Instruct | trt_edgellm-int4_awq | gsm8k_jetson | 0 / 752 / 297 | 0 | 2020 | 962 | 2982 | 3934 | 36.4 | 1.7 |
+| Qwen2.5-1.5B-Instruct | vllm-awq | gsm8k_jetson | 0 / 752 / 165 | 0 | 2020 | 529 | 2549 | 3362 | 31.1 | 2.5 |
+| Qwen2.5-1.5B-Instruct | vllm-bf16 | gsm8k_jetson | 0 / 752 / 151 | 0 | 2020 | 484 | 2504 | 3303 | 53.5 | 1.2 |
+| Qwen2.5-1.5B-Instruct | vllm-fp8 | gsm8k_jetson | 0 / 752 / 152 | 0 | 2020 | 488 | 2508 | 3308 | 54.3 | 1.9 |
 | Qwen2.5-3B-Instruct | llamacpp-f16 | gsm8k_jetson | 0 / 752 / 197 | 0 | 4257 | 1258 | 5515 | 7274 | 21.4 | 1.1 |
 | Qwen2.5-3B-Instruct | llamacpp-q4_k_m | gsm8k_jetson | 0 / 752 / 212 | 0 | 4257 | 1358 | 5615 | 7407 | 17.2 | 1.9 |
 | Qwen2.5-3B-Instruct | llamacpp-q8_0 | gsm8k_jetson | 0 / 752 / 194 | 0 | 4257 | 1238 | 5495 | 7248 | 19.3 | 1.7 |
@@ -189,7 +209,6 @@ and total / mean answer time.
 | Qwen2.5-3B-Instruct | vllm-awq | gsm8k_jetson | 0 / 752 / 193 | 0 | 4257 | 1234 | 5491 | 7243 | 34.3 | 2.7 |
 | Qwen2.5-3B-Instruct | vllm-bf16 | gsm8k_jetson | 0 / 752 / 201 | 0 | 4257 | 1286 | 5543 | 7312 | 53.3 | 1.0 |
 | Qwen2.5-3B-Instruct | vllm-fp8 | gsm8k_jetson | 0 / 752 / 216 | 0 | 4257 | 1382 | 5640 | 7439 | 62.9 | 1.7 |
-| Qwen2.5-3B-Instruct | hf-bf16 | ifeval | 0 / 75 / 282 | 0 | 420 | 1762 | 2182 | 1181 | 9.3 | 0.2 |
 | Qwen2.5-3B-Instruct | llamacpp-f16 | ifeval | 0 / 75 / 319 | 0 | 420 | 2003 | 2423 | 1311 | 5.5 | 0.3 |
 | Qwen2.5-3B-Instruct | llamacpp-q4_k_m | ifeval | 0 / 75 / 353 | 0 | 420 | 2217 | 2637 | 1427 | 10.2 | 0.6 |
 | Qwen2.5-3B-Instruct | llamacpp-q8_0 | ifeval | 0 / 75 / 312 | 0 | 420 | 1956 | 2376 | 1286 | 10.4 | 0.5 |
@@ -255,6 +274,10 @@ Kept as evidence, left out of the tables above.
 
 | Run dir | Marker | Scores | Reason |
 |---|---|---|---|
+| [Qwen2.5-1.5B-Instruct/gsm8k_jetson/hf-bf16/20261010-060657](Qwen2.5-1.5B-Instruct/gsm8k_jetson/hf-bf16/20261010-060657) | SUPERSEDED | exact_match (strict-match): 0.1751, exact_match (flexible-extract): 0.6073 | HF generate() applied repetition_penalty=1.1 from the checkpoint generation_config.json (the other frameworks decode without); re-run with 1.0 (NOTES_qwen2_5.md problem 8) |
+| [Qwen2.5-3B-Instruct/gsm8k_jetson/hf-bf16/20261008-153016](Qwen2.5-3B-Instruct/gsm8k_jetson/hf-bf16/20261008-153016) | SUPERSEDED | exact_match (strict-match): 0.0091, exact_match (flexible-extract): 0.7445 | HF generate() applied repetition_penalty=1.05 from the checkpoint generation_config.json (the other frameworks decode without); re-run with 1.0 (NOTES_qwen2_5.md problem 8) |
+| [Qwen2.5-3B-Instruct/ifeval/hf-bf16/20261009-202018](Qwen2.5-3B-Instruct/ifeval/hf-bf16/20261009-202018) | SUPERSEDED | prompt_level_strict_acc: 0.6155, inst_level_strict_acc: 0.7050, prompt_level_loose_acc: 0.6488, inst_level_loose_acc: 0.7338 | HF generate() applied repetition_penalty=1.05 from the checkpoint generation_config.json (the other frameworks decode without); re-run with 1.0 (NOTES_qwen2_5.md problem 8) |
+| [Qwen2.5-3B-Instruct/mmlu_jetson/hf-bf16/20261009-063553](Qwen2.5-3B-Instruct/mmlu_jetson/hf-bf16/20261009-063553) | SUPERSEDED | exact_match (first-letter): 0.6102 | HF generate() applied repetition_penalty=1.05 from the checkpoint generation_config.json (the other frameworks decode without); re-run with 1.0 (NOTES_qwen2_5.md problem 8) |
 | [Qwen2.5-VL-3B-Instruct/gqa/trt_edgellm-fp16/20260925-073035](Qwen2.5-VL-3B-Instruct/gqa/trt_edgellm-fp16/20260925-073035) | SUPERSEDED | exact_match: 0.6007 | Replaced by gqa/trt_edgellm-fp16/20260930-* (engines with the fp16-safe vision encoder, MAXN); same score. |
 | [Qwen2.5-VL-3B-Instruct/gqa/trt_edgellm-fp8/20260925-081333](Qwen2.5-VL-3B-Instruct/gqa/trt_edgellm-fp8/20260925-081333) | SUPERSEDED | exact_match: 0.6011 | Replaced by gqa/trt_edgellm-fp8/20260930-* (engines with the fp16-safe vision encoder, MAXN); same score. |
 | [Qwen2.5-VL-3B-Instruct/gqa/trt_edgellm-int4_awq/20260925-085025](Qwen2.5-VL-3B-Instruct/gqa/trt_edgellm-int4_awq/20260925-085025) | SUPERSEDED | exact_match: 0.5756 | Replaced by gqa/trt_edgellm-int4_awq/20260930-* (engines with the fp16-safe vision encoder, MAXN); same score. |
