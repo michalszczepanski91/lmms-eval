@@ -45,7 +45,11 @@ class FakeProcessor:
 
 
 class FakeModel:
+    def __init__(self):
+        self.kwargs = None
+
     def generate(self, input_ids, attention_mask, streamer=None, max_new_tokens=None, **kwargs):
+        self.kwargs = kwargs
         if streamer is not None:
             streamer.put(input_ids)  # prompt
             for _ in range(3):
@@ -87,6 +91,13 @@ class TestHuggingfaceTextOnly(unittest.TestCase):
         for field in ("preprocess_seconds", "time_to_first_token_seconds", "generation_seconds"):
             self.assertIsNotNone(getattr(counts, field), field)
         self.assertLessEqual(counts.time_to_first_token_seconds, counts.generation_seconds)
+
+    def test_greedy_has_no_repetition_penalty_from_the_checkpoint(self):
+        # generate() would otherwise take repetition_penalty from the checkpoint's generation_config.json.
+        backend = make_backend()
+        backend.generate_until([text_request()])
+        self.assertEqual(backend.model.kwargs["repetition_penalty"], 1.0)
+        self.assertFalse(backend.model.kwargs["do_sample"])
 
 
 class TestModelClass(unittest.TestCase):

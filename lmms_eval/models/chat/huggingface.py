@@ -259,6 +259,9 @@ class Huggingface(lmms):
                 "temperature": 0.0,  # Set to 0 for greedy default
                 "top_p": None,
                 "num_beams": 1,
+                # Explicit, so the checkpoint's generation_config.json (e.g. Qwen2.5-Instruct: 1.05-1.1) does not
+                # add a repetition penalty to greedy decoding that other backends don't apply.
+                "repetition_penalty": 1.0,
             }
             # Update with provided kwargs
             current_gen_kwargs = {**default_gen_kwargs, **gen_kwargs}
@@ -282,6 +285,7 @@ class Huggingface(lmms):
                 temperature=current_gen_kwargs["temperature"],
                 top_p=current_gen_kwargs["top_p"],
                 num_beams=current_gen_kwargs["num_beams"],
+                repetition_penalty=current_gen_kwargs["repetition_penalty"],
                 max_new_tokens=current_gen_kwargs["max_new_tokens"],
                 use_cache=self.use_cache,
                 streamer=first_token_timer,
