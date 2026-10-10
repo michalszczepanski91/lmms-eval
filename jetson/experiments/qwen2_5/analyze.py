@@ -139,7 +139,7 @@ def run_metrics(run, task):
     return m
 
 
-def collect(sizes, tasks, include_smoke=False):
+def collect(sizes, tasks, include_smoke=False, min_tolerance=0.0):
     """{(size, task): OrderedDict(config -> metrics)}, configs in Phase 1 order then the rest alphabetically."""
     table = {}
     for size in sizes:
@@ -159,7 +159,9 @@ def collect(sizes, tasks, include_smoke=False):
                 m["acc"] = sum(scores.values()) / len(scores) if scores else None
                 m["delta"], m["se"] = paired(scores, ref) if ref and config != REFERENCE else (None, None)
                 m["same"] = sum(scores[k] == ref[k] for k in ref if k in scores) / len(ref) if ref and config != REFERENCE else None
-                m["passes"] = config == REFERENCE or (m["delta"] is not None and m["delta"] >= -2 * m["se"])
+                # Rule 1: within 2 paired SE of HF, or above. min_tolerance (sensitivity check, NOTES decision 16):
+                # also pass when the difference is smaller than this many points.
+                m["passes"] = config == REFERENCE or (m["delta"] is not None and m["delta"] >= -max(2 * m["se"], min_tolerance / 100))
                 m["repeats"] = len(runs)
                 rows[config] = m
             table[(size, task)] = rows
@@ -242,8 +244,11 @@ def main():
     p.add_argument("--q1", action="store_true", help="apply the Q1 decision rule")
     p.add_argument("--json", help="also write the metrics to this file (for the figures)")
     p.add_argument("--include-smoke", action="store_true")
+    p.add_argument("--min-tolerance", type=float, default=0.0, help="sensitivity check: also pass accuracy differences smaller than this many points (default 0: the rule as fixed)")
     a = p.parse_args()
-    table = collect(a.sizes, a.tasks, a.include_smoke)
+    table = collect(a.sizes, a.tasks, a.include_smoke, a.min_tolerance)
+    if a.min_tolerance:
+        print(f"Sensitivity check: accuracy rule passes Δ ≥ −max(2 SE, {a.min_tolerance:g} points) (NOTES_qwen2_5.md decision 16).")
     print_tables(table)
     if a.q1:
         q1(table, a.sizes, a.tasks)
