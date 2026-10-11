@@ -25,6 +25,27 @@ Plan, decisions, problems and fixes, timeline, open items. Template: the Qwen2.5
 
 **Runtime estimate, revised 2026-10-08 from the 3B smoke tests** (s/question incl. model load: HF 0.87, vLLM 0.68, Edge-LLM 0.57, llama.cpp 0.52, mostly MMLU): MMLU 0.3–0.55 s/question, GSM8K 2–4 s at 16-bit. Phase 1 ~68 h (3B ~41 h, 1.5B ~27 h), Phase 2 extras ~29 h, sweep / repeats / builds ~11 h: **~4.5 days**. User decision: go ahead with full splits; re-check before Phase 2.
 
+## Q1 verdict (written 2026-10-11, after Phase 1 and the HF re-runs, before Phase 2)
+
+From `python3 jetson/experiments/qwen2_5/analyze.py --q1` (rule as fixed) and `--q1 --min-tolerance 1` (sensitivity check, decision 16); 60 Phase 1 runs plus the four HF re-runs (problem 8).
+
+**By the rule as fixed: not a win.** Edge-LLM meets the speed part. It is best or tied on ≥ 3 of the 4 metrics, in every bit width where it passes the accuracy rule, in 2 of 3 tasks for 3B (GSM8K, MMLU; not IFEval) and 3 of 3 for 1.5B. But it fails rule 1 where another framework passes, four times (strict) / three times (with the 1-point tolerance):
+
+| Size | Task | Bits | Edge-LLM | Passing alternative |
+|---|---|---:|---|---|
+| 3B | GSM8K | 4 | int4_awq −4.9 ± 1.1 | vLLM AWQ −2.0 ± 1.0, llama.cpp Q4_K_M −1.8 ± 1.0 |
+| 3B | IFEval | 8 | fp8 −3.9 ± 1.8 | llama.cpp Q8_0 −1.5 ± 1.6 |
+| 3B | MMLU | 8 | fp8 −0.9 ± 0.2 (strict only; passes the 1-point check) | vLLM fp8 +0.2, llama.cpp Q8_0 +0.2 |
+| 1.5B | MMLU | 16 | fp16 −1.4 ± 0.2 (fails both) | vLLM bf16 −0.6 ± 0.1 (passes the 1-point check only) |
+
+**Split verdict, per task and metric:**
+- **16-bit: Edge-LLM ties.** All three fast frameworks decode at 85–90% of the memory-bandwidth floor on 3B (figures.py bandwidth), so decode and time per question are within the tie band. Edge-LLM is never the lowest-energy 16-bit framework (vLLM bf16 is, in 5 of 6 task × size cells); on 1.5B it is tied with vLLM on energy.
+- **8-bit: Edge-LLM wins on GSM8K (both sizes), on 1.5B MMLU and 1.5B IFEval**; vLLM fp8 wins 3B MMLU on all four metrics; on 3B IFEval both fp8 builds fail accuracy and llama.cpp Q8_0 is the only passing 8-bit configuration.
+- **4-bit: Edge-LLM does not win.** Its own int4_awq fails accuracy on 3B GSM8K and 3B MMLU, does not end its turn in 39% of 1.5B GSM8K answers (decision 15), and is only best on 1.5B MMLU, where that same run-on behaviour is not penalised (decision 17). vLLM AWQ is the best passing 4-bit configuration on 3B.
+- **TTFT** is where Edge-LLM is best almost everywhere, but its value is the median prefill GPU time from its runner profile, the others' a per-request wall time with host overhead. This metric therefore favours Edge-LLM; without it, Edge-LLM would need all three remaining metrics in a bit width, which it reaches in 3B GSM8K 8-bit, 1.5B GSM8K 16-bit, 1.5B MMLU 8- and 4-bit and 1.5B IFEval 16-bit only.
+
+In short: for a text-only LLM on Thor, TensorRT Edge-LLM is **as fast as vLLM and llama.cpp at 16 bits (all three are close to the bandwidth limit), slightly faster at 8 bits, but its own quantization is less accurate** (fp8 on 3B instruction following, int4_awq everywhere). It is not the clear winner it was for Qwen2.5-VL, where its vision encoder and prefill made the difference. Phase 2 tests whether other Edge-LLM weight configurations fix the accuracy side.
+
 ## Decisions
 
 1. Tasks are loaded through the chat path: for text-only tasks lmms-eval puts the full few-shot context into one user turn, so every backend gets the same messages and the same chat template.
@@ -62,6 +83,9 @@ Plan, decisions, problems and fixes, timeline, open items. Template: the Qwen2.5
 | Date | What |
 |---|---|
 | 2026-10-08 | Plan written; Hub repos checked (all Qwen / RedHatAI repos exist; GGUF from Qwen). Harness changes (Phase 0), task variants, downloads (11:57–13:00). First Edge-LLM text engine (3B fp16) built in 2 min 44 s. HF 3B smoke test: fixed problems 1–4. 3B smoke tests (8 questions per task) pass in HF, vLLM, llama.cpp f16 and Edge-LLM fp16: GSM8K 0.50–0.63, IFEval 0.50–0.63, MMLU 0.64–0.65. |
+
+| 2026-10-08 – 10-10 | Phase 1, 3B (30 runs, 15:30 on 10-08 to 05:50 on 10-10), 1.5B engines built (05:51–06:07), Phase 1 1.5B (30 runs, to 06:00 on 10-11). Problems 7 (answer text not saved) and 8 (HF repetition penalty) found and fixed during the runs. |
+| 2026-10-11 | HF re-runs without the penalty (05:59–14:39). Q1 verdict written. Queue: VL regression smokes, llama.cpp accumulation diagnostic, length sweep, repeats (from 14:40). |
 
 ## Open items
 
