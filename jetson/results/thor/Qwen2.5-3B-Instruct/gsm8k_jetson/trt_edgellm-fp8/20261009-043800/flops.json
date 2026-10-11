@@ -8,20 +8,20 @@
    "mean": {
     "image_tokens": 0.0,
     "text_tokens": 752.0310841546626,
-    "output_tokens": 199.4814253222138,
+    "output_tokens": 199.47763457164518,
     "vision_flops": 0.0,
     "prefill_flops": 4257269177169.3223,
-    "decode_flops": 1276122726698.1167,
-    "total_flops": 5533391903867.439
+    "decode_flops": 1276097875138.8628,
+    "total_flops": 5533367052308.185
    },
    "total": {
     "image_tokens": 0,
     "text_tokens": 1983858,
-    "output_tokens": 526232,
+    "output_tokens": 526222,
     "vision_flops": 0,
     "prefill_flops": 11230676089372672,
-    "decode_flops": 3366411753029632,
-    "total_flops": 14597087842402304
+    "decode_flops": 3366346194616320,
+    "total_flops": 14597022283988992
    }
   }
  }
