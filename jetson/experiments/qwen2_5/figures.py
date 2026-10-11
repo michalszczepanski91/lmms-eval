@@ -1,0 +1,185 @@
+#!/usr/bin/env python3
+"""Figures of the text-only Qwen2.5 study (FINDINGS_qwen2_5.md), from the result files and the model artifacts.
+
+  bandwidth  measured decode ms/token (GSM8K, median) against the bytes one decode step reads (weights without the
+             embedding table + KV cache at the mean context), with the floor of Thor's 273 GB/s.
+             Bytes come from each framework's own artifact: safetensors headers (HF, vLLM), the Edge-LLM llm.engine
+             file, GGUF tensor headers (llama.cpp).
+  pareto     Edge-LLM weight configurations (Phase 2): accuracy against energy per question, per task and size.
+
+Usage: python3 jetson/experiments/qwen2_5/figures.py bandwidth|pareto [-o out.svg]
+"""
+
+import argparse
+import glob
+import json
+import os
+import struct
+import sys
+
+import matplotlib
+
+matplotlib.use("Agg")
+import matplotlib.pyplot as plt  # noqa: E402
+
+HERE = os.path.dirname(os.path.abspath(__file__))
+sys.path.insert(0, HERE)
+import analyze as A  # noqa: E402
+
+HF_CACHE = os.environ.get("HF_HUB_CACHE", "/opt/hf-cache/hub")
+TRT_WORKSPACE = os.environ.get("TRT_WORKSPACE", "/opt/models/trt-edgellm")
+BANDWIDTH = 273e9
+# plot_stages.py's ink; framework colours validated for all pairs (CVD ΔE 9.2, normal 18.0); green is below 3:1 on
+# white, so every point carries a text label.
+INK, MUTED, GRID = "#1f1f1e", "#6b6a63", "#e4e3dc"
+FRAMEWORK = {"hf": ("HF transformers", "#b0304f"), "vllm": ("vLLM", "#2a78d6"), "llamacpp": ("llama.cpp", "#eb6834"), "trt_edgellm": ("TensorRT Edge-LLM", "#1baf7a")}
+KV_BYTES = {"1.5b": 28 * 1024, "3b": 36 * 1024}  # 16-bit K + V per token (models/qwen2_5/docs)
+plt.rcParams.update({"font.family": "DejaVu Sans", "svg.fonttype": "path"})
+
+DTYPE_BYTES = {"BF16": 2, "F16": 2, "F32": 4, "F8_E4M3": 1, "I32": 4, "I8": 1, "U8": 1, "I64": 8}
+# GGML block sizes: type id -> (bytes per block, values per block)
+GGML = {0: (4, 1), 1: (2, 1), 2: (18, 32), 3: (20, 32), 6: (22, 32), 7: (24, 32), 8: (34, 32), 10: (84, 256), 11: (110, 256), 12: (144, 256), 13: (176, 256), 14: (210, 256), 15: (292, 256), 30: (2, 1)}
+
+
+def safetensors_step_bytes(repo):
+    """Bytes of every tensor except the embedding table; a tied model (no lm_head) reads the embedding as its head."""
+    sizes = {}
+    for path in glob.glob(f"{HF_CACHE}/models--{repo.replace('/', '--')}/snapshots/*/*.safetensors"):
+        with open(path, "rb") as f:
+            header = json.loads(f.read(struct.unpack("<Q", f.read(8))[0]))
+        for name, t in header.items():
+            if name != "__metadata__":
+                sizes[name] = t["data_offsets"][1] - t["data_offsets"][0]
+    total = sum(sizes.values())
+    return total - sizes.get("model.embed_tokens.weight", 0) if "lm_head.weight" in sizes else total
+
+
+def gguf_step_bytes(paths):
+    """Sum of the GGUF tensors read per token: all but token_embd (unless the model has no separate output.weight)."""
+    sizes = {}
+    for path in paths:
+        with open(path, "rb") as f:
+
+            def u(fmt):
+                return struct.unpack("<" + fmt, f.read(struct.calcsize(fmt)))[0]
+
+            def string():
+                return f.read(u("Q")).decode()
+
+            def skip(t):
+                if t == 8:
+                    string()
+                elif t == 9:
+                    et, n = u("I"), u("Q")
+                    for _ in range(n):
+                        skip(et)
+                else:
+                    f.read({0: 1, 1: 1, 2: 2, 3: 2, 4: 4, 5: 4, 6: 4, 7: 1, 10: 8, 11: 8, 12: 8}[t])
+
+            assert f.read(4) == b"GGUF"
+            u("I")
+            n_tensors, n_kv = u("Q"), u("Q")
+            for _ in range(n_kv):
+                string()
+                skip(u("I"))
+            for _ in range(n_tensors):
+                name = string()
+                dims = [u("Q") for _ in range(u("I"))]
+                ttype = u("I")
+                u("Q")
+                n = 1
+                for d in dims:
+                    n *= d
+                block_bytes, block = GGML[ttype]
+                sizes[name] = n // block * block_bytes
+    total = sum(sizes.values())
+    return total - sizes.get("token_embd.weight", 0) if "output.weight" in sizes else total
+
+
+def step_bytes(size, config):
+    """Weight bytes one decode step reads for a Phase 1 configuration."""
+    tag = A.SIZES[size]
+    fw, precision = config.split("-", 1)
+    if fw == "trt_edgellm":
+        return os.path.getsize(f"{TRT_WORKSPACE}/{tag}-{precision}/engines/llm/llm.engine")
+    if fw == "llamacpp":
+        prefix = {"f16": "fp16", "q8_0": "q8_0", "q4_k_m": "q4_k_m"}[precision]
+        return gguf_step_bytes(sorted(glob.glob(f"{HF_CACHE}/models--Qwen--{tag}-GGUF/snapshots/*/{tag.lower()}-{prefix}*.gguf")))
+    repo = {"bf16": f"Qwen/{tag}", "fp8": f"RedHatAI/{tag}-FP8-dynamic", "awq": f"Qwen/{tag}-AWQ"}[precision]
+    return safetensors_step_bytes(repo)
+
+
+def style(ax):
+    ax.grid(color=GRID, lw=0.8)
+    ax.set_axisbelow(True)
+    for side in ("top", "right"):
+        ax.spines[side].set_visible(False)
+    for side in ("left", "bottom"):
+        ax.spines[side].set_color("#bbbbbb")
+    ax.tick_params(colors=MUTED, labelsize=9, length=0)
+
+
+def bandwidth(out, task="gsm8k_jetson"):
+    """Dumbbell per configuration: the bandwidth floor (bytes per step / 273 GB/s) and the measured decode time."""
+    table = A.collect(list(A.SIZES), [task])
+    order = [c for c in A.WIDTH]  # 16-bit, then 8-bit, then 4-bit
+    fig, axes = plt.subplots(1, 2, figsize=(12, 6.2), sharey=True, gridspec_kw=dict(left=0.15, right=0.97, top=0.83, bottom=0.11, wspace=0.12))
+    rows = []
+    for ax, size in zip(axes, ("1.5b", "3b")):
+        style(ax)
+        ax.grid(axis="y", visible=False)
+        y, ticks, labels = 0, [], []
+        for width in (16, 8, 4):
+            for config in [c for c in order if A.WIDTH[c] == width]:
+                m = (table.get((size, task)) or {}).get(config)
+                fw = A.framework_of(config)
+                ticks.append(y)
+                labels.append(f"{FRAMEWORK[fw][0].replace('TensorRT ', '').replace(' transformers', '')} {config.split('-', 1)[1]}")
+                if m and m.get("decode_ms"):
+                    context = 752 + (m["out_tokens"] or 0) / 2  # GSM8K mean prompt + half the answer
+                    gb = (step_bytes(size, config) + context * KV_BYTES[size]) / 1e9
+                    floor = 1e3 * gb * 1e9 / BANDWIDTH
+                    ms = m["decode_ms"]
+                    ax.plot([floor, ms], [y, y], color=GRID, lw=3, solid_capstyle="butt", zorder=1)
+                    ax.plot([floor], [y], marker="|", markersize=12, mew=2, color=MUTED, zorder=2)
+                    ax.scatter([ms], [y], s=60, color=FRAMEWORK[fw][1], edgecolor="white", linewidth=1.5, zorder=3)
+                    ax.text(ms + 0.8, y, f"{ms:.1f} ms · {100 * floor / ms:.0f}%", va="center", fontsize=8.5, color=INK)
+                    rows.append((size, config, gb, ms, floor))
+                y += 1
+            y += 0.6
+        ax.set_yticks(ticks)
+        ax.set_yticklabels(labels, fontsize=9, color=INK)
+        ax.set_xlim(0, 48)
+        ax.set_title(A.SIZES[size], loc="left", fontsize=11, fontweight="bold", color=INK)
+        ax.set_xlabel("Decode, ms per token (GSM8K median)", fontsize=9, color=MUTED)
+    axes[0].invert_yaxis()  # shared y axis: invert once, 16-bit on top
+    handles = [plt.Line2D([], [], ls="", marker="|", markersize=12, mew=2, color=MUTED, label="floor: bytes per step / 273 GB/s")]
+    handles += [plt.Line2D([], [], ls="", marker="o", color=c, markersize=8, label=f"measured, {n}") for n, c in FRAMEWORK.values()]
+    fig.legend(handles=handles, loc="upper left", bbox_to_anchor=(0.15, 0.915), ncol=5, frameon=False, fontsize=8.5)
+    fig.text(0.15, 0.955, "Decode time against the memory-bandwidth floor", fontsize=15, fontweight="bold", color=INK)
+    fig.text(0.02, 0.035, "Bytes per step: weights without the embedding table (safetensors / GGUF headers, Edge-LLM llm.engine) + KV cache at the mean GSM8K context.", fontsize=8, color=MUTED)
+    fig.text(0.02, 0.012, "% = floor / measured, the share of Thor's bandwidth reached. Edge-LLM: median GPU time per step; the others: per-request wall time.", fontsize=8, color=MUTED)
+    fig.text(0.97, 0.012, "python3 jetson/experiments/qwen2_5/figures.py bandwidth", fontsize=7, color="#8a8a8a", ha="right")
+    fig.savefig(out, facecolor="white")
+    fig.savefig(os.path.splitext(out)[0] + ".png", dpi=150, facecolor="white")
+    print("| Size | Configuration | GB per step | Floor (ms) | Measured (ms) | Share of bandwidth |\n|---|---|---:|---:|---:|---:|")
+    for size, config, gb, ms, floor in rows:
+        print(f"| {size} | {config} | {gb:.2f} | {floor:.1f} | {ms:.1f} | {100 * floor / ms:.0f}% |")
+    print("wrote", out)
+
+
+def main():
+    p = argparse.ArgumentParser(description=__doc__.splitlines()[0])
+    p.add_argument("figure", choices=["bandwidth", "pareto"])
+    p.add_argument("-o", "--out")
+    a = p.parse_args()
+    out = a.out or os.path.join(A.RESULTS, f"qwen2_5_{a.figure}.svg")
+    os.makedirs(os.path.dirname(out), exist_ok=True)
+    if a.figure == "bandwidth":
+        bandwidth(out)
+    else:
+        sys.exit("pareto: after Phase 2")
+
+
+if __name__ == "__main__":
+    main()
