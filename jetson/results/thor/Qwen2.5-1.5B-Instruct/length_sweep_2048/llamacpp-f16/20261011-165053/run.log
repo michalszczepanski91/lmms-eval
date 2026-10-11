@@ -1,0 +1,44 @@
+/opt/venv/lib/python3.12/site-packages/transformers/utils/hub.py:110: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+  warnings.warn(
+torch 2.10.0 transformers 4.57.3
+/opt/venv/lib/python3.12/site-packages/transformers/utils/hub.py:110: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+  warnings.warn(
+[32m2026-10-11 14:51:05[0m | [1mINFO    [0m | [36mlmms_eval.__main__[0m:[36mcli_evaluate[0m:[36m516[0m - [1mVerbosity set to INFO[0m
+[32m2026-10-11 14:51:05[0m | [1mINFO    [0m | [36mlmms_eval.__main__[0m:[36mcli_evaluate_single[0m:[36m643[0m - [1mIncluding path: jetson/tasks[0m
+[32m2026-10-11 14:51:07[0m | [1mINFO    [0m | [36mlmms_eval.__main__[0m:[36mcli_evaluate_single[0m:[36m653[0m - [1mEvaluation tracker args: {'output_path': 'jetson/results/thor/Qwen2.5-1.5B-Instruct/length_sweep_2048/llamacpp-f16/20261011-165053'}[0m
+[32m2026-10-11 14:51:07[0m | [1mINFO    [0m | [36mlmms_eval.__main__[0m:[36mcli_evaluate_single[0m:[36m677[0m - [1mIncluding path: jetson/tasks[0m
+[32m2026-10-11 14:51:07[0m | [1mINFO    [0m | [36mlmms_eval.__main__[0m:[36mcli_evaluate_single[0m:[36m737[0m - [1mSelected Tasks: ['length_sweep_2048'][0m
+[32m2026-10-11 14:51:07[0m | [1mINFO    [0m | [36mlmms_eval.evaluator[0m:[36msimple_evaluate[0m:[36m488[0m - [1mSetting random seed to 0 | Setting numpy seed to 1234 | Setting torch manual seed to 1234[0m
+[32m2026-10-11 14:51:08[0m | [1mINFO    [0m | [36mlmms_eval.evaluator[0m:[36mevaluate[0m:[36m1049[0m - [1mRunning on rank 0 (local rank 0)[0m
+[32m2026-10-11 14:51:08[0m | [1mINFO    [0m | [36mlmms_eval.api.task[0m:[36mbuild_all_requests[0m:[36m473[0m - [1mBuilding contexts for length_sweep_2048 on rank 0...[0m
+100%|██████████| 16/16 [00:00<00:00, 3647.02it/s]
+[32m2026-10-11 14:51:08[0m | [1mINFO    [0m | [36mlmms_eval.evaluator[0m:[36mevaluate[0m:[36m1204[0m - [1mRunning generate_until requests[0m
+Model Responding: 100%|██████████| 16/16 [01:07<00:00,  4.22s/it, tokens=36,864][32m2026-10-11 14:52:16[0m | [1mINFO    [0m | [36mlmms_eval.models.model_utils.gen_metrics[0m:[36mlog_metrics[0m:[36m136[0m - [1mMetric summary - Total elapsed time: 67.877s, Total gen tokens: 4096, Avg speed: 60.3 tokens/s[0m
+Postprocessing: 100%|██████████| 16/16 [00:00<00:00, 2068.32it/s]
+[32m2026-10-11 14:52:16[0m | [1mINFO    [0m | [36mlmms_eval.evaluator[0m:[36mevaluate[0m:[36m1404[0m - [1mPostprocessed 16 docs for length_sweep_2048/none with 4 worker(s) in 0.01s[0m
+[32m2026-10-11 14:52:17[0m | [1mINFO    [0m | [36mlmms_eval.__main__[0m:[36mcli_evaluate_single[0m:[36m788[0m - [1mToken Usage - Input: 32,768 | Output: 4,096 | Reasoning: 0 | Total: 36,864 | API Calls: 16[0m
+[32m2026-10-11 14:52:17[0m | [1mINFO    [0m | [36mlmms_eval.loggers.evaluation_tracker[0m:[36msave_results_aggregated[0m:[36m187[0m - [1mSaving results aggregated[0m
+[32m2026-10-11 14:52:17[0m | [1mINFO    [0m | [36mlmms_eval.loggers.evaluation_tracker[0m:[36msave_results_samples[0m:[36m300[0m - [1mSaving samples to jetson/results/thor/Qwen2.5-1.5B-Instruct/length_sweep_2048/llamacpp-f16/20261011-165053/Qwen2.5-1.5B-Instruct-f16/20261011_225107_samples_length_sweep_2048.jsonl[0m
+openai (model_version=Qwen2.5-1.5B-Instruct-f16,base_url=http://127.0.0.1:8090/v1,api_key=local,stream_timing=True,num_concurrent=1,prefix_aware_queue=False,timeout=600,max_retries=2), gen_kwargs: (), limit: None, offset: 0, num_fewshot: None, batch_size: 1
+
+LMMs-Eval: Probing Intelligence in the Real World
+> Good evaluation shapes what we build next.
+
+branch: jetson-benchmark
+commit: v0.6-310-ga283c49a
+
+|      Tasks      |Filter|n-shot|Metric|   |Value|   |Stderr|Stderr_CLT|
+|-----------------|------|-----:|------|---|----:|---|-----:|---------:|
+|length_sweep_2048|none  |     0|counts|↑  |    1|±  |     0|         0|
+
+
+Throughput Summary
+
+|      Metric      |  Value  |  Unit  |
+|------------------|--------:|--------|
+|total_gen_tokens  |4096.0000|tokens  |
+|total_elapsed_time|  67.8772|seconds |
+|avg_speed         |  60.3443|tokens/s|
+
+
+[slim_run.py: dropped 1 per-request progress/profile lines]

@@ -1,0 +1,194 @@
+{
+  "results": {
+    "length_sweep_128": {
+      "alias": "length_sweep_128",
+      "counts,none": 1.0,
+      "counts_stderr,none": 0.0,
+      "counts_stderr_clt,none": 0.0,
+      "counts_stderr_clustered,none": "N/A"
+    }
+  },
+  "group_subtasks": {
+    "length_sweep_128": []
+  },
+  "configs": {
+    "length_sweep_128": {
+      "task": "length_sweep_128",
+      "dataset_path": "json",
+      "dataset_kwargs": {
+        "data_files": "jetson/tasks/length_sweep/data/length_128.jsonl"
+      },
+      "test_split": "train",
+      "full_docs": false,
+      "process_results_use_image": false,
+      "doc_to_text": "{{prompt}}",
+      "doc_to_target": "1",
+      "process_results": "<function process_results at 0xfffeed0e6b60>",
+      "description": "",
+      "target_delimiter": " ",
+      "fewshot_delimiter": "\n\n",
+      "num_fewshot": 0,
+      "metric_list": [
+        {
+          "metric": "counts",
+          "aggregation": "mean",
+          "higher_is_better": true
+        }
+      ],
+      "output_type": "generate_until",
+      "generation_kwargs": {
+        "until": [],
+        "do_sample": false,
+        "temperature": 0.0,
+        "max_new_tokens": 256
+      },
+      "repeats": 1,
+      "should_decontaminate": false,
+      "score_key": "score",
+      "metadata": {
+        "version": 1.0
+      },
+      "auto_strip_thinking": false
+    }
+  },
+  "versions": {
+    "length_sweep_128": 1.0
+  },
+  "n-shot": {
+    "length_sweep_128": 0
+  },
+  "higher_is_better": {
+    "length_sweep_128": {
+      "counts": true
+    }
+  },
+  "n-samples": {
+    "length_sweep_128": {
+      "original": 16,
+      "effective": 4
+    }
+  },
+  "config": {
+    "model": "trt_edgellm",
+    "model_args": "engine_dir=/opt/models/trt-edgellm/Qwen2.5-1.5B-Instruct-fp8/engines/llm,profile_output=jetson/results/thor/Qwen2.5-1.5B-Instruct/length_sweep_128/trt_edgellm-fp8/20261011-152532_limit4/trt_profile.json,system_prompt=none",
+    "model_backend": "lmms_eval.models.chat.trt_edgellm.TRTEdgeLLM (chat)",
+    "batch_size": "1",
+    "batch_sizes": [],
+    "device": null,
+    "use_cache": null,
+    "limit": 4.0,
+    "offset": 0,
+    "bootstrap_iters": 100000,
+    "process_docs_parallel": 4,
+    "gen_kwargs": "",
+    "random_seed": 0,
+    "numpy_seed": 1234,
+    "torch_seed": 1234,
+    "fewshot_seed": 1234,
+    "resolved_cli_args": {
+      "config": "",
+      "model": "trt_edgellm",
+      "tasks": "length_sweep_128",
+      "model_args": "engine_dir=/opt/models/trt-edgellm/Qwen2.5-1.5B-Instruct-fp8/engines/llm,profile_output=jetson/results/thor/Qwen2.5-1.5B-Instruct/length_sweep_128/trt_edgellm-fp8/20261011-152532_limit4/trt_profile.json,system_prompt=none",
+      "launcher_args": null,
+      "num_fewshot": null,
+      "batch_size": "1",
+      "max_batch_size": null,
+      "device": null,
+      "output_path": "jetson/results/thor/Qwen2.5-1.5B-Instruct/length_sweep_128/trt_edgellm-fp8/20261011-152532_limit4",
+      "limit": 4.0,
+      "offset": 0,
+      "use_cache": null,
+      "cache_requests": null,
+      "check_integrity": false,
+      "write_out": false,
+      "log_samples": true,
+      "wandb_log_samples": false,
+      "swanlab_log_samples": false,
+      "log_samples_suffix": "model_outputs",
+      "system_instruction": null,
+      "apply_chat_template": false,
+      "fewshot_as_multiturn": false,
+      "show_config": false,
+      "include_path": "jetson/tasks",
+      "gen_kwargs": "",
+      "reasoning_tags": "[[\"<think>\", \"</think>\"], [\"<analysis>\", \"</analysis>\"]]",
+      "verbosity": "INFO",
+      "wandb_args": "",
+      "swanlab_args": "",
+      "timezone": "Asia/Singapore",
+      "hf_hub_log_args": ",output_path=jetson/results/thor/Qwen2.5-1.5B-Instruct/length_sweep_128/trt_edgellm-fp8/20261011-152532_limit4",
+      "predict_only": false,
+      "seed": [
+        0,
+        1234,
+        1234,
+        1234
+      ],
+      "trust_remote_code": false,
+      "process_with_media": false,
+      "process_docs_parallel": 4,
+      "agentic_trace_mode": "basic",
+      "force_simple": false,
+      "tui": false,
+      "repeats": 1,
+      "baseline": null,
+      "max_tokens": null,
+      "power_analysis": false,
+      "effect_size": 0.03,
+      "alpha": 0.05,
+      "power": 0.8,
+      "correlation": 0.5,
+      "std_a": null,
+      "std_b": null
+    }
+  },
+  "git_hash": "v0.6-310-ga283c49a",
+  "git_branch": "jetson-benchmark",
+  "lmms_eval_version": "jetson-benchmark@v0.6-310",
+  "date": "20261011_212543",
+  "throughput": {
+    "total_gen_tokens": 0,
+    "total_elapsed_time": 12.2555042039603,
+    "avg_speed": 0.0
+  },
+  "usage": {},
+  "efficiency": {
+    "by_task": {
+      "length_sweep_128": {
+        "docs": 4.0,
+        "docs_with_token_counts": 4.0,
+        "total_input_tokens": 0.0,
+        "total_output_tokens": 0.0,
+        "total_tokens": 0.0,
+        "total_correct_score": 0.0,
+        "avg_output_tokens_per_sample": 0.0,
+        "tokens_per_correct_answer": null
+      }
+    },
+    "overall": {
+      "docs": 4.0,
+      "docs_with_token_counts": 4.0,
+      "total_input_tokens": 0.0,
+      "total_output_tokens": 0.0,
+      "total_tokens": 0.0,
+      "total_correct_score": 0.0,
+      "avg_output_tokens_per_sample": 0.0,
+      "tokens_per_correct_answer": null
+    }
+  },
+  "task_hashes": {
+    "length_sweep_128": "b188f54257d41857f2b4d469ad6567b71552fed6f4748da0f9275fd5a2864e1d"
+  },
+  "model_source": "trt_edgellm",
+  "model_name": "",
+  "model_name_sanitized": "",
+  "system_instruction": null,
+  "system_instruction_sha": null,
+  "fewshot_as_multiturn": false,
+  "chat_template": null,
+  "chat_template_sha": null,
+  "start_time": 1383301.555567406,
+  "end_time": 1383314.643882013,
+  "total_evaluation_time_seconds": "13.088314607040957"
+}

@@ -1,0 +1,1 @@
+jetson/results/thor/Qwen2.5-3B-Instruct/length_sweep_2048/hf-bf16/20261011-151337_limit4 length_sweep_2048: n=4 mean GFLOPs prefill 11983.9 decode 1737.3 total 13721.2

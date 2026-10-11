@@ -1,0 +1,28 @@
+{
+ "model": "Qwen2.5-1.5B-Instruct",
+ "method": "analytical, 2 FLOPs per multiply-accumulate; decoder linear layers + attention matmuls + LM head (see jetson/models/qwen2_5/flops.py)",
+ "tasks": {
+  "length_sweep_512": {
+   "n": 16,
+   "token_counts": "recorded",
+   "mean": {
+    "image_tokens": 0.0,
+    "text_tokens": 512.0,
+    "output_tokens": 256.0,
+    "vision_flops": 0.0,
+    "prefill_flops": 1364699774976.0,
+    "decode_flops": 815296020480.0,
+    "total_flops": 2179995795456.0
+   },
+   "total": {
+    "image_tokens": 0,
+    "text_tokens": 8192,
+    "output_tokens": 4096,
+    "vision_flops": 0,
+    "prefill_flops": 21835196399616,
+    "decode_flops": 13044736327680,
+    "total_flops": 34879932727296
+   }
+  }
+ }
+}
