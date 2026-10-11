@@ -5,6 +5,8 @@
              embedding table + KV cache at the mean context), with the floor of Thor's 273 GB/s.
              Bytes come from each framework's own artifact: safetensors headers (HF, vLLM), the Edge-LLM llm.engine
              file, GGUF tensor headers (llama.cpp).
+  sweep      controlled-length sweep: TTFT and decode ms/token against prompt length (128 / 512 / 2,048 tokens,
+             256 generated), 16- and 8-bit per framework, both sizes.
   pareto     Edge-LLM weight configurations (Phase 2): accuracy against energy per question, per task and size.
 
 Usage: python3 jetson/experiments/qwen2_5/figures.py bandwidth|pareto [-o out.svg]
@@ -167,16 +169,65 @@ def bandwidth(out, task="gsm8k_jetson"):
         print(f"| {size} | {config} | {gb:.2f} | {floor:.1f} | {ms:.1f} | {100 * floor / ms:.0f}% |")
     print("wrote", out)
 
+SWEEP = [128, 512, 2048]
+SWEEP_CONFIGS = {"hf-bf16": 16, "vllm-bf16": 16, "llamacpp-f16": 16, "trt_edgellm-fp16": 16, "vllm-fp8": 8, "llamacpp-q8_0": 8, "trt_edgellm-fp8": 8}
+
+
+def sweep(out):
+    tasks = [f"length_sweep_{n}" for n in SWEEP]
+    table = A.collect(list(A.SIZES), tasks, include_smoke=os.environ.get("INCLUDE_SMOKE") == "1")  # INCLUDE_SMOKE=1: test on smoke runs
+    fig, axes = plt.subplots(2, 2, figsize=(12, 8), sharex=True, gridspec_kw=dict(left=0.08, right=0.8, top=0.88, bottom=0.08, hspace=0.18, wspace=0.18))
+    rows = []
+    for col, size in enumerate(("1.5b", "3b")):
+        for row, (key, label) in enumerate((("ttft_ms", "Time to first token (ms, median)"), ("decode_ms", "Decode (ms per token, median)"))):
+            ax = axes[row][col]
+            style(ax)
+            for config, bits in SWEEP_CONFIGS.items():
+                xs, ys = [], []
+                for n, task in zip(SWEEP, tasks):
+                    m = (table.get((size, task)) or {}).get(config)
+                    if m and m.get(key):
+                        xs.append(n)
+                        ys.append(m[key])
+                        if row == 0:
+                            rows.append((size, config, n, m.get("ttft_ms"), m.get("decode_ms"), m.get("out_tokens")))
+                if xs:
+                    fw = A.framework_of(config)
+                    ax.plot(xs, ys, color=FRAMEWORK[fw][1], lw=2, ls="-" if bits == 16 else (0, (4, 2)), marker="o", markersize=7, markeredgecolor="white", markeredgewidth=1.5, label=f"{FRAMEWORK[fw][0]} {config.split('-', 1)[1]}")
+            ax.set_xscale("log", base=2)
+            ax.set_xticks(SWEEP)
+            ax.set_xticklabels([f"{n:,}" for n in SWEEP])
+            ax.set_ylim(bottom=0)
+            if row == 0:
+                ax.set_title(A.SIZES[size], loc="left", fontsize=11, fontweight="bold", color=INK)
+            if col == 0:
+                ax.set_ylabel(label, fontsize=9, color=MUTED)
+            if row == 1:
+                ax.set_xlabel("Prompt tokens (chat template included); 256 tokens generated", fontsize=9, color=MUTED)
+    handles, labels = axes[0][1].get_legend_handles_labels()
+    fig.legend(handles, labels, loc="upper left", bbox_to_anchor=(0.81, 0.88), frameon=False, fontsize=8.5, handlelength=3.5, title="solid 16-bit, dashed 8-bit", title_fontsize=8.5)
+    fig.text(0.08, 0.945, "Prefill and decode against prompt length", fontsize=15, fontweight="bold", color=INK)
+    fig.text(0.02, 0.012, "16 prompts per length. Edge-LLM TTFT: median prefill GPU time of its runner (no host overhead); the others: per-request wall time.", fontsize=8, color=MUTED)
+    fig.text(0.98, 0.012, "python3 jetson/experiments/qwen2_5/figures.py sweep", fontsize=7, color="#8a8a8a", ha="right")
+    fig.savefig(out, facecolor="white")
+    fig.savefig(os.path.splitext(out)[0] + ".png", dpi=150, facecolor="white")
+    print("| Size | Configuration | Prompt tokens | TTFT p50 (ms) | Decode (ms/token) | Output tokens |\n|---|---|---:|---:|---:|---:|")
+    for size, config, n, ttft, dec, outt in rows:
+        print(f"| {size} | {config} | {n:,} | {ttft:.0f} | {dec:.1f} | {outt:.0f} |")
+    print("wrote", out)
+
 
 def main():
     p = argparse.ArgumentParser(description=__doc__.splitlines()[0])
-    p.add_argument("figure", choices=["bandwidth", "pareto"])
+    p.add_argument("figure", choices=["bandwidth", "sweep", "pareto"])
     p.add_argument("-o", "--out")
     a = p.parse_args()
     out = a.out or os.path.join(A.RESULTS, f"qwen2_5_{a.figure}.svg")
     os.makedirs(os.path.dirname(out), exist_ok=True)
     if a.figure == "bandwidth":
         bandwidth(out)
+    elif a.figure == "sweep":
+        sweep(out)
     else:
         sys.exit("pareto: after Phase 2")
 
