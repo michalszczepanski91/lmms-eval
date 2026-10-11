@@ -1,0 +1,71 @@
+=== HF re-runs (repetition_penalty 1.0) start Sun Oct 11 05:59:38 AM CEST 2026
+=== 05:59:38 hf 3b gsm8k_jetson 
+    /home/michal/dev/lmms-eval/jetson/results/thor/Qwen2.5-3B-Instruct/gsm8k_jetson/hf-bf16/20261011-055938/: samples 2638, question_marks 0, empty 0, request_failed 0
+=== 08:57:23 vllm 3b gsm8k_jetson: done (/home/michal/dev/lmms-eval/jetson/results/thor/Qwen2.5-3B-Instruct/gsm8k_jetson/vllm-bf16/20261008-183331/), skipped
+=== 08:57:23 vllm 3b-fp8 gsm8k_jetson: done (/home/michal/dev/lmms-eval/jetson/results/thor/Qwen2.5-3B-Instruct/gsm8k_jetson/vllm-fp8/20261008-203205/), skipped
+=== 08:57:23 vllm 3b-awq gsm8k_jetson: done (/home/michal/dev/lmms-eval/jetson/results/thor/Qwen2.5-3B-Instruct/gsm8k_jetson/vllm-awq/20261008-214657/), skipped
+=== 08:57:23 llamacpp 3b-f16 gsm8k_jetson: done (/home/michal/dev/lmms-eval/jetson/results/thor/Qwen2.5-3B-Instruct/gsm8k_jetson/llamacpp-f16/20261008-223314/), skipped
+=== 08:57:23 llamacpp 3b-q8_0 gsm8k_jetson: done (/home/michal/dev/lmms-eval/jetson/results/thor/Qwen2.5-3B-Instruct/gsm8k_jetson/llamacpp-q8_0/20261009-002712/), skipped
+=== 08:57:23 llamacpp 3b-q4_k_m gsm8k_jetson: done (/home/michal/dev/lmms-eval/jetson/results/thor/Qwen2.5-3B-Instruct/gsm8k_jetson/llamacpp-q4_k_m/20261009-013759/), skipped
+=== 08:57:23 trt_edgellm 3b-fp16 gsm8k_jetson: done (/home/michal/dev/lmms-eval/jetson/results/thor/Qwen2.5-3B-Instruct/gsm8k_jetson/trt_edgellm-fp16/20261009-024221/), skipped
+=== 08:57:23 trt_edgellm 3b-fp8 gsm8k_jetson: done (/home/michal/dev/lmms-eval/jetson/results/thor/Qwen2.5-3B-Instruct/gsm8k_jetson/trt_edgellm-fp8/20261009-043800/), skipped
+=== 08:57:23 trt_edgellm 3b-int4_awq gsm8k_jetson: done (/home/michal/dev/lmms-eval/jetson/results/thor/Qwen2.5-3B-Instruct/gsm8k_jetson/trt_edgellm-int4_awq/20261009-054507/), skipped
+summary: /home/michal/dev/lmms-eval/jetson/results/thor/SUMMARY.md
+=== 08:57:37 hf 3b mmlu_jetson 
+    /home/michal/dev/lmms-eval/jetson/results/thor/Qwen2.5-3B-Instruct/mmlu_jetson/hf-bf16/20261011-085737/: samples 14042, question_marks 0, empty 0, request_failed 0
+=== 11:14:46 vllm 3b mmlu_jetson: done (/home/michal/dev/lmms-eval/jetson/results/thor/Qwen2.5-3B-Instruct/mmlu_jetson/vllm-bf16/20261009-085718/), skipped
+=== 11:14:46 vllm 3b-fp8 mmlu_jetson: done (/home/michal/dev/lmms-eval/jetson/results/thor/Qwen2.5-3B-Instruct/mmlu_jetson/vllm-fp8/20261009-103256/), skipped
+=== 11:14:46 vllm 3b-awq mmlu_jetson: done (/home/michal/dev/lmms-eval/jetson/results/thor/Qwen2.5-3B-Instruct/mmlu_jetson/vllm-awq/20261009-113858/), skipped
+=== 11:14:46 llamacpp 3b-f16 mmlu_jetson: done (/home/michal/dev/lmms-eval/jetson/results/thor/Qwen2.5-3B-Instruct/mmlu_jetson/llamacpp-f16/20261009-122025/), skipped
+=== 11:14:46 llamacpp 3b-q8_0 mmlu_jetson: done (/home/michal/dev/lmms-eval/jetson/results/thor/Qwen2.5-3B-Instruct/mmlu_jetson/llamacpp-q8_0/20261009-134803/), skipped
+=== 11:14:46 llamacpp 3b-q4_k_m mmlu_jetson: done (/home/michal/dev/lmms-eval/jetson/results/thor/Qwen2.5-3B-Instruct/mmlu_jetson/llamacpp-q4_k_m/20261009-150500/), skipped
+=== 11:14:46 trt_edgellm 3b-fp16 mmlu_jetson: done (/home/michal/dev/lmms-eval/jetson/results/thor/Qwen2.5-3B-Instruct/mmlu_jetson/trt_edgellm-fp16/20261009-163348/), skipped
+=== 11:14:46 trt_edgellm 3b-fp8 mmlu_jetson: done (/home/michal/dev/lmms-eval/jetson/results/thor/Qwen2.5-3B-Instruct/mmlu_jetson/trt_edgellm-fp8/20261009-180300/), skipped
+=== 11:14:46 trt_edgellm 3b-int4_awq mmlu_jetson: done (/home/michal/dev/lmms-eval/jetson/results/thor/Qwen2.5-3B-Instruct/mmlu_jetson/trt_edgellm-int4_awq/20261009-191117/), skipped
+summary: /home/michal/dev/lmms-eval/jetson/results/thor/SUMMARY.md
+=== 11:15:00 hf 3b ifeval 
+    /home/michal/dev/lmms-eval/jetson/results/thor/Qwen2.5-3B-Instruct/ifeval/hf-bf16/20261011-111500/: samples 541, question_marks 0, empty 0, request_failed 0
+=== 13:12:48 vllm 3b ifeval: done (/home/michal/dev/lmms-eval/jetson/results/thor/Qwen2.5-3B-Instruct/ifeval/vllm-bf16/20261009-220116/), skipped
+=== 13:12:48 vllm 3b-fp8 ifeval: done (/home/michal/dev/lmms-eval/jetson/results/thor/Qwen2.5-3B-Instruct/ifeval/vllm-fp8/20261009-231914/), skipped
+=== 13:12:48 vllm 3b-awq ifeval: done (/home/michal/dev/lmms-eval/jetson/results/thor/Qwen2.5-3B-Instruct/ifeval/vllm-awq/20261010-000815/), skipped
+=== 13:12:48 llamacpp 3b-f16 ifeval: done (/home/michal/dev/lmms-eval/jetson/results/thor/Qwen2.5-3B-Instruct/ifeval/llamacpp-f16/20261010-003826/), skipped
+=== 13:12:48 llamacpp 3b-q8_0 ifeval: done (/home/michal/dev/lmms-eval/jetson/results/thor/Qwen2.5-3B-Instruct/ifeval/llamacpp-q8_0/20261010-015148/), skipped
+=== 13:12:48 llamacpp 3b-q4_k_m ifeval: done (/home/michal/dev/lmms-eval/jetson/results/thor/Qwen2.5-3B-Instruct/ifeval/llamacpp-q4_k_m/20261010-023525/), skipped
+=== 13:12:48 trt_edgellm 3b-fp16 ifeval: done (/home/michal/dev/lmms-eval/jetson/results/thor/Qwen2.5-3B-Instruct/ifeval/trt_edgellm-fp16/20261010-031531/), skipped
+=== 13:12:48 trt_edgellm 3b-fp8 ifeval: done (/home/michal/dev/lmms-eval/jetson/results/thor/Qwen2.5-3B-Instruct/ifeval/trt_edgellm-fp8/20261010-043108/), skipped
+=== 13:12:48 trt_edgellm 3b-int4_awq ifeval: done (/home/michal/dev/lmms-eval/jetson/results/thor/Qwen2.5-3B-Instruct/ifeval/trt_edgellm-int4_awq/20261010-051805/), skipped
+summary: /home/michal/dev/lmms-eval/jetson/results/thor/SUMMARY.md
+=== 13:13:02 hf 1.5b gsm8k_jetson 
+    /home/michal/dev/lmms-eval/jetson/results/thor/Qwen2.5-1.5B-Instruct/gsm8k_jetson/hf-bf16/20261011-131302/: samples 2638, question_marks 0, empty 0, request_failed 0
+=== 14:39:10 vllm 1.5b gsm8k_jetson: done (/home/michal/dev/lmms-eval/jetson/results/thor/Qwen2.5-1.5B-Instruct/gsm8k_jetson/vllm-bf16/20261010-073925/), skipped
+=== 14:39:10 vllm 1.5b-fp8 gsm8k_jetson: done (/home/michal/dev/lmms-eval/jetson/results/thor/Qwen2.5-1.5B-Instruct/gsm8k_jetson/vllm-fp8/20261010-082521/), skipped
+=== 14:39:10 vllm 1.5b-awq gsm8k_jetson: done (/home/michal/dev/lmms-eval/jetson/results/thor/Qwen2.5-1.5B-Instruct/gsm8k_jetson/vllm-awq/20261010-085532/), skipped
+=== 14:39:10 llamacpp 1.5b-f16 gsm8k_jetson: done (/home/michal/dev/lmms-eval/jetson/results/thor/Qwen2.5-1.5B-Instruct/gsm8k_jetson/llamacpp-f16/20261010-091943/), skipped
+=== 14:39:10 llamacpp 1.5b-q8_0 gsm8k_jetson: done (/home/michal/dev/lmms-eval/jetson/results/thor/Qwen2.5-1.5B-Instruct/gsm8k_jetson/llamacpp-q8_0/20261010-101305/), skipped
+=== 14:39:10 llamacpp 1.5b-q4_k_m gsm8k_jetson: done (/home/michal/dev/lmms-eval/jetson/results/thor/Qwen2.5-1.5B-Instruct/gsm8k_jetson/llamacpp-q4_k_m/20261010-104631/), skipped
+=== 14:39:10 trt_edgellm 1.5b-fp16 gsm8k_jetson: done (/home/michal/dev/lmms-eval/jetson/results/thor/Qwen2.5-1.5B-Instruct/gsm8k_jetson/trt_edgellm-fp16/20261010-111357/), skipped
+=== 14:39:10 trt_edgellm 1.5b-fp8 gsm8k_jetson: done (/home/michal/dev/lmms-eval/jetson/results/thor/Qwen2.5-1.5B-Instruct/gsm8k_jetson/trt_edgellm-fp8/20261010-115908/), skipped
+=== 14:39:10 trt_edgellm 1.5b-int4_awq gsm8k_jetson: done (/home/michal/dev/lmms-eval/jetson/results/thor/Qwen2.5-1.5B-Instruct/gsm8k_jetson/trt_edgellm-int4_awq/20261010-122809/), skipped
+summary: /home/michal/dev/lmms-eval/jetson/results/thor/SUMMARY.md
+=== 14:39:24 hf 1.5b mmlu_jetson: done (/home/michal/dev/lmms-eval/jetson/results/thor/Qwen2.5-1.5B-Instruct/mmlu_jetson/hf-bf16/20261010-130850/), skipped
+=== 14:39:24 vllm 1.5b mmlu_jetson: done (/home/michal/dev/lmms-eval/jetson/results/thor/Qwen2.5-1.5B-Instruct/mmlu_jetson/vllm-bf16/20261010-152159/), skipped
+=== 14:39:24 vllm 1.5b-fp8 mmlu_jetson: done (/home/michal/dev/lmms-eval/jetson/results/thor/Qwen2.5-1.5B-Instruct/mmlu_jetson/vllm-fp8/20261010-163452/), skipped
+=== 14:39:24 vllm 1.5b-awq mmlu_jetson: done (/home/michal/dev/lmms-eval/jetson/results/thor/Qwen2.5-1.5B-Instruct/mmlu_jetson/vllm-awq/20261010-172248/), skipped
+=== 14:39:24 llamacpp 1.5b-f16 mmlu_jetson: done (/home/michal/dev/lmms-eval/jetson/results/thor/Qwen2.5-1.5B-Instruct/mmlu_jetson/llamacpp-f16/20261010-175144/), skipped
+=== 14:39:24 llamacpp 1.5b-q8_0 mmlu_jetson: done (/home/michal/dev/lmms-eval/jetson/results/thor/Qwen2.5-1.5B-Instruct/mmlu_jetson/llamacpp-q8_0/20261010-191847/), skipped
+=== 14:39:24 llamacpp 1.5b-q4_k_m mmlu_jetson: done (/home/michal/dev/lmms-eval/jetson/results/thor/Qwen2.5-1.5B-Instruct/mmlu_jetson/llamacpp-q4_k_m/20261010-202515/), skipped
+=== 14:39:24 trt_edgellm 1.5b-fp16 mmlu_jetson: done (/home/michal/dev/lmms-eval/jetson/results/thor/Qwen2.5-1.5B-Instruct/mmlu_jetson/trt_edgellm-fp16/20261010-212917/), skipped
+=== 14:39:24 trt_edgellm 1.5b-fp8 mmlu_jetson: done (/home/michal/dev/lmms-eval/jetson/results/thor/Qwen2.5-1.5B-Instruct/mmlu_jetson/trt_edgellm-fp8/20261010-223849/), skipped
+=== 14:39:24 trt_edgellm 1.5b-int4_awq mmlu_jetson: done (/home/michal/dev/lmms-eval/jetson/results/thor/Qwen2.5-1.5B-Instruct/mmlu_jetson/trt_edgellm-int4_awq/20261010-231946/), skipped
+summary: /home/michal/dev/lmms-eval/jetson/results/thor/SUMMARY.md
+=== 14:39:38 hf 1.5b ifeval: done (/home/michal/dev/lmms-eval/jetson/results/thor/Qwen2.5-1.5B-Instruct/ifeval/hf-bf16/20261011-001050/), skipped
+=== 14:39:38 vllm 1.5b ifeval: done (/home/michal/dev/lmms-eval/jetson/results/thor/Qwen2.5-1.5B-Instruct/ifeval/vllm-bf16/20261011-012858/), skipped
+=== 14:39:38 vllm 1.5b-fp8 ifeval: done (/home/michal/dev/lmms-eval/jetson/results/thor/Qwen2.5-1.5B-Instruct/ifeval/vllm-fp8/20261011-020839/), skipped
+=== 14:39:38 vllm 1.5b-awq ifeval: done (/home/michal/dev/lmms-eval/jetson/results/thor/Qwen2.5-1.5B-Instruct/ifeval/vllm-awq/20261011-023550/), skipped
+=== 14:39:38 llamacpp 1.5b-f16 ifeval: done (/home/michal/dev/lmms-eval/jetson/results/thor/Qwen2.5-1.5B-Instruct/ifeval/llamacpp-f16/20261011-025741/), skipped
+=== 14:39:38 llamacpp 1.5b-q8_0 ifeval: done (/home/michal/dev/lmms-eval/jetson/results/thor/Qwen2.5-1.5B-Instruct/ifeval/llamacpp-q8_0/20261011-034202/), skipped
+=== 14:39:38 llamacpp 1.5b-q4_k_m ifeval: done (/home/michal/dev/lmms-eval/jetson/results/thor/Qwen2.5-1.5B-Instruct/ifeval/llamacpp-q4_k_m/20261011-040858/), skipped
+=== 14:39:38 trt_edgellm 1.5b-fp16 ifeval: done (/home/michal/dev/lmms-eval/jetson/results/thor/Qwen2.5-1.5B-Instruct/ifeval/trt_edgellm-fp16/20261011-043149/), skipped
+=== 14:39:38 trt_edgellm 1.5b-fp8 ifeval: done (/home/michal/dev/lmms-eval/jetson/results/thor/Qwen2.5-1.5B-Instruct/ifeval/trt_edgellm-fp8/20261011-051110/), skipped
+=== 14:39:38 trt_edgellm 1.5b-int4_awq ifeval: done (/home/michal/dev/lmms-eval/jetson/results/thor/Qwen2.5-1.5B-Instruct/ifeval/trt_edgellm-int4_awq/20261011-053611/), skipped
+summary: /home/michal/dev/lmms-eval/jetson/results/thor/SUMMARY.md

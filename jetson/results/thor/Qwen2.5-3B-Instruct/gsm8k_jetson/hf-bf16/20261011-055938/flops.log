@@ -1,0 +1,1 @@
+jetson/results/thor/Qwen2.5-3B-Instruct/gsm8k_jetson/hf-bf16/20261011-055938 gsm8k_jetson: n=2638 mean GFLOPs prefill 4257.3 decode 1284.8 total 5542.0
