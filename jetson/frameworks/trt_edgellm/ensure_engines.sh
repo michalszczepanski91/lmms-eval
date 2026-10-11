@@ -38,7 +38,7 @@ measure() {
 failed=()
 for precision in "$@"; do
   dir=$TRT_WORKSPACE/$MODEL_TAG-$precision
-  if [ -d "$dir/engines/llm" ] && { [ "${MODEL_MODALITY:-vision}" = text ] || [ -d "$dir/engines/visual" ]; }; then
+  if [ -f "$dir/engines/llm/llm.engine" ] && { [ "${MODEL_MODALITY:-vision}" = text ] || [ -d "$dir/engines/visual" ]; }; then
     echo "$(date +%H:%M:%S) $MODEL_TAG-$precision: engines exist"
     continue
   fi

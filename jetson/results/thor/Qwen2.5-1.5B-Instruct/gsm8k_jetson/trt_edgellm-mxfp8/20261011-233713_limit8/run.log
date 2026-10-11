@@ -1,0 +1,56 @@
+/opt/venv/lib/python3.12/site-packages/transformers/utils/hub.py:110: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+  warnings.warn(
+torch 2.10.0 transformers 4.57.3
+/opt/venv/lib/python3.12/site-packages/transformers/utils/hub.py:110: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+  warnings.warn(
+[32m2026-10-11 21:37:22[0m | [1mINFO    [0m | [36mlmms_eval.__main__[0m:[36mcli_evaluate[0m:[36m516[0m - [1mVerbosity set to INFO[0m
+[32m2026-10-11 21:37:22[0m | [1mINFO    [0m | [36mlmms_eval.__main__[0m:[36mcli_evaluate_single[0m:[36m643[0m - [1mIncluding path: jetson/tasks[0m
+[32m2026-10-11 21:37:24[0m | [1mINFO    [0m | [36mlmms_eval.__main__[0m:[36mcli_evaluate_single[0m:[36m653[0m - [1mEvaluation tracker args: {'output_path': 'jetson/results/thor/Qwen2.5-1.5B-Instruct/gsm8k_jetson/trt_edgellm-mxfp8/20261011-233713_limit8'}[0m
+[32m2026-10-11 21:37:24[0m | [1mINFO    [0m | [36mlmms_eval.__main__[0m:[36mcli_evaluate_single[0m:[36m677[0m - [1mIncluding path: jetson/tasks[0m
+[32m2026-10-11 21:37:24[0m | [33m[1mWARNING [0m | [36mlmms_eval.__main__[0m:[36mcli_evaluate_single[0m:[36m683[0m - [33m[1m --limit SHOULD ONLY BE USED FOR TESTING.REAL METRICS SHOULD NOT BE COMPUTED USING LIMIT.[0m
+[32m2026-10-11 21:37:24[0m | [1mINFO    [0m | [36mlmms_eval.__main__[0m:[36mcli_evaluate_single[0m:[36m737[0m - [1mSelected Tasks: ['gsm8k_jetson'][0m
+[32m2026-10-11 21:37:24[0m | [1mINFO    [0m | [36mlmms_eval.evaluator[0m:[36msimple_evaluate[0m:[36m488[0m - [1mSetting random seed to 0 | Setting numpy seed to 1234 | Setting torch manual seed to 1234[0m
+Using the latest cached version of the dataset since gsm8k couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'main' at /opt/hf-cache/datasets/gsm8k/main/0.0.0/740312add88f781978c0658806c59bc2815b9866 (last modified on Thu Oct  8 10:30:09 2026).
+[32m2026-10-11 21:37:25[0m | [1mINFO    [0m | [36mlmms_eval.evaluator[0m:[36mevaluate[0m:[36m1049[0m - [1mRunning on rank 0 (local rank 0)[0m
+[32m2026-10-11 21:37:25[0m | [1mINFO    [0m | [36mlmms_eval.api.task[0m:[36mbuild_all_requests[0m:[36m473[0m - [1mBuilding contexts for gsm8k_jetson on rank 0...[0m
+100%|██████████| 8/8 [00:00<00:00, 363.04it/s]
+[32m2026-10-11 21:37:25[0m | [1mINFO    [0m | [36mlmms_eval.evaluator[0m:[36mevaluate[0m:[36m1204[0m - [1mRunning generate_until requests[0m
+[32m2026-10-11 21:37:25[0m | [1mINFO    [0m | [36mlmms_eval.models.chat.trt_edgellm[0m:[36m_run[0m:[36m110[0m - [1mRunning TensorRT Edge-LLM: llm_inference --engineDir /opt/models/trt-edgellm/Qwen2.5-1.5B-Instruct-mxfp8/engines/llm --inputFile /tmp/trt_edgellm_0yu3gkmd/input.json --outputFile /tmp/trt_edgellm_0yu3gkmd/output.json --dumpProfile --profileOutputFile /tmp/trt_edgellm_0yu3gkmd/profile.json --warmup 1[0m
+[21:37:25.227] [INFO] [llm_inference.cpp:809:parseLLMInferenceArgs] args.inputFile: /tmp/trt_edgellm_0yu3gkmd/input.json
+[21:37:25.227] [INFO] [llm_inference.cpp:815:parseLLMInferenceArgs] args.engineDir: /opt/models/trt-edgellm/Qwen2.5-1.5B-Instruct-mxfp8/engines/llm
+[21:37:25.227] [INFO] [llm_inference.cpp:831:parseLLMInferenceArgs] args.outputFile: /tmp/trt_edgellm_0yu3gkmd/output.json
+[21:37:25.227] [INFO] [llm_inference.cpp:840:parseLLMInferenceArgs] args.profileOutputFile: /tmp/trt_edgellm_0yu3gkmd/profile.json
+[21:37:25.227] [INFO] [llm_inference.cpp:845:parseLLMInferenceArgs] Profile dumping to console is enabled
+[21:37:25.227] [INFO] [llm_inference.cpp:850:parseLLMInferenceArgs] Warmup runs: 1
+[21:37:25.227] [INFO] [trtUtils.h:71:loadEdgellmPluginLib] EDGELLM_PLUGIN_PATH: /opt/TensorRT-Edge-LLM/build/libNvInfer_edgellm_plugin.so
+[21:37:25.232] [INFO] [llm_inference.cpp:1480:main] Successfully parsed 0 LoRA weights from input file.
+[21:37:25.232] [INFO] [llm_inference.cpp:1481:main] Successfully parsed 8 batches of requests from input file.
+[21:37:25.344] [INFO] [memoryMonitor.cpp:267:start] Memory Monitor Started - metric: nvml_process_allocation
+[21:37:25.345] [ERROR] [llm_inference.cpp:1592:main] Failed to initialize runtime: /opt/TensorRT-Edge-LLM/cpp/runtime/state/externalWeightManager.cpp:107: Failed to open runtime config: /opt/models/trt-edgellm/Qwen2.5-1.5B-Instruct-mxfp8/engines/llm/config.json
+Traceback (most recent call last):
+  File "/home/michal/dev/lmms-eval/lmms_eval/__main__.py", line 584, in cli_evaluate
+    results, samples = cli_evaluate_single(args)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/michal/dev/lmms-eval/lmms_eval/__main__.py", line 741, in cli_evaluate_single
+    results = evaluator.simple_evaluate(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/michal/dev/lmms-eval/lmms_eval/utils.py", line 737, in _wrapper
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/home/michal/dev/lmms-eval/lmms_eval/evaluator.py", line 655, in simple_evaluate
+    results = evaluate(
+              ^^^^^^^^^
+  File "/home/michal/dev/lmms-eval/lmms_eval/utils.py", line 737, in _wrapper
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/home/michal/dev/lmms-eval/lmms_eval/evaluator.py", line 1233, in evaluate
+    resps = getattr(lm, reqtype)(cloned_reqs)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/michal/dev/lmms-eval/lmms_eval/models/chat/trt_edgellm.py", line 150, in generate_until
+    texts, profile = self._run(edgellm_requests, max_new_tokens, workdir)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/michal/dev/lmms-eval/lmms_eval/models/chat/trt_edgellm.py", line 114, in _run
+    raise RuntimeError(f"TensorRT Edge-LLM runner failed (exit {returncode}) without writing {output_file}")
+RuntimeError: TensorRT Edge-LLM runner failed (exit 1) without writing /tmp/trt_edgellm_0yu3gkmd/output.json
+[32m2026-10-11 21:37:25[0m | [31m[1mERROR   [0m | [36mlmms_eval.__main__[0m:[36mcli_evaluate[0m:[36m615[0m - [31m[1mError during evaluation: TensorRT Edge-LLM runner failed (exit 1) without writing /tmp/trt_edgellm_0yu3gkmd/output.json. Please set `--verbosity=DEBUG` to get more information.[0m

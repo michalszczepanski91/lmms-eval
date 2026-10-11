@@ -12,9 +12,20 @@ How each column is measured: [methodology](../../docs/methodology.md). Runs mark
 | Qwen2.5-1.5B-Instruct | llamacpp-q8_0 | gsm8k_jetson | exact_match (strict-match): 0.3480<br>exact_match (flexible-extract): 0.6452 | 1319 | MAXN | 33.1 | 118 / 125 | 1323 / 2396 | 9 | 18.4 | 18.9 | 33.7 | 68.0 | none | [Qwen2.5-1.5B-Instruct/gsm8k_jetson/llamacpp-q8_0/20261010-101305](Qwen2.5-1.5B-Instruct/gsm8k_jetson/llamacpp-q8_0/20261010-101305) |
 | Qwen2.5-1.5B-Instruct | llamacpp-q8_0 | gsm8k_jetson | exact_match (strict-match): 0.3480<br>exact_match (flexible-extract): 0.6452 | 1319 | MAXN | 33.2 | 118 / 125 | 1328 / 2402 | 9 | 18.5 | 19.3 | 33.7 | 67.9 | none | [Qwen2.5-1.5B-Instruct/gsm8k_jetson/llamacpp-q8_0/20261011-172609](Qwen2.5-1.5B-Instruct/gsm8k_jetson/llamacpp-q8_0/20261011-172609) |
 | Qwen2.5-1.5B-Instruct | trt_edgellm-fp16 | gsm8k_jetson | exact_match (strict-match): 0.3359<br>exact_match (flexible-extract): 0.6740 | 1319 | MAXN | 44.7 | ~28 (avg) | - | 13 | 18.2 | 19.0 | 24.9 | 63.9 | none | [Qwen2.5-1.5B-Instruct/gsm8k_jetson/trt_edgellm-fp16/20261010-111357](Qwen2.5-1.5B-Instruct/gsm8k_jetson/trt_edgellm-fp16/20261010-111357) |
+| Qwen2.5-1.5B-Instruct | trt_edgellm-fp16 | gsm8k_jetson | exact_match (strict-match): 0.3750<br>exact_match (flexible-extract): 0.7500 | 8 | MAXN | 0.3 | ~28 (avg) | - | 13 | 23.2 | 23.8 | 12.9 | 37.9 | none | [Qwen2.5-1.5B-Instruct/gsm8k_jetson/trt_edgellm-fp16/20261011-231236_limit8](Qwen2.5-1.5B-Instruct/gsm8k_jetson/trt_edgellm-fp16/20261011-231236_limit8) |
 | Qwen2.5-1.5B-Instruct | trt_edgellm-fp8 | gsm8k_jetson | exact_match (strict-match): 0.3541<br>exact_match (flexible-extract): 0.6513 | 1319 | MAXN | 28.6 | ~22 (avg) | - | 8 | 18.2 | 19.0 | 29.7 | 67.5 | none | [Qwen2.5-1.5B-Instruct/gsm8k_jetson/trt_edgellm-fp8/20261010-115908](Qwen2.5-1.5B-Instruct/gsm8k_jetson/trt_edgellm-fp8/20261010-115908) |
 | Qwen2.5-1.5B-Instruct | trt_edgellm-fp8 | gsm8k_jetson | exact_match (strict-match): 0.3541<br>exact_match (flexible-extract): 0.6513 | 1319 | MAXN | 28.8 | ~22 (avg) | - | 8 | 18.5 | 19.4 | 29.4 | 67.0 | none | [Qwen2.5-1.5B-Instruct/gsm8k_jetson/trt_edgellm-fp8/20261011-175940](Qwen2.5-1.5B-Instruct/gsm8k_jetson/trt_edgellm-fp8/20261011-175940) |
+| Qwen2.5-1.5B-Instruct | trt_edgellm-fp8 | gsm8k_jetson | exact_match (strict-match): 0.3750<br>exact_match (flexible-extract): 0.6250 | 8 | MAXN | 0.3 | ~21 (avg) | - | 8 | 22.8 | 23.6 | 13.6 | 37.5 | none | [Qwen2.5-1.5B-Instruct/gsm8k_jetson/trt_edgellm-fp8/20261011-231316_limit8](Qwen2.5-1.5B-Instruct/gsm8k_jetson/trt_edgellm-fp8/20261011-231316_limit8) |
+| Qwen2.5-1.5B-Instruct | trt_edgellm-fp8_kv | gsm8k_jetson | exact_match (strict-match): 0.0000<br>exact_match (flexible-extract): 0.0000 | 8 | MAXN | 0.2 | ~21 (avg) | - | 8 | 22.5 | 23.0 | 11.1 | 33.2 | none | [Qwen2.5-1.5B-Instruct/gsm8k_jetson/trt_edgellm-fp8_kv/20261011-233332_limit8](Qwen2.5-1.5B-Instruct/gsm8k_jetson/trt_edgellm-fp8_kv/20261011-233332_limit8) |
+| Qwen2.5-1.5B-Instruct | trt_edgellm-fp8_lmhead | gsm8k_jetson | exact_match (strict-match): 0.3750<br>exact_match (flexible-extract): 0.5000 | 8 | MAXN | 0.3 | ~21 (avg) | - | 7 | 22.2 | 22.6 | 12.7 | 37.1 | none | [Qwen2.5-1.5B-Instruct/gsm8k_jetson/trt_edgellm-fp8_lmhead/20261011-233407_limit8](Qwen2.5-1.5B-Instruct/gsm8k_jetson/trt_edgellm-fp8_lmhead/20261011-233407_limit8) |
 | Qwen2.5-1.5B-Instruct | trt_edgellm-int4_awq | gsm8k_jetson | exact_match (strict-match): 0.4359<br>exact_match (flexible-extract): 0.3078 | 1319 | MAXN | 40.1 | ~56 (avg) | - | 6 | 18.2 | 19.0 | 34.3 | 69.8 | none | [Qwen2.5-1.5B-Instruct/gsm8k_jetson/trt_edgellm-int4_awq/20261010-122809](Qwen2.5-1.5B-Instruct/gsm8k_jetson/trt_edgellm-int4_awq/20261010-122809) |
+| Qwen2.5-1.5B-Instruct | trt_edgellm-int4_awq | gsm8k_jetson | exact_match (strict-match): 0.6250<br>exact_match (flexible-extract): 0.2500 | 8 | MAXN | 0.3 | ~54 (avg) | - | 6 | 22.8 | 23.7 | 17.6 | 42.0 | none | [Qwen2.5-1.5B-Instruct/gsm8k_jetson/trt_edgellm-int4_awq/20261011-231356_limit8](Qwen2.5-1.5B-Instruct/gsm8k_jetson/trt_edgellm-int4_awq/20261011-231356_limit8) |
+| Qwen2.5-1.5B-Instruct | trt_edgellm-int4_awq_lmhead | gsm8k_jetson | exact_match (strict-match): 0.0000<br>exact_match (flexible-extract): 0.0000 | 8 | MAXN | 0.4 | ~53 (avg) | - | 5 | 21.5 | 22.3 | 17.2 | 41.6 | none | [Qwen2.5-1.5B-Instruct/gsm8k_jetson/trt_edgellm-int4_awq_lmhead/20261011-233447_limit8](Qwen2.5-1.5B-Instruct/gsm8k_jetson/trt_edgellm-int4_awq_lmhead/20261011-233447_limit8) |
+| Qwen2.5-1.5B-Instruct | trt_edgellm-int4_awq_qwen_v1 | gsm8k_jetson | exact_match (strict-match): 0.0000<br>exact_match (flexible-extract): 0.0000 | 8 | MAXN | 0.3 | ~75 (avg) | - | 6 | 21.3 | 22.0 | 16.7 | 41.0 | none | [Qwen2.5-1.5B-Instruct/gsm8k_jetson/trt_edgellm-int4_awq_qwen_v1/20261011-233633_limit8](Qwen2.5-1.5B-Instruct/gsm8k_jetson/trt_edgellm-int4_awq_qwen_v1/20261011-233633_limit8) |
+| Qwen2.5-1.5B-Instruct | trt_edgellm-int4_awq_taskcal | gsm8k_jetson | exact_match (strict-match): 0.3750<br>exact_match (flexible-extract): 0.6250 | 8 | MAXN | 0.1 | ~54 (avg) | - | 6 | 21.6 | 22.3 | 11.4 | 31.7 | none | [Qwen2.5-1.5B-Instruct/gsm8k_jetson/trt_edgellm-int4_awq_taskcal/20261011-233532_limit8](Qwen2.5-1.5B-Instruct/gsm8k_jetson/trt_edgellm-int4_awq_taskcal/20261011-233532_limit8) |
+| Qwen2.5-1.5B-Instruct | trt_edgellm-int4_gptq_qwen | gsm8k_jetson | exact_match (strict-match): 0.6250<br>exact_match (flexible-extract): 0.7500 | 8 | MAXN | 0.2 | ~58 (avg) | - | 6 | 21.6 | 22.1 | 11.5 | 32.1 | none | [Qwen2.5-1.5B-Instruct/gsm8k_jetson/trt_edgellm-int4_gptq_qwen/20261011-233603_limit8](Qwen2.5-1.5B-Instruct/gsm8k_jetson/trt_edgellm-int4_gptq_qwen/20261011-233603_limit8) |
+| Qwen2.5-1.5B-Instruct | trt_edgellm-int8_sq | gsm8k_jetson | exact_match (strict-match): 0.5000<br>exact_match (flexible-extract): 0.2500 | 8 | MAXN | 0.5 | ~22 (avg) | - | 9 | 22.8 | 23.5 | 15.2 | 42.0 | none | [Qwen2.5-1.5B-Instruct/gsm8k_jetson/trt_edgellm-int8_sq/20261011-231436_limit8](Qwen2.5-1.5B-Instruct/gsm8k_jetson/trt_edgellm-int8_sq/20261011-231436_limit8) |
+| Qwen2.5-1.5B-Instruct | trt_edgellm-nvfp4 | gsm8k_jetson | exact_match (strict-match): 0.0000<br>exact_match (flexible-extract): 0.0000 | 8 | MAXN | 0.5 | ~16 (avg) | - | 6 | 22.8 | 23.4 | 16.0 | 42.6 | none | [Qwen2.5-1.5B-Instruct/gsm8k_jetson/trt_edgellm-nvfp4/20261011-231526_limit8](Qwen2.5-1.5B-Instruct/gsm8k_jetson/trt_edgellm-nvfp4/20261011-231526_limit8) |
 | Qwen2.5-1.5B-Instruct | vllm-awq | gsm8k_jetson | exact_match (strict-match): 0.1372<br>exact_match (flexible-extract): 0.5868 | 1319 | MAXN | 23.9 | 64 / 67 | 928 / 1710 | 6 | 18.5 | 21.2 | 28.6 | 64.1 | none | [Qwen2.5-1.5B-Instruct/gsm8k_jetson/vllm-awq/20261010-085532](Qwen2.5-1.5B-Instruct/gsm8k_jetson/vllm-awq/20261010-085532) |
 | Qwen2.5-1.5B-Instruct | vllm-bf16 | gsm8k_jetson | exact_match (strict-match): 0.3487<br>exact_match (flexible-extract): 0.6672 | 1319 | MAXN | 45.7 | 36 / 41 | 1784 / 3376 | 13 | 16.4 | 21.2 | 20.1 | 61.1 | none | [Qwen2.5-1.5B-Instruct/gsm8k_jetson/vllm-bf16/20261010-073925](Qwen2.5-1.5B-Instruct/gsm8k_jetson/vllm-bf16/20261010-073925) |
 | Qwen2.5-1.5B-Instruct | vllm-fp8 | gsm8k_jetson | exact_match (strict-match): 0.2616<br>exact_match (flexible-extract): 0.6634 | 1319 | MAXN | 29.9 | 36 / 41 | 1144 / 2144 | 8 | 18.5 | 21.8 | 19.8 | 58.1 | none | [Qwen2.5-1.5B-Instruct/gsm8k_jetson/vllm-fp8/20261010-082521](Qwen2.5-1.5B-Instruct/gsm8k_jetson/vllm-fp8/20261010-082521) |
@@ -24,139 +35,310 @@ How each column is measured: [methodology](../../docs/methodology.md). Runs mark
 | Qwen2.5-1.5B-Instruct | llamacpp-q4_k_m | ifeval | prompt_level_strict_acc: 0.3771<br>inst_level_strict_acc: 0.4976<br>prompt_level_loose_acc: 0.4085<br>inst_level_loose_acc: 0.5264 | 541 | MAXN | 22.6 | 24 / 29 | 1438 / 9668 | 8 | 19.4 | 20.2 | 33.0 | 64.6 | none | [Qwen2.5-1.5B-Instruct/ifeval/llamacpp-q4_k_m/20261011-040858](Qwen2.5-1.5B-Instruct/ifeval/llamacpp-q4_k_m/20261011-040858) |
 | Qwen2.5-1.5B-Instruct | llamacpp-q8_0 | ifeval | prompt_level_strict_acc: 0.4177<br>inst_level_strict_acc: 0.5312<br>prompt_level_loose_acc: 0.4621<br>inst_level_loose_acc: 0.5719 | 541 | MAXN | 26.6 | 25 / 29 | 1853 / 8297 | 9 | 19.5 | 20.3 | 32.9 | 67.9 | none | [Qwen2.5-1.5B-Instruct/ifeval/llamacpp-q8_0/20261011-034202](Qwen2.5-1.5B-Instruct/ifeval/llamacpp-q8_0/20261011-034202) |
 | Qwen2.5-1.5B-Instruct | trt_edgellm-fp16 | ifeval | prompt_level_strict_acc: 0.4104<br>inst_level_strict_acc: 0.5192<br>prompt_level_loose_acc: 0.4473<br>inst_level_loose_acc: 0.5552 | 541 | MAXN | 39.0 | ~17 (avg) | - | 13 | 19.5 | 20.3 | 23.8 | 62.7 | none | [Qwen2.5-1.5B-Instruct/ifeval/trt_edgellm-fp16/20261011-043149](Qwen2.5-1.5B-Instruct/ifeval/trt_edgellm-fp16/20261011-043149) |
+| Qwen2.5-1.5B-Instruct | trt_edgellm-fp16 | ifeval | prompt_level_strict_acc: 0.3750<br>inst_level_strict_acc: 0.3571<br>prompt_level_loose_acc: 0.3750<br>inst_level_loose_acc: 0.4286 | 8 | MAXN | 0.9 | ~17 (avg) | - | 13 | 22.5 | 23.4 | 18.0 | 50.2 | none | [Qwen2.5-1.5B-Instruct/ifeval/trt_edgellm-fp16/20261011-232742_limit8](Qwen2.5-1.5B-Instruct/ifeval/trt_edgellm-fp16/20261011-232742_limit8) |
 | Qwen2.5-1.5B-Instruct | trt_edgellm-fp8 | ifeval | prompt_level_strict_acc: 0.4177<br>inst_level_strict_acc: 0.5156<br>prompt_level_loose_acc: 0.4603<br>inst_level_loose_acc: 0.5528 | 541 | MAXN | 24.7 | ~14 (avg) | - | 8 | 19.5 | 20.4 | 28.4 | 65.9 | none | [Qwen2.5-1.5B-Instruct/ifeval/trt_edgellm-fp8/20261011-051110](Qwen2.5-1.5B-Instruct/ifeval/trt_edgellm-fp8/20261011-051110) |
+| Qwen2.5-1.5B-Instruct | trt_edgellm-fp8 | ifeval | prompt_level_strict_acc: 0.3750<br>inst_level_strict_acc: 0.4286<br>prompt_level_loose_acc: 0.5000<br>inst_level_loose_acc: 0.5714 | 8 | MAXN | 0.3 | ~14 (avg) | - | 8 | 22.6 | 23.4 | 15.3 | 41.5 | none | [Qwen2.5-1.5B-Instruct/ifeval/trt_edgellm-fp8/20261011-232902_limit8](Qwen2.5-1.5B-Instruct/ifeval/trt_edgellm-fp8/20261011-232902_limit8) |
 | Qwen2.5-1.5B-Instruct | trt_edgellm-int4_awq | ifeval | prompt_level_strict_acc: 0.3678<br>inst_level_strict_acc: 0.4856<br>prompt_level_loose_acc: 0.4011<br>inst_level_loose_acc: 0.5192 | 541 | MAXN | 22.7 | ~15 (avg) | - | 6 | 19.5 | 20.3 | 33.3 | 68.7 | none | [Qwen2.5-1.5B-Instruct/ifeval/trt_edgellm-int4_awq/20261011-053611](Qwen2.5-1.5B-Instruct/ifeval/trt_edgellm-int4_awq/20261011-053611) |
+| Qwen2.5-1.5B-Instruct | trt_edgellm-int4_awq | ifeval | prompt_level_strict_acc: 0.5000<br>inst_level_strict_acc: 0.5714<br>prompt_level_loose_acc: 0.6250<br>inst_level_loose_acc: 0.6429 | 8 | MAXN | 0.5 | ~15 (avg) | - | 6 | 22.5 | 23.3 | 19.9 | 46.4 | none | [Qwen2.5-1.5B-Instruct/ifeval/trt_edgellm-int4_awq/20261011-232947_limit8](Qwen2.5-1.5B-Instruct/ifeval/trt_edgellm-int4_awq/20261011-232947_limit8) |
+| Qwen2.5-1.5B-Instruct | trt_edgellm-int8_sq | ifeval | prompt_level_strict_acc: 0.1250<br>inst_level_strict_acc: 0.3571<br>prompt_level_loose_acc: 0.2500<br>inst_level_loose_acc: 0.4286 | 8 | MAXN | 0.7 | ~14 (avg) | - | 9 | 22.5 | 23.4 | 17.4 | 47.0 | none | [Qwen2.5-1.5B-Instruct/ifeval/trt_edgellm-int8_sq/20261011-233037_limit8](Qwen2.5-1.5B-Instruct/ifeval/trt_edgellm-int8_sq/20261011-233037_limit8) |
+| Qwen2.5-1.5B-Instruct | trt_edgellm-nvfp4 | ifeval | prompt_level_strict_acc: 0.1250<br>inst_level_strict_acc: 0.2857<br>prompt_level_loose_acc: 0.1250<br>inst_level_loose_acc: 0.3571 | 8 | MAXN | 1.2 | ~10 (avg) | - | 6 | 22.5 | 23.4 | 20.1 | 50.7 | none | [Qwen2.5-1.5B-Instruct/ifeval/trt_edgellm-nvfp4/20261011-233142_limit8](Qwen2.5-1.5B-Instruct/ifeval/trt_edgellm-nvfp4/20261011-233142_limit8) |
 | Qwen2.5-1.5B-Instruct | vllm-awq | ifeval | prompt_level_strict_acc: 0.3715<br>inst_level_strict_acc: 0.4748<br>prompt_level_loose_acc: 0.4011<br>inst_level_loose_acc: 0.5048 | 541 | MAXN | 21.6 | 16 / 18 | 1338 / 7541 | 6 | 19.5 | 22.2 | 26.6 | 62.7 | none | [Qwen2.5-1.5B-Instruct/ifeval/vllm-awq/20261011-023550](Qwen2.5-1.5B-Instruct/ifeval/vllm-awq/20261011-023550) |
 | Qwen2.5-1.5B-Instruct | vllm-bf16 | ifeval | prompt_level_strict_acc: 0.4048<br>inst_level_strict_acc: 0.5156<br>prompt_level_loose_acc: 0.4418<br>inst_level_loose_acc: 0.5540 | 541 | MAXN | 39.4 | 28 / 28 | 2642 / 11929 | 13 | 20.0 | 23.3 | 18.7 | 59.5 | none | [Qwen2.5-1.5B-Instruct/ifeval/vllm-bf16/20261011-012858](Qwen2.5-1.5B-Instruct/ifeval/vllm-bf16/20261011-012858) |
 | Qwen2.5-1.5B-Instruct | vllm-fp8 | ifeval | prompt_level_strict_acc: 0.4140<br>inst_level_strict_acc: 0.5156<br>prompt_level_loose_acc: 0.4455<br>inst_level_loose_acc: 0.5492 | 541 | MAXN | 26.8 | 18 / 19 | 1717 / 10728 | 8 | 19.5 | 22.6 | 18.5 | 56.9 | none | [Qwen2.5-1.5B-Instruct/ifeval/vllm-fp8/20261011-020839](Qwen2.5-1.5B-Instruct/ifeval/vllm-fp8/20261011-020839) |
+| Qwen2.5-1.5B-Instruct | hf-bf16 | length_sweep_128 | counts: 1.0000 | 4 | MAXN | 0.5 | 29 / 302 | 6520 / 6831 | 25 | 18.6 | 20.5 | 10.0 | 34.0 | none | [Qwen2.5-1.5B-Instruct/length_sweep_128/hf-bf16/20261011-152051_limit4](Qwen2.5-1.5B-Instruct/length_sweep_128/hf-bf16/20261011-152051_limit4) |
 | Qwen2.5-1.5B-Instruct | hf-bf16 | length_sweep_128 | counts: 1.0000 | 16 | MAXN | 1.8 | 29 / 30 | 6593 / 6697 | 26 | 18.6 | 20.8 | 12.5 | 40.1 | none | [Qwen2.5-1.5B-Instruct/length_sweep_128/hf-bf16/20261011-162434](Qwen2.5-1.5B-Instruct/length_sweep_128/hf-bf16/20261011-162434) |
+| Qwen2.5-1.5B-Instruct | llamacpp-f16 | length_sweep_128 | counts: 1.0000 | 4 | MAXN | 0.3 | 40 / 355 | 3952 / 4283 | 15 | 18.5 | 19.5 | 17.9 | 42.9 | none | [Qwen2.5-1.5B-Instruct/length_sweep_128/llamacpp-f16/20261011-152346_limit4](Qwen2.5-1.5B-Instruct/length_sweep_128/llamacpp-f16/20261011-152346_limit4) |
 | Qwen2.5-1.5B-Instruct | llamacpp-f16 | length_sweep_128 | counts: 1.0000 | 16 | MAXN | 1.1 | 40 / 40 | 3953 / 3958 | 15 | 18.8 | 19.5 | 27.1 | 58.2 | none | [Qwen2.5-1.5B-Instruct/length_sweep_128/llamacpp-f16/20261011-162954](Qwen2.5-1.5B-Instruct/length_sweep_128/llamacpp-f16/20261011-162954) |
+| Qwen2.5-1.5B-Instruct | llamacpp-q8_0 | length_sweep_128 | counts: 1.0000 | 4 | MAXN | 0.2 | 30 / 292 | 2355 / 2635 | 9 | 18.5 | 19.4 | 14.4 | 37.1 | none | [Qwen2.5-1.5B-Instruct/length_sweep_128/llamacpp-q8_0/20261011-152422_limit4](Qwen2.5-1.5B-Instruct/length_sweep_128/llamacpp-q8_0/20261011-152422_limit4) |
 | Qwen2.5-1.5B-Instruct | llamacpp-q8_0 | length_sweep_128 | counts: 1.0000 | 16 | MAXN | 0.7 | 30 / 31 | 2355 / 2357 | 9 | 18.5 | 19.3 | 23.6 | 52.6 | none | [Qwen2.5-1.5B-Instruct/length_sweep_128/llamacpp-q8_0/20261011-163119](Qwen2.5-1.5B-Instruct/length_sweep_128/llamacpp-q8_0/20261011-163119) |
+| Qwen2.5-1.5B-Instruct | trt_edgellm-fp16 | length_sweep_128 | counts: 1.0000 | 4 | MAXN | 0.3 | ~17 (avg) | - | 13 | 18.6 | 19.4 | 12.8 | 39.0 | none | [Qwen2.5-1.5B-Instruct/length_sweep_128/trt_edgellm-fp16/20261011-152452_limit4](Qwen2.5-1.5B-Instruct/length_sweep_128/trt_edgellm-fp16/20261011-152452_limit4) |
 | Qwen2.5-1.5B-Instruct | trt_edgellm-fp16 | length_sweep_128 | counts: 1.0000 | 16 | MAXN | 1.0 | ~17 (avg) | - | 13 | 18.6 | 19.3 | 18.6 | 51.5 | none | [Qwen2.5-1.5B-Instruct/length_sweep_128/trt_edgellm-fp16/20261011-163220](Qwen2.5-1.5B-Instruct/length_sweep_128/trt_edgellm-fp16/20261011-163220) |
+| Qwen2.5-1.5B-Instruct | trt_edgellm-fp8 | length_sweep_128 | counts: 1.0000 | 4 | MAXN | 0.2 | ~14 (avg) | - | 8 | 18.6 | 19.4 | 12.2 | 35.4 | none | [Qwen2.5-1.5B-Instruct/length_sweep_128/trt_edgellm-fp8/20261011-152532_limit4](Qwen2.5-1.5B-Instruct/length_sweep_128/trt_edgellm-fp8/20261011-152532_limit4) |
 | Qwen2.5-1.5B-Instruct | trt_edgellm-fp8 | length_sweep_128 | counts: 1.0000 | 16 | MAXN | 0.6 | ~14 (avg) | - | 8 | 18.6 | 19.5 | 19.7 | 49.7 | none | [Qwen2.5-1.5B-Instruct/length_sweep_128/trt_edgellm-fp8/20261011-163340](Qwen2.5-1.5B-Instruct/length_sweep_128/trt_edgellm-fp8/20261011-163340) |
+| Qwen2.5-1.5B-Instruct | vllm-bf16 | length_sweep_128 | counts: 1.0000 | 4 | MAXN | 0.8 | 18 / 858 | 3373 / 4217 | 13 | 18.6 | 22.0 | 8.3 | 30.7 | none | [Qwen2.5-1.5B-Instruct/length_sweep_128/vllm-bf16/20261011-152136_limit4](Qwen2.5-1.5B-Instruct/length_sweep_128/vllm-bf16/20261011-152136_limit4) |
 | Qwen2.5-1.5B-Instruct | vllm-bf16 | length_sweep_128 | counts: 1.0000 | 16 | MAXN | 1.5 | 18 / 19 | 3384 / 3397 | 13 | 18.6 | 22.4 | 12.5 | 42.4 | none | [Qwen2.5-1.5B-Instruct/length_sweep_128/vllm-bf16/20261011-162639](Qwen2.5-1.5B-Instruct/length_sweep_128/vllm-bf16/20261011-162639) |
+| Qwen2.5-1.5B-Instruct | vllm-fp8 | length_sweep_128 | counts: 1.0000 | 4 | MAXN | 0.8 | 14 / 969 | 2144 / 3097 | 8 | 18.6 | 21.5 | 7.5 | 27.9 | none | [Qwen2.5-1.5B-Instruct/length_sweep_128/vllm-fp8/20261011-152241_limit4](Qwen2.5-1.5B-Instruct/length_sweep_128/vllm-fp8/20261011-152241_limit4) |
 | Qwen2.5-1.5B-Instruct | vllm-fp8 | length_sweep_128 | counts: 1.0000 | 16 | MAXN | 1.2 | 14 / 19 | 2141 / 2148 | 8 | 18.6 | 22.0 | 10.5 | 35.9 | none | [Qwen2.5-1.5B-Instruct/length_sweep_128/vllm-fp8/20261011-162829](Qwen2.5-1.5B-Instruct/length_sweep_128/vllm-fp8/20261011-162829) |
+| Qwen2.5-1.5B-Instruct | hf-bf16 | length_sweep_2048 | counts: 1.0000 | 4 | MAXN | 0.5 | 110 / 373 | 6840 / 7132 | 26 | 18.6 | 20.8 | 11.4 | 35.6 | none | [Qwen2.5-1.5B-Instruct/length_sweep_2048/hf-bf16/20261011-153155_limit4](Qwen2.5-1.5B-Instruct/length_sweep_2048/hf-bf16/20261011-153155_limit4) |
 | Qwen2.5-1.5B-Instruct | hf-bf16 | length_sweep_2048 | counts: 1.0000 | 16 | MAXN | 1.9 | 111 / 111 | 6989 / 7009 | 27 | 18.6 | 20.8 | 14.3 | 41.8 | none | [Qwen2.5-1.5B-Instruct/length_sweep_2048/hf-bf16/20261011-164518](Qwen2.5-1.5B-Instruct/length_sweep_2048/hf-bf16/20261011-164518) |
+| Qwen2.5-1.5B-Instruct | llamacpp-f16 | length_sweep_2048 | counts: 1.0000 | 4 | MAXN | 0.3 | 241 / 554 | 4220 / 4540 | 16 | 18.7 | 19.6 | 18.9 | 44.2 | none | [Qwen2.5-1.5B-Instruct/length_sweep_2048/llamacpp-f16/20261011-153501_limit4](Qwen2.5-1.5B-Instruct/length_sweep_2048/llamacpp-f16/20261011-153501_limit4) |
 | Qwen2.5-1.5B-Instruct | llamacpp-f16 | length_sweep_2048 | counts: 1.0000 | 16 | MAXN | 1.2 | 240 / 241 | 4222 / 4229 | 16 | 18.6 | 19.4 | 28.3 | 59.6 | none | [Qwen2.5-1.5B-Instruct/length_sweep_2048/llamacpp-f16/20261011-165053](Qwen2.5-1.5B-Instruct/length_sweep_2048/llamacpp-f16/20261011-165053) |
+| Qwen2.5-1.5B-Instruct | llamacpp-q8_0 | length_sweep_2048 | counts: 1.0000 | 4 | MAXN | 0.2 | 307 / 568 | 2703 / 2969 | 9 | 18.5 | 19.3 | 15.6 | 38.1 | none | [Qwen2.5-1.5B-Instruct/length_sweep_2048/llamacpp-q8_0/20261011-153541_limit4](Qwen2.5-1.5B-Instruct/length_sweep_2048/llamacpp-q8_0/20261011-153541_limit4) |
 | Qwen2.5-1.5B-Instruct | llamacpp-q8_0 | length_sweep_2048 | counts: 1.0000 | 16 | MAXN | 0.7 | 306 / 307 | 2695 / 2701 | 9 | 18.5 | 19.3 | 26.0 | 54.6 | none | [Qwen2.5-1.5B-Instruct/length_sweep_2048/llamacpp-q8_0/20261011-165224](Qwen2.5-1.5B-Instruct/length_sweep_2048/llamacpp-q8_0/20261011-165224) |
+| Qwen2.5-1.5B-Instruct | trt_edgellm-fp16 | length_sweep_2048 | counts: 1.0000 | 4 | MAXN | 0.3 | ~63 (avg) | - | 13 | 18.7 | 19.4 | 13.2 | 39.1 | none | [Qwen2.5-1.5B-Instruct/length_sweep_2048/trt_edgellm-fp16/20261011-153611_limit4](Qwen2.5-1.5B-Instruct/length_sweep_2048/trt_edgellm-fp16/20261011-153611_limit4) |
 | Qwen2.5-1.5B-Instruct | trt_edgellm-fp16 | length_sweep_2048 | counts: 1.0000 | 16 | MAXN | 1.0 | ~63 (avg) | - | 13 | 18.6 | 19.4 | 19.2 | 51.9 | none | [Qwen2.5-1.5B-Instruct/length_sweep_2048/trt_edgellm-fp16/20261011-165329](Qwen2.5-1.5B-Instruct/length_sweep_2048/trt_edgellm-fp16/20261011-165329) |
+| Qwen2.5-1.5B-Instruct | trt_edgellm-fp8 | length_sweep_2048 | counts: 1.0000 | 4 | MAXN | 0.2 | ~46 (avg) | - | 9 | 18.6 | 19.4 | 12.5 | 35.7 | none | [Qwen2.5-1.5B-Instruct/length_sweep_2048/trt_edgellm-fp8/20261011-153651_limit4](Qwen2.5-1.5B-Instruct/length_sweep_2048/trt_edgellm-fp8/20261011-153651_limit4) |
 | Qwen2.5-1.5B-Instruct | trt_edgellm-fp8 | length_sweep_2048 | counts: 1.0000 | 16 | MAXN | 0.7 | ~46 (avg) | - | 9 | 18.6 | 19.4 | 20.2 | 50.0 | none | [Qwen2.5-1.5B-Instruct/length_sweep_2048/trt_edgellm-fp8/20261011-165454](Qwen2.5-1.5B-Instruct/length_sweep_2048/trt_edgellm-fp8/20261011-165454) |
+| Qwen2.5-1.5B-Instruct | vllm-bf16 | length_sweep_2048 | counts: 1.0000 | 4 | MAXN | 0.8 | 83 / 938 | 3519 / 4366 | 13 | 18.6 | 22.2 | 9.0 | 31.5 | none | [Qwen2.5-1.5B-Instruct/length_sweep_2048/vllm-bf16/20261011-153245_limit4](Qwen2.5-1.5B-Instruct/length_sweep_2048/vllm-bf16/20261011-153245_limit4) |
 | Qwen2.5-1.5B-Instruct | vllm-bf16 | length_sweep_2048 | counts: 1.0000 | 16 | MAXN | 1.5 | 82 / 82 | 3515 / 3519 | 13 | 18.6 | 22.3 | 13.4 | 43.3 | none | [Qwen2.5-1.5B-Instruct/length_sweep_2048/vllm-bf16/20261011-164728](Qwen2.5-1.5B-Instruct/length_sweep_2048/vllm-bf16/20261011-164728) |
+| Qwen2.5-1.5B-Instruct | vllm-fp8 | length_sweep_2048 | counts: 1.0000 | 4 | MAXN | 0.8 | 89 / 1048 | 2277 / 3232 | 9 | 18.5 | 21.5 | 8.2 | 28.8 | none | [Qwen2.5-1.5B-Instruct/length_sweep_2048/vllm-fp8/20261011-153356_limit4](Qwen2.5-1.5B-Instruct/length_sweep_2048/vllm-fp8/20261011-153356_limit4) |
 | Qwen2.5-1.5B-Instruct | vllm-fp8 | length_sweep_2048 | counts: 1.0000 | 16 | MAXN | 1.3 | 89 / 90 | 2277 / 2281 | 9 | 18.6 | 21.8 | 12.1 | 38.5 | none | [Qwen2.5-1.5B-Instruct/length_sweep_2048/vllm-fp8/20261011-164918](Qwen2.5-1.5B-Instruct/length_sweep_2048/vllm-fp8/20261011-164918) |
+| Qwen2.5-1.5B-Instruct | hf-bf16 | length_sweep_512 | counts: 1.0000 | 4 | MAXN | 0.5 | 39 / 317 | 6950 / 7096 | 27 | 18.6 | 20.9 | 10.1 | 33.8 | none | [Qwen2.5-1.5B-Instruct/length_sweep_512/hf-bf16/20261011-152621_limit4](Qwen2.5-1.5B-Instruct/length_sweep_512/hf-bf16/20261011-152621_limit4) |
 | Qwen2.5-1.5B-Instruct | hf-bf16 | length_sweep_512 | counts: 1.0000 | 16 | MAXN | 1.8 | 38 / 38 | 6560 / 6782 | 26 | 18.5 | 20.9 | 12.6 | 39.9 | none | [Qwen2.5-1.5B-Instruct/length_sweep_512/hf-bf16/20261011-163454](Qwen2.5-1.5B-Instruct/length_sweep_512/hf-bf16/20261011-163454) |
+| Qwen2.5-1.5B-Instruct | llamacpp-f16 | length_sweep_512 | counts: 1.0000 | 4 | MAXN | 0.3 | 65 / 386 | 3996 / 4320 | 15 | 18.5 | 19.4 | 18.1 | 43.1 | none | [Qwen2.5-1.5B-Instruct/length_sweep_512/llamacpp-f16/20261011-152921_limit4](Qwen2.5-1.5B-Instruct/length_sweep_512/llamacpp-f16/20261011-152921_limit4) |
 | Qwen2.5-1.5B-Instruct | llamacpp-f16 | length_sweep_512 | counts: 1.0000 | 16 | MAXN | 1.1 | 64 / 65 | 3995 / 4002 | 15 | 18.5 | 19.5 | 27.1 | 58.1 | none | [Qwen2.5-1.5B-Instruct/length_sweep_512/llamacpp-f16/20261011-164019](Qwen2.5-1.5B-Instruct/length_sweep_512/llamacpp-f16/20261011-164019) |
+| Qwen2.5-1.5B-Instruct | llamacpp-q8_0 | length_sweep_512 | counts: 1.0000 | 4 | MAXN | 0.2 | 81 / 342 | 2420 / 2687 | 9 | 18.5 | 19.2 | 14.3 | 36.9 | none | [Qwen2.5-1.5B-Instruct/length_sweep_512/llamacpp-q8_0/20261011-152956_limit4](Qwen2.5-1.5B-Instruct/length_sweep_512/llamacpp-q8_0/20261011-152956_limit4) |
 | Qwen2.5-1.5B-Instruct | llamacpp-q8_0 | length_sweep_512 | counts: 1.0000 | 16 | MAXN | 0.7 | 80 / 81 | 2421 / 2428 | 9 | 18.5 | 19.3 | 24.0 | 52.7 | none | [Qwen2.5-1.5B-Instruct/length_sweep_512/llamacpp-q8_0/20261011-164144](Qwen2.5-1.5B-Instruct/length_sweep_512/llamacpp-q8_0/20261011-164144) |
+| Qwen2.5-1.5B-Instruct | trt_edgellm-fp16 | length_sweep_512 | counts: 1.0000 | 4 | MAXN | 0.3 | ~22 (avg) | - | 13 | 18.5 | 19.2 | 13.0 | 39.0 | none | [Qwen2.5-1.5B-Instruct/length_sweep_512/trt_edgellm-fp16/20261011-153026_limit4](Qwen2.5-1.5B-Instruct/length_sweep_512/trt_edgellm-fp16/20261011-153026_limit4) |
 | Qwen2.5-1.5B-Instruct | trt_edgellm-fp16 | length_sweep_512 | counts: 1.0000 | 16 | MAXN | 1.0 | ~22 (avg) | - | 13 | 18.6 | 19.4 | 18.6 | 51.4 | none | [Qwen2.5-1.5B-Instruct/length_sweep_512/trt_edgellm-fp16/20261011-164244](Qwen2.5-1.5B-Instruct/length_sweep_512/trt_edgellm-fp16/20261011-164244) |
+| Qwen2.5-1.5B-Instruct | trt_edgellm-fp8 | length_sweep_512 | counts: 1.0000 | 4 | MAXN | 0.2 | ~18 (avg) | - | 8 | 18.6 | 19.4 | 12.2 | 35.4 | none | [Qwen2.5-1.5B-Instruct/length_sweep_512/trt_edgellm-fp8/20261011-153106_limit4](Qwen2.5-1.5B-Instruct/length_sweep_512/trt_edgellm-fp8/20261011-153106_limit4) |
 | Qwen2.5-1.5B-Instruct | trt_edgellm-fp8 | length_sweep_512 | counts: 1.0000 | 16 | MAXN | 0.6 | ~18 (avg) | - | 8 | 18.6 | 19.3 | 19.6 | 49.4 | none | [Qwen2.5-1.5B-Instruct/length_sweep_512/trt_edgellm-fp8/20261011-164404](Qwen2.5-1.5B-Instruct/length_sweep_512/trt_edgellm-fp8/20261011-164404) |
+| Qwen2.5-1.5B-Instruct | vllm-bf16 | length_sweep_512 | counts: 1.0000 | 4 | MAXN | 0.8 | 24 / 852 | 3414 / 4245 | 13 | 18.6 | 22.3 | 8.4 | 30.8 | none | [Qwen2.5-1.5B-Instruct/length_sweep_512/vllm-bf16/20261011-152711_limit4](Qwen2.5-1.5B-Instruct/length_sweep_512/vllm-bf16/20261011-152711_limit4) |
 | Qwen2.5-1.5B-Instruct | vllm-bf16 | length_sweep_512 | counts: 1.0000 | 16 | MAXN | 1.5 | 24 / 26 | 3423 / 3426 | 13 | 18.6 | 22.2 | 12.6 | 42.3 | none | [Qwen2.5-1.5B-Instruct/length_sweep_512/vllm-bf16/20261011-163659](Qwen2.5-1.5B-Instruct/length_sweep_512/vllm-bf16/20261011-163659) |
+| Qwen2.5-1.5B-Instruct | vllm-fp8 | length_sweep_512 | counts: 1.0000 | 4 | MAXN | 0.8 | 26 / 995 | 2171 / 3137 | 8 | 18.6 | 21.4 | 7.8 | 28.4 | none | [Qwen2.5-1.5B-Instruct/length_sweep_512/vllm-fp8/20261011-152816_limit4](Qwen2.5-1.5B-Instruct/length_sweep_512/vllm-fp8/20261011-152816_limit4) |
 | Qwen2.5-1.5B-Instruct | vllm-fp8 | length_sweep_512 | counts: 1.0000 | 16 | MAXN | 1.2 | 25 / 26 | 2171 / 2173 | 8 | 18.6 | 21.8 | 11.0 | 37.0 | none | [Qwen2.5-1.5B-Instruct/length_sweep_512/vllm-fp8/20261011-163849](Qwen2.5-1.5B-Instruct/length_sweep_512/vllm-fp8/20261011-163849) |
 | Qwen2.5-1.5B-Instruct | hf-bf16 | mmlu_jetson | exact_match (first-letter): 0.4017 | 14042 | MAXN | 132.9 | 39 / 87 | 798 / 869 | 26 | 18.1 | 20.6 | 17.6 | 47.0 | none | [Qwen2.5-1.5B-Instruct/mmlu_jetson/hf-bf16/20261010-130850](Qwen2.5-1.5B-Instruct/mmlu_jetson/hf-bf16/20261010-130850) |
 | Qwen2.5-1.5B-Instruct | hf-bf16 | mmlu_jetson | exact_match (first-letter): 0.4017 | 14042 | MAXN | 131.7 | 39 / 87 | 790 / 858 | 25 | 18.5 | 20.7 | 17.4 | 46.6 | none | [Qwen2.5-1.5B-Instruct/mmlu_jetson/hf-bf16/20261011-182905](Qwen2.5-1.5B-Instruct/mmlu_jetson/hf-bf16/20261011-182905) |
+| Qwen2.5-1.5B-Instruct | llamacpp-f16+cublas-bf16 | mmlu_jetson | exact_match (first-letter): 0.4044 | 1140 | MAXN | 6.7 | 79 / 152 | 267 / 585 | 16 | 18.4 | 19.3 | 32.8 | 66.4 | none | [Qwen2.5-1.5B-Instruct/mmlu_jetson/llamacpp-f16+cublas-bf16/20261011-145219_limit20](Qwen2.5-1.5B-Instruct/mmlu_jetson/llamacpp-f16+cublas-bf16/20261011-145219_limit20) |
+| Qwen2.5-1.5B-Instruct | llamacpp-f16+cublas-f32 | mmlu_jetson | exact_match (first-letter): 0.4070 | 1140 | MAXN | 7.4 | 102 / 222 | 303 / 636 | 16 | 18.4 | 19.3 | 33.3 | 66.9 | none | [Qwen2.5-1.5B-Instruct/mmlu_jetson/llamacpp-f16+cublas-f32/20261011-144436_limit20](Qwen2.5-1.5B-Instruct/mmlu_jetson/llamacpp-f16+cublas-f32/20261011-144436_limit20) |
 | Qwen2.5-1.5B-Instruct | llamacpp-f16 | mmlu_jetson | exact_match (first-letter): 0.3728 | 14042 | MAXN | 86.6 | 91 / 214 | 277 / 679 | 16 | 20.0 | 21.1 | 34.5 | 69.4 | none | [Qwen2.5-1.5B-Instruct/mmlu_jetson/llamacpp-f16/20261010-175144](Qwen2.5-1.5B-Instruct/mmlu_jetson/llamacpp-f16/20261010-175144) |
 | Qwen2.5-1.5B-Instruct | llamacpp-q4_k_m | mmlu_jetson | exact_match (first-letter): 0.3846 | 14042 | MAXN | 63.7 | 103 / 278 | 201 / 513 | 8 | 20.0 | 20.8 | 34.4 | 60.4 | none | [Qwen2.5-1.5B-Instruct/mmlu_jetson/llamacpp-q4_k_m/20261010-202515](Qwen2.5-1.5B-Instruct/mmlu_jetson/llamacpp-q4_k_m/20261010-202515) |
 | Qwen2.5-1.5B-Instruct | llamacpp-q8_0 | mmlu_jetson | exact_match (first-letter): 0.3805 | 14042 | MAXN | 66.1 | 96 / 254 | 211 / 535 | 9 | 20.0 | 20.9 | 34.6 | 63.6 | none | [Qwen2.5-1.5B-Instruct/mmlu_jetson/llamacpp-q8_0/20261010-191847](Qwen2.5-1.5B-Instruct/mmlu_jetson/llamacpp-q8_0/20261010-191847) |
 | Qwen2.5-1.5B-Instruct | trt_edgellm-fp16 | mmlu_jetson | exact_match (first-letter): 0.3876 | 14042 | MAXN | 68.8 | ~30 (avg) | - | 13 | 20.0 | 21.1 | 29.2 | 66.8 | none | [Qwen2.5-1.5B-Instruct/mmlu_jetson/trt_edgellm-fp16/20261010-212917](Qwen2.5-1.5B-Instruct/mmlu_jetson/trt_edgellm-fp16/20261010-212917) |
+| Qwen2.5-1.5B-Instruct | trt_edgellm-fp16 | mmlu_jetson | exact_match (first-letter): 0.4167 | 456 | MAXN | 2.3 | ~27 (avg) | - | 13 | 22.5 | 23.4 | 24.4 | 58.0 | none | [Qwen2.5-1.5B-Instruct/mmlu_jetson/trt_edgellm-fp16/20261011-231636_limit8](Qwen2.5-1.5B-Instruct/mmlu_jetson/trt_edgellm-fp16/20261011-231636_limit8) |
 | Qwen2.5-1.5B-Instruct | trt_edgellm-fp8 | mmlu_jetson | exact_match (first-letter): 0.4474 | 14042 | MAXN | 40.2 | ~23 (avg) | - | 8 | 20.0 | 21.2 | 31.7 | 67.1 | none | [Qwen2.5-1.5B-Instruct/mmlu_jetson/trt_edgellm-fp8/20261010-223849](Qwen2.5-1.5B-Instruct/mmlu_jetson/trt_edgellm-fp8/20261010-223849) |
+| Qwen2.5-1.5B-Instruct | trt_edgellm-fp8 | mmlu_jetson | exact_match (first-letter): 0.4715 | 456 | MAXN | 1.3 | ~21 (avg) | - | 8 | 22.5 | 23.3 | 24.6 | 54.9 | none | [Qwen2.5-1.5B-Instruct/mmlu_jetson/trt_edgellm-fp8/20261011-231916_limit8](Qwen2.5-1.5B-Instruct/mmlu_jetson/trt_edgellm-fp8/20261011-231916_limit8) |
+| Qwen2.5-1.5B-Instruct | trt_edgellm-fp8_kv | mmlu_jetson | exact_match (first-letter): 0.4868 | 456 | MAXN | 0.9 | ~20 (avg) | - | 8 | 21.3 | 22.1 | 23.2 | 51.3 | none | [Qwen2.5-1.5B-Instruct/mmlu_jetson/trt_edgellm-fp8_kv/20261011-233743_limit8](Qwen2.5-1.5B-Instruct/mmlu_jetson/trt_edgellm-fp8_kv/20261011-233743_limit8) |
+| Qwen2.5-1.5B-Instruct | trt_edgellm-fp8_lmhead | mmlu_jetson | exact_match (first-letter): 0.4539 | 456 | MAXN | 1.2 | ~20 (avg) | - | 7 | 21.3 | 22.1 | 22.5 | 52.2 | none | [Qwen2.5-1.5B-Instruct/mmlu_jetson/trt_edgellm-fp8_lmhead/20261011-233903_limit8](Qwen2.5-1.5B-Instruct/mmlu_jetson/trt_edgellm-fp8_lmhead/20261011-233903_limit8) |
 | Qwen2.5-1.5B-Instruct | trt_edgellm-int4_awq | mmlu_jetson | exact_match (first-letter): 0.4992 | 14042 | MAXN | 50.1 | ~56 (avg) | - | 6 | 20.0 | 21.1 | 41.0 | 72.6 | none | [Qwen2.5-1.5B-Instruct/mmlu_jetson/trt_edgellm-int4_awq/20261010-231946](Qwen2.5-1.5B-Instruct/mmlu_jetson/trt_edgellm-int4_awq/20261010-231946) |
+| Qwen2.5-1.5B-Instruct | trt_edgellm-int4_awq | mmlu_jetson | exact_match (first-letter): 0.5526 | 456 | MAXN | 1.7 | ~50 (avg) | - | 6 | 22.5 | 23.2 | 32.6 | 60.9 | none | [Qwen2.5-1.5B-Instruct/mmlu_jetson/trt_edgellm-int4_awq/20261011-232057_limit8](Qwen2.5-1.5B-Instruct/mmlu_jetson/trt_edgellm-int4_awq/20261011-232057_limit8) |
+| Qwen2.5-1.5B-Instruct | trt_edgellm-int4_awq_lmhead | mmlu_jetson | exact_match (first-letter): 0.0022 | 456 | MAXN | 1.6 | ~48 (avg) | - | 4 | 21.3 | 22.1 | 31.3 | 58.1 | none | [Qwen2.5-1.5B-Instruct/mmlu_jetson/trt_edgellm-int4_awq_lmhead/20261011-234038_limit8](Qwen2.5-1.5B-Instruct/mmlu_jetson/trt_edgellm-int4_awq_lmhead/20261011-234038_limit8) |
+| Qwen2.5-1.5B-Instruct | trt_edgellm-int4_awq_qwen_v1 | mmlu_jetson | exact_match (first-letter): 0.3838 | 456 | MAXN | 1.8 | ~66 (avg) | - | 6 | 21.3 | 21.9 | 32.5 | 60.4 | none | [Qwen2.5-1.5B-Instruct/mmlu_jetson/trt_edgellm-int4_awq_qwen_v1/20261011-234558_limit8](Qwen2.5-1.5B-Instruct/mmlu_jetson/trt_edgellm-int4_awq_qwen_v1/20261011-234558_limit8) |
+| Qwen2.5-1.5B-Instruct | trt_edgellm-int4_awq_taskcal | mmlu_jetson | exact_match (first-letter): 0.5614 | 456 | MAXN | 1.4 | ~50 (avg) | - | 6 | 21.3 | 22.1 | 32.6 | 59.7 | none | [Qwen2.5-1.5B-Instruct/mmlu_jetson/trt_edgellm-int4_awq_taskcal/20261011-234238_limit8](Qwen2.5-1.5B-Instruct/mmlu_jetson/trt_edgellm-int4_awq_taskcal/20261011-234238_limit8) |
+| Qwen2.5-1.5B-Instruct | trt_edgellm-int4_gptq_qwen | mmlu_jetson | exact_match (first-letter): 0.5154 | 456 | MAXN | 1.2 | ~53 (avg) | - | 6 | 21.2 | 22.1 | 33.0 | 59.2 | none | [Qwen2.5-1.5B-Instruct/mmlu_jetson/trt_edgellm-int4_gptq_qwen/20261011-234423_limit8](Qwen2.5-1.5B-Instruct/mmlu_jetson/trt_edgellm-int4_gptq_qwen/20261011-234423_limit8) |
+| Qwen2.5-1.5B-Instruct | trt_edgellm-int8_sq | mmlu_jetson | exact_match (first-letter): 0.5263 | 456 | MAXN | 1.9 | ~21 (avg) | - | 9 | 22.5 | 23.3 | 22.4 | 54.5 | none | [Qwen2.5-1.5B-Instruct/mmlu_jetson/trt_edgellm-int8_sq/20261011-232302_limit8](Qwen2.5-1.5B-Instruct/mmlu_jetson/trt_edgellm-int8_sq/20261011-232302_limit8) |
+| Qwen2.5-1.5B-Instruct | trt_edgellm-nvfp4 | mmlu_jetson | exact_match (first-letter): 0.0833 | 456 | MAXN | 1.8 | ~16 (avg) | - | 6 | 22.5 | 23.3 | 22.1 | 52.6 | none | [Qwen2.5-1.5B-Instruct/mmlu_jetson/trt_edgellm-nvfp4/20261011-232517_limit8](Qwen2.5-1.5B-Instruct/mmlu_jetson/trt_edgellm-nvfp4/20261011-232517_limit8) |
 | Qwen2.5-1.5B-Instruct | vllm-awq | mmlu_jetson | exact_match (first-letter): 0.2911 | 14042 | MAXN | 28.6 | 49 / 133 | 74 / 230 | 6 | 20.0 | 22.7 | 42.8 | 71.7 | none | [Qwen2.5-1.5B-Instruct/mmlu_jetson/vllm-awq/20261010-172248](Qwen2.5-1.5B-Instruct/mmlu_jetson/vllm-awq/20261010-172248) |
 | Qwen2.5-1.5B-Instruct | vllm-bf16 | mmlu_jetson | exact_match (first-letter): 0.3961 | 14042 | MAXN | 72.5 | 27 / 65 | 431 / 479 | 13 | 18.2 | 21.8 | 24.5 | 65.3 | none | [Qwen2.5-1.5B-Instruct/mmlu_jetson/vllm-bf16/20261010-152159](Qwen2.5-1.5B-Instruct/mmlu_jetson/vllm-bf16/20261010-152159) |
 | Qwen2.5-1.5B-Instruct | vllm-fp8 | mmlu_jetson | exact_match (first-letter): 0.3945 | 14042 | MAXN | 47.6 | 28 / 75 | 172 / 335 | 8 | 18.6 | 22.8 | 24.2 | 61.7 | none | [Qwen2.5-1.5B-Instruct/mmlu_jetson/vllm-fp8/20261010-163452](Qwen2.5-1.5B-Instruct/mmlu_jetson/vllm-fp8/20261010-163452) |
+| Qwen2.5-3B-Instruct | hf-bf16 | gsm8k_jetson | exact_match (strict-match): 0.0000<br>exact_match (flexible-extract): 0.6250 | 472 | MAXN | 12.5 | 64 / 117 | 1317 / 1424 | 40 | 19.1 | 22.8 | 16.3 | 47.9 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-124531_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-124531_limit8) |
+| Qwen2.5-3B-Instruct | hf-bf16 | ifeval | prompt_level_strict_acc: 0.5000<br>inst_level_strict_acc: 0.6429<br>prompt_level_loose_acc: 0.6250<br>inst_level_loose_acc: 0.7143 | 472 | MAXN | 12.5 | 64 / 117 | 1317 / 1424 | 40 | 19.1 | 22.8 | 16.3 | 47.9 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-124531_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-124531_limit8) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson | exact_match (first-letter): 0.4101 | 472 | MAXN | 12.5 | 64 / 117 | 1317 / 1424 | 40 | 19.1 | 22.8 | 16.3 | 47.9 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-124531_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-124531_limit8) |
+| Qwen2.5-3B-Instruct | hf-bf16 | gsm8k_jetson | exact_match (strict-match): 0.0000<br>exact_match (flexible-extract): 0.6250 | 472 | MAXN | 6.8 | 67 / 119 | 312 / 1346 | 41 | 19.0 | 22.9 | 17.8 | 49.1 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-130100_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-130100_limit8) |
+| Qwen2.5-3B-Instruct | hf-bf16 | ifeval | prompt_level_strict_acc: 0.5000<br>inst_level_strict_acc: 0.6429<br>prompt_level_loose_acc: 0.6250<br>inst_level_loose_acc: 0.7143 | 472 | MAXN | 6.8 | 67 / 119 | 312 / 1346 | 41 | 19.0 | 22.9 | 17.8 | 49.1 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-130100_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-130100_limit8) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson | exact_match (first-letter): 0.6404 | 472 | MAXN | 6.8 | 67 / 119 | 312 / 1346 | 41 | 19.0 | 22.9 | 17.8 | 49.1 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-130100_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/hf-bf16/20261008-130100_limit8) |
+| Qwen2.5-3B-Instruct | llamacpp-f16 | gsm8k_jetson | exact_match (strict-match): 0.0000<br>exact_match (flexible-extract): 0.6250 | 472 | MAXN | 4.1 | 176 / 290 | 216 / 966 | 26 | 19.0 | 19.9 | 33.6 | 70.0 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/llamacpp-f16/20261008-131340_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/llamacpp-f16/20261008-131340_limit8) |
+| Qwen2.5-3B-Instruct | llamacpp-f16 | ifeval | prompt_level_strict_acc: 0.6250<br>inst_level_strict_acc: 0.7143<br>prompt_level_loose_acc: 0.6250<br>inst_level_loose_acc: 0.7143 | 472 | MAXN | 4.1 | 176 / 290 | 216 / 966 | 26 | 19.0 | 19.9 | 33.6 | 70.0 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/llamacpp-f16/20261008-131340_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/llamacpp-f16/20261008-131340_limit8) |
+| Qwen2.5-3B-Instruct | llamacpp-f16 | mmlu_jetson | exact_match (first-letter): 0.6535 | 472 | MAXN | 4.1 | 176 / 290 | 216 / 966 | 26 | 19.0 | 19.9 | 33.6 | 70.0 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/llamacpp-f16/20261008-131340_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/llamacpp-f16/20261008-131340_limit8) |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | gsm8k_jetson | exact_match (strict-match): 0.0000<br>exact_match (flexible-extract): 0.5000 | 472 | MAXN | 4.4 | ~52 (avg) | - | 26 | 19.0 | 19.8 | 35.0 | 72.5 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/trt_edgellm-fp16/20261008-131804_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/trt_edgellm-fp16/20261008-131804_limit8) |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | ifeval | prompt_level_strict_acc: 0.6250<br>inst_level_strict_acc: 0.7143<br>prompt_level_loose_acc: 0.6250<br>inst_level_loose_acc: 0.7143 | 472 | MAXN | 4.4 | ~52 (avg) | - | 26 | 19.0 | 19.8 | 35.0 | 72.5 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/trt_edgellm-fp16/20261008-131804_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/trt_edgellm-fp16/20261008-131804_limit8) |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | mmlu_jetson | exact_match (first-letter): 0.6382 | 472 | MAXN | 4.4 | ~52 (avg) | - | 26 | 19.0 | 19.8 | 35.0 | 72.5 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/trt_edgellm-fp16/20261008-131804_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/trt_edgellm-fp16/20261008-131804_limit8) |
+| Qwen2.5-3B-Instruct | vllm-bf16 | gsm8k_jetson | exact_match (strict-match): 0.0000<br>exact_match (flexible-extract): 0.6250 | 472 | MAXN | 5.4 | 57 / 92 | 212 / 884 | 26 | 19.1 | 23.0 | 19.7 | 55.4 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/vllm-bf16/20261008-130803_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/vllm-bf16/20261008-130803_limit8) |
+| Qwen2.5-3B-Instruct | vllm-bf16 | ifeval | prompt_level_strict_acc: 0.6250<br>inst_level_strict_acc: 0.7143<br>prompt_level_loose_acc: 0.6250<br>inst_level_loose_acc: 0.7143 | 472 | MAXN | 5.4 | 57 / 92 | 212 / 884 | 26 | 19.1 | 23.0 | 19.7 | 55.4 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/vllm-bf16/20261008-130803_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/vllm-bf16/20261008-130803_limit8) |
+| Qwen2.5-3B-Instruct | vllm-bf16 | mmlu_jetson | exact_match (first-letter): 0.6404 | 472 | MAXN | 5.4 | 57 / 92 | 212 / 884 | 26 | 19.1 | 23.0 | 19.7 | 55.4 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/vllm-bf16/20261008-130803_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson+ifeval+mmlu_jetson/vllm-bf16/20261008-130803_limit8) |
+| Qwen2.5-3B-Instruct | hf-bf16 | gsm8k_jetson | exact_match (strict-match): 0.0000<br>exact_match (flexible-extract): 0.6250 | 8 | MAXN | 1.1 | 83 / 366 | 10110 / 14850 | 40 | 18.4 | 22.1 | 13.3 | 42.1 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson/hf-bf16/20261008-145853_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson/hf-bf16/20261008-145853_limit8) |
 | Qwen2.5-3B-Instruct | hf-bf16 | gsm8k_jetson | exact_match (strict-match): 0.0114<br>exact_match (flexible-extract): 0.7445 | 1319 | MAXN | 177.5 | 82 / 95 | 7525 / 12736 | 40 | 19.5 | 23.2 | 15.8 | 48.3 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson/hf-bf16/20261011-055938](Qwen2.5-3B-Instruct/gsm8k_jetson/hf-bf16/20261011-055938) |
+| Qwen2.5-3B-Instruct | llamacpp-f16 | gsm8k_jetson | exact_match (strict-match): 0.0000<br>exact_match (flexible-extract): 0.6250 | 8 | MAXN | 0.6 | 207 / 573 | 4081 / 7490 | 25 | 18.9 | 19.8 | 24.3 | 55.4 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson/llamacpp-f16/20261008-150523_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson/llamacpp-f16/20261008-150523_limit8) |
 | Qwen2.5-3B-Instruct | llamacpp-f16 | gsm8k_jetson | exact_match (strict-match): 0.0227<br>exact_match (flexible-extract): 0.7407 | 1319 | MAXN | 113.6 | 198 / 201 | 4861 / 7888 | 25 | 18.6 | 19.5 | 35.3 | 75.0 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson/llamacpp-f16/20261008-223314](Qwen2.5-3B-Instruct/gsm8k_jetson/llamacpp-f16/20261008-223314) |
+| Qwen2.5-3B-Instruct | llamacpp-q4_k_m | gsm8k_jetson | exact_match (strict-match): 0.0000<br>exact_match (flexible-extract): 0.5000 | 8 | MAXN | 0.4 | 246 / 515 | 3485 / 3992 | 13 | 18.8 | 19.7 | 24.6 | 50.9 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson/llamacpp-q4_k_m/20261008-150703_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson/llamacpp-q4_k_m/20261008-150703_limit8) |
 | Qwen2.5-3B-Instruct | llamacpp-q4_k_m | gsm8k_jetson | exact_match (strict-match): 0.0174<br>exact_match (flexible-extract): 0.7263 | 1319 | MAXN | 64.0 | 245 / 258 | 2736 / 4317 | 13 | 18.6 | 19.4 | 39.8 | 73.7 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson/llamacpp-q4_k_m/20261009-013759](Qwen2.5-3B-Instruct/gsm8k_jetson/llamacpp-q4_k_m/20261009-013759) |
+| Qwen2.5-3B-Instruct | llamacpp-q8_0 | gsm8k_jetson | exact_match (strict-match): 0.0000<br>exact_match (flexible-extract): 0.6250 | 8 | MAXN | 0.4 | 220 / 495 | 2587 / 4228 | 15 | 18.8 | 19.6 | 22.0 | 49.9 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson/llamacpp-q8_0/20261008-150623_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson/llamacpp-q8_0/20261008-150623_limit8) |
 | Qwen2.5-3B-Instruct | llamacpp-q8_0 | gsm8k_jetson | exact_match (strict-match): 0.0425<br>exact_match (flexible-extract): 0.7339 | 1319 | MAXN | 70.4 | 219 / 231 | 2964 / 4818 | 15 | 18.5 | 19.4 | 36.2 | 73.7 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson/llamacpp-q8_0/20261009-002712](Qwen2.5-3B-Instruct/gsm8k_jetson/llamacpp-q8_0/20261009-002712) |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | gsm8k_jetson | exact_match (strict-match): 0.0000<br>exact_match (flexible-extract): 0.5000 | 8 | MAXN | 0.7 | ~52 (avg) | - | 26 | 18.9 | 19.7 | 23.1 | 54.3 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson/trt_edgellm-fp16/20261008-150749_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson/trt_edgellm-fp16/20261008-150749_limit8) |
 | Qwen2.5-3B-Instruct | trt_edgellm-fp16 | gsm8k_jetson | exact_match (strict-match): 0.0121<br>exact_match (flexible-extract): 0.7377 | 1319 | MAXN | 115.2 | ~53 (avg) | - | 26 | 18.6 | 19.5 | 34.8 | 75.2 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson/trt_edgellm-fp16/20261009-024221](Qwen2.5-3B-Instruct/gsm8k_jetson/trt_edgellm-fp16/20261009-024221) |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | gsm8k_jetson | exact_match (strict-match): 0.0000<br>exact_match (flexible-extract): 0.5000 | 8 | MAXN | 0.7 | ~51 (avg) | - | 26 | 28.5 | 29.3 | 22.7 | 52.8 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson/trt_edgellm-fp16/20261011-214153_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson/trt_edgellm-fp16/20261011-214153_limit8) |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp8 | gsm8k_jetson | exact_match (strict-match): 0.0000<br>exact_match (flexible-extract): 0.7500 | 8 | MAXN | 0.4 | ~37 (avg) | - | 15 | 18.9 | 19.7 | 15.7 | 44.4 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson/trt_edgellm-fp8/20261008-150849_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson/trt_edgellm-fp8/20261008-150849_limit8) |
 | Qwen2.5-3B-Instruct | trt_edgellm-fp8 | gsm8k_jetson | exact_match (strict-match): 0.0121<br>exact_match (flexible-extract): 0.7437 | 1319 | MAXN | 66.6 | ~37 (avg) | - | 15 | 18.6 | 19.5 | 25.6 | 64.7 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson/trt_edgellm-fp8/20261009-043800](Qwen2.5-3B-Instruct/gsm8k_jetson/trt_edgellm-fp8/20261009-043800) |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp8 | gsm8k_jetson | exact_match (strict-match): 0.0000<br>exact_match (flexible-extract): 0.7500 | 8 | MAXN | 0.5 | ~37 (avg) | - | 15 | 28.3 | 29.1 | 15.3 | 43.1 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson/trt_edgellm-fp8/20261011-214259_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson/trt_edgellm-fp8/20261011-214259_limit8) |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp8_kv | gsm8k_jetson | exact_match (strict-match): 0.1250<br>exact_match (flexible-extract): 0.7500 | 8 | MAXN | 0.4 | ~36 (avg) | - | 15 | 26.7 | 27.3 | 16.2 | 44.2 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson/trt_edgellm-fp8_kv/20261011-220829_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson/trt_edgellm-fp8_kv/20261011-220829_limit8) |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp8_lmhead | gsm8k_jetson | exact_match (strict-match): 0.0000<br>exact_match (flexible-extract): 0.6250 | 8 | MAXN | 0.4 | ~35 (avg) | - | 14 | 25.5 | 26.0 | 15.4 | 42.8 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson/trt_edgellm-fp8_lmhead/20261011-220919_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson/trt_edgellm-fp8_lmhead/20261011-220919_limit8) |
+| Qwen2.5-3B-Instruct | trt_edgellm-int4_awq | gsm8k_jetson | exact_match (strict-match): 0.1250<br>exact_match (flexible-extract): 0.7500 | 8 | MAXN | 0.4 | ~106 (avg) | - | 10 | 18.9 | 19.8 | 19.0 | 44.9 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson/trt_edgellm-int4_awq/20261008-150939_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson/trt_edgellm-int4_awq/20261008-150939_limit8) |
 | Qwen2.5-3B-Instruct | trt_edgellm-int4_awq | gsm8k_jetson | exact_match (strict-match): 0.0227<br>exact_match (flexible-extract): 0.6952 | 1319 | MAXN | 50.2 | ~108 (avg) | - | 10 | 18.6 | 19.6 | 34.9 | 70.4 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson/trt_edgellm-int4_awq/20261009-054507](Qwen2.5-3B-Instruct/gsm8k_jetson/trt_edgellm-int4_awq/20261009-054507) |
+| Qwen2.5-3B-Instruct | trt_edgellm-int4_awq | gsm8k_jetson | exact_match (strict-match): 0.1250<br>exact_match (flexible-extract): 0.7500 | 8 | MAXN | 0.4 | ~106 (avg) | - | 10 | 28.0 | 28.7 | 18.0 | 42.8 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson/trt_edgellm-int4_awq/20261011-214349_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson/trt_edgellm-int4_awq/20261011-214349_limit8) |
+| Qwen2.5-3B-Instruct | trt_edgellm-int4_awq_lmhead | gsm8k_jetson | exact_match (strict-match): 0.0000<br>exact_match (flexible-extract): 0.0000 | 8 | MAXN | 0.7 | ~105 (avg) | - | 8 | 24.2 | 25.0 | 22.4 | 50.6 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson/trt_edgellm-int4_awq_lmhead/20261011-221004_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson/trt_edgellm-int4_awq_lmhead/20261011-221004_limit8) |
+| Qwen2.5-3B-Instruct | trt_edgellm-int4_awq_qwen | gsm8k_jetson | exact_match (strict-match): 0.0000<br>exact_match (flexible-extract): 0.0000 | 8 | MAXN | 0.8 | ~105 (avg) | - | 10 | 18.9 | 19.6 | 25.1 | 55.3 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson/trt_edgellm-int4_awq_qwen/20261008-151024_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson/trt_edgellm-int4_awq_qwen/20261008-151024_limit8) |
+| Qwen2.5-3B-Instruct | trt_edgellm-int4_awq_qwen_v1 | gsm8k_jetson | exact_match (strict-match): 0.0000<br>exact_match (flexible-extract): 0.0000 | 8 | MAXN | 0.8 | ~148 (avg) | - | 10 | 23.7 | 24.3 | 26.0 | 55.3 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson/trt_edgellm-int4_awq_qwen_v1/20261011-221235_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson/trt_edgellm-int4_awq_qwen_v1/20261011-221235_limit8) |
+| Qwen2.5-3B-Instruct | trt_edgellm-int4_awq_taskcal | gsm8k_jetson | exact_match (strict-match): 0.1250<br>exact_match (flexible-extract): 0.6250 | 8 | MAXN | 0.3 | ~106 (avg) | - | 10 | 24.3 | 24.7 | 17.8 | 42.6 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson/trt_edgellm-int4_awq_taskcal/20261011-221109_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson/trt_edgellm-int4_awq_taskcal/20261011-221109_limit8) |
+| Qwen2.5-3B-Instruct | trt_edgellm-int4_gptq_qwen | gsm8k_jetson | exact_match (strict-match): 0.0000<br>exact_match (flexible-extract): 0.7500 | 8 | MAXN | 0.4 | ~112 (avg) | - | 10 | 24.0 | 24.5 | 18.4 | 43.5 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson/trt_edgellm-int4_gptq_qwen/20261011-221150_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson/trt_edgellm-int4_gptq_qwen/20261011-221150_limit8) |
+| Qwen2.5-3B-Instruct | trt_edgellm-int8_sq | gsm8k_jetson | exact_match (strict-match): 0.6250<br>exact_match (flexible-extract): 0.7500 | 8 | MAXN | 0.5 | ~37 (avg) | - | 15 | 28.1 | 28.6 | 15.4 | 43.0 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson/trt_edgellm-int8_sq/20261011-214434_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson/trt_edgellm-int8_sq/20261011-214434_limit8) |
+| Qwen2.5-3B-Instruct | trt_edgellm-nvfp4 | gsm8k_jetson | exact_match (strict-match): 0.0000<br>exact_match (flexible-extract): 0.0000 | 8 | MAXN | 0.9 | ~26 (avg) | - | 11 | 27.8 | 28.3 | 18.3 | 48.1 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson/trt_edgellm-nvfp4/20261011-214524_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson/trt_edgellm-nvfp4/20261011-214524_limit8) |
+| Qwen2.5-3B-Instruct | vllm-awq | gsm8k_jetson | exact_match (strict-match): 0.0000<br>exact_match (flexible-extract): 0.5000 | 8 | MAXN | 1.4 | 122 / 959 | 2044 / 2568 | 10 | 19.2 | 21.7 | 11.5 | 31.8 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson/vllm-awq/20261008-150338_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson/vllm-awq/20261008-150338_limit8) |
 | Qwen2.5-3B-Instruct | vllm-awq | gsm8k_jetson | exact_match (strict-match): 0.0205<br>exact_match (flexible-extract): 0.7248 | 1319 | MAXN | 46.0 | 123 / 128 | 1911 / 3076 | 10 | 18.6 | 21.3 | 32.2 | 69.6 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson/vllm-awq/20261008-214657](Qwen2.5-3B-Instruct/gsm8k_jetson/vllm-awq/20261008-214657) |
+| Qwen2.5-3B-Instruct | vllm-bf16 | gsm8k_jetson | exact_match (strict-match): 0.0000<br>exact_match (flexible-extract): 0.6250 | 8 | MAXN | 1.3 | 81 / 907 | 4216 / 7313 | 26 | 17.9 | 23.0 | 11.6 | 38.9 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson/vllm-bf16/20261008-150018_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson/vllm-bf16/20261008-150018_limit8) |
 | Qwen2.5-3B-Instruct | vllm-bf16 | gsm8k_jetson | exact_match (strict-match): 0.0144<br>exact_match (flexible-extract): 0.7415 | 1319 | MAXN | 118.3 | 78 / 91 | 4966 / 8345 | 26 | 18.6 | 23.1 | 19.9 | 61.7 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson/vllm-bf16/20261008-183331](Qwen2.5-3B-Instruct/gsm8k_jetson/vllm-bf16/20261008-183331) |
+| Qwen2.5-3B-Instruct | vllm-fp8 | gsm8k_jetson | exact_match (strict-match): 0.0000<br>exact_match (flexible-extract): 0.6250 | 8 | MAXN | 1.5 | 66 / 1038 | 3082 / 4402 | 15 | 18.9 | 23.2 | 9.4 | 32.7 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson/vllm-fp8/20261008-150153_limit8](Qwen2.5-3B-Instruct/gsm8k_jetson/vllm-fp8/20261008-150153_limit8) |
 | Qwen2.5-3B-Instruct | vllm-fp8 | gsm8k_jetson | exact_match (strict-match): 0.0038<br>exact_match (flexible-extract): 0.7536 | 1319 | MAXN | 74.6 | 65 / 74 | 3199 / 5119 | 15 | 18.6 | 22.6 | 20.2 | 60.7 | none | [Qwen2.5-3B-Instruct/gsm8k_jetson/vllm-fp8/20261008-203205](Qwen2.5-3B-Instruct/gsm8k_jetson/vllm-fp8/20261008-203205) |
+| Qwen2.5-3B-Instruct | hf-bf16 | ifeval | prompt_level_strict_acc: 0.5000<br>inst_level_strict_acc: 0.6429<br>prompt_level_loose_acc: 0.6250<br>inst_level_loose_acc: 0.7143 | 8 | MAXN | 1.2 | 48 / 55 | 7399 / 13571 | 40 | 18.9 | 23.0 | 12.8 | 42.2 | none | [Qwen2.5-3B-Instruct/ifeval/hf-bf16/20261008-151143_limit8](Qwen2.5-3B-Instruct/ifeval/hf-bf16/20261008-151143_limit8) |
 | Qwen2.5-3B-Instruct | hf-bf16 | ifeval | prompt_level_strict_acc: 0.6026<br>inst_level_strict_acc: 0.6978<br>prompt_level_loose_acc: 0.6414<br>inst_level_loose_acc: 0.7314 | 541 | MAXN | 117.6 | 44 / 46 | 8307 / 31998 | 39 | 19.3 | 23.2 | 14.8 | 47.1 | none | [Qwen2.5-3B-Instruct/ifeval/hf-bf16/20261011-111500](Qwen2.5-3B-Instruct/ifeval/hf-bf16/20261011-111500) |
+| Qwen2.5-3B-Instruct | llamacpp-f16 | ifeval | prompt_level_strict_acc: 0.6250<br>inst_level_strict_acc: 0.7143<br>prompt_level_loose_acc: 0.6250<br>inst_level_loose_acc: 0.7143 | 8 | MAXN | 0.8 | 79 / 82 | 2914 / 9662 | 25 | 18.9 | 19.8 | 25.9 | 58.5 | none | [Qwen2.5-3B-Instruct/ifeval/llamacpp-f16/20261008-151829_limit8](Qwen2.5-3B-Instruct/ifeval/llamacpp-f16/20261008-151829_limit8) |
 | Qwen2.5-3B-Instruct | llamacpp-f16 | ifeval | prompt_level_strict_acc: 0.6026<br>inst_level_strict_acc: 0.6990<br>prompt_level_loose_acc: 0.6414<br>inst_level_loose_acc: 0.7302 | 541 | MAXN | 73.0 | 75 / 79 | 4822 / 21974 | 25 | 20.3 | 21.2 | 34.9 | 74.6 | none | [Qwen2.5-3B-Instruct/ifeval/llamacpp-f16/20261010-003826](Qwen2.5-3B-Instruct/ifeval/llamacpp-f16/20261010-003826) |
+| Qwen2.5-3B-Instruct | llamacpp-q4_k_m | ifeval | prompt_level_strict_acc: 0.7500<br>inst_level_strict_acc: 0.7857<br>prompt_level_loose_acc: 0.7500<br>inst_level_loose_acc: 0.7857 | 8 | MAXN | 0.4 | 40 / 48 | 3547 / 4462 | 12 | 18.9 | 19.7 | 24.1 | 50.9 | none | [Qwen2.5-3B-Instruct/ifeval/llamacpp-q4_k_m/20261008-152014_limit8](Qwen2.5-3B-Instruct/ifeval/llamacpp-q4_k_m/20261008-152014_limit8) |
 | Qwen2.5-3B-Instruct | llamacpp-q4_k_m | ifeval | prompt_level_strict_acc: 0.5933<br>inst_level_strict_acc: 0.6859<br>prompt_level_loose_acc: 0.6303<br>inst_level_loose_acc: 0.7206 | 541 | MAXN | 39.8 | 39 / 48 | 2554 / 15991 | 12 | 20.2 | 21.1 | 39.4 | 74.5 | none | [Qwen2.5-3B-Instruct/ifeval/llamacpp-q4_k_m/20261010-023525](Qwen2.5-3B-Instruct/ifeval/llamacpp-q4_k_m/20261010-023525) |
+| Qwen2.5-3B-Instruct | llamacpp-q8_0 | ifeval | prompt_level_strict_acc: 0.6250<br>inst_level_strict_acc: 0.7143<br>prompt_level_loose_acc: 0.6250<br>inst_level_loose_acc: 0.7143 | 8 | MAXN | 0.3 | 39 / 45 | 1787 / 3918 | 15 | 18.9 | 19.6 | 19.7 | 47.1 | none | [Qwen2.5-3B-Instruct/ifeval/llamacpp-q8_0/20261008-151934_limit8](Qwen2.5-3B-Instruct/ifeval/llamacpp-q8_0/20261008-151934_limit8) |
 | Qwen2.5-3B-Instruct | llamacpp-q8_0 | ifeval | prompt_level_strict_acc: 0.5878<br>inst_level_strict_acc: 0.6799<br>prompt_level_loose_acc: 0.6192<br>inst_level_loose_acc: 0.7146 | 541 | MAXN | 43.3 | 39 / 45 | 2743 / 11533 | 15 | 20.2 | 21.0 | 35.7 | 74.1 | none | [Qwen2.5-3B-Instruct/ifeval/llamacpp-q8_0/20261010-015148](Qwen2.5-3B-Instruct/ifeval/llamacpp-q8_0/20261010-015148) |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | ifeval | prompt_level_strict_acc: 0.6250<br>inst_level_strict_acc: 0.7143<br>prompt_level_loose_acc: 0.6250<br>inst_level_loose_acc: 0.7143 | 8 | MAXN | 0.9 | ~31 (avg) | - | 26 | 18.9 | 19.7 | 24.9 | 58.0 | none | [Qwen2.5-3B-Instruct/ifeval/trt_edgellm-fp16/20261008-152059_limit8](Qwen2.5-3B-Instruct/ifeval/trt_edgellm-fp16/20261008-152059_limit8) |
 | Qwen2.5-3B-Instruct | trt_edgellm-fp16 | ifeval | prompt_level_strict_acc: 0.5933<br>inst_level_strict_acc: 0.6799<br>prompt_level_loose_acc: 0.6340<br>inst_level_loose_acc: 0.7158 | 541 | MAXN | 75.2 | ~31 (avg) | - | 26 | 20.3 | 21.1 | 34.1 | 74.6 | none | [Qwen2.5-3B-Instruct/ifeval/trt_edgellm-fp16/20261010-031531](Qwen2.5-3B-Instruct/ifeval/trt_edgellm-fp16/20261010-031531) |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | ifeval | prompt_level_strict_acc: 0.6250<br>inst_level_strict_acc: 0.7143<br>prompt_level_loose_acc: 0.6250<br>inst_level_loose_acc: 0.7143 | 8 | MAXN | 0.9 | ~31 (avg) | - | 26 | 26.7 | 27.5 | 24.8 | 57.8 | none | [Qwen2.5-3B-Instruct/ifeval/trt_edgellm-fp16/20261011-215944_limit8](Qwen2.5-3B-Instruct/ifeval/trt_edgellm-fp16/20261011-215944_limit8) |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp8 | ifeval | prompt_level_strict_acc: 0.6250<br>inst_level_strict_acc: 0.6429<br>prompt_level_loose_acc: 0.7500<br>inst_level_loose_acc: 0.7857 | 8 | MAXN | 1.3 | ~21 (avg) | - | 15 | 18.9 | 19.8 | 20.5 | 54.9 | none | [Qwen2.5-3B-Instruct/ifeval/trt_edgellm-fp8/20261008-152219_limit8](Qwen2.5-3B-Instruct/ifeval/trt_edgellm-fp8/20261008-152219_limit8) |
 | Qwen2.5-3B-Instruct | trt_edgellm-fp8 | ifeval | prompt_level_strict_acc: 0.5638<br>inst_level_strict_acc: 0.6631<br>prompt_level_loose_acc: 0.6118<br>inst_level_loose_acc: 0.7038 | 541 | MAXN | 46.6 | ~22 (avg) | - | 15 | 20.3 | 21.2 | 25.3 | 64.6 | none | [Qwen2.5-3B-Instruct/ifeval/trt_edgellm-fp8/20261010-043108](Qwen2.5-3B-Instruct/ifeval/trt_edgellm-fp8/20261010-043108) |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp8 | ifeval | prompt_level_strict_acc: 0.6250<br>inst_level_strict_acc: 0.6429<br>prompt_level_loose_acc: 0.7500<br>inst_level_loose_acc: 0.7857 | 8 | MAXN | 1.3 | ~21 (avg) | - | 15 | 26.8 | 27.6 | 20.3 | 54.6 | none | [Qwen2.5-3B-Instruct/ifeval/trt_edgellm-fp8/20261011-220104_limit8](Qwen2.5-3B-Instruct/ifeval/trt_edgellm-fp8/20261011-220104_limit8) |
+| Qwen2.5-3B-Instruct | trt_edgellm-int4_awq | ifeval | prompt_level_strict_acc: 0.6250<br>inst_level_strict_acc: 0.6429<br>prompt_level_loose_acc: 0.6250<br>inst_level_loose_acc: 0.6429 | 8 | MAXN | 0.9 | ~25 (avg) | - | 10 | 19.0 | 19.8 | 24.6 | 55.1 | none | [Qwen2.5-3B-Instruct/ifeval/trt_edgellm-int4_awq/20261008-152359_limit8](Qwen2.5-3B-Instruct/ifeval/trt_edgellm-int4_awq/20261008-152359_limit8) |
 | Qwen2.5-3B-Instruct | trt_edgellm-int4_awq | ifeval | prompt_level_strict_acc: 0.5804<br>inst_level_strict_acc: 0.6739<br>prompt_level_loose_acc: 0.6155<br>inst_level_loose_acc: 0.7098 | 541 | MAXN | 32.8 | ~25 (avg) | - | 10 | 20.3 | 21.2 | 33.6 | 70.0 | none | [Qwen2.5-3B-Instruct/ifeval/trt_edgellm-int4_awq/20261010-051805](Qwen2.5-3B-Instruct/ifeval/trt_edgellm-int4_awq/20261010-051805) |
+| Qwen2.5-3B-Instruct | trt_edgellm-int4_awq | ifeval | prompt_level_strict_acc: 0.6250<br>inst_level_strict_acc: 0.6429<br>prompt_level_loose_acc: 0.6250<br>inst_level_loose_acc: 0.6429 | 8 | MAXN | 0.9 | ~25 (avg) | - | 10 | 26.7 | 27.5 | 24.3 | 54.3 | none | [Qwen2.5-3B-Instruct/ifeval/trt_edgellm-int4_awq/20261011-220244_limit8](Qwen2.5-3B-Instruct/ifeval/trt_edgellm-int4_awq/20261011-220244_limit8) |
+| Qwen2.5-3B-Instruct | trt_edgellm-int4_awq_qwen | ifeval | prompt_level_strict_acc: 0.0000<br>inst_level_strict_acc: 0.2143<br>prompt_level_loose_acc: 0.0000<br>inst_level_loose_acc: 0.2143 | 8 | MAXN | 2.0 | ~25 (avg) | - | 10 | 18.9 | 19.7 | 29.2 | 62.6 | none | [Qwen2.5-3B-Instruct/ifeval/trt_edgellm-int4_awq_qwen/20261008-152514_limit8](Qwen2.5-3B-Instruct/ifeval/trt_edgellm-int4_awq_qwen/20261008-152514_limit8) |
+| Qwen2.5-3B-Instruct | trt_edgellm-int8_sq | ifeval | prompt_level_strict_acc: 0.3750<br>inst_level_strict_acc: 0.5000<br>prompt_level_loose_acc: 0.3750<br>inst_level_loose_acc: 0.5000 | 8 | MAXN | 1.4 | ~22 (avg) | - | 15 | 26.8 | 27.6 | 20.9 | 54.8 | none | [Qwen2.5-3B-Instruct/ifeval/trt_edgellm-int8_sq/20261011-220359_limit8](Qwen2.5-3B-Instruct/ifeval/trt_edgellm-int8_sq/20261011-220359_limit8) |
+| Qwen2.5-3B-Instruct | trt_edgellm-nvfp4 | ifeval | prompt_level_strict_acc: 0.1250<br>inst_level_strict_acc: 0.2143<br>prompt_level_loose_acc: 0.1250<br>inst_level_loose_acc: 0.2143 | 8 | MAXN | 2.1 | ~16 (avg) | - | 11 | 26.8 | 27.6 | 21.7 | 55.3 | none | [Qwen2.5-3B-Instruct/ifeval/trt_edgellm-nvfp4/20261011-220549_limit8](Qwen2.5-3B-Instruct/ifeval/trt_edgellm-nvfp4/20261011-220549_limit8) |
+| Qwen2.5-3B-Instruct | vllm-awq | ifeval | prompt_level_strict_acc: 0.7500<br>inst_level_strict_acc: 0.7857<br>prompt_level_loose_acc: 0.7500<br>inst_level_loose_acc: 0.7857 | 8 | MAXN | 1.6 | 29 / 33 | 2808 / 12797 | 10 | 19.1 | 21.7 | 15.4 | 39.5 | none | [Qwen2.5-3B-Instruct/ifeval/vllm-awq/20261008-151633_limit8](Qwen2.5-3B-Instruct/ifeval/vllm-awq/20261008-151633_limit8) |
 | Qwen2.5-3B-Instruct | vllm-awq | ifeval | prompt_level_strict_acc: 0.5860<br>inst_level_strict_acc: 0.6799<br>prompt_level_loose_acc: 0.6285<br>inst_level_loose_acc: 0.7170 | 541 | MAXN | 29.9 | 28 / 32 | 1897 / 8318 | 10 | 20.3 | 23.1 | 29.5 | 66.8 | none | [Qwen2.5-3B-Instruct/ifeval/vllm-awq/20261010-000815](Qwen2.5-3B-Instruct/ifeval/vllm-awq/20261010-000815) |
+| Qwen2.5-3B-Instruct | vllm-bf16 | ifeval | prompt_level_strict_acc: 0.6250<br>inst_level_strict_acc: 0.7143<br>prompt_level_loose_acc: 0.6250<br>inst_level_loose_acc: 0.7143 | 8 | MAXN | 1.4 | 55 / 55 | 5575 / 10640 | 26 | 18.9 | 23.2 | 12.0 | 40.8 | none | [Qwen2.5-3B-Instruct/ifeval/vllm-bf16/20261008-151313_limit8](Qwen2.5-3B-Instruct/ifeval/vllm-bf16/20261008-151313_limit8) |
 | Qwen2.5-3B-Instruct | vllm-bf16 | ifeval | prompt_level_strict_acc: 0.5952<br>inst_level_strict_acc: 0.6930<br>prompt_level_loose_acc: 0.6396<br>inst_level_loose_acc: 0.7290 | 541 | MAXN | 77.6 | 54 / 55 | 5285 / 20562 | 26 | 20.3 | 25.5 | 18.5 | 60.0 | none | [Qwen2.5-3B-Instruct/ifeval/vllm-bf16/20261009-220116](Qwen2.5-3B-Instruct/ifeval/vllm-bf16/20261009-220116) |
+| Qwen2.5-3B-Instruct | vllm-fp8 | ifeval | prompt_level_strict_acc: 0.6250<br>inst_level_strict_acc: 0.7143<br>prompt_level_loose_acc: 0.6250<br>inst_level_loose_acc: 0.7143 | 8 | MAXN | 1.4 | 33 / 35 | 4263 / 6408 | 15 | 18.9 | 22.2 | 11.6 | 39.2 | none | [Qwen2.5-3B-Instruct/ifeval/vllm-fp8/20261008-151453_limit8](Qwen2.5-3B-Instruct/ifeval/vllm-fp8/20261008-151453_limit8) |
 | Qwen2.5-3B-Instruct | vllm-fp8 | ifeval | prompt_level_strict_acc: 0.5693<br>inst_level_strict_acc: 0.6715<br>prompt_level_loose_acc: 0.6081<br>inst_level_loose_acc: 0.7050 | 541 | MAXN | 48.7 | 32 / 34 | 3264 / 15621 | 15 | 20.3 | 23.5 | 18.5 | 58.4 | none | [Qwen2.5-3B-Instruct/ifeval/vllm-fp8/20261009-231914](Qwen2.5-3B-Instruct/ifeval/vllm-fp8/20261009-231914) |
+| Qwen2.5-3B-Instruct | hf-bf16 | length_sweep_128 | counts: 1.0000 | 4 | MAXN | 0.8 | 48 / 348 | 10346 / 10633 | 40 | 18.5 | 22.0 | 11.9 | 40.1 | none | [Qwen2.5-3B-Instruct/length_sweep_128/hf-bf16/20261011-145917_limit4](Qwen2.5-3B-Instruct/length_sweep_128/hf-bf16/20261011-145917_limit4) |
 | Qwen2.5-3B-Instruct | hf-bf16 | length_sweep_128 | counts: 1.0000 | 16 | MAXN | 2.8 | 47 / 47 | 10231 / 10245 | 40 | 18.6 | 22.6 | 13.5 | 43.7 | none | [Qwen2.5-3B-Instruct/length_sweep_128/hf-bf16/20261011-153740](Qwen2.5-3B-Instruct/length_sweep_128/hf-bf16/20261011-153740) |
+| Qwen2.5-3B-Instruct | llamacpp-f16 | length_sweep_128 | counts: 1.0000 | 4 | MAXN | 0.5 | 81 / 394 | 6496 / 6818 | 25 | 18.6 | 19.6 | 22.0 | 51.7 | none | [Qwen2.5-3B-Instruct/length_sweep_128/llamacpp-f16/20261011-150303_limit4](Qwen2.5-3B-Instruct/length_sweep_128/llamacpp-f16/20261011-150303_limit4) |
 | Qwen2.5-3B-Instruct | llamacpp-f16 | length_sweep_128 | counts: 1.0000 | 16 | MAXN | 1.8 | 81 / 81 | 6490 / 6495 | 25 | 18.5 | 19.5 | 29.7 | 65.0 | none | [Qwen2.5-3B-Instruct/length_sweep_128/llamacpp-f16/20261011-154535](Qwen2.5-3B-Instruct/length_sweep_128/llamacpp-f16/20261011-154535) |
+| Qwen2.5-3B-Instruct | llamacpp-q8_0 | length_sweep_128 | counts: 1.0000 | 4 | MAXN | 0.3 | 49 / 311 | 3939 / 4199 | 15 | 18.5 | 19.2 | 18.9 | 45.6 | none | [Qwen2.5-3B-Instruct/length_sweep_128/llamacpp-q8_0/20261011-150353_limit4](Qwen2.5-3B-Instruct/length_sweep_128/llamacpp-q8_0/20261011-150353_limit4) |
 | Qwen2.5-3B-Instruct | llamacpp-q8_0 | length_sweep_128 | counts: 1.0000 | 16 | MAXN | 1.1 | 49 / 49 | 3932 / 3938 | 15 | 18.5 | 19.3 | 28.5 | 61.8 | none | [Qwen2.5-3B-Instruct/length_sweep_128/llamacpp-q8_0/20261011-154741](Qwen2.5-3B-Instruct/length_sweep_128/llamacpp-q8_0/20261011-154741) |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | length_sweep_128 | counts: 1.0000 | 4 | MAXN | 0.6 | ~32 (avg) | - | 26 | 18.6 | 19.2 | 21.8 | 52.2 | none | [Qwen2.5-3B-Instruct/length_sweep_128/trt_edgellm-fp16/20261011-150428_limit4](Qwen2.5-3B-Instruct/length_sweep_128/trt_edgellm-fp16/20261011-150428_limit4) |
 | Qwen2.5-3B-Instruct | trt_edgellm-fp16 | length_sweep_128 | counts: 1.0000 | 16 | MAXN | 1.9 | ~32 (avg) | - | 26 | 18.6 | 19.5 | 28.9 | 64.8 | none | [Qwen2.5-3B-Instruct/length_sweep_128/trt_edgellm-fp16/20261011-154906](Qwen2.5-3B-Instruct/length_sweep_128/trt_edgellm-fp16/20261011-154906) |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp8 | length_sweep_128 | counts: 1.0000 | 4 | MAXN | 0.4 | ~22 (avg) | - | 15 | 18.4 | 19.3 | 14.0 | 41.2 | none | [Qwen2.5-3B-Instruct/length_sweep_128/trt_edgellm-fp8/20261011-150528_limit4](Qwen2.5-3B-Instruct/length_sweep_128/trt_edgellm-fp8/20261011-150528_limit4) |
 | Qwen2.5-3B-Instruct | trt_edgellm-fp8 | length_sweep_128 | counts: 1.0000 | 16 | MAXN | 1.1 | ~22 (avg) | - | 15 | 18.6 | 19.4 | 19.9 | 53.7 | none | [Qwen2.5-3B-Instruct/length_sweep_128/trt_edgellm-fp8/20261011-155121](Qwen2.5-3B-Instruct/length_sweep_128/trt_edgellm-fp8/20261011-155121) |
+| Qwen2.5-3B-Instruct | vllm-bf16 | length_sweep_128 | counts: 1.0000 | 4 | MAXN | 1.1 | 33 / 860 | 6679 / 7504 | 26 | 18.5 | 23.0 | 10.8 | 37.1 | none | [Qwen2.5-3B-Instruct/length_sweep_128/vllm-bf16/20261011-150022_limit4](Qwen2.5-3B-Instruct/length_sweep_128/vllm-bf16/20261011-150022_limit4) |
 | Qwen2.5-3B-Instruct | vllm-bf16 | length_sweep_128 | counts: 1.0000 | 16 | MAXN | 2.4 | 33 / 33 | 6643 / 6655 | 26 | 18.6 | 23.1 | 14.1 | 47.3 | none | [Qwen2.5-3B-Instruct/length_sweep_128/vllm-bf16/20261011-154045](Qwen2.5-3B-Instruct/length_sweep_128/vllm-bf16/20261011-154045) |
+| Qwen2.5-3B-Instruct | vllm-fp8 | length_sweep_128 | counts: 1.0000 | 4 | MAXN | 1.0 | 22 / 978 | 3886 / 4830 | 15 | 18.5 | 22.3 | 8.9 | 31.8 | none | [Qwen2.5-3B-Instruct/length_sweep_128/vllm-fp8/20261011-150148_limit4](Qwen2.5-3B-Instruct/length_sweep_128/vllm-fp8/20261011-150148_limit4) |
 | Qwen2.5-3B-Instruct | vllm-fp8 | length_sweep_128 | counts: 1.0000 | 16 | MAXN | 1.8 | 23 / 23 | 3888 / 3892 | 15 | 18.5 | 21.9 | 12.4 | 41.8 | none | [Qwen2.5-3B-Instruct/length_sweep_128/vllm-fp8/20261011-154330](Qwen2.5-3B-Instruct/length_sweep_128/vllm-fp8/20261011-154330) |
+| Qwen2.5-3B-Instruct | hf-bf16 | length_sweep_2048 | counts: 1.0000 | 4 | MAXN | 0.8 | 212 / 479 | 10651 / 10946 | 41 | 18.6 | 22.5 | 13.1 | 40.7 | none | [Qwen2.5-3B-Instruct/length_sweep_2048/hf-bf16/20261011-151337_limit4](Qwen2.5-3B-Instruct/length_sweep_2048/hf-bf16/20261011-151337_limit4) |
 | Qwen2.5-3B-Instruct | hf-bf16 | length_sweep_2048 | counts: 1.0000 | 16 | MAXN | 2.9 | 210 / 211 | 10601 / 10704 | 41 | 18.6 | 22.7 | 15.9 | 47.5 | none | [Qwen2.5-3B-Instruct/length_sweep_2048/hf-bf16/20261011-160834](Qwen2.5-3B-Instruct/length_sweep_2048/hf-bf16/20261011-160834) |
+| Qwen2.5-3B-Instruct | llamacpp-f16 | length_sweep_2048 | counts: 1.0000 | 4 | MAXN | 0.5 | 443 / 755 | 6999 / 7312 | 26 | 18.6 | 19.5 | 23.4 | 53.2 | none | [Qwen2.5-3B-Instruct/length_sweep_2048/llamacpp-f16/20261011-151722_limit4](Qwen2.5-3B-Instruct/length_sweep_2048/llamacpp-f16/20261011-151722_limit4) |
 | Qwen2.5-3B-Instruct | llamacpp-f16 | length_sweep_2048 | counts: 1.0000 | 16 | MAXN | 1.9 | 442 / 444 | 6999 / 7006 | 26 | 19.2 | 20.0 | 31.5 | 67.3 | none | [Qwen2.5-3B-Instruct/length_sweep_2048/llamacpp-f16/20261011-161635](Qwen2.5-3B-Instruct/length_sweep_2048/llamacpp-f16/20261011-161635) |
+| Qwen2.5-3B-Instruct | llamacpp-q8_0 | length_sweep_2048 | counts: 1.0000 | 4 | MAXN | 0.3 | 578 / 841 | 4600 / 4867 | 16 | 18.5 | 19.2 | 20.6 | 46.7 | none | [Qwen2.5-3B-Instruct/length_sweep_2048/llamacpp-q8_0/20261011-151812_limit4](Qwen2.5-3B-Instruct/length_sweep_2048/llamacpp-q8_0/20261011-151812_limit4) |
 | Qwen2.5-3B-Instruct | llamacpp-q8_0 | length_sweep_2048 | counts: 1.0000 | 16 | MAXN | 1.3 | 578 / 578 | 4626 / 4633 | 16 | 18.7 | 19.4 | 30.9 | 63.3 | none | [Qwen2.5-3B-Instruct/length_sweep_2048/llamacpp-q8_0/20261011-161850](Qwen2.5-3B-Instruct/length_sweep_2048/llamacpp-q8_0/20261011-161850) |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | length_sweep_2048 | counts: 1.0000 | 4 | MAXN | 0.6 | ~128 (avg) | - | 26 | 18.6 | 19.5 | 22.7 | 53.0 | none | [Qwen2.5-3B-Instruct/length_sweep_2048/trt_edgellm-fp16/20261011-151852_limit4](Qwen2.5-3B-Instruct/length_sweep_2048/trt_edgellm-fp16/20261011-151852_limit4) |
 | Qwen2.5-3B-Instruct | trt_edgellm-fp16 | length_sweep_2048 | counts: 1.0000 | 16 | MAXN | 2.0 | ~132 (avg) | - | 26 | 18.6 | 19.5 | 30.2 | 66.4 | none | [Qwen2.5-3B-Instruct/length_sweep_2048/trt_edgellm-fp16/20261011-162025](Qwen2.5-3B-Instruct/length_sweep_2048/trt_edgellm-fp16/20261011-162025) |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp8 | length_sweep_2048 | counts: 1.0000 | 4 | MAXN | 0.4 | ~80 (avg) | - | 15 | 18.5 | 19.5 | 14.4 | 41.5 | none | [Qwen2.5-3B-Instruct/length_sweep_2048/trt_edgellm-fp8/20261011-151952_limit4](Qwen2.5-3B-Instruct/length_sweep_2048/trt_edgellm-fp8/20261011-151952_limit4) |
 | Qwen2.5-3B-Instruct | trt_edgellm-fp8 | length_sweep_2048 | counts: 1.0000 | 16 | MAXN | 1.2 | ~79 (avg) | - | 15 | 18.6 | 19.3 | 20.7 | 54.6 | none | [Qwen2.5-3B-Instruct/length_sweep_2048/trt_edgellm-fp8/20261011-162245](Qwen2.5-3B-Instruct/length_sweep_2048/trt_edgellm-fp8/20261011-162245) |
+| Qwen2.5-3B-Instruct | vllm-bf16 | length_sweep_2048 | counts: 1.0000 | 4 | MAXN | 1.1 | 157 / 986 | 6872 / 7706 | 26 | 18.6 | 22.2 | 11.1 | 37.0 | none | [Qwen2.5-3B-Instruct/length_sweep_2048/vllm-bf16/20261011-151442_limit4](Qwen2.5-3B-Instruct/length_sweep_2048/vllm-bf16/20261011-151442_limit4) |
 | Qwen2.5-3B-Instruct | vllm-bf16 | length_sweep_2048 | counts: 1.0000 | 16 | MAXN | 2.5 | 156 / 157 | 6855 / 6864 | 26 | 18.6 | 23.6 | 16.0 | 49.9 | none | [Qwen2.5-3B-Instruct/length_sweep_2048/vllm-bf16/20261011-161144](Qwen2.5-3B-Instruct/length_sweep_2048/vllm-bf16/20261011-161144) |
+| Qwen2.5-3B-Instruct | vllm-fp8 | length_sweep_2048 | counts: 1.0000 | 4 | MAXN | 1.0 | 148 / 1112 | 4077 / 5041 | 15 | 18.6 | 21.9 | 9.5 | 32.3 | none | [Qwen2.5-3B-Instruct/length_sweep_2048/vllm-fp8/20261011-151607_limit4](Qwen2.5-3B-Instruct/length_sweep_2048/vllm-fp8/20261011-151607_limit4) |
 | Qwen2.5-3B-Instruct | vllm-fp8 | length_sweep_2048 | counts: 1.0000 | 16 | MAXN | 1.8 | 146 / 147 | 4083 / 4087 | 15 | 18.6 | 22.3 | 14.3 | 44.5 | none | [Qwen2.5-3B-Instruct/length_sweep_2048/vllm-fp8/20261011-161430](Qwen2.5-3B-Instruct/length_sweep_2048/vllm-fp8/20261011-161430) |
+| Qwen2.5-3B-Instruct | hf-bf16 | length_sweep_512 | counts: 1.0000 | 4 | MAXN | 0.8 | 61 / 337 | 10370 / 10658 | 40 | 18.5 | 22.3 | 11.7 | 39.1 | none | [Qwen2.5-3B-Instruct/length_sweep_512/hf-bf16/20261011-150627_limit4](Qwen2.5-3B-Instruct/length_sweep_512/hf-bf16/20261011-150627_limit4) |
 | Qwen2.5-3B-Instruct | hf-bf16 | length_sweep_512 | counts: 1.0000 | 16 | MAXN | 2.8 | 60 / 61 | 10240 / 10308 | 40 | 18.6 | 22.6 | 14.1 | 45.2 | none | [Qwen2.5-3B-Instruct/length_sweep_512/hf-bf16/20261011-155305](Qwen2.5-3B-Instruct/length_sweep_512/hf-bf16/20261011-155305) |
+| Qwen2.5-3B-Instruct | llamacpp-f16 | length_sweep_512 | counts: 1.0000 | 4 | MAXN | 0.5 | 117 / 426 | 6549 / 6864 | 25 | 18.6 | 19.5 | 22.1 | 51.4 | none | [Qwen2.5-3B-Instruct/length_sweep_512/llamacpp-f16/20261011-151012_limit4](Qwen2.5-3B-Instruct/length_sweep_512/llamacpp-f16/20261011-151012_limit4) |
 | Qwen2.5-3B-Instruct | llamacpp-f16 | length_sweep_512 | counts: 1.0000 | 16 | MAXN | 1.8 | 115 / 116 | 6543 / 6546 | 25 | 18.7 | 19.4 | 30.4 | 66.1 | none | [Qwen2.5-3B-Instruct/length_sweep_512/llamacpp-f16/20261011-160100](Qwen2.5-3B-Instruct/length_sweep_512/llamacpp-f16/20261011-160100) |
+| Qwen2.5-3B-Instruct | llamacpp-q8_0 | length_sweep_512 | counts: 1.0000 | 4 | MAXN | 0.3 | 148 / 428 | 4048 / 4341 | 15 | 18.5 | 19.3 | 19.6 | 46.1 | none | [Qwen2.5-3B-Instruct/length_sweep_512/llamacpp-q8_0/20261011-151102_limit4](Qwen2.5-3B-Instruct/length_sweep_512/llamacpp-q8_0/20261011-151102_limit4) |
 | Qwen2.5-3B-Instruct | llamacpp-q8_0 | length_sweep_512 | counts: 1.0000 | 16 | MAXN | 1.1 | 148 / 149 | 4049 / 4053 | 15 | 18.5 | 19.2 | 29.0 | 62.3 | none | [Qwen2.5-3B-Instruct/length_sweep_512/llamacpp-q8_0/20261011-160305](Qwen2.5-3B-Instruct/length_sweep_512/llamacpp-q8_0/20261011-160305) |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | length_sweep_512 | counts: 1.0000 | 4 | MAXN | 0.6 | ~41 (avg) | - | 26 | 18.6 | 19.5 | 22.0 | 52.2 | none | [Qwen2.5-3B-Instruct/length_sweep_512/trt_edgellm-fp16/20261011-151137_limit4](Qwen2.5-3B-Instruct/length_sweep_512/trt_edgellm-fp16/20261011-151137_limit4) |
 | Qwen2.5-3B-Instruct | trt_edgellm-fp16 | length_sweep_512 | counts: 1.0000 | 16 | MAXN | 1.9 | ~41 (avg) | - | 26 | 18.6 | 19.4 | 29.4 | 65.7 | none | [Qwen2.5-3B-Instruct/length_sweep_512/trt_edgellm-fp16/20261011-160430](Qwen2.5-3B-Instruct/length_sweep_512/trt_edgellm-fp16/20261011-160430) |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp8 | length_sweep_512 | counts: 1.0000 | 4 | MAXN | 0.4 | ~30 (avg) | - | 15 | 18.6 | 19.4 | 14.0 | 41.0 | none | [Qwen2.5-3B-Instruct/length_sweep_512/trt_edgellm-fp8/20261011-151237_limit4](Qwen2.5-3B-Instruct/length_sweep_512/trt_edgellm-fp8/20261011-151237_limit4) |
 | Qwen2.5-3B-Instruct | trt_edgellm-fp8 | length_sweep_512 | counts: 1.0000 | 16 | MAXN | 1.1 | ~30 (avg) | - | 15 | 18.6 | 19.4 | 20.3 | 54.1 | none | [Qwen2.5-3B-Instruct/length_sweep_512/trt_edgellm-fp8/20261011-160650](Qwen2.5-3B-Instruct/length_sweep_512/trt_edgellm-fp8/20261011-160650) |
+| Qwen2.5-3B-Instruct | vllm-bf16 | length_sweep_512 | counts: 1.0000 | 4 | MAXN | 1.1 | 47 / 898 | 6711 / 7550 | 26 | 18.5 | 23.2 | 10.6 | 36.7 | none | [Qwen2.5-3B-Instruct/length_sweep_512/vllm-bf16/20261011-150732_limit4](Qwen2.5-3B-Instruct/length_sweep_512/vllm-bf16/20261011-150732_limit4) |
 | Qwen2.5-3B-Instruct | vllm-bf16 | length_sweep_512 | counts: 1.0000 | 16 | MAXN | 2.5 | 43 / 44 | 6697 / 6704 | 26 | 18.6 | 23.8 | 14.7 | 48.3 | none | [Qwen2.5-3B-Instruct/length_sweep_512/vllm-bf16/20261011-155610](Qwen2.5-3B-Instruct/length_sweep_512/vllm-bf16/20261011-155610) |
+| Qwen2.5-3B-Instruct | vllm-fp8 | length_sweep_512 | counts: 1.0000 | 4 | MAXN | 1.0 | 41 / 1025 | 3927 / 4905 | 15 | 18.6 | 22.5 | 9.0 | 32.0 | none | [Qwen2.5-3B-Instruct/length_sweep_512/vllm-fp8/20261011-150857_limit4](Qwen2.5-3B-Instruct/length_sweep_512/vllm-fp8/20261011-150857_limit4) |
 | Qwen2.5-3B-Instruct | vllm-fp8 | length_sweep_512 | counts: 1.0000 | 16 | MAXN | 1.8 | 40 / 41 | 3923 / 3926 | 15 | 18.6 | 22.2 | 13.0 | 42.7 | none | [Qwen2.5-3B-Instruct/length_sweep_512/vllm-fp8/20261011-155855](Qwen2.5-3B-Instruct/length_sweep_512/vllm-fp8/20261011-155855) |
 | Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson | exact_match (first-letter): 0.6159 | 14042 | MAXN | 136.9 | 71 / 159 | 291 / 1317 | 40 | 19.5 | 23.5 | 21.4 | 54.0 | none | [Qwen2.5-3B-Instruct/mmlu_jetson/hf-bf16/20261011-085737](Qwen2.5-3B-Instruct/mmlu_jetson/hf-bf16/20261011-085737) |
 | Qwen2.5-3B-Instruct | llamacpp-f16 | mmlu_jetson | exact_match (first-letter): 0.6185 | 14042 | MAXN | 87.3 | 179 / 405 | 222 / 893 | 26 | 20.3 | 21.5 | 36.3 | 73.4 | none | [Qwen2.5-3B-Instruct/mmlu_jetson/llamacpp-f16/20261009-122025](Qwen2.5-3B-Instruct/mmlu_jetson/llamacpp-f16/20261009-122025) |
 | Qwen2.5-3B-Instruct | llamacpp-q4_k_m | mmlu_jetson | exact_match (first-letter): 0.5855 | 14042 | MAXN | 88.4 | 193 / 531 | 280 / 650 | 13 | 20.3 | 21.1 | 38.3 | 63.1 | none | [Qwen2.5-3B-Instruct/mmlu_jetson/llamacpp-q4_k_m/20261009-150500](Qwen2.5-3B-Instruct/mmlu_jetson/llamacpp-q4_k_m/20261009-150500) |
 | Qwen2.5-3B-Instruct | llamacpp-q8_0 | mmlu_jetson | exact_match (first-letter): 0.6179 | 14042 | MAXN | 76.6 | 175 / 474 | 210 / 645 | 16 | 20.3 | 21.2 | 38.3 | 65.4 | none | [Qwen2.5-3B-Instruct/mmlu_jetson/llamacpp-q8_0/20261009-134803](Qwen2.5-3B-Instruct/mmlu_jetson/llamacpp-q8_0/20261009-134803) |
 | Qwen2.5-3B-Instruct | trt_edgellm-fp16 | mmlu_jetson | exact_match (first-letter): 0.6177 | 14042 | MAXN | 88.4 | ~58 (avg) | - | 26 | 20.3 | 21.5 | 41.2 | 80.1 | none | [Qwen2.5-3B-Instruct/mmlu_jetson/trt_edgellm-fp16/20261009-163348](Qwen2.5-3B-Instruct/mmlu_jetson/trt_edgellm-fp16/20261009-163348) |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | mmlu_jetson | exact_match (first-letter): 0.6382 | 456 | MAXN | 2.9 | ~52 (avg) | - | 26 | 26.8 | 27.5 | 35.3 | 70.6 | none | [Qwen2.5-3B-Instruct/mmlu_jetson/trt_edgellm-fp16/20261011-214653_limit8](Qwen2.5-3B-Instruct/mmlu_jetson/trt_edgellm-fp16/20261011-214653_limit8) |
 | Qwen2.5-3B-Instruct | trt_edgellm-fp8 | mmlu_jetson | exact_match (first-letter): 0.6072 | 14042 | MAXN | 67.5 | ~38 (avg) | - | 15 | 20.3 | 21.5 | 30.9 | 68.7 | none | [Qwen2.5-3B-Instruct/mmlu_jetson/trt_edgellm-fp8/20261009-180300](Qwen2.5-3B-Instruct/mmlu_jetson/trt_edgellm-fp8/20261009-180300) |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp8 | mmlu_jetson | exact_match (first-letter): 0.6338 | 456 | MAXN | 2.1 | ~35 (avg) | - | 15 | 26.8 | 27.6 | 26.2 | 60.4 | none | [Qwen2.5-3B-Instruct/mmlu_jetson/trt_edgellm-fp8/20261011-215009_limit8](Qwen2.5-3B-Instruct/mmlu_jetson/trt_edgellm-fp8/20261011-215009_limit8) |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp8_kv | mmlu_jetson | exact_match (first-letter): 0.5548 | 456 | MAXN | 3.2 | ~35 (avg) | - | 15 | 23.8 | 24.1 | 27.6 | 63.1 | none | [Qwen2.5-3B-Instruct/mmlu_jetson/trt_edgellm-fp8_kv/20261011-221415_limit8](Qwen2.5-3B-Instruct/mmlu_jetson/trt_edgellm-fp8_kv/20261011-221415_limit8) |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp8_lmhead | mmlu_jetson | exact_match (first-letter): 0.6316 | 456 | MAXN | 1.8 | ~34 (avg) | - | 13 | 23.5 | 24.1 | 27.9 | 61.5 | none | [Qwen2.5-3B-Instruct/mmlu_jetson/trt_edgellm-fp8_lmhead/20261011-221755_limit8](Qwen2.5-3B-Instruct/mmlu_jetson/trt_edgellm-fp8_lmhead/20261011-221755_limit8) |
 | Qwen2.5-3B-Instruct | trt_edgellm-int4_awq | mmlu_jetson | exact_match (first-letter): 0.5543 | 14042 | MAXN | 68.1 | ~108 (avg) | - | 10 | 20.3 | 21.5 | 47.0 | 78.0 | none | [Qwen2.5-3B-Instruct/mmlu_jetson/trt_edgellm-int4_awq/20261009-191117](Qwen2.5-3B-Instruct/mmlu_jetson/trt_edgellm-int4_awq/20261009-191117) |
+| Qwen2.5-3B-Instruct | trt_edgellm-int4_awq | mmlu_jetson | exact_match (first-letter): 0.5768 | 456 | MAXN | 2.1 | ~96 (avg) | - | 10 | 26.8 | 27.6 | 38.9 | 67.7 | none | [Qwen2.5-3B-Instruct/mmlu_jetson/trt_edgellm-int4_awq/20261011-215239_limit8](Qwen2.5-3B-Instruct/mmlu_jetson/trt_edgellm-int4_awq/20261011-215239_limit8) |
+| Qwen2.5-3B-Instruct | trt_edgellm-int4_awq_lmhead | mmlu_jetson | exact_match (first-letter): 0.0044 | 456 | MAXN | 2.9 | ~94 (avg) | - | 8 | 23.2 | 24.1 | 37.1 | 66.7 | none | [Qwen2.5-3B-Instruct/mmlu_jetson/trt_edgellm-int4_awq_lmhead/20261011-222005_limit8](Qwen2.5-3B-Instruct/mmlu_jetson/trt_edgellm-int4_awq_lmhead/20261011-222005_limit8) |
+| Qwen2.5-3B-Instruct | trt_edgellm-int4_awq_qwen_v1 | mmlu_jetson | exact_match (first-letter): 0.2083 | 456 | MAXN | 3.5 | ~130 (avg) | - | 10 | 23.2 | 23.9 | 39.6 | 69.8 | none | [Qwen2.5-3B-Instruct/mmlu_jetson/trt_edgellm-int4_awq_qwen_v1/20261011-222800_limit8](Qwen2.5-3B-Instruct/mmlu_jetson/trt_edgellm-int4_awq_qwen_v1/20261011-222800_limit8) |
+| Qwen2.5-3B-Instruct | trt_edgellm-int4_awq_taskcal | mmlu_jetson | exact_match (first-letter): 0.5526 | 456 | MAXN | 2.7 | ~96 (avg) | - | 10 | 23.3 | 24.0 | 38.3 | 68.2 | none | [Qwen2.5-3B-Instruct/mmlu_jetson/trt_edgellm-int4_awq_taskcal/20261011-222320_limit8](Qwen2.5-3B-Instruct/mmlu_jetson/trt_edgellm-int4_awq_taskcal/20261011-222320_limit8) |
+| Qwen2.5-3B-Instruct | trt_edgellm-int4_gptq_qwen | mmlu_jetson | exact_match (first-letter): 0.6513 | 456 | MAXN | 1.2 | ~102 (avg) | - | 10 | 23.2 | 24.1 | 43.4 | 67.1 | none | [Qwen2.5-3B-Instruct/mmlu_jetson/trt_edgellm-int4_gptq_qwen/20261011-222625_limit8](Qwen2.5-3B-Instruct/mmlu_jetson/trt_edgellm-int4_gptq_qwen/20261011-222625_limit8) |
+| Qwen2.5-3B-Instruct | trt_edgellm-int8_sq | mmlu_jetson | exact_match (first-letter): 0.5658 | 456 | MAXN | 0.7 | ~36 (avg) | - | 15 | 26.8 | 27.5 | 23.2 | 50.5 | none | [Qwen2.5-3B-Instruct/mmlu_jetson/trt_edgellm-int8_sq/20261011-215509_limit8](Qwen2.5-3B-Instruct/mmlu_jetson/trt_edgellm-int8_sq/20261011-215509_limit8) |
+| Qwen2.5-3B-Instruct | trt_edgellm-nvfp4 | mmlu_jetson | exact_match (first-letter): 0.0241 | 456 | MAXN | 2.9 | ~26 (avg) | - | 11 | 26.9 | 27.7 | 24.2 | 57.6 | none | [Qwen2.5-3B-Instruct/mmlu_jetson/trt_edgellm-nvfp4/20261011-215614_limit8](Qwen2.5-3B-Instruct/mmlu_jetson/trt_edgellm-nvfp4/20261011-215614_limit8) |
 | Qwen2.5-3B-Instruct | vllm-awq | mmlu_jetson | exact_match (first-letter): 0.5869 | 14042 | MAXN | 41.1 | 92 / 260 | 107 / 316 | 10 | 20.3 | 23.1 | 53.3 | 83.8 | none | [Qwen2.5-3B-Instruct/mmlu_jetson/vllm-awq/20261009-113858](Qwen2.5-3B-Instruct/mmlu_jetson/vllm-awq/20261009-113858) |
 | Qwen2.5-3B-Instruct | vllm-bf16 | mmlu_jetson | exact_match (first-letter): 0.6173 | 14042 | MAXN | 95.3 | 58 / 125 | 202 / 878 | 26 | 18.7 | 23.8 | 26.2 | 66.5 | none | [Qwen2.5-3B-Instruct/mmlu_jetson/vllm-bf16/20261009-085718](Qwen2.5-3B-Instruct/mmlu_jetson/vllm-bf16/20261009-085718) |
 | Qwen2.5-3B-Instruct | vllm-fp8 | mmlu_jetson | exact_match (first-letter): 0.6179 | 14042 | MAXN | 65.7 | 49 / 131 | 165 / 535 | 15 | 18.6 | 23.3 | 26.4 | 65.4 | none | [Qwen2.5-3B-Instruct/mmlu_jetson/vllm-fp8/20261009-103256](Qwen2.5-3B-Instruct/mmlu_jetson/vllm-fp8/20261009-103256) |
+| Qwen2.5-VL-3B-Instruct | hf-bf16 | gqa | exact_match: 0.6250 | 8 | 120W | 2.4 | 298 / 345 | 425 / 582 | 118 | 44.4 | 57.7 | 2.5 | 25.9 | none | [Qwen2.5-VL-3B-Instruct/gqa/hf-bf16/20260925-062049_limit8](Qwen2.5-VL-3B-Instruct/gqa/hf-bf16/20260925-062049_limit8) |
 | Qwen2.5-VL-3B-Instruct | hf-bf16 | gqa | exact_match: 0.6009 | 12578 | 120W | 64.3 | 199 / 221 | 265 / 318 | 55 | 37.4 | 42.2 | 27.6 | 53.5 | none | [Qwen2.5-VL-3B-Instruct/gqa/hf-bf16/20260925-062406](Qwen2.5-VL-3B-Instruct/gqa/hf-bf16/20260925-062406) |
 | Qwen2.5-VL-3B-Instruct | trt_edgellm-fp16 | gqa | exact_match: 0.6000 | 12578 | MAXN | 41.2 | ~69 (avg) | - | 27 | 21.1 | 36.2 | 35.8 | 59.6 | none | [Qwen2.5-VL-3B-Instruct/gqa/trt_edgellm-fp16/20260930-174243](Qwen2.5-VL-3B-Instruct/gqa/trt_edgellm-fp16/20260930-174243) |
 | Qwen2.5-VL-3B-Instruct | trt_edgellm-fp8 | gqa | exact_match: 0.6018 | 12578 | MAXN | 33.6 | ~56 (avg) | - | 15 | 18.5 | 20.5 | 32.7 | 54.0 | none | [Qwen2.5-VL-3B-Instruct/gqa/trt_edgellm-fp8/20260930-182610](Qwen2.5-VL-3B-Instruct/gqa/trt_edgellm-fp8/20260930-182610) |
 | Qwen2.5-VL-3B-Instruct | trt_edgellm-int4_awq | gqa | exact_match: 0.5755 | 12578 | MAXN | 40.9 | ~97 (avg) | - | 11 | 18.7 | 20.5 | 40.7 | 59.6 | none | [Qwen2.5-VL-3B-Instruct/gqa/trt_edgellm-int4_awq/20260930-190201](Qwen2.5-VL-3B-Instruct/gqa/trt_edgellm-int4_awq/20260930-190201) |
 | Qwen2.5-VL-3B-Instruct | vllm-awq | gqa | exact_match: 0.5945 | 12578 | 120W | 67.5 | 217 / 239 | 231 / 255 | 12 | 46.9 | 50.9 | 25.2 | 48.1 | none | [Qwen2.5-VL-3B-Instruct/gqa/vllm-awq/20260925-104202](Qwen2.5-VL-3B-Instruct/gqa/vllm-awq/20260925-104202) |
 | Qwen2.5-VL-3B-Instruct | vllm-bf16 | gqa | exact_match: 0.5996 | 12578 | 120W | 64.6 | 185 / 201 | 216 / 249 | 28 | 36.5 | 52.5 | 23.1 | 50.5 | none | [Qwen2.5-VL-3B-Instruct/gqa/vllm-bf16/20260925-093520](Qwen2.5-VL-3B-Instruct/gqa/vllm-bf16/20260925-093520) |
+| Qwen2.5-VL-3B-Instruct | hf-bf16 | mme | mme_cognition_score: 162.50 | 8 | 120W | 0.2 | 208 / 233 | 278 / 303 | 71 | 36.4 | 39.8 | 5.5 | 19.5 | none | [Qwen2.5-VL-3B-Instruct/mme/hf-bf16/20260923-145913_limit8](Qwen2.5-VL-3B-Instruct/mme/hf-bf16/20260923-145913_limit8) |
 | Qwen2.5-VL-3B-Instruct | hf-bf16 | mme | mme_cognition_score: 623.93<br>mme_perception_score: 1548.29 | 2374 | 120W | 21.0 | 241 / 907 | 299 / 972 | 57 | 27.2 | 31.1 | 33.3 | 58.6 | none | [Qwen2.5-VL-3B-Instruct/mme/hf-bf16/20260923-215339](Qwen2.5-VL-3B-Instruct/mme/hf-bf16/20260923-215339) |
+| Qwen2.5-VL-3B-Instruct | hf-bf16 | mme | mme_cognition_score: 162.50 | 8 | 120W | 0.2 | 203 / 240 | 274 / 313 | 71 | 36.3 | 40.6 | 5.1 | 17.5 | none | [Qwen2.5-VL-3B-Instruct/mme/hf-bf16/20260928-042208_limit8](Qwen2.5-VL-3B-Instruct/mme/hf-bf16/20260928-042208_limit8) |
+| Qwen2.5-VL-3B-Instruct | llamacpp-q4_k_m | mme | mme_cognition_score: 200.00 | 8 | 120W | 0.1 | 318 / 326 | 336 / 344 | 17 | 38.1 | 38.8 | 6.1 | 20.9 | none | [Qwen2.5-VL-3B-Instruct/mme/llamacpp-q4_k_m/20260923-200432_limit8](Qwen2.5-VL-3B-Instruct/mme/llamacpp-q4_k_m/20260923-200432_limit8) |
+| Qwen2.5-VL-3B-Instruct | llamacpp-q8_0 | mme | mme_cognition_score: 162.50 | 8 | 120W | 0.1 | 309 / 321 | 328 / 340 | 19 | 38.2 | 39.1 | 6.2 | 21.4 | none | [Qwen2.5-VL-3B-Instruct/mme/llamacpp-q8_0/20260923-200409_limit8](Qwen2.5-VL-3B-Instruct/mme/llamacpp-q8_0/20260923-200409_limit8) |
+| Qwen2.5-VL-3B-Instruct | llamacpp-q8_0 | mme | mme_cognition_score: 162.50 | 8 | 120W | 0.1 | 308 / 321 | 327 / 340 | 19 | 36.7 | 37.7 | 4.8 | 19.6 | none | [Qwen2.5-VL-3B-Instruct/mme/llamacpp-q8_0/20260928-042445_limit8](Qwen2.5-VL-3B-Instruct/mme/llamacpp-q8_0/20260928-042445_limit8) |
+| Qwen2.5-VL-3B-Instruct | trt_edgellm-fp16 | mme | mme_cognition_score: 162.50 | 8 | 120W | 0.1 | ~75 (avg) | - | 35 | 34.2 | 34.8 | 5.6 | 17.7 | none | [Qwen2.5-VL-3B-Instruct/mme/trt_edgellm-fp16/20260923-200543_limit8](Qwen2.5-VL-3B-Instruct/mme/trt_edgellm-fp16/20260923-200543_limit8) |
+| Qwen2.5-VL-3B-Instruct | trt_edgellm-fp16 | mme | mme_cognition_score: 162.50 | 8 | 120W | 0.1 | ~77 (avg) | - | 36 | 36.7 | 37.6 | 5.1 | 15.5 | none | [Qwen2.5-VL-3B-Instruct/mme/trt_edgellm-fp16/20260928-042518_limit8](Qwen2.5-VL-3B-Instruct/mme/trt_edgellm-fp16/20260928-042518_limit8) |
 | Qwen2.5-VL-3B-Instruct | trt_edgellm-fp16 | mme | mme_cognition_score: 614.29<br>mme_perception_score: 1526.51 | 2374 | MAXN | 28.1 | ~146 (avg) | - | 27 | 26.4 | 31.8 | 21.2 | 39.2 | none | [Qwen2.5-VL-3B-Instruct/mme/trt_edgellm-fp16/20260930-161411](Qwen2.5-VL-3B-Instruct/mme/trt_edgellm-fp16/20260930-161411) |
+| Qwen2.5-VL-3B-Instruct | trt_edgellm-fp8 | mme | mme_cognition_score: 162.50 | 8 | 120W | 0.1 | ~67 (avg) | - | 23 | 33.2 | 33.8 | 4.8 | 16.1 | none | [Qwen2.5-VL-3B-Instruct/mme/trt_edgellm-fp8/20260923-200626_limit8](Qwen2.5-VL-3B-Instruct/mme/trt_edgellm-fp8/20260923-200626_limit8) |
 | Qwen2.5-VL-3B-Instruct | trt_edgellm-fp8 | mme | mme_cognition_score: 622.50<br>mme_perception_score: 1522.40 | 2374 | MAXN | 26.6 | ~121 (avg) | - | 16 | 24.3 | 25.3 | 18.1 | 35.3 | none | [Qwen2.5-VL-3B-Instruct/mme/trt_edgellm-fp8/20260930-164332](Qwen2.5-VL-3B-Instruct/mme/trt_edgellm-fp8/20260930-164332) |
+| Qwen2.5-VL-3B-Instruct | trt_edgellm-int4_awq+qwen-awq-ckpt | mme | mme_cognition_score: 0.0000 | 8 | 120W | 0.1 | ~89 (avg) | - | 14 | 34.0 | 34.5 | 6.8 | 18.1 | none | [Qwen2.5-VL-3B-Instruct/mme/trt_edgellm-int4_awq+qwen-awq-ckpt/20260923-200605_limit8](Qwen2.5-VL-3B-Instruct/mme/trt_edgellm-int4_awq+qwen-awq-ckpt/20260923-200605_limit8) |
+| Qwen2.5-VL-3B-Instruct | trt_edgellm-int4_awq | mme | mme_cognition_score: 162.50 | 8 | 120W | 0.1 | ~92 (avg) | - | 14 | 32.3 | 33.2 | 6.0 | 19.3 | none | [Qwen2.5-VL-3B-Instruct/mme/trt_edgellm-int4_awq/20260923-202127_limit8](Qwen2.5-VL-3B-Instruct/mme/trt_edgellm-int4_awq/20260923-202127_limit8) |
 | Qwen2.5-VL-3B-Instruct | trt_edgellm-int4_awq | mme | mme_cognition_score: 565.71<br>mme_perception_score: 1529.67 | 2374 | MAXN | 30.1 | ~211 (avg) | - | 11 | 22.6 | 23.5 | 24.1 | 41.3 | none | [Qwen2.5-VL-3B-Instruct/mme/trt_edgellm-int4_awq/20260930-171124](Qwen2.5-VL-3B-Instruct/mme/trt_edgellm-int4_awq/20260930-171124) |
+| Qwen2.5-VL-3B-Instruct | trt_edgellm-nvfp4 | mme | mme_cognition_score: 0.0000 | 8 | 120W | 0.1 | ~46 (avg) | - | 14 | 32.9 | 33.4 | 6.4 | 18.9 | none | [Qwen2.5-VL-3B-Instruct/mme/trt_edgellm-nvfp4/20260923-200648_limit8](Qwen2.5-VL-3B-Instruct/mme/trt_edgellm-nvfp4/20260923-200648_limit8) |
+| Qwen2.5-VL-3B-Instruct | vllm-awq | mme | mme_cognition_score: 200.00 | 8 | 120W | 1.7 | 167 / 299 | 182 / 314 | 16 | 36.4 | 41.6 | 5.9 | 20.7 | none | [Qwen2.5-VL-3B-Instruct/mme/vllm-awq/20260923-195813_limit8](Qwen2.5-VL-3B-Instruct/mme/vllm-awq/20260923-195813_limit8) |
 | Qwen2.5-VL-3B-Instruct | vllm-awq | mme | mme_cognition_score: 602.86<br>mme_perception_score: 1544.02 | 2374 | 120W | 44.4 | 282 / 1269 | 295 / 1282 | 13 | 27.3 | 31.4 | 16.7 | 34.7 | none | [Qwen2.5-VL-3B-Instruct/mme/vllm-awq/20260923-232507](Qwen2.5-VL-3B-Instruct/mme/vllm-awq/20260923-232507) |
+| Qwen2.5-VL-3B-Instruct | vllm-awq | mme | mme_cognition_score: 200.00 | 8 | 120W | 1.4 | 151 / 283 | 165 / 298 | 15 | 37.0 | 41.9 | 5.8 | 19.9 | none | [Qwen2.5-VL-3B-Instruct/mme/vllm-awq/20260928-042251_limit8](Qwen2.5-VL-3B-Instruct/mme/vllm-awq/20260928-042251_limit8) |
+| Qwen2.5-VL-3B-Instruct | vllm-bf16 | mme | mme_cognition_score: 162.50 | 8 | 120W | 1.5 | 173 / 307 | 215 / 349 | 42 | 36.4 | 41.8 | 5.1 | 20.3 | none | [Qwen2.5-VL-3B-Instruct/mme/vllm-bf16/20260923-195625_limit8](Qwen2.5-VL-3B-Instruct/mme/vllm-bf16/20260923-195625_limit8) |
 | Qwen2.5-VL-3B-Instruct | vllm-bf16 | mme | mme_cognition_score: 613.57<br>mme_perception_score: 1540.61 | 2374 | 120W | 43.3 | 241 / 1127 | 285 / 1171 | 44 | 27.2 | 32.6 | 14.8 | 34.0 | none | [Qwen2.5-VL-3B-Instruct/mme/vllm-bf16/20260923-224130](Qwen2.5-VL-3B-Instruct/mme/vllm-bf16/20260923-224130) |
 | Qwen2.5-VL-3B-Instruct | hf-bf16+repeat | textvqa_val | exact_match: 0.7886 | 5000 | MAXN | 44.2 | 387 / 478 | 471 / 635 | 41 | 26.8 | 30.2 | 42.6 | 75.2 | none | [Qwen2.5-VL-3B-Instruct/textvqa_val/hf-bf16+repeat/20261006-172623](Qwen2.5-VL-3B-Instruct/textvqa_val/hf-bf16+repeat/20261006-172623) |
+| Qwen2.5-VL-3B-Instruct | hf-bf16 | textvqa_val | exact_match: 0.6125 | 8 | MAXN | 0.2 | 410 / 578 | 650 / 776 | 50 | 18.3 | 22.3 | 7.7 | 22.5 | none | [Qwen2.5-VL-3B-Instruct/textvqa_val/hf-bf16/20260928-214624_limit8](Qwen2.5-VL-3B-Instruct/textvqa_val/hf-bf16/20260928-214624_limit8) |
 | Qwen2.5-VL-3B-Instruct | hf-bf16 | textvqa_val | exact_match: 0.7886 | 5000 | MAXN | 48.5 | 397 / 497 | 515 / 689 | 52 | 25.9 | 29.6 | 38.9 | 66.5 | none | [Qwen2.5-VL-3B-Instruct/textvqa_val/hf-bf16/20260928-220231](Qwen2.5-VL-3B-Instruct/textvqa_val/hf-bf16/20260928-220231) |
+| Qwen2.5-VL-3B-Instruct | hf-bf16 | textvqa_val | exact_match: 0.6125 | 8 | MAXN | 0.2 | 376 / 548 | 581 / 716 | 41 | 19.2 | 22.4 | 8.9 | 27.3 | none | [Qwen2.5-VL-3B-Instruct/textvqa_val/hf-bf16/20261011-144051_limit8](Qwen2.5-VL-3B-Instruct/textvqa_val/hf-bf16/20261011-144051_limit8) |
+| Qwen2.5-VL-3B-Instruct | llamacpp-f16 | textvqa_val | exact_match: 0.6625 | 8 | MAXN | 0.2 | 1039 / 1523 | 1096 / 1620 | 28 | 25.1 | 25.3 | 9.7 | 27.2 | none | [Qwen2.5-VL-3B-Instruct/textvqa_val/llamacpp-f16/20261001-120021_limit8](Qwen2.5-VL-3B-Instruct/textvqa_val/llamacpp-f16/20261001-120021_limit8) |
 | Qwen2.5-VL-3B-Instruct | llamacpp-f16 | textvqa_val | exact_match: 0.7984 | 5000 | MAXN | 121.4 | 1059 / 1576 | 1160 / 1672 | 28 | 24.0 | 26.1 | 28.1 | 53.1 | none | [Qwen2.5-VL-3B-Instruct/textvqa_val/llamacpp-f16/20261001-120121](Qwen2.5-VL-3B-Instruct/textvqa_val/llamacpp-f16/20261001-120121) |
+| Qwen2.5-VL-3B-Instruct | llamacpp-f16 | textvqa_val | exact_match: 0.6625 | 8 | MAXN | 0.2 | 981 / 1256 | 1044 / 1336 | 27 | 18.6 | 19.7 | 10.7 | 30.0 | none | [Qwen2.5-VL-3B-Instruct/textvqa_val/llamacpp-f16/20261011-144301_limit8](Qwen2.5-VL-3B-Instruct/textvqa_val/llamacpp-f16/20261011-144301_limit8) |
+| Qwen2.5-VL-3B-Instruct | llamacpp-q4_k_m | textvqa_val | exact_match: 0.5750 | 8 | MAXN | 0.2 | 1047 / 1320 | 1116 / 1375 | 17 | 26.9 | 28.2 | 10.2 | 26.6 | none | [Qwen2.5-VL-3B-Instruct/textvqa_val/llamacpp-q4_k_m/20260928-215735_limit8](Qwen2.5-VL-3B-Instruct/textvqa_val/llamacpp-q4_k_m/20260928-215735_limit8) |
 | Qwen2.5-VL-3B-Instruct | llamacpp-q4_k_m | textvqa_val | exact_match: 0.7873 | 5000 | MAXN | 122.3 | 1144 / 1626 | 1187 / 1672 | 16 | 26.2 | 28.6 | 28.6 | 49.3 | none | [Qwen2.5-VL-3B-Instruct/textvqa_val/llamacpp-q4_k_m/20260929-063650](Qwen2.5-VL-3B-Instruct/textvqa_val/llamacpp-q4_k_m/20260929-063650) |
+| Qwen2.5-VL-3B-Instruct | llamacpp-q8_0 | textvqa_val | exact_match: 0.6625 | 8 | MAXN | 0.2 | 1063 / 1322 | 1101 / 1382 | 19 | 26.8 | 28.3 | 10.3 | 27.1 | none | [Qwen2.5-VL-3B-Instruct/textvqa_val/llamacpp-q8_0/20260928-215650_limit8](Qwen2.5-VL-3B-Instruct/textvqa_val/llamacpp-q8_0/20260928-215650_limit8) |
 | Qwen2.5-VL-3B-Instruct | llamacpp-q8_0 | textvqa_val | exact_match: 0.7986 | 5000 | MAXN | 119.4 | 1091 / 1565 | 1144 / 1623 | 18 | 26.2 | 28.5 | 28.8 | 50.5 | none | [Qwen2.5-VL-3B-Instruct/textvqa_val/llamacpp-q8_0/20260929-043626](Qwen2.5-VL-3B-Instruct/textvqa_val/llamacpp-q8_0/20260929-043626) |
 | Qwen2.5-VL-3B-Instruct | trt_edgellm-fp16+repeat | textvqa_val | exact_match: 0.7945 | 5000 | MAXN | 40.8 | ~159 (avg) | - | 26 | 25.1 | 25.6 | 37.1 | 63.3 | none | [Qwen2.5-VL-3B-Instruct/textvqa_val/trt_edgellm-fp16+repeat/20261006-190506](Qwen2.5-VL-3B-Instruct/textvqa_val/trt_edgellm-fp16+repeat/20261006-190506) |
+| Qwen2.5-VL-3B-Instruct | trt_edgellm-fp16 | textvqa_val | exact_match: 0.7500 | 8 | MAXN | 0.1 | ~141 (avg) | - | 27 | 26.8 | 27.6 | 8.7 | 19.8 | none | [Qwen2.5-VL-3B-Instruct/textvqa_val/trt_edgellm-fp16/20260928-220000_limit8](Qwen2.5-VL-3B-Instruct/textvqa_val/trt_edgellm-fp16/20260928-220000_limit8) |
 | Qwen2.5-VL-3B-Instruct | trt_edgellm-fp16 | textvqa_val | exact_match: 0.7945 | 5000 | MAXN | 40.9 | ~157 (avg) | - | 27 | 59.4 | 60.2 | 35.8 | 59.2 | none | [Qwen2.5-VL-3B-Instruct/textvqa_val/trt_edgellm-fp16/20260929-212748](Qwen2.5-VL-3B-Instruct/textvqa_val/trt_edgellm-fp16/20260929-212748) |
+| Qwen2.5-VL-3B-Instruct | trt_edgellm-fp16 | textvqa_val | exact_match: 0.7500 | 8 | MAXN | 0.2 | ~146 (avg) | - | 26 | 18.6 | 19.3 | 8.9 | 27.0 | none | [Qwen2.5-VL-3B-Instruct/textvqa_val/trt_edgellm-fp16/20261011-144346_limit8](Qwen2.5-VL-3B-Instruct/textvqa_val/trt_edgellm-fp16/20261011-144346_limit8) |
+| Qwen2.5-VL-3B-Instruct | trt_edgellm-fp8 | textvqa_val | exact_match: 0.7500 | 8 | MAXN | 0.1 | ~128 (avg) | - | 16 | 26.7 | 27.3 | 7.7 | 18.8 | none | [Qwen2.5-VL-3B-Instruct/textvqa_val/trt_edgellm-fp8/20260928-220040_limit8](Qwen2.5-VL-3B-Instruct/textvqa_val/trt_edgellm-fp8/20260928-220040_limit8) |
 | Qwen2.5-VL-3B-Instruct | trt_edgellm-fp8 | textvqa_val | exact_match: 0.7959 | 5000 | MAXN | 35.9 | ~130 (avg) | - | 16 | 48.5 | 54.9 | 31.9 | 53.9 | dsvlm-220948-720149 | [Qwen2.5-VL-3B-Instruct/textvqa_val/trt_edgellm-fp8/20260929-220950](Qwen2.5-VL-3B-Instruct/textvqa_val/trt_edgellm-fp8/20260929-220950) |
+| Qwen2.5-VL-3B-Instruct | trt_edgellm-int4_awq | textvqa_val | exact_match: 0.6250 | 8 | MAXN | 0.1 | ~225 (avg) | - | 11 | 26.2 | 26.7 | 9.6 | 19.8 | none | [Qwen2.5-VL-3B-Instruct/textvqa_val/trt_edgellm-int4_awq/20260928-220120_limit8](Qwen2.5-VL-3B-Instruct/textvqa_val/trt_edgellm-int4_awq/20260928-220120_limit8) |
 | Qwen2.5-VL-3B-Instruct | trt_edgellm-int4_awq | textvqa_val | exact_match: 0.7375 | 5000 | MAXN | 43.3 | ~232 (avg) | - | 11 | 32.8 | 34.0 | 39.3 | 59.3 | none | [Qwen2.5-VL-3B-Instruct/textvqa_val/trt_edgellm-int4_awq/20260929-224646](Qwen2.5-VL-3B-Instruct/textvqa_val/trt_edgellm-int4_awq/20260929-224646) |
+| Qwen2.5-VL-3B-Instruct | vllm-awq | textvqa_val | exact_match: 0.6625 | 8 | MAXN | 1.7 | 433 / 1004 | 481 / 1015 | 11 | 23.3 | 27.7 | 7.3 | 21.8 | none | [Qwen2.5-VL-3B-Instruct/textvqa_val/vllm-awq/20260928-215004_limit8](Qwen2.5-VL-3B-Instruct/textvqa_val/vllm-awq/20260928-215004_limit8) |
 | Qwen2.5-VL-3B-Instruct | vllm-awq | textvqa_val | exact_match: 0.7910 | 5000 | MAXN | 62.4 | 453 / 568 | 478 / 606 | 11 | 25.6 | 30.4 | 30.3 | 53.2 | none | [Qwen2.5-VL-3B-Instruct/textvqa_val/vllm-awq/20260929-005648](Qwen2.5-VL-3B-Instruct/textvqa_val/vllm-awq/20260929-005648) |
 | Qwen2.5-VL-3B-Instruct | vllm-bf16+pil | textvqa_val | exact_match: 0.7939 | 5000 | MAXN | 31.5 | 281 / 354 | 342 / 459 | 26 | 26.4 | 30.8 | 47.4 | 84.6 | none | [Qwen2.5-VL-3B-Instruct/textvqa_val/vllm-bf16+pil/20261006-165248](Qwen2.5-VL-3B-Instruct/textvqa_val/vllm-bf16+pil/20261006-165248) |
 | Qwen2.5-VL-3B-Instruct | vllm-bf16+repeat | textvqa_val | exact_match: 0.7939 | 5000 | MAXN | 52.7 | 308 / 388 | 369 / 488 | 26 | 26.4 | 30.8 | 29.7 | 58.4 | none | [Qwen2.5-VL-3B-Instruct/textvqa_val/vllm-bf16+repeat/20261006-181129](Qwen2.5-VL-3B-Instruct/textvqa_val/vllm-bf16+repeat/20261006-181129) |
+| Qwen2.5-VL-3B-Instruct | vllm-bf16+stages | textvqa_val | exact_match: 0.8600 | 50 | MAXN | 1.2 | 296 / 353 | 365 / 467 | 26 | 20.7 | 25.2 | 14.5 | 36.0 | none | [Qwen2.5-VL-3B-Instruct/textvqa_val/vllm-bf16+stages/20261006-140621_limit50](Qwen2.5-VL-3B-Instruct/textvqa_val/vllm-bf16+stages/20261006-140621_limit50) |
 | Qwen2.5-VL-3B-Instruct | vllm-bf16+stages | textvqa_val | exact_match: 0.7939 | 5000 | MAXN | 51.9 | 301 / 381 | 362 / 481 | 26 | 20.7 | 25.4 | 30.0 | 58.7 | none | [Qwen2.5-VL-3B-Instruct/textvqa_val/vllm-bf16+stages/20261006-140845](Qwen2.5-VL-3B-Instruct/textvqa_val/vllm-bf16+stages/20261006-140845) |
+| Qwen2.5-VL-3B-Instruct | vllm-bf16 | textvqa_val | exact_match: 0.7500 | 8 | MAXN | 1.5 | 384 / 936 | 560 / 966 | 30 | 23.4 | 28.7 | 6.0 | 21.5 | none | [Qwen2.5-VL-3B-Instruct/textvqa_val/vllm-bf16/20260928-214804_limit8](Qwen2.5-VL-3B-Instruct/textvqa_val/vllm-bf16/20260928-214804_limit8) |
 | Qwen2.5-VL-3B-Instruct | vllm-bf16 | textvqa_val | exact_match: 0.7939 | 5000 | MAXN | 58.3 | 361 / 446 | 426 / 548 | 27 | 25.6 | 31.1 | 27.2 | 52.3 | none | [Qwen2.5-VL-3B-Instruct/textvqa_val/vllm-bf16/20260928-235725](Qwen2.5-VL-3B-Instruct/textvqa_val/vllm-bf16/20260928-235725) |
+| Qwen2.5-VL-3B-Instruct | vllm-bf16 | textvqa_val | exact_match: 0.8600 | 50 | MAXN | 1.5 | 300 / 351 | 368 / 475 | 26 | 21.4 | 25.7 | 12.9 | 33.6 | none | [Qwen2.5-VL-3B-Instruct/textvqa_val/vllm-bf16/20261006-140428_limit50](Qwen2.5-VL-3B-Instruct/textvqa_val/vllm-bf16/20261006-140428_limit50) |
+| Qwen2.5-VL-3B-Instruct | vllm-bf16 | textvqa_val | exact_match: 0.7500 | 8 | MAXN | 1.0 | 289 / 713 | 416 / 740 | 26 | 18.8 | 24.2 | 8.1 | 28.0 | none | [Qwen2.5-VL-3B-Instruct/textvqa_val/vllm-bf16/20261011-144131_limit8](Qwen2.5-VL-3B-Instruct/textvqa_val/vllm-bf16/20261011-144131_limit8) |
+| Qwen2.5-VL-3B-Instruct | vllm-fp8+marlin | textvqa_val | exact_match: 0.7500 | 8 | MAXN | 1.5 | 412 / 885 | 487 / 901 | 15 | 18.1 | 23.3 | 8.5 | 27.3 | none | [Qwen2.5-VL-3B-Instruct/textvqa_val/vllm-fp8+marlin/20261005-151853_limit8](Qwen2.5-VL-3B-Instruct/textvqa_val/vllm-fp8+marlin/20261005-151853_limit8) |
 | Qwen2.5-VL-3B-Instruct | vllm-fp8+marlin | textvqa_val | exact_match: 0.7946 | 5000 | MAXN | 60.4 | 434 / 545 | 463 / 609 | 15 | 19.9 | 25.8 | 31.8 | 60.2 | none | [Qwen2.5-VL-3B-Instruct/textvqa_val/vllm-fp8+marlin/20261005-192101](Qwen2.5-VL-3B-Instruct/textvqa_val/vllm-fp8+marlin/20261005-192101) |
 | Qwen2.5-VL-3B-Instruct | vllm-fp8+torch-stages | textvqa_val | exact_match: 0.7948 | 5000 | MAXN | 49.8 | 318 / 383 | 346 / 446 | 16 | 26.4 | 31.4 | 27.9 | 55.3 | none | [Qwen2.5-VL-3B-Instruct/textvqa_val/vllm-fp8+torch-stages/20261006-150251](Qwen2.5-VL-3B-Instruct/textvqa_val/vllm-fp8+torch-stages/20261006-150251) |
+| Qwen2.5-VL-3B-Instruct | vllm-fp8+torch | textvqa_val | exact_match: 0.7500 | 8 | MAXN | 1.5 | 293 / 712 | 370 / 727 | 15 | 17.9 | 24.2 | 7.2 | 25.7 | none | [Qwen2.5-VL-3B-Instruct/textvqa_val/vllm-fp8+torch/20261005-151436_limit8](Qwen2.5-VL-3B-Instruct/textvqa_val/vllm-fp8+torch/20261005-151436_limit8) |
+| Qwen2.5-VL-3B-Instruct | vllm-w8a8+triton | textvqa_val | exact_match: 0.7500 | 8 | MAXN | 1.9 | 332 / 771 | 410 / 786 | 16 | 18.4 | 23.7 | 6.8 | 24.7 | none | [Qwen2.5-VL-3B-Instruct/textvqa_val/vllm-w8a8+triton/20261005-151631_limit8](Qwen2.5-VL-3B-Instruct/textvqa_val/vllm-w8a8+triton/20261005-151631_limit8) |
 | Qwen2.5-VL-3B-Instruct | vllm-w8a8+triton | textvqa_val | exact_match: 0.7927 | 5000 | MAXN | 54.1 | 359 / 449 | 391 / 513 | 16 | 20.6 | 26.2 | 29.0 | 57.1 | none | [Qwen2.5-VL-3B-Instruct/textvqa_val/vllm-w8a8+triton/20261005-171344](Qwen2.5-VL-3B-Instruct/textvqa_val/vllm-w8a8+triton/20261005-171344) |
 | Qwen2.5-VL-7B-Instruct | hf-bf16 | gqa | exact_match: 0.6088 | 12578 | 120W | - | - | - | - | - | - | - | - | timings not valid: A process outside the run pinned one CPU core at 100%; the GPU was mostly idle (see NOTES.md). The score is valid. | [Qwen2.5-VL-7B-Instruct/gqa/hf-bf16/20260925-115139](Qwen2.5-VL-7B-Instruct/gqa/hf-bf16/20260925-115139) |
 | Qwen2.5-VL-7B-Instruct | vllm-awq | gqa | exact_match: 0.6070 | 12578 | 120W | 87.3 | 300 / 324 | 325 / 360 | 21 | 36.4 | 41.9 | 32.2 | 55.7 | none | [Qwen2.5-VL-7B-Instruct/gqa/vllm-awq/20260925-202538](Qwen2.5-VL-7B-Instruct/gqa/vllm-awq/20260925-202538) |
 | Qwen2.5-VL-7B-Instruct | vllm-bf16 | gqa | exact_match: 0.6098 | 12578 | 120W | 83.0 | 223 / 237 | 289 / 360 | 63 | 21.1 | 40.3 | 27.2 | 56.8 | none | [Qwen2.5-VL-7B-Instruct/gqa/vllm-bf16/20260925-190032](Qwen2.5-VL-7B-Instruct/gqa/vllm-bf16/20260925-190032) |
+| Qwen2.5-VL-7B-Instruct | hf-bf16 | mme | mme_cognition_score: 162.50 | 8 | 120W | 0.3 | 294 / 310 | 416 / 432 | 122 | 36.9 | 40.4 | 6.7 | 20.0 | none | [Qwen2.5-VL-7B-Instruct/mme/hf-bf16/20260923-195548_limit8](Qwen2.5-VL-7B-Instruct/mme/hf-bf16/20260923-195548_limit8) |
 | Qwen2.5-VL-7B-Instruct | hf-bf16 | mme | mme_cognition_score: 616.43<br>mme_perception_score: 1680.43 | 2374 | 120W | 26.3 | 283 / 1138 | 373 / 1223 | 83 | 27.2 | 31.6 | 36.8 | 64.9 | none | [Qwen2.5-VL-7B-Instruct/mme/hf-bf16/20260923-221456](Qwen2.5-VL-7B-Instruct/mme/hf-bf16/20260923-221456) |
+| Qwen2.5-VL-7B-Instruct | llamacpp-q4_k_m | mme | mme_cognition_score: 125.00 | 8 | 120W | 0.1 | 471 / 476 | 500 / 507 | 30 | 35.2 | 35.3 | 7.5 | 23.0 | none | [Qwen2.5-VL-7B-Instruct/mme/llamacpp-q4_k_m/20260923-200519_limit8](Qwen2.5-VL-7B-Instruct/mme/llamacpp-q4_k_m/20260923-200519_limit8) |
+| Qwen2.5-VL-7B-Instruct | llamacpp-q8_0 | mme | mme_cognition_score: 162.50 | 8 | 120W | 0.1 | 465 / 474 | 503 / 511 | 37 | 37.7 | 37.9 | 7.0 | 23.0 | none | [Qwen2.5-VL-7B-Instruct/mme/llamacpp-q8_0/20260923-200454_limit8](Qwen2.5-VL-7B-Instruct/mme/llamacpp-q8_0/20260923-200454_limit8) |
+| Qwen2.5-VL-7B-Instruct | vllm-awq | mme | mme_cognition_score: 162.50 | 8 | 120W | 1.8 | 243 / 374 | 273 / 404 | 30 | 39.6 | 44.0 | 8.6 | 24.3 | none | [Qwen2.5-VL-7B-Instruct/mme/vllm-awq/20260923-200201_limit8](Qwen2.5-VL-7B-Instruct/mme/vllm-awq/20260923-200201_limit8) |
 | Qwen2.5-VL-7B-Instruct | vllm-awq | mme | mme_cognition_score: 610.71<br>mme_perception_score: 1686.57 | 2374 | 120W | 52.4 | 396 / 1698 | 420 / 1724 | 25 | 39.0 | 43.7 | 22.8 | 43.3 | none | [Qwen2.5-VL-7B-Instruct/mme/vllm-awq/20260924-010100](Qwen2.5-VL-7B-Instruct/mme/vllm-awq/20260924-010100) |
+| Qwen2.5-VL-7B-Instruct | vllm-bf16 | mme | mme_cognition_score: 162.50 | 8 | 120W | 1.5 | 283 / 403 | 389 / 511 | 108 | 36.5 | 43.2 | 6.9 | 23.3 | none | [Qwen2.5-VL-7B-Instruct/mme/vllm-bf16/20260923-200010_limit8](Qwen2.5-VL-7B-Instruct/mme/vllm-bf16/20260923-200010_limit8) |
 | Qwen2.5-VL-7B-Instruct | vllm-bf16 | mme | mme_cognition_score: 621.07<br>mme_perception_score: 1687.05 | 2374 | 120W | 50.8 | 367 / 1511 | 468 / 1617 | 102 | 27.3 | 43.1 | 18.4 | 40.5 | none | [Qwen2.5-VL-7B-Instruct/mme/vllm-bf16/20260924-000951](Qwen2.5-VL-7B-Instruct/mme/vllm-bf16/20260924-000951) |
+| Qwen2.5-VL-7B-Instruct | hf-bf16 | textvqa_val | exact_match: 0.8500 | 8 | MAXN | 0.4 | 485 / 737 | 820 / 885 | 81 | 18.5 | 25.8 | 9.9 | 23.6 | none | [Qwen2.5-VL-7B-Instruct/textvqa_val/hf-bf16/20260928-214709_limit8](Qwen2.5-VL-7B-Instruct/textvqa_val/hf-bf16/20260928-214709_limit8) |
 | Qwen2.5-VL-7B-Instruct | hf-bf16 | textvqa_val | exact_match: 0.8296 | 5000 | MAXN | 64.3 | 475 / 600 | 666 / 953 | 80 | 25.8 | 29.3 | 42.4 | 72.9 | none | [Qwen2.5-VL-7B-Instruct/textvqa_val/hf-bf16/20260928-225203](Qwen2.5-VL-7B-Instruct/textvqa_val/hf-bf16/20260928-225203) |
 | Qwen2.5-VL-7B-Instruct | llamacpp-f16 | textvqa_val | exact_match: 0.8258 | 5000 | MAXN | 159.9 | 1449 / 2002 | 1594 / 2265 | 60 | 23.8 | 26.1 | 30.7 | 59.4 | none | [Qwen2.5-VL-7B-Instruct/textvqa_val/llamacpp-f16/20261001-140345](Qwen2.5-VL-7B-Instruct/textvqa_val/llamacpp-f16/20261001-140345) |
+| Qwen2.5-VL-7B-Instruct | llamacpp-q4_k_m | textvqa_val | exact_match: 0.6500 | 8 | MAXN | 0.3 | 1413 / 1677 | 1513 / 1804 | 29 | 26.8 | 28.0 | 12.4 | 29.2 | none | [Qwen2.5-VL-7B-Instruct/textvqa_val/llamacpp-q4_k_m/20260928-215910_limit8](Qwen2.5-VL-7B-Instruct/textvqa_val/llamacpp-q4_k_m/20260928-215910_limit8) |
 | Qwen2.5-VL-7B-Instruct | llamacpp-q4_k_m | textvqa_val | exact_match: 0.8215 | 5000 | MAXN | 157.8 | 1530 / 2118 | 1622 / 2219 | 29 | 26.4 | 28.6 | 31.7 | 53.0 | none | [Qwen2.5-VL-7B-Instruct/textvqa_val/llamacpp-q4_k_m/20260929-111341](Qwen2.5-VL-7B-Instruct/textvqa_val/llamacpp-q4_k_m/20260929-111341) |
+| Qwen2.5-VL-7B-Instruct | llamacpp-q8_0 | textvqa_val | exact_match: 0.6500 | 8 | MAXN | 0.3 | 1430 / 1623 | 1607 / 1797 | 36 | 26.8 | 28.0 | 12.0 | 29.6 | none | [Qwen2.5-VL-7B-Instruct/textvqa_val/llamacpp-q8_0/20260928-215820_limit8](Qwen2.5-VL-7B-Instruct/textvqa_val/llamacpp-q8_0/20260928-215820_limit8) |
 | Qwen2.5-VL-7B-Instruct | llamacpp-q8_0 | textvqa_val | exact_match: 0.8239 | 5000 | MAXN | 152.5 | 1434 / 1982 | 1543 / 2149 | 36 | 26.4 | 28.6 | 31.8 | 54.6 | none | [Qwen2.5-VL-7B-Instruct/textvqa_val/llamacpp-q8_0/20260929-084010](Qwen2.5-VL-7B-Instruct/textvqa_val/llamacpp-q8_0/20260929-084010) |
+| Qwen2.5-VL-7B-Instruct | trt_edgellm-fp16 | textvqa_val | exact_match: 0.8500 | 8 | MAXN | 0.2 | ~216 (avg) | - | 59 | 25.5 | 26.2 | 11.1 | 22.3 | none | [Qwen2.5-VL-7B-Instruct/textvqa_val/trt_edgellm-fp16/20261005-110801_limit8](Qwen2.5-VL-7B-Instruct/textvqa_val/trt_edgellm-fp16/20261005-110801_limit8) |
 | Qwen2.5-VL-7B-Instruct | trt_edgellm-fp16 | textvqa_val | exact_match: 0.8398 | 5000 | MAXN | 56.4 | ~246 (avg) | - | 59 | 24.9 | 25.7 | 42.6 | 69.9 | none | [Qwen2.5-VL-7B-Instruct/textvqa_val/trt_edgellm-fp16/20261005-111014](Qwen2.5-VL-7B-Instruct/textvqa_val/trt_edgellm-fp16/20261005-111014) |
+| Qwen2.5-VL-7B-Instruct | trt_edgellm-fp8 | textvqa_val | exact_match: 0.8500 | 8 | MAXN | 0.2 | ~164 (avg) | - | 32 | 25.3 | 26.1 | 9.4 | 21.5 | none | [Qwen2.5-VL-7B-Instruct/textvqa_val/trt_edgellm-fp8/20261005-110846_limit8](Qwen2.5-VL-7B-Instruct/textvqa_val/trt_edgellm-fp8/20261005-110846_limit8) |
 | Qwen2.5-VL-7B-Instruct | trt_edgellm-fp8 | textvqa_val | exact_match: 0.8388 | 5000 | MAXN | 44.2 | ~180 (avg) | - | 32 | 22.1 | 23.2 | 38.9 | 63.6 | none | [Qwen2.5-VL-7B-Instruct/textvqa_val/trt_edgellm-fp8/20261005-120746](Qwen2.5-VL-7B-Instruct/textvqa_val/trt_edgellm-fp8/20261005-120746) |
+| Qwen2.5-VL-7B-Instruct | trt_edgellm-int4_awq | textvqa_val | exact_match: 0.6250 | 8 | MAXN | 0.2 | ~379 (avg) | - | 20 | 25.0 | 25.9 | 13.7 | 25.7 | none | [Qwen2.5-VL-7B-Instruct/textvqa_val/trt_edgellm-int4_awq/20261005-110925_limit8](Qwen2.5-VL-7B-Instruct/textvqa_val/trt_edgellm-int4_awq/20261005-110925_limit8) |
 | Qwen2.5-VL-7B-Instruct | trt_edgellm-int4_awq | textvqa_val | exact_match: 0.8292 | 5000 | MAXN | 59.6 | ~397 (avg) | - | 20 | 21.0 | 22.1 | 51.1 | 72.4 | none | [Qwen2.5-VL-7B-Instruct/textvqa_val/trt_edgellm-int4_awq/20261005-125303](Qwen2.5-VL-7B-Instruct/textvqa_val/trt_edgellm-int4_awq/20261005-125303) |
+| Qwen2.5-VL-7B-Instruct | vllm-awq | textvqa_val | exact_match: 0.8500 | 8 | MAXN | 1.9 | 613 / 1263 | 711 / 1284 | 20 | 26.9 | 32.1 | 10.3 | 26.1 | none | [Qwen2.5-VL-7B-Instruct/textvqa_val/vllm-awq/20260928-215425_limit8](Qwen2.5-VL-7B-Instruct/textvqa_val/vllm-awq/20260928-215425_limit8) |
 | Qwen2.5-VL-7B-Instruct | vllm-awq | textvqa_val | exact_match: 0.8313 | 5000 | MAXN | 79.6 | 637 / 782 | 676 / 872 | 20 | 26.3 | 31.9 | 38.9 | 65.3 | none | [Qwen2.5-VL-7B-Instruct/textvqa_val/vllm-awq/20260929-031548](Qwen2.5-VL-7B-Instruct/textvqa_val/vllm-awq/20260929-031548) |
+| Qwen2.5-VL-7B-Instruct | vllm-bf16+diag-nocache | textvqa_val | exact_match: 0.8500 | 8 | MAXN | 1.4 | 385 / 841 | 643 / 902 | 61 | 24.6 | 29.8 | 10.1 | 30.6 | none | [Qwen2.5-VL-7B-Instruct/textvqa_val/vllm-bf16+diag-nocache/20261006-195153_limit8](Qwen2.5-VL-7B-Instruct/textvqa_val/vllm-bf16+diag-nocache/20261006-195153_limit8) |
 | Qwen2.5-VL-7B-Instruct | vllm-bf16+pil | textvqa_val | exact_match: 0.8384 | 5000 | MAXN | 48.7 | 389 / 468 | 521 / 745 | 61 | 24.9 | 30.7 | 48.2 | 88.8 | none | [Qwen2.5-VL-7B-Instruct/textvqa_val/vllm-bf16+pil/20261006-210304](Qwen2.5-VL-7B-Instruct/textvqa_val/vllm-bf16+pil/20261006-210304) |
 | Qwen2.5-VL-7B-Instruct | vllm-bf16+stages | textvqa_val | exact_match: 0.8380 | 5000 | MAXN | 68.1 | 394 / 482 | 529 / 748 | 61 | 24.7 | 29.4 | 35.3 | 68.9 | none | [Qwen2.5-VL-7B-Instruct/textvqa_val/vllm-bf16+stages/20261006-195358](Qwen2.5-VL-7B-Instruct/textvqa_val/vllm-bf16+stages/20261006-195358) |
+| Qwen2.5-VL-7B-Instruct | vllm-bf16 | textvqa_val | exact_match: 0.8500 | 8 | MAXN | 1.5 | 456 / 998 | 749 / 1059 | 62 | 23.3 | 30.4 | 8.2 | 24.6 | none | [Qwen2.5-VL-7B-Instruct/textvqa_val/vllm-bf16/20260928-215219_limit8](Qwen2.5-VL-7B-Instruct/textvqa_val/vllm-bf16/20260928-215219_limit8) |
 | Qwen2.5-VL-7B-Instruct | vllm-bf16 | textvqa_val | exact_match: 0.8384 | 5000 | MAXN | 74.6 | 456 / 547 | 596 / 819 | 63 | 25.6 | 30.9 | 32.4 | 62.3 | none | [Qwen2.5-VL-7B-Instruct/textvqa_val/vllm-bf16/20260929-020010](Qwen2.5-VL-7B-Instruct/textvqa_val/vllm-bf16/20260929-020010) |
 | Qwen2.5-VL-7B-Instruct | vllm-fp8+marlin | textvqa_val | exact_match: 0.8374 | 5000 | MAXN | 84.8 | 681 / 840 | 742 / 963 | 32 | 19.9 | 25.9 | 38.7 | 72.5 | none | [Qwen2.5-VL-7B-Instruct/textvqa_val/vllm-fp8+marlin/20261005-202223](Qwen2.5-VL-7B-Instruct/textvqa_val/vllm-fp8+marlin/20261005-202223) |
 | Qwen2.5-VL-7B-Instruct | vllm-fp8+torch-stages | textvqa_val | exact_match: 0.8381 | 5000 | MAXN | 58.2 | 361 / 443 | 435 / 575 | 33 | 26.4 | 31.7 | 32.4 | 63.2 | none | [Qwen2.5-VL-7B-Instruct/textvqa_val/vllm-fp8+torch-stages/20261006-155337](Qwen2.5-VL-7B-Instruct/textvqa_val/vllm-fp8+torch-stages/20261006-155337) |
@@ -175,9 +357,20 @@ Medians per sample. Preprocess = client-side prompt and image preparation; visio
 | Qwen2.5-1.5B-Instruct | llamacpp-q8_0 | gsm8k_jetson | 3 | - | 111 | 118 / 130 | 4821 | 150.8 | 109 | 0.66 | 102.4 | server log |
 | Qwen2.5-1.5B-Instruct | llamacpp-q8_0 | gsm8k_jetson | 3 | - | 111 | 118 / 130 | 4837 | 150.8 | 108 | 0.66 | 102.6 | server log |
 | Qwen2.5-1.5B-Instruct | trt_edgellm-fp16 | gsm8k_jetson | - | - | 28 | ~28 (avg) | - | 152.3 | 76 | 0.49 | 130.0 | runner profile (GPU time) |
+| Qwen2.5-1.5B-Instruct | trt_edgellm-fp16 | gsm8k_jetson | - | - | 28 | ~28 (avg) | - | 127.9 | 76 | 0.45 | 83.8 | runner profile (GPU time) |
 | Qwen2.5-1.5B-Instruct | trt_edgellm-fp8 | gsm8k_jetson | - | - | 21 | ~22 (avg) | - | 152.2 | 119 | 0.77 | 87.8 | runner profile (GPU time) |
 | Qwen2.5-1.5B-Instruct | trt_edgellm-fp8 | gsm8k_jetson | - | - | 22 | ~22 (avg) | - | 152.2 | 119 | 0.76 | 87.7 | runner profile (GPU time) |
+| Qwen2.5-1.5B-Instruct | trt_edgellm-fp8 | gsm8k_jetson | - | - | 21 | ~21 (avg) | - | 169.9 | 119 | 0.51 | 73.3 | runner profile (GPU time) |
+| Qwen2.5-1.5B-Instruct | trt_edgellm-fp8_kv | gsm8k_jetson | - | - | 21 | ~21 (avg) | - | 104.6 | 119 | 0.73 | 45.4 | runner profile (GPU time) |
+| Qwen2.5-1.5B-Instruct | trt_edgellm-fp8_lmhead | gsm8k_jetson | - | - | 20 | ~21 (avg) | - | 200.8 | 134 | 0.49 | 75.4 | runner profile (GPU time) |
 | Qwen2.5-1.5B-Instruct | trt_edgellm-int4_awq | gsm8k_jetson | - | - | 54 | ~56 (avg) | - | 296.8 | 169 | 0.55 | 127.3 | runner profile (GPU time) |
+| Qwen2.5-1.5B-Instruct | trt_edgellm-int4_awq | gsm8k_jetson | - | - | 54 | ~54 (avg) | - | 302.8 | 171 | 0.40 | 106.1 | runner profile (GPU time) |
+| Qwen2.5-1.5B-Instruct | trt_edgellm-int4_awq_lmhead | gsm8k_jetson | - | - | 52 | ~53 (avg) | - | 512.0 | 220 | 0.34 | 123.2 | runner profile (GPU time) |
+| Qwen2.5-1.5B-Instruct | trt_edgellm-int4_awq_qwen_v1 | gsm8k_jetson | - | - | 75 | ~75 (avg) | - | 346.2 | 173 | 0.42 | 98.9 | runner profile (GPU time) |
+| Qwen2.5-1.5B-Instruct | trt_edgellm-int4_awq_taskcal | gsm8k_jetson | - | - | 54 | ~54 (avg) | - | 111.4 | 171 | 0.91 | 35.0 | runner profile (GPU time) |
+| Qwen2.5-1.5B-Instruct | trt_edgellm-int4_gptq_qwen | gsm8k_jetson | - | - | 57 | ~58 (avg) | - | 116.0 | 169 | 0.88 | 36.4 | runner profile (GPU time) |
+| Qwen2.5-1.5B-Instruct | trt_edgellm-int8_sq | gsm8k_jetson | - | - | 22 | ~22 (avg) | - | 284.9 | 116 | 0.30 | 142.2 | runner profile (GPU time) |
+| Qwen2.5-1.5B-Instruct | trt_edgellm-nvfp4 | gsm8k_jetson | - | - | 16 | ~16 (avg) | - | 512.0 | 159 | 0.25 | 170.1 | runner profile (GPU time) |
 | Qwen2.5-1.5B-Instruct | vllm-awq | gsm8k_jetson | 4 | - | 64 | 64 / 69 | 3075 | 164.5 | 170 | 0.92 | 69.6 | TTFT (text only) |
 | Qwen2.5-1.5B-Instruct | vllm-bf16 | gsm8k_jetson | 4 | - | 36 | 36 / 43 | 5792 | 150.7 | 75 | 0.48 | 126.9 | TTFT (text only) |
 | Qwen2.5-1.5B-Instruct | vllm-fp8 | gsm8k_jetson | 4 | - | 36 | 36 / 42 | 4327 | 152.0 | 119 | 0.74 | 79.0 | TTFT (text only) |
@@ -187,138 +380,309 @@ Medians per sample. Preprocess = client-side prompt and image preparation; visio
 | Qwen2.5-1.5B-Instruct | llamacpp-q4_k_m | ifeval | 0 | - | 19 | 24 / 36 | 9700 | 329.4 | 133 | 0.40 | 161.7 | server log |
 | Qwen2.5-1.5B-Instruct | llamacpp-q8_0 | ifeval | 0 | - | 20 | 25 / 35 | 11766 | 321.1 | 110 | 0.34 | 200.6 | server log |
 | Qwen2.5-1.5B-Instruct | trt_edgellm-fp16 | ifeval | - | - | 17 | ~17 (avg) | - | 327.7 | 76 | 0.23 | 271.2 | runner profile (GPU time) |
+| Qwen2.5-1.5B-Instruct | trt_edgellm-fp16 | ifeval | - | - | 17 | ~17 (avg) | - | 450.9 | 76 | 0.14 | 355.4 | runner profile (GPU time) |
 | Qwen2.5-1.5B-Instruct | trt_edgellm-fp8 | ifeval | - | - | 14 | ~14 (avg) | - | 326.5 | 121 | 0.37 | 180.2 | runner profile (GPU time) |
+| Qwen2.5-1.5B-Instruct | trt_edgellm-fp8 | ifeval | - | - | 14 | ~14 (avg) | - | 216.6 | 121 | 0.38 | 108.9 | runner profile (GPU time) |
 | Qwen2.5-1.5B-Instruct | trt_edgellm-int4_awq | ifeval | - | - | 15 | ~15 (avg) | - | 427.1 | 172 | 0.40 | 172.8 | runner profile (GPU time) |
+| Qwen2.5-1.5B-Instruct | trt_edgellm-int4_awq | ifeval | - | - | 15 | ~15 (avg) | - | 493.2 | 172 | 0.28 | 167.5 | runner profile (GPU time) |
+| Qwen2.5-1.5B-Instruct | trt_edgellm-int8_sq | ifeval | - | - | 14 | ~14 (avg) | - | 487.9 | 117 | 0.20 | 236.8 | runner profile (GPU time) |
+| Qwen2.5-1.5B-Instruct | trt_edgellm-nvfp4 | ifeval | - | - | 10 | ~10 (avg) | - | 1280.0 | 160 | 0.11 | 471.7 | runner profile (GPU time) |
 | Qwen2.5-1.5B-Instruct | vllm-awq | ifeval | 1 | - | 16 | 16 / 21 | 7555 | 389.0 | 172 | 0.42 | 150.0 | TTFT (text only) |
 | Qwen2.5-1.5B-Instruct | vllm-bf16 | ifeval | 1 | - | 28 | 28 / 30 | 17072 | 322.1 | 75 | 0.23 | 259.7 | TTFT (text only) |
 | Qwen2.5-1.5B-Instruct | vllm-fp8 | ifeval | 1 | - | 18 | 18 / 20 | 10739 | 346.4 | 120 | 0.34 | 169.5 | TTFT (text only) |
+| Qwen2.5-1.5B-Instruct | hf-bf16 | length_sweep_128 | 2 | - | 29 | 29 / 302 | 6831 | 256.0 | 39 | 0.13 | 254.3 | TTFT (text only) |
 | Qwen2.5-1.5B-Instruct | hf-bf16 | length_sweep_128 | 2 | - | 29 | 29 / 312 | 6917 | 256.0 | 39 | 0.15 | 274.2 | TTFT (text only) |
+| Qwen2.5-1.5B-Instruct | llamacpp-f16 | length_sweep_128 | 1 | - | 35 | 40 / 355 | 4283 | 256.0 | 65 | 0.23 | 186.7 | server log |
 | Qwen2.5-1.5B-Instruct | llamacpp-f16 | length_sweep_128 | 1 | - | 35 | 40 / 349 | 4273 | 256.0 | 65 | 0.25 | 235.6 | server log |
+| Qwen2.5-1.5B-Instruct | llamacpp-q8_0 | length_sweep_128 | 1 | - | 25 | 30 / 292 | 2635 | 256.0 | 110 | 0.37 | 101.7 | server log |
 | Qwen2.5-1.5B-Instruct | llamacpp-q8_0 | length_sweep_128 | 1 | - | 25 | 30 / 293 | 2644 | 256.0 | 110 | 0.41 | 129.1 | server log |
+| Qwen2.5-1.5B-Instruct | trt_edgellm-fp16 | length_sweep_128 | - | - | 17 | ~17 (avg) | - | 256.0 | 77 | 0.21 | 189.1 | runner profile (GPU time) |
 | Qwen2.5-1.5B-Instruct | trt_edgellm-fp16 | length_sweep_128 | - | - | 17 | ~17 (avg) | - | 256.0 | 77 | 0.27 | 191.1 | runner profile (GPU time) |
+| Qwen2.5-1.5B-Instruct | trt_edgellm-fp8 | length_sweep_128 | - | - | 14 | ~14 (avg) | - | 256.0 | 121 | 0.31 | 115.7 | runner profile (GPU time) |
 | Qwen2.5-1.5B-Instruct | trt_edgellm-fp8 | length_sweep_128 | - | - | 14 | ~14 (avg) | - | 256.0 | 121 | 0.42 | 119.2 | runner profile (GPU time) |
+| Qwen2.5-1.5B-Instruct | vllm-bf16 | length_sweep_128 | 1 | - | 18 | 18 / 858 | 4217 | 256.0 | 76 | 0.08 | 381.3 | TTFT (text only) |
 | Qwen2.5-1.5B-Instruct | vllm-bf16 | length_sweep_128 | 1 | - | 18 | 18 / 885 | 4261 | 256.0 | 76 | 0.18 | 239.3 | TTFT (text only) |
+| Qwen2.5-1.5B-Instruct | vllm-fp8 | length_sweep_128 | 1 | - | 14 | 14 / 969 | 3097 | 256.0 | 120 | 0.08 | 332.2 | TTFT (text only) |
 | Qwen2.5-1.5B-Instruct | vllm-fp8 | length_sweep_128 | 1 | - | 14 | 14 / 974 | 3103 | 228.1 | 120 | 0.23 | 155.8 | TTFT (text only) |
+| Qwen2.5-1.5B-Instruct | hf-bf16 | length_sweep_2048 | 6 | - | 110 | 110 / 373 | 7132 | 256.0 | 38 | 0.13 | 276.5 | TTFT (text only) |
 | Qwen2.5-1.5B-Instruct | hf-bf16 | length_sweep_2048 | 6 | - | 111 | 111 / 374 | 7334 | 256.0 | 37 | 0.14 | 301.8 | TTFT (text only) |
+| Qwen2.5-1.5B-Instruct | llamacpp-f16 | length_sweep_2048 | 1 | - | 233 | 241 / 554 | 4540 | 256.0 | 64 | 0.22 | 204.0 | server log |
 | Qwen2.5-1.5B-Instruct | llamacpp-f16 | length_sweep_2048 | 1 | - | 233 | 240 / 541 | 4533 | 256.0 | 64 | 0.23 | 257.7 | server log |
+| Qwen2.5-1.5B-Instruct | llamacpp-q8_0 | length_sweep_2048 | 1 | - | 300 | 307 / 568 | 2969 | 256.0 | 106 | 0.32 | 117.6 | server log |
 | Qwen2.5-1.5B-Instruct | llamacpp-q8_0 | length_sweep_2048 | 1 | - | 299 | 306 / 567 | 2954 | 256.0 | 107 | 0.36 | 152.5 | server log |
+| Qwen2.5-1.5B-Instruct | trt_edgellm-fp16 | length_sweep_2048 | - | - | 63 | ~63 (avg) | - | 256.0 | 74 | 0.20 | 194.1 | runner profile (GPU time) |
 | Qwen2.5-1.5B-Instruct | trt_edgellm-fp16 | length_sweep_2048 | - | - | 63 | ~63 (avg) | - | 256.0 | 74 | 0.26 | 201.0 | runner profile (GPU time) |
+| Qwen2.5-1.5B-Instruct | trt_edgellm-fp8 | length_sweep_2048 | - | - | 46 | ~46 (avg) | - | 256.0 | 115 | 0.29 | 121.6 | runner profile (GPU time) |
 | Qwen2.5-1.5B-Instruct | trt_edgellm-fp8 | length_sweep_2048 | - | - | 46 | ~46 (avg) | - | 256.0 | 115 | 0.39 | 127.9 | runner profile (GPU time) |
+| Qwen2.5-1.5B-Instruct | vllm-bf16 | length_sweep_2048 | 1 | - | 83 | 83 / 938 | 4366 | 256.0 | 74 | 0.08 | 393.1 | TTFT (text only) |
 | Qwen2.5-1.5B-Instruct | vllm-bf16 | length_sweep_2048 | 1 | - | 82 | 82 / 927 | 4358 | 256.0 | 74 | 0.17 | 250.5 | TTFT (text only) |
+| Qwen2.5-1.5B-Instruct | vllm-fp8 | length_sweep_2048 | 1 | - | 89 | 89 / 1048 | 3232 | 256.0 | 117 | 0.08 | 343.8 | TTFT (text only) |
 | Qwen2.5-1.5B-Instruct | vllm-fp8 | length_sweep_2048 | 1 | - | 89 | 89 / 1049 | 3236 | 256.0 | 117 | 0.21 | 180.9 | TTFT (text only) |
+| Qwen2.5-1.5B-Instruct | hf-bf16 | length_sweep_512 | 2 | - | 39 | 39 / 317 | 7096 | 256.0 | 38 | 0.13 | 262.4 | TTFT (text only) |
 | Qwen2.5-1.5B-Instruct | hf-bf16 | length_sweep_512 | 2 | - | 38 | 38 / 302 | 6961 | 256.0 | 39 | 0.15 | 273.1 | TTFT (text only) |
+| Qwen2.5-1.5B-Instruct | llamacpp-f16 | length_sweep_512 | 1 | - | 59 | 65 / 386 | 4320 | 256.0 | 65 | 0.23 | 189.4 | server log |
 | Qwen2.5-1.5B-Instruct | llamacpp-f16 | length_sweep_512 | 1 | - | 59 | 64 / 367 | 4303 | 256.0 | 65 | 0.24 | 237.7 | server log |
+| Qwen2.5-1.5B-Instruct | llamacpp-q8_0 | length_sweep_512 | 1 | - | 75 | 81 / 342 | 2687 | 256.0 | 109 | 0.36 | 103.3 | server log |
 | Qwen2.5-1.5B-Instruct | llamacpp-q8_0 | length_sweep_512 | 1 | - | 74 | 80 / 339 | 2687 | 256.0 | 109 | 0.40 | 132.7 | server log |
+| Qwen2.5-1.5B-Instruct | trt_edgellm-fp16 | length_sweep_512 | - | - | 22 | ~22 (avg) | - | 256.0 | 76 | 0.21 | 188.8 | runner profile (GPU time) |
 | Qwen2.5-1.5B-Instruct | trt_edgellm-fp16 | length_sweep_512 | - | - | 22 | ~22 (avg) | - | 256.0 | 76 | 0.27 | 192.3 | runner profile (GPU time) |
+| Qwen2.5-1.5B-Instruct | trt_edgellm-fp8 | length_sweep_512 | - | - | 18 | ~18 (avg) | - | 256.0 | 120 | 0.31 | 115.9 | runner profile (GPU time) |
 | Qwen2.5-1.5B-Instruct | trt_edgellm-fp8 | length_sweep_512 | - | - | 18 | ~18 (avg) | - | 256.0 | 120 | 0.41 | 120.4 | runner profile (GPU time) |
+| Qwen2.5-1.5B-Instruct | vllm-bf16 | length_sweep_512 | 1 | - | 24 | 24 / 852 | 4245 | 256.0 | 75 | 0.08 | 382.3 | TTFT (text only) |
 | Qwen2.5-1.5B-Instruct | vllm-bf16 | length_sweep_512 | 1 | - | 24 | 24 / 868 | 4260 | 256.0 | 75 | 0.18 | 240.5 | TTFT (text only) |
+| Qwen2.5-1.5B-Instruct | vllm-fp8 | length_sweep_512 | 1 | - | 26 | 26 / 995 | 3137 | 256.0 | 119 | 0.08 | 336.4 | TTFT (text only) |
 | Qwen2.5-1.5B-Instruct | vllm-fp8 | length_sweep_512 | 1 | - | 25 | 25 / 978 | 3122 | 256.0 | 119 | 0.22 | 169.9 | TTFT (text only) |
 | Qwen2.5-1.5B-Instruct | hf-bf16 | mmlu_jetson | 10 | - | 39 | 39 / 144 | 936 | 20.6 | 39 | 1.76 | 26.7 | TTFT (text only) |
 | Qwen2.5-1.5B-Instruct | hf-bf16 | mmlu_jetson | 10 | - | 39 | 39 / 144 | 930 | 20.6 | 40 | 1.78 | 26.2 | TTFT (text only) |
+| Qwen2.5-1.5B-Instruct | llamacpp-f16+cublas-bf16 | mmlu_jetson | 8 | - | 72 | 79 / 348 | 767 | 16.6 | 64 | 2.84 | 23.4 | server log |
+| Qwen2.5-1.5B-Instruct | llamacpp-f16+cublas-f32 | mmlu_jetson | 8 | - | 96 | 102 / 490 | 886 | 16.5 | 64 | 2.56 | 26.2 | server log |
 | Qwen2.5-1.5B-Instruct | llamacpp-f16 | mmlu_jetson | 8 | - | 85 | 91 / 342 | 722 | 17.1 | 64 | 2.70 | 25.7 | server log |
 | Qwen2.5-1.5B-Instruct | llamacpp-q4_k_m | mmlu_jetson | 8 | - | 97 | 103 / 458 | 618 | 17.1 | 128 | 3.68 | 16.4 | server log |
 | Qwen2.5-1.5B-Instruct | llamacpp-q8_0 | mmlu_jetson | 8 | - | 90 | 96 / 418 | 602 | 16.5 | 106 | 3.54 | 18.0 | server log |
 | Qwen2.5-1.5B-Instruct | trt_edgellm-fp16 | mmlu_jetson | - | - | 25 | ~30 (avg) | - | 19.8 | 76 | 3.40 | 19.6 | runner profile (GPU time) |
+| Qwen2.5-1.5B-Instruct | trt_edgellm-fp16 | mmlu_jetson | - | - | 25 | ~27 (avg) | - | 19.7 | 76 | 3.37 | 17.2 | runner profile (GPU time) |
 | Qwen2.5-1.5B-Instruct | trt_edgellm-fp8 | mmlu_jetson | - | - | 19 | ~23 (avg) | - | 16.8 | 119 | 5.83 | 11.5 | runner profile (GPU time) |
+| Qwen2.5-1.5B-Instruct | trt_edgellm-fp8 | mmlu_jetson | - | - | 18 | ~21 (avg) | - | 15.8 | 120 | 5.97 | 9.2 | runner profile (GPU time) |
+| Qwen2.5-1.5B-Instruct | trt_edgellm-fp8_kv | mmlu_jetson | - | - | 18 | ~20 (avg) | - | 10.8 | 120 | 8.03 | 6.4 | runner profile (GPU time) |
+| Qwen2.5-1.5B-Instruct | trt_edgellm-fp8_lmhead | mmlu_jetson | - | - | 17 | ~20 (avg) | - | 16.7 | 135 | 6.28 | 8.3 | runner profile (GPU time) |
 | Qwen2.5-1.5B-Instruct | trt_edgellm-int4_awq | mmlu_jetson | - | - | 44 | ~56 (avg) | - | 25.2 | 171 | 4.67 | 15.5 | runner profile (GPU time) |
+| Qwen2.5-1.5B-Instruct | trt_edgellm-int4_awq | mmlu_jetson | - | - | 44 | ~50 (avg) | - | 26.2 | 172 | 4.56 | 13.4 | runner profile (GPU time) |
+| Qwen2.5-1.5B-Instruct | trt_edgellm-int4_awq_lmhead | mmlu_jetson | - | - | 42 | ~48 (avg) | - | 32.0 | 224 | 4.78 | 12.1 | runner profile (GPU time) |
+| Qwen2.5-1.5B-Instruct | trt_edgellm-int4_awq_qwen_v1 | mmlu_jetson | - | - | 57 | ~66 (avg) | - | 26.2 | 175 | 4.29 | 14.1 | runner profile (GPU time) |
+| Qwen2.5-1.5B-Instruct | trt_edgellm-int4_awq_taskcal | mmlu_jetson | - | - | 43 | ~50 (avg) | - | 19.3 | 172 | 5.61 | 10.6 | runner profile (GPU time) |
+| Qwen2.5-1.5B-Instruct | trt_edgellm-int4_gptq_qwen | mmlu_jetson | - | - | 47 | ~53 (avg) | - | 15.2 | 171 | 6.31 | 9.4 | runner profile (GPU time) |
+| Qwen2.5-1.5B-Instruct | trt_edgellm-int8_sq | mmlu_jetson | - | - | 19 | ~21 (avg) | - | 25.2 | 117 | 3.99 | 13.7 | runner profile (GPU time) |
+| Qwen2.5-1.5B-Instruct | trt_edgellm-nvfp4 | mmlu_jetson | - | - | 14 | ~16 (avg) | - | 32.0 | 161 | 4.30 | 12.2 | runner profile (GPU time) |
 | Qwen2.5-1.5B-Instruct | vllm-awq | mmlu_jetson | 8 | - | 49 | 49 / 223 | 345 | 7.8 | 165 | 8.17 | 8.8 | TTFT (text only) |
 | Qwen2.5-1.5B-Instruct | vllm-bf16 | mmlu_jetson | 8 | - | 27 | 27 / 112 | 507 | 20.2 | 75 | 3.23 | 20.2 | TTFT (text only) |
 | Qwen2.5-1.5B-Instruct | vllm-fp8 | mmlu_jetson | 8 | - | 28 | 28 / 128 | 354 | 18.6 | 118 | 4.92 | 12.6 | TTFT (text only) |
+| Qwen2.5-3B-Instruct | hf-bf16 | gsm8k_jetson | 10 | - | 64 | 64 / 272 | 10567 | 40.4 | 25 | 0.63 | 76.3 | TTFT (text only) |
+| Qwen2.5-3B-Instruct | hf-bf16 | ifeval | 10 | - | 64 | 64 / 272 | 10567 | 40.4 | 25 | 0.63 | 76.3 | TTFT (text only) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson | 10 | - | 64 | 64 / 272 | 10567 | 40.4 | 25 | 0.63 | 76.3 | TTFT (text only) |
+| Qwen2.5-3B-Instruct | hf-bf16 | gsm8k_jetson | 11 | - | 67 | 67 / 270 | 10722 | 22.6 | 25 | 1.16 | 42.5 | TTFT (text only) |
+| Qwen2.5-3B-Instruct | hf-bf16 | ifeval | 11 | - | 67 | 67 / 270 | 10722 | 22.6 | 25 | 1.16 | 42.5 | TTFT (text only) |
+| Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson | 11 | - | 67 | 67 / 270 | 10722 | 22.6 | 25 | 1.16 | 42.5 | TTFT (text only) |
+| Qwen2.5-3B-Instruct | llamacpp-f16 | gsm8k_jetson | 8 | - | 140 | 176 / 641 | 7320 | 16.7 | 38 | 1.91 | 36.7 | server log |
+| Qwen2.5-3B-Instruct | llamacpp-f16 | ifeval | 8 | - | 140 | 176 / 641 | 7320 | 16.7 | 38 | 1.91 | 36.7 | server log |
+| Qwen2.5-3B-Instruct | llamacpp-f16 | mmlu_jetson | 8 | - | 140 | 176 / 641 | 7320 | 16.7 | 38 | 1.91 | 36.7 | server log |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | gsm8k_jetson | - | - | 46 | ~52 (avg) | - | 12.8 | 39 | 1.77 | 41.0 | runner profile (GPU time) |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | ifeval | - | - | 46 | ~52 (avg) | - | 12.8 | 39 | 1.77 | 41.0 | runner profile (GPU time) |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | mmlu_jetson | - | - | 46 | ~52 (avg) | - | 12.8 | 39 | 1.77 | 41.0 | runner profile (GPU time) |
+| Qwen2.5-3B-Instruct | vllm-bf16 | gsm8k_jetson | 9 | - | 57 | 57 / 219 | 6383 | 21.1 | 38 | 1.47 | 37.7 | TTFT (text only) |
+| Qwen2.5-3B-Instruct | vllm-bf16 | ifeval | 9 | - | 57 | 57 / 219 | 6383 | 21.1 | 38 | 1.47 | 37.7 | TTFT (text only) |
+| Qwen2.5-3B-Instruct | vllm-bf16 | mmlu_jetson | 9 | - | 57 | 57 / 219 | 6383 | 21.1 | 38 | 1.47 | 37.7 | TTFT (text only) |
+| Qwen2.5-3B-Instruct | hf-bf16 | gsm8k_jetson | 6 | - | 83 | 83 / 366 | 14850 | 194.0 | 25 | 0.12 | 362.2 | TTFT (text only) |
 | Qwen2.5-3B-Instruct | hf-bf16 | gsm8k_jetson | 6 | - | 82 | 82 / 98 | 19124 | 200.8 | 25 | 0.12 | 390.2 | TTFT (text only) |
+| Qwen2.5-3B-Instruct | llamacpp-f16 | gsm8k_jetson | 4 | - | 200 | 207 / 573 | 7490 | 169.6 | 39 | 0.21 | 260.8 | server log |
 | Qwen2.5-3B-Instruct | llamacpp-f16 | gsm8k_jetson | 3 | - | 191 | 198 / 207 | 12148 | 196.6 | 39 | 0.19 | 387.7 | server log |
+| Qwen2.5-3B-Instruct | llamacpp-q4_k_m | gsm8k_jetson | 4 | - | 240 | 246 / 515 | 3992 | 210.4 | 80 | 0.32 | 157.1 | server log |
 | Qwen2.5-3B-Instruct | llamacpp-q4_k_m | gsm8k_jetson | 3 | - | 239 | 245 / 269 | 6595 | 212.2 | 80 | 0.34 | 214.5 | server log |
+| Qwen2.5-3B-Instruct | llamacpp-q8_0 | gsm8k_jetson | 4 | - | 214 | 220 / 495 | 4228 | 157.9 | 65 | 0.35 | 142.3 | server log |
 | Qwen2.5-3B-Instruct | llamacpp-q8_0 | gsm8k_jetson | 3 | - | 213 | 219 / 240 | 7335 | 193.5 | 65 | 0.31 | 236.2 | server log |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | gsm8k_jetson | - | - | 50 | ~52 (avg) | - | 161.5 | 39 | 0.20 | 271.6 | runner profile (GPU time) |
 | Qwen2.5-3B-Instruct | trt_edgellm-fp16 | gsm8k_jetson | - | - | 51 | ~53 (avg) | - | 201.4 | 39 | 0.19 | 394.1 | runner profile (GPU time) |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | gsm8k_jetson | - | - | 50 | ~51 (avg) | - | 161.5 | 39 | 0.20 | 264.4 | runner profile (GPU time) |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp8 | gsm8k_jetson | - | - | 36 | ~37 (avg) | - | 183.6 | 67 | 0.30 | 149.9 | runner profile (GPU time) |
 | Qwen2.5-3B-Instruct | trt_edgellm-fp8 | gsm8k_jetson | - | - | 37 | ~37 (avg) | - | 199.5 | 67 | 0.33 | 196.2 | runner profile (GPU time) |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp8 | gsm8k_jetson | - | - | 36 | ~37 (avg) | - | 183.6 | 67 | 0.30 | 145.4 | runner profile (GPU time) |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp8_kv | gsm8k_jetson | - | - | 36 | ~36 (avg) | - | 178.0 | 68 | 0.30 | 147.2 | runner profile (GPU time) |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp8_lmhead | gsm8k_jetson | - | - | 35 | ~35 (avg) | - | 175.9 | 74 | 0.33 | 130.9 | runner profile (GPU time) |
+| Qwen2.5-3B-Instruct | trt_edgellm-int4_awq | gsm8k_jetson | - | - | 105 | ~106 (avg) | - | 201.0 | 97 | 0.37 | 120.2 | runner profile (GPU time) |
 | Qwen2.5-3B-Instruct | trt_edgellm-int4_awq | gsm8k_jetson | - | - | 105 | ~108 (avg) | - | 211.2 | 97 | 0.44 | 160.7 | runner profile (GPU time) |
+| Qwen2.5-3B-Instruct | trt_edgellm-int4_awq | gsm8k_jetson | - | - | 105 | ~106 (avg) | - | 201.0 | 98 | 0.37 | 116.6 | runner profile (GPU time) |
+| Qwen2.5-3B-Instruct | trt_edgellm-int4_awq_lmhead | gsm8k_jetson | - | - | 103 | ~105 (avg) | - | 512.0 | 119 | 0.19 | 267.7 | runner profile (GPU time) |
+| Qwen2.5-3B-Instruct | trt_edgellm-int4_awq_qwen | gsm8k_jetson | - | - | 103 | ~105 (avg) | - | 512.0 | 98 | 0.16 | 349.1 | runner profile (GPU time) |
+| Qwen2.5-3B-Instruct | trt_edgellm-int4_awq_qwen_v1 | gsm8k_jetson | - | - | 146 | ~148 (avg) | - | 512.0 | 102 | 0.16 | 339.5 | runner profile (GPU time) |
+| Qwen2.5-3B-Instruct | trt_edgellm-int4_awq_taskcal | gsm8k_jetson | - | - | 104 | ~106 (avg) | - | 175.4 | 98 | 0.41 | 103.2 | runner profile (GPU time) |
+| Qwen2.5-3B-Instruct | trt_edgellm-int4_gptq_qwen | gsm8k_jetson | - | - | 111 | ~112 (avg) | - | 205.9 | 97 | 0.37 | 118.7 | runner profile (GPU time) |
+| Qwen2.5-3B-Instruct | trt_edgellm-int8_sq | gsm8k_jetson | - | - | 37 | ~37 (avg) | - | 192.8 | 65 | 0.27 | 160.0 | runner profile (GPU time) |
+| Qwen2.5-3B-Instruct | trt_edgellm-nvfp4 | gsm8k_jetson | - | - | 26 | ~26 (avg) | - | 512.0 | 94 | 0.15 | 315.6 | runner profile (GPU time) |
+| Qwen2.5-3B-Instruct | vllm-awq | gsm8k_jetson | 5 | - | 122 | 122 / 959 | 2568 | 157.2 | 101 | 0.09 | 341.7 | TTFT (text only) |
 | Qwen2.5-3B-Instruct | vllm-awq | gsm8k_jetson | 4 | - | 123 | 123 / 133 | 5021 | 192.9 | 100 | 0.48 | 145.6 | TTFT (text only) |
+| Qwen2.5-3B-Instruct | vllm-bf16 | gsm8k_jetson | 5 | - | 81 | 81 / 907 | 7313 | 164.5 | 38 | 0.11 | 365.3 | TTFT (text only) |
 | Qwen2.5-3B-Instruct | vllm-bf16 | gsm8k_jetson | 4 | - | 78 | 78 / 92 | 12925 | 201.0 | 38 | 0.19 | 332.0 | TTFT (text only) |
+| Qwen2.5-3B-Instruct | vllm-fp8 | gsm8k_jetson | 5 | - | 66 | 66 / 1038 | 4402 | 178.8 | 66 | 0.09 | 362.1 | TTFT (text only) |
 | Qwen2.5-3B-Instruct | vllm-fp8 | gsm8k_jetson | 4 | - | 65 | 65 / 77 | 7879 | 215.9 | 65 | 0.29 | 206.0 | TTFT (text only) |
+| Qwen2.5-3B-Instruct | hf-bf16 | ifeval | 1 | - | 48 | 48 / 339 | 19689 | 212.9 | 25 | 0.11 | 390.2 | TTFT (text only) |
 | Qwen2.5-3B-Instruct | hf-bf16 | ifeval | 1 | - | 44 | 44 / 55 | 51187 | 329.8 | 25 | 0.08 | 614.7 | TTFT (text only) |
+| Qwen2.5-3B-Instruct | llamacpp-f16 | ifeval | 0 | - | 74 | 79 / 392 | 19662 | 215.9 | 40 | 0.17 | 334.4 | server log |
 | Qwen2.5-3B-Instruct | llamacpp-f16 | ifeval | 0 | - | 70 | 75 / 101 | 32449 | 319.0 | 40 | 0.12 | 604.3 | server log |
+| Qwen2.5-3B-Instruct | llamacpp-q4_k_m | ifeval | 0 | - | 35 | 40 / 316 | 6797 | 220.9 | 81 | 0.34 | 151.8 | server log |
 | Qwen2.5-3B-Instruct | llamacpp-q4_k_m | ifeval | 0 | - | 34 | 39 / 63 | 16039 | 352.5 | 81 | 0.23 | 328.6 | server log |
+| Qwen2.5-3B-Instruct | llamacpp-q8_0 | ifeval | 0 | - | 34 | 39 / 317 | 6586 | 142.6 | 66 | 0.41 | 114.0 | server log |
 | Qwen2.5-3B-Instruct | llamacpp-q8_0 | ifeval | 0 | - | 34 | 39 / 60 | 19730 | 311.6 | 66 | 0.21 | 355.7 | server log |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | ifeval | - | - | 31 | ~31 (avg) | - | 211.2 | 39 | 0.14 | 401.5 | runner profile (GPU time) |
 | Qwen2.5-3B-Instruct | trt_edgellm-fp16 | ifeval | - | - | 31 | ~31 (avg) | - | 323.1 | 39 | 0.12 | 622.4 | runner profile (GPU time) |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | ifeval | - | - | 31 | ~31 (avg) | - | 211.2 | 39 | 0.14 | 399.1 | runner profile (GPU time) |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp8 | ifeval | - | - | 21 | ~21 (avg) | - | 582.0 | 67 | 0.10 | 530.6 | runner profile (GPU time) |
 | Qwen2.5-3B-Instruct | trt_edgellm-fp8 | ifeval | - | - | 22 | ~22 (avg) | - | 343.0 | 67 | 0.19 | 333.8 | runner profile (GPU time) |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp8 | ifeval | - | - | 21 | ~21 (avg) | - | 582.0 | 67 | 0.10 | 528.8 | runner profile (GPU time) |
+| Qwen2.5-3B-Instruct | trt_edgellm-int4_awq | ifeval | - | - | 25 | ~25 (avg) | - | 554.6 | 98 | 0.16 | 353.0 | runner profile (GPU time) |
 | Qwen2.5-3B-Instruct | trt_edgellm-int4_awq | ifeval | - | - | 25 | ~25 (avg) | - | 354.5 | 98 | 0.28 | 254.2 | runner profile (GPU time) |
+| Qwen2.5-3B-Instruct | trt_edgellm-int4_awq | ifeval | - | - | 25 | ~25 (avg) | - | 554.6 | 98 | 0.16 | 347.6 | runner profile (GPU time) |
+| Qwen2.5-3B-Instruct | trt_edgellm-int4_awq_qwen | ifeval | - | - | 25 | ~25 (avg) | - | 1280.0 | 98 | 0.07 | 940.2 | runner profile (GPU time) |
+| Qwen2.5-3B-Instruct | trt_edgellm-int8_sq | ifeval | - | - | 22 | ~22 (avg) | - | 644.2 | 65 | 0.09 | 593.5 | runner profile (GPU time) |
+| Qwen2.5-3B-Instruct | trt_edgellm-nvfp4 | ifeval | - | - | 16 | ~16 (avg) | - | 1280.0 | 95 | 0.06 | 858.3 | runner profile (GPU time) |
+| Qwen2.5-3B-Instruct | vllm-awq | ifeval | 1 | - | 29 | 29 / 858 | 12801 | 440.5 | 101 | 0.08 | 469.2 | TTFT (text only) |
 | Qwen2.5-3B-Instruct | vllm-awq | ifeval | 1 | - | 28 | 28 / 38 | 12814 | 320.5 | 101 | 0.30 | 221.4 | TTFT (text only) |
+| Qwen2.5-3B-Instruct | vllm-bf16 | ifeval | 1 | - | 55 | 55 / 906 | 13247 | 208.2 | 38 | 0.10 | 429.2 | TTFT (text only) |
 | Qwen2.5-3B-Instruct | vllm-bf16 | ifeval | 1 | - | 54 | 54 / 56 | 33493 | 326.2 | 38 | 0.12 | 516.4 | TTFT (text only) |
+| Qwen2.5-3B-Instruct | vllm-fp8 | ifeval | 1 | - | 33 | 33 / 962 | 19530 | 336.1 | 66 | 0.10 | 409.5 | TTFT (text only) |
 | Qwen2.5-3B-Instruct | vllm-fp8 | ifeval | 1 | - | 32 | 32 / 36 | 19585 | 348.2 | 66 | 0.19 | 315.5 | TTFT (text only) |
+| Qwen2.5-3B-Instruct | hf-bf16 | length_sweep_128 | 2 | - | 48 | 48 / 348 | 10633 | 256.0 | 25 | 0.08 | 474.7 | TTFT (text only) |
 | Qwen2.5-3B-Instruct | hf-bf16 | length_sweep_128 | 2 | - | 47 | 47 / 321 | 10539 | 256.0 | 25 | 0.09 | 462.3 | TTFT (text only) |
+| Qwen2.5-3B-Instruct | llamacpp-f16 | length_sweep_128 | 1 | - | 75 | 81 / 394 | 6818 | 256.0 | 40 | 0.14 | 356.5 | server log |
 | Qwen2.5-3B-Instruct | llamacpp-f16 | length_sweep_128 | 1 | - | 75 | 81 / 404 | 6822 | 256.0 | 40 | 0.15 | 428.5 | server log |
+| Qwen2.5-3B-Instruct | llamacpp-q8_0 | length_sweep_128 | 1 | - | 44 | 49 / 311 | 4199 | 256.0 | 66 | 0.23 | 196.9 | server log |
 | Qwen2.5-3B-Instruct | llamacpp-q8_0 | length_sweep_128 | 1 | - | 43 | 49 / 311 | 4206 | 256.0 | 66 | 0.25 | 249.0 | server log |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | length_sweep_128 | - | - | 32 | ~32 (avg) | - | 256.0 | 39 | 0.11 | 475.0 | runner profile (GPU time) |
 | Qwen2.5-3B-Instruct | trt_edgellm-fp16 | length_sweep_128 | - | - | 32 | ~32 (avg) | - | 256.0 | 39 | 0.14 | 465.6 | runner profile (GPU time) |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp8 | length_sweep_128 | - | - | 22 | ~22 (avg) | - | 256.0 | 67 | 0.18 | 226.6 | runner profile (GPU time) |
 | Qwen2.5-3B-Instruct | trt_edgellm-fp8 | length_sweep_128 | - | - | 22 | ~22 (avg) | - | 256.0 | 67 | 0.24 | 226.6 | runner profile (GPU time) |
+| Qwen2.5-3B-Instruct | vllm-bf16 | length_sweep_128 | 1 | - | 33 | 33 / 860 | 7504 | 256.0 | 38 | 0.06 | 623.0 | TTFT (text only) |
 | Qwen2.5-3B-Instruct | vllm-bf16 | length_sweep_128 | 1 | - | 33 | 33 / 853 | 7478 | 256.0 | 39 | 0.11 | 433.5 | TTFT (text only) |
+| Qwen2.5-3B-Instruct | vllm-fp8 | length_sweep_128 | 1 | - | 22 | 22 / 978 | 4830 | 256.0 | 66 | 0.07 | 467.4 | TTFT (text only) |
 | Qwen2.5-3B-Instruct | vllm-fp8 | length_sweep_128 | 1 | - | 23 | 23 / 981 | 4841 | 256.0 | 66 | 0.15 | 274.6 | TTFT (text only) |
+| Qwen2.5-3B-Instruct | hf-bf16 | length_sweep_2048 | 6 | - | 212 | 212 / 479 | 10946 | 256.0 | 24 | 0.08 | 490.2 | TTFT (text only) |
 | Qwen2.5-3B-Instruct | hf-bf16 | length_sweep_2048 | 6 | - | 210 | 210 / 483 | 10764 | 256.0 | 25 | 0.09 | 518.9 | TTFT (text only) |
+| Qwen2.5-3B-Instruct | llamacpp-f16 | length_sweep_2048 | 1 | - | 436 | 443 / 755 | 7312 | 256.0 | 39 | 0.14 | 392.9 | server log |
 | Qwen2.5-3B-Instruct | llamacpp-f16 | length_sweep_2048 | 1 | - | 435 | 442 / 754 | 7309 | 256.0 | 39 | 0.14 | 477.3 | server log |
+| Qwen2.5-3B-Instruct | llamacpp-q8_0 | length_sweep_2048 | 1 | - | 571 | 578 / 841 | 4867 | 256.0 | 63 | 0.20 | 232.6 | server log |
 | Qwen2.5-3B-Instruct | llamacpp-q8_0 | length_sweep_2048 | 1 | - | 571 | 578 / 838 | 4889 | 256.0 | 63 | 0.21 | 299.0 | server log |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | length_sweep_2048 | - | - | 129 | ~128 (avg) | - | 256.0 | 38 | 0.11 | 489.9 | runner profile (GPU time) |
 | Qwen2.5-3B-Instruct | trt_edgellm-fp16 | length_sweep_2048 | - | - | 132 | ~132 (avg) | - | 256.0 | 38 | 0.13 | 492.7 | runner profile (GPU time) |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp8 | length_sweep_2048 | - | - | 80 | ~80 (avg) | - | 256.0 | 65 | 0.18 | 235.4 | runner profile (GPU time) |
 | Qwen2.5-3B-Instruct | trt_edgellm-fp8 | length_sweep_2048 | - | - | 79 | ~79 (avg) | - | 256.0 | 65 | 0.23 | 241.4 | runner profile (GPU time) |
+| Qwen2.5-3B-Instruct | vllm-bf16 | length_sweep_2048 | 1 | - | 157 | 157 / 986 | 7706 | 256.0 | 38 | 0.06 | 623.4 | TTFT (text only) |
 | Qwen2.5-3B-Instruct | vllm-bf16 | length_sweep_2048 | 1 | - | 156 | 156 / 1017 | 7720 | 256.0 | 38 | 0.11 | 467.0 | TTFT (text only) |
+| Qwen2.5-3B-Instruct | vllm-fp8 | length_sweep_2048 | 1 | - | 148 | 148 / 1112 | 5041 | 256.0 | 65 | 0.07 | 477.7 | TTFT (text only) |
 | Qwen2.5-3B-Instruct | vllm-fp8 | length_sweep_2048 | 1 | - | 146 | 146 / 1099 | 5028 | 256.0 | 65 | 0.15 | 299.2 | TTFT (text only) |
+| Qwen2.5-3B-Instruct | hf-bf16 | length_sweep_512 | 2 | - | 61 | 61 / 337 | 10658 | 256.0 | 25 | 0.08 | 461.7 | TTFT (text only) |
 | Qwen2.5-3B-Instruct | hf-bf16 | length_sweep_512 | 2 | - | 60 | 60 / 333 | 10560 | 256.0 | 25 | 0.09 | 479.0 | TTFT (text only) |
+| Qwen2.5-3B-Instruct | llamacpp-f16 | length_sweep_512 | 1 | - | 109 | 117 / 426 | 6864 | 256.0 | 40 | 0.14 | 357.6 | server log |
 | Qwen2.5-3B-Instruct | llamacpp-f16 | length_sweep_512 | 1 | - | 109 | 115 / 422 | 6851 | 256.0 | 40 | 0.15 | 438.8 | server log |
+| Qwen2.5-3B-Instruct | llamacpp-q8_0 | length_sweep_512 | 1 | - | 142 | 148 / 428 | 4341 | 256.0 | 65 | 0.22 | 205.0 | server log |
 | Qwen2.5-3B-Instruct | llamacpp-q8_0 | length_sweep_512 | 1 | - | 142 | 148 / 427 | 4343 | 256.0 | 65 | 0.24 | 258.6 | server log |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | length_sweep_512 | - | - | 41 | ~41 (avg) | - | 256.0 | 39 | 0.11 | 472.1 | runner profile (GPU time) |
 | Qwen2.5-3B-Instruct | trt_edgellm-fp16 | length_sweep_512 | - | - | 41 | ~41 (avg) | - | 256.0 | 39 | 0.14 | 474.2 | runner profile (GPU time) |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp8 | length_sweep_512 | - | - | 30 | ~30 (avg) | - | 256.0 | 67 | 0.18 | 225.0 | runner profile (GPU time) |
 | Qwen2.5-3B-Instruct | trt_edgellm-fp8 | length_sweep_512 | - | - | 30 | ~30 (avg) | - | 256.0 | 67 | 0.23 | 230.5 | runner profile (GPU time) |
+| Qwen2.5-3B-Instruct | vllm-bf16 | length_sweep_512 | 1 | - | 47 | 47 / 898 | 7550 | 256.0 | 38 | 0.06 | 618.8 | TTFT (text only) |
 | Qwen2.5-3B-Instruct | vllm-bf16 | length_sweep_512 | 1 | - | 43 | 43 / 872 | 7522 | 256.0 | 38 | 0.11 | 444.7 | TTFT (text only) |
+| Qwen2.5-3B-Instruct | vllm-fp8 | length_sweep_512 | 1 | - | 41 | 41 / 1025 | 4905 | 256.0 | 66 | 0.07 | 467.3 | TTFT (text only) |
 | Qwen2.5-3B-Instruct | vllm-fp8 | length_sweep_512 | 1 | - | 40 | 40 / 1027 | 4917 | 256.0 | 66 | 0.15 | 282.2 | TTFT (text only) |
 | Qwen2.5-3B-Instruct | hf-bf16 | mmlu_jetson | 11 | - | 71 | 71 / 268 | 1422 | 13.1 | 25 | 1.71 | 31.6 | TTFT (text only) |
 | Qwen2.5-3B-Instruct | llamacpp-f16 | mmlu_jetson | 8 | - | 173 | 179 / 637 | 1105 | 7.3 | 38 | 2.68 | 27.4 | server log |
 | Qwen2.5-3B-Instruct | llamacpp-q4_k_m | mmlu_jetson | 8 | - | 187 | 193 / 878 | 998 | 10.0 | 76 | 2.65 | 23.8 | server log |
 | Qwen2.5-3B-Instruct | llamacpp-q8_0 | mmlu_jetson | 8 | - | 169 | 175 / 784 | 919 | 6.7 | 61 | 3.05 | 21.4 | server log |
 | Qwen2.5-3B-Instruct | trt_edgellm-fp16 | mmlu_jetson | - | - | 46 | ~58 (avg) | - | 12.8 | 39 | 2.65 | 30.3 | runner profile (GPU time) |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | mmlu_jetson | - | - | 45 | ~52 (avg) | - | 12.8 | 39 | 2.65 | 26.7 | runner profile (GPU time) |
 | Qwen2.5-3B-Instruct | trt_edgellm-fp8 | mmlu_jetson | - | - | 33 | ~38 (avg) | - | 16.5 | 66 | 3.47 | 19.8 | runner profile (GPU time) |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp8 | mmlu_jetson | - | - | 32 | ~35 (avg) | - | 15.8 | 67 | 3.58 | 16.9 | runner profile (GPU time) |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp8_kv | mmlu_jetson | - | - | 32 | ~35 (avg) | - | 26.1 | 68 | 2.34 | 26.9 | runner profile (GPU time) |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp8_lmhead | mmlu_jetson | - | - | 31 | ~34 (avg) | - | 14.5 | 74 | 4.17 | 14.7 | runner profile (GPU time) |
 | Qwen2.5-3B-Instruct | trt_edgellm-int4_awq | mmlu_jetson | - | - | 86 | ~108 (avg) | - | 17.3 | 97 | 3.44 | 22.7 | runner profile (GPU time) |
+| Qwen2.5-3B-Instruct | trt_edgellm-int4_awq | mmlu_jetson | - | - | 84 | ~96 (avg) | - | 16.8 | 98 | 3.57 | 19.0 | runner profile (GPU time) |
+| Qwen2.5-3B-Instruct | trt_edgellm-int4_awq_lmhead | mmlu_jetson | - | - | 83 | ~94 (avg) | - | 32.0 | 120 | 2.66 | 25.1 | runner profile (GPU time) |
+| Qwen2.5-3B-Instruct | trt_edgellm-int4_awq_qwen_v1 | mmlu_jetson | - | - | 113 | ~130 (avg) | - | 32.0 | 103 | 2.20 | 31.8 | runner profile (GPU time) |
+| Qwen2.5-3B-Instruct | trt_edgellm-int4_awq_taskcal | mmlu_jetson | - | - | 85 | ~96 (avg) | - | 23.7 | 99 | 2.86 | 23.9 | runner profile (GPU time) |
+| Qwen2.5-3B-Instruct | trt_edgellm-int4_gptq_qwen | mmlu_jetson | - | - | 90 | ~102 (avg) | - | 4.4 | 98 | 6.30 | 10.7 | runner profile (GPU time) |
+| Qwen2.5-3B-Instruct | trt_edgellm-int8_sq | mmlu_jetson | - | - | 32 | ~36 (avg) | - | 3.1 | 65 | 10.98 | 4.6 | runner profile (GPU time) |
+| Qwen2.5-3B-Instruct | trt_edgellm-nvfp4 | mmlu_jetson | - | - | 24 | ~26 (avg) | - | 32.0 | 95 | 2.65 | 21.7 | runner profile (GPU time) |
 | Qwen2.5-3B-Instruct | vllm-awq | mmlu_jetson | 8 | - | 92 | 92 / 434 | 479 | 4.5 | 98 | 5.70 | 14.7 | TTFT (text only) |
 | Qwen2.5-3B-Instruct | vllm-bf16 | mmlu_jetson | 8 | - | 58 | 58 / 219 | 950 | 13.1 | 38 | 2.46 | 27.1 | TTFT (text only) |
 | Qwen2.5-3B-Instruct | vllm-fp8 | mmlu_jetson | 8 | - | 49 | 49 / 209 | 627 | 13.8 | 65 | 3.56 | 18.4 | TTFT (text only) |
+| Qwen2.5-VL-3B-Instruct | hf-bf16 | gqa | 24 | - | - | 298 / 2761 | 2971 | 2.2 | 8 | 0.06 | 460.8 | - |
 | Qwen2.5-VL-3B-Instruct | hf-bf16 | gqa | 38 | - | - | 199 / 252 | 370 | 2.3 | 18 | 3.26 | 16.4 | - |
 | Qwen2.5-VL-3B-Instruct | trt_edgellm-fp16 | gqa | - | 30 | 37 | ~69 (avg) | - | 2.3 | 38 | 5.08 | 11.7 | runner profile (GPU time) |
 | Qwen2.5-VL-3B-Instruct | trt_edgellm-fp8 | gqa | - | 30 | 24 | ~56 (avg) | - | 2.3 | 65 | 6.23 | 8.7 | runner profile (GPU time) |
 | Qwen2.5-VL-3B-Instruct | trt_edgellm-int4_awq | gqa | - | 30 | 70 | ~97 (avg) | - | 2.2 | 92 | 5.12 | 11.6 | runner profile (GPU time) |
 | Qwen2.5-VL-3B-Instruct | vllm-awq | gqa | 84 | - | - | 217 / 290 | 305 | 2.2 | 87 | 3.11 | 15.5 | - |
 | Qwen2.5-VL-3B-Instruct | vllm-bf16 | gqa | 83 | - | - | 185 / 228 | 283 | 2.3 | 36 | 3.25 | 15.6 | - |
+| Qwen2.5-VL-3B-Instruct | hf-bf16 | mme | 14 | - | - | 208 / 1402 | 1508 | 2.0 | 14 | 0.69 | 28.1 | - |
 | Qwen2.5-VL-3B-Instruct | hf-bf16 | mme | 22 | - | - | 241 / 933 | 998 | 2.0 | 17 | 1.89 | 31.1 | - |
+| Qwen2.5-VL-3B-Instruct | hf-bf16 | mme | 18 | - | - | 203 / 1255 | 1358 | 2.0 | 14 | 0.70 | 24.9 | - |
+| Qwen2.5-VL-3B-Instruct | llamacpp-q4_k_m | mme | 7 | - | - | 318 / 729 | 746 | 2.0 | 57 | 1.76 | 11.9 | - |
+| Qwen2.5-VL-3B-Instruct | llamacpp-q8_0 | mme | 7 | - | - | 309 / 750 | 772 | 2.0 | 52 | 1.75 | 12.2 | - |
+| Qwen2.5-VL-3B-Instruct | llamacpp-q8_0 | mme | 7 | - | - | 308 / 753 | 777 | 2.0 | 52 | 1.79 | 11.0 | - |
+| Qwen2.5-VL-3B-Instruct | trt_edgellm-fp16 | mme | - | 32 | 48 | ~75 (avg) | - | 2.0 | 28 | 1.34 | 13.1 | runner profile (GPU time) |
+| Qwen2.5-VL-3B-Instruct | trt_edgellm-fp16 | mme | - | 31 | 49 | ~77 (avg) | - | 2.0 | 27 | 1.30 | 11.9 | runner profile (GPU time) |
 | Qwen2.5-VL-3B-Instruct | trt_edgellm-fp16 | mme | - | 42 | 44 | ~146 (avg) | - | 2.0 | 37 | 1.41 | 27.8 | runner profile (GPU time) |
+| Qwen2.5-VL-3B-Instruct | trt_edgellm-fp8 | mme | - | 31 | 36 | ~67 (avg) | - | 2.0 | 43 | 1.80 | 9.0 | runner profile (GPU time) |
 | Qwen2.5-VL-3B-Instruct | trt_edgellm-fp8 | mme | - | 41 | 30 | ~121 (avg) | - | 2.0 | 64 | 1.49 | 23.8 | runner profile (GPU time) |
+| Qwen2.5-VL-3B-Instruct | trt_edgellm-int4_awq+qwen-awq-ckpt | mme | - | 27 | 63 | ~89 (avg) | - | 6.6 | 71 | 1.60 | 11.3 | runner profile (GPU time) |
+| Qwen2.5-VL-3B-Instruct | trt_edgellm-int4_awq | mme | - | 28 | 64 | ~92 (avg) | - | 2.0 | 69 | 1.83 | 10.5 | runner profile (GPU time) |
 | Qwen2.5-VL-3B-Instruct | trt_edgellm-int4_awq | mme | - | 42 | 82 | ~211 (avg) | - | 2.0 | 90 | 1.32 | 31.4 | runner profile (GPU time) |
+| Qwen2.5-VL-3B-Instruct | trt_edgellm-nvfp4 | mme | - | 24 | 21 | ~46 (avg) | - | 14.4 | 71 | 1.39 | 13.5 | runner profile (GPU time) |
+| Qwen2.5-VL-3B-Instruct | vllm-awq | mme | 10 | - | - | 167 / 5411 | 5427 | 2.0 | 64 | 0.08 | 257.5 | - |
 | Qwen2.5-VL-3B-Instruct | vllm-awq | mme | 108 | - | - | 282 / 1830 | 1843 | 2.0 | 76 | 0.89 | 39.0 | - |
+| Qwen2.5-VL-3B-Instruct | vllm-awq | mme | 10 | - | - | 151 / 5331 | 5344 | 2.0 | 68 | 0.10 | 207.8 | - |
+| Qwen2.5-VL-3B-Instruct | vllm-bf16 | mme | 10 | - | - | 173 / 4625 | 4671 | 2.0 | 24 | 0.09 | 224.3 | - |
 | Qwen2.5-VL-3B-Instruct | vllm-bf16 | mme | 109 | - | - | 241 / 1667 | 1713 | 2.0 | 23 | 0.91 | 37.2 | - |
 | Qwen2.5-VL-3B-Instruct | hf-bf16+repeat | textvqa_val | 22 | 272 | 114 | 387 / 538 | 902 | 4.1 | 24 | 1.88 | 39.9 | CUDA events |
+| Qwen2.5-VL-3B-Instruct | hf-bf16 | textvqa_val | 26 | 272 | 146 | 410 / 1492 | 1700 | 4.8 | 20 | 0.57 | 39.6 | CUDA events |
 | Qwen2.5-VL-3B-Instruct | hf-bf16 | textvqa_val | 29 | 276 | 119 | 397 / 562 | 958 | 4.1 | 19 | 1.72 | 38.7 | CUDA events |
+| Qwen2.5-VL-3B-Instruct | hf-bf16 | textvqa_val | 22 | 263 | 121 | 376 / 1307 | 1467 | 4.8 | 24 | 0.58 | 46.8 | CUDA events |
+| Qwen2.5-VL-3B-Instruct | llamacpp-f16 | textvqa_val | 196 | 622 | 298 | 1039 / 1732 | 1761 | 4.1 | 35 | 0.62 | 43.7 | server log |
 | Qwen2.5-VL-3B-Instruct | llamacpp-f16 | textvqa_val | 231 | 640 | 289 | 1059 / 1848 | 1949 | 3.9 | 35 | 0.69 | 77.3 | server log |
+| Qwen2.5-VL-3B-Instruct | llamacpp-f16 | textvqa_val | 196 | 587 | 280 | 981 / 1776 | 1802 | 4.1 | 38 | 0.66 | 45.3 | server log |
+| Qwen2.5-VL-3B-Instruct | llamacpp-q4_k_m | textvqa_val | 195 | 591 | 351 | 1047 / 1815 | 1832 | 4.1 | 60 | 0.64 | 41.4 | server log |
 | Qwen2.5-VL-3B-Instruct | llamacpp-q4_k_m | textvqa_val | 231 | 665 | 352 | 1144 / 1922 | 1976 | 4.1 | 62 | 0.68 | 72.4 | server log |
+| Qwen2.5-VL-3B-Instruct | llamacpp-q8_0 | textvqa_val | 196 | 624 | 319 | 1063 / 1782 | 1800 | 4.1 | 53 | 0.65 | 41.5 | server log |
 | Qwen2.5-VL-3B-Instruct | llamacpp-q8_0 | textvqa_val | 231 | 642 | 319 | 1091 / 1868 | 1928 | 3.9 | 55 | 0.70 | 72.4 | server log |
 | Qwen2.5-VL-3B-Instruct | trt_edgellm-fp16+repeat | textvqa_val | - | 87 | 74 | ~159 (avg) | - | 3.9 | 38 | 2.04 | 31.0 | runner profile (GPU time) |
+| Qwen2.5-VL-3B-Instruct | trt_edgellm-fp16 | textvqa_val | - | 76 | 62 | ~141 (avg) | - | 4.2 | 37 | 0.96 | 20.6 | runner profile (GPU time) |
 | Qwen2.5-VL-3B-Instruct | trt_edgellm-fp16 | textvqa_val | - | 87 | 74 | ~157 (avg) | - | 3.9 | 38 | 2.04 | 29.1 | runner profile (GPU time) |
+| Qwen2.5-VL-3B-Instruct | trt_edgellm-fp16 | textvqa_val | - | 75 | 61 | ~146 (avg) | - | 4.2 | 39 | 0.86 | 31.5 | runner profile (GPU time) |
+| Qwen2.5-VL-3B-Instruct | trt_edgellm-fp8 | textvqa_val | - | 84 | 42 | ~128 (avg) | - | 4.2 | 64 | 1.08 | 17.3 | runner profile (GPU time) |
 | Qwen2.5-VL-3B-Instruct | trt_edgellm-fp8 | textvqa_val | - | 87 | 44 | ~130 (avg) | - | 3.9 | 64 | 2.32 | 23.2 | runner profile (GPU time) |
+| Qwen2.5-VL-3B-Instruct | trt_edgellm-int4_awq | textvqa_val | - | 86 | 137 | ~225 (avg) | - | 4.6 | 90 | 1.02 | 19.5 | runner profile (GPU time) |
 | Qwen2.5-VL-3B-Instruct | trt_edgellm-int4_awq | textvqa_val | - | 87 | 152 | ~232 (avg) | - | 3.9 | 91 | 1.92 | 30.9 | runner profile (GPU time) |
+| Qwen2.5-VL-3B-Instruct | vllm-awq | textvqa_val | 205 | - | - | 433 / 5171 | 5209 | 3.8 | 89 | 0.08 | 279.2 | - |
 | Qwen2.5-VL-3B-Instruct | vllm-awq | textvqa_val | 240 | - | - | 453 / 647 | 691 | 3.9 | 94 | 1.34 | 39.8 | - |
 | Qwen2.5-VL-3B-Instruct | vllm-bf16+pil | textvqa_val | 7 | - | - | 281 / 412 | 606 | 3.9 | 38 | 2.65 | 31.9 | - |
 | Qwen2.5-VL-3B-Instruct | vllm-bf16+repeat | textvqa_val | 231 | - | - | 308 / 448 | 638 | 3.9 | 38 | 1.58 | 36.9 | - |
+| Qwen2.5-VL-3B-Instruct | vllm-bf16+stages | textvqa_val | 234 | 162 | 134 | 296 / 3991 | 4068 | 3.7 | 38 | 0.68 | 53.0 | CUDA events |
 | Qwen2.5-VL-3B-Instruct | vllm-bf16+stages | textvqa_val | 231 | 166 | 138 | 301 / 440 | 631 | 3.9 | 38 | 1.60 | 36.6 | CUDA events |
+| Qwen2.5-VL-3B-Instruct | vllm-bf16 | textvqa_val | 207 | - | - | 384 / 4415 | 4518 | 4.2 | 33 | 0.09 | 241.3 | - |
 | Qwen2.5-VL-3B-Instruct | vllm-bf16 | textvqa_val | 240 | - | - | 361 / 509 | 700 | 3.9 | 37 | 1.43 | 36.6 | - |
+| Qwen2.5-VL-3B-Instruct | vllm-bf16 | textvqa_val | 236 | - | - | 300 / 4063 | 4141 | 3.7 | 38 | 0.57 | 59.3 | - |
+| Qwen2.5-VL-3B-Instruct | vllm-bf16 | textvqa_val | 197 | - | - | 289 / 3946 | 4023 | 4.2 | 38 | 0.13 | 212.4 | - |
+| Qwen2.5-VL-3B-Instruct | vllm-fp8+marlin | textvqa_val | 196 | - | - | 412 / 4783 | 4828 | 4.2 | 66 | 0.09 | 304.4 | - |
 | Qwen2.5-VL-3B-Instruct | vllm-fp8+marlin | textvqa_val | 232 | - | - | 434 / 615 | 692 | 4.0 | 66 | 1.38 | 43.7 | - |
 | Qwen2.5-VL-3B-Instruct | vllm-fp8+torch-stages | textvqa_val | 231 | 165 | 152 | 318 / 437 | 530 | 4.0 | 64 | 1.67 | 33.1 | CUDA events |
+| Qwen2.5-VL-3B-Instruct | vllm-fp8+torch | textvqa_val | 197 | - | - | 293 / 4663 | 4707 | 4.2 | 65 | 0.09 | 290.4 | - |
+| Qwen2.5-VL-3B-Instruct | vllm-w8a8+triton | textvqa_val | 197 | - | - | 332 / 4005 | 4051 | 4.2 | 64 | 0.07 | 361.4 | - |
 | Qwen2.5-VL-3B-Instruct | vllm-w8a8+triton | textvqa_val | 231 | - | - | 359 / 513 | 595 | 3.9 | 64 | 1.54 | 37.0 | - |
 | Qwen2.5-VL-7B-Instruct | vllm-awq | gqa | 84 | - | - | 300 / 400 | 426 | 2.3 | 48 | 2.40 | 23.2 | - |
 | Qwen2.5-VL-7B-Instruct | vllm-bf16 | gqa | 84 | - | - | 223 / 309 | 465 | 2.3 | 16 | 2.53 | 22.5 | - |
+| Qwen2.5-VL-7B-Instruct | hf-bf16 | mme | 21 | - | - | 294 / 1257 | 1422 | 2.0 | 8 | 0.39 | 51.4 | - |
 | Qwen2.5-VL-7B-Instruct | hf-bf16 | mme | 29 | - | - | 283 / 1228 | 1316 | 2.0 | 12 | 1.51 | 43.1 | - |
+| Qwen2.5-VL-7B-Instruct | llamacpp-q4_k_m | mme | 7 | - | - | 471 / 900 | 936 | 2.0 | 33 | 1.36 | 16.9 | - |
+| Qwen2.5-VL-7B-Instruct | llamacpp-q8_0 | mme | 7 | - | - | 465 / 886 | 933 | 2.0 | 27 | 1.37 | 16.8 | - |
+| Qwen2.5-VL-7B-Instruct | vllm-awq | mme | 10 | - | - | 243 / 5512 | 5542 | 2.0 | 33 | 0.07 | 333.0 | - |
 | Qwen2.5-VL-7B-Instruct | vllm-awq | mme | 107 | - | - | 396 / 2265 | 2289 | 2.0 | 40 | 0.76 | 57.4 | - |
+| Qwen2.5-VL-7B-Instruct | vllm-bf16 | mme | 11 | - | - | 283 / 4655 | 4763 | 2.0 | 9 | 0.09 | 267.2 | - |
 | Qwen2.5-VL-7B-Instruct | vllm-bf16 | mme | 109 | - | - | 367 / 1976 | 2080 | 2.0 | 10 | 0.78 | 52.1 | - |
+| Qwen2.5-VL-7B-Instruct | hf-bf16 | textvqa_val | 43 | 271 | 214 | 485 / 1682 | 2024 | 3.9 | 12 | 0.34 | 69.2 | CUDA events |
 | Qwen2.5-VL-7B-Instruct | hf-bf16 | textvqa_val | 45 | 276 | 202 | 475 / 708 | 1489 | 4.0 | 13 | 1.30 | 56.3 | CUDA events |
 | Qwen2.5-VL-7B-Instruct | llamacpp-f16 | textvqa_val | 231 | 741 | 594 | 1449 / 2273 | 2611 | 4.1 | 17 | 0.52 | 113.9 | server log |
+| Qwen2.5-VL-7B-Instruct | llamacpp-q4_k_m | textvqa_val | 195 | 634 | 661 | 1413 / 2488 | 2715 | 5.2 | 35 | 0.50 | 58.9 | server log |
 | Qwen2.5-VL-7B-Instruct | llamacpp-q4_k_m | textvqa_val | 231 | 706 | 699 | 1530 / 2462 | 2578 | 4.1 | 34 | 0.53 | 100.4 | server log |
+| Qwen2.5-VL-7B-Instruct | llamacpp-q8_0 | textvqa_val | 195 | 682 | 594 | 1430 / 2261 | 2545 | 5.4 | 28 | 0.50 | 58.8 | server log |
 | Qwen2.5-VL-7B-Instruct | llamacpp-q8_0 | textvqa_val | 231 | 700 | 620 | 1434 / 2332 | 2490 | 4.1 | 28 | 0.55 | 99.8 | server log |
+| Qwen2.5-VL-7B-Instruct | trt_edgellm-fp16 | textvqa_val | - | 75 | 126 | ~216 (avg) | - | 3.9 | 17 | 0.60 | 37.0 | runner profile (GPU time) |
 | Qwen2.5-VL-7B-Instruct | trt_edgellm-fp16 | textvqa_val | - | 87 | 160 | ~246 (avg) | - | 3.9 | 17 | 1.48 | 47.3 | runner profile (GPU time) |
+| Qwen2.5-VL-7B-Instruct | trt_edgellm-fp8 | textvqa_val | - | 84 | 77 | ~164 (avg) | - | 4.0 | 31 | 0.83 | 25.8 | runner profile (GPU time) |
 | Qwen2.5-VL-7B-Instruct | trt_edgellm-fp8 | textvqa_val | - | 89 | 91 | ~180 (avg) | - | 3.9 | 31 | 1.88 | 33.8 | runner profile (GPU time) |
+| Qwen2.5-VL-7B-Instruct | trt_edgellm-int4_awq | textvqa_val | - | 85 | 290 | ~379 (avg) | - | 5.0 | 49 | 0.83 | 31.1 | runner profile (GPU time) |
 | Qwen2.5-VL-7B-Instruct | trt_edgellm-int4_awq | textvqa_val | - | 88 | 323 | ~397 (avg) | - | 4.0 | 49 | 1.40 | 51.8 | runner profile (GPU time) |
+| Qwen2.5-VL-7B-Instruct | vllm-awq | textvqa_val | 206 | - | - | 613 / 5395 | 5497 | 3.8 | 50 | 0.07 | 365.2 | - |
 | Qwen2.5-VL-7B-Instruct | vllm-awq | textvqa_val | 241 | - | - | 637 / 878 | 985 | 4.0 | 49 | 1.05 | 62.4 | - |
+| Qwen2.5-VL-7B-Instruct | vllm-bf16+diag-nocache | textvqa_val | 197 | - | - | 385 / 4024 | 4322 | 4.0 | 16 | 0.10 | 315.8 | - |
 | Qwen2.5-VL-7B-Instruct | vllm-bf16+pil | textvqa_val | 7 | - | - | 389 / 568 | 1123 | 3.9 | 16 | 1.71 | 51.9 | - |
 | Qwen2.5-VL-7B-Instruct | vllm-bf16+stages | textvqa_val | 231 | 166 | 230 | 394 / 578 | 1160 | 4.0 | 16 | 1.22 | 56.3 | CUDA events |
+| Qwen2.5-VL-7B-Instruct | vllm-bf16 | textvqa_val | 205 | - | - | 456 / 4468 | 4782 | 3.9 | 16 | 0.09 | 278.8 | - |
 | Qwen2.5-VL-7B-Instruct | vllm-bf16 | textvqa_val | 240 | - | - | 456 / 645 | 1224 | 3.9 | 16 | 1.12 | 55.7 | - |
 | Qwen2.5-VL-7B-Instruct | vllm-fp8+marlin | textvqa_val | 231 | - | - | 681 / 951 | 1132 | 3.9 | 32 | 0.98 | 73.8 | - |
 | Qwen2.5-VL-7B-Instruct | vllm-fp8+torch-stages | textvqa_val | 231 | 166 | 196 | 361 / 516 | 772 | 3.9 | 30 | 1.43 | 44.1 | CUDA events |
@@ -337,9 +701,20 @@ and total / mean answer time.
 | Qwen2.5-1.5B-Instruct | llamacpp-q8_0 | gsm8k_jetson | 0 / 752 / 151 | 0 | 2020 | 485 | 2504 | 3303 | 17.0 | 1.7 |
 | Qwen2.5-1.5B-Instruct | llamacpp-q8_0 | gsm8k_jetson | 0 / 752 / 151 | 0 | 2020 | 485 | 2504 | 3303 | 17.0 | 1.7 |
 | Qwen2.5-1.5B-Instruct | trt_edgellm-fp16 | gsm8k_jetson | 0 / 752 / 152 | 0 | 2020 | 489 | 2509 | 3309 | 71.9 | 1.2 |
+| Qwen2.5-1.5B-Instruct | trt_edgellm-fp16 | gsm8k_jetson | 0 / 748 / 128 | 0 | 2010 | 410 | 2420 | 19 | 72.5 | 1.4 |
 | Qwen2.5-1.5B-Instruct | trt_edgellm-fp8 | gsm8k_jetson | 0 / 752 / 152 | 0 | 2020 | 489 | 2509 | 3309 | 92.5 | 1.9 |
 | Qwen2.5-1.5B-Instruct | trt_edgellm-fp8 | gsm8k_jetson | 0 / 752 / 152 | 0 | 2020 | 489 | 2509 | 3309 | 92.0 | 1.9 |
-| Qwen2.5-1.5B-Instruct | trt_edgellm-int4_awq | gsm8k_jetson | 0 / 752 / 297 | 0 | 2020 | 962 | 2982 | 3934 | 36.4 | 1.7 |
+| Qwen2.5-1.5B-Instruct | trt_edgellm-fp8 | gsm8k_jetson | 0 / 748 / 170 | 0 | 2010 | 547 | 2557 | 20 | 94.0 | 1.8 |
+| Qwen2.5-1.5B-Instruct | trt_edgellm-fp8_kv | gsm8k_jetson | 0 / 748 / 105 | 0 | 2010 | 334 | 2344 | 19 | 95.5 | 2.6 |
+| Qwen2.5-1.5B-Instruct | trt_edgellm-fp8_lmhead | gsm8k_jetson | 0 / 748 / 201 | 0 | 2010 | 648 | 2658 | 21 | 97.3 | 1.8 |
+| Qwen2.5-1.5B-Instruct | trt_edgellm-int4_awq | gsm8k_jetson | 0 / 752 / 297 | 0 | 2020 | 961 | 2981 | 3932 | 36.4 | 1.7 |
+| Qwen2.5-1.5B-Instruct | trt_edgellm-int4_awq | gsm8k_jetson | 0 / 748 / 303 | 0 | 2010 | 980 | 2991 | 24 | 37.0 | 1.6 |
+| Qwen2.5-1.5B-Instruct | trt_edgellm-int4_awq_lmhead | gsm8k_jetson | 0 / 748 / 510 | 0 | 2010 | 1658 | 3668 | 29 | 38.0 | 1.6 |
+| Qwen2.5-1.5B-Instruct | trt_edgellm-int4_awq_qwen_v1 | gsm8k_jetson | 0 / 748 / 346 | 0 | 2010 | 1124 | 3134 | 25 | 26.8 | 1.5 |
+| Qwen2.5-1.5B-Instruct | trt_edgellm-int4_awq_taskcal | gsm8k_jetson | 0 / 748 / 111 | 0 | 2010 | 356 | 2366 | 19 | 36.9 | 3.4 |
+| Qwen2.5-1.5B-Instruct | trt_edgellm-int4_gptq_qwen | gsm8k_jetson | 0 / 748 / 116 | 0 | 2010 | 371 | 2381 | 19 | 34.6 | 3.2 |
+| Qwen2.5-1.5B-Instruct | trt_edgellm-int8_sq | gsm8k_jetson | 0 / 748 / 285 | 0 | 2010 | 923 | 2933 | 23 | 93.2 | 1.2 |
+| Qwen2.5-1.5B-Instruct | trt_edgellm-nvfp4 | gsm8k_jetson | 0 / 748 / 512 | 0 | 2010 | 1666 | 3676 | 29 | 125.8 | 1.1 |
 | Qwen2.5-1.5B-Instruct | vllm-awq | gsm8k_jetson | 0 / 752 / 165 | 0 | 2020 | 529 | 2549 | 3362 | 31.1 | 2.5 |
 | Qwen2.5-1.5B-Instruct | vllm-bf16 | gsm8k_jetson | 0 / 752 / 151 | 0 | 2020 | 484 | 2504 | 3303 | 53.5 | 1.2 |
 | Qwen2.5-1.5B-Instruct | vllm-fp8 | gsm8k_jetson | 0 / 752 / 152 | 0 | 2020 | 488 | 2508 | 3308 | 54.3 | 1.9 |
@@ -348,102 +723,222 @@ and total / mean answer time.
 | Qwen2.5-1.5B-Instruct | llamacpp-f16 | ifeval | 0 / 75 / 316 | 0 | 199 | 996 | 1195 | 647 | 5.2 | 0.2 |
 | Qwen2.5-1.5B-Instruct | llamacpp-q4_k_m | ifeval | 0 / 75 / 329 | 0 | 199 | 1040 | 1239 | 670 | 7.7 | 0.5 |
 | Qwen2.5-1.5B-Instruct | llamacpp-q8_0 | ifeval | 0 / 75 / 321 | 0 | 199 | 1012 | 1211 | 655 | 7.6 | 0.4 |
-| Qwen2.5-1.5B-Instruct | trt_edgellm-fp16 | ifeval | 0 / 75 / 328 | 0 | 199 | 1033 | 1232 | 666 | 11.6 | 0.3 |
-| Qwen2.5-1.5B-Instruct | trt_edgellm-fp8 | ifeval | 0 / 75 / 326 | 0 | 199 | 1030 | 1228 | 665 | 14.3 | 0.5 |
-| Qwen2.5-1.5B-Instruct | trt_edgellm-int4_awq | ifeval | 0 / 75 / 427 | 0 | 199 | 1355 | 1554 | 841 | 13.2 | 0.6 |
+| Qwen2.5-1.5B-Instruct | trt_edgellm-fp16 | ifeval | 0 / 75 / 328 | 0 | 199 | 1033 | 1231 | 666 | 11.6 | 0.3 |
+| Qwen2.5-1.5B-Instruct | trt_edgellm-fp16 | ifeval | 0 / 83 / 451 | 0 | 218 | 1434 | 1652 | 13 | 12.9 | 0.3 |
+| Qwen2.5-1.5B-Instruct | trt_edgellm-fp8 | ifeval | 0 / 75 / 326 | 0 | 199 | 1029 | 1228 | 664 | 14.3 | 0.5 |
+| Qwen2.5-1.5B-Instruct | trt_edgellm-fp8 | ifeval | 0 / 83 / 217 | 0 | 218 | 675 | 893 | 7 | 16.0 | 0.5 |
+| Qwen2.5-1.5B-Instruct | trt_edgellm-int4_awq | ifeval | 0 / 75 / 427 | 0 | 199 | 1355 | 1553 | 840 | 13.2 | 0.6 |
+| Qwen2.5-1.5B-Instruct | trt_edgellm-int4_awq | ifeval | 0 / 83 / 493 | 0 | 218 | 1568 | 1786 | 14 | 14.9 | 0.6 |
+| Qwen2.5-1.5B-Instruct | trt_edgellm-int8_sq | ifeval | 0 / 83 / 488 | 0 | 218 | 1550 | 1768 | 14 | 16.0 | 0.4 |
+| Qwen2.5-1.5B-Instruct | trt_edgellm-nvfp4 | ifeval | 0 / 83 / 1280 | 0 | 218 | 4106 | 4325 | 35 | 22.0 | 0.5 |
 | Qwen2.5-1.5B-Instruct | vllm-awq | ifeval | 0 / 75 / 389 | 0 | 199 | 1232 | 1430 | 774 | 11.3 | 0.6 |
 | Qwen2.5-1.5B-Instruct | vllm-bf16 | ifeval | 0 / 75 / 322 | 0 | 199 | 1015 | 1214 | 657 | 7.0 | 0.3 |
 | Qwen2.5-1.5B-Instruct | vllm-fp8 | ifeval | 0 / 75 / 346 | 0 | 199 | 1095 | 1293 | 700 | 10.3 | 0.4 |
+| Qwen2.5-1.5B-Instruct | hf-bf16 | length_sweep_128 | 0 / 128 / 256 | 0 | 337 | 798 | 1136 | 5 | 3.5 | 0.2 |
 | Qwen2.5-1.5B-Instruct | hf-bf16 | length_sweep_128 | 0 / 128 / 256 | 0 | 337 | 798 | 1136 | 18 | 7.2 | 0.2 |
+| Qwen2.5-1.5B-Instruct | llamacpp-f16 | length_sweep_128 | 0 / 128 / 256 | 0 | 337 | 798 | 1136 | 5 | 2.8 | 0.3 |
 | Qwen2.5-1.5B-Instruct | llamacpp-f16 | length_sweep_128 | 0 / 128 / 256 | 0 | 337 | 798 | 1136 | 18 | 5.7 | 0.3 |
+| Qwen2.5-1.5B-Instruct | llamacpp-q8_0 | length_sweep_128 | 0 / 128 / 256 | 0 | 337 | 798 | 1136 | 5 | 3.5 | 0.5 |
 | Qwen2.5-1.5B-Instruct | llamacpp-q8_0 | length_sweep_128 | 0 / 128 / 256 | 0 | 337 | 798 | 1136 | 18 | 7.2 | 0.5 |
+| Qwen2.5-1.5B-Instruct | trt_edgellm-fp16 | length_sweep_128 | 0 / 128 / 256 | 0 | 337 | 798 | 1136 | 5 | 19.5 | 0.3 |
 | Qwen2.5-1.5B-Instruct | trt_edgellm-fp16 | length_sweep_128 | 0 / 128 / 256 | 0 | 337 | 798 | 1136 | 18 | 19.5 | 0.3 |
+| Qwen2.5-1.5B-Instruct | trt_edgellm-fp8 | length_sweep_128 | 0 / 128 / 256 | 0 | 337 | 798 | 1136 | 5 | 23.9 | 0.5 |
 | Qwen2.5-1.5B-Instruct | trt_edgellm-fp8 | length_sweep_128 | 0 / 128 / 256 | 0 | 337 | 798 | 1136 | 18 | 24.2 | 0.5 |
+| Qwen2.5-1.5B-Instruct | vllm-bf16 | length_sweep_128 | 0 / 128 / 256 | 0 | 337 | 798 | 1136 | 5 | 1.5 | 0.3 |
 | Qwen2.5-1.5B-Instruct | vllm-bf16 | length_sweep_128 | 0 / 128 / 256 | 0 | 337 | 798 | 1136 | 18 | 4.7 | 0.3 |
+| Qwen2.5-1.5B-Instruct | vllm-fp8 | length_sweep_128 | 0 / 128 / 256 | 0 | 337 | 798 | 1136 | 5 | 1.3 | 0.5 |
 | Qwen2.5-1.5B-Instruct | vllm-fp8 | length_sweep_128 | 0 / 128 / 228 | 0 | 337 | 711 | 1048 | 17 | 4.5 | 0.5 |
+| Qwen2.5-1.5B-Instruct | hf-bf16 | length_sweep_2048 | 0 / 2048 / 256 | 0 | 5728 | 883 | 6611 | 26 | 32.5 | 1.0 |
 | Qwen2.5-1.5B-Instruct | hf-bf16 | length_sweep_2048 | 0 / 2048 / 256 | 0 | 5728 | 883 | 6611 | 106 | 45.1 | 0.9 |
+| Qwen2.5-1.5B-Instruct | llamacpp-f16 | length_sweep_2048 | 0 / 2048 / 256 | 0 | 5728 | 883 | 6611 | 26 | 18.0 | 1.5 |
 | Qwen2.5-1.5B-Instruct | llamacpp-f16 | length_sweep_2048 | 0 / 2048 / 256 | 0 | 5728 | 883 | 6611 | 106 | 22.1 | 1.6 |
+| Qwen2.5-1.5B-Instruct | llamacpp-q8_0 | length_sweep_2048 | 0 / 2048 / 256 | 0 | 5728 | 883 | 6611 | 26 | 15.4 | 2.4 |
 | Qwen2.5-1.5B-Instruct | llamacpp-q8_0 | length_sweep_2048 | 0 / 2048 / 256 | 0 | 5728 | 883 | 6611 | 106 | 17.8 | 2.4 |
+| Qwen2.5-1.5B-Instruct | trt_edgellm-fp16 | length_sweep_2048 | 0 / 2048 / 256 | 0 | 5728 | 883 | 6611 | 26 | 91.4 | 1.9 |
 | Qwen2.5-1.5B-Instruct | trt_edgellm-fp16 | length_sweep_2048 | 0 / 2048 / 256 | 0 | 5728 | 883 | 6611 | 106 | 91.0 | 1.9 |
+| Qwen2.5-1.5B-Instruct | trt_edgellm-fp8 | length_sweep_2048 | 0 / 2048 / 256 | 0 | 5728 | 883 | 6611 | 26 | 125.5 | 2.9 |
 | Qwen2.5-1.5B-Instruct | trt_edgellm-fp8 | length_sweep_2048 | 0 / 2048 / 256 | 0 | 5728 | 883 | 6611 | 106 | 125.3 | 2.9 |
+| Qwen2.5-1.5B-Instruct | vllm-bf16 | length_sweep_2048 | 0 / 2048 / 256 | 0 | 5728 | 883 | 6611 | 26 | 19.3 | 1.8 |
 | Qwen2.5-1.5B-Instruct | vllm-bf16 | length_sweep_2048 | 0 / 2048 / 256 | 0 | 5728 | 883 | 6611 | 106 | 42.5 | 1.9 |
+| Qwen2.5-1.5B-Instruct | vllm-fp8 | length_sweep_2048 | 0 / 2048 / 256 | 0 | 5728 | 883 | 6611 | 26 | 17.4 | 2.6 |
 | Qwen2.5-1.5B-Instruct | vllm-fp8 | length_sweep_2048 | 0 / 2048 / 256 | 0 | 5728 | 883 | 6611 | 106 | 38.4 | 2.8 |
+| Qwen2.5-1.5B-Instruct | hf-bf16 | length_sweep_512 | 0 / 512 / 256 | 0 | 1365 | 815 | 2180 | 9 | 12.6 | 0.3 |
 | Qwen2.5-1.5B-Instruct | hf-bf16 | length_sweep_512 | 0 / 512 / 256 | 0 | 1365 | 815 | 2180 | 35 | 25.2 | 0.3 |
+| Qwen2.5-1.5B-Instruct | llamacpp-f16 | length_sweep_512 | 0 / 512 / 256 | 0 | 1365 | 815 | 2180 | 9 | 9.4 | 0.5 |
 | Qwen2.5-1.5B-Instruct | llamacpp-f16 | length_sweep_512 | 0 / 512 / 256 | 0 | 1365 | 815 | 2180 | 35 | 16.4 | 0.5 |
+| Qwen2.5-1.5B-Instruct | llamacpp-q8_0 | length_sweep_512 | 0 / 512 / 256 | 0 | 1365 | 815 | 2180 | 9 | 9.4 | 0.9 |
 | Qwen2.5-1.5B-Instruct | llamacpp-q8_0 | length_sweep_512 | 0 / 512 / 256 | 0 | 1365 | 815 | 2180 | 35 | 14.2 | 0.9 |
+| Qwen2.5-1.5B-Instruct | trt_edgellm-fp16 | length_sweep_512 | 0 / 512 / 256 | 0 | 1365 | 815 | 2180 | 9 | 61.2 | 0.6 |
 | Qwen2.5-1.5B-Instruct | trt_edgellm-fp16 | length_sweep_512 | 0 / 512 / 256 | 0 | 1365 | 815 | 2180 | 35 | 61.1 | 0.6 |
+| Qwen2.5-1.5B-Instruct | trt_edgellm-fp8 | length_sweep_512 | 0 / 512 / 256 | 0 | 1365 | 815 | 2180 | 9 | 75.7 | 1.0 |
 | Qwen2.5-1.5B-Instruct | trt_edgellm-fp8 | length_sweep_512 | 0 / 512 / 256 | 0 | 1365 | 815 | 2180 | 35 | 75.2 | 1.0 |
+| Qwen2.5-1.5B-Instruct | vllm-bf16 | length_sweep_512 | 0 / 512 / 256 | 0 | 1365 | 815 | 2180 | 9 | 5.9 | 0.6 |
 | Qwen2.5-1.5B-Instruct | vllm-bf16 | length_sweep_512 | 0 / 512 / 256 | 0 | 1365 | 815 | 2180 | 35 | 17.8 | 0.6 |
+| Qwen2.5-1.5B-Instruct | vllm-fp8 | length_sweep_512 | 0 / 512 / 256 | 0 | 1365 | 815 | 2180 | 9 | 5.1 | 0.9 |
 | Qwen2.5-1.5B-Instruct | vllm-fp8 | length_sweep_512 | 0 / 512 / 256 | 0 | 1365 | 815 | 2180 | 35 | 16.1 | 1.0 |
+| Qwen2.5-3B-Instruct | hf-bf16 | gsm8k_jetson | 0 / 748 / 194 | 0 | 4237 | 1241 | 5478 | 2586 | 53.3 | 3.3 |
+| Qwen2.5-3B-Instruct | hf-bf16 | ifeval | 0 / 83 / 213 | 0 | 462 | 1322 | 1784 | 842 | 5.8 | 1.1 |
+| Qwen2.5-3B-Instruct | hf-bf16 | gsm8k_jetson | 0 / 748 / 194 | 0 | 4237 | 1241 | 5478 | 2586 | 52.9 | 5.8 |
+| Qwen2.5-3B-Instruct | hf-bf16 | ifeval | 0 / 83 / 213 | 0 | 462 | 1322 | 1784 | 842 | 5.8 | 1.9 |
+| Qwen2.5-3B-Instruct | llamacpp-f16 | gsm8k_jetson | 0 / 748 / 170 | 0 | 4237 | 1083 | 5320 | 2511 | 24.5 | 9.3 |
+| Qwen2.5-3B-Instruct | llamacpp-f16 | ifeval | 0 / 83 / 216 | 0 | 462 | 1346 | 1808 | 853 | 2.7 | 3.2 |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | gsm8k_jetson | 0 / 748 / 4 | 0 | 4237 | 20 | 4256 | 2009 | 81.5 | 32.5 |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | ifeval | 0 / 83 / 211 | 0 | 462 | 1312 | 1773 | 837 | 8.9 | 0.3 |
+| Qwen2.5-3B-Instruct | vllm-bf16 | gsm8k_jetson | 0 / 748 / 164 | 0 | 4237 | 1050 | 5287 | 2495 | 62.1 | 8.9 |
+| Qwen2.5-3B-Instruct | vllm-bf16 | ifeval | 0 / 83 / 208 | 0 | 462 | 1294 | 1756 | 829 | 6.8 | 2.9 |
+| Qwen2.5-3B-Instruct | hf-bf16 | gsm8k_jetson | 0 / 748 / 194 | 0 | 4237 | 1241 | 5478 | 44 | 34.8 | 0.7 |
 | Qwen2.5-3B-Instruct | hf-bf16 | gsm8k_jetson | 0 / 752 / 201 | 0 | 4257 | 1285 | 5542 | 7310 | 51.1 | 0.7 |
+| Qwen2.5-3B-Instruct | llamacpp-f16 | gsm8k_jetson | 0 / 748 / 170 | 0 | 4237 | 1083 | 5320 | 43 | 16.9 | 1.2 |
 | Qwen2.5-3B-Instruct | llamacpp-f16 | gsm8k_jetson | 0 / 752 / 197 | 0 | 4257 | 1258 | 5515 | 7274 | 21.4 | 1.1 |
+| Qwen2.5-3B-Instruct | llamacpp-q4_k_m | gsm8k_jetson | 0 / 748 / 210 | 0 | 4237 | 1346 | 5583 | 45 | 15.1 | 1.9 |
 | Qwen2.5-3B-Instruct | llamacpp-q4_k_m | gsm8k_jetson | 0 / 752 / 212 | 0 | 4257 | 1358 | 5615 | 7407 | 17.2 | 1.9 |
+| Qwen2.5-3B-Instruct | llamacpp-q8_0 | gsm8k_jetson | 0 / 748 / 158 | 0 | 4237 | 1007 | 5244 | 42 | 16.6 | 2.0 |
 | Qwen2.5-3B-Instruct | llamacpp-q8_0 | gsm8k_jetson | 0 / 752 / 194 | 0 | 4257 | 1238 | 5495 | 7248 | 19.3 | 1.7 |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | gsm8k_jetson | 0 / 748 / 4 | 0 | 4237 | 20 | 4256 | 34 | 82.2 | 32.5 |
 | Qwen2.5-3B-Instruct | trt_edgellm-fp16 | gsm8k_jetson | 0 / 752 / 201 | 0 | 4257 | 1289 | 5546 | 7315 | 80.9 | 1.1 |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | gsm8k_jetson | 0 / 748 / 162 | 0 | 4237 | 1031 | 5268 | 42 | 82.8 | 1.3 |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp8 | gsm8k_jetson | 0 / 748 / 4 | 0 | 4237 | 20 | 4256 | 34 | 115.7 | 51.5 |
 | Qwen2.5-3B-Instruct | trt_edgellm-fp8 | gsm8k_jetson | 0 / 752 / 199 | 0 | 4257 | 1276 | 5533 | 7299 | 114.5 | 1.8 |
-| Qwen2.5-3B-Instruct | trt_edgellm-int4_awq | gsm8k_jetson | 0 / 752 / 211 | 0 | 4257 | 1352 | 5609 | 7399 | 39.3 | 2.5 |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp8 | gsm8k_jetson | 0 / 748 / 184 | 0 | 4237 | 1174 | 5411 | 43 | 115.9 | 1.9 |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp8_kv | gsm8k_jetson | 0 / 748 / 178 | 0 | 4237 | 1137 | 5374 | 43 | 116.7 | 2.0 |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp8_lmhead | gsm8k_jetson | 0 / 748 / 176 | 0 | 4237 | 1124 | 5360 | 43 | 120.1 | 2.2 |
+| Qwen2.5-3B-Instruct | trt_edgellm-int4_awq | gsm8k_jetson | 0 / 748 / 4 | 0 | 4237 | 18 | 4255 | 34 | 39.8 | 31.5 |
+| Qwen2.5-3B-Instruct | trt_edgellm-int4_awq | gsm8k_jetson | 0 / 752 / 211 | 0 | 4257 | 1352 | 5609 | 7398 | 39.3 | 2.5 |
+| Qwen2.5-3B-Instruct | trt_edgellm-int4_awq | gsm8k_jetson | 0 / 748 / 201 | 0 | 4237 | 1286 | 5523 | 44 | 39.9 | 2.6 |
+| Qwen2.5-3B-Instruct | trt_edgellm-int4_awq_lmhead | gsm8k_jetson | 0 / 748 / 477 | 0 | 4237 | 3078 | 7315 | 59 | 40.5 | 1.8 |
+| Qwen2.5-3B-Instruct | trt_edgellm-int4_awq_qwen | gsm8k_jetson | 0 / 748 / 194 | 0 | 4237 | 1250 | 5487 | 44 | 40.4 | 2.6 |
+| Qwen2.5-3B-Instruct | trt_edgellm-int4_awq_qwen_v1 | gsm8k_jetson | 0 / 748 / 480 | 0 | 4237 | 3098 | 7335 | 59 | 28.7 | 1.5 |
+| Qwen2.5-3B-Instruct | trt_edgellm-int4_awq_taskcal | gsm8k_jetson | 0 / 748 / 175 | 0 | 4237 | 1120 | 5357 | 43 | 39.9 | 2.8 |
+| Qwen2.5-3B-Instruct | trt_edgellm-int4_gptq_qwen | gsm8k_jetson | 0 / 748 / 206 | 0 | 4237 | 1317 | 5554 | 44 | 37.7 | 2.5 |
+| Qwen2.5-3B-Instruct | trt_edgellm-int8_sq | gsm8k_jetson | 0 / 748 / 193 | 0 | 4237 | 1232 | 5469 | 44 | 113.4 | 1.8 |
+| Qwen2.5-3B-Instruct | trt_edgellm-nvfp4 | gsm8k_jetson | 0 / 748 / 512 | 0 | 4237 | 3305 | 7542 | 60 | 162.0 | 1.4 |
+| Qwen2.5-3B-Instruct | vllm-awq | gsm8k_jetson | 0 / 748 / 157 | 0 | 4237 | 1003 | 5240 | 42 | 18.7 | 3.0 |
 | Qwen2.5-3B-Instruct | vllm-awq | gsm8k_jetson | 0 / 752 / 193 | 0 | 4257 | 1234 | 5491 | 7243 | 34.3 | 2.7 |
+| Qwen2.5-3B-Instruct | vllm-bf16 | gsm8k_jetson | 0 / 748 / 164 | 0 | 4237 | 1050 | 5287 | 42 | 23.0 | 1.2 |
 | Qwen2.5-3B-Instruct | vllm-bf16 | gsm8k_jetson | 0 / 752 / 201 | 0 | 4257 | 1286 | 5543 | 7312 | 53.3 | 1.0 |
+| Qwen2.5-3B-Instruct | vllm-fp8 | gsm8k_jetson | 0 / 748 / 179 | 0 | 4237 | 1142 | 5379 | 43 | 22.4 | 1.9 |
 | Qwen2.5-3B-Instruct | vllm-fp8 | gsm8k_jetson | 0 / 752 / 216 | 0 | 4257 | 1382 | 5640 | 7439 | 62.9 | 1.7 |
+| Qwen2.5-3B-Instruct | hf-bf16 | ifeval | 0 / 83 / 213 | 0 | 462 | 1322 | 1784 | 14 | 5.5 | 0.2 |
 | Qwen2.5-3B-Instruct | hf-bf16 | ifeval | 0 / 75 / 330 | 0 | 420 | 2071 | 2491 | 1347 | 9.3 | 0.2 |
+| Qwen2.5-3B-Instruct | llamacpp-f16 | ifeval | 0 / 83 / 216 | 0 | 462 | 1346 | 1808 | 14 | 3.9 | 0.3 |
 | Qwen2.5-3B-Instruct | llamacpp-f16 | ifeval | 0 / 75 / 319 | 0 | 420 | 2003 | 2423 | 1311 | 5.5 | 0.3 |
+| Qwen2.5-3B-Instruct | llamacpp-q4_k_m | ifeval | 0 / 83 / 221 | 0 | 462 | 1374 | 1835 | 15 | 6.0 | 0.7 |
 | Qwen2.5-3B-Instruct | llamacpp-q4_k_m | ifeval | 0 / 75 / 353 | 0 | 420 | 2217 | 2637 | 1427 | 10.2 | 0.6 |
+| Qwen2.5-3B-Instruct | llamacpp-q8_0 | ifeval | 0 / 83 / 143 | 0 | 462 | 883 | 1344 | 11 | 6.1 | 0.6 |
 | Qwen2.5-3B-Instruct | llamacpp-q8_0 | ifeval | 0 / 75 / 312 | 0 | 420 | 1956 | 2376 | 1286 | 10.4 | 0.5 |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | ifeval | 0 / 83 / 211 | 0 | 462 | 1312 | 1773 | 14 | 14.9 | 0.3 |
 | Qwen2.5-3B-Instruct | trt_edgellm-fp16 | ifeval | 0 / 75 / 323 | 0 | 420 | 2028 | 2448 | 1324 | 13.4 | 0.3 |
-| Qwen2.5-3B-Instruct | trt_edgellm-fp8 | ifeval | 0 / 75 / 343 | 0 | 420 | 2156 | 2576 | 1393 | 19.5 | 0.5 |
-| Qwen2.5-3B-Instruct | trt_edgellm-int4_awq | ifeval | 0 / 75 / 355 | 0 | 420 | 2230 | 2650 | 1434 | 16.5 | 0.7 |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | ifeval | 0 / 83 / 211 | 0 | 462 | 1312 | 1773 | 14 | 14.9 | 0.3 |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp8 | ifeval | 0 / 83 / 582 | 0 | 462 | 3695 | 4156 | 33 | 21.9 | 0.5 |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp8 | ifeval | 0 / 75 / 343 | 0 | 420 | 2154 | 2574 | 1393 | 19.5 | 0.5 |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp8 | ifeval | 0 / 83 / 582 | 0 | 462 | 3692 | 4154 | 33 | 22.1 | 0.5 |
+| Qwen2.5-3B-Instruct | trt_edgellm-int4_awq | ifeval | 0 / 83 / 555 | 0 | 462 | 3524 | 3986 | 32 | 18.4 | 0.7 |
+| Qwen2.5-3B-Instruct | trt_edgellm-int4_awq | ifeval | 0 / 75 / 354 | 0 | 420 | 2230 | 2649 | 1433 | 16.5 | 0.7 |
+| Qwen2.5-3B-Instruct | trt_edgellm-int4_awq | ifeval | 0 / 83 / 555 | 0 | 462 | 3521 | 3983 | 32 | 18.4 | 0.7 |
+| Qwen2.5-3B-Instruct | trt_edgellm-int4_awq_qwen | ifeval | 0 / 83 / 1244 | 0 | 462 | 7933 | 8394 | 67 | 18.6 | 0.7 |
+| Qwen2.5-3B-Instruct | trt_edgellm-int8_sq | ifeval | 0 / 83 / 644 | 0 | 462 | 4084 | 4546 | 36 | 21.1 | 0.5 |
+| Qwen2.5-3B-Instruct | trt_edgellm-nvfp4 | ifeval | 0 / 83 / 1280 | 0 | 462 | 8166 | 8627 | 69 | 28.8 | 0.6 |
+| Qwen2.5-3B-Instruct | vllm-awq | ifeval | 0 / 83 / 440 | 0 | 462 | 2787 | 3248 | 26 | 3.5 | 0.7 |
 | Qwen2.5-3B-Instruct | vllm-awq | ifeval | 0 / 75 / 320 | 0 | 420 | 2013 | 2433 | 1316 | 14.4 | 0.8 |
+| Qwen2.5-3B-Instruct | vllm-bf16 | ifeval | 0 / 83 / 208 | 0 | 462 | 1294 | 1756 | 14 | 2.9 | 0.3 |
 | Qwen2.5-3B-Instruct | vllm-bf16 | ifeval | 0 / 75 / 326 | 0 | 420 | 2047 | 2467 | 1335 | 7.8 | 0.3 |
+| Qwen2.5-3B-Instruct | vllm-fp8 | ifeval | 0 / 83 / 336 | 0 | 462 | 2114 | 2575 | 21 | 3.1 | 0.5 |
 | Qwen2.5-3B-Instruct | vllm-fp8 | ifeval | 0 / 75 / 348 | 0 | 420 | 2189 | 2609 | 1411 | 12.6 | 0.5 |
+| Qwen2.5-3B-Instruct | hf-bf16 | length_sweep_128 | 0 / 128 / 256 | 0 | 713 | 1593 | 2306 | 9 | 5.8 | 0.2 |
 | Qwen2.5-3B-Instruct | hf-bf16 | length_sweep_128 | 0 / 128 / 256 | 0 | 713 | 1593 | 2306 | 37 | 11.2 | 0.2 |
+| Qwen2.5-3B-Instruct | llamacpp-f16 | length_sweep_128 | 0 / 128 / 256 | 0 | 713 | 1593 | 2306 | 9 | 4.5 | 0.4 |
 | Qwen2.5-3B-Instruct | llamacpp-f16 | length_sweep_128 | 0 / 128 / 256 | 0 | 713 | 1593 | 2306 | 37 | 7.1 | 0.4 |
+| Qwen2.5-3B-Instruct | llamacpp-q8_0 | length_sweep_128 | 0 / 128 / 256 | 0 | 713 | 1593 | 2306 | 9 | 6.2 | 0.6 |
 | Qwen2.5-3B-Instruct | llamacpp-q8_0 | length_sweep_128 | 0 / 128 / 256 | 0 | 713 | 1593 | 2306 | 37 | 10.9 | 0.6 |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | length_sweep_128 | 0 / 128 / 257 | 0 | 713 | 1599 | 2313 | 9 | 22.4 | 0.4 |
 | Qwen2.5-3B-Instruct | trt_edgellm-fp16 | length_sweep_128 | 0 / 128 / 256 | 0 | 713 | 1593 | 2306 | 37 | 22.4 | 0.4 |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp8 | length_sweep_128 | 0 / 128 / 257 | 0 | 713 | 1599 | 2313 | 9 | 33.0 | 0.6 |
 | Qwen2.5-3B-Instruct | trt_edgellm-fp8 | length_sweep_128 | 0 / 128 / 256 | 0 | 713 | 1593 | 2306 | 37 | 32.8 | 0.6 |
+| Qwen2.5-3B-Instruct | vllm-bf16 | length_sweep_128 | 0 / 128 / 256 | 0 | 713 | 1593 | 2306 | 9 | 3.0 | 0.3 |
 | Qwen2.5-3B-Instruct | vllm-bf16 | length_sweep_128 | 0 / 128 / 256 | 0 | 713 | 1593 | 2306 | 37 | 8.5 | 0.3 |
+| Qwen2.5-3B-Instruct | vllm-fp8 | length_sweep_128 | 0 / 128 / 256 | 0 | 713 | 1593 | 2306 | 9 | 2.7 | 0.6 |
 | Qwen2.5-3B-Instruct | vllm-fp8 | length_sweep_128 | 0 / 128 / 256 | 0 | 713 | 1593 | 2306 | 37 | 8.6 | 0.6 |
+| Qwen2.5-3B-Instruct | hf-bf16 | length_sweep_2048 | 0 / 2048 / 256 | 0 | 11984 | 1737 | 13721 | 55 | 43.0 | 1.3 |
 | Qwen2.5-3B-Instruct | hf-bf16 | length_sweep_2048 | 0 / 2048 / 256 | 0 | 11984 | 1737 | 13721 | 220 | 52.7 | 1.3 |
+| Qwen2.5-3B-Instruct | llamacpp-f16 | length_sweep_2048 | 0 / 2048 / 256 | 0 | 11984 | 1737 | 13721 | 55 | 23.0 | 1.9 |
 | Qwen2.5-3B-Instruct | llamacpp-f16 | length_sweep_2048 | 0 / 2048 / 256 | 0 | 11984 | 1737 | 13721 | 220 | 25.9 | 2.0 |
+| Qwen2.5-3B-Instruct | llamacpp-q8_0 | length_sweep_2048 | 0 / 2048 / 256 | 0 | 11984 | 1737 | 13721 | 55 | 18.6 | 2.9 |
 | Qwen2.5-3B-Instruct | llamacpp-q8_0 | length_sweep_2048 | 0 / 2048 / 256 | 0 | 11984 | 1737 | 13721 | 220 | 20.2 | 3.0 |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | length_sweep_2048 | 0 / 2048 / 256 | 0 | 11984 | 1737 | 13721 | 55 | 93.8 | 2.0 |
 | Qwen2.5-3B-Instruct | trt_edgellm-fp16 | length_sweep_2048 | 0 / 2048 / 256 | 0 | 11984 | 1737 | 13721 | 220 | 90.8 | 2.0 |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp8 | length_sweep_2048 | 0 / 2048 / 256 | 0 | 11984 | 1737 | 13721 | 55 | 150.3 | 3.4 |
 | Qwen2.5-3B-Instruct | trt_edgellm-fp8 | length_sweep_2048 | 0 / 2048 / 256 | 0 | 11984 | 1737 | 13721 | 220 | 150.9 | 3.4 |
+| Qwen2.5-3B-Instruct | vllm-bf16 | length_sweep_2048 | 0 / 2048 / 256 | 0 | 11984 | 1737 | 13721 | 55 | 33.0 | 1.9 |
 | Qwen2.5-3B-Instruct | vllm-bf16 | length_sweep_2048 | 0 / 2048 / 256 | 0 | 11984 | 1737 | 13721 | 220 | 57.2 | 2.0 |
+| Qwen2.5-3B-Instruct | vllm-fp8 | length_sweep_2048 | 0 / 2048 / 256 | 0 | 11984 | 1737 | 13721 | 55 | 30.9 | 3.2 |
 | Qwen2.5-3B-Instruct | vllm-fp8 | length_sweep_2048 | 0 / 2048 / 256 | 0 | 11984 | 1737 | 13721 | 220 | 58.2 | 3.3 |
+| Qwen2.5-3B-Instruct | hf-bf16 | length_sweep_512 | 0 / 512 / 256 | 0 | 2880 | 1622 | 4502 | 18 | 22.2 | 0.4 |
 | Qwen2.5-3B-Instruct | hf-bf16 | length_sweep_512 | 0 / 512 / 256 | 0 | 2880 | 1622 | 4502 | 72 | 37.2 | 0.4 |
+| Qwen2.5-3B-Instruct | llamacpp-f16 | length_sweep_512 | 0 / 512 / 256 | 0 | 2880 | 1622 | 4502 | 18 | 14.9 | 0.7 |
 | Qwen2.5-3B-Instruct | llamacpp-f16 | length_sweep_512 | 0 / 512 / 256 | 0 | 2880 | 1622 | 4502 | 72 | 21.5 | 0.7 |
+| Qwen2.5-3B-Instruct | llamacpp-q8_0 | length_sweep_512 | 0 / 512 / 256 | 0 | 2880 | 1622 | 4502 | 18 | 13.2 | 1.1 |
 | Qwen2.5-3B-Instruct | llamacpp-q8_0 | length_sweep_512 | 0 / 512 / 256 | 0 | 2880 | 1622 | 4502 | 72 | 17.4 | 1.1 |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp16 | length_sweep_512 | 0 / 512 / 256 | 0 | 2880 | 1622 | 4502 | 18 | 70.8 | 0.7 |
 | Qwen2.5-3B-Instruct | trt_edgellm-fp16 | length_sweep_512 | 0 / 512 / 256 | 0 | 2880 | 1622 | 4502 | 72 | 70.6 | 0.7 |
+| Qwen2.5-3B-Instruct | trt_edgellm-fp8 | length_sweep_512 | 0 / 512 / 256 | 0 | 2880 | 1622 | 4502 | 18 | 97.2 | 1.2 |
 | Qwen2.5-3B-Instruct | trt_edgellm-fp8 | length_sweep_512 | 0 / 512 / 256 | 0 | 2880 | 1622 | 4502 | 72 | 96.9 | 1.2 |
+| Qwen2.5-3B-Instruct | vllm-bf16 | length_sweep_512 | 0 / 512 / 256 | 0 | 2880 | 1622 | 4502 | 18 | 11.2 | 0.7 |
 | Qwen2.5-3B-Instruct | vllm-bf16 | length_sweep_512 | 0 / 512 / 256 | 0 | 2880 | 1622 | 4502 | 72 | 30.3 | 0.7 |
+| Qwen2.5-3B-Instruct | vllm-fp8 | length_sweep_512 | 0 / 512 / 256 | 0 | 2880 | 1622 | 4502 | 18 | 10.0 | 1.1 |
 | Qwen2.5-3B-Instruct | vllm-fp8 | length_sweep_512 | 0 / 512 / 256 | 0 | 2880 | 1622 | 4502 | 72 | 28.2 | 1.1 |
+| Qwen2.5-VL-3B-Instruct | hf-bf16 | gqa | 332 / 40 / 2 | 1752 | 2089 | 8 | 3849 | 31 | 6.5 | 5.1 |
 | Qwen2.5-VL-3B-Instruct | hf-bf16 | gqa | 358 / 41 / 2 | 1892 | 2240 | 8 | 4141 | 52082 | 20.8 | 15.5 |
 | Qwen2.5-VL-3B-Instruct | trt_edgellm-fp16 | gqa | 358 / 41 / 2 | 1892 | 2240 | 8 | 4140 | 52074 | 59.8 | 40.4 |
 | Qwen2.5-VL-3B-Instruct | trt_edgellm-fp8 | gqa | 358 / 41 / 2 | 1892 | 2240 | 8 | 4140 | 52074 | 74.4 | 55.3 |
 | Qwen2.5-VL-3B-Instruct | trt_edgellm-int4_awq | gqa | 358 / 41 / 2 | 1892 | 2240 | 8 | 4140 | 52071 | 42.6 | 37.5 |
 | Qwen2.5-VL-3B-Instruct | vllm-awq | gqa | 358 / 41 / 2 | 1892 | 2240 | 8 | 4140 | 52072 | 19.3 | 18.1 |
 | Qwen2.5-VL-3B-Instruct | vllm-bf16 | gqa | 358 / 41 / 2 | 1892 | 2240 | 8 | 4140 | 52074 | 22.6 | 19.0 |
+| Qwen2.5-VL-3B-Instruct | hf-bf16 | mme | 276 / 49 / 2 | 1446 | 1817 | 6 | 3269 | 26 | 9.3 | 7.7 |
 | Qwen2.5-VL-3B-Instruct | hf-bf16 | mme | 868 / 42 / 2 | 4861 | 5233 | 7 | 10100 | 23978 | 24.6 | 21.5 |
+| Qwen2.5-VL-3B-Instruct | hf-bf16 | mme | 276 / 49 / 2 | 1446 | 1817 | 6 | 3269 | 26 | 9.9 | 8.1 |
+| Qwen2.5-VL-3B-Instruct | llamacpp-q8_0 | mme | 276 / 46 / 2 | 1446 | 1803 | 6 | 3255 | 26 | 9.0 | 8.5 |
+| Qwen2.5-VL-3B-Instruct | trt_edgellm-fp16 | mme | 276 / 46 / 2 | 1446 | 1803 | 6 | 3255 | 26 | 43.1 | 29.3 |
+| Qwen2.5-VL-3B-Instruct | trt_edgellm-fp16 | mme | 276 / 46 / 2 | 1446 | 1803 | 6 | 3255 | 26 | 42.3 | 28.8 |
 | Qwen2.5-VL-3B-Instruct | trt_edgellm-fp16 | mme | 868 / 43 / 2 | 4861 | 5239 | 6 | 10107 | 23993 | 69.1 | 58.3 |
 | Qwen2.5-VL-3B-Instruct | trt_edgellm-fp8 | mme | 868 / 43 / 2 | 4861 | 5239 | 6 | 10107 | 23993 | 83.4 | 73.8 |
 | Qwen2.5-VL-3B-Instruct | trt_edgellm-int4_awq | mme | 868 / 43 / 2 | 4861 | 5239 | 6 | 10107 | 23993 | 47.8 | 45.4 |
 | Qwen2.5-VL-3B-Instruct | vllm-awq | mme | 868 / 43 / 2 | 4861 | 5239 | 6 | 10107 | 23993 | 19.4 | 19.0 |
+| Qwen2.5-VL-3B-Instruct | vllm-awq | mme | 276 / 46 / 2 | 1446 | 1803 | 6 | 3255 | 26 | 4.0 | 4.0 |
 | Qwen2.5-VL-3B-Instruct | vllm-bf16 | mme | 868 / 43 / 2 | 4861 | 5239 | 6 | 10107 | 23993 | 21.7 | 19.8 |
 | Qwen2.5-VL-3B-Instruct | hf-bf16+repeat | textvqa_val | 977 / 39 / 4 | 5360 | 5794 | 20 | 11174 | 55869 | 29.3 | 22.1 |
+| Qwen2.5-VL-3B-Instruct | hf-bf16 | textvqa_val | 939 / 39 / 5 | 5144 | 5572 | 24 | 10740 | 86 | 19.3 | 14.4 |
 | Qwen2.5-VL-3B-Instruct | hf-bf16 | textvqa_val | 977 / 39 / 4 | 5360 | 5794 | 20 | 11174 | 55869 | 28.1 | 20.4 |
+| Qwen2.5-VL-3B-Instruct | hf-bf16 | textvqa_val | 939 / 39 / 5 | 5144 | 5572 | 24 | 10740 | 86 | 21.5 | 16.3 |
+| Qwen2.5-VL-3B-Instruct | llamacpp-f16 | textvqa_val | 939 / 39 / 4 | 5144 | 5572 | 20 | 10736 | 86 | 9.5 | 8.8 |
 | Qwen2.5-VL-3B-Instruct | llamacpp-f16 | textvqa_val | 977 / 40 / 4 | 5360 | 5796 | 19 | 11175 | 55874 | 9.8 | 9.2 |
+| Qwen2.5-VL-3B-Instruct | llamacpp-f16 | textvqa_val | 939 / 39 / 4 | 5144 | 5572 | 20 | 10736 | 86 | 10.1 | 9.4 |
+| Qwen2.5-VL-3B-Instruct | llamacpp-q4_k_m | textvqa_val | 939 / 39 / 4 | 5144 | 5572 | 20 | 10736 | 86 | 9.4 | 9.1 |
 | Qwen2.5-VL-3B-Instruct | llamacpp-q4_k_m | textvqa_val | 977 / 40 / 4 | 5360 | 5796 | 20 | 11176 | 55880 | 9.4 | 9.1 |
+| Qwen2.5-VL-3B-Instruct | llamacpp-q8_0 | textvqa_val | 939 / 39 / 4 | 5144 | 5572 | 20 | 10736 | 86 | 9.7 | 9.2 |
 | Qwen2.5-VL-3B-Instruct | llamacpp-q8_0 | textvqa_val | 977 / 40 / 4 | 5360 | 5796 | 19 | 11175 | 55874 | 9.8 | 9.3 |
 | Qwen2.5-VL-3B-Instruct | trt_edgellm-fp16+repeat | textvqa_val | 977 / 39 / 4 | 5360 | 5794 | 19 | 11173 | 55865 | 70.0 | 47.4 |
+| Qwen2.5-VL-3B-Instruct | trt_edgellm-fp16 | textvqa_val | 939 / 39 / 4 | 5144 | 5572 | 21 | 10737 | 86 | 76.2 | 47.0 |
 | Qwen2.5-VL-3B-Instruct | trt_edgellm-fp16 | textvqa_val | 977 / 39 / 4 | 5360 | 5794 | 19 | 11173 | 55865 | 71.0 | 47.6 |
+| Qwen2.5-VL-3B-Instruct | trt_edgellm-fp16 | textvqa_val | 939 / 39 / 4 | 5144 | 5572 | 21 | 10737 | 86 | 73.3 | 46.6 |
+| Qwen2.5-VL-3B-Instruct | trt_edgellm-fp8 | textvqa_val | 939 / 39 / 4 | 5144 | 5572 | 21 | 10737 | 86 | 83.7 | 60.1 |
 | Qwen2.5-VL-3B-Instruct | trt_edgellm-fp8 | textvqa_val | 977 / 39 / 4 | 5360 | 5794 | 19 | 11173 | 55864 | 86.0 | 63.8 |
+| Qwen2.5-VL-3B-Instruct | trt_edgellm-int4_awq | textvqa_val | 939 / 39 / 5 | 5144 | 5572 | 23 | 10739 | 86 | 47.6 | 40.4 |
 | Qwen2.5-VL-3B-Instruct | trt_edgellm-int4_awq | textvqa_val | 977 / 39 / 4 | 5360 | 5794 | 19 | 11173 | 55865 | 48.2 | 42.4 |
+| Qwen2.5-VL-3B-Instruct | vllm-awq | textvqa_val | 939 / 39 / 4 | 5144 | 5572 | 18 | 10733 | 86 | 9.8 | 9.5 |
 | Qwen2.5-VL-3B-Instruct | vllm-awq | textvqa_val | 977 / 39 / 4 | 5360 | 5794 | 19 | 11173 | 55865 | 24.4 | 22.9 |
 | Qwen2.5-VL-3B-Instruct | vllm-bf16+pil | textvqa_val | 977 / 39 / 4 | 5360 | 5794 | 19 | 11173 | 55865 | 39.5 | 31.1 |
 | Qwen2.5-VL-3B-Instruct | vllm-bf16+repeat | textvqa_val | 977 / 39 / 4 | 5360 | 5794 | 19 | 11173 | 55865 | 36.1 | 28.9 |
+| Qwen2.5-VL-3B-Instruct | vllm-bf16+stages | textvqa_val | 961 / 39 / 4 | 5266 | 5700 | 18 | 10984 | 549 | 29.0 | 24.4 |
 | Qwen2.5-VL-3B-Instruct | vllm-bf16+stages | textvqa_val | 977 / 39 / 4 | 5360 | 5794 | 19 | 11173 | 55865 | 36.9 | 29.4 |
+| Qwen2.5-VL-3B-Instruct | vllm-bf16 | textvqa_val | 939 / 39 / 4 | 5144 | 5572 | 21 | 10737 | 86 | 11.3 | 10.3 |
 | Qwen2.5-VL-3B-Instruct | vllm-bf16 | textvqa_val | 977 / 39 / 4 | 5360 | 5794 | 19 | 11173 | 55865 | 30.6 | 25.2 |
+| Qwen2.5-VL-3B-Instruct | vllm-bf16 | textvqa_val | 961 / 39 / 4 | 5266 | 5700 | 18 | 10984 | 549 | 28.5 | 24.1 |
+| Qwen2.5-VL-3B-Instruct | vllm-bf16 | textvqa_val | 939 / 39 / 4 | 5144 | 5572 | 21 | 10737 | 86 | 13.4 | 12.2 |
+| Qwen2.5-VL-3B-Instruct | vllm-fp8+marlin | textvqa_val | 939 / 39 / 4 | 5144 | 5572 | 21 | 10737 | 86 | 10.7 | 10.2 |
 | Qwen2.5-VL-3B-Instruct | vllm-fp8+marlin | textvqa_val | 977 / 39 / 4 | 5360 | 5794 | 19 | 11173 | 55867 | 25.9 | 23.4 |
 | Qwen2.5-VL-3B-Instruct | vllm-fp8+torch-stages | textvqa_val | 977 / 39 / 4 | 5360 | 5794 | 19 | 11173 | 55866 | 36.2 | 31.6 |
+| Qwen2.5-VL-3B-Instruct | vllm-fp8+torch | textvqa_val | 939 / 39 / 4 | 5144 | 5572 | 21 | 10737 | 86 | 12.1 | 11.4 |
+| Qwen2.5-VL-3B-Instruct | vllm-w8a8+triton | textvqa_val | 939 / 39 / 4 | 5144 | 5572 | 21 | 10737 | 86 | 12.8 | 12.1 |
 | Qwen2.5-VL-3B-Instruct | vllm-w8a8+triton | textvqa_val | 977 / 39 / 4 | 5360 | 5794 | 19 | 11173 | 55866 | 31.3 | 27.7 |
 | Qwen2.5-VL-7B-Instruct | hf-bf16 | gqa | 358 / 41 / 2 | 1898 | 5245 | 18 | 7161 | 90072 | - | - |
 | Qwen2.5-VL-7B-Instruct | vllm-awq | gqa | 358 / 41 / 2 | 1898 | 5243 | 18 | 7160 | 90052 | 24.1 | 22.2 |
@@ -451,16 +946,25 @@ and total / mean answer time.
 | Qwen2.5-VL-7B-Instruct | hf-bf16 | mme | 868 / 42 / 2 | 4874 | 12124 | 15 | 17014 | 40390 | 33.5 | 28.7 |
 | Qwen2.5-VL-7B-Instruct | vllm-awq | mme | 868 / 43 / 2 | 4874 | 12139 | 15 | 17028 | 40425 | 24.1 | 23.3 |
 | Qwen2.5-VL-7B-Instruct | vllm-bf16 | mme | 868 / 43 / 2 | 4874 | 12139 | 15 | 17028 | 40425 | 28.1 | 24.5 |
+| Qwen2.5-VL-7B-Instruct | hf-bf16 | textvqa_val | 939 / 39 / 4 | 5159 | 12959 | 42 | 18160 | 145 | 28.1 | 20.4 |
 | Qwen2.5-VL-7B-Instruct | hf-bf16 | textvqa_val | 977 / 39 / 4 | 5376 | 13471 | 44 | 18891 | 94453 | 39.4 | 26.2 |
 | Qwen2.5-VL-7B-Instruct | llamacpp-f16 | textvqa_val | 977 / 40 / 4 | 5376 | 13475 | 45 | 18896 | 94480 | 12.6 | 11.2 |
+| Qwen2.5-VL-7B-Instruct | llamacpp-q4_k_m | textvqa_val | 939 / 39 / 5 | 5159 | 12959 | 62 | 18180 | 145 | 11.9 | 11.1 |
 | Qwen2.5-VL-7B-Instruct | llamacpp-q4_k_m | textvqa_val | 977 / 40 / 4 | 5376 | 13475 | 45 | 18896 | 94480 | 12.0 | 11.4 |
+| Qwen2.5-VL-7B-Instruct | llamacpp-q8_0 | textvqa_val | 939 / 39 / 5 | 5159 | 12959 | 64 | 18182 | 145 | 12.5 | 11.3 |
 | Qwen2.5-VL-7B-Instruct | llamacpp-q8_0 | textvqa_val | 977 / 40 / 4 | 5376 | 13475 | 46 | 18897 | 94483 | 12.7 | 11.9 |
+| Qwen2.5-VL-7B-Instruct | trt_edgellm-fp16 | textvqa_val | 939 / 39 / 4 | 5159 | 12959 | 42 | 18160 | 145 | 84.1 | 47.1 |
 | Qwen2.5-VL-7B-Instruct | trt_edgellm-fp16 | textvqa_val | 977 / 39 / 4 | 5376 | 13471 | 43 | 18889 | 94447 | 76.7 | 45.0 |
+| Qwen2.5-VL-7B-Instruct | trt_edgellm-fp8 | textvqa_val | 939 / 39 / 4 | 5159 | 12959 | 44 | 18162 | 145 | 110.4 | 69.8 |
 | Qwen2.5-VL-7B-Instruct | trt_edgellm-fp8 | textvqa_val | 977 / 39 / 4 | 5376 | 13471 | 43 | 18890 | 94448 | 104.4 | 68.8 |
+| Qwen2.5-VL-7B-Instruct | trt_edgellm-int4_awq | textvqa_val | 939 / 39 / 5 | 5159 | 12959 | 58 | 18176 | 145 | 47.8 | 39.5 |
 | Qwen2.5-VL-7B-Instruct | trt_edgellm-int4_awq | textvqa_val | 977 / 39 / 4 | 5376 | 13471 | 43 | 18890 | 94449 | 47.5 | 41.3 |
+| Qwen2.5-VL-7B-Instruct | vllm-awq | textvqa_val | 939 / 39 / 4 | 5159 | 12959 | 40 | 18158 | 145 | 14.2 | 13.6 |
 | Qwen2.5-VL-7B-Instruct | vllm-awq | textvqa_val | 977 / 39 / 4 | 5376 | 13471 | 43 | 18890 | 94450 | 29.8 | 27.2 |
+| Qwen2.5-VL-7B-Instruct | vllm-bf16+diag-nocache | textvqa_val | 939 / 39 / 4 | 5159 | 12959 | 44 | 18162 | 145 | 20.5 | 17.1 |
 | Qwen2.5-VL-7B-Instruct | vllm-bf16+pil | textvqa_val | 977 / 39 / 4 | 5376 | 13471 | 43 | 18890 | 94448 | 48.9 | 33.5 |
 | Qwen2.5-VL-7B-Instruct | vllm-bf16+stages | textvqa_val | 977 / 39 / 4 | 5376 | 13471 | 43 | 18890 | 94449 | 48.3 | 33.1 |
+| Qwen2.5-VL-7B-Instruct | vllm-bf16 | textvqa_val | 939 / 39 / 4 | 5159 | 12959 | 42 | 18160 | 145 | 17.9 | 15.1 |
 | Qwen2.5-VL-7B-Instruct | vllm-bf16 | textvqa_val | 977 / 39 / 4 | 5376 | 13471 | 43 | 18890 | 94448 | 41.6 | 29.7 |
 | Qwen2.5-VL-7B-Instruct | vllm-fp8+marlin | textvqa_val | 977 / 39 / 4 | 5376 | 13471 | 43 | 18890 | 94448 | 28.0 | 24.7 |
 | Qwen2.5-VL-7B-Instruct | vllm-fp8+torch-stages | textvqa_val | 977 / 39 / 4 | 5376 | 13471 | 43 | 18890 | 94448 | 52.8 | 41.6 |

@@ -1,0 +1,72 @@
+[
+  {
+    "max_new_tokens": 1280,
+    "num_requests": 8,
+    "profile": {
+      "generation": {
+        "average_time_per_token_ms": 13.109101295471191,
+        "average_tokens_per_run": 450.875,
+        "generated_tokens": 3607,
+        "tokens_per_second": 76.28288269042969,
+        "total_runs": 8
+      },
+      "gpu_memory_metric": "nvml_process_allocation",
+      "peak_cpu_memory_bytes": 836882432,
+      "peak_cpu_memory_mb": 798.11328125,
+      "peak_gpu_memory_bytes": 4096745472,
+      "peak_gpu_memory_mb": 3906.9609375,
+      "prefill": {
+        "average_time_per_run_ms": 16.978057861328125,
+        "average_time_per_token_ms": 0.20486344397068024,
+        "average_tokens_per_run": 82.875,
+        "computed_tokens": 663,
+        "pruned_tokens": 0,
+        "reused_tokens": 0,
+        "tokens_per_second": 4881.30078125,
+        "total_runs": 8
+      },
+      "stages": [
+        {
+          "average_time_per_run_ms": 13.138240814208984,
+          "gpu_time_stats": {
+            "count": 3599,
+            "max_ms": 13.66710376739502,
+            "mean_ms": 13.138238535618974,
+            "median_ms": 13.12611198425293,
+            "min_ms": 12.756671905517578,
+            "p95_ms": 13.435551643371582,
+            "p99_ms": 13.538304328918457,
+            "stddev_ms": 0.16026502591782424
+          },
+          "stage_id": "llm_generation",
+          "total_gpu_time_ms": 47284.52734375,
+          "total_runs": 3599
+        },
+        {
+          "average_time_per_run_ms": 16.978057861328125,
+          "gpu_time_stats": {
+            "count": 8,
+            "max_ms": 17.240671157836914,
+            "mean_ms": 16.97805953025818,
+            "median_ms": 16.923583984375,
+            "min_ms": 16.786943435668945,
+            "p95_ms": 17.240671157836914,
+            "p99_ms": 17.240671157836914,
+            "stddev_ms": 0.1512253546127063
+          },
+          "stage_id": "llm_prefill",
+          "total_gpu_time_ms": 135.824462890625,
+          "total_runs": 8
+        }
+      ],
+      "wall_clock": {
+        "generated_tokens": 3607,
+        "ms_per_token": 13.15300095952315,
+        "tokens_per_second": 76.02827697476684,
+        "total_time_ms": 47442.874461,
+        "tp_size": 1
+      },
+      "failed_requests": 0
+    }
+  }
+]

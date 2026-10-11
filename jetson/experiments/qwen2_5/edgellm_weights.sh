@@ -28,7 +28,7 @@ built() {
   shift
   for p in "$@"; do
     "$REPO/jetson/frameworks/trt_edgellm/ensure_engines.sh" "$size" "$p" >&2
-    [ -d "$TRT_WORKSPACE/$MODEL_TAG-$p/engines/llm" ] && echo "$p"
+    [ -f "$TRT_WORKSPACE/$MODEL_TAG-$p/engines/llm/llm.engine" ] && echo "$p"
   done
 }
 

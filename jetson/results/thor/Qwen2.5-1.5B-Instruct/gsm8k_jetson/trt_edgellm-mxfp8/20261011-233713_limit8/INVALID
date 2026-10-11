@@ -1,0 +1,1 @@
+no engine: the mxfp8 engine build fails (TensorRT: E8M0 is not supported in plugins); the run started on an empty engine dir (NOTES_qwen2_5.md problem 9)
