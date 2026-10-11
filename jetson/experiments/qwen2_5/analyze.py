@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """Tables of the text-only Qwen2.5 study, from the result files (the source of every number in FINDINGS_qwen2_5.md).
 
-For each size, task and configuration (framework-precision) it takes the newest valid full run (no _limit, no
-INVALID / STALLED / SUPERSEDED marker) and reports accuracy with the paired difference to HF bf16 (same questions,
+For each size, task and configuration (framework-precision) it takes the first valid full run (no _limit, no
+INVALID / STALLED / SUPERSEDED marker; later runs of the same configuration are repeats, compared with --repeats) and reports accuracy with the paired difference to HF bf16 (same questions,
 standard error of the per-question differences), time and energy per question, TTFT and decode medians, output
 tokens, energy per output token, peak memory and FLOPs. --q1 applies the Q1 decision rule of NOTES_qwen2_5.md.
 
@@ -148,21 +148,21 @@ def collect(sizes, tasks, include_smoke=False, min_tolerance=0.0):
             configs = sorted(os.listdir(os.path.join(RESULTS, model, task))) if os.path.isdir(os.path.join(RESULTS, model, task)) else []
             configs = [c for c in WIDTH if c in configs] + [c for c in configs if c not in WIDTH]
             ref_runs = valid_runs(model, task, REFERENCE, include_smoke)
-            ref = question_scores(ref_runs[-1], task) if ref_runs else {}
+            ref = question_scores(ref_runs[0], task) if ref_runs else {}
             rows = OrderedDict()
             for config in configs:
                 runs = valid_runs(model, task, config, include_smoke)
                 if not runs:
                     continue
-                scores = question_scores(runs[-1], task)
-                m = run_metrics(runs[-1], task)
+                scores = question_scores(runs[0], task)
+                m = run_metrics(runs[0], task)
                 m["acc"] = sum(scores.values()) / len(scores) if scores else None
                 m["delta"], m["se"] = paired(scores, ref) if ref and config != REFERENCE else (None, None)
                 m["same"] = sum(scores[k] == ref[k] for k in ref if k in scores) / len(ref) if ref and config != REFERENCE else None
                 # Rule 1: within 2 paired SE of HF, or above. min_tolerance (sensitivity check, NOTES decision 16):
                 # also pass when the difference is smaller than this many points.
                 m["passes"] = config == REFERENCE or (m["delta"] is not None and m["delta"] >= -max(2 * m["se"], min_tolerance / 100))
-                m["repeats"] = len(runs)
+                m["repeats"] = [run_metrics(r, task) | {"acc": (lambda sc: sum(sc.values()) / len(sc))(question_scores(r, task))} for r in runs[1:]]
                 rows[config] = m
             table[(size, task)] = rows
     return table
@@ -237,11 +237,30 @@ def q1(table, sizes, tasks):
     print(f"\n**Q1 rule: {'Edge-LLM wins' if verdict and not edge_fails else 'not a win (split or negative), see the rows above'}.**")
 
 
+def print_repeats(table):
+    """Repeat runs (later valid runs of a configuration) against the first run."""
+    print("\n## Repeats\n")
+    print("| Size | Task | Configuration | Runs (dates) | Accuracy | Time / question | Energy / question | TTFT p50 | Decode ms/token |")
+    print("|---|---|---|---|---|---|---|---|---|")
+
+    def change(a, b, nd=2):
+        return "-" if a is None or b is None else f"{a:.{nd}f} → {b:.{nd}f} ({100 * (b - a) / a:+.0f}%)"
+
+    for (size, task), rows in table.items():
+        for config, m in rows.items():
+            for r in m["repeats"]:
+                print(
+                    f"| {size} | {task} | {config} | {m['date']} / {r['date']} | {100 * m['acc']:.1f} → {100 * r['acc']:.1f} | {change(m.get('s_per_q'), r.get('s_per_q'))} | "
+                    f"{change(m.get('j_per_q'), r.get('j_per_q'), 1)} | {change(m.get('ttft_ms'), r.get('ttft_ms'), 0)} | {change(m.get('decode_ms'), r.get('decode_ms'), 1)} |"
+                )
+
+
 def main():
     p = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     p.add_argument("--sizes", nargs="*", default=list(SIZES))
     p.add_argument("--tasks", nargs="*", default=TASKS)
     p.add_argument("--q1", action="store_true", help="apply the Q1 decision rule")
+    p.add_argument("--repeats", action="store_true", help="compare repeat runs with the first run")
     p.add_argument("--json", help="also write the metrics to this file (for the figures)")
     p.add_argument("--include-smoke", action="store_true")
     p.add_argument("--min-tolerance", type=float, default=0.0, help="sensitivity check: also pass accuracy differences smaller than this many points (default 0: the rule as fixed)")
@@ -252,6 +271,8 @@ def main():
     print_tables(table)
     if a.q1:
         q1(table, a.sizes, a.tasks)
+    if a.repeats:
+        print_repeats(table)
     if a.json:
         json.dump({f"{s}|{t}": rows for (s, t), rows in table.items()}, open(a.json, "w"), indent=1)
 
