@@ -48,6 +48,11 @@ def run_flops(run_dir):
     text_cfg, model_path = load_config(model_tag)
     tokenizer = None
     tasks = {}
+    # max_new_tokens per task: an answer cut at the cap has no end token, so the recount adds none there.
+    caps = {}
+    for results_path in glob.glob(os.path.join(run_dir, "lmms_eval", "*_results.json")):
+        for name, config in json.load(open(results_path)).get("configs", {}).items():
+            caps[name] = (config.get("generation_kwargs") or {}).get("max_new_tokens")
     for samples_path in sorted(glob.glob(os.path.join(run_dir, "lmms_eval", "*_samples_*.jsonl*"))):
         task_name = re.sub(r"\.jsonl(\.gz)?$", "", re.sub(r"^.*?_samples_", "", os.path.basename(samples_path)))
         rows, recounted = [], 0
@@ -66,6 +71,8 @@ def run_flops(run_dir):
                 while isinstance(response, list):
                     response = response[0] if response else ""
                 output_tokens = len(tokenizer(str(response))["input_ids"]) + 1  # + <|im_end|>
+                if caps.get(task_name):
+                    output_tokens = min(output_tokens, int(caps[task_name]))
                 recounted += 1
             prefill, decode = llm_flops(text_cfg, prompt_tokens, output_tokens)
             rows.append(
