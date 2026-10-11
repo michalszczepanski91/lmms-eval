@@ -1,0 +1,13 @@
+date:        2026-10-11T05:11:10+02:00
+board:       NVIDIA Jetson AGX Thor Developer Kit
+l4t:         # R39 (release), REVISION: 2.1, GCID: 46758480, BOARD: generic, EABI: aarch64, DATE: Fri Aug  7 05:54:22 AM UTC 2026
+power mode:  NV Power Mode: MAXN
+git commit:  c5b593fb
+framework:   trt_edgellm
+precision:   fp8
+modality:    text
+image:       lmms-eval-trt-edgellm:latest (sha256:66a03b0db4da)
+other containers: 
+other GPU processes: 
+command:     python -m lmms_eval --model trt_edgellm --model_args engine_dir=/opt/models/trt-edgellm/Qwen2.5-1.5B-Instruct-fp8/engines/llm,profile_output=jetson/results/thor/Qwen2.5-1.5B-Instruct/ifeval/trt_edgellm-fp8/20261011-051110/trt_profile.json,system_prompt=none --tasks ifeval --batch_size 1 --log_samples --output_path jetson/results/thor/Qwen2.5-1.5B-Instruct/ifeval/trt_edgellm-fp8/20261011-051110 --include_path jetson/tasks
+versions:    torch 2.10.0 transformers 4.57.3
