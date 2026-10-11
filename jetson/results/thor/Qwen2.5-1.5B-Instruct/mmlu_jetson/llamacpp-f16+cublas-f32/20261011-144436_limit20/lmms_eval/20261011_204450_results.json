@@ -1,0 +1,5076 @@
+{
+  "results": {
+    "mmlu_jetson": {
+      "exact_match,first-letter": 0.4070175438596491,
+      "exact_match_stderr,first-letter": 0.014261220749360537,
+      "alias": "mmlu (5-shot, generative, Jetson)"
+    },
+    "mmlu_jetson_abstract_algebra": {
+      "alias": " - abstract algebra",
+      "exact_match,first-letter": 0.25,
+      "exact_match_stderr,first-letter": 0.09933992677987828,
+      "exact_match_stderr_clt,first-letter": 0.09933992677987828,
+      "exact_match_stderr_clustered,first-letter": "N/A"
+    },
+    "mmlu_jetson_anatomy": {
+      "alias": " - anatomy",
+      "exact_match,first-letter": 0.3,
+      "exact_match_stderr,first-letter": 0.10513149660756933,
+      "exact_match_stderr_clt,first-letter": 0.10513149660756935,
+      "exact_match_stderr_clustered,first-letter": "N/A"
+    },
+    "mmlu_jetson_astronomy": {
+      "alias": " - astronomy",
+      "exact_match,first-letter": 0.6,
+      "exact_match_stderr,first-letter": 0.11239029738980327,
+      "exact_match_stderr_clt,first-letter": 0.11239029738980327,
+      "exact_match_stderr_clustered,first-letter": "N/A"
+    },
+    "mmlu_jetson_business_ethics": {
+      "alias": " - business ethics",
+      "exact_match,first-letter": 0.4,
+      "exact_match_stderr,first-letter": 0.11239029738980327,
+      "exact_match_stderr_clt,first-letter": 0.11239029738980327,
+      "exact_match_stderr_clustered,first-letter": "N/A"
+    },
+    "mmlu_jetson_clinical_knowledge": {
+      "alias": " - clinical knowledge",
+      "exact_match,first-letter": 0.45,
+      "exact_match_stderr,first-letter": 0.11413288653790232,
+      "exact_match_stderr_clt,first-letter": 0.11413288653790232,
+      "exact_match_stderr_clustered,first-letter": "N/A"
+    },
+    "mmlu_jetson_college_biology": {
+      "alias": " - college biology",
+      "exact_match,first-letter": 0.25,
+      "exact_match_stderr,first-letter": 0.09933992677987828,
+      "exact_match_stderr_clt,first-letter": 0.09933992677987828,
+      "exact_match_stderr_clustered,first-letter": "N/A"
+    },
+    "mmlu_jetson_college_chemistry": {
+      "alias": " - college chemistry",
+      "exact_match,first-letter": 0.35,
+      "exact_match_stderr,first-letter": 0.1094243309804831,
+      "exact_match_stderr_clt,first-letter": 0.10942433098048308,
+      "exact_match_stderr_clustered,first-letter": "N/A"
+    },
+    "mmlu_jetson_college_computer_science": {
+      "alias": " - college computer science",
+      "exact_match,first-letter": 0.4,
+      "exact_match_stderr,first-letter": 0.11239029738980327,
+      "exact_match_stderr_clt,first-letter": 0.11239029738980327,
+      "exact_match_stderr_clustered,first-letter": "N/A"
+    },
+    "mmlu_jetson_college_mathematics": {
+      "alias": " - college mathematics",
+      "exact_match,first-letter": 0.35,
+      "exact_match_stderr,first-letter": 0.10942433098048308,
+      "exact_match_stderr_clt,first-letter": 0.10942433098048308,
+      "exact_match_stderr_clustered,first-letter": "N/A"
+    },
+    "mmlu_jetson_college_medicine": {
+      "alias": " - college medicine",
+      "exact_match,first-letter": 0.4,
+      "exact_match_stderr,first-letter": 0.11239029738980327,
+      "exact_match_stderr_clt,first-letter": 0.11239029738980327,
+      "exact_match_stderr_clustered,first-letter": "N/A"
+    },
+    "mmlu_jetson_college_physics": {
+      "alias": " - college physics",
+      "exact_match,first-letter": 0.35,
+      "exact_match_stderr,first-letter": 0.1094243309804831,
+      "exact_match_stderr_clt,first-letter": 0.1094243309804831,
+      "exact_match_stderr_clustered,first-letter": "N/A"
+    },
+    "mmlu_jetson_computer_security": {
+      "alias": " - computer security",
+      "exact_match,first-letter": 0.2,
+      "exact_match_stderr,first-letter": 0.0917662935482247,
+      "exact_match_stderr_clt,first-letter": 0.09176629354822471,
+      "exact_match_stderr_clustered,first-letter": "N/A"
+    },
+    "mmlu_jetson_conceptual_physics": {
+      "alias": " - conceptual physics",
+      "exact_match,first-letter": 0.65,
+      "exact_match_stderr,first-letter": 0.1094243309804831,
+      "exact_match_stderr_clt,first-letter": 0.10942433098048311,
+      "exact_match_stderr_clustered,first-letter": "N/A"
+    },
+    "mmlu_jetson_econometrics": {
+      "alias": " - econometrics",
+      "exact_match,first-letter": 0.3,
+      "exact_match_stderr,first-letter": 0.10513149660756933,
+      "exact_match_stderr_clt,first-letter": 0.10513149660756935,
+      "exact_match_stderr_clustered,first-letter": "N/A"
+    },
+    "mmlu_jetson_electrical_engineering": {
+      "alias": " - electrical engineering",
+      "exact_match,first-letter": 0.6,
+      "exact_match_stderr,first-letter": 0.11239029738980327,
+      "exact_match_stderr_clt,first-letter": 0.11239029738980327,
+      "exact_match_stderr_clustered,first-letter": "N/A"
+    },
+    "mmlu_jetson_elementary_mathematics": {
+      "alias": " - elementary mathematics",
+      "exact_match,first-letter": 0.35,
+      "exact_match_stderr,first-letter": 0.1094243309804831,
+      "exact_match_stderr_clt,first-letter": 0.1094243309804831,
+      "exact_match_stderr_clustered,first-letter": "N/A"
+    },
+    "mmlu_jetson_formal_logic": {
+      "alias": " - formal logic",
+      "exact_match,first-letter": 0.4,
+      "exact_match_stderr,first-letter": 0.11239029738980327,
+      "exact_match_stderr_clt,first-letter": 0.11239029738980327,
+      "exact_match_stderr_clustered,first-letter": "N/A"
+    },
+    "mmlu_jetson_global_facts": {
+      "alias": " - global facts",
+      "exact_match,first-letter": 0.3,
+      "exact_match_stderr,first-letter": 0.10513149660756933,
+      "exact_match_stderr_clt,first-letter": 0.10513149660756935,
+      "exact_match_stderr_clustered,first-letter": "N/A"
+    },
+    "mmlu_jetson_high_school_biology": {
+      "alias": " - high school biology",
+      "exact_match,first-letter": 0.35,
+      "exact_match_stderr,first-letter": 0.1094243309804831,
+      "exact_match_stderr_clt,first-letter": 0.1094243309804831,
+      "exact_match_stderr_clustered,first-letter": "N/A"
+    },
+    "mmlu_jetson_high_school_chemistry": {
+      "alias": " - high school chemistry",
+      "exact_match,first-letter": 0.6,
+      "exact_match_stderr,first-letter": 0.11239029738980327,
+      "exact_match_stderr_clt,first-letter": 0.11239029738980327,
+      "exact_match_stderr_clustered,first-letter": "N/A"
+    },
+    "mmlu_jetson_high_school_computer_science": {
+      "alias": " - high school computer science",
+      "exact_match,first-letter": 0.85,
+      "exact_match_stderr,first-letter": 0.08191780219091252,
+      "exact_match_stderr_clt,first-letter": 0.08191780219091253,
+      "exact_match_stderr_clustered,first-letter": "N/A"
+    },
+    "mmlu_jetson_high_school_european_history": {
+      "alias": " - high school european history",
+      "exact_match,first-letter": 0.65,
+      "exact_match_stderr,first-letter": 0.1094243309804831,
+      "exact_match_stderr_clt,first-letter": 0.1094243309804831,
+      "exact_match_stderr_clustered,first-letter": "N/A"
+    },
+    "mmlu_jetson_high_school_geography": {
+      "alias": " - high school geography",
+      "exact_match,first-letter": 0.35,
+      "exact_match_stderr,first-letter": 0.10942433098048308,
+      "exact_match_stderr_clt,first-letter": 0.10942433098048308,
+      "exact_match_stderr_clustered,first-letter": "N/A"
+    },
+    "mmlu_jetson_high_school_government_and_politics": {
+      "alias": " - high school government and politics",
+      "exact_match,first-letter": 0.4,
+      "exact_match_stderr,first-letter": 0.11239029738980327,
+      "exact_match_stderr_clt,first-letter": 0.11239029738980327,
+      "exact_match_stderr_clustered,first-letter": "N/A"
+    },
+    "mmlu_jetson_high_school_macroeconomics": {
+      "alias": " - high school macroeconomics",
+      "exact_match,first-letter": 0.45,
+      "exact_match_stderr,first-letter": 0.11413288653790232,
+      "exact_match_stderr_clt,first-letter": 0.11413288653790232,
+      "exact_match_stderr_clustered,first-letter": "N/A"
+    },
+    "mmlu_jetson_high_school_mathematics": {
+      "alias": " - high school mathematics",
+      "exact_match,first-letter": 0.0,
+      "exact_match_stderr,first-letter": 0.0,
+      "exact_match_stderr_clt,first-letter": 0.0,
+      "exact_match_stderr_clustered,first-letter": "N/A"
+    },
+    "mmlu_jetson_high_school_microeconomics": {
+      "alias": " - high school microeconomics",
+      "exact_match,first-letter": 0.45,
+      "exact_match_stderr,first-letter": 0.11413288653790232,
+      "exact_match_stderr_clt,first-letter": 0.11413288653790232,
+      "exact_match_stderr_clustered,first-letter": "N/A"
+    },
+    "mmlu_jetson_high_school_physics": {
+      "alias": " - high school physics",
+      "exact_match,first-letter": 0.35,
+      "exact_match_stderr,first-letter": 0.1094243309804831,
+      "exact_match_stderr_clt,first-letter": 0.1094243309804831,
+      "exact_match_stderr_clustered,first-letter": "N/A"
+    },
+    "mmlu_jetson_high_school_psychology": {
+      "alias": " - high school psychology",
+      "exact_match,first-letter": 0.35,
+      "exact_match_stderr,first-letter": 0.1094243309804831,
+      "exact_match_stderr_clt,first-letter": 0.1094243309804831,
+      "exact_match_stderr_clustered,first-letter": "N/A"
+    },
+    "mmlu_jetson_high_school_statistics": {
+      "alias": " - high school statistics",
+      "exact_match,first-letter": 0.55,
+      "exact_match_stderr,first-letter": 0.11413288653790232,
+      "exact_match_stderr_clt,first-letter": 0.11413288653790232,
+      "exact_match_stderr_clustered,first-letter": "N/A"
+    },
+    "mmlu_jetson_high_school_us_history": {
+      "alias": " - high school us history",
+      "exact_match,first-letter": 0.45,
+      "exact_match_stderr,first-letter": 0.11413288653790232,
+      "exact_match_stderr_clt,first-letter": 0.11413288653790232,
+      "exact_match_stderr_clustered,first-letter": "N/A"
+    },
+    "mmlu_jetson_high_school_world_history": {
+      "alias": " - high school world history",
+      "exact_match,first-letter": 0.6,
+      "exact_match_stderr,first-letter": 0.11239029738980327,
+      "exact_match_stderr_clt,first-letter": 0.11239029738980327,
+      "exact_match_stderr_clustered,first-letter": "N/A"
+    },
+    "mmlu_jetson_human_aging": {
+      "alias": " - human aging",
+      "exact_match,first-letter": 0.25,
+      "exact_match_stderr,first-letter": 0.09933992677987828,
+      "exact_match_stderr_clt,first-letter": 0.09933992677987828,
+      "exact_match_stderr_clustered,first-letter": "N/A"
+    },
+    "mmlu_jetson_human_sexuality": {
+      "alias": " - human sexuality",
+      "exact_match,first-letter": 0.5,
+      "exact_match_stderr,first-letter": 0.11470786693528086,
+      "exact_match_stderr_clt,first-letter": 0.11470786693528086,
+      "exact_match_stderr_clustered,first-letter": "N/A"
+    },
+    "mmlu_jetson_international_law": {
+      "alias": " - international law",
+      "exact_match,first-letter": 0.7,
+      "exact_match_stderr,first-letter": 0.10513149660756935,
+      "exact_match_stderr_clt,first-letter": 0.10513149660756935,
+      "exact_match_stderr_clustered,first-letter": "N/A"
+    },
+    "mmlu_jetson_jurisprudence": {
+      "alias": " - jurisprudence",
+      "exact_match,first-letter": 0.4,
+      "exact_match_stderr,first-letter": 0.11239029738980327,
+      "exact_match_stderr_clt,first-letter": 0.11239029738980327,
+      "exact_match_stderr_clustered,first-letter": "N/A"
+    },
+    "mmlu_jetson_logical_fallacies": {
+      "alias": " - logical fallacies",
+      "exact_match,first-letter": 0.55,
+      "exact_match_stderr,first-letter": 0.11413288653790232,
+      "exact_match_stderr_clt,first-letter": 0.11413288653790231,
+      "exact_match_stderr_clustered,first-letter": "N/A"
+    },
+    "mmlu_jetson_machine_learning": {
+      "alias": " - machine learning",
+      "exact_match,first-letter": 0.35,
+      "exact_match_stderr,first-letter": 0.10942433098048308,
+      "exact_match_stderr_clt,first-letter": 0.10942433098048308,
+      "exact_match_stderr_clustered,first-letter": "N/A"
+    },
+    "mmlu_jetson_management": {
+      "alias": " - management",
+      "exact_match,first-letter": 0.4,
+      "exact_match_stderr,first-letter": 0.11239029738980327,
+      "exact_match_stderr_clt,first-letter": 0.11239029738980327,
+      "exact_match_stderr_clustered,first-letter": "N/A"
+    },
+    "mmlu_jetson_marketing": {
+      "alias": " - marketing",
+      "exact_match,first-letter": 0.3,
+      "exact_match_stderr,first-letter": 0.10513149660756933,
+      "exact_match_stderr_clt,first-letter": 0.10513149660756935,
+      "exact_match_stderr_clustered,first-letter": "N/A"
+    },
+    "mmlu_jetson_medical_genetics": {
+      "alias": " - medical genetics",
+      "exact_match,first-letter": 0.5,
+      "exact_match_stderr,first-letter": 0.11470786693528086,
+      "exact_match_stderr_clt,first-letter": 0.11470786693528086,
+      "exact_match_stderr_clustered,first-letter": "N/A"
+    },
+    "mmlu_jetson_miscellaneous": {
+      "alias": " - miscellaneous",
+      "exact_match,first-letter": 0.65,
+      "exact_match_stderr,first-letter": 0.10942433098048311,
+      "exact_match_stderr_clt,first-letter": 0.1094243309804831,
+      "exact_match_stderr_clustered,first-letter": "N/A"
+    },
+    "mmlu_jetson_moral_disputes": {
+      "alias": " - moral disputes",
+      "exact_match,first-letter": 0.4,
+      "exact_match_stderr,first-letter": 0.11239029738980327,
+      "exact_match_stderr_clt,first-letter": 0.11239029738980327,
+      "exact_match_stderr_clustered,first-letter": "N/A"
+    },
+    "mmlu_jetson_moral_scenarios": {
+      "alias": " - moral scenarios",
+      "exact_match,first-letter": 0.25,
+      "exact_match_stderr,first-letter": 0.09933992677987828,
+      "exact_match_stderr_clt,first-letter": 0.09933992677987828,
+      "exact_match_stderr_clustered,first-letter": "N/A"
+    },
+    "mmlu_jetson_nutrition": {
+      "alias": " - nutrition",
+      "exact_match,first-letter": 0.3,
+      "exact_match_stderr,first-letter": 0.10513149660756933,
+      "exact_match_stderr_clt,first-letter": 0.10513149660756935,
+      "exact_match_stderr_clustered,first-letter": "N/A"
+    },
+    "mmlu_jetson_philosophy": {
+      "alias": " - philosophy",
+      "exact_match,first-letter": 0.35,
+      "exact_match_stderr,first-letter": 0.10942433098048308,
+      "exact_match_stderr_clt,first-letter": 0.10942433098048308,
+      "exact_match_stderr_clustered,first-letter": "N/A"
+    },
+    "mmlu_jetson_prehistory": {
+      "alias": " - prehistory",
+      "exact_match,first-letter": 0.3,
+      "exact_match_stderr,first-letter": 0.10513149660756933,
+      "exact_match_stderr_clt,first-letter": 0.10513149660756935,
+      "exact_match_stderr_clustered,first-letter": "N/A"
+    },
+    "mmlu_jetson_professional_accounting": {
+      "alias": " - professional accounting",
+      "exact_match,first-letter": 0.25,
+      "exact_match_stderr,first-letter": 0.09933992677987828,
+      "exact_match_stderr_clt,first-letter": 0.09933992677987828,
+      "exact_match_stderr_clustered,first-letter": "N/A"
+    },
+    "mmlu_jetson_professional_law": {
+      "alias": " - professional law",
+      "exact_match,first-letter": 0.4,
+      "exact_match_stderr,first-letter": 0.11239029738980327,
+      "exact_match_stderr_clt,first-letter": 0.11239029738980327,
+      "exact_match_stderr_clustered,first-letter": "N/A"
+    },
+    "mmlu_jetson_professional_medicine": {
+      "alias": " - professional medicine",
+      "exact_match,first-letter": 0.4,
+      "exact_match_stderr,first-letter": 0.11239029738980327,
+      "exact_match_stderr_clt,first-letter": 0.11239029738980327,
+      "exact_match_stderr_clustered,first-letter": "N/A"
+    },
+    "mmlu_jetson_professional_psychology": {
+      "alias": " - professional psychology",
+      "exact_match,first-letter": 0.3,
+      "exact_match_stderr,first-letter": 0.10513149660756933,
+      "exact_match_stderr_clt,first-letter": 0.10513149660756935,
+      "exact_match_stderr_clustered,first-letter": "N/A"
+    },
+    "mmlu_jetson_public_relations": {
+      "alias": " - public relations",
+      "exact_match,first-letter": 0.4,
+      "exact_match_stderr,first-letter": 0.11239029738980327,
+      "exact_match_stderr_clt,first-letter": 0.11239029738980327,
+      "exact_match_stderr_clustered,first-letter": "N/A"
+    },
+    "mmlu_jetson_security_studies": {
+      "alias": " - security studies",
+      "exact_match,first-letter": 0.5,
+      "exact_match_stderr,first-letter": 0.11470786693528086,
+      "exact_match_stderr_clt,first-letter": 0.11470786693528086,
+      "exact_match_stderr_clustered,first-letter": "N/A"
+    },
+    "mmlu_jetson_sociology": {
+      "alias": " - sociology",
+      "exact_match,first-letter": 0.55,
+      "exact_match_stderr,first-letter": 0.11413288653790232,
+      "exact_match_stderr_clt,first-letter": 0.11413288653790231,
+      "exact_match_stderr_clustered,first-letter": "N/A"
+    },
+    "mmlu_jetson_us_foreign_policy": {
+      "alias": " - us foreign policy",
+      "exact_match,first-letter": 0.4,
+      "exact_match_stderr,first-letter": 0.11239029738980327,
+      "exact_match_stderr_clt,first-letter": 0.11239029738980327,
+      "exact_match_stderr_clustered,first-letter": "N/A"
+    },
+    "mmlu_jetson_virology": {
+      "alias": " - virology",
+      "exact_match,first-letter": 0.2,
+      "exact_match_stderr,first-letter": 0.09176629354822471,
+      "exact_match_stderr_clt,first-letter": 0.09176629354822471,
+      "exact_match_stderr_clustered,first-letter": "N/A"
+    },
+    "mmlu_jetson_world_religions": {
+      "alias": " - world religions",
+      "exact_match,first-letter": 0.3,
+      "exact_match_stderr,first-letter": 0.10513149660756933,
+      "exact_match_stderr_clt,first-letter": 0.10513149660756935,
+      "exact_match_stderr_clustered,first-letter": "N/A"
+    }
+  },
+  "groups": {
+    "mmlu_jetson": {
+      "exact_match,first-letter": 0.4070175438596491,
+      "exact_match_stderr,first-letter": 0.014261220749360537,
+      "alias": "mmlu (5-shot, generative, Jetson)"
+    }
+  },
+  "group_subtasks": {
+    "mmlu_jetson": [
+      "mmlu_jetson_miscellaneous",
+      "mmlu_jetson_logical_fallacies",
+      "mmlu_jetson_formal_logic",
+      "mmlu_jetson_moral_scenarios",
+      "mmlu_jetson_sociology",
+      "mmlu_jetson_clinical_knowledge",
+      "mmlu_jetson_professional_psychology",
+      "mmlu_jetson_high_school_statistics",
+      "mmlu_jetson_international_law",
+      "mmlu_jetson_moral_disputes",
+      "mmlu_jetson_us_foreign_policy",
+      "mmlu_jetson_global_facts",
+      "mmlu_jetson_high_school_computer_science",
+      "mmlu_jetson_anatomy",
+      "mmlu_jetson_astronomy",
+      "mmlu_jetson_human_aging",
+      "mmlu_jetson_medical_genetics",
+      "mmlu_jetson_management",
+      "mmlu_jetson_high_school_us_history",
+      "mmlu_jetson_professional_medicine",
+      "mmlu_jetson_college_chemistry",
+      "mmlu_jetson_econometrics",
+      "mmlu_jetson_high_school_macroeconomics",
+      "mmlu_jetson_college_mathematics",
+      "mmlu_jetson_high_school_government_and_politics",
+      "mmlu_jetson_college_physics",
+      "mmlu_jetson_high_school_chemistry",
+      "mmlu_jetson_conceptual_physics",
+      "mmlu_jetson_elementary_mathematics",
+      "mmlu_jetson_human_sexuality",
+      "mmlu_jetson_public_relations",
+      "mmlu_jetson_business_ethics",
+      "mmlu_jetson_virology",
+      "mmlu_jetson_high_school_world_history",
+      "mmlu_jetson_security_studies",
+      "mmlu_jetson_high_school_psychology",
+      "mmlu_jetson_nutrition",
+      "mmlu_jetson_high_school_mathematics",
+      "mmlu_jetson_professional_accounting",
+      "mmlu_jetson_electrical_engineering",
+      "mmlu_jetson_prehistory",
+      "mmlu_jetson_machine_learning",
+      "mmlu_jetson_high_school_physics",
+      "mmlu_jetson_college_medicine",
+      "mmlu_jetson_professional_law",
+      "mmlu_jetson_marketing",
+      "mmlu_jetson_high_school_geography",
+      "mmlu_jetson_college_biology",
+      "mmlu_jetson_high_school_biology",
+      "mmlu_jetson_abstract_algebra",
+      "mmlu_jetson_jurisprudence",
+      "mmlu_jetson_high_school_european_history",
+      "mmlu_jetson_college_computer_science",
+      "mmlu_jetson_world_religions",
+      "mmlu_jetson_computer_security",
+      "mmlu_jetson_high_school_microeconomics",
+      "mmlu_jetson_philosophy"
+    ]
+  },
+  "configs": {
+    "mmlu_jetson_abstract_algebra": {
+      "task": "mmlu_jetson_abstract_algebra",
+      "task_alias": "abstract algebra",
+      "tag": "mmlu_jetson_subjects",
+      "dataset_path": "hails/mmlu_no_train",
+      "dataset_name": "abstract_algebra",
+      "dataset_kwargs": {
+        "trust_remote_code": true
+      },
+      "test_split": "test",
+      "fewshot_split": "dev",
+      "full_docs": false,
+      "process_results_use_image": false,
+      "doc_to_text": "{{question.strip()}}\nA. {{choices[0]}}\nB. {{choices[1]}}\nC. {{choices[2]}}\nD. {{choices[3]}}\nAnswer:",
+      "doc_to_target": "{{['A', 'B', 'C', 'D'][answer]}}",
+      "description": "The following are multiple choice questions (with answers) about abstract algebra. Answer the last question with the letter of the correct option only.\n\n",
+      "target_delimiter": " ",
+      "fewshot_delimiter": "\n\n",
+      "fewshot_config": {
+        "sampler": "first_n"
+      },
+      "num_fewshot": 5,
+      "metric_list": [
+        {
+          "metric": "exact_match",
+          "aggregation": "mean",
+          "higher_is_better": true
+        }
+      ],
+      "output_type": "generate_until",
+      "generation_kwargs": {
+        "until": [],
+        "do_sample": false,
+        "temperature": 0.0,
+        "max_new_tokens": 32
+      },
+      "repeats": 1,
+      "filter_list": [
+        {
+          "name": "first-letter",
+          "filter": [
+            {
+              "function": "regex",
+              "regex_pattern": "\\b([ABCD])\\b"
+            },
+            {
+              "function": "take_first"
+            }
+          ]
+        }
+      ],
+      "should_decontaminate": false,
+      "score_key": "score",
+      "metadata": {
+        "version": 1.0
+      },
+      "auto_strip_thinking": false
+    },
+    "mmlu_jetson_anatomy": {
+      "task": "mmlu_jetson_anatomy",
+      "task_alias": "anatomy",
+      "tag": "mmlu_jetson_subjects",
+      "dataset_path": "hails/mmlu_no_train",
+      "dataset_name": "anatomy",
+      "dataset_kwargs": {
+        "trust_remote_code": true
+      },
+      "test_split": "test",
+      "fewshot_split": "dev",
+      "full_docs": false,
+      "process_results_use_image": false,
+      "doc_to_text": "{{question.strip()}}\nA. {{choices[0]}}\nB. {{choices[1]}}\nC. {{choices[2]}}\nD. {{choices[3]}}\nAnswer:",
+      "doc_to_target": "{{['A', 'B', 'C', 'D'][answer]}}",
+      "description": "The following are multiple choice questions (with answers) about anatomy. Answer the last question with the letter of the correct option only.\n\n",
+      "target_delimiter": " ",
+      "fewshot_delimiter": "\n\n",
+      "fewshot_config": {
+        "sampler": "first_n"
+      },
+      "num_fewshot": 5,
+      "metric_list": [
+        {
+          "metric": "exact_match",
+          "aggregation": "mean",
+          "higher_is_better": true
+        }
+      ],
+      "output_type": "generate_until",
+      "generation_kwargs": {
+        "until": [],
+        "do_sample": false,
+        "temperature": 0.0,
+        "max_new_tokens": 32
+      },
+      "repeats": 1,
+      "filter_list": [
+        {
+          "name": "first-letter",
+          "filter": [
+            {
+              "function": "regex",
+              "regex_pattern": "\\b([ABCD])\\b"
+            },
+            {
+              "function": "take_first"
+            }
+          ]
+        }
+      ],
+      "should_decontaminate": false,
+      "score_key": "score",
+      "metadata": {
+        "version": 1.0
+      },
+      "auto_strip_thinking": false
+    },
+    "mmlu_jetson_astronomy": {
+      "task": "mmlu_jetson_astronomy",
+      "task_alias": "astronomy",
+      "tag": "mmlu_jetson_subjects",
+      "dataset_path": "hails/mmlu_no_train",
+      "dataset_name": "astronomy",
+      "dataset_kwargs": {
+        "trust_remote_code": true
+      },
+      "test_split": "test",
+      "fewshot_split": "dev",
+      "full_docs": false,
+      "process_results_use_image": false,
+      "doc_to_text": "{{question.strip()}}\nA. {{choices[0]}}\nB. {{choices[1]}}\nC. {{choices[2]}}\nD. {{choices[3]}}\nAnswer:",
+      "doc_to_target": "{{['A', 'B', 'C', 'D'][answer]}}",
+      "description": "The following are multiple choice questions (with answers) about astronomy. Answer the last question with the letter of the correct option only.\n\n",
+      "target_delimiter": " ",
+      "fewshot_delimiter": "\n\n",
+      "fewshot_config": {
+        "sampler": "first_n"
+      },
+      "num_fewshot": 5,
+      "metric_list": [
+        {
+          "metric": "exact_match",
+          "aggregation": "mean",
+          "higher_is_better": true
+        }
+      ],
+      "output_type": "generate_until",
+      "generation_kwargs": {
+        "until": [],
+        "do_sample": false,
+        "temperature": 0.0,
+        "max_new_tokens": 32
+      },
+      "repeats": 1,
+      "filter_list": [
+        {
+          "name": "first-letter",
+          "filter": [
+            {
+              "function": "regex",
+              "regex_pattern": "\\b([ABCD])\\b"
+            },
+            {
+              "function": "take_first"
+            }
+          ]
+        }
+      ],
+      "should_decontaminate": false,
+      "score_key": "score",
+      "metadata": {
+        "version": 1.0
+      },
+      "auto_strip_thinking": false
+    },
+    "mmlu_jetson_business_ethics": {
+      "task": "mmlu_jetson_business_ethics",
+      "task_alias": "business ethics",
+      "tag": "mmlu_jetson_subjects",
+      "dataset_path": "hails/mmlu_no_train",
+      "dataset_name": "business_ethics",
+      "dataset_kwargs": {
+        "trust_remote_code": true
+      },
+      "test_split": "test",
+      "fewshot_split": "dev",
+      "full_docs": false,
+      "process_results_use_image": false,
+      "doc_to_text": "{{question.strip()}}\nA. {{choices[0]}}\nB. {{choices[1]}}\nC. {{choices[2]}}\nD. {{choices[3]}}\nAnswer:",
+      "doc_to_target": "{{['A', 'B', 'C', 'D'][answer]}}",
+      "description": "The following are multiple choice questions (with answers) about business ethics. Answer the last question with the letter of the correct option only.\n\n",
+      "target_delimiter": " ",
+      "fewshot_delimiter": "\n\n",
+      "fewshot_config": {
+        "sampler": "first_n"
+      },
+      "num_fewshot": 5,
+      "metric_list": [
+        {
+          "metric": "exact_match",
+          "aggregation": "mean",
+          "higher_is_better": true
+        }
+      ],
+      "output_type": "generate_until",
+      "generation_kwargs": {
+        "until": [],
+        "do_sample": false,
+        "temperature": 0.0,
+        "max_new_tokens": 32
+      },
+      "repeats": 1,
+      "filter_list": [
+        {
+          "name": "first-letter",
+          "filter": [
+            {
+              "function": "regex",
+              "regex_pattern": "\\b([ABCD])\\b"
+            },
+            {
+              "function": "take_first"
+            }
+          ]
+        }
+      ],
+      "should_decontaminate": false,
+      "score_key": "score",
+      "metadata": {
+        "version": 1.0
+      },
+      "auto_strip_thinking": false
+    },
+    "mmlu_jetson_clinical_knowledge": {
+      "task": "mmlu_jetson_clinical_knowledge",
+      "task_alias": "clinical knowledge",
+      "tag": "mmlu_jetson_subjects",
+      "dataset_path": "hails/mmlu_no_train",
+      "dataset_name": "clinical_knowledge",
+      "dataset_kwargs": {
+        "trust_remote_code": true
+      },
+      "test_split": "test",
+      "fewshot_split": "dev",
+      "full_docs": false,
+      "process_results_use_image": false,
+      "doc_to_text": "{{question.strip()}}\nA. {{choices[0]}}\nB. {{choices[1]}}\nC. {{choices[2]}}\nD. {{choices[3]}}\nAnswer:",
+      "doc_to_target": "{{['A', 'B', 'C', 'D'][answer]}}",
+      "description": "The following are multiple choice questions (with answers) about clinical knowledge. Answer the last question with the letter of the correct option only.\n\n",
+      "target_delimiter": " ",
+      "fewshot_delimiter": "\n\n",
+      "fewshot_config": {
+        "sampler": "first_n"
+      },
+      "num_fewshot": 5,
+      "metric_list": [
+        {
+          "metric": "exact_match",
+          "aggregation": "mean",
+          "higher_is_better": true
+        }
+      ],
+      "output_type": "generate_until",
+      "generation_kwargs": {
+        "until": [],
+        "do_sample": false,
+        "temperature": 0.0,
+        "max_new_tokens": 32
+      },
+      "repeats": 1,
+      "filter_list": [
+        {
+          "name": "first-letter",
+          "filter": [
+            {
+              "function": "regex",
+              "regex_pattern": "\\b([ABCD])\\b"
+            },
+            {
+              "function": "take_first"
+            }
+          ]
+        }
+      ],
+      "should_decontaminate": false,
+      "score_key": "score",
+      "metadata": {
+        "version": 1.0
+      },
+      "auto_strip_thinking": false
+    },
+    "mmlu_jetson_college_biology": {
+      "task": "mmlu_jetson_college_biology",
+      "task_alias": "college biology",
+      "tag": "mmlu_jetson_subjects",
+      "dataset_path": "hails/mmlu_no_train",
+      "dataset_name": "college_biology",
+      "dataset_kwargs": {
+        "trust_remote_code": true
+      },
+      "test_split": "test",
+      "fewshot_split": "dev",
+      "full_docs": false,
+      "process_results_use_image": false,
+      "doc_to_text": "{{question.strip()}}\nA. {{choices[0]}}\nB. {{choices[1]}}\nC. {{choices[2]}}\nD. {{choices[3]}}\nAnswer:",
+      "doc_to_target": "{{['A', 'B', 'C', 'D'][answer]}}",
+      "description": "The following are multiple choice questions (with answers) about college biology. Answer the last question with the letter of the correct option only.\n\n",
+      "target_delimiter": " ",
+      "fewshot_delimiter": "\n\n",
+      "fewshot_config": {
+        "sampler": "first_n"
+      },
+      "num_fewshot": 5,
+      "metric_list": [
+        {
+          "metric": "exact_match",
+          "aggregation": "mean",
+          "higher_is_better": true
+        }
+      ],
+      "output_type": "generate_until",
+      "generation_kwargs": {
+        "until": [],
+        "do_sample": false,
+        "temperature": 0.0,
+        "max_new_tokens": 32
+      },
+      "repeats": 1,
+      "filter_list": [
+        {
+          "name": "first-letter",
+          "filter": [
+            {
+              "function": "regex",
+              "regex_pattern": "\\b([ABCD])\\b"
+            },
+            {
+              "function": "take_first"
+            }
+          ]
+        }
+      ],
+      "should_decontaminate": false,
+      "score_key": "score",
+      "metadata": {
+        "version": 1.0
+      },
+      "auto_strip_thinking": false
+    },
+    "mmlu_jetson_college_chemistry": {
+      "task": "mmlu_jetson_college_chemistry",
+      "task_alias": "college chemistry",
+      "tag": "mmlu_jetson_subjects",
+      "dataset_path": "hails/mmlu_no_train",
+      "dataset_name": "college_chemistry",
+      "dataset_kwargs": {
+        "trust_remote_code": true
+      },
+      "test_split": "test",
+      "fewshot_split": "dev",
+      "full_docs": false,
+      "process_results_use_image": false,
+      "doc_to_text": "{{question.strip()}}\nA. {{choices[0]}}\nB. {{choices[1]}}\nC. {{choices[2]}}\nD. {{choices[3]}}\nAnswer:",
+      "doc_to_target": "{{['A', 'B', 'C', 'D'][answer]}}",
+      "description": "The following are multiple choice questions (with answers) about college chemistry. Answer the last question with the letter of the correct option only.\n\n",
+      "target_delimiter": " ",
+      "fewshot_delimiter": "\n\n",
+      "fewshot_config": {
+        "sampler": "first_n"
+      },
+      "num_fewshot": 5,
+      "metric_list": [
+        {
+          "metric": "exact_match",
+          "aggregation": "mean",
+          "higher_is_better": true
+        }
+      ],
+      "output_type": "generate_until",
+      "generation_kwargs": {
+        "until": [],
+        "do_sample": false,
+        "temperature": 0.0,
+        "max_new_tokens": 32
+      },
+      "repeats": 1,
+      "filter_list": [
+        {
+          "name": "first-letter",
+          "filter": [
+            {
+              "function": "regex",
+              "regex_pattern": "\\b([ABCD])\\b"
+            },
+            {
+              "function": "take_first"
+            }
+          ]
+        }
+      ],
+      "should_decontaminate": false,
+      "score_key": "score",
+      "metadata": {
+        "version": 1.0
+      },
+      "auto_strip_thinking": false
+    },
+    "mmlu_jetson_college_computer_science": {
+      "task": "mmlu_jetson_college_computer_science",
+      "task_alias": "college computer science",
+      "tag": "mmlu_jetson_subjects",
+      "dataset_path": "hails/mmlu_no_train",
+      "dataset_name": "college_computer_science",
+      "dataset_kwargs": {
+        "trust_remote_code": true
+      },
+      "test_split": "test",
+      "fewshot_split": "dev",
+      "full_docs": false,
+      "process_results_use_image": false,
+      "doc_to_text": "{{question.strip()}}\nA. {{choices[0]}}\nB. {{choices[1]}}\nC. {{choices[2]}}\nD. {{choices[3]}}\nAnswer:",
+      "doc_to_target": "{{['A', 'B', 'C', 'D'][answer]}}",
+      "description": "The following are multiple choice questions (with answers) about college computer science. Answer the last question with the letter of the correct option only.\n\n",
+      "target_delimiter": " ",
+      "fewshot_delimiter": "\n\n",
+      "fewshot_config": {
+        "sampler": "first_n"
+      },
+      "num_fewshot": 5,
+      "metric_list": [
+        {
+          "metric": "exact_match",
+          "aggregation": "mean",
+          "higher_is_better": true
+        }
+      ],
+      "output_type": "generate_until",
+      "generation_kwargs": {
+        "until": [],
+        "do_sample": false,
+        "temperature": 0.0,
+        "max_new_tokens": 32
+      },
+      "repeats": 1,
+      "filter_list": [
+        {
+          "name": "first-letter",
+          "filter": [
+            {
+              "function": "regex",
+              "regex_pattern": "\\b([ABCD])\\b"
+            },
+            {
+              "function": "take_first"
+            }
+          ]
+        }
+      ],
+      "should_decontaminate": false,
+      "score_key": "score",
+      "metadata": {
+        "version": 1.0
+      },
+      "auto_strip_thinking": false
+    },
+    "mmlu_jetson_college_mathematics": {
+      "task": "mmlu_jetson_college_mathematics",
+      "task_alias": "college mathematics",
+      "tag": "mmlu_jetson_subjects",
+      "dataset_path": "hails/mmlu_no_train",
+      "dataset_name": "college_mathematics",
+      "dataset_kwargs": {
+        "trust_remote_code": true
+      },
+      "test_split": "test",
+      "fewshot_split": "dev",
+      "full_docs": false,
+      "process_results_use_image": false,
+      "doc_to_text": "{{question.strip()}}\nA. {{choices[0]}}\nB. {{choices[1]}}\nC. {{choices[2]}}\nD. {{choices[3]}}\nAnswer:",
+      "doc_to_target": "{{['A', 'B', 'C', 'D'][answer]}}",
+      "description": "The following are multiple choice questions (with answers) about college mathematics. Answer the last question with the letter of the correct option only.\n\n",
+      "target_delimiter": " ",
+      "fewshot_delimiter": "\n\n",
+      "fewshot_config": {
+        "sampler": "first_n"
+      },
+      "num_fewshot": 5,
+      "metric_list": [
+        {
+          "metric": "exact_match",
+          "aggregation": "mean",
+          "higher_is_better": true
+        }
+      ],
+      "output_type": "generate_until",
+      "generation_kwargs": {
+        "until": [],
+        "do_sample": false,
+        "temperature": 0.0,
+        "max_new_tokens": 32
+      },
+      "repeats": 1,
+      "filter_list": [
+        {
+          "name": "first-letter",
+          "filter": [
+            {
+              "function": "regex",
+              "regex_pattern": "\\b([ABCD])\\b"
+            },
+            {
+              "function": "take_first"
+            }
+          ]
+        }
+      ],
+      "should_decontaminate": false,
+      "score_key": "score",
+      "metadata": {
+        "version": 1.0
+      },
+      "auto_strip_thinking": false
+    },
+    "mmlu_jetson_college_medicine": {
+      "task": "mmlu_jetson_college_medicine",
+      "task_alias": "college medicine",
+      "tag": "mmlu_jetson_subjects",
+      "dataset_path": "hails/mmlu_no_train",
+      "dataset_name": "college_medicine",
+      "dataset_kwargs": {
+        "trust_remote_code": true
+      },
+      "test_split": "test",
+      "fewshot_split": "dev",
+      "full_docs": false,
+      "process_results_use_image": false,
+      "doc_to_text": "{{question.strip()}}\nA. {{choices[0]}}\nB. {{choices[1]}}\nC. {{choices[2]}}\nD. {{choices[3]}}\nAnswer:",
+      "doc_to_target": "{{['A', 'B', 'C', 'D'][answer]}}",
+      "description": "The following are multiple choice questions (with answers) about college medicine. Answer the last question with the letter of the correct option only.\n\n",
+      "target_delimiter": " ",
+      "fewshot_delimiter": "\n\n",
+      "fewshot_config": {
+        "sampler": "first_n"
+      },
+      "num_fewshot": 5,
+      "metric_list": [
+        {
+          "metric": "exact_match",
+          "aggregation": "mean",
+          "higher_is_better": true
+        }
+      ],
+      "output_type": "generate_until",
+      "generation_kwargs": {
+        "until": [],
+        "do_sample": false,
+        "temperature": 0.0,
+        "max_new_tokens": 32
+      },
+      "repeats": 1,
+      "filter_list": [
+        {
+          "name": "first-letter",
+          "filter": [
+            {
+              "function": "regex",
+              "regex_pattern": "\\b([ABCD])\\b"
+            },
+            {
+              "function": "take_first"
+            }
+          ]
+        }
+      ],
+      "should_decontaminate": false,
+      "score_key": "score",
+      "metadata": {
+        "version": 1.0
+      },
+      "auto_strip_thinking": false
+    },
+    "mmlu_jetson_college_physics": {
+      "task": "mmlu_jetson_college_physics",
+      "task_alias": "college physics",
+      "tag": "mmlu_jetson_subjects",
+      "dataset_path": "hails/mmlu_no_train",
+      "dataset_name": "college_physics",
+      "dataset_kwargs": {
+        "trust_remote_code": true
+      },
+      "test_split": "test",
+      "fewshot_split": "dev",
+      "full_docs": false,
+      "process_results_use_image": false,
+      "doc_to_text": "{{question.strip()}}\nA. {{choices[0]}}\nB. {{choices[1]}}\nC. {{choices[2]}}\nD. {{choices[3]}}\nAnswer:",
+      "doc_to_target": "{{['A', 'B', 'C', 'D'][answer]}}",
+      "description": "The following are multiple choice questions (with answers) about college physics. Answer the last question with the letter of the correct option only.\n\n",
+      "target_delimiter": " ",
+      "fewshot_delimiter": "\n\n",
+      "fewshot_config": {
+        "sampler": "first_n"
+      },
+      "num_fewshot": 5,
+      "metric_list": [
+        {
+          "metric": "exact_match",
+          "aggregation": "mean",
+          "higher_is_better": true
+        }
+      ],
+      "output_type": "generate_until",
+      "generation_kwargs": {
+        "until": [],
+        "do_sample": false,
+        "temperature": 0.0,
+        "max_new_tokens": 32
+      },
+      "repeats": 1,
+      "filter_list": [
+        {
+          "name": "first-letter",
+          "filter": [
+            {
+              "function": "regex",
+              "regex_pattern": "\\b([ABCD])\\b"
+            },
+            {
+              "function": "take_first"
+            }
+          ]
+        }
+      ],
+      "should_decontaminate": false,
+      "score_key": "score",
+      "metadata": {
+        "version": 1.0
+      },
+      "auto_strip_thinking": false
+    },
+    "mmlu_jetson_computer_security": {
+      "task": "mmlu_jetson_computer_security",
+      "task_alias": "computer security",
+      "tag": "mmlu_jetson_subjects",
+      "dataset_path": "hails/mmlu_no_train",
+      "dataset_name": "computer_security",
+      "dataset_kwargs": {
+        "trust_remote_code": true
+      },
+      "test_split": "test",
+      "fewshot_split": "dev",
+      "full_docs": false,
+      "process_results_use_image": false,
+      "doc_to_text": "{{question.strip()}}\nA. {{choices[0]}}\nB. {{choices[1]}}\nC. {{choices[2]}}\nD. {{choices[3]}}\nAnswer:",
+      "doc_to_target": "{{['A', 'B', 'C', 'D'][answer]}}",
+      "description": "The following are multiple choice questions (with answers) about computer security. Answer the last question with the letter of the correct option only.\n\n",
+      "target_delimiter": " ",
+      "fewshot_delimiter": "\n\n",
+      "fewshot_config": {
+        "sampler": "first_n"
+      },
+      "num_fewshot": 5,
+      "metric_list": [
+        {
+          "metric": "exact_match",
+          "aggregation": "mean",
+          "higher_is_better": true
+        }
+      ],
+      "output_type": "generate_until",
+      "generation_kwargs": {
+        "until": [],
+        "do_sample": false,
+        "temperature": 0.0,
+        "max_new_tokens": 32
+      },
+      "repeats": 1,
+      "filter_list": [
+        {
+          "name": "first-letter",
+          "filter": [
+            {
+              "function": "regex",
+              "regex_pattern": "\\b([ABCD])\\b"
+            },
+            {
+              "function": "take_first"
+            }
+          ]
+        }
+      ],
+      "should_decontaminate": false,
+      "score_key": "score",
+      "metadata": {
+        "version": 1.0
+      },
+      "auto_strip_thinking": false
+    },
+    "mmlu_jetson_conceptual_physics": {
+      "task": "mmlu_jetson_conceptual_physics",
+      "task_alias": "conceptual physics",
+      "tag": "mmlu_jetson_subjects",
+      "dataset_path": "hails/mmlu_no_train",
+      "dataset_name": "conceptual_physics",
+      "dataset_kwargs": {
+        "trust_remote_code": true
+      },
+      "test_split": "test",
+      "fewshot_split": "dev",
+      "full_docs": false,
+      "process_results_use_image": false,
+      "doc_to_text": "{{question.strip()}}\nA. {{choices[0]}}\nB. {{choices[1]}}\nC. {{choices[2]}}\nD. {{choices[3]}}\nAnswer:",
+      "doc_to_target": "{{['A', 'B', 'C', 'D'][answer]}}",
+      "description": "The following are multiple choice questions (with answers) about conceptual physics. Answer the last question with the letter of the correct option only.\n\n",
+      "target_delimiter": " ",
+      "fewshot_delimiter": "\n\n",
+      "fewshot_config": {
+        "sampler": "first_n"
+      },
+      "num_fewshot": 5,
+      "metric_list": [
+        {
+          "metric": "exact_match",
+          "aggregation": "mean",
+          "higher_is_better": true
+        }
+      ],
+      "output_type": "generate_until",
+      "generation_kwargs": {
+        "until": [],
+        "do_sample": false,
+        "temperature": 0.0,
+        "max_new_tokens": 32
+      },
+      "repeats": 1,
+      "filter_list": [
+        {
+          "name": "first-letter",
+          "filter": [
+            {
+              "function": "regex",
+              "regex_pattern": "\\b([ABCD])\\b"
+            },
+            {
+              "function": "take_first"
+            }
+          ]
+        }
+      ],
+      "should_decontaminate": false,
+      "score_key": "score",
+      "metadata": {
+        "version": 1.0
+      },
+      "auto_strip_thinking": false
+    },
+    "mmlu_jetson_econometrics": {
+      "task": "mmlu_jetson_econometrics",
+      "task_alias": "econometrics",
+      "tag": "mmlu_jetson_subjects",
+      "dataset_path": "hails/mmlu_no_train",
+      "dataset_name": "econometrics",
+      "dataset_kwargs": {
+        "trust_remote_code": true
+      },
+      "test_split": "test",
+      "fewshot_split": "dev",
+      "full_docs": false,
+      "process_results_use_image": false,
+      "doc_to_text": "{{question.strip()}}\nA. {{choices[0]}}\nB. {{choices[1]}}\nC. {{choices[2]}}\nD. {{choices[3]}}\nAnswer:",
+      "doc_to_target": "{{['A', 'B', 'C', 'D'][answer]}}",
+      "description": "The following are multiple choice questions (with answers) about econometrics. Answer the last question with the letter of the correct option only.\n\n",
+      "target_delimiter": " ",
+      "fewshot_delimiter": "\n\n",
+      "fewshot_config": {
+        "sampler": "first_n"
+      },
+      "num_fewshot": 5,
+      "metric_list": [
+        {
+          "metric": "exact_match",
+          "aggregation": "mean",
+          "higher_is_better": true
+        }
+      ],
+      "output_type": "generate_until",
+      "generation_kwargs": {
+        "until": [],
+        "do_sample": false,
+        "temperature": 0.0,
+        "max_new_tokens": 32
+      },
+      "repeats": 1,
+      "filter_list": [
+        {
+          "name": "first-letter",
+          "filter": [
+            {
+              "function": "regex",
+              "regex_pattern": "\\b([ABCD])\\b"
+            },
+            {
+              "function": "take_first"
+            }
+          ]
+        }
+      ],
+      "should_decontaminate": false,
+      "score_key": "score",
+      "metadata": {
+        "version": 1.0
+      },
+      "auto_strip_thinking": false
+    },
+    "mmlu_jetson_electrical_engineering": {
+      "task": "mmlu_jetson_electrical_engineering",
+      "task_alias": "electrical engineering",
+      "tag": "mmlu_jetson_subjects",
+      "dataset_path": "hails/mmlu_no_train",
+      "dataset_name": "electrical_engineering",
+      "dataset_kwargs": {
+        "trust_remote_code": true
+      },
+      "test_split": "test",
+      "fewshot_split": "dev",
+      "full_docs": false,
+      "process_results_use_image": false,
+      "doc_to_text": "{{question.strip()}}\nA. {{choices[0]}}\nB. {{choices[1]}}\nC. {{choices[2]}}\nD. {{choices[3]}}\nAnswer:",
+      "doc_to_target": "{{['A', 'B', 'C', 'D'][answer]}}",
+      "description": "The following are multiple choice questions (with answers) about electrical engineering. Answer the last question with the letter of the correct option only.\n\n",
+      "target_delimiter": " ",
+      "fewshot_delimiter": "\n\n",
+      "fewshot_config": {
+        "sampler": "first_n"
+      },
+      "num_fewshot": 5,
+      "metric_list": [
+        {
+          "metric": "exact_match",
+          "aggregation": "mean",
+          "higher_is_better": true
+        }
+      ],
+      "output_type": "generate_until",
+      "generation_kwargs": {
+        "until": [],
+        "do_sample": false,
+        "temperature": 0.0,
+        "max_new_tokens": 32
+      },
+      "repeats": 1,
+      "filter_list": [
+        {
+          "name": "first-letter",
+          "filter": [
+            {
+              "function": "regex",
+              "regex_pattern": "\\b([ABCD])\\b"
+            },
+            {
+              "function": "take_first"
+            }
+          ]
+        }
+      ],
+      "should_decontaminate": false,
+      "score_key": "score",
+      "metadata": {
+        "version": 1.0
+      },
+      "auto_strip_thinking": false
+    },
+    "mmlu_jetson_elementary_mathematics": {
+      "task": "mmlu_jetson_elementary_mathematics",
+      "task_alias": "elementary mathematics",
+      "tag": "mmlu_jetson_subjects",
+      "dataset_path": "hails/mmlu_no_train",
+      "dataset_name": "elementary_mathematics",
+      "dataset_kwargs": {
+        "trust_remote_code": true
+      },
+      "test_split": "test",
+      "fewshot_split": "dev",
+      "full_docs": false,
+      "process_results_use_image": false,
+      "doc_to_text": "{{question.strip()}}\nA. {{choices[0]}}\nB. {{choices[1]}}\nC. {{choices[2]}}\nD. {{choices[3]}}\nAnswer:",
+      "doc_to_target": "{{['A', 'B', 'C', 'D'][answer]}}",
+      "description": "The following are multiple choice questions (with answers) about elementary mathematics. Answer the last question with the letter of the correct option only.\n\n",
+      "target_delimiter": " ",
+      "fewshot_delimiter": "\n\n",
+      "fewshot_config": {
+        "sampler": "first_n"
+      },
+      "num_fewshot": 5,
+      "metric_list": [
+        {
+          "metric": "exact_match",
+          "aggregation": "mean",
+          "higher_is_better": true
+        }
+      ],
+      "output_type": "generate_until",
+      "generation_kwargs": {
+        "until": [],
+        "do_sample": false,
+        "temperature": 0.0,
+        "max_new_tokens": 32
+      },
+      "repeats": 1,
+      "filter_list": [
+        {
+          "name": "first-letter",
+          "filter": [
+            {
+              "function": "regex",
+              "regex_pattern": "\\b([ABCD])\\b"
+            },
+            {
+              "function": "take_first"
+            }
+          ]
+        }
+      ],
+      "should_decontaminate": false,
+      "score_key": "score",
+      "metadata": {
+        "version": 1.0
+      },
+      "auto_strip_thinking": false
+    },
+    "mmlu_jetson_formal_logic": {
+      "task": "mmlu_jetson_formal_logic",
+      "task_alias": "formal logic",
+      "tag": "mmlu_jetson_subjects",
+      "dataset_path": "hails/mmlu_no_train",
+      "dataset_name": "formal_logic",
+      "dataset_kwargs": {
+        "trust_remote_code": true
+      },
+      "test_split": "test",
+      "fewshot_split": "dev",
+      "full_docs": false,
+      "process_results_use_image": false,
+      "doc_to_text": "{{question.strip()}}\nA. {{choices[0]}}\nB. {{choices[1]}}\nC. {{choices[2]}}\nD. {{choices[3]}}\nAnswer:",
+      "doc_to_target": "{{['A', 'B', 'C', 'D'][answer]}}",
+      "description": "The following are multiple choice questions (with answers) about formal logic. Answer the last question with the letter of the correct option only.\n\n",
+      "target_delimiter": " ",
+      "fewshot_delimiter": "\n\n",
+      "fewshot_config": {
+        "sampler": "first_n"
+      },
+      "num_fewshot": 5,
+      "metric_list": [
+        {
+          "metric": "exact_match",
+          "aggregation": "mean",
+          "higher_is_better": true
+        }
+      ],
+      "output_type": "generate_until",
+      "generation_kwargs": {
+        "until": [],
+        "do_sample": false,
+        "temperature": 0.0,
+        "max_new_tokens": 32
+      },
+      "repeats": 1,
+      "filter_list": [
+        {
+          "name": "first-letter",
+          "filter": [
+            {
+              "function": "regex",
+              "regex_pattern": "\\b([ABCD])\\b"
+            },
+            {
+              "function": "take_first"
+            }
+          ]
+        }
+      ],
+      "should_decontaminate": false,
+      "score_key": "score",
+      "metadata": {
+        "version": 1.0
+      },
+      "auto_strip_thinking": false
+    },
+    "mmlu_jetson_global_facts": {
+      "task": "mmlu_jetson_global_facts",
+      "task_alias": "global facts",
+      "tag": "mmlu_jetson_subjects",
+      "dataset_path": "hails/mmlu_no_train",
+      "dataset_name": "global_facts",
+      "dataset_kwargs": {
+        "trust_remote_code": true
+      },
+      "test_split": "test",
+      "fewshot_split": "dev",
+      "full_docs": false,
+      "process_results_use_image": false,
+      "doc_to_text": "{{question.strip()}}\nA. {{choices[0]}}\nB. {{choices[1]}}\nC. {{choices[2]}}\nD. {{choices[3]}}\nAnswer:",
+      "doc_to_target": "{{['A', 'B', 'C', 'D'][answer]}}",
+      "description": "The following are multiple choice questions (with answers) about global facts. Answer the last question with the letter of the correct option only.\n\n",
+      "target_delimiter": " ",
+      "fewshot_delimiter": "\n\n",
+      "fewshot_config": {
+        "sampler": "first_n"
+      },
+      "num_fewshot": 5,
+      "metric_list": [
+        {
+          "metric": "exact_match",
+          "aggregation": "mean",
+          "higher_is_better": true
+        }
+      ],
+      "output_type": "generate_until",
+      "generation_kwargs": {
+        "until": [],
+        "do_sample": false,
+        "temperature": 0.0,
+        "max_new_tokens": 32
+      },
+      "repeats": 1,
+      "filter_list": [
+        {
+          "name": "first-letter",
+          "filter": [
+            {
+              "function": "regex",
+              "regex_pattern": "\\b([ABCD])\\b"
+            },
+            {
+              "function": "take_first"
+            }
+          ]
+        }
+      ],
+      "should_decontaminate": false,
+      "score_key": "score",
+      "metadata": {
+        "version": 1.0
+      },
+      "auto_strip_thinking": false
+    },
+    "mmlu_jetson_high_school_biology": {
+      "task": "mmlu_jetson_high_school_biology",
+      "task_alias": "high school biology",
+      "tag": "mmlu_jetson_subjects",
+      "dataset_path": "hails/mmlu_no_train",
+      "dataset_name": "high_school_biology",
+      "dataset_kwargs": {
+        "trust_remote_code": true
+      },
+      "test_split": "test",
+      "fewshot_split": "dev",
+      "full_docs": false,
+      "process_results_use_image": false,
+      "doc_to_text": "{{question.strip()}}\nA. {{choices[0]}}\nB. {{choices[1]}}\nC. {{choices[2]}}\nD. {{choices[3]}}\nAnswer:",
+      "doc_to_target": "{{['A', 'B', 'C', 'D'][answer]}}",
+      "description": "The following are multiple choice questions (with answers) about high school biology. Answer the last question with the letter of the correct option only.\n\n",
+      "target_delimiter": " ",
+      "fewshot_delimiter": "\n\n",
+      "fewshot_config": {
+        "sampler": "first_n"
+      },
+      "num_fewshot": 5,
+      "metric_list": [
+        {
+          "metric": "exact_match",
+          "aggregation": "mean",
+          "higher_is_better": true
+        }
+      ],
+      "output_type": "generate_until",
+      "generation_kwargs": {
+        "until": [],
+        "do_sample": false,
+        "temperature": 0.0,
+        "max_new_tokens": 32
+      },
+      "repeats": 1,
+      "filter_list": [
+        {
+          "name": "first-letter",
+          "filter": [
+            {
+              "function": "regex",
+              "regex_pattern": "\\b([ABCD])\\b"
+            },
+            {
+              "function": "take_first"
+            }
+          ]
+        }
+      ],
+      "should_decontaminate": false,
+      "score_key": "score",
+      "metadata": {
+        "version": 1.0
+      },
+      "auto_strip_thinking": false
+    },
+    "mmlu_jetson_high_school_chemistry": {
+      "task": "mmlu_jetson_high_school_chemistry",
+      "task_alias": "high school chemistry",
+      "tag": "mmlu_jetson_subjects",
+      "dataset_path": "hails/mmlu_no_train",
+      "dataset_name": "high_school_chemistry",
+      "dataset_kwargs": {
+        "trust_remote_code": true
+      },
+      "test_split": "test",
+      "fewshot_split": "dev",
+      "full_docs": false,
+      "process_results_use_image": false,
+      "doc_to_text": "{{question.strip()}}\nA. {{choices[0]}}\nB. {{choices[1]}}\nC. {{choices[2]}}\nD. {{choices[3]}}\nAnswer:",
+      "doc_to_target": "{{['A', 'B', 'C', 'D'][answer]}}",
+      "description": "The following are multiple choice questions (with answers) about high school chemistry. Answer the last question with the letter of the correct option only.\n\n",
+      "target_delimiter": " ",
+      "fewshot_delimiter": "\n\n",
+      "fewshot_config": {
+        "sampler": "first_n"
+      },
+      "num_fewshot": 5,
+      "metric_list": [
+        {
+          "metric": "exact_match",
+          "aggregation": "mean",
+          "higher_is_better": true
+        }
+      ],
+      "output_type": "generate_until",
+      "generation_kwargs": {
+        "until": [],
+        "do_sample": false,
+        "temperature": 0.0,
+        "max_new_tokens": 32
+      },
+      "repeats": 1,
+      "filter_list": [
+        {
+          "name": "first-letter",
+          "filter": [
+            {
+              "function": "regex",
+              "regex_pattern": "\\b([ABCD])\\b"
+            },
+            {
+              "function": "take_first"
+            }
+          ]
+        }
+      ],
+      "should_decontaminate": false,
+      "score_key": "score",
+      "metadata": {
+        "version": 1.0
+      },
+      "auto_strip_thinking": false
+    },
+    "mmlu_jetson_high_school_computer_science": {
+      "task": "mmlu_jetson_high_school_computer_science",
+      "task_alias": "high school computer science",
+      "tag": "mmlu_jetson_subjects",
+      "dataset_path": "hails/mmlu_no_train",
+      "dataset_name": "high_school_computer_science",
+      "dataset_kwargs": {
+        "trust_remote_code": true
+      },
+      "test_split": "test",
+      "fewshot_split": "dev",
+      "full_docs": false,
+      "process_results_use_image": false,
+      "doc_to_text": "{{question.strip()}}\nA. {{choices[0]}}\nB. {{choices[1]}}\nC. {{choices[2]}}\nD. {{choices[3]}}\nAnswer:",
+      "doc_to_target": "{{['A', 'B', 'C', 'D'][answer]}}",
+      "description": "The following are multiple choice questions (with answers) about high school computer science. Answer the last question with the letter of the correct option only.\n\n",
+      "target_delimiter": " ",
+      "fewshot_delimiter": "\n\n",
+      "fewshot_config": {
+        "sampler": "first_n"
+      },
+      "num_fewshot": 5,
+      "metric_list": [
+        {
+          "metric": "exact_match",
+          "aggregation": "mean",
+          "higher_is_better": true
+        }
+      ],
+      "output_type": "generate_until",
+      "generation_kwargs": {
+        "until": [],
+        "do_sample": false,
+        "temperature": 0.0,
+        "max_new_tokens": 32
+      },
+      "repeats": 1,
+      "filter_list": [
+        {
+          "name": "first-letter",
+          "filter": [
+            {
+              "function": "regex",
+              "regex_pattern": "\\b([ABCD])\\b"
+            },
+            {
+              "function": "take_first"
+            }
+          ]
+        }
+      ],
+      "should_decontaminate": false,
+      "score_key": "score",
+      "metadata": {
+        "version": 1.0
+      },
+      "auto_strip_thinking": false
+    },
+    "mmlu_jetson_high_school_european_history": {
+      "task": "mmlu_jetson_high_school_european_history",
+      "task_alias": "high school european history",
+      "tag": "mmlu_jetson_subjects",
+      "dataset_path": "hails/mmlu_no_train",
+      "dataset_name": "high_school_european_history",
+      "dataset_kwargs": {
+        "trust_remote_code": true
+      },
+      "test_split": "test",
+      "fewshot_split": "dev",
+      "full_docs": false,
+      "process_results_use_image": false,
+      "doc_to_text": "{{question.strip()}}\nA. {{choices[0]}}\nB. {{choices[1]}}\nC. {{choices[2]}}\nD. {{choices[3]}}\nAnswer:",
+      "doc_to_target": "{{['A', 'B', 'C', 'D'][answer]}}",
+      "description": "The following are multiple choice questions (with answers) about high school european history. Answer the last question with the letter of the correct option only.\n\n",
+      "target_delimiter": " ",
+      "fewshot_delimiter": "\n\n",
+      "fewshot_config": {
+        "sampler": "first_n"
+      },
+      "num_fewshot": 5,
+      "metric_list": [
+        {
+          "metric": "exact_match",
+          "aggregation": "mean",
+          "higher_is_better": true
+        }
+      ],
+      "output_type": "generate_until",
+      "generation_kwargs": {
+        "until": [],
+        "do_sample": false,
+        "temperature": 0.0,
+        "max_new_tokens": 32
+      },
+      "repeats": 1,
+      "filter_list": [
+        {
+          "name": "first-letter",
+          "filter": [
+            {
+              "function": "regex",
+              "regex_pattern": "\\b([ABCD])\\b"
+            },
+            {
+              "function": "take_first"
+            }
+          ]
+        }
+      ],
+      "should_decontaminate": false,
+      "score_key": "score",
+      "metadata": {
+        "version": 1.0
+      },
+      "auto_strip_thinking": false
+    },
+    "mmlu_jetson_high_school_geography": {
+      "task": "mmlu_jetson_high_school_geography",
+      "task_alias": "high school geography",
+      "tag": "mmlu_jetson_subjects",
+      "dataset_path": "hails/mmlu_no_train",
+      "dataset_name": "high_school_geography",
+      "dataset_kwargs": {
+        "trust_remote_code": true
+      },
+      "test_split": "test",
+      "fewshot_split": "dev",
+      "full_docs": false,
+      "process_results_use_image": false,
+      "doc_to_text": "{{question.strip()}}\nA. {{choices[0]}}\nB. {{choices[1]}}\nC. {{choices[2]}}\nD. {{choices[3]}}\nAnswer:",
+      "doc_to_target": "{{['A', 'B', 'C', 'D'][answer]}}",
+      "description": "The following are multiple choice questions (with answers) about high school geography. Answer the last question with the letter of the correct option only.\n\n",
+      "target_delimiter": " ",
+      "fewshot_delimiter": "\n\n",
+      "fewshot_config": {
+        "sampler": "first_n"
+      },
+      "num_fewshot": 5,
+      "metric_list": [
+        {
+          "metric": "exact_match",
+          "aggregation": "mean",
+          "higher_is_better": true
+        }
+      ],
+      "output_type": "generate_until",
+      "generation_kwargs": {
+        "until": [],
+        "do_sample": false,
+        "temperature": 0.0,
+        "max_new_tokens": 32
+      },
+      "repeats": 1,
+      "filter_list": [
+        {
+          "name": "first-letter",
+          "filter": [
+            {
+              "function": "regex",
+              "regex_pattern": "\\b([ABCD])\\b"
+            },
+            {
+              "function": "take_first"
+            }
+          ]
+        }
+      ],
+      "should_decontaminate": false,
+      "score_key": "score",
+      "metadata": {
+        "version": 1.0
+      },
+      "auto_strip_thinking": false
+    },
+    "mmlu_jetson_high_school_government_and_politics": {
+      "task": "mmlu_jetson_high_school_government_and_politics",
+      "task_alias": "high school government and politics",
+      "tag": "mmlu_jetson_subjects",
+      "dataset_path": "hails/mmlu_no_train",
+      "dataset_name": "high_school_government_and_politics",
+      "dataset_kwargs": {
+        "trust_remote_code": true
+      },
+      "test_split": "test",
+      "fewshot_split": "dev",
+      "full_docs": false,
+      "process_results_use_image": false,
+      "doc_to_text": "{{question.strip()}}\nA. {{choices[0]}}\nB. {{choices[1]}}\nC. {{choices[2]}}\nD. {{choices[3]}}\nAnswer:",
+      "doc_to_target": "{{['A', 'B', 'C', 'D'][answer]}}",
+      "description": "The following are multiple choice questions (with answers) about high school government and politics. Answer the last question with the letter of the correct option only.\n\n",
+      "target_delimiter": " ",
+      "fewshot_delimiter": "\n\n",
+      "fewshot_config": {
+        "sampler": "first_n"
+      },
+      "num_fewshot": 5,
+      "metric_list": [
+        {
+          "metric": "exact_match",
+          "aggregation": "mean",
+          "higher_is_better": true
+        }
+      ],
+      "output_type": "generate_until",
+      "generation_kwargs": {
+        "until": [],
+        "do_sample": false,
+        "temperature": 0.0,
+        "max_new_tokens": 32
+      },
+      "repeats": 1,
+      "filter_list": [
+        {
+          "name": "first-letter",
+          "filter": [
+            {
+              "function": "regex",
+              "regex_pattern": "\\b([ABCD])\\b"
+            },
+            {
+              "function": "take_first"
+            }
+          ]
+        }
+      ],
+      "should_decontaminate": false,
+      "score_key": "score",
+      "metadata": {
+        "version": 1.0
+      },
+      "auto_strip_thinking": false
+    },
+    "mmlu_jetson_high_school_macroeconomics": {
+      "task": "mmlu_jetson_high_school_macroeconomics",
+      "task_alias": "high school macroeconomics",
+      "tag": "mmlu_jetson_subjects",
+      "dataset_path": "hails/mmlu_no_train",
+      "dataset_name": "high_school_macroeconomics",
+      "dataset_kwargs": {
+        "trust_remote_code": true
+      },
+      "test_split": "test",
+      "fewshot_split": "dev",
+      "full_docs": false,
+      "process_results_use_image": false,
+      "doc_to_text": "{{question.strip()}}\nA. {{choices[0]}}\nB. {{choices[1]}}\nC. {{choices[2]}}\nD. {{choices[3]}}\nAnswer:",
+      "doc_to_target": "{{['A', 'B', 'C', 'D'][answer]}}",
+      "description": "The following are multiple choice questions (with answers) about high school macroeconomics. Answer the last question with the letter of the correct option only.\n\n",
+      "target_delimiter": " ",
+      "fewshot_delimiter": "\n\n",
+      "fewshot_config": {
+        "sampler": "first_n"
+      },
+      "num_fewshot": 5,
+      "metric_list": [
+        {
+          "metric": "exact_match",
+          "aggregation": "mean",
+          "higher_is_better": true
+        }
+      ],
+      "output_type": "generate_until",
+      "generation_kwargs": {
+        "until": [],
+        "do_sample": false,
+        "temperature": 0.0,
+        "max_new_tokens": 32
+      },
+      "repeats": 1,
+      "filter_list": [
+        {
+          "name": "first-letter",
+          "filter": [
+            {
+              "function": "regex",
+              "regex_pattern": "\\b([ABCD])\\b"
+            },
+            {
+              "function": "take_first"
+            }
+          ]
+        }
+      ],
+      "should_decontaminate": false,
+      "score_key": "score",
+      "metadata": {
+        "version": 1.0
+      },
+      "auto_strip_thinking": false
+    },
+    "mmlu_jetson_high_school_mathematics": {
+      "task": "mmlu_jetson_high_school_mathematics",
+      "task_alias": "high school mathematics",
+      "tag": "mmlu_jetson_subjects",
+      "dataset_path": "hails/mmlu_no_train",
+      "dataset_name": "high_school_mathematics",
+      "dataset_kwargs": {
+        "trust_remote_code": true
+      },
+      "test_split": "test",
+      "fewshot_split": "dev",
+      "full_docs": false,
+      "process_results_use_image": false,
+      "doc_to_text": "{{question.strip()}}\nA. {{choices[0]}}\nB. {{choices[1]}}\nC. {{choices[2]}}\nD. {{choices[3]}}\nAnswer:",
+      "doc_to_target": "{{['A', 'B', 'C', 'D'][answer]}}",
+      "description": "The following are multiple choice questions (with answers) about high school mathematics. Answer the last question with the letter of the correct option only.\n\n",
+      "target_delimiter": " ",
+      "fewshot_delimiter": "\n\n",
+      "fewshot_config": {
+        "sampler": "first_n"
+      },
+      "num_fewshot": 5,
+      "metric_list": [
+        {
+          "metric": "exact_match",
+          "aggregation": "mean",
+          "higher_is_better": true
+        }
+      ],
+      "output_type": "generate_until",
+      "generation_kwargs": {
+        "until": [],
+        "do_sample": false,
+        "temperature": 0.0,
+        "max_new_tokens": 32
+      },
+      "repeats": 1,
+      "filter_list": [
+        {
+          "name": "first-letter",
+          "filter": [
+            {
+              "function": "regex",
+              "regex_pattern": "\\b([ABCD])\\b"
+            },
+            {
+              "function": "take_first"
+            }
+          ]
+        }
+      ],
+      "should_decontaminate": false,
+      "score_key": "score",
+      "metadata": {
+        "version": 1.0
+      },
+      "auto_strip_thinking": false
+    },
+    "mmlu_jetson_high_school_microeconomics": {
+      "task": "mmlu_jetson_high_school_microeconomics",
+      "task_alias": "high school microeconomics",
+      "tag": "mmlu_jetson_subjects",
+      "dataset_path": "hails/mmlu_no_train",
+      "dataset_name": "high_school_microeconomics",
+      "dataset_kwargs": {
+        "trust_remote_code": true
+      },
+      "test_split": "test",
+      "fewshot_split": "dev",
+      "full_docs": false,
+      "process_results_use_image": false,
+      "doc_to_text": "{{question.strip()}}\nA. {{choices[0]}}\nB. {{choices[1]}}\nC. {{choices[2]}}\nD. {{choices[3]}}\nAnswer:",
+      "doc_to_target": "{{['A', 'B', 'C', 'D'][answer]}}",
+      "description": "The following are multiple choice questions (with answers) about high school microeconomics. Answer the last question with the letter of the correct option only.\n\n",
+      "target_delimiter": " ",
+      "fewshot_delimiter": "\n\n",
+      "fewshot_config": {
+        "sampler": "first_n"
+      },
+      "num_fewshot": 5,
+      "metric_list": [
+        {
+          "metric": "exact_match",
+          "aggregation": "mean",
+          "higher_is_better": true
+        }
+      ],
+      "output_type": "generate_until",
+      "generation_kwargs": {
+        "until": [],
+        "do_sample": false,
+        "temperature": 0.0,
+        "max_new_tokens": 32
+      },
+      "repeats": 1,
+      "filter_list": [
+        {
+          "name": "first-letter",
+          "filter": [
+            {
+              "function": "regex",
+              "regex_pattern": "\\b([ABCD])\\b"
+            },
+            {
+              "function": "take_first"
+            }
+          ]
+        }
+      ],
+      "should_decontaminate": false,
+      "score_key": "score",
+      "metadata": {
+        "version": 1.0
+      },
+      "auto_strip_thinking": false
+    },
+    "mmlu_jetson_high_school_physics": {
+      "task": "mmlu_jetson_high_school_physics",
+      "task_alias": "high school physics",
+      "tag": "mmlu_jetson_subjects",
+      "dataset_path": "hails/mmlu_no_train",
+      "dataset_name": "high_school_physics",
+      "dataset_kwargs": {
+        "trust_remote_code": true
+      },
+      "test_split": "test",
+      "fewshot_split": "dev",
+      "full_docs": false,
+      "process_results_use_image": false,
+      "doc_to_text": "{{question.strip()}}\nA. {{choices[0]}}\nB. {{choices[1]}}\nC. {{choices[2]}}\nD. {{choices[3]}}\nAnswer:",
+      "doc_to_target": "{{['A', 'B', 'C', 'D'][answer]}}",
+      "description": "The following are multiple choice questions (with answers) about high school physics. Answer the last question with the letter of the correct option only.\n\n",
+      "target_delimiter": " ",
+      "fewshot_delimiter": "\n\n",
+      "fewshot_config": {
+        "sampler": "first_n"
+      },
+      "num_fewshot": 5,
+      "metric_list": [
+        {
+          "metric": "exact_match",
+          "aggregation": "mean",
+          "higher_is_better": true
+        }
+      ],
+      "output_type": "generate_until",
+      "generation_kwargs": {
+        "until": [],
+        "do_sample": false,
+        "temperature": 0.0,
+        "max_new_tokens": 32
+      },
+      "repeats": 1,
+      "filter_list": [
+        {
+          "name": "first-letter",
+          "filter": [
+            {
+              "function": "regex",
+              "regex_pattern": "\\b([ABCD])\\b"
+            },
+            {
+              "function": "take_first"
+            }
+          ]
+        }
+      ],
+      "should_decontaminate": false,
+      "score_key": "score",
+      "metadata": {
+        "version": 1.0
+      },
+      "auto_strip_thinking": false
+    },
+    "mmlu_jetson_high_school_psychology": {
+      "task": "mmlu_jetson_high_school_psychology",
+      "task_alias": "high school psychology",
+      "tag": "mmlu_jetson_subjects",
+      "dataset_path": "hails/mmlu_no_train",
+      "dataset_name": "high_school_psychology",
+      "dataset_kwargs": {
+        "trust_remote_code": true
+      },
+      "test_split": "test",
+      "fewshot_split": "dev",
+      "full_docs": false,
+      "process_results_use_image": false,
+      "doc_to_text": "{{question.strip()}}\nA. {{choices[0]}}\nB. {{choices[1]}}\nC. {{choices[2]}}\nD. {{choices[3]}}\nAnswer:",
+      "doc_to_target": "{{['A', 'B', 'C', 'D'][answer]}}",
+      "description": "The following are multiple choice questions (with answers) about high school psychology. Answer the last question with the letter of the correct option only.\n\n",
+      "target_delimiter": " ",
+      "fewshot_delimiter": "\n\n",
+      "fewshot_config": {
+        "sampler": "first_n"
+      },
+      "num_fewshot": 5,
+      "metric_list": [
+        {
+          "metric": "exact_match",
+          "aggregation": "mean",
+          "higher_is_better": true
+        }
+      ],
+      "output_type": "generate_until",
+      "generation_kwargs": {
+        "until": [],
+        "do_sample": false,
+        "temperature": 0.0,
+        "max_new_tokens": 32
+      },
+      "repeats": 1,
+      "filter_list": [
+        {
+          "name": "first-letter",
+          "filter": [
+            {
+              "function": "regex",
+              "regex_pattern": "\\b([ABCD])\\b"
+            },
+            {
+              "function": "take_first"
+            }
+          ]
+        }
+      ],
+      "should_decontaminate": false,
+      "score_key": "score",
+      "metadata": {
+        "version": 1.0
+      },
+      "auto_strip_thinking": false
+    },
+    "mmlu_jetson_high_school_statistics": {
+      "task": "mmlu_jetson_high_school_statistics",
+      "task_alias": "high school statistics",
+      "tag": "mmlu_jetson_subjects",
+      "dataset_path": "hails/mmlu_no_train",
+      "dataset_name": "high_school_statistics",
+      "dataset_kwargs": {
+        "trust_remote_code": true
+      },
+      "test_split": "test",
+      "fewshot_split": "dev",
+      "full_docs": false,
+      "process_results_use_image": false,
+      "doc_to_text": "{{question.strip()}}\nA. {{choices[0]}}\nB. {{choices[1]}}\nC. {{choices[2]}}\nD. {{choices[3]}}\nAnswer:",
+      "doc_to_target": "{{['A', 'B', 'C', 'D'][answer]}}",
+      "description": "The following are multiple choice questions (with answers) about high school statistics. Answer the last question with the letter of the correct option only.\n\n",
+      "target_delimiter": " ",
+      "fewshot_delimiter": "\n\n",
+      "fewshot_config": {
+        "sampler": "first_n"
+      },
+      "num_fewshot": 5,
+      "metric_list": [
+        {
+          "metric": "exact_match",
+          "aggregation": "mean",
+          "higher_is_better": true
+        }
+      ],
+      "output_type": "generate_until",
+      "generation_kwargs": {
+        "until": [],
+        "do_sample": false,
+        "temperature": 0.0,
+        "max_new_tokens": 32
+      },
+      "repeats": 1,
+      "filter_list": [
+        {
+          "name": "first-letter",
+          "filter": [
+            {
+              "function": "regex",
+              "regex_pattern": "\\b([ABCD])\\b"
+            },
+            {
+              "function": "take_first"
+            }
+          ]
+        }
+      ],
+      "should_decontaminate": false,
+      "score_key": "score",
+      "metadata": {
+        "version": 1.0
+      },
+      "auto_strip_thinking": false
+    },
+    "mmlu_jetson_high_school_us_history": {
+      "task": "mmlu_jetson_high_school_us_history",
+      "task_alias": "high school us history",
+      "tag": "mmlu_jetson_subjects",
+      "dataset_path": "hails/mmlu_no_train",
+      "dataset_name": "high_school_us_history",
+      "dataset_kwargs": {
+        "trust_remote_code": true
+      },
+      "test_split": "test",
+      "fewshot_split": "dev",
+      "full_docs": false,
+      "process_results_use_image": false,
+      "doc_to_text": "{{question.strip()}}\nA. {{choices[0]}}\nB. {{choices[1]}}\nC. {{choices[2]}}\nD. {{choices[3]}}\nAnswer:",
+      "doc_to_target": "{{['A', 'B', 'C', 'D'][answer]}}",
+      "description": "The following are multiple choice questions (with answers) about high school us history. Answer the last question with the letter of the correct option only.\n\n",
+      "target_delimiter": " ",
+      "fewshot_delimiter": "\n\n",
+      "fewshot_config": {
+        "sampler": "first_n"
+      },
+      "num_fewshot": 5,
+      "metric_list": [
+        {
+          "metric": "exact_match",
+          "aggregation": "mean",
+          "higher_is_better": true
+        }
+      ],
+      "output_type": "generate_until",
+      "generation_kwargs": {
+        "until": [],
+        "do_sample": false,
+        "temperature": 0.0,
+        "max_new_tokens": 32
+      },
+      "repeats": 1,
+      "filter_list": [
+        {
+          "name": "first-letter",
+          "filter": [
+            {
+              "function": "regex",
+              "regex_pattern": "\\b([ABCD])\\b"
+            },
+            {
+              "function": "take_first"
+            }
+          ]
+        }
+      ],
+      "should_decontaminate": false,
+      "score_key": "score",
+      "metadata": {
+        "version": 1.0
+      },
+      "auto_strip_thinking": false
+    },
+    "mmlu_jetson_high_school_world_history": {
+      "task": "mmlu_jetson_high_school_world_history",
+      "task_alias": "high school world history",
+      "tag": "mmlu_jetson_subjects",
+      "dataset_path": "hails/mmlu_no_train",
+      "dataset_name": "high_school_world_history",
+      "dataset_kwargs": {
+        "trust_remote_code": true
+      },
+      "test_split": "test",
+      "fewshot_split": "dev",
+      "full_docs": false,
+      "process_results_use_image": false,
+      "doc_to_text": "{{question.strip()}}\nA. {{choices[0]}}\nB. {{choices[1]}}\nC. {{choices[2]}}\nD. {{choices[3]}}\nAnswer:",
+      "doc_to_target": "{{['A', 'B', 'C', 'D'][answer]}}",
+      "description": "The following are multiple choice questions (with answers) about high school world history. Answer the last question with the letter of the correct option only.\n\n",
+      "target_delimiter": " ",
+      "fewshot_delimiter": "\n\n",
+      "fewshot_config": {
+        "sampler": "first_n"
+      },
+      "num_fewshot": 5,
+      "metric_list": [
+        {
+          "metric": "exact_match",
+          "aggregation": "mean",
+          "higher_is_better": true
+        }
+      ],
+      "output_type": "generate_until",
+      "generation_kwargs": {
+        "until": [],
+        "do_sample": false,
+        "temperature": 0.0,
+        "max_new_tokens": 32
+      },
+      "repeats": 1,
+      "filter_list": [
+        {
+          "name": "first-letter",
+          "filter": [
+            {
+              "function": "regex",
+              "regex_pattern": "\\b([ABCD])\\b"
+            },
+            {
+              "function": "take_first"
+            }
+          ]
+        }
+      ],
+      "should_decontaminate": false,
+      "score_key": "score",
+      "metadata": {
+        "version": 1.0
+      },
+      "auto_strip_thinking": false
+    },
+    "mmlu_jetson_human_aging": {
+      "task": "mmlu_jetson_human_aging",
+      "task_alias": "human aging",
+      "tag": "mmlu_jetson_subjects",
+      "dataset_path": "hails/mmlu_no_train",
+      "dataset_name": "human_aging",
+      "dataset_kwargs": {
+        "trust_remote_code": true
+      },
+      "test_split": "test",
+      "fewshot_split": "dev",
+      "full_docs": false,
+      "process_results_use_image": false,
+      "doc_to_text": "{{question.strip()}}\nA. {{choices[0]}}\nB. {{choices[1]}}\nC. {{choices[2]}}\nD. {{choices[3]}}\nAnswer:",
+      "doc_to_target": "{{['A', 'B', 'C', 'D'][answer]}}",
+      "description": "The following are multiple choice questions (with answers) about human aging. Answer the last question with the letter of the correct option only.\n\n",
+      "target_delimiter": " ",
+      "fewshot_delimiter": "\n\n",
+      "fewshot_config": {
+        "sampler": "first_n"
+      },
+      "num_fewshot": 5,
+      "metric_list": [
+        {
+          "metric": "exact_match",
+          "aggregation": "mean",
+          "higher_is_better": true
+        }
+      ],
+      "output_type": "generate_until",
+      "generation_kwargs": {
+        "until": [],
+        "do_sample": false,
+        "temperature": 0.0,
+        "max_new_tokens": 32
+      },
+      "repeats": 1,
+      "filter_list": [
+        {
+          "name": "first-letter",
+          "filter": [
+            {
+              "function": "regex",
+              "regex_pattern": "\\b([ABCD])\\b"
+            },
+            {
+              "function": "take_first"
+            }
+          ]
+        }
+      ],
+      "should_decontaminate": false,
+      "score_key": "score",
+      "metadata": {
+        "version": 1.0
+      },
+      "auto_strip_thinking": false
+    },
+    "mmlu_jetson_human_sexuality": {
+      "task": "mmlu_jetson_human_sexuality",
+      "task_alias": "human sexuality",
+      "tag": "mmlu_jetson_subjects",
+      "dataset_path": "hails/mmlu_no_train",
+      "dataset_name": "human_sexuality",
+      "dataset_kwargs": {
+        "trust_remote_code": true
+      },
+      "test_split": "test",
+      "fewshot_split": "dev",
+      "full_docs": false,
+      "process_results_use_image": false,
+      "doc_to_text": "{{question.strip()}}\nA. {{choices[0]}}\nB. {{choices[1]}}\nC. {{choices[2]}}\nD. {{choices[3]}}\nAnswer:",
+      "doc_to_target": "{{['A', 'B', 'C', 'D'][answer]}}",
+      "description": "The following are multiple choice questions (with answers) about human sexuality. Answer the last question with the letter of the correct option only.\n\n",
+      "target_delimiter": " ",
+      "fewshot_delimiter": "\n\n",
+      "fewshot_config": {
+        "sampler": "first_n"
+      },
+      "num_fewshot": 5,
+      "metric_list": [
+        {
+          "metric": "exact_match",
+          "aggregation": "mean",
+          "higher_is_better": true
+        }
+      ],
+      "output_type": "generate_until",
+      "generation_kwargs": {
+        "until": [],
+        "do_sample": false,
+        "temperature": 0.0,
+        "max_new_tokens": 32
+      },
+      "repeats": 1,
+      "filter_list": [
+        {
+          "name": "first-letter",
+          "filter": [
+            {
+              "function": "regex",
+              "regex_pattern": "\\b([ABCD])\\b"
+            },
+            {
+              "function": "take_first"
+            }
+          ]
+        }
+      ],
+      "should_decontaminate": false,
+      "score_key": "score",
+      "metadata": {
+        "version": 1.0
+      },
+      "auto_strip_thinking": false
+    },
+    "mmlu_jetson_international_law": {
+      "task": "mmlu_jetson_international_law",
+      "task_alias": "international law",
+      "tag": "mmlu_jetson_subjects",
+      "dataset_path": "hails/mmlu_no_train",
+      "dataset_name": "international_law",
+      "dataset_kwargs": {
+        "trust_remote_code": true
+      },
+      "test_split": "test",
+      "fewshot_split": "dev",
+      "full_docs": false,
+      "process_results_use_image": false,
+      "doc_to_text": "{{question.strip()}}\nA. {{choices[0]}}\nB. {{choices[1]}}\nC. {{choices[2]}}\nD. {{choices[3]}}\nAnswer:",
+      "doc_to_target": "{{['A', 'B', 'C', 'D'][answer]}}",
+      "description": "The following are multiple choice questions (with answers) about international law. Answer the last question with the letter of the correct option only.\n\n",
+      "target_delimiter": " ",
+      "fewshot_delimiter": "\n\n",
+      "fewshot_config": {
+        "sampler": "first_n"
+      },
+      "num_fewshot": 5,
+      "metric_list": [
+        {
+          "metric": "exact_match",
+          "aggregation": "mean",
+          "higher_is_better": true
+        }
+      ],
+      "output_type": "generate_until",
+      "generation_kwargs": {
+        "until": [],
+        "do_sample": false,
+        "temperature": 0.0,
+        "max_new_tokens": 32
+      },
+      "repeats": 1,
+      "filter_list": [
+        {
+          "name": "first-letter",
+          "filter": [
+            {
+              "function": "regex",
+              "regex_pattern": "\\b([ABCD])\\b"
+            },
+            {
+              "function": "take_first"
+            }
+          ]
+        }
+      ],
+      "should_decontaminate": false,
+      "score_key": "score",
+      "metadata": {
+        "version": 1.0
+      },
+      "auto_strip_thinking": false
+    },
+    "mmlu_jetson_jurisprudence": {
+      "task": "mmlu_jetson_jurisprudence",
+      "task_alias": "jurisprudence",
+      "tag": "mmlu_jetson_subjects",
+      "dataset_path": "hails/mmlu_no_train",
+      "dataset_name": "jurisprudence",
+      "dataset_kwargs": {
+        "trust_remote_code": true
+      },
+      "test_split": "test",
+      "fewshot_split": "dev",
+      "full_docs": false,
+      "process_results_use_image": false,
+      "doc_to_text": "{{question.strip()}}\nA. {{choices[0]}}\nB. {{choices[1]}}\nC. {{choices[2]}}\nD. {{choices[3]}}\nAnswer:",
+      "doc_to_target": "{{['A', 'B', 'C', 'D'][answer]}}",
+      "description": "The following are multiple choice questions (with answers) about jurisprudence. Answer the last question with the letter of the correct option only.\n\n",
+      "target_delimiter": " ",
+      "fewshot_delimiter": "\n\n",
+      "fewshot_config": {
+        "sampler": "first_n"
+      },
+      "num_fewshot": 5,
+      "metric_list": [
+        {
+          "metric": "exact_match",
+          "aggregation": "mean",
+          "higher_is_better": true
+        }
+      ],
+      "output_type": "generate_until",
+      "generation_kwargs": {
+        "until": [],
+        "do_sample": false,
+        "temperature": 0.0,
+        "max_new_tokens": 32
+      },
+      "repeats": 1,
+      "filter_list": [
+        {
+          "name": "first-letter",
+          "filter": [
+            {
+              "function": "regex",
+              "regex_pattern": "\\b([ABCD])\\b"
+            },
+            {
+              "function": "take_first"
+            }
+          ]
+        }
+      ],
+      "should_decontaminate": false,
+      "score_key": "score",
+      "metadata": {
+        "version": 1.0
+      },
+      "auto_strip_thinking": false
+    },
+    "mmlu_jetson_logical_fallacies": {
+      "task": "mmlu_jetson_logical_fallacies",
+      "task_alias": "logical fallacies",
+      "tag": "mmlu_jetson_subjects",
+      "dataset_path": "hails/mmlu_no_train",
+      "dataset_name": "logical_fallacies",
+      "dataset_kwargs": {
+        "trust_remote_code": true
+      },
+      "test_split": "test",
+      "fewshot_split": "dev",
+      "full_docs": false,
+      "process_results_use_image": false,
+      "doc_to_text": "{{question.strip()}}\nA. {{choices[0]}}\nB. {{choices[1]}}\nC. {{choices[2]}}\nD. {{choices[3]}}\nAnswer:",
+      "doc_to_target": "{{['A', 'B', 'C', 'D'][answer]}}",
+      "description": "The following are multiple choice questions (with answers) about logical fallacies. Answer the last question with the letter of the correct option only.\n\n",
+      "target_delimiter": " ",
+      "fewshot_delimiter": "\n\n",
+      "fewshot_config": {
+        "sampler": "first_n"
+      },
+      "num_fewshot": 5,
+      "metric_list": [
+        {
+          "metric": "exact_match",
+          "aggregation": "mean",
+          "higher_is_better": true
+        }
+      ],
+      "output_type": "generate_until",
+      "generation_kwargs": {
+        "until": [],
+        "do_sample": false,
+        "temperature": 0.0,
+        "max_new_tokens": 32
+      },
+      "repeats": 1,
+      "filter_list": [
+        {
+          "name": "first-letter",
+          "filter": [
+            {
+              "function": "regex",
+              "regex_pattern": "\\b([ABCD])\\b"
+            },
+            {
+              "function": "take_first"
+            }
+          ]
+        }
+      ],
+      "should_decontaminate": false,
+      "score_key": "score",
+      "metadata": {
+        "version": 1.0
+      },
+      "auto_strip_thinking": false
+    },
+    "mmlu_jetson_machine_learning": {
+      "task": "mmlu_jetson_machine_learning",
+      "task_alias": "machine learning",
+      "tag": "mmlu_jetson_subjects",
+      "dataset_path": "hails/mmlu_no_train",
+      "dataset_name": "machine_learning",
+      "dataset_kwargs": {
+        "trust_remote_code": true
+      },
+      "test_split": "test",
+      "fewshot_split": "dev",
+      "full_docs": false,
+      "process_results_use_image": false,
+      "doc_to_text": "{{question.strip()}}\nA. {{choices[0]}}\nB. {{choices[1]}}\nC. {{choices[2]}}\nD. {{choices[3]}}\nAnswer:",
+      "doc_to_target": "{{['A', 'B', 'C', 'D'][answer]}}",
+      "description": "The following are multiple choice questions (with answers) about machine learning. Answer the last question with the letter of the correct option only.\n\n",
+      "target_delimiter": " ",
+      "fewshot_delimiter": "\n\n",
+      "fewshot_config": {
+        "sampler": "first_n"
+      },
+      "num_fewshot": 5,
+      "metric_list": [
+        {
+          "metric": "exact_match",
+          "aggregation": "mean",
+          "higher_is_better": true
+        }
+      ],
+      "output_type": "generate_until",
+      "generation_kwargs": {
+        "until": [],
+        "do_sample": false,
+        "temperature": 0.0,
+        "max_new_tokens": 32
+      },
+      "repeats": 1,
+      "filter_list": [
+        {
+          "name": "first-letter",
+          "filter": [
+            {
+              "function": "regex",
+              "regex_pattern": "\\b([ABCD])\\b"
+            },
+            {
+              "function": "take_first"
+            }
+          ]
+        }
+      ],
+      "should_decontaminate": false,
+      "score_key": "score",
+      "metadata": {
+        "version": 1.0
+      },
+      "auto_strip_thinking": false
+    },
+    "mmlu_jetson_management": {
+      "task": "mmlu_jetson_management",
+      "task_alias": "management",
+      "tag": "mmlu_jetson_subjects",
+      "dataset_path": "hails/mmlu_no_train",
+      "dataset_name": "management",
+      "dataset_kwargs": {
+        "trust_remote_code": true
+      },
+      "test_split": "test",
+      "fewshot_split": "dev",
+      "full_docs": false,
+      "process_results_use_image": false,
+      "doc_to_text": "{{question.strip()}}\nA. {{choices[0]}}\nB. {{choices[1]}}\nC. {{choices[2]}}\nD. {{choices[3]}}\nAnswer:",
+      "doc_to_target": "{{['A', 'B', 'C', 'D'][answer]}}",
+      "description": "The following are multiple choice questions (with answers) about management. Answer the last question with the letter of the correct option only.\n\n",
+      "target_delimiter": " ",
+      "fewshot_delimiter": "\n\n",
+      "fewshot_config": {
+        "sampler": "first_n"
+      },
+      "num_fewshot": 5,
+      "metric_list": [
+        {
+          "metric": "exact_match",
+          "aggregation": "mean",
+          "higher_is_better": true
+        }
+      ],
+      "output_type": "generate_until",
+      "generation_kwargs": {
+        "until": [],
+        "do_sample": false,
+        "temperature": 0.0,
+        "max_new_tokens": 32
+      },
+      "repeats": 1,
+      "filter_list": [
+        {
+          "name": "first-letter",
+          "filter": [
+            {
+              "function": "regex",
+              "regex_pattern": "\\b([ABCD])\\b"
+            },
+            {
+              "function": "take_first"
+            }
+          ]
+        }
+      ],
+      "should_decontaminate": false,
+      "score_key": "score",
+      "metadata": {
+        "version": 1.0
+      },
+      "auto_strip_thinking": false
+    },
+    "mmlu_jetson_marketing": {
+      "task": "mmlu_jetson_marketing",
+      "task_alias": "marketing",
+      "tag": "mmlu_jetson_subjects",
+      "dataset_path": "hails/mmlu_no_train",
+      "dataset_name": "marketing",
+      "dataset_kwargs": {
+        "trust_remote_code": true
+      },
+      "test_split": "test",
+      "fewshot_split": "dev",
+      "full_docs": false,
+      "process_results_use_image": false,
+      "doc_to_text": "{{question.strip()}}\nA. {{choices[0]}}\nB. {{choices[1]}}\nC. {{choices[2]}}\nD. {{choices[3]}}\nAnswer:",
+      "doc_to_target": "{{['A', 'B', 'C', 'D'][answer]}}",
+      "description": "The following are multiple choice questions (with answers) about marketing. Answer the last question with the letter of the correct option only.\n\n",
+      "target_delimiter": " ",
+      "fewshot_delimiter": "\n\n",
+      "fewshot_config": {
+        "sampler": "first_n"
+      },
+      "num_fewshot": 5,
+      "metric_list": [
+        {
+          "metric": "exact_match",
+          "aggregation": "mean",
+          "higher_is_better": true
+        }
+      ],
+      "output_type": "generate_until",
+      "generation_kwargs": {
+        "until": [],
+        "do_sample": false,
+        "temperature": 0.0,
+        "max_new_tokens": 32
+      },
+      "repeats": 1,
+      "filter_list": [
+        {
+          "name": "first-letter",
+          "filter": [
+            {
+              "function": "regex",
+              "regex_pattern": "\\b([ABCD])\\b"
+            },
+            {
+              "function": "take_first"
+            }
+          ]
+        }
+      ],
+      "should_decontaminate": false,
+      "score_key": "score",
+      "metadata": {
+        "version": 1.0
+      },
+      "auto_strip_thinking": false
+    },
+    "mmlu_jetson_medical_genetics": {
+      "task": "mmlu_jetson_medical_genetics",
+      "task_alias": "medical genetics",
+      "tag": "mmlu_jetson_subjects",
+      "dataset_path": "hails/mmlu_no_train",
+      "dataset_name": "medical_genetics",
+      "dataset_kwargs": {
+        "trust_remote_code": true
+      },
+      "test_split": "test",
+      "fewshot_split": "dev",
+      "full_docs": false,
+      "process_results_use_image": false,
+      "doc_to_text": "{{question.strip()}}\nA. {{choices[0]}}\nB. {{choices[1]}}\nC. {{choices[2]}}\nD. {{choices[3]}}\nAnswer:",
+      "doc_to_target": "{{['A', 'B', 'C', 'D'][answer]}}",
+      "description": "The following are multiple choice questions (with answers) about medical genetics. Answer the last question with the letter of the correct option only.\n\n",
+      "target_delimiter": " ",
+      "fewshot_delimiter": "\n\n",
+      "fewshot_config": {
+        "sampler": "first_n"
+      },
+      "num_fewshot": 5,
+      "metric_list": [
+        {
+          "metric": "exact_match",
+          "aggregation": "mean",
+          "higher_is_better": true
+        }
+      ],
+      "output_type": "generate_until",
+      "generation_kwargs": {
+        "until": [],
+        "do_sample": false,
+        "temperature": 0.0,
+        "max_new_tokens": 32
+      },
+      "repeats": 1,
+      "filter_list": [
+        {
+          "name": "first-letter",
+          "filter": [
+            {
+              "function": "regex",
+              "regex_pattern": "\\b([ABCD])\\b"
+            },
+            {
+              "function": "take_first"
+            }
+          ]
+        }
+      ],
+      "should_decontaminate": false,
+      "score_key": "score",
+      "metadata": {
+        "version": 1.0
+      },
+      "auto_strip_thinking": false
+    },
+    "mmlu_jetson_miscellaneous": {
+      "task": "mmlu_jetson_miscellaneous",
+      "task_alias": "miscellaneous",
+      "tag": "mmlu_jetson_subjects",
+      "dataset_path": "hails/mmlu_no_train",
+      "dataset_name": "miscellaneous",
+      "dataset_kwargs": {
+        "trust_remote_code": true
+      },
+      "test_split": "test",
+      "fewshot_split": "dev",
+      "full_docs": false,
+      "process_results_use_image": false,
+      "doc_to_text": "{{question.strip()}}\nA. {{choices[0]}}\nB. {{choices[1]}}\nC. {{choices[2]}}\nD. {{choices[3]}}\nAnswer:",
+      "doc_to_target": "{{['A', 'B', 'C', 'D'][answer]}}",
+      "description": "The following are multiple choice questions (with answers) about miscellaneous. Answer the last question with the letter of the correct option only.\n\n",
+      "target_delimiter": " ",
+      "fewshot_delimiter": "\n\n",
+      "fewshot_config": {
+        "sampler": "first_n"
+      },
+      "num_fewshot": 5,
+      "metric_list": [
+        {
+          "metric": "exact_match",
+          "aggregation": "mean",
+          "higher_is_better": true
+        }
+      ],
+      "output_type": "generate_until",
+      "generation_kwargs": {
+        "until": [],
+        "do_sample": false,
+        "temperature": 0.0,
+        "max_new_tokens": 32
+      },
+      "repeats": 1,
+      "filter_list": [
+        {
+          "name": "first-letter",
+          "filter": [
+            {
+              "function": "regex",
+              "regex_pattern": "\\b([ABCD])\\b"
+            },
+            {
+              "function": "take_first"
+            }
+          ]
+        }
+      ],
+      "should_decontaminate": false,
+      "score_key": "score",
+      "metadata": {
+        "version": 1.0
+      },
+      "auto_strip_thinking": false
+    },
+    "mmlu_jetson_moral_disputes": {
+      "task": "mmlu_jetson_moral_disputes",
+      "task_alias": "moral disputes",
+      "tag": "mmlu_jetson_subjects",
+      "dataset_path": "hails/mmlu_no_train",
+      "dataset_name": "moral_disputes",
+      "dataset_kwargs": {
+        "trust_remote_code": true
+      },
+      "test_split": "test",
+      "fewshot_split": "dev",
+      "full_docs": false,
+      "process_results_use_image": false,
+      "doc_to_text": "{{question.strip()}}\nA. {{choices[0]}}\nB. {{choices[1]}}\nC. {{choices[2]}}\nD. {{choices[3]}}\nAnswer:",
+      "doc_to_target": "{{['A', 'B', 'C', 'D'][answer]}}",
+      "description": "The following are multiple choice questions (with answers) about moral disputes. Answer the last question with the letter of the correct option only.\n\n",
+      "target_delimiter": " ",
+      "fewshot_delimiter": "\n\n",
+      "fewshot_config": {
+        "sampler": "first_n"
+      },
+      "num_fewshot": 5,
+      "metric_list": [
+        {
+          "metric": "exact_match",
+          "aggregation": "mean",
+          "higher_is_better": true
+        }
+      ],
+      "output_type": "generate_until",
+      "generation_kwargs": {
+        "until": [],
+        "do_sample": false,
+        "temperature": 0.0,
+        "max_new_tokens": 32
+      },
+      "repeats": 1,
+      "filter_list": [
+        {
+          "name": "first-letter",
+          "filter": [
+            {
+              "function": "regex",
+              "regex_pattern": "\\b([ABCD])\\b"
+            },
+            {
+              "function": "take_first"
+            }
+          ]
+        }
+      ],
+      "should_decontaminate": false,
+      "score_key": "score",
+      "metadata": {
+        "version": 1.0
+      },
+      "auto_strip_thinking": false
+    },
+    "mmlu_jetson_moral_scenarios": {
+      "task": "mmlu_jetson_moral_scenarios",
+      "task_alias": "moral scenarios",
+      "tag": "mmlu_jetson_subjects",
+      "dataset_path": "hails/mmlu_no_train",
+      "dataset_name": "moral_scenarios",
+      "dataset_kwargs": {
+        "trust_remote_code": true
+      },
+      "test_split": "test",
+      "fewshot_split": "dev",
+      "full_docs": false,
+      "process_results_use_image": false,
+      "doc_to_text": "{{question.strip()}}\nA. {{choices[0]}}\nB. {{choices[1]}}\nC. {{choices[2]}}\nD. {{choices[3]}}\nAnswer:",
+      "doc_to_target": "{{['A', 'B', 'C', 'D'][answer]}}",
+      "description": "The following are multiple choice questions (with answers) about moral scenarios. Answer the last question with the letter of the correct option only.\n\n",
+      "target_delimiter": " ",
+      "fewshot_delimiter": "\n\n",
+      "fewshot_config": {
+        "sampler": "first_n"
+      },
+      "num_fewshot": 5,
+      "metric_list": [
+        {
+          "metric": "exact_match",
+          "aggregation": "mean",
+          "higher_is_better": true
+        }
+      ],
+      "output_type": "generate_until",
+      "generation_kwargs": {
+        "until": [],
+        "do_sample": false,
+        "temperature": 0.0,
+        "max_new_tokens": 32
+      },
+      "repeats": 1,
+      "filter_list": [
+        {
+          "name": "first-letter",
+          "filter": [
+            {
+              "function": "regex",
+              "regex_pattern": "\\b([ABCD])\\b"
+            },
+            {
+              "function": "take_first"
+            }
+          ]
+        }
+      ],
+      "should_decontaminate": false,
+      "score_key": "score",
+      "metadata": {
+        "version": 1.0
+      },
+      "auto_strip_thinking": false
+    },
+    "mmlu_jetson_nutrition": {
+      "task": "mmlu_jetson_nutrition",
+      "task_alias": "nutrition",
+      "tag": "mmlu_jetson_subjects",
+      "dataset_path": "hails/mmlu_no_train",
+      "dataset_name": "nutrition",
+      "dataset_kwargs": {
+        "trust_remote_code": true
+      },
+      "test_split": "test",
+      "fewshot_split": "dev",
+      "full_docs": false,
+      "process_results_use_image": false,
+      "doc_to_text": "{{question.strip()}}\nA. {{choices[0]}}\nB. {{choices[1]}}\nC. {{choices[2]}}\nD. {{choices[3]}}\nAnswer:",
+      "doc_to_target": "{{['A', 'B', 'C', 'D'][answer]}}",
+      "description": "The following are multiple choice questions (with answers) about nutrition. Answer the last question with the letter of the correct option only.\n\n",
+      "target_delimiter": " ",
+      "fewshot_delimiter": "\n\n",
+      "fewshot_config": {
+        "sampler": "first_n"
+      },
+      "num_fewshot": 5,
+      "metric_list": [
+        {
+          "metric": "exact_match",
+          "aggregation": "mean",
+          "higher_is_better": true
+        }
+      ],
+      "output_type": "generate_until",
+      "generation_kwargs": {
+        "until": [],
+        "do_sample": false,
+        "temperature": 0.0,
+        "max_new_tokens": 32
+      },
+      "repeats": 1,
+      "filter_list": [
+        {
+          "name": "first-letter",
+          "filter": [
+            {
+              "function": "regex",
+              "regex_pattern": "\\b([ABCD])\\b"
+            },
+            {
+              "function": "take_first"
+            }
+          ]
+        }
+      ],
+      "should_decontaminate": false,
+      "score_key": "score",
+      "metadata": {
+        "version": 1.0
+      },
+      "auto_strip_thinking": false
+    },
+    "mmlu_jetson_philosophy": {
+      "task": "mmlu_jetson_philosophy",
+      "task_alias": "philosophy",
+      "tag": "mmlu_jetson_subjects",
+      "dataset_path": "hails/mmlu_no_train",
+      "dataset_name": "philosophy",
+      "dataset_kwargs": {
+        "trust_remote_code": true
+      },
+      "test_split": "test",
+      "fewshot_split": "dev",
+      "full_docs": false,
+      "process_results_use_image": false,
+      "doc_to_text": "{{question.strip()}}\nA. {{choices[0]}}\nB. {{choices[1]}}\nC. {{choices[2]}}\nD. {{choices[3]}}\nAnswer:",
+      "doc_to_target": "{{['A', 'B', 'C', 'D'][answer]}}",
+      "description": "The following are multiple choice questions (with answers) about philosophy. Answer the last question with the letter of the correct option only.\n\n",
+      "target_delimiter": " ",
+      "fewshot_delimiter": "\n\n",
+      "fewshot_config": {
+        "sampler": "first_n"
+      },
+      "num_fewshot": 5,
+      "metric_list": [
+        {
+          "metric": "exact_match",
+          "aggregation": "mean",
+          "higher_is_better": true
+        }
+      ],
+      "output_type": "generate_until",
+      "generation_kwargs": {
+        "until": [],
+        "do_sample": false,
+        "temperature": 0.0,
+        "max_new_tokens": 32
+      },
+      "repeats": 1,
+      "filter_list": [
+        {
+          "name": "first-letter",
+          "filter": [
+            {
+              "function": "regex",
+              "regex_pattern": "\\b([ABCD])\\b"
+            },
+            {
+              "function": "take_first"
+            }
+          ]
+        }
+      ],
+      "should_decontaminate": false,
+      "score_key": "score",
+      "metadata": {
+        "version": 1.0
+      },
+      "auto_strip_thinking": false
+    },
+    "mmlu_jetson_prehistory": {
+      "task": "mmlu_jetson_prehistory",
+      "task_alias": "prehistory",
+      "tag": "mmlu_jetson_subjects",
+      "dataset_path": "hails/mmlu_no_train",
+      "dataset_name": "prehistory",
+      "dataset_kwargs": {
+        "trust_remote_code": true
+      },
+      "test_split": "test",
+      "fewshot_split": "dev",
+      "full_docs": false,
+      "process_results_use_image": false,
+      "doc_to_text": "{{question.strip()}}\nA. {{choices[0]}}\nB. {{choices[1]}}\nC. {{choices[2]}}\nD. {{choices[3]}}\nAnswer:",
+      "doc_to_target": "{{['A', 'B', 'C', 'D'][answer]}}",
+      "description": "The following are multiple choice questions (with answers) about prehistory. Answer the last question with the letter of the correct option only.\n\n",
+      "target_delimiter": " ",
+      "fewshot_delimiter": "\n\n",
+      "fewshot_config": {
+        "sampler": "first_n"
+      },
+      "num_fewshot": 5,
+      "metric_list": [
+        {
+          "metric": "exact_match",
+          "aggregation": "mean",
+          "higher_is_better": true
+        }
+      ],
+      "output_type": "generate_until",
+      "generation_kwargs": {
+        "until": [],
+        "do_sample": false,
+        "temperature": 0.0,
+        "max_new_tokens": 32
+      },
+      "repeats": 1,
+      "filter_list": [
+        {
+          "name": "first-letter",
+          "filter": [
+            {
+              "function": "regex",
+              "regex_pattern": "\\b([ABCD])\\b"
+            },
+            {
+              "function": "take_first"
+            }
+          ]
+        }
+      ],
+      "should_decontaminate": false,
+      "score_key": "score",
+      "metadata": {
+        "version": 1.0
+      },
+      "auto_strip_thinking": false
+    },
+    "mmlu_jetson_professional_accounting": {
+      "task": "mmlu_jetson_professional_accounting",
+      "task_alias": "professional accounting",
+      "tag": "mmlu_jetson_subjects",
+      "dataset_path": "hails/mmlu_no_train",
+      "dataset_name": "professional_accounting",
+      "dataset_kwargs": {
+        "trust_remote_code": true
+      },
+      "test_split": "test",
+      "fewshot_split": "dev",
+      "full_docs": false,
+      "process_results_use_image": false,
+      "doc_to_text": "{{question.strip()}}\nA. {{choices[0]}}\nB. {{choices[1]}}\nC. {{choices[2]}}\nD. {{choices[3]}}\nAnswer:",
+      "doc_to_target": "{{['A', 'B', 'C', 'D'][answer]}}",
+      "description": "The following are multiple choice questions (with answers) about professional accounting. Answer the last question with the letter of the correct option only.\n\n",
+      "target_delimiter": " ",
+      "fewshot_delimiter": "\n\n",
+      "fewshot_config": {
+        "sampler": "first_n"
+      },
+      "num_fewshot": 5,
+      "metric_list": [
+        {
+          "metric": "exact_match",
+          "aggregation": "mean",
+          "higher_is_better": true
+        }
+      ],
+      "output_type": "generate_until",
+      "generation_kwargs": {
+        "until": [],
+        "do_sample": false,
+        "temperature": 0.0,
+        "max_new_tokens": 32
+      },
+      "repeats": 1,
+      "filter_list": [
+        {
+          "name": "first-letter",
+          "filter": [
+            {
+              "function": "regex",
+              "regex_pattern": "\\b([ABCD])\\b"
+            },
+            {
+              "function": "take_first"
+            }
+          ]
+        }
+      ],
+      "should_decontaminate": false,
+      "score_key": "score",
+      "metadata": {
+        "version": 1.0
+      },
+      "auto_strip_thinking": false
+    },
+    "mmlu_jetson_professional_law": {
+      "task": "mmlu_jetson_professional_law",
+      "task_alias": "professional law",
+      "tag": "mmlu_jetson_subjects",
+      "dataset_path": "hails/mmlu_no_train",
+      "dataset_name": "professional_law",
+      "dataset_kwargs": {
+        "trust_remote_code": true
+      },
+      "test_split": "test",
+      "fewshot_split": "dev",
+      "full_docs": false,
+      "process_results_use_image": false,
+      "doc_to_text": "{{question.strip()}}\nA. {{choices[0]}}\nB. {{choices[1]}}\nC. {{choices[2]}}\nD. {{choices[3]}}\nAnswer:",
+      "doc_to_target": "{{['A', 'B', 'C', 'D'][answer]}}",
+      "description": "The following are multiple choice questions (with answers) about professional law. Answer the last question with the letter of the correct option only.\n\n",
+      "target_delimiter": " ",
+      "fewshot_delimiter": "\n\n",
+      "fewshot_config": {
+        "sampler": "first_n"
+      },
+      "num_fewshot": 5,
+      "metric_list": [
+        {
+          "metric": "exact_match",
+          "aggregation": "mean",
+          "higher_is_better": true
+        }
+      ],
+      "output_type": "generate_until",
+      "generation_kwargs": {
+        "until": [],
+        "do_sample": false,
+        "temperature": 0.0,
+        "max_new_tokens": 32
+      },
+      "repeats": 1,
+      "filter_list": [
+        {
+          "name": "first-letter",
+          "filter": [
+            {
+              "function": "regex",
+              "regex_pattern": "\\b([ABCD])\\b"
+            },
+            {
+              "function": "take_first"
+            }
+          ]
+        }
+      ],
+      "should_decontaminate": false,
+      "score_key": "score",
+      "metadata": {
+        "version": 1.0
+      },
+      "auto_strip_thinking": false
+    },
+    "mmlu_jetson_professional_medicine": {
+      "task": "mmlu_jetson_professional_medicine",
+      "task_alias": "professional medicine",
+      "tag": "mmlu_jetson_subjects",
+      "dataset_path": "hails/mmlu_no_train",
+      "dataset_name": "professional_medicine",
+      "dataset_kwargs": {
+        "trust_remote_code": true
+      },
+      "test_split": "test",
+      "fewshot_split": "dev",
+      "full_docs": false,
+      "process_results_use_image": false,
+      "doc_to_text": "{{question.strip()}}\nA. {{choices[0]}}\nB. {{choices[1]}}\nC. {{choices[2]}}\nD. {{choices[3]}}\nAnswer:",
+      "doc_to_target": "{{['A', 'B', 'C', 'D'][answer]}}",
+      "description": "The following are multiple choice questions (with answers) about professional medicine. Answer the last question with the letter of the correct option only.\n\n",
+      "target_delimiter": " ",
+      "fewshot_delimiter": "\n\n",
+      "fewshot_config": {
+        "sampler": "first_n"
+      },
+      "num_fewshot": 5,
+      "metric_list": [
+        {
+          "metric": "exact_match",
+          "aggregation": "mean",
+          "higher_is_better": true
+        }
+      ],
+      "output_type": "generate_until",
+      "generation_kwargs": {
+        "until": [],
+        "do_sample": false,
+        "temperature": 0.0,
+        "max_new_tokens": 32
+      },
+      "repeats": 1,
+      "filter_list": [
+        {
+          "name": "first-letter",
+          "filter": [
+            {
+              "function": "regex",
+              "regex_pattern": "\\b([ABCD])\\b"
+            },
+            {
+              "function": "take_first"
+            }
+          ]
+        }
+      ],
+      "should_decontaminate": false,
+      "score_key": "score",
+      "metadata": {
+        "version": 1.0
+      },
+      "auto_strip_thinking": false
+    },
+    "mmlu_jetson_professional_psychology": {
+      "task": "mmlu_jetson_professional_psychology",
+      "task_alias": "professional psychology",
+      "tag": "mmlu_jetson_subjects",
+      "dataset_path": "hails/mmlu_no_train",
+      "dataset_name": "professional_psychology",
+      "dataset_kwargs": {
+        "trust_remote_code": true
+      },
+      "test_split": "test",
+      "fewshot_split": "dev",
+      "full_docs": false,
+      "process_results_use_image": false,
+      "doc_to_text": "{{question.strip()}}\nA. {{choices[0]}}\nB. {{choices[1]}}\nC. {{choices[2]}}\nD. {{choices[3]}}\nAnswer:",
+      "doc_to_target": "{{['A', 'B', 'C', 'D'][answer]}}",
+      "description": "The following are multiple choice questions (with answers) about professional psychology. Answer the last question with the letter of the correct option only.\n\n",
+      "target_delimiter": " ",
+      "fewshot_delimiter": "\n\n",
+      "fewshot_config": {
+        "sampler": "first_n"
+      },
+      "num_fewshot": 5,
+      "metric_list": [
+        {
+          "metric": "exact_match",
+          "aggregation": "mean",
+          "higher_is_better": true
+        }
+      ],
+      "output_type": "generate_until",
+      "generation_kwargs": {
+        "until": [],
+        "do_sample": false,
+        "temperature": 0.0,
+        "max_new_tokens": 32
+      },
+      "repeats": 1,
+      "filter_list": [
+        {
+          "name": "first-letter",
+          "filter": [
+            {
+              "function": "regex",
+              "regex_pattern": "\\b([ABCD])\\b"
+            },
+            {
+              "function": "take_first"
+            }
+          ]
+        }
+      ],
+      "should_decontaminate": false,
+      "score_key": "score",
+      "metadata": {
+        "version": 1.0
+      },
+      "auto_strip_thinking": false
+    },
+    "mmlu_jetson_public_relations": {
+      "task": "mmlu_jetson_public_relations",
+      "task_alias": "public relations",
+      "tag": "mmlu_jetson_subjects",
+      "dataset_path": "hails/mmlu_no_train",
+      "dataset_name": "public_relations",
+      "dataset_kwargs": {
+        "trust_remote_code": true
+      },
+      "test_split": "test",
+      "fewshot_split": "dev",
+      "full_docs": false,
+      "process_results_use_image": false,
+      "doc_to_text": "{{question.strip()}}\nA. {{choices[0]}}\nB. {{choices[1]}}\nC. {{choices[2]}}\nD. {{choices[3]}}\nAnswer:",
+      "doc_to_target": "{{['A', 'B', 'C', 'D'][answer]}}",
+      "description": "The following are multiple choice questions (with answers) about public relations. Answer the last question with the letter of the correct option only.\n\n",
+      "target_delimiter": " ",
+      "fewshot_delimiter": "\n\n",
+      "fewshot_config": {
+        "sampler": "first_n"
+      },
+      "num_fewshot": 5,
+      "metric_list": [
+        {
+          "metric": "exact_match",
+          "aggregation": "mean",
+          "higher_is_better": true
+        }
+      ],
+      "output_type": "generate_until",
+      "generation_kwargs": {
+        "until": [],
+        "do_sample": false,
+        "temperature": 0.0,
+        "max_new_tokens": 32
+      },
+      "repeats": 1,
+      "filter_list": [
+        {
+          "name": "first-letter",
+          "filter": [
+            {
+              "function": "regex",
+              "regex_pattern": "\\b([ABCD])\\b"
+            },
+            {
+              "function": "take_first"
+            }
+          ]
+        }
+      ],
+      "should_decontaminate": false,
+      "score_key": "score",
+      "metadata": {
+        "version": 1.0
+      },
+      "auto_strip_thinking": false
+    },
+    "mmlu_jetson_security_studies": {
+      "task": "mmlu_jetson_security_studies",
+      "task_alias": "security studies",
+      "tag": "mmlu_jetson_subjects",
+      "dataset_path": "hails/mmlu_no_train",
+      "dataset_name": "security_studies",
+      "dataset_kwargs": {
+        "trust_remote_code": true
+      },
+      "test_split": "test",
+      "fewshot_split": "dev",
+      "full_docs": false,
+      "process_results_use_image": false,
+      "doc_to_text": "{{question.strip()}}\nA. {{choices[0]}}\nB. {{choices[1]}}\nC. {{choices[2]}}\nD. {{choices[3]}}\nAnswer:",
+      "doc_to_target": "{{['A', 'B', 'C', 'D'][answer]}}",
+      "description": "The following are multiple choice questions (with answers) about security studies. Answer the last question with the letter of the correct option only.\n\n",
+      "target_delimiter": " ",
+      "fewshot_delimiter": "\n\n",
+      "fewshot_config": {
+        "sampler": "first_n"
+      },
+      "num_fewshot": 5,
+      "metric_list": [
+        {
+          "metric": "exact_match",
+          "aggregation": "mean",
+          "higher_is_better": true
+        }
+      ],
+      "output_type": "generate_until",
+      "generation_kwargs": {
+        "until": [],
+        "do_sample": false,
+        "temperature": 0.0,
+        "max_new_tokens": 32
+      },
+      "repeats": 1,
+      "filter_list": [
+        {
+          "name": "first-letter",
+          "filter": [
+            {
+              "function": "regex",
+              "regex_pattern": "\\b([ABCD])\\b"
+            },
+            {
+              "function": "take_first"
+            }
+          ]
+        }
+      ],
+      "should_decontaminate": false,
+      "score_key": "score",
+      "metadata": {
+        "version": 1.0
+      },
+      "auto_strip_thinking": false
+    },
+    "mmlu_jetson_sociology": {
+      "task": "mmlu_jetson_sociology",
+      "task_alias": "sociology",
+      "tag": "mmlu_jetson_subjects",
+      "dataset_path": "hails/mmlu_no_train",
+      "dataset_name": "sociology",
+      "dataset_kwargs": {
+        "trust_remote_code": true
+      },
+      "test_split": "test",
+      "fewshot_split": "dev",
+      "full_docs": false,
+      "process_results_use_image": false,
+      "doc_to_text": "{{question.strip()}}\nA. {{choices[0]}}\nB. {{choices[1]}}\nC. {{choices[2]}}\nD. {{choices[3]}}\nAnswer:",
+      "doc_to_target": "{{['A', 'B', 'C', 'D'][answer]}}",
+      "description": "The following are multiple choice questions (with answers) about sociology. Answer the last question with the letter of the correct option only.\n\n",
+      "target_delimiter": " ",
+      "fewshot_delimiter": "\n\n",
+      "fewshot_config": {
+        "sampler": "first_n"
+      },
+      "num_fewshot": 5,
+      "metric_list": [
+        {
+          "metric": "exact_match",
+          "aggregation": "mean",
+          "higher_is_better": true
+        }
+      ],
+      "output_type": "generate_until",
+      "generation_kwargs": {
+        "until": [],
+        "do_sample": false,
+        "temperature": 0.0,
+        "max_new_tokens": 32
+      },
+      "repeats": 1,
+      "filter_list": [
+        {
+          "name": "first-letter",
+          "filter": [
+            {
+              "function": "regex",
+              "regex_pattern": "\\b([ABCD])\\b"
+            },
+            {
+              "function": "take_first"
+            }
+          ]
+        }
+      ],
+      "should_decontaminate": false,
+      "score_key": "score",
+      "metadata": {
+        "version": 1.0
+      },
+      "auto_strip_thinking": false
+    },
+    "mmlu_jetson_us_foreign_policy": {
+      "task": "mmlu_jetson_us_foreign_policy",
+      "task_alias": "us foreign policy",
+      "tag": "mmlu_jetson_subjects",
+      "dataset_path": "hails/mmlu_no_train",
+      "dataset_name": "us_foreign_policy",
+      "dataset_kwargs": {
+        "trust_remote_code": true
+      },
+      "test_split": "test",
+      "fewshot_split": "dev",
+      "full_docs": false,
+      "process_results_use_image": false,
+      "doc_to_text": "{{question.strip()}}\nA. {{choices[0]}}\nB. {{choices[1]}}\nC. {{choices[2]}}\nD. {{choices[3]}}\nAnswer:",
+      "doc_to_target": "{{['A', 'B', 'C', 'D'][answer]}}",
+      "description": "The following are multiple choice questions (with answers) about us foreign policy. Answer the last question with the letter of the correct option only.\n\n",
+      "target_delimiter": " ",
+      "fewshot_delimiter": "\n\n",
+      "fewshot_config": {
+        "sampler": "first_n"
+      },
+      "num_fewshot": 5,
+      "metric_list": [
+        {
+          "metric": "exact_match",
+          "aggregation": "mean",
+          "higher_is_better": true
+        }
+      ],
+      "output_type": "generate_until",
+      "generation_kwargs": {
+        "until": [],
+        "do_sample": false,
+        "temperature": 0.0,
+        "max_new_tokens": 32
+      },
+      "repeats": 1,
+      "filter_list": [
+        {
+          "name": "first-letter",
+          "filter": [
+            {
+              "function": "regex",
+              "regex_pattern": "\\b([ABCD])\\b"
+            },
+            {
+              "function": "take_first"
+            }
+          ]
+        }
+      ],
+      "should_decontaminate": false,
+      "score_key": "score",
+      "metadata": {
+        "version": 1.0
+      },
+      "auto_strip_thinking": false
+    },
+    "mmlu_jetson_virology": {
+      "task": "mmlu_jetson_virology",
+      "task_alias": "virology",
+      "tag": "mmlu_jetson_subjects",
+      "dataset_path": "hails/mmlu_no_train",
+      "dataset_name": "virology",
+      "dataset_kwargs": {
+        "trust_remote_code": true
+      },
+      "test_split": "test",
+      "fewshot_split": "dev",
+      "full_docs": false,
+      "process_results_use_image": false,
+      "doc_to_text": "{{question.strip()}}\nA. {{choices[0]}}\nB. {{choices[1]}}\nC. {{choices[2]}}\nD. {{choices[3]}}\nAnswer:",
+      "doc_to_target": "{{['A', 'B', 'C', 'D'][answer]}}",
+      "description": "The following are multiple choice questions (with answers) about virology. Answer the last question with the letter of the correct option only.\n\n",
+      "target_delimiter": " ",
+      "fewshot_delimiter": "\n\n",
+      "fewshot_config": {
+        "sampler": "first_n"
+      },
+      "num_fewshot": 5,
+      "metric_list": [
+        {
+          "metric": "exact_match",
+          "aggregation": "mean",
+          "higher_is_better": true
+        }
+      ],
+      "output_type": "generate_until",
+      "generation_kwargs": {
+        "until": [],
+        "do_sample": false,
+        "temperature": 0.0,
+        "max_new_tokens": 32
+      },
+      "repeats": 1,
+      "filter_list": [
+        {
+          "name": "first-letter",
+          "filter": [
+            {
+              "function": "regex",
+              "regex_pattern": "\\b([ABCD])\\b"
+            },
+            {
+              "function": "take_first"
+            }
+          ]
+        }
+      ],
+      "should_decontaminate": false,
+      "score_key": "score",
+      "metadata": {
+        "version": 1.0
+      },
+      "auto_strip_thinking": false
+    },
+    "mmlu_jetson_world_religions": {
+      "task": "mmlu_jetson_world_religions",
+      "task_alias": "world religions",
+      "tag": "mmlu_jetson_subjects",
+      "dataset_path": "hails/mmlu_no_train",
+      "dataset_name": "world_religions",
+      "dataset_kwargs": {
+        "trust_remote_code": true
+      },
+      "test_split": "test",
+      "fewshot_split": "dev",
+      "full_docs": false,
+      "process_results_use_image": false,
+      "doc_to_text": "{{question.strip()}}\nA. {{choices[0]}}\nB. {{choices[1]}}\nC. {{choices[2]}}\nD. {{choices[3]}}\nAnswer:",
+      "doc_to_target": "{{['A', 'B', 'C', 'D'][answer]}}",
+      "description": "The following are multiple choice questions (with answers) about world religions. Answer the last question with the letter of the correct option only.\n\n",
+      "target_delimiter": " ",
+      "fewshot_delimiter": "\n\n",
+      "fewshot_config": {
+        "sampler": "first_n"
+      },
+      "num_fewshot": 5,
+      "metric_list": [
+        {
+          "metric": "exact_match",
+          "aggregation": "mean",
+          "higher_is_better": true
+        }
+      ],
+      "output_type": "generate_until",
+      "generation_kwargs": {
+        "until": [],
+        "do_sample": false,
+        "temperature": 0.0,
+        "max_new_tokens": 32
+      },
+      "repeats": 1,
+      "filter_list": [
+        {
+          "name": "first-letter",
+          "filter": [
+            {
+              "function": "regex",
+              "regex_pattern": "\\b([ABCD])\\b"
+            },
+            {
+              "function": "take_first"
+            }
+          ]
+        }
+      ],
+      "should_decontaminate": false,
+      "score_key": "score",
+      "metadata": {
+        "version": 1.0
+      },
+      "auto_strip_thinking": false
+    }
+  },
+  "versions": {
+    "mmlu_jetson": 1.0,
+    "mmlu_jetson_abstract_algebra": 1.0,
+    "mmlu_jetson_anatomy": 1.0,
+    "mmlu_jetson_astronomy": 1.0,
+    "mmlu_jetson_business_ethics": 1.0,
+    "mmlu_jetson_clinical_knowledge": 1.0,
+    "mmlu_jetson_college_biology": 1.0,
+    "mmlu_jetson_college_chemistry": 1.0,
+    "mmlu_jetson_college_computer_science": 1.0,
+    "mmlu_jetson_college_mathematics": 1.0,
+    "mmlu_jetson_college_medicine": 1.0,
+    "mmlu_jetson_college_physics": 1.0,
+    "mmlu_jetson_computer_security": 1.0,
+    "mmlu_jetson_conceptual_physics": 1.0,
+    "mmlu_jetson_econometrics": 1.0,
+    "mmlu_jetson_electrical_engineering": 1.0,
+    "mmlu_jetson_elementary_mathematics": 1.0,
+    "mmlu_jetson_formal_logic": 1.0,
+    "mmlu_jetson_global_facts": 1.0,
+    "mmlu_jetson_high_school_biology": 1.0,
+    "mmlu_jetson_high_school_chemistry": 1.0,
+    "mmlu_jetson_high_school_computer_science": 1.0,
+    "mmlu_jetson_high_school_european_history": 1.0,
+    "mmlu_jetson_high_school_geography": 1.0,
+    "mmlu_jetson_high_school_government_and_politics": 1.0,
+    "mmlu_jetson_high_school_macroeconomics": 1.0,
+    "mmlu_jetson_high_school_mathematics": 1.0,
+    "mmlu_jetson_high_school_microeconomics": 1.0,
+    "mmlu_jetson_high_school_physics": 1.0,
+    "mmlu_jetson_high_school_psychology": 1.0,
+    "mmlu_jetson_high_school_statistics": 1.0,
+    "mmlu_jetson_high_school_us_history": 1.0,
+    "mmlu_jetson_high_school_world_history": 1.0,
+    "mmlu_jetson_human_aging": 1.0,
+    "mmlu_jetson_human_sexuality": 1.0,
+    "mmlu_jetson_international_law": 1.0,
+    "mmlu_jetson_jurisprudence": 1.0,
+    "mmlu_jetson_logical_fallacies": 1.0,
+    "mmlu_jetson_machine_learning": 1.0,
+    "mmlu_jetson_management": 1.0,
+    "mmlu_jetson_marketing": 1.0,
+    "mmlu_jetson_medical_genetics": 1.0,
+    "mmlu_jetson_miscellaneous": 1.0,
+    "mmlu_jetson_moral_disputes": 1.0,
+    "mmlu_jetson_moral_scenarios": 1.0,
+    "mmlu_jetson_nutrition": 1.0,
+    "mmlu_jetson_philosophy": 1.0,
+    "mmlu_jetson_prehistory": 1.0,
+    "mmlu_jetson_professional_accounting": 1.0,
+    "mmlu_jetson_professional_law": 1.0,
+    "mmlu_jetson_professional_medicine": 1.0,
+    "mmlu_jetson_professional_psychology": 1.0,
+    "mmlu_jetson_public_relations": 1.0,
+    "mmlu_jetson_security_studies": 1.0,
+    "mmlu_jetson_sociology": 1.0,
+    "mmlu_jetson_us_foreign_policy": 1.0,
+    "mmlu_jetson_virology": 1.0,
+    "mmlu_jetson_world_religions": 1.0
+  },
+  "n-shot": {
+    "mmlu_jetson_abstract_algebra": 5,
+    "mmlu_jetson_anatomy": 5,
+    "mmlu_jetson_astronomy": 5,
+    "mmlu_jetson_business_ethics": 5,
+    "mmlu_jetson_clinical_knowledge": 5,
+    "mmlu_jetson_college_biology": 5,
+    "mmlu_jetson_college_chemistry": 5,
+    "mmlu_jetson_college_computer_science": 5,
+    "mmlu_jetson_college_mathematics": 5,
+    "mmlu_jetson_college_medicine": 5,
+    "mmlu_jetson_college_physics": 5,
+    "mmlu_jetson_computer_security": 5,
+    "mmlu_jetson_conceptual_physics": 5,
+    "mmlu_jetson_econometrics": 5,
+    "mmlu_jetson_electrical_engineering": 5,
+    "mmlu_jetson_elementary_mathematics": 5,
+    "mmlu_jetson_formal_logic": 5,
+    "mmlu_jetson_global_facts": 5,
+    "mmlu_jetson_high_school_biology": 5,
+    "mmlu_jetson_high_school_chemistry": 5,
+    "mmlu_jetson_high_school_computer_science": 5,
+    "mmlu_jetson_high_school_european_history": 5,
+    "mmlu_jetson_high_school_geography": 5,
+    "mmlu_jetson_high_school_government_and_politics": 5,
+    "mmlu_jetson_high_school_macroeconomics": 5,
+    "mmlu_jetson_high_school_mathematics": 5,
+    "mmlu_jetson_high_school_microeconomics": 5,
+    "mmlu_jetson_high_school_physics": 5,
+    "mmlu_jetson_high_school_psychology": 5,
+    "mmlu_jetson_high_school_statistics": 5,
+    "mmlu_jetson_high_school_us_history": 5,
+    "mmlu_jetson_high_school_world_history": 5,
+    "mmlu_jetson_human_aging": 5,
+    "mmlu_jetson_human_sexuality": 5,
+    "mmlu_jetson_international_law": 5,
+    "mmlu_jetson_jurisprudence": 5,
+    "mmlu_jetson_logical_fallacies": 5,
+    "mmlu_jetson_machine_learning": 5,
+    "mmlu_jetson_management": 5,
+    "mmlu_jetson_marketing": 5,
+    "mmlu_jetson_medical_genetics": 5,
+    "mmlu_jetson_miscellaneous": 5,
+    "mmlu_jetson_moral_disputes": 5,
+    "mmlu_jetson_moral_scenarios": 5,
+    "mmlu_jetson_nutrition": 5,
+    "mmlu_jetson_philosophy": 5,
+    "mmlu_jetson_prehistory": 5,
+    "mmlu_jetson_professional_accounting": 5,
+    "mmlu_jetson_professional_law": 5,
+    "mmlu_jetson_professional_medicine": 5,
+    "mmlu_jetson_professional_psychology": 5,
+    "mmlu_jetson_public_relations": 5,
+    "mmlu_jetson_security_studies": 5,
+    "mmlu_jetson_sociology": 5,
+    "mmlu_jetson_us_foreign_policy": 5,
+    "mmlu_jetson_virology": 5,
+    "mmlu_jetson_world_religions": 5
+  },
+  "higher_is_better": {
+    "mmlu_jetson": {
+      "exact_match": true
+    },
+    "mmlu_jetson_abstract_algebra": {
+      "exact_match": true
+    },
+    "mmlu_jetson_anatomy": {
+      "exact_match": true
+    },
+    "mmlu_jetson_astronomy": {
+      "exact_match": true
+    },
+    "mmlu_jetson_business_ethics": {
+      "exact_match": true
+    },
+    "mmlu_jetson_clinical_knowledge": {
+      "exact_match": true
+    },
+    "mmlu_jetson_college_biology": {
+      "exact_match": true
+    },
+    "mmlu_jetson_college_chemistry": {
+      "exact_match": true
+    },
+    "mmlu_jetson_college_computer_science": {
+      "exact_match": true
+    },
+    "mmlu_jetson_college_mathematics": {
+      "exact_match": true
+    },
+    "mmlu_jetson_college_medicine": {
+      "exact_match": true
+    },
+    "mmlu_jetson_college_physics": {
+      "exact_match": true
+    },
+    "mmlu_jetson_computer_security": {
+      "exact_match": true
+    },
+    "mmlu_jetson_conceptual_physics": {
+      "exact_match": true
+    },
+    "mmlu_jetson_econometrics": {
+      "exact_match": true
+    },
+    "mmlu_jetson_electrical_engineering": {
+      "exact_match": true
+    },
+    "mmlu_jetson_elementary_mathematics": {
+      "exact_match": true
+    },
+    "mmlu_jetson_formal_logic": {
+      "exact_match": true
+    },
+    "mmlu_jetson_global_facts": {
+      "exact_match": true
+    },
+    "mmlu_jetson_high_school_biology": {
+      "exact_match": true
+    },
+    "mmlu_jetson_high_school_chemistry": {
+      "exact_match": true
+    },
+    "mmlu_jetson_high_school_computer_science": {
+      "exact_match": true
+    },
+    "mmlu_jetson_high_school_european_history": {
+      "exact_match": true
+    },
+    "mmlu_jetson_high_school_geography": {
+      "exact_match": true
+    },
+    "mmlu_jetson_high_school_government_and_politics": {
+      "exact_match": true
+    },
+    "mmlu_jetson_high_school_macroeconomics": {
+      "exact_match": true
+    },
+    "mmlu_jetson_high_school_mathematics": {
+      "exact_match": true
+    },
+    "mmlu_jetson_high_school_microeconomics": {
+      "exact_match": true
+    },
+    "mmlu_jetson_high_school_physics": {
+      "exact_match": true
+    },
+    "mmlu_jetson_high_school_psychology": {
+      "exact_match": true
+    },
+    "mmlu_jetson_high_school_statistics": {
+      "exact_match": true
+    },
+    "mmlu_jetson_high_school_us_history": {
+      "exact_match": true
+    },
+    "mmlu_jetson_high_school_world_history": {
+      "exact_match": true
+    },
+    "mmlu_jetson_human_aging": {
+      "exact_match": true
+    },
+    "mmlu_jetson_human_sexuality": {
+      "exact_match": true
+    },
+    "mmlu_jetson_international_law": {
+      "exact_match": true
+    },
+    "mmlu_jetson_jurisprudence": {
+      "exact_match": true
+    },
+    "mmlu_jetson_logical_fallacies": {
+      "exact_match": true
+    },
+    "mmlu_jetson_machine_learning": {
+      "exact_match": true
+    },
+    "mmlu_jetson_management": {
+      "exact_match": true
+    },
+    "mmlu_jetson_marketing": {
+      "exact_match": true
+    },
+    "mmlu_jetson_medical_genetics": {
+      "exact_match": true
+    },
+    "mmlu_jetson_miscellaneous": {
+      "exact_match": true
+    },
+    "mmlu_jetson_moral_disputes": {
+      "exact_match": true
+    },
+    "mmlu_jetson_moral_scenarios": {
+      "exact_match": true
+    },
+    "mmlu_jetson_nutrition": {
+      "exact_match": true
+    },
+    "mmlu_jetson_philosophy": {
+      "exact_match": true
+    },
+    "mmlu_jetson_prehistory": {
+      "exact_match": true
+    },
+    "mmlu_jetson_professional_accounting": {
+      "exact_match": true
+    },
+    "mmlu_jetson_professional_law": {
+      "exact_match": true
+    },
+    "mmlu_jetson_professional_medicine": {
+      "exact_match": true
+    },
+    "mmlu_jetson_professional_psychology": {
+      "exact_match": true
+    },
+    "mmlu_jetson_public_relations": {
+      "exact_match": true
+    },
+    "mmlu_jetson_security_studies": {
+      "exact_match": true
+    },
+    "mmlu_jetson_sociology": {
+      "exact_match": true
+    },
+    "mmlu_jetson_us_foreign_policy": {
+      "exact_match": true
+    },
+    "mmlu_jetson_virology": {
+      "exact_match": true
+    },
+    "mmlu_jetson_world_religions": {
+      "exact_match": true
+    }
+  },
+  "n-samples": {
+    "mmlu_jetson_miscellaneous": {
+      "original": 783,
+      "effective": 20
+    },
+    "mmlu_jetson_logical_fallacies": {
+      "original": 163,
+      "effective": 20
+    },
+    "mmlu_jetson_formal_logic": {
+      "original": 126,
+      "effective": 20
+    },
+    "mmlu_jetson_moral_scenarios": {
+      "original": 895,
+      "effective": 20
+    },
+    "mmlu_jetson_sociology": {
+      "original": 201,
+      "effective": 20
+    },
+    "mmlu_jetson_clinical_knowledge": {
+      "original": 265,
+      "effective": 20
+    },
+    "mmlu_jetson_professional_psychology": {
+      "original": 612,
+      "effective": 20
+    },
+    "mmlu_jetson_high_school_statistics": {
+      "original": 216,
+      "effective": 20
+    },
+    "mmlu_jetson_international_law": {
+      "original": 121,
+      "effective": 20
+    },
+    "mmlu_jetson_moral_disputes": {
+      "original": 346,
+      "effective": 20
+    },
+    "mmlu_jetson_us_foreign_policy": {
+      "original": 100,
+      "effective": 20
+    },
+    "mmlu_jetson_global_facts": {
+      "original": 100,
+      "effective": 20
+    },
+    "mmlu_jetson_high_school_computer_science": {
+      "original": 100,
+      "effective": 20
+    },
+    "mmlu_jetson_anatomy": {
+      "original": 135,
+      "effective": 20
+    },
+    "mmlu_jetson_astronomy": {
+      "original": 152,
+      "effective": 20
+    },
+    "mmlu_jetson_human_aging": {
+      "original": 223,
+      "effective": 20
+    },
+    "mmlu_jetson_medical_genetics": {
+      "original": 100,
+      "effective": 20
+    },
+    "mmlu_jetson_management": {
+      "original": 103,
+      "effective": 20
+    },
+    "mmlu_jetson_high_school_us_history": {
+      "original": 204,
+      "effective": 20
+    },
+    "mmlu_jetson_professional_medicine": {
+      "original": 272,
+      "effective": 20
+    },
+    "mmlu_jetson_college_chemistry": {
+      "original": 100,
+      "effective": 20
+    },
+    "mmlu_jetson_econometrics": {
+      "original": 114,
+      "effective": 20
+    },
+    "mmlu_jetson_high_school_macroeconomics": {
+      "original": 390,
+      "effective": 20
+    },
+    "mmlu_jetson_college_mathematics": {
+      "original": 100,
+      "effective": 20
+    },
+    "mmlu_jetson_high_school_government_and_politics": {
+      "original": 193,
+      "effective": 20
+    },
+    "mmlu_jetson_college_physics": {
+      "original": 102,
+      "effective": 20
+    },
+    "mmlu_jetson_high_school_chemistry": {
+      "original": 203,
+      "effective": 20
+    },
+    "mmlu_jetson_conceptual_physics": {
+      "original": 235,
+      "effective": 20
+    },
+    "mmlu_jetson_elementary_mathematics": {
+      "original": 378,
+      "effective": 20
+    },
+    "mmlu_jetson_human_sexuality": {
+      "original": 131,
+      "effective": 20
+    },
+    "mmlu_jetson_public_relations": {
+      "original": 110,
+      "effective": 20
+    },
+    "mmlu_jetson_business_ethics": {
+      "original": 100,
+      "effective": 20
+    },
+    "mmlu_jetson_virology": {
+      "original": 166,
+      "effective": 20
+    },
+    "mmlu_jetson_high_school_world_history": {
+      "original": 237,
+      "effective": 20
+    },
+    "mmlu_jetson_security_studies": {
+      "original": 245,
+      "effective": 20
+    },
+    "mmlu_jetson_high_school_psychology": {
+      "original": 545,
+      "effective": 20
+    },
+    "mmlu_jetson_nutrition": {
+      "original": 306,
+      "effective": 20
+    },
+    "mmlu_jetson_high_school_mathematics": {
+      "original": 270,
+      "effective": 20
+    },
+    "mmlu_jetson_professional_accounting": {
+      "original": 282,
+      "effective": 20
+    },
+    "mmlu_jetson_electrical_engineering": {
+      "original": 145,
+      "effective": 20
+    },
+    "mmlu_jetson_prehistory": {
+      "original": 324,
+      "effective": 20
+    },
+    "mmlu_jetson_machine_learning": {
+      "original": 112,
+      "effective": 20
+    },
+    "mmlu_jetson_high_school_physics": {
+      "original": 151,
+      "effective": 20
+    },
+    "mmlu_jetson_college_medicine": {
+      "original": 173,
+      "effective": 20
+    },
+    "mmlu_jetson_professional_law": {
+      "original": 1534,
+      "effective": 20
+    },
+    "mmlu_jetson_marketing": {
+      "original": 234,
+      "effective": 20
+    },
+    "mmlu_jetson_high_school_geography": {
+      "original": 198,
+      "effective": 20
+    },
+    "mmlu_jetson_college_biology": {
+      "original": 144,
+      "effective": 20
+    },
+    "mmlu_jetson_high_school_biology": {
+      "original": 310,
+      "effective": 20
+    },
+    "mmlu_jetson_abstract_algebra": {
+      "original": 100,
+      "effective": 20
+    },
+    "mmlu_jetson_jurisprudence": {
+      "original": 108,
+      "effective": 20
+    },
+    "mmlu_jetson_high_school_european_history": {
+      "original": 165,
+      "effective": 20
+    },
+    "mmlu_jetson_college_computer_science": {
+      "original": 100,
+      "effective": 20
+    },
+    "mmlu_jetson_world_religions": {
+      "original": 171,
+      "effective": 20
+    },
+    "mmlu_jetson_computer_security": {
+      "original": 100,
+      "effective": 20
+    },
+    "mmlu_jetson_high_school_microeconomics": {
+      "original": 238,
+      "effective": 20
+    },
+    "mmlu_jetson_philosophy": {
+      "original": 311,
+      "effective": 20
+    }
+  },
+  "config": {
+    "model": "openai",
+    "model_args": "model_version=Qwen2.5-1.5B-Instruct-f16,base_url=http://127.0.0.1:8090/v1,api_key=[REDACTED],stream_timing=True,num_concurrent=1,prefix_aware_queue=False,timeout=600,max_retries=2",
+    "model_backend": "lmms_eval.models.chat.openai.OpenAICompatible (chat)",
+    "batch_size": "1",
+    "batch_sizes": [],
+    "device": null,
+    "use_cache": null,
+    "limit": 20.0,
+    "offset": 0,
+    "bootstrap_iters": 100000,
+    "process_docs_parallel": 4,
+    "gen_kwargs": "",
+    "random_seed": 0,
+    "numpy_seed": 1234,
+    "torch_seed": 1234,
+    "fewshot_seed": 1234,
+    "resolved_cli_args": {
+      "config": "",
+      "model": "openai",
+      "tasks": "mmlu_jetson",
+      "model_args": "model_version=Qwen2.5-1.5B-Instruct-f16,base_url=http://127.0.0.1:8090/v1,api_key=[REDACTED],stream_timing=True,num_concurrent=1,prefix_aware_queue=False,timeout=600,max_retries=2",
+      "launcher_args": null,
+      "num_fewshot": null,
+      "batch_size": "1",
+      "max_batch_size": null,
+      "device": null,
+      "output_path": "jetson/results/thor/Qwen2.5-1.5B-Instruct/mmlu_jetson/llamacpp-f16+cublas-f32/20261011-144436_limit20",
+      "limit": 20.0,
+      "offset": 0,
+      "use_cache": null,
+      "cache_requests": null,
+      "check_integrity": false,
+      "write_out": false,
+      "log_samples": true,
+      "wandb_log_samples": false,
+      "swanlab_log_samples": false,
+      "log_samples_suffix": "model_outputs",
+      "system_instruction": null,
+      "apply_chat_template": false,
+      "fewshot_as_multiturn": false,
+      "show_config": false,
+      "include_path": "jetson/tasks",
+      "gen_kwargs": "",
+      "reasoning_tags": "[[\"<think>\", \"</think>\"], [\"<analysis>\", \"</analysis>\"]]",
+      "verbosity": "INFO",
+      "wandb_args": "",
+      "swanlab_args": "",
+      "timezone": "Asia/Singapore",
+      "hf_hub_log_args": ",output_path=jetson/results/thor/Qwen2.5-1.5B-Instruct/mmlu_jetson/llamacpp-f16+cublas-f32/20261011-144436_limit20",
+      "predict_only": false,
+      "seed": [
+        0,
+        1234,
+        1234,
+        1234
+      ],
+      "trust_remote_code": false,
+      "process_with_media": false,
+      "process_docs_parallel": 4,
+      "agentic_trace_mode": "basic",
+      "force_simple": false,
+      "tui": false,
+      "repeats": 1,
+      "baseline": null,
+      "max_tokens": null,
+      "power_analysis": false,
+      "effect_size": 0.03,
+      "alpha": 0.05,
+      "power": 0.8,
+      "correlation": 0.5,
+      "std_a": null,
+      "std_b": null
+    }
+  },
+  "git_hash": "v0.6-306-g207820df",
+  "git_branch": "jetson-benchmark",
+  "lmms_eval_version": "jetson-benchmark@v0.6-306",
+  "date": "20261011_204450",
+  "throughput": {
+    "total_gen_tokens": 18839,
+    "total_elapsed_time": 425.65365529060364,
+    "avg_speed": 44.2589879491066
+  },
+  "usage": {
+    "total": {
+      "input_tokens": 738536,
+      "output_tokens": 18839,
+      "reasoning_tokens": 0,
+      "total_tokens": 757375,
+      "n_api_calls": 1140
+    },
+    "by_task": {
+      "_unknown": {
+        "input_tokens": 738536,
+        "output_tokens": 18839,
+        "reasoning_tokens": 0,
+        "total_tokens": 757375,
+        "n_api_calls": 1140
+      }
+    },
+    "by_source": {
+      "model": {
+        "input_tokens": 738536,
+        "output_tokens": 18839,
+        "reasoning_tokens": 0,
+        "total_tokens": 757375,
+        "n_api_calls": 1140
+      }
+    },
+    "budget_exceeded": false,
+    "budget_total_tokens": null
+  },
+  "efficiency": {
+    "by_task": {
+      "mmlu_jetson_miscellaneous": {
+        "docs": 20.0,
+        "docs_with_token_counts": 20.0,
+        "total_input_tokens": 6559.0,
+        "total_output_tokens": 139.0,
+        "total_tokens": 6698.0,
+        "total_correct_score": 13.0,
+        "avg_output_tokens_per_sample": 6.95,
+        "tokens_per_correct_answer": 10.692307692307692
+      },
+      "mmlu_jetson_logical_fallacies": {
+        "docs": 20.0,
+        "docs_with_token_counts": 20.0,
+        "total_input_tokens": 9384.0,
+        "total_output_tokens": 336.0,
+        "total_tokens": 9720.0,
+        "total_correct_score": 11.0,
+        "avg_output_tokens_per_sample": 16.8,
+        "tokens_per_correct_answer": 30.545454545454547
+      },
+      "mmlu_jetson_formal_logic": {
+        "docs": 20.0,
+        "docs_with_token_counts": 20.0,
+        "total_input_tokens": 12383.0,
+        "total_output_tokens": 312.0,
+        "total_tokens": 12695.0,
+        "total_correct_score": 8.0,
+        "avg_output_tokens_per_sample": 15.6,
+        "tokens_per_correct_answer": 39.0
+      },
+      "mmlu_jetson_moral_scenarios": {
+        "docs": 20.0,
+        "docs_with_token_counts": 20.0,
+        "total_input_tokens": 13864.0,
+        "total_output_tokens": 120.0,
+        "total_tokens": 13984.0,
+        "total_correct_score": 5.0,
+        "avg_output_tokens_per_sample": 6.0,
+        "tokens_per_correct_answer": 24.0
+      },
+      "mmlu_jetson_sociology": {
+        "docs": 20.0,
+        "docs_with_token_counts": 20.0,
+        "total_input_tokens": 9436.0,
+        "total_output_tokens": 557.0,
+        "total_tokens": 9993.0,
+        "total_correct_score": 11.0,
+        "avg_output_tokens_per_sample": 27.85,
+        "tokens_per_correct_answer": 50.63636363636363
+      },
+      "mmlu_jetson_clinical_knowledge": {
+        "docs": 20.0,
+        "docs_with_token_counts": 20.0,
+        "total_input_tokens": 8615.0,
+        "total_output_tokens": 242.0,
+        "total_tokens": 8857.0,
+        "total_correct_score": 9.0,
+        "avg_output_tokens_per_sample": 12.1,
+        "tokens_per_correct_answer": 26.88888888888889
+      },
+      "mmlu_jetson_professional_psychology": {
+        "docs": 20.0,
+        "docs_with_token_counts": 20.0,
+        "total_input_tokens": 12372.0,
+        "total_output_tokens": 345.0,
+        "total_tokens": 12717.0,
+        "total_correct_score": 6.0,
+        "avg_output_tokens_per_sample": 17.25,
+        "tokens_per_correct_answer": 57.5
+      },
+      "mmlu_jetson_high_school_statistics": {
+        "docs": 20.0,
+        "docs_with_token_counts": 20.0,
+        "total_input_tokens": 16908.0,
+        "total_output_tokens": 591.0,
+        "total_tokens": 17499.0,
+        "total_correct_score": 11.0,
+        "avg_output_tokens_per_sample": 29.55,
+        "tokens_per_correct_answer": 53.72727272727273
+      },
+      "mmlu_jetson_international_law": {
+        "docs": 20.0,
+        "docs_with_token_counts": 20.0,
+        "total_input_tokens": 13267.0,
+        "total_output_tokens": 593.0,
+        "total_tokens": 13860.0,
+        "total_correct_score": 14.0,
+        "avg_output_tokens_per_sample": 29.65,
+        "tokens_per_correct_answer": 42.357142857142854
+      },
+      "mmlu_jetson_moral_disputes": {
+        "docs": 20.0,
+        "docs_with_token_counts": 20.0,
+        "total_input_tokens": 9965.0,
+        "total_output_tokens": 340.0,
+        "total_tokens": 10305.0,
+        "total_correct_score": 8.0,
+        "avg_output_tokens_per_sample": 17.0,
+        "tokens_per_correct_answer": 42.5
+      },
+      "mmlu_jetson_us_foreign_policy": {
+        "docs": 20.0,
+        "docs_with_token_counts": 20.0,
+        "total_input_tokens": 9050.0,
+        "total_output_tokens": 245.0,
+        "total_tokens": 9295.0,
+        "total_correct_score": 8.0,
+        "avg_output_tokens_per_sample": 12.25,
+        "tokens_per_correct_answer": 30.625
+      },
+      "mmlu_jetson_global_facts": {
+        "docs": 20.0,
+        "docs_with_token_counts": 20.0,
+        "total_input_tokens": 8982.0,
+        "total_output_tokens": 46.0,
+        "total_tokens": 9028.0,
+        "total_correct_score": 6.0,
+        "avg_output_tokens_per_sample": 2.3,
+        "tokens_per_correct_answer": 7.666666666666667
+      },
+      "mmlu_jetson_high_school_computer_science": {
+        "docs": 20.0,
+        "docs_with_token_counts": 20.0,
+        "total_input_tokens": 18281.0,
+        "total_output_tokens": 409.0,
+        "total_tokens": 18690.0,
+        "total_correct_score": 17.0,
+        "avg_output_tokens_per_sample": 20.45,
+        "tokens_per_correct_answer": 24.058823529411764
+      },
+      "mmlu_jetson_anatomy": {
+        "docs": 20.0,
+        "docs_with_token_counts": 20.0,
+        "total_input_tokens": 7590.0,
+        "total_output_tokens": 123.0,
+        "total_tokens": 7713.0,
+        "total_correct_score": 6.0,
+        "avg_output_tokens_per_sample": 6.15,
+        "tokens_per_correct_answer": 20.5
+      },
+      "mmlu_jetson_astronomy": {
+        "docs": 20.0,
+        "docs_with_token_counts": 20.0,
+        "total_input_tokens": 12365.0,
+        "total_output_tokens": 371.0,
+        "total_tokens": 12736.0,
+        "total_correct_score": 12.0,
+        "avg_output_tokens_per_sample": 18.55,
+        "tokens_per_correct_answer": 30.916666666666668
+      },
+      "mmlu_jetson_human_aging": {
+        "docs": 20.0,
+        "docs_with_token_counts": 20.0,
+        "total_input_tokens": 6995.0,
+        "total_output_tokens": 175.0,
+        "total_tokens": 7170.0,
+        "total_correct_score": 5.0,
+        "avg_output_tokens_per_sample": 8.75,
+        "tokens_per_correct_answer": 35.0
+      },
+      "mmlu_jetson_medical_genetics": {
+        "docs": 20.0,
+        "docs_with_token_counts": 20.0,
+        "total_input_tokens": 7226.0,
+        "total_output_tokens": 337.0,
+        "total_tokens": 7563.0,
+        "total_correct_score": 10.0,
+        "avg_output_tokens_per_sample": 16.85,
+        "tokens_per_correct_answer": 33.7
+      },
+      "mmlu_jetson_management": {
+        "docs": 20.0,
+        "docs_with_token_counts": 20.0,
+        "total_input_tokens": 6133.0,
+        "total_output_tokens": 40.0,
+        "total_tokens": 6173.0,
+        "total_correct_score": 8.0,
+        "avg_output_tokens_per_sample": 2.0,
+        "tokens_per_correct_answer": 5.0
+      },
+      "mmlu_jetson_high_school_us_history": {
+        "docs": 20.0,
+        "docs_with_token_counts": 20.0,
+        "total_input_tokens": 44930.0,
+        "total_output_tokens": 347.0,
+        "total_tokens": 45277.0,
+        "total_correct_score": 9.0,
+        "avg_output_tokens_per_sample": 17.35,
+        "tokens_per_correct_answer": 38.55555555555556
+      },
+      "mmlu_jetson_professional_medicine": {
+        "docs": 20.0,
+        "docs_with_token_counts": 20.0,
+        "total_input_tokens": 22946.0,
+        "total_output_tokens": 615.0,
+        "total_tokens": 23561.0,
+        "total_correct_score": 8.0,
+        "avg_output_tokens_per_sample": 30.75,
+        "tokens_per_correct_answer": 76.875
+      },
+      "mmlu_jetson_college_chemistry": {
+        "docs": 20.0,
+        "docs_with_token_counts": 20.0,
+        "total_input_tokens": 11825.0,
+        "total_output_tokens": 338.0,
+        "total_tokens": 12163.0,
+        "total_correct_score": 7.0,
+        "avg_output_tokens_per_sample": 16.9,
+        "tokens_per_correct_answer": 48.285714285714285
+      },
+      "mmlu_jetson_econometrics": {
+        "docs": 20.0,
+        "docs_with_token_counts": 20.0,
+        "total_input_tokens": 12999.0,
+        "total_output_tokens": 582.0,
+        "total_tokens": 13581.0,
+        "total_correct_score": 6.0,
+        "avg_output_tokens_per_sample": 29.1,
+        "tokens_per_correct_answer": 97.0
+      },
+      "mmlu_jetson_high_school_macroeconomics": {
+        "docs": 20.0,
+        "docs_with_token_counts": 20.0,
+        "total_input_tokens": 7870.0,
+        "total_output_tokens": 638.0,
+        "total_tokens": 8508.0,
+        "total_correct_score": 9.0,
+        "avg_output_tokens_per_sample": 31.9,
+        "tokens_per_correct_answer": 70.88888888888889
+      },
+      "mmlu_jetson_college_mathematics": {
+        "docs": 20.0,
+        "docs_with_token_counts": 20.0,
+        "total_input_tokens": 12788.0,
+        "total_output_tokens": 567.0,
+        "total_tokens": 13355.0,
+        "total_correct_score": 7.0,
+        "avg_output_tokens_per_sample": 28.35,
+        "tokens_per_correct_answer": 81.0
+      },
+      "mmlu_jetson_high_school_government_and_politics": {
+        "docs": 20.0,
+        "docs_with_token_counts": 20.0,
+        "total_input_tokens": 9840.0,
+        "total_output_tokens": 136.0,
+        "total_tokens": 9976.0,
+        "total_correct_score": 8.0,
+        "avg_output_tokens_per_sample": 6.8,
+        "tokens_per_correct_answer": 17.0
+      },
+      "mmlu_jetson_college_physics": {
+        "docs": 20.0,
+        "docs_with_token_counts": 20.0,
+        "total_input_tokens": 10730.0,
+        "total_output_tokens": 190.0,
+        "total_tokens": 10920.0,
+        "total_correct_score": 7.0,
+        "avg_output_tokens_per_sample": 9.5,
+        "tokens_per_correct_answer": 27.142857142857142
+      },
+      "mmlu_jetson_high_school_chemistry": {
+        "docs": 20.0,
+        "docs_with_token_counts": 20.0,
+        "total_input_tokens": 10628.0,
+        "total_output_tokens": 298.0,
+        "total_tokens": 10926.0,
+        "total_correct_score": 12.0,
+        "avg_output_tokens_per_sample": 14.9,
+        "tokens_per_correct_answer": 24.833333333333332
+      },
+      "mmlu_jetson_conceptual_physics": {
+        "docs": 20.0,
+        "docs_with_token_counts": 20.0,
+        "total_input_tokens": 6541.0,
+        "total_output_tokens": 208.0,
+        "total_tokens": 6749.0,
+        "total_correct_score": 13.0,
+        "avg_output_tokens_per_sample": 10.4,
+        "tokens_per_correct_answer": 16.0
+      },
+      "mmlu_jetson_elementary_mathematics": {
+        "docs": 20.0,
+        "docs_with_token_counts": 20.0,
+        "total_input_tokens": 11923.0,
+        "total_output_tokens": 401.0,
+        "total_tokens": 12324.0,
+        "total_correct_score": 7.0,
+        "avg_output_tokens_per_sample": 20.05,
+        "tokens_per_correct_answer": 57.285714285714285
+      },
+      "mmlu_jetson_human_sexuality": {
+        "docs": 20.0,
+        "docs_with_token_counts": 20.0,
+        "total_input_tokens": 7276.0,
+        "total_output_tokens": 264.0,
+        "total_tokens": 7540.0,
+        "total_correct_score": 10.0,
+        "avg_output_tokens_per_sample": 13.2,
+        "tokens_per_correct_answer": 26.4
+      },
+      "mmlu_jetson_public_relations": {
+        "docs": 20.0,
+        "docs_with_token_counts": 20.0,
+        "total_input_tokens": 8828.0,
+        "total_output_tokens": 203.0,
+        "total_tokens": 9031.0,
+        "total_correct_score": 8.0,
+        "avg_output_tokens_per_sample": 10.15,
+        "tokens_per_correct_answer": 25.375
+      },
+      "mmlu_jetson_business_ethics": {
+        "docs": 20.0,
+        "docs_with_token_counts": 20.0,
+        "total_input_tokens": 11759.0,
+        "total_output_tokens": 277.0,
+        "total_tokens": 12036.0,
+        "total_correct_score": 8.0,
+        "avg_output_tokens_per_sample": 13.85,
+        "tokens_per_correct_answer": 34.625
+      },
+      "mmlu_jetson_virology": {
+        "docs": 20.0,
+        "docs_with_token_counts": 20.0,
+        "total_input_tokens": 7218.0,
+        "total_output_tokens": 534.0,
+        "total_tokens": 7752.0,
+        "total_correct_score": 4.0,
+        "avg_output_tokens_per_sample": 26.7,
+        "tokens_per_correct_answer": 133.5
+      },
+      "mmlu_jetson_high_school_world_history": {
+        "docs": 20.0,
+        "docs_with_token_counts": 20.0,
+        "total_input_tokens": 28542.0,
+        "total_output_tokens": 340.0,
+        "total_tokens": 28882.0,
+        "total_correct_score": 12.0,
+        "avg_output_tokens_per_sample": 17.0,
+        "tokens_per_correct_answer": 28.333333333333332
+      },
+      "mmlu_jetson_security_studies": {
+        "docs": 20.0,
+        "docs_with_token_counts": 20.0,
+        "total_input_tokens": 23826.0,
+        "total_output_tokens": 481.0,
+        "total_tokens": 24307.0,
+        "total_correct_score": 10.0,
+        "avg_output_tokens_per_sample": 24.05,
+        "tokens_per_correct_answer": 48.1
+      },
+      "mmlu_jetson_high_school_psychology": {
+        "docs": 20.0,
+        "docs_with_token_counts": 20.0,
+        "total_input_tokens": 10295.0,
+        "total_output_tokens": 121.0,
+        "total_tokens": 10416.0,
+        "total_correct_score": 7.0,
+        "avg_output_tokens_per_sample": 6.05,
+        "tokens_per_correct_answer": 17.285714285714285
+      },
+      "mmlu_jetson_nutrition": {
+        "docs": 20.0,
+        "docs_with_token_counts": 20.0,
+        "total_input_tokens": 12438.0,
+        "total_output_tokens": 316.0,
+        "total_tokens": 12754.0,
+        "total_correct_score": 6.0,
+        "avg_output_tokens_per_sample": 15.8,
+        "tokens_per_correct_answer": 52.666666666666664
+      },
+      "mmlu_jetson_high_school_mathematics": {
+        "docs": 20.0,
+        "docs_with_token_counts": 20.0,
+        "total_input_tokens": 11737.0,
+        "total_output_tokens": 640.0,
+        "total_tokens": 12377.0,
+        "total_correct_score": 0.0,
+        "avg_output_tokens_per_sample": 32.0,
+        "tokens_per_correct_answer": null
+      },
+      "mmlu_jetson_professional_accounting": {
+        "docs": 20.0,
+        "docs_with_token_counts": 20.0,
+        "total_input_tokens": 15222.0,
+        "total_output_tokens": 640.0,
+        "total_tokens": 15862.0,
+        "total_correct_score": 5.0,
+        "avg_output_tokens_per_sample": 32.0,
+        "tokens_per_correct_answer": 128.0
+      },
+      "mmlu_jetson_electrical_engineering": {
+        "docs": 20.0,
+        "docs_with_token_counts": 20.0,
+        "total_input_tokens": 9848.0,
+        "total_output_tokens": 163.0,
+        "total_tokens": 10011.0,
+        "total_correct_score": 12.0,
+        "avg_output_tokens_per_sample": 8.15,
+        "tokens_per_correct_answer": 13.583333333333334
+      },
+      "mmlu_jetson_prehistory": {
+        "docs": 20.0,
+        "docs_with_token_counts": 20.0,
+        "total_input_tokens": 11125.0,
+        "total_output_tokens": 415.0,
+        "total_tokens": 11540.0,
+        "total_correct_score": 6.0,
+        "avg_output_tokens_per_sample": 20.75,
+        "tokens_per_correct_answer": 69.16666666666667
+      },
+      "mmlu_jetson_machine_learning": {
+        "docs": 20.0,
+        "docs_with_token_counts": 20.0,
+        "total_input_tokens": 13866.0,
+        "total_output_tokens": 409.0,
+        "total_tokens": 14275.0,
+        "total_correct_score": 7.0,
+        "avg_output_tokens_per_sample": 20.45,
+        "tokens_per_correct_answer": 58.42857142857143
+      },
+      "mmlu_jetson_high_school_physics": {
+        "docs": 20.0,
+        "docs_with_token_counts": 20.0,
+        "total_input_tokens": 12377.0,
+        "total_output_tokens": 446.0,
+        "total_tokens": 12823.0,
+        "total_correct_score": 7.0,
+        "avg_output_tokens_per_sample": 22.3,
+        "tokens_per_correct_answer": 63.714285714285715
+      },
+      "mmlu_jetson_college_medicine": {
+        "docs": 20.0,
+        "docs_with_token_counts": 20.0,
+        "total_input_tokens": 10992.0,
+        "total_output_tokens": 199.0,
+        "total_tokens": 11191.0,
+        "total_correct_score": 8.0,
+        "avg_output_tokens_per_sample": 9.95,
+        "tokens_per_correct_answer": 24.875
+      },
+      "mmlu_jetson_professional_law": {
+        "docs": 20.0,
+        "docs_with_token_counts": 20.0,
+        "total_input_tokens": 33265.0,
+        "total_output_tokens": 525.0,
+        "total_tokens": 33790.0,
+        "total_correct_score": 8.0,
+        "avg_output_tokens_per_sample": 26.25,
+        "tokens_per_correct_answer": 65.625
+      },
+      "mmlu_jetson_marketing": {
+        "docs": 20.0,
+        "docs_with_token_counts": 20.0,
+        "total_input_tokens": 8481.0,
+        "total_output_tokens": 155.0,
+        "total_tokens": 8636.0,
+        "total_correct_score": 6.0,
+        "avg_output_tokens_per_sample": 7.75,
+        "tokens_per_correct_answer": 25.833333333333332
+      },
+      "mmlu_jetson_high_school_geography": {
+        "docs": 20.0,
+        "docs_with_token_counts": 20.0,
+        "total_input_tokens": 7853.0,
+        "total_output_tokens": 104.0,
+        "total_tokens": 7957.0,
+        "total_correct_score": 7.0,
+        "avg_output_tokens_per_sample": 5.2,
+        "tokens_per_correct_answer": 14.857142857142858
+      },
+      "mmlu_jetson_college_biology": {
+        "docs": 20.0,
+        "docs_with_token_counts": 20.0,
+        "total_input_tokens": 10104.0,
+        "total_output_tokens": 167.0,
+        "total_tokens": 10271.0,
+        "total_correct_score": 5.0,
+        "avg_output_tokens_per_sample": 8.35,
+        "tokens_per_correct_answer": 33.4
+      },
+      "mmlu_jetson_high_school_biology": {
+        "docs": 20.0,
+        "docs_with_token_counts": 20.0,
+        "total_input_tokens": 10725.0,
+        "total_output_tokens": 449.0,
+        "total_tokens": 11174.0,
+        "total_correct_score": 7.0,
+        "avg_output_tokens_per_sample": 22.45,
+        "tokens_per_correct_answer": 64.14285714285714
+      },
+      "mmlu_jetson_abstract_algebra": {
+        "docs": 20.0,
+        "docs_with_token_counts": 20.0,
+        "total_input_tokens": 8041.0,
+        "total_output_tokens": 551.0,
+        "total_tokens": 8592.0,
+        "total_correct_score": 5.0,
+        "avg_output_tokens_per_sample": 27.55,
+        "tokens_per_correct_answer": 110.2
+      },
+      "mmlu_jetson_jurisprudence": {
+        "docs": 20.0,
+        "docs_with_token_counts": 20.0,
+        "total_input_tokens": 8464.0,
+        "total_output_tokens": 200.0,
+        "total_tokens": 8664.0,
+        "total_correct_score": 8.0,
+        "avg_output_tokens_per_sample": 10.0,
+        "tokens_per_correct_answer": 25.0
+      },
+      "mmlu_jetson_high_school_european_history": {
+        "docs": 20.0,
+        "docs_with_token_counts": 20.0,
+        "total_input_tokens": 56617.0,
+        "total_output_tokens": 413.0,
+        "total_tokens": 57030.0,
+        "total_correct_score": 13.0,
+        "avg_output_tokens_per_sample": 20.65,
+        "tokens_per_correct_answer": 31.76923076923077
+      },
+      "mmlu_jetson_college_computer_science": {
+        "docs": 20.0,
+        "docs_with_token_counts": 20.0,
+        "total_input_tokens": 17310.0,
+        "total_output_tokens": 437.0,
+        "total_tokens": 17747.0,
+        "total_correct_score": 8.0,
+        "avg_output_tokens_per_sample": 21.85,
+        "tokens_per_correct_answer": 54.625
+      },
+      "mmlu_jetson_world_religions": {
+        "docs": 20.0,
+        "docs_with_token_counts": 20.0,
+        "total_input_tokens": 5878.0,
+        "total_output_tokens": 44.0,
+        "total_tokens": 5922.0,
+        "total_correct_score": 6.0,
+        "avg_output_tokens_per_sample": 2.2,
+        "tokens_per_correct_answer": 7.333333333333333
+      },
+      "mmlu_jetson_computer_security": {
+        "docs": 20.0,
+        "docs_with_token_counts": 20.0,
+        "total_input_tokens": 8451.0,
+        "total_output_tokens": 165.0,
+        "total_tokens": 8616.0,
+        "total_correct_score": 4.0,
+        "avg_output_tokens_per_sample": 8.25,
+        "tokens_per_correct_answer": 41.25
+      },
+      "mmlu_jetson_high_school_microeconomics": {
+        "docs": 20.0,
+        "docs_with_token_counts": 20.0,
+        "total_input_tokens": 8655.0,
+        "total_output_tokens": 490.0,
+        "total_tokens": 9145.0,
+        "total_correct_score": 9.0,
+        "avg_output_tokens_per_sample": 24.5,
+        "tokens_per_correct_answer": 54.44444444444444
+      },
+      "mmlu_jetson_philosophy": {
+        "docs": 20.0,
+        "docs_with_token_counts": 20.0,
+        "total_input_tokens": 6948.0,
+        "total_output_tokens": 50.0,
+        "total_tokens": 6998.0,
+        "total_correct_score": 7.0,
+        "avg_output_tokens_per_sample": 2.5,
+        "tokens_per_correct_answer": 7.142857142857143
+      }
+    },
+    "overall": {
+      "docs": 1140.0,
+      "docs_with_token_counts": 1140.0,
+      "total_input_tokens": 738536.0,
+      "total_output_tokens": 18839.0,
+      "total_tokens": 757375.0,
+      "total_correct_score": 464.0,
+      "avg_output_tokens_per_sample": 16.525438596491227,
+      "tokens_per_correct_answer": 40.60129310344828
+    }
+  },
+  "task_hashes": {
+    "mmlu_jetson_miscellaneous": "94382598118046080a0052eb8007a59641016ab276e8aba10fe1dc7ee041a705",
+    "mmlu_jetson_logical_fallacies": "94382598118046080a0052eb8007a59641016ab276e8aba10fe1dc7ee041a705",
+    "mmlu_jetson_formal_logic": "94382598118046080a0052eb8007a59641016ab276e8aba10fe1dc7ee041a705",
+    "mmlu_jetson_moral_scenarios": "94382598118046080a0052eb8007a59641016ab276e8aba10fe1dc7ee041a705",
+    "mmlu_jetson_sociology": "94382598118046080a0052eb8007a59641016ab276e8aba10fe1dc7ee041a705",
+    "mmlu_jetson_clinical_knowledge": "94382598118046080a0052eb8007a59641016ab276e8aba10fe1dc7ee041a705",
+    "mmlu_jetson_professional_psychology": "94382598118046080a0052eb8007a59641016ab276e8aba10fe1dc7ee041a705",
+    "mmlu_jetson_high_school_statistics": "94382598118046080a0052eb8007a59641016ab276e8aba10fe1dc7ee041a705",
+    "mmlu_jetson_international_law": "94382598118046080a0052eb8007a59641016ab276e8aba10fe1dc7ee041a705",
+    "mmlu_jetson_moral_disputes": "94382598118046080a0052eb8007a59641016ab276e8aba10fe1dc7ee041a705",
+    "mmlu_jetson_us_foreign_policy": "94382598118046080a0052eb8007a59641016ab276e8aba10fe1dc7ee041a705",
+    "mmlu_jetson_global_facts": "94382598118046080a0052eb8007a59641016ab276e8aba10fe1dc7ee041a705",
+    "mmlu_jetson_high_school_computer_science": "94382598118046080a0052eb8007a59641016ab276e8aba10fe1dc7ee041a705",
+    "mmlu_jetson_anatomy": "94382598118046080a0052eb8007a59641016ab276e8aba10fe1dc7ee041a705",
+    "mmlu_jetson_astronomy": "94382598118046080a0052eb8007a59641016ab276e8aba10fe1dc7ee041a705",
+    "mmlu_jetson_human_aging": "94382598118046080a0052eb8007a59641016ab276e8aba10fe1dc7ee041a705",
+    "mmlu_jetson_medical_genetics": "94382598118046080a0052eb8007a59641016ab276e8aba10fe1dc7ee041a705",
+    "mmlu_jetson_management": "94382598118046080a0052eb8007a59641016ab276e8aba10fe1dc7ee041a705",
+    "mmlu_jetson_high_school_us_history": "94382598118046080a0052eb8007a59641016ab276e8aba10fe1dc7ee041a705",
+    "mmlu_jetson_professional_medicine": "94382598118046080a0052eb8007a59641016ab276e8aba10fe1dc7ee041a705",
+    "mmlu_jetson_college_chemistry": "94382598118046080a0052eb8007a59641016ab276e8aba10fe1dc7ee041a705",
+    "mmlu_jetson_econometrics": "94382598118046080a0052eb8007a59641016ab276e8aba10fe1dc7ee041a705",
+    "mmlu_jetson_high_school_macroeconomics": "94382598118046080a0052eb8007a59641016ab276e8aba10fe1dc7ee041a705",
+    "mmlu_jetson_college_mathematics": "94382598118046080a0052eb8007a59641016ab276e8aba10fe1dc7ee041a705",
+    "mmlu_jetson_high_school_government_and_politics": "94382598118046080a0052eb8007a59641016ab276e8aba10fe1dc7ee041a705",
+    "mmlu_jetson_college_physics": "94382598118046080a0052eb8007a59641016ab276e8aba10fe1dc7ee041a705",
+    "mmlu_jetson_high_school_chemistry": "94382598118046080a0052eb8007a59641016ab276e8aba10fe1dc7ee041a705",
+    "mmlu_jetson_conceptual_physics": "94382598118046080a0052eb8007a59641016ab276e8aba10fe1dc7ee041a705",
+    "mmlu_jetson_elementary_mathematics": "94382598118046080a0052eb8007a59641016ab276e8aba10fe1dc7ee041a705",
+    "mmlu_jetson_human_sexuality": "94382598118046080a0052eb8007a59641016ab276e8aba10fe1dc7ee041a705",
+    "mmlu_jetson_public_relations": "94382598118046080a0052eb8007a59641016ab276e8aba10fe1dc7ee041a705",
+    "mmlu_jetson_business_ethics": "94382598118046080a0052eb8007a59641016ab276e8aba10fe1dc7ee041a705",
+    "mmlu_jetson_virology": "94382598118046080a0052eb8007a59641016ab276e8aba10fe1dc7ee041a705",
+    "mmlu_jetson_high_school_world_history": "94382598118046080a0052eb8007a59641016ab276e8aba10fe1dc7ee041a705",
+    "mmlu_jetson_security_studies": "94382598118046080a0052eb8007a59641016ab276e8aba10fe1dc7ee041a705",
+    "mmlu_jetson_high_school_psychology": "94382598118046080a0052eb8007a59641016ab276e8aba10fe1dc7ee041a705",
+    "mmlu_jetson_nutrition": "94382598118046080a0052eb8007a59641016ab276e8aba10fe1dc7ee041a705",
+    "mmlu_jetson_high_school_mathematics": "94382598118046080a0052eb8007a59641016ab276e8aba10fe1dc7ee041a705",
+    "mmlu_jetson_professional_accounting": "94382598118046080a0052eb8007a59641016ab276e8aba10fe1dc7ee041a705",
+    "mmlu_jetson_electrical_engineering": "94382598118046080a0052eb8007a59641016ab276e8aba10fe1dc7ee041a705",
+    "mmlu_jetson_prehistory": "94382598118046080a0052eb8007a59641016ab276e8aba10fe1dc7ee041a705",
+    "mmlu_jetson_machine_learning": "94382598118046080a0052eb8007a59641016ab276e8aba10fe1dc7ee041a705",
+    "mmlu_jetson_high_school_physics": "94382598118046080a0052eb8007a59641016ab276e8aba10fe1dc7ee041a705",
+    "mmlu_jetson_college_medicine": "94382598118046080a0052eb8007a59641016ab276e8aba10fe1dc7ee041a705",
+    "mmlu_jetson_professional_law": "94382598118046080a0052eb8007a59641016ab276e8aba10fe1dc7ee041a705",
+    "mmlu_jetson_marketing": "94382598118046080a0052eb8007a59641016ab276e8aba10fe1dc7ee041a705",
+    "mmlu_jetson_high_school_geography": "94382598118046080a0052eb8007a59641016ab276e8aba10fe1dc7ee041a705",
+    "mmlu_jetson_college_biology": "94382598118046080a0052eb8007a59641016ab276e8aba10fe1dc7ee041a705",
+    "mmlu_jetson_high_school_biology": "94382598118046080a0052eb8007a59641016ab276e8aba10fe1dc7ee041a705",
+    "mmlu_jetson_abstract_algebra": "94382598118046080a0052eb8007a59641016ab276e8aba10fe1dc7ee041a705",
+    "mmlu_jetson_jurisprudence": "94382598118046080a0052eb8007a59641016ab276e8aba10fe1dc7ee041a705",
+    "mmlu_jetson_high_school_european_history": "94382598118046080a0052eb8007a59641016ab276e8aba10fe1dc7ee041a705",
+    "mmlu_jetson_college_computer_science": "94382598118046080a0052eb8007a59641016ab276e8aba10fe1dc7ee041a705",
+    "mmlu_jetson_world_religions": "94382598118046080a0052eb8007a59641016ab276e8aba10fe1dc7ee041a705",
+    "mmlu_jetson_computer_security": "94382598118046080a0052eb8007a59641016ab276e8aba10fe1dc7ee041a705",
+    "mmlu_jetson_high_school_microeconomics": "94382598118046080a0052eb8007a59641016ab276e8aba10fe1dc7ee041a705",
+    "mmlu_jetson_philosophy": "94382598118046080a0052eb8007a59641016ab276e8aba10fe1dc7ee041a705"
+  },
+  "model_source": "openai",
+  "model_name": "Qwen2.5-1.5B-Instruct-f16",
+  "model_name_sanitized": "Qwen2.5-1.5B-Instruct-f16",
+  "system_instruction": null,
+  "system_instruction_sha": null,
+  "fewshot_as_multiturn": false,
+  "chat_template": null,
+  "chat_template_sha": null,
+  "start_time": 1380848.089669654,
+  "end_time": 1381293.986036732,
+  "total_evaluation_time_seconds": "445.89636707818136"
+}
