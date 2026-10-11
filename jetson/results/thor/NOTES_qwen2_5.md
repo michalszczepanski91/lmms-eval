@@ -83,7 +83,6 @@ In short: for a text-only LLM on Thor, TensorRT Edge-LLM is **as fast as vLLM an
 | Date | What |
 |---|---|
 | 2026-10-08 | Plan written; Hub repos checked (all Qwen / RedHatAI repos exist; GGUF from Qwen). Harness changes (Phase 0), task variants, downloads (11:57–13:00). First Edge-LLM text engine (3B fp16) built in 2 min 44 s. HF 3B smoke test: fixed problems 1–4. 3B smoke tests (8 questions per task) pass in HF, vLLM, llama.cpp f16 and Edge-LLM fp16: GSM8K 0.50–0.63, IFEval 0.50–0.63, MMLU 0.64–0.65. |
-
 | 2026-10-08 – 10-10 | Phase 1, 3B (30 runs, 15:30 on 10-08 to 05:50 on 10-10), 1.5B engines built (05:51–06:07), Phase 1 1.5B (30 runs, to 06:00 on 10-11). Problems 7 (answer text not saved) and 8 (HF repetition penalty) found and fixed during the runs. |
 | 2026-10-11 | HF re-runs without the penalty (05:59–14:39). Q1 verdict written. Queue: VL regression smokes, llama.cpp accumulation diagnostic, length sweep, repeats (from 14:40). |
 
