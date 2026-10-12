@@ -1,0 +1,1260 @@
+{
+ "model": "Qwen2.5-3B-Instruct",
+ "method": "analytical, 2 FLOPs per multiply-accumulate; decoder linear layers + attention matmuls + LM head (see jetson/models/qwen2_5/flops.py)",
+ "tasks": {
+  "mmlu_jetson_abstract_algebra": {
+   "n": 100,
+   "token_counts": "tokenizer",
+   "mean": {
+    "image_tokens": 0.0,
+    "text_tokens": 401.2,
+    "output_tokens": 30.25,
+    "vision_flops": 0.0,
+    "prefill_flops": 2250743573708.8,
+    "decode_flops": 184107539496.96,
+    "total_flops": 2434851113205.76
+   },
+   "total": {
+    "image_tokens": 0,
+    "text_tokens": 40120,
+    "output_tokens": 3025,
+    "vision_flops": 0,
+    "prefill_flops": 225074357370880,
+    "decode_flops": 18410753949696,
+    "total_flops": 243485111320576
+   }
+  },
+  "mmlu_jetson_anatomy": {
+   "n": 135,
+   "token_counts": "tokenizer",
+   "mean": {
+    "image_tokens": 0.0,
+    "text_tokens": 377.0,
+    "output_tokens": 19.62962962962963,
+    "vision_flops": 0.0,
+    "prefill_flops": 2113695180390.4,
+    "decode_flops": 117118795533.27408,
+    "total_flops": 2230813975923.6743
+   },
+   "total": {
+    "image_tokens": 0,
+    "text_tokens": 50895,
+    "output_tokens": 2650,
+    "vision_flops": 0,
+    "prefill_flops": 285348849352704,
+    "decode_flops": 15811037396992,
+    "total_flops": 301159886749696
+   }
+  },
+  "mmlu_jetson_astronomy": {
+   "n": 152,
+   "token_counts": "tokenizer",
+   "mean": {
+    "image_tokens": 0.0,
+    "text_tokens": 612.9342105263158,
+    "output_tokens": 24.914473684210527,
+    "vision_flops": 0.0,
+    "prefill_flops": 3457419529377.684,
+    "decode_flops": 152020329310.3158,
+    "total_flops": 3609439858688.0
+   },
+   "total": {
+    "image_tokens": 0,
+    "text_tokens": 93166,
+    "output_tokens": 3787,
+    "vision_flops": 0,
+    "prefill_flops": 525527768465408,
+    "decode_flops": 23107090055168,
+    "total_flops": 548634858520576
+   }
+  },
+  "mmlu_jetson_business_ethics": {
+   "n": 100,
+   "token_counts": "tokenizer",
+   "mean": {
+    "image_tokens": 0.0,
+    "text_tokens": 592.86,
+    "output_tokens": 21.29,
+    "vision_flops": 0.0,
+    "prefill_flops": 3342444459458.56,
+    "decode_flops": 128869406801.92,
+    "total_flops": 3471313866260.48
+   },
+   "total": {
+    "image_tokens": 0,
+    "text_tokens": 59286,
+    "output_tokens": 2129,
+    "vision_flops": 0,
+    "prefill_flops": 334244445945856,
+    "decode_flops": 12886940680192,
+    "total_flops": 347131386626048
+   }
+  },
+  "mmlu_jetson_clinical_knowledge": {
+   "n": 265,
+   "token_counts": "tokenizer",
+   "mean": {
+    "image_tokens": 0.0,
+    "text_tokens": 424.6528301886792,
+    "output_tokens": 21.38490566037736,
+    "vision_flops": 0.0,
+    "prefill_flops": 2383746167788.679,
+    "decode_flops": 128443346588.49811,
+    "total_flops": 2512189514377.1772
+   },
+   "total": {
+    "image_tokens": 0,
+    "text_tokens": 112533,
+    "output_tokens": 5667,
+    "vision_flops": 0,
+    "prefill_flops": 631692734464000,
+    "decode_flops": 34037486845952,
+    "total_flops": 665730221309952
+   }
+  },
+  "mmlu_jetson_college_biology": {
+   "n": 144,
+   "token_counts": "tokenizer",
+   "mean": {
+    "image_tokens": 0.0,
+    "text_tokens": 510.06944444444446,
+    "output_tokens": 22.61111111111111,
+    "vision_flops": 0.0,
+    "prefill_flops": 2869656768512.0,
+    "decode_flops": 136721312881.77777,
+    "total_flops": 3006378081393.778
+   },
+   "total": {
+    "image_tokens": 0,
+    "text_tokens": 73450,
+    "output_tokens": 3256,
+    "vision_flops": 0,
+    "prefill_flops": 413230574665728,
+    "decode_flops": 19687869054976,
+    "total_flops": 432918443720704
+   }
+  },
+  "mmlu_jetson_college_chemistry": {
+   "n": 100,
+   "token_counts": "tokenizer",
+   "mean": {
+    "image_tokens": 0.0,
+    "text_tokens": 590.28,
+    "output_tokens": 29.05,
+    "vision_flops": 0.0,
+    "prefill_flops": 3327808581468.16,
+    "decode_flops": 178125751910.4,
+    "total_flops": 3505934333378.56
+   },
+   "total": {
+    "image_tokens": 0,
+    "text_tokens": 59028,
+    "output_tokens": 2905,
+    "vision_flops": 0,
+    "prefill_flops": 332780858146816,
+    "decode_flops": 17812575191040,
+    "total_flops": 350593433337856
+   }
+  },
+  "mmlu_jetson_college_computer_science": {
+   "n": 100,
+   "token_counts": "tokenizer",
+   "mean": {
+    "image_tokens": 0.0,
+    "text_tokens": 861.62,
+    "output_tokens": 32.0,
+    "vision_flops": 0.0,
+    "prefill_flops": 4891745222656.0,
+    "decode_flops": 199336656240.64,
+    "total_flops": 5091081878896.64
+   },
+   "total": {
+    "image_tokens": 0,
+    "text_tokens": 86162,
+    "output_tokens": 3200,
+    "vision_flops": 0,
+    "prefill_flops": 489174522265600,
+    "decode_flops": 19933665624064,
+    "total_flops": 509108187889664
+   }
+  },
+  "mmlu_jetson_college_mathematics": {
+   "n": 100,
+   "token_counts": "tokenizer",
+   "mean": {
+    "image_tokens": 0.0,
+    "text_tokens": 631.79,
+    "output_tokens": 32.0,
+    "vision_flops": 0.0,
+    "prefill_flops": 3565545080750.08,
+    "decode_flops": 197235487866.88,
+    "total_flops": 3762780568616.96
+   },
+   "total": {
+    "image_tokens": 0,
+    "text_tokens": 63179,
+    "output_tokens": 3200,
+    "vision_flops": 0,
+    "prefill_flops": 356554508075008,
+    "decode_flops": 19723548786688,
+    "total_flops": 376278056861696
+   }
+  },
+  "mmlu_jetson_college_medicine": {
+   "n": 173,
+   "token_counts": "tokenizer",
+   "mean": {
+    "image_tokens": 0.0,
+    "text_tokens": 529.1618497109827,
+    "output_tokens": 18.641618497109828,
+    "vision_flops": 0.0,
+    "prefill_flops": 2981850212434.867,
+    "decode_flops": 111709730496.36995,
+    "total_flops": 3093559942931.237
+   },
+   "total": {
+    "image_tokens": 0,
+    "text_tokens": 91545,
+    "output_tokens": 3225,
+    "vision_flops": 0,
+    "prefill_flops": 515860086751232,
+    "decode_flops": 19325783375872,
+    "total_flops": 535185870127104
+   }
+  },
+  "mmlu_jetson_college_physics": {
+   "n": 102,
+   "token_counts": "tokenizer",
+   "mean": {
+    "image_tokens": 0.0,
+    "text_tokens": 539.2647058823529,
+    "output_tokens": 31.07843137254902,
+    "vision_flops": 0.0,
+    "prefill_flops": 3036078344071.5293,
+    "decode_flops": 190550715050.66666,
+    "total_flops": 3226629059122.1963
+   },
+   "total": {
+    "image_tokens": 0,
+    "text_tokens": 55005,
+    "output_tokens": 3170,
+    "vision_flops": 0,
+    "prefill_flops": 309679991095296,
+    "decode_flops": 19436172935168,
+    "total_flops": 329116164030464
+   }
+  },
+  "mmlu_jetson_computer_security": {
+   "n": 100,
+   "token_counts": "tokenizer",
+   "mean": {
+    "image_tokens": 0.0,
+    "text_tokens": 408.65,
+    "output_tokens": 14.89,
+    "vision_flops": 0.0,
+    "prefill_flops": 2293139810222.08,
+    "decode_flops": 87504111206.4,
+    "total_flops": 2380643921428.48
+   },
+   "total": {
+    "image_tokens": 0,
+    "text_tokens": 40865,
+    "output_tokens": 1489,
+    "vision_flops": 0,
+    "prefill_flops": 229313981022208,
+    "decode_flops": 8750411120640,
+    "total_flops": 238064392142848
+   }
+  },
+  "mmlu_jetson_conceptual_physics": {
+   "n": 235,
+   "token_counts": "tokenizer",
+   "mean": {
+    "image_tokens": 0.0,
+    "text_tokens": 329.5617021276596,
+    "output_tokens": 26.638297872340427,
+    "vision_flops": 0.0,
+    "prefill_flops": 1845469422160.6128,
+    "decode_flops": 160838950807.42126,
+    "total_flops": 2006308372968.034
+   },
+   "total": {
+    "image_tokens": 0,
+    "text_tokens": 77447,
+    "output_tokens": 6260,
+    "vision_flops": 0,
+    "prefill_flops": 433685314207744,
+    "decode_flops": 37797153439744,
+    "total_flops": 471482467647488
+   }
+  },
+  "mmlu_jetson_econometrics": {
+   "n": 114,
+   "token_counts": "tokenizer",
+   "mean": {
+    "image_tokens": 0.0,
+    "text_tokens": 653.0175438596491,
+    "output_tokens": 29.236842105263158,
+    "vision_flops": 0.0,
+    "prefill_flops": 3687436898519.579,
+    "decode_flops": 179831098745.26315,
+    "total_flops": 3867267997264.8423
+   },
+   "total": {
+    "image_tokens": 0,
+    "text_tokens": 74444,
+    "output_tokens": 3333,
+    "vision_flops": 0,
+    "prefill_flops": 420367806431232,
+    "decode_flops": 20500745256960,
+    "total_flops": 440868551688192
+   }
+  },
+  "mmlu_jetson_electrical_engineering": {
+   "n": 145,
+   "token_counts": "tokenizer",
+   "mean": {
+    "image_tokens": 0.0,
+    "text_tokens": 486.84137931034485,
+    "output_tokens": 23.820689655172412,
+    "vision_flops": 0.0,
+    "prefill_flops": 2737188384457.269,
+    "decode_flops": 144230659997.13104,
+    "total_flops": 2881419044454.4
+   },
+   "total": {
+    "image_tokens": 0,
+    "text_tokens": 70592,
+    "output_tokens": 3454,
+    "vision_flops": 0,
+    "prefill_flops": 396892315746304,
+    "decode_flops": 20913445699584,
+    "total_flops": 417805761445888
+   }
+  },
+  "mmlu_jetson_elementary_mathematics": {
+   "n": 378,
+   "token_counts": "tokenizer",
+   "mean": {
+    "image_tokens": 0.0,
+    "text_tokens": 601.2645502645503,
+    "output_tokens": 28.96031746031746,
+    "vision_flops": 0.0,
+    "prefill_flops": 3390570243998.476,
+    "decode_flops": 177647016553.6508,
+    "total_flops": 3568217260552.127
+   },
+   "total": {
+    "image_tokens": 0,
+    "text_tokens": 227278,
+    "output_tokens": 10947,
+    "vision_flops": 0,
+    "prefill_flops": 1281635552231424,
+    "decode_flops": 67150572257280,
+    "total_flops": 1348786124488704
+   }
+  },
+  "mmlu_jetson_formal_logic": {
+   "n": 126,
+   "token_counts": "tokenizer",
+   "mean": {
+    "image_tokens": 0.0,
+    "text_tokens": 623.1984126984127,
+    "output_tokens": 31.96031746031746,
+    "vision_flops": 0.0,
+    "prefill_flops": 3516412709156.5713,
+    "decode_flops": 196904917609.6508,
+    "total_flops": 3713317626766.222
+   },
+   "total": {
+    "image_tokens": 0,
+    "text_tokens": 78523,
+    "output_tokens": 4027,
+    "vision_flops": 0,
+    "prefill_flops": 443068001353728,
+    "decode_flops": 24810019618816,
+    "total_flops": 467878020972544
+   }
+  },
+  "mmlu_jetson_global_facts": {
+   "n": 100,
+   "token_counts": "tokenizer",
+   "mean": {
+    "image_tokens": 0.0,
+    "text_tokens": 452.07,
+    "output_tokens": 31.72,
+    "vision_flops": 0.0,
+    "prefill_flops": 2539437681541.12,
+    "decode_flops": 193823222661.12,
+    "total_flops": 2733260904202.24
+   },
+   "total": {
+    "image_tokens": 0,
+    "text_tokens": 45207,
+    "output_tokens": 3172,
+    "vision_flops": 0,
+    "prefill_flops": 253943768154112,
+    "decode_flops": 19382322266112,
+    "total_flops": 273326090420224
+   }
+  },
+  "mmlu_jetson_high_school_biology": {
+   "n": 310,
+   "token_counts": "tokenizer",
+   "mean": {
+    "image_tokens": 0.0,
+    "text_tokens": 536.9612903225807,
+    "output_tokens": 17.85483870967742,
+    "vision_flops": 0.0,
+    "prefill_flops": 3022998107248.3096,
+    "decode_flops": 106750449756.49033,
+    "total_flops": 3129748557004.8
+   },
+   "total": {
+    "image_tokens": 0,
+    "text_tokens": 166458,
+    "output_tokens": 5535,
+    "vision_flops": 0,
+    "prefill_flops": 937129413246976,
+    "decode_flops": 33092639424512,
+    "total_flops": 970222052671488
+   }
+  },
+  "mmlu_jetson_high_school_chemistry": {
+   "n": 203,
+   "token_counts": "tokenizer",
+   "mean": {
+    "image_tokens": 0.0,
+    "text_tokens": 540.3103448275862,
+    "output_tokens": 28.133004926108374,
+    "vision_flops": 0.0,
+    "prefill_flops": 3042172226635.665,
+    "decode_flops": 171926690750.42365,
+    "total_flops": 3214098917386.089
+   },
+   "total": {
+    "image_tokens": 0,
+    "text_tokens": 109683,
+    "output_tokens": 5711,
+    "vision_flops": 0,
+    "prefill_flops": 617560962007040,
+    "decode_flops": 34901118222336,
+    "total_flops": 652462080229376
+   }
+  },
+  "mmlu_jetson_high_school_computer_science": {
+   "n": 100,
+   "token_counts": "tokenizer",
+   "mean": {
+    "image_tokens": 0.0,
+    "text_tokens": 901.48,
+    "output_tokens": 26.62,
+    "vision_flops": 0.0,
+    "prefill_flops": 5123523319889.92,
+    "decode_flops": 165125859901.44,
+    "total_flops": 5288649179791.36
+   },
+   "total": {
+    "image_tokens": 0,
+    "text_tokens": 90148,
+    "output_tokens": 2662,
+    "vision_flops": 0,
+    "prefill_flops": 512352331988992,
+    "decode_flops": 16512585990144,
+    "total_flops": 528864917979136
+   }
+  },
+  "mmlu_jetson_high_school_european_history": {
+   "n": 165,
+   "token_counts": "tokenizer",
+   "mean": {
+    "image_tokens": 0.0,
+    "text_tokens": 2837.9030303030304,
+    "output_tokens": 24.424242424242426,
+    "vision_flops": 0.0,
+    "prefill_flops": 16938432647540.363,
+    "decode_flops": 164303653894.20605,
+    "total_flops": 17102736301434.57
+   },
+   "total": {
+    "image_tokens": 0,
+    "text_tokens": 468254,
+    "output_tokens": 4030,
+    "vision_flops": 0,
+    "prefill_flops": 2794841386844160,
+    "decode_flops": 27110102892544,
+    "total_flops": 2821951489736704
+   }
+  },
+  "mmlu_jetson_high_school_geography": {
+   "n": 198,
+   "token_counts": "tokenizer",
+   "mean": {
+    "image_tokens": 0.0,
+    "text_tokens": 395.23737373737373,
+    "output_tokens": 23.944444444444443,
+    "vision_flops": 0.0,
+    "prefill_flops": 2216944444136.727,
+    "decode_flops": 144377943215.83838,
+    "total_flops": 2361322387352.5654
+   },
+   "total": {
+    "image_tokens": 0,
+    "text_tokens": 78257,
+    "output_tokens": 4741,
+    "vision_flops": 0,
+    "prefill_flops": 438954999939072,
+    "decode_flops": 28586832756736,
+    "total_flops": 467541832695808
+   }
+  },
+  "mmlu_jetson_high_school_government_and_politics": {
+   "n": 193,
+   "token_counts": "tokenizer",
+   "mean": {
+    "image_tokens": 0.0,
+    "text_tokens": 490.3264248704663,
+    "output_tokens": 17.27461139896373,
+    "vision_flops": 0.0,
+    "prefill_flops": 2757062743607.71,
+    "decode_flops": 102866712926.17616,
+    "total_flops": 2859929456533.886
+   },
+   "total": {
+    "image_tokens": 0,
+    "text_tokens": 94633,
+    "output_tokens": 3334,
+    "vision_flops": 0,
+    "prefill_flops": 532113109516288,
+    "decode_flops": 19853275594752,
+    "total_flops": 551966385111040
+   }
+  },
+  "mmlu_jetson_high_school_macroeconomics": {
+   "n": 390,
+   "token_counts": "tokenizer",
+   "mean": {
+    "image_tokens": 0.0,
+    "text_tokens": 398.4717948717949,
+    "output_tokens": 18.164102564102564,
+    "vision_flops": 0.0,
+    "prefill_flops": 2235301875901.0464,
+    "decode_flops": 108046050078.19487,
+    "total_flops": 2343347925979.241
+   },
+   "total": {
+    "image_tokens": 0,
+    "text_tokens": 155404,
+    "output_tokens": 7084,
+    "vision_flops": 0,
+    "prefill_flops": 871767731601408,
+    "decode_flops": 42137959530496,
+    "total_flops": 913905691131904
+   }
+  },
+  "mmlu_jetson_high_school_mathematics": {
+   "n": 270,
+   "token_counts": "tokenizer",
+   "mean": {
+    "image_tokens": 0.0,
+    "text_tokens": 588.3962962962963,
+    "output_tokens": 32.0,
+    "vision_flops": 0.0,
+    "prefill_flops": 3316909402794.6665,
+    "decode_flops": 196838770824.53333,
+    "total_flops": 3513748173619.2
+   },
+   "total": {
+    "image_tokens": 0,
+    "text_tokens": 158867,
+    "output_tokens": 8640,
+    "vision_flops": 0,
+    "prefill_flops": 895565538754560,
+    "decode_flops": 53146468122624,
+    "total_flops": 948712006877184
+   }
+  },
+  "mmlu_jetson_high_school_microeconomics": {
+   "n": 238,
+   "token_counts": "tokenizer",
+   "mean": {
+    "image_tokens": 0.0,
+    "text_tokens": 425.33613445378154,
+    "output_tokens": 17.978991596638654,
+    "vision_flops": 0.0,
+    "prefill_flops": 2387667364476.773,
+    "decode_flops": 107018579795.89915,
+    "total_flops": 2494685944272.6724
+   },
+   "total": {
+    "image_tokens": 0,
+    "text_tokens": 101230,
+    "output_tokens": 4279,
+    "vision_flops": 0,
+    "prefill_flops": 568264832745472,
+    "decode_flops": 25470421991424,
+    "total_flops": 593735254736896
+   }
+  },
+  "mmlu_jetson_high_school_physics": {
+   "n": 151,
+   "token_counts": "tokenizer",
+   "mean": {
+    "image_tokens": 0.0,
+    "text_tokens": 603.5562913907285,
+    "output_tokens": 31.7682119205298,
+    "vision_flops": 0.0,
+    "prefill_flops": 3403797137747.0728,
+    "decode_flops": 195505026732.92715,
+    "total_flops": 3599302164480.0
+   },
+   "total": {
+    "image_tokens": 0,
+    "text_tokens": 91137,
+    "output_tokens": 4797,
+    "vision_flops": 0,
+    "prefill_flops": 513973367799808,
+    "decode_flops": 29521259036672,
+    "total_flops": 543494626836480
+   }
+  },
+  "mmlu_jetson_high_school_psychology": {
+   "n": 545,
+   "token_counts": "tokenizer",
+   "mean": {
+    "image_tokens": 0.0,
+    "text_tokens": 518.6091743119266,
+    "output_tokens": 27.313761467889908,
+    "vision_flops": 0.0,
+    "prefill_flops": 2918283603614.767,
+    "decode_flops": 166542282503.98532,
+    "total_flops": 3084825886118.7524
+   },
+   "total": {
+    "image_tokens": 0,
+    "text_tokens": 282642,
+    "output_tokens": 14886,
+    "vision_flops": 0,
+    "prefill_flops": 1590464563970048,
+    "decode_flops": 90765543964672,
+    "total_flops": 1681230107934720
+   }
+  },
+  "mmlu_jetson_high_school_statistics": {
+   "n": 216,
+   "token_counts": "tokenizer",
+   "mean": {
+    "image_tokens": 0.0,
+    "text_tokens": 854.5462962962963,
+    "output_tokens": 29.96759259259259,
+    "vision_flops": 0.0,
+    "prefill_flops": 4850668169898.667,
+    "decode_flops": 186219091892.14816,
+    "total_flops": 5036887261790.814
+   },
+   "total": {
+    "image_tokens": 0,
+    "text_tokens": 184582,
+    "output_tokens": 6473,
+    "vision_flops": 0,
+    "prefill_flops": 1047744324698112,
+    "decode_flops": 40223323848704,
+    "total_flops": 1087967648546816
+   }
+  },
+  "mmlu_jetson_high_school_us_history": {
+   "n": 204,
+   "token_counts": "tokenizer",
+   "mean": {
+    "image_tokens": 0.0,
+    "text_tokens": 2260.176470588235,
+    "output_tokens": 29.65686274509804,
+    "vision_flops": 0.0,
+    "prefill_flops": 13296871676506.354,
+    "decode_flops": 196099100591.68628,
+    "total_flops": 13492970777098.04
+   },
+   "total": {
+    "image_tokens": 0,
+    "text_tokens": 461076,
+    "output_tokens": 6050,
+    "vision_flops": 0,
+    "prefill_flops": 2712561822007296,
+    "decode_flops": 40004216520704,
+    "total_flops": 2752566038528000
+   }
+  },
+  "mmlu_jetson_high_school_world_history": {
+   "n": 237,
+   "token_counts": "tokenizer",
+   "mean": {
+    "image_tokens": 0.0,
+    "text_tokens": 1471.3544303797469,
+    "output_tokens": 26.143459915611814,
+    "vision_flops": 0.0,
+    "prefill_flops": 8487130684506.734,
+    "decode_flops": 166162311988.92828,
+    "total_flops": 8653292996495.662
+   },
+   "total": {
+    "image_tokens": 0,
+    "text_tokens": 348711,
+    "output_tokens": 6196,
+    "vision_flops": 0,
+    "prefill_flops": 2011449972228096,
+    "decode_flops": 39380467941376,
+    "total_flops": 2050830440169472
+   }
+  },
+  "mmlu_jetson_human_aging": {
+   "n": 223,
+   "token_counts": "tokenizer",
+   "mean": {
+    "image_tokens": 0.0,
+    "text_tokens": 345.2017937219731,
+    "output_tokens": 21.968609865470853,
+    "vision_flops": 0.0,
+    "prefill_flops": 1933814038968.8252,
+    "decode_flops": 131620659310.20628,
+    "total_flops": 2065434698279.0315
+   },
+   "total": {
+    "image_tokens": 0,
+    "text_tokens": 76980,
+    "output_tokens": 4899,
+    "vision_flops": 0,
+    "prefill_flops": 431240530690048,
+    "decode_flops": 29351407026176,
+    "total_flops": 460591937716224
+   }
+  },
+  "mmlu_jetson_human_sexuality": {
+   "n": 131,
+   "token_counts": "tokenizer",
+   "mean": {
+    "image_tokens": 0.0,
+    "text_tokens": 364.60305343511453,
+    "output_tokens": 20.870229007633586,
+    "vision_flops": 0.0,
+    "prefill_flops": 2043562483649.4656,
+    "decode_flops": 124844136682.50381,
+    "total_flops": 2168406620331.9695
+   },
+   "total": {
+    "image_tokens": 0,
+    "text_tokens": 47763,
+    "output_tokens": 2734,
+    "vision_flops": 0,
+    "prefill_flops": 267706685358080,
+    "decode_flops": 16354581905408,
+    "total_flops": 284061267263488
+   }
+  },
+  "mmlu_jetson_international_law": {
+   "n": 121,
+   "token_counts": "tokenizer",
+   "mean": {
+    "image_tokens": 0.0,
+    "text_tokens": 663.5785123966942,
+    "output_tokens": 29.355371900826448,
+    "vision_flops": 0.0,
+    "prefill_flops": 3747975699870.6777,
+    "decode_flops": 180684130964.09918,
+    "total_flops": 3928659830834.777
+   },
+   "total": {
+    "image_tokens": 0,
+    "text_tokens": 80293,
+    "output_tokens": 3552,
+    "vision_flops": 0,
+    "prefill_flops": 453505059684352,
+    "decode_flops": 21862779846656,
+    "total_flops": 475367839531008
+   }
+  },
+  "mmlu_jetson_jurisprudence": {
+   "n": 108,
+   "token_counts": "tokenizer",
+   "mean": {
+    "image_tokens": 0.0,
+    "text_tokens": 418.787037037037,
+    "output_tokens": 24.99074074074074,
+    "vision_flops": 0.0,
+    "prefill_flops": 2350509561173.3335,
+    "decode_flops": 151131381153.18518,
+    "total_flops": 2501640942326.5186
+   },
+   "total": {
+    "image_tokens": 0,
+    "text_tokens": 45229,
+    "output_tokens": 2699,
+    "vision_flops": 0,
+    "prefill_flops": 253855032606720,
+    "decode_flops": 16322189164544,
+    "total_flops": 270177221771264
+   }
+  },
+  "mmlu_jetson_logical_fallacies": {
+   "n": 163,
+   "token_counts": "tokenizer",
+   "mean": {
+    "image_tokens": 0.0,
+    "text_tokens": 472.6319018404908,
+    "output_tokens": 15.134969325153374,
+    "vision_flops": 0.0,
+    "prefill_flops": 2656403115454.0366,
+    "decode_flops": 89295248352.58896,
+    "total_flops": 2745698363806.626
+   },
+   "total": {
+    "image_tokens": 0,
+    "text_tokens": 77039,
+    "output_tokens": 2467,
+    "vision_flops": 0,
+    "prefill_flops": 432993707819008,
+    "decode_flops": 14555125481472,
+    "total_flops": 447548833300480
+   }
+  },
+  "mmlu_jetson_machine_learning": {
+   "n": 112,
+   "token_counts": "tokenizer",
+   "mean": {
+    "image_tokens": 0.0,
+    "text_tokens": 703.9017857142857,
+    "output_tokens": 31.741071428571427,
+    "vision_flops": 0.0,
+    "prefill_flops": 3979981799131.4287,
+    "decode_flops": 196245254144.0,
+    "total_flops": 4176227053275.4287
+   },
+   "total": {
+    "image_tokens": 0,
+    "text_tokens": 78837,
+    "output_tokens": 3555,
+    "vision_flops": 0,
+    "prefill_flops": 445757961502720,
+    "decode_flops": 21979468464128,
+    "total_flops": 467737429966848
+   }
+  },
+  "mmlu_jetson_management": {
+   "n": 103,
+   "token_counts": "tokenizer",
+   "mean": {
+    "image_tokens": 0.0,
+    "text_tokens": 306.86407766990294,
+    "output_tokens": 16.41747572815534,
+    "vision_flops": 0.0,
+    "prefill_flops": 1717374835702.0583,
+    "decode_flops": 96608389298.95146,
+    "total_flops": 1813983225001.0098
+   },
+   "total": {
+    "image_tokens": 0,
+    "text_tokens": 31607,
+    "output_tokens": 1691,
+    "vision_flops": 0,
+    "prefill_flops": 176889608077312,
+    "decode_flops": 9950664097792,
+    "total_flops": 186840272175104
+   }
+  },
+  "mmlu_jetson_marketing": {
+   "n": 234,
+   "token_counts": "tokenizer",
+   "mean": {
+    "image_tokens": 0.0,
+    "text_tokens": 423.7991452991453,
+    "output_tokens": 16.73076923076923,
+    "vision_flops": 0.0,
+    "prefill_flops": 2378892811657.846,
+    "decode_flops": 99103638764.3077,
+    "total_flops": 2477996450422.154
+   },
+   "total": {
+    "image_tokens": 0,
+    "text_tokens": 99169,
+    "output_tokens": 3915,
+    "vision_flops": 0,
+    "prefill_flops": 556660917927936,
+    "decode_flops": 23190251470848,
+    "total_flops": 579851169398784
+   }
+  },
+  "mmlu_jetson_medical_genetics": {
+   "n": 100,
+   "token_counts": "tokenizer",
+   "mean": {
+    "image_tokens": 0.0,
+    "text_tokens": 365.45,
+    "output_tokens": 19.64,
+    "vision_flops": 0.0,
+    "prefill_flops": 2048309078917.12,
+    "decode_flops": 117113336627.2,
+    "total_flops": 2165422415544.32
+   },
+   "total": {
+    "image_tokens": 0,
+    "text_tokens": 36545,
+    "output_tokens": 1964,
+    "vision_flops": 0,
+    "prefill_flops": 204830907891712,
+    "decode_flops": 11711333662720,
+    "total_flops": 216542241554432
+   }
+  },
+  "mmlu_jetson_miscellaneous": {
+   "n": 783,
+   "token_counts": "tokenizer",
+   "mean": {
+    "image_tokens": 0.0,
+    "text_tokens": 326.7215836526181,
+    "output_tokens": 23.421455938697317,
+    "vision_flops": 0.0,
+    "prefill_flops": 1829510151438.7126,
+    "decode_flops": 140639070451.24905,
+    "total_flops": 1970149221889.9617
+   },
+   "total": {
+    "image_tokens": 0,
+    "text_tokens": 255823,
+    "output_tokens": 18339,
+    "vision_flops": 0,
+    "prefill_flops": 1432506448576512,
+    "decode_flops": 110120392163328,
+    "total_flops": 1542626840739840
+   }
+  },
+  "mmlu_jetson_moral_disputes": {
+   "n": 346,
+   "token_counts": "tokenizer",
+   "mean": {
+    "image_tokens": 0.0,
+    "text_tokens": 500.3554913294798,
+    "output_tokens": 30.127167630057805,
+    "vision_flops": 0.0,
+    "prefill_flops": 2814188390056.694,
+    "decode_flops": 184188284762.2659,
+    "total_flops": 2998376674818.9595
+   },
+   "total": {
+    "image_tokens": 0,
+    "text_tokens": 173123,
+    "output_tokens": 10424,
+    "vision_flops": 0,
+    "prefill_flops": 973709182959616,
+    "decode_flops": 63729146527744,
+    "total_flops": 1037438329487360
+   }
+  },
+  "mmlu_jetson_moral_scenarios": {
+   "n": 895,
+   "token_counts": "tokenizer",
+   "mean": {
+    "image_tokens": 0.0,
+    "text_tokens": 691.4916201117319,
+    "output_tokens": 12.443575418994413,
+    "vision_flops": 0.0,
+    "prefill_flops": 3908370700953.886,
+    "decode_flops": 73003386058.51173,
+    "total_flops": 3981374087012.398
+   },
+   "total": {
+    "image_tokens": 0,
+    "text_tokens": 618885,
+    "output_tokens": 11137,
+    "vision_flops": 0,
+    "prefill_flops": 3497991777353728,
+    "decode_flops": 65338030522368,
+    "total_flops": 3563329807876096
+   }
+  },
+  "mmlu_jetson_nutrition": {
+   "n": 306,
+   "token_counts": "tokenizer",
+   "mean": {
+    "image_tokens": 0.0,
+    "text_tokens": 622.6928104575163,
+    "output_tokens": 30.95098039215686,
+    "vision_flops": 0.0,
+    "prefill_flops": 3513365224990.1177,
+    "decode_flops": 190475601478.2745,
+    "total_flops": 3703840826468.392
+   },
+   "total": {
+    "image_tokens": 0,
+    "text_tokens": 190544,
+    "output_tokens": 9471,
+    "vision_flops": 0,
+    "prefill_flops": 1075089758846976,
+    "decode_flops": 58285534052352,
+    "total_flops": 1133375292899328
+   }
+  },
+  "mmlu_jetson_philosophy": {
+   "n": 311,
+   "token_counts": "tokenizer",
+   "mean": {
+    "image_tokens": 0.0,
+    "text_tokens": 353.2765273311897,
+    "output_tokens": 16.45016077170418,
+    "vision_flops": 0.0,
+    "prefill_flops": 1979554160192.2058,
+    "decode_flops": 97033741104.56592,
+    "total_flops": 2076587901296.7717
+   },
+   "total": {
+    "image_tokens": 0,
+    "text_tokens": 109869,
+    "output_tokens": 5116,
+    "vision_flops": 0,
+    "prefill_flops": 615641343819776,
+    "decode_flops": 30177493483520,
+    "total_flops": 645818837303296
+   }
+  },
+  "mmlu_jetson_prehistory": {
+   "n": 324,
+   "token_counts": "tokenizer",
+   "mean": {
+    "image_tokens": 0.0,
+    "text_tokens": 551.4320987654321,
+    "output_tokens": 27.820987654320987,
+    "vision_flops": 0.0,
+    "prefill_flops": 3105571517781.3335,
+    "decode_flops": 170006896741.1358,
+    "total_flops": 3275578414522.469
+   },
+   "total": {
+    "image_tokens": 0,
+    "text_tokens": 178664,
+    "output_tokens": 9014,
+    "vision_flops": 0,
+    "prefill_flops": 1006205171761152,
+    "decode_flops": 55082234544128,
+    "total_flops": 1061287406305280
+   }
+  },
+  "mmlu_jetson_professional_accounting": {
+   "n": 282,
+   "token_counts": "tokenizer",
+   "mean": {
+    "image_tokens": 0.0,
+    "text_tokens": 762.4432624113475,
+    "output_tokens": 31.911347517730498,
+    "vision_flops": 0.0,
+    "prefill_flops": 4317511082506.8936,
+    "decode_flops": 197863943523.85815,
+    "total_flops": 4515375026030.752
+   },
+   "total": {
+    "image_tokens": 0,
+    "text_tokens": 215009,
+    "output_tokens": 8999,
+    "vision_flops": 0,
+    "prefill_flops": 1217538125266944,
+    "decode_flops": 55797632073728,
+    "total_flops": 1273335757340672
+   }
+  },
+  "mmlu_jetson_professional_law": {
+   "n": 1534,
+   "token_counts": "tokenizer",
+   "mean": {
+    "image_tokens": 0.0,
+    "text_tokens": 1686.9915254237287,
+    "output_tokens": 31.926988265971318,
+    "vision_flops": 0.0,
+    "prefill_flops": 9783201797233.48,
+    "decode_flops": 206394702205.8305,
+    "total_flops": 9989596499439.312
+   },
+   "total": {
+    "image_tokens": 0,
+    "text_tokens": 2587845,
+    "output_tokens": 48976,
+    "vision_flops": 0,
+    "prefill_flops": 15007431556956160,
+    "decode_flops": 316609473183744,
+    "total_flops": 15324041030139904
+   }
+  },
+  "mmlu_jetson_professional_medicine": {
+   "n": 272,
+   "token_counts": "tokenizer",
+   "mean": {
+    "image_tokens": 0.0,
+    "text_tokens": 1148.1985294117646,
+    "output_tokens": 25.25,
+    "vision_flops": 0.0,
+    "prefill_flops": 6567345400530.823,
+    "decode_flops": 157956917248.0,
+    "total_flops": 6725302317778.823
+   },
+   "total": {
+    "image_tokens": 0,
+    "text_tokens": 312310,
+    "output_tokens": 6868,
+    "vision_flops": 0,
+    "prefill_flops": 1786317948944384,
+    "decode_flops": 42964281491456,
+    "total_flops": 1829282230435840
+   }
+  },
+  "mmlu_jetson_professional_psychology": {
+   "n": 612,
+   "token_counts": "tokenizer",
+   "mean": {
+    "image_tokens": 0.0,
+    "text_tokens": 604.4624183006536,
+    "output_tokens": 21.892156862745097,
+    "vision_flops": 0.0,
+    "prefill_flops": 3408939128470.5884,
+    "decode_flops": 132752465116.86275,
+    "total_flops": 3541691593587.451
+   },
+   "total": {
+    "image_tokens": 0,
+    "text_tokens": 369931,
+    "output_tokens": 13398,
+    "vision_flops": 0,
+    "prefill_flops": 2086270746624000,
+    "decode_flops": 81244508651520,
+    "total_flops": 2167515255275520
+   }
+  },
+  "mmlu_jetson_public_relations": {
+   "n": 110,
+   "token_counts": "tokenizer",
+   "mean": {
+    "image_tokens": 0.0,
+    "text_tokens": 431.43636363636364,
+    "output_tokens": 27.418181818181818,
+    "vision_flops": 0.0,
+    "prefill_flops": 2422312880463.1274,
+    "decode_flops": 166515800026.76364,
+    "total_flops": 2588828680489.891
+   },
+   "total": {
+    "image_tokens": 0,
+    "text_tokens": 47458,
+    "output_tokens": 3016,
+    "vision_flops": 0,
+    "prefill_flops": 266454416850944,
+    "decode_flops": 18316738002944,
+    "total_flops": 284771154853888
+   }
+  },
+  "mmlu_jetson_security_studies": {
+   "n": 245,
+   "token_counts": "tokenizer",
+   "mean": {
+    "image_tokens": 0.0,
+    "text_tokens": 1189.938775510204,
+    "output_tokens": 25.322448979591837,
+    "vision_flops": 0.0,
+    "prefill_flops": 6813407807312.457,
+    "decode_flops": 158799506268.9959,
+    "total_flops": 6972207313581.453
+   },
+   "total": {
+    "image_tokens": 0,
+    "text_tokens": 291535,
+    "output_tokens": 6204,
+    "vision_flops": 0,
+    "prefill_flops": 1669284912791552,
+    "decode_flops": 38905879035904,
+    "total_flops": 1708190791827456
+   }
+  },
+  "mmlu_jetson_sociology": {
+   "n": 201,
+   "token_counts": "tokenizer",
+   "mean": {
+    "image_tokens": 0.0,
+    "text_tokens": 473.2636815920398,
+    "output_tokens": 9.537313432835822,
+    "vision_flops": 0.0,
+    "prefill_flops": 2659943679908.2983,
+    "decode_flops": 53893793700.29851,
+    "total_flops": 2713837473608.597
+   },
+   "total": {
+    "image_tokens": 0,
+    "text_tokens": 95126,
+    "output_tokens": 1917,
+    "vision_flops": 0,
+    "prefill_flops": 534648679661568,
+    "decode_flops": 10832652533760,
+    "total_flops": 545481332195328
+   }
+  },
+  "mmlu_jetson_us_foreign_policy": {
+   "n": 100,
+   "token_counts": "tokenizer",
+   "mean": {
+    "image_tokens": 0.0,
+    "text_tokens": 451.16,
+    "output_tokens": 23.89,
+    "vision_flops": 0.0,
+    "prefill_flops": 2534255903703.04,
+    "decode_flops": 144407024762.88,
+    "total_flops": 2678662928465.92
+   },
+   "total": {
+    "image_tokens": 0,
+    "text_tokens": 45116,
+    "output_tokens": 2389,
+    "vision_flops": 0,
+    "prefill_flops": 253425590370304,
+    "decode_flops": 14440702476288,
+    "total_flops": 267866292846592
+   }
+  },
+  "mmlu_jetson_virology": {
+   "n": 166,
+   "token_counts": "tokenizer",
+   "mean": {
+    "image_tokens": 0.0,
+    "text_tokens": 366.86746987951807,
+    "output_tokens": 14.126506024096386,
+    "vision_flops": 0.0,
+    "prefill_flops": 2056432179175.3252,
+    "decode_flops": 82492674886.93976,
+    "total_flops": 2138924854062.2651
+   },
+   "total": {
+    "image_tokens": 0,
+    "text_tokens": 60900,
+    "output_tokens": 2345,
+    "vision_flops": 0,
+    "prefill_flops": 341367741743104,
+    "decode_flops": 13693784031232,
+    "total_flops": 355061525774336
+   }
+  },
+  "mmlu_jetson_world_religions": {
+   "n": 171,
+   "token_counts": "tokenizer",
+   "mean": {
+    "image_tokens": 0.0,
+    "text_tokens": 295.5730994152047,
+    "output_tokens": 20.43859649122807,
+    "vision_flops": 0.0,
+    "prefill_flops": 1653711536128.0,
+    "decode_flops": 121732881425.9649,
+    "total_flops": 1775444417553.9648
+   },
+   "total": {
+    "image_tokens": 0,
+    "text_tokens": 50543,
+    "output_tokens": 3495,
+    "vision_flops": 0,
+    "prefill_flops": 282784672677888,
+    "decode_flops": 20816322723840,
+    "total_flops": 303600995401728
+   }
+  }
+ }
+}
