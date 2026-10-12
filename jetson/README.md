@@ -14,6 +14,7 @@ This folder benchmarks vision-language and text-only models on NVIDIA Jetson wit
 | Board | Results | Notes |
 |---|---|---|
 | Jetson AGX Thor | [FINDINGS.md](results/thor/FINDINGS.md) (start here), [REPORT.md](results/thor/REPORT.md) (numbers), [SUMMARY.md](results/thor/SUMMARY.md) (all runs) | [NOTES.md](results/thor/NOTES.md): setup, problems and fixes |
+| Jetson AGX Thor, text-only Qwen2.5-1.5B/3B | [FINDINGS_qwen2_5.md](results/thor/FINDINGS_qwen2_5.md) (start here), [REPORT_qwen2_5.md](results/thor/REPORT_qwen2_5.md) (numbers, generated) | [NOTES_qwen2_5.md](results/thor/NOTES_qwen2_5.md): plan, decision rule and verdict, problems and fixes |
 | Jetson AGX Orin 32GB (MAXN) | [SUMMARY.md](results/orin/SUMMARY.md): full MME for HF 3B/7B, vLLM bf16/AWQ 3B, vLLM AWQ 7B and llama.cpp Q8_0/Q4_K_M 7B | llama.cpp 3B runs are invalid (fp16 overflow; see [methodology](docs/methodology.md#implementation-notes)) |
 
 How everything is measured, and which settings keep the frameworks comparable: [docs/methodology.md](docs/methodology.md).

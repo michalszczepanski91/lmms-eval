@@ -64,13 +64,16 @@ MODEL=qwen2_5 jetson/scripts/run_eval.sh trt_edgellm 3b-fp8 gsm8k_jetson 8
 |---|---|---|
 | `fp16` | base checkpoint as is | works |
 | `fp8`, `int4_awq` | quantizer, default calibration (cnn_dailymail, 512 texts × ≤ 512 tokens), LM head 16-bit | work |
-| `int8_sq`, `nvfp4`, `mxfp8` | quantizer | Phase 2, see [FINDINGS_qwen2_5.md](../results/thor/FINDINGS_qwen2_5.md) |
-| `fp8_kv` | fp8 weights + `--kv_cache_quantization fp8` | Phase 2 |
-| `fp8_lmhead`, `int4_awq_lmhead` | LM head quantized too (`--lm_head_quantization`) | Phase 2 |
-| `int4_awq_taskcal` | int4_awq calibrated on 512 texts in the benchmark's format (GSM8K train + MMLU validation, `calibration/gsm8k_mmlu.jsonl`), passed through the documented local override of a built-in dataset (`EDGELLM_QUANT_DATASET_WIKITEXT`) | Phase 2 |
+| `int8_sq` | quantizer (SmoothQuant) | works; less accurate than fp8 on every task (3B −8 to −10 points) and not faster |
+| `nvfp4` | quantizer | **garbage text** (both sizes); the quantized checkpoint is fine in PyTorch, so the engine path is at fault (`nvfp4_reference.py`) |
+| `mxfp8` | quantizer | **engine build fails**: TensorRT "E8M0 is not supported in plugins" |
+| `fp8_kv` | fp8 weights + `--kv_cache_quantization fp8` | works; −2% decode only (small KV cache), −6.4 points on 3B MMLU, 1.5B GSM8K breaks (6.6%) |
+| `fp8_lmhead` | LM head fp8 too (`--lm_head_quantization fp8`) | works; **best 3B configuration**: fp8's accuracy, 10% faster decode |
+| `int4_awq_lmhead` | LM head int4 too | **garbage text** |
+| `int4_awq_taskcal` | int4_awq calibrated on 512 texts in the benchmark's format (GSM8K train + MMLU validation, `calibration/gsm8k_mmlu.jsonl`), passed through the documented local override of a built-in dataset (`EDGELLM_QUANT_DATASET_WIKITEXT`) | works; helps 1.5B (GSM8K 30.8 → 48.6%), not 3B |
 | `int4_awq_qwen` | Qwen's AWQ checkpoint exported directly | builds and runs, **garbage text** ("100000…", 3B) |
-| `int4_awq_qwen_v1` | the same with the legacy int4 GEMM plugin (`--int4-gemm-plugin-version 1`) | Phase 2 (diagnostic) |
-| `int4_gptq_qwen` | Qwen's GPTQ-Int4 checkpoint exported directly | Phase 2 |
+| `int4_awq_qwen_v1` | the same with the legacy int4 GEMM plugin (`--int4-gemm-plugin-version 1`) | **garbage text** as well: the plugin is not the cause |
+| `int4_gptq_qwen` | Qwen's GPTQ-Int4 checkpoint exported directly | works; **best Edge-LLM 4-bit** (3B MMLU 60.3%, 1.5B GSM8K 57.5%) |
 | Qwen GPTQ-Int8 | not possible: the exporter maps every `quant_method: gptq` checkpoint to int4 and does not read `bits` | – |
 
 `ensure_engines.sh` writes `build_info.txt` in each engine directory: quantize / export / build seconds, peak system memory per step, engine size.
