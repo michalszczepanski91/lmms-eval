@@ -216,6 +216,75 @@ def sweep(out):
         print(f"| {size} | {config} | {n:,} | {ttft:.0f} | {dec:.1f} | {outt:.0f} |")
     print("wrote", out)
 
+EDGE = ["fp16", "fp8", "fp8_lmhead", "fp8_kv", "int8_sq", "int4_awq", "int4_awq_taskcal", "int4_gptq_qwen"]
+EDGE_BITS = {"fp16": 16, "fp8": 8, "fp8_lmhead": 8, "fp8_kv": 8, "int8_sq": 8, "int4_awq": 4, "int4_awq_taskcal": 4, "int4_gptq_qwen": 4}
+BIT_MARKER = {16: "o", 8: "s", 4: "^"}
+# label offsets (points) where configurations sit on top of each other; default (6, 4)
+LABEL_OFFSET = {
+    ("1.5b", "gsm8k_jetson", "fp8_lmhead"): (-62, -12),
+    ("1.5b", "gsm8k_jetson", "fp8"): (6, 2),
+    ("3b", "gsm8k_jetson", "fp8_lmhead"): (-66, -4),
+    ("3b", "gsm8k_jetson", "fp8_kv"): (8, -4),
+    ("3b", "mmlu_jetson", "fp8"): (8, -12),
+    ("3b", "mmlu_jetson", "fp8_lmhead"): (-30, 8),
+    ("3b", "mmlu_jetson", "int4_gptq_qwen"): (-20, -14),
+    ("1.5b", "mmlu_jetson", "fp8_lmhead"): (-12, -15),
+}
+
+
+def pareto(out):
+    """Edge-LLM weight configurations: accuracy against energy per question; filled = passes the accuracy rule."""
+    tasks = ["gsm8k_jetson", "mmlu_jetson"]
+    table = A.collect(list(A.SIZES), tasks)
+    fig, axes = plt.subplots(2, 2, figsize=(12, 8.6), gridspec_kw=dict(left=0.08, right=0.95, top=0.85, bottom=0.1, hspace=0.32, wspace=0.16))
+    green = FRAMEWORK["trt_edgellm"][1]
+    rows = []
+    for r, task in enumerate(tasks):
+        for c, size in enumerate(("1.5b", "3b")):
+            ax = axes[r][c]
+            style(ax)
+            data = table.get((size, task)) or {}
+            hf = data.get("hf-bf16")
+            if hf:
+                ax.axhline(100 * hf["acc"], color=MUTED, lw=1.2, ls=(0, (4, 3)), zorder=1)
+                ax.text(0.99, 100 * hf["acc"], " HF bf16", transform=ax.get_yaxis_transform(), ha="right", va="bottom", fontsize=8, color=MUTED)
+            pts = []
+            for cfg in EDGE:
+                m = data.get(f"trt_edgellm-{cfg}")
+                if not m or not m.get("j_per_q"):
+                    continue
+                x, y = m["j_per_q"], 100 * m["acc"]
+                pts.append((x, y, cfg))
+                rows.append((size, task, cfg, y, m["delta"], m["se"], m["passes"], x, m.get("s_per_q"), m.get("decode_ms")))
+                ax.scatter(x, y, s=75, marker=BIT_MARKER[EDGE_BITS[cfg]], facecolor=green if m["passes"] else "white", edgecolor=green, linewidth=1.8, zorder=3)
+            for x, y, cfg in pts:
+                ax.annotate(cfg, (x, y), xytext=LABEL_OFFSET.get((size, task, cfg), (6, 4)), textcoords="offset points", fontsize=8, color=INK)
+            front, best = [], -1
+            for x, y, cfg in sorted(pts):
+                if y > best:
+                    front.append((x, y))
+                    best = y
+            if len(front) > 1:
+                ax.plot(*zip(*front), color=green, lw=1, alpha=0.5, zorder=2)
+            ax.set_title(f"{A.SIZES[size]} · {'GSM8K' if task == 'gsm8k_jetson' else 'MMLU'}", loc="left", fontsize=11, fontweight="bold", color=INK)
+            ax.set_xlabel("Energy per question (J, whole board)", fontsize=9, color=MUTED)
+            if c == 0:
+                ax.set_ylabel("Accuracy (%)", fontsize=9, color=MUTED)
+            ax.set_xlim(left=0)
+    handles = [plt.Line2D([], [], ls="", marker=mk, color=green, markersize=8, label=f"{b}-bit") for b, mk in BIT_MARKER.items()]
+    handles += [plt.Line2D([], [], ls="", marker="o", markerfacecolor="white", markeredgecolor=green, markersize=8, label="hollow: fails the accuracy rule")]
+    fig.legend(handles=handles, loc="upper left", bbox_to_anchor=(0.08, 0.925), ncol=4, frameon=False, fontsize=9)
+    fig.text(0.08, 0.955, "TensorRT Edge-LLM weight configurations: accuracy against energy", fontsize=15, fontweight="bold", color=INK)
+    fig.text(0.02, 0.035, "Line: configurations that no other one beats on both axes. Not shown: nvfp4, int4 LM head and Qwen's AWQ import (garbage text), mxfp8 (engine build fails),", fontsize=8, color=MUTED)
+    fig.text(0.02, 0.014, "GPTQ-Int8 (not importable). 1.5B MMLU: quantized engines answer with the letter first more often, which this scoring rewards (FINDINGS_qwen2_5.md).", fontsize=8, color=MUTED)
+    fig.text(0.97, 0.014, "python3 jetson/experiments/qwen2_5/figures.py pareto", fontsize=7, color="#8a8a8a", ha="right")
+    fig.savefig(out, facecolor="white")
+    fig.savefig(os.path.splitext(out)[0] + ".png", dpi=150, facecolor="white")
+    print("| Size | Task | Configuration | Accuracy | Δ vs HF | Passes | Energy (J/q) | Time (s/q) | Decode (ms/token) |\n|---|---|---|---:|---:|---|---:|---:|---:|")
+    for size, task, cfg, y, d, se, ok, x, t, dec in rows:
+        print(f"| {size} | {task} | {cfg} | {y:.1f} | {100 * d:+.1f} ± {100 * se:.1f} | {'yes' if ok else 'no'} | {x:.1f} | {t:.2f} | {dec:.1f} |")
+    print("wrote", out)
+
 
 def main():
     p = argparse.ArgumentParser(description=__doc__.splitlines()[0])
@@ -229,7 +298,7 @@ def main():
     elif a.figure == "sweep":
         sweep(out)
     else:
-        sys.exit("pareto: after Phase 2")
+        pareto(out)
 
 
 if __name__ == "__main__":
