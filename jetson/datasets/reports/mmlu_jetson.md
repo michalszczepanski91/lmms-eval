@@ -8,6 +8,16 @@ Tokenizer and chat template: `Qwen/Qwen2.5-3B-Instruct`.
 | Prompt tokens (chat template + few-shot context), avg (min–max) | 738 (282–3,138) |
 | Question tokens (the question alone), avg (min–max) | 59 (2–951) |
 | Reference answer words / tokens, avg (min–max) | 1.0 (1–1) / 1.0 (1–1) |
+| Generated tokens (end token included), hf-bf16 | 13.1 (2–32) |
+| Generated tokens (end token included), vllm-bf16 | 13.1 (2–32) |
+| Generated tokens (end token included), llamacpp-f16 | 7.3 (2–32) |
+| Generated tokens (end token included), trt_edgellm-fp16 | 12.8 (2–32) |
+| Generated tokens (end token included), vllm-fp8 | 13.8 (2–32) |
+| Generated tokens (end token included), llamacpp-q8_0 | 6.7 (2–32) |
+| Generated tokens (end token included), trt_edgellm-fp8 | 16.5 (2–32) |
+| Generated tokens (end token included), vllm-awq | 4.5 (2–32) |
+| Generated tokens (end token included), llamacpp-q4_k_m | 10.0 (2–32) |
+| Generated tokens (end token included), trt_edgellm-int4_awq | 17.3 (2–32) |
 | Scoring | the first A-D letter of the answer; accuracy weighted by subject size |
 
 ## Example (first question)

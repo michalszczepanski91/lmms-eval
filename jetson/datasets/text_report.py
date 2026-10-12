@@ -3,7 +3,8 @@
 
 Prompts come from lmms-eval's chat path exactly as the evaluation builds them (jetson/tasks variants, few-shot sampler
 seeded like the evaluator), with the Qwen2.5 chat template applied, so the token counts are what every framework
-receives. With --run, adds the generated tokens of each run (token_counts.output_tokens; Edge-LLM runs record none).
+receives. With --run, adds the generated tokens of each run (token_counts.output_tokens; for Edge-LLM, which records none, the
+tokenizer recount of flops.py).
 
 Usage (eval container, offline, CPU): jetson/datasets/run.sh text_report <gsm8k_jetson|mmlu_jetson|ifeval> [--run DIR ...]
 Writes <out>/<task>.md (default jetson/datasets/reports).
@@ -53,6 +54,9 @@ def run_output_tokens(run_dir):
             counts = (json.loads(line).get("token_counts") or [{}])[0]
             if counts.get("output_tokens") is not None:
                 out.append(counts["output_tokens"])
+    flops_samples = os.path.join(run_dir, "flops_samples.jsonl.gz")
+    if not out and os.path.exists(flops_samples):  # Edge-LLM records none: flops.py's tokenizer recount
+        out = [json.loads(line)["output_tokens"] for line in gzip.open(flops_samples, "rt") if json.loads(line).get("output_tokens") is not None]
     return out
 
 
