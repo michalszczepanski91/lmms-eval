@@ -1,0 +1,136 @@
+/opt/venv/lib/python3.12/site-packages/transformers/utils/hub.py:110: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+  warnings.warn(
+torch 2.10.0 transformers 4.57.3
+/opt/venv/lib/python3.12/site-packages/transformers/utils/hub.py:110: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+  warnings.warn(
+[32m2026-10-12 12:26:18[0m | [1mINFO    [0m | [36mlmms_eval.__main__[0m:[36mcli_evaluate[0m:[36m516[0m - [1mVerbosity set to INFO[0m
+[32m2026-10-12 12:26:18[0m | [1mINFO    [0m | [36mlmms_eval.__main__[0m:[36mcli_evaluate_single[0m:[36m643[0m - [1mIncluding path: jetson/tasks[0m
+[32m2026-10-12 12:26:21[0m | [1mINFO    [0m | [36mlmms_eval.__main__[0m:[36mcli_evaluate_single[0m:[36m653[0m - [1mEvaluation tracker args: {'output_path': 'jetson/results/thor/Qwen2.5-1.5B-Instruct/gsm8k_jetson/trt_edgellm-fp8_lmhead/20261012-142609'}[0m
+[32m2026-10-12 12:26:21[0m | [1mINFO    [0m | [36mlmms_eval.__main__[0m:[36mcli_evaluate_single[0m:[36m677[0m - [1mIncluding path: jetson/tasks[0m
+[32m2026-10-12 12:26:21[0m | [1mINFO    [0m | [36mlmms_eval.__main__[0m:[36mcli_evaluate_single[0m:[36m737[0m - [1mSelected Tasks: ['gsm8k_jetson'][0m
+[32m2026-10-12 12:26:21[0m | [1mINFO    [0m | [36mlmms_eval.evaluator[0m:[36msimple_evaluate[0m:[36m488[0m - [1mSetting random seed to 0 | Setting numpy seed to 1234 | Setting torch manual seed to 1234[0m
+Using the latest cached version of the dataset since gsm8k couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'main' at /opt/hf-cache/datasets/gsm8k/main/0.0.0/740312add88f781978c0658806c59bc2815b9866 (last modified on Thu Oct  8 10:30:09 2026).
+[32m2026-10-12 12:26:21[0m | [1mINFO    [0m | [36mlmms_eval.evaluator[0m:[36mevaluate[0m:[36m1049[0m - [1mRunning on rank 0 (local rank 0)[0m
+[32m2026-10-12 12:26:21[0m | [1mINFO    [0m | [36mlmms_eval.api.task[0m:[36mbuild_all_requests[0m:[36m473[0m - [1mBuilding contexts for gsm8k_jetson on rank 0...[0m
+100%|██████████| 1319/1319 [00:03<00:00, 402.53it/s]
+[32m2026-10-12 12:26:24[0m | [1mINFO    [0m | [36mlmms_eval.evaluator[0m:[36mevaluate[0m:[36m1204[0m - [1mRunning generate_until requests[0m
+[32m2026-10-12 12:26:28[0m | [1mINFO    [0m | [36mlmms_eval.models.chat.trt_edgellm[0m:[36m_run[0m:[36m110[0m - [1mRunning TensorRT Edge-LLM: llm_inference --engineDir /opt/models/trt-edgellm/Qwen2.5-1.5B-Instruct-fp8_lmhead/engines/llm --inputFile /tmp/trt_edgellm_86hc1j3m/input.json --outputFile /tmp/trt_edgellm_86hc1j3m/output.json --dumpProfile --profileOutputFile /tmp/trt_edgellm_86hc1j3m/profile.json --warmup 1[0m
+[12:26:28.073] [INFO] [llm_inference.cpp:809:parseLLMInferenceArgs] args.inputFile: /tmp/trt_edgellm_86hc1j3m/input.json
+[12:26:28.073] [INFO] [llm_inference.cpp:815:parseLLMInferenceArgs] args.engineDir: /opt/models/trt-edgellm/Qwen2.5-1.5B-Instruct-fp8_lmhead/engines/llm
+[12:26:28.073] [INFO] [llm_inference.cpp:831:parseLLMInferenceArgs] args.outputFile: /tmp/trt_edgellm_86hc1j3m/output.json
+[12:26:28.073] [INFO] [llm_inference.cpp:840:parseLLMInferenceArgs] args.profileOutputFile: /tmp/trt_edgellm_86hc1j3m/profile.json
+[12:26:28.073] [INFO] [llm_inference.cpp:845:parseLLMInferenceArgs] Profile dumping to console is enabled
+[12:26:28.073] [INFO] [llm_inference.cpp:850:parseLLMInferenceArgs] Warmup runs: 1
+[12:26:28.073] [INFO] [trtUtils.h:71:loadEdgellmPluginLib] EDGELLM_PLUGIN_PATH: /opt/TensorRT-Edge-LLM/build/libNvInfer_edgellm_plugin.so
+[12:26:28.103] [INFO] [llm_inference.cpp:1480:main] Successfully parsed 0 LoRA weights from input file.
+[12:26:28.104] [INFO] [llm_inference.cpp:1481:main] Successfully parsed 1319 batches of requests from input file.
+[12:26:28.214] [INFO] [memoryMonitor.cpp:267:start] Memory Monitor Started - metric: nvml_process_allocation
+[12:26:28.354] [INFO] [llmRuntimeUtils.cpp:715:loadEmbeddingTable] Loaded FP16 embedding: [151936, 1536]
+[12:26:28.354] [INFO] [llmEngineConfig.cpp:672:parseEngineConfig] reading /opt/models/trt-edgellm/Qwen2.5-1.5B-Instruct-fp8_lmhead/engines/llm/config.json
+[12:26:28.355] [INFO] [llmRuntimeUtils.cpp:422:collectRopeConfig] Collected rope config: RopeConfig:  type: Default  rotaryScale: 1  rotaryTheta: 1e+06  partialRotaryFactor: 1  maxPositionEmbeddings: 32768
+[12:26:28.355] [INFO] [llmEngineConfig.cpp:887:parseEngineConfig] LLMEngineConfig{ hiddenSize=1536 vocabSize=151936 outputVocabSize=151936 numDecoderLayers=28 numAttentionLayers=28 numKVHeads=2 headDim=128 rotaryDim=128 maxBatch=1 maxInputLen=4096 maxKVCapacity=4096 kvPoolPages=32 pleEnabled=false numPleInputs=0 pleHiddenSize=0 isSpecDecodeBase=false specDecodeType=0 loraRank=0 eosTokenIds=[151645] }
+[12:26:28.355] [INFO] [engineExecutor.cpp:135:TrtEngineExecutor] loading engine file: /opt/models/trt-edgellm/Qwen2.5-1.5B-Instruct-fp8_lmhead/engines/llm/llm.engine
+[12:26:28.607] [INFO] [TensorRT] [MS] Running engine with multi stream info
+[12:26:28.607] [INFO] [TensorRT] [MS] Number of aux streams is 1
+[12:26:28.607] [INFO] [TensorRT] [MS] Number of total worker streams is 2
+[12:26:28.607] [INFO] [TensorRT] [MS] The main stream provided by execute/enqueue calls is the first worker stream
+[12:26:28.723] [INFO] [TensorRT] [MemUsageChange] TensorRT-managed allocation in IExecutionContext creation: CPU +0, GPU +0, now: CPU 0, GPU 1472 (MiB)
+[12:26:28.723] [INFO] [trtUtils.cpp:374:setNonBlockingAuxStreams] configured 1 non-blocking auxiliary stream(s) for execution context
+[12:26:28.724] [INFO] [engineExecutor.cpp:166:TrtEngineExecutor] engine loaded successfully (64 I/O tensors)
+[12:26:28.724] [INFO] [modelArtifacts.cpp:213:loadFromEngineDir] Base EngineExecutor successfully loaded from /opt/models/trt-edgellm/Qwen2.5-1.5B-Instruct-fp8_lmhead/engines/llm/llm.engine.
+[12:26:28.724] [INFO] [modelArtifacts.cpp:144:loadTokenizer] Start loading tokenizer from model directory: /opt/models/trt-edgellm/Qwen2.5-1.5B-Instruct-fp8_lmhead/engines/llm
+[12:26:29.014] [INFO] [tokenizer.cpp:603:loadVocabulary] Loaded 151643 vocabulary tokens
+[12:26:29.082] [INFO] [tokenizer.cpp:135:loadFromHF] Loaded 22 special tokens
+[12:26:29.119] [INFO] [tokenizer.cpp:1090:loadChatTemplate] Successfully loaded chat template from /opt/models/trt-edgellm/Qwen2.5-1.5B-Instruct-fp8_lmhead/engines/llm/processed_chat_template.json (for model: /opt/models/trt-edgellm/Qwen2.5-1.5B-Instruct-fp8_lmhead/quantized)
+[12:26:29.119] [INFO] [tokenizer.cpp:167:loadFromHF] Successfully loaded tokenizer from /opt/models/trt-edgellm/Qwen2.5-1.5B-Instruct-fp8_lmhead/engines/llm (vocab_size=151665)
+[12:26:29.134] [INFO] [modelArtifacts.cpp:147:loadTokenizer] Tokenizer successfully loaded from model directory: /opt/models/trt-edgellm/Qwen2.5-1.5B-Instruct-fp8_lmhead/engines/llm
+[12:26:29.134] [INFO] [modelArtifacts.cpp:154:loadTokenizer] Loaded 1 EOS token IDs from config
+[12:26:29.134] [INFO] [runtimeCoordinator.cpp:70:RuntimeCoordinator] RuntimeCoordinator running single-device inline (no worker thread).
+[12:26:29.134] [INFO] [llmRankRuntime.cpp:364:initializeCommon] Runtime batch size set to: 1 (from engine bundle)
+[12:26:29.138] [INFO] [ropeCache.cpp:128:getOrCreate] RopeCache: creating new entry (rotaryDim=128, maxSeqLen=4096)
+[12:26:29.192] [INFO] [llmRankRuntime.cpp:533:initializeCommon] Runtime tensors successfully allocated.
+[12:26:29.194] [INFO] [llmRankRuntime.cpp:676:initializeCommon] Setup shared execution context memory: 227540992 bytes (base requires: 227540992, strategy requires: 0, vision requires: 0, audio requires: 0, action requires: 0)
+[12:26:29.194] [INFO] [runtimeCoordinator.cpp:299:operator()] [parallel rank 0/1] Runtime initialized.
+[12:26:29.345] [INFO] [engineExecutor.cpp:360:captureGraph] captured graph (hash=0x5caca311c3a445ef)
+[12:26:29.345] [INFO] [decoderRegistry.cpp:126:captureCudaGraphs] Successfully captured decoding CUDA graphs for active decoding strategies.
+[12:26:29.345] [INFO] [llm_inference.cpp:1669:main] Starting warmup with 1 runs using the first request...
+[12:26:30.776] [INFO] [llm_inference.cpp:1691:main] Warmup of 1 runs completed. Starting actual benchmark runs...
+[12:26:30.776] [INFO] [llm_inference.cpp:1716:main] Processing 1319 batched requests...
+[12:26:30.776] [INFO] [llm_inference.cpp:1726:main] Progress: 1/1319 (0.075815%)
+[12:28:31.955] [INFO] [llm_inference.cpp:1726:main] Progress: 100/1319 (7.581501%)
+[12:30:34.126] [INFO] [llm_inference.cpp:1726:main] Progress: 200/1319 (15.163002%)
+[12:32:20.588] [INFO] [llm_inference.cpp:1726:main] Progress: 300/1319 (22.744503%)
+[12:34:27.510] [INFO] [llm_inference.cpp:1726:main] Progress: 400/1319 (30.326005%)
+[12:36:22.538] [INFO] [llm_inference.cpp:1726:main] Progress: 500/1319 (37.907506%)
+[12:38:13.575] [INFO] [llm_inference.cpp:1726:main] Progress: 600/1319 (45.489007%)
+[12:40:10.267] [INFO] [llm_inference.cpp:1726:main] Progress: 700/1319 (53.070508%)
+[12:42:10.100] [INFO] [llm_inference.cpp:1726:main] Progress: 800/1319 (60.652009%)
+[12:44:07.395] [INFO] [llm_inference.cpp:1726:main] Progress: 900/1319 (68.233510%)
+[12:46:07.743] [INFO] [llm_inference.cpp:1726:main] Progress: 1000/1319 (75.815011%)
+[12:48:16.636] [INFO] [llm_inference.cpp:1726:main] Progress: 1100/1319 (83.396513%)
+[12:50:18.711] [INFO] [llm_inference.cpp:1726:main] Progress: 1200/1319 (90.978014%)
+[12:52:09.153] [INFO] [llm_inference.cpp:1726:main] Progress: 1300/1319 (98.559515%)
+[12:52:30.294] [INFO] [llm_inference.cpp:1726:main] Progress: 1319/1319 (100.000000%)
+[12:52:30.807] [INFO] [llm_inference.cpp:2093:main] Processing complete: 1319/1319 batched requests successful
+[12:52:30.861] [INFO] [llm_inference.cpp:2159:main] 
+=== Performance Summary ===
+=== LLM Prefill ===
+Reused Tokens: 0
+Computed Tokens: 991929
+Average Tokens per Run: 752.03
+Average Time per Run: 21.1946 ms
+Tokens/Second: 35482.3
+Average Time per Token: 0.0282 ms
+LLM Prefill - Total Runs: 1319, Total GPU Time: 27955.64 ms, Average: 21.19 ms
+=== LLM Generation (Excluding sampling after prefill) ===
+Generated Tokens: 206057
+Average Tokens per Run: 156.22
+Tokens/Second: 134.6
+Average Time per Token: 7.4274 ms
+LLM Generation - Total Runs: 204738, Total GPU Time: 1530467.50 ms, Average: 7.48 ms
+=== Memory Usage ===
+Peak GPU Memory: 2396.96 MB (2513395712 bytes)
+Peak CPU Memory: 800.47 MB (839356416 bytes)
+GPU Memory Metric: nvml_process_allocation
+=== Wall-Clock (end-to-end, prefill + generation) ===
+TP Size: 1
+Total Generated Tokens: 206057
+Total Wall-Clock Time: 1560030.65 ms
+Wall-Clock Tokens/Second: 132.1
+Wall-Clock ms/Token: 7.571
+=====================================
+
+[12:52:30.874] [INFO] [llm_inference.cpp:2218:main] Profile data exported to: /tmp/trt_edgellm_86hc1j3m/profile.json
+[12:52:30.903] [INFO] [llm_inference.cpp:2243:main] All responses exported to: /tmp/trt_edgellm_86hc1j3m/output.json
+[32m2026-10-12 12:52:31[0m | [1mINFO    [0m | [36mlmms_eval.models.chat.trt_edgellm[0m:[36mgenerate_until[0m:[36m161[0m - [1mTensorRT Edge-LLM profile saved to jetson/results/thor/Qwen2.5-1.5B-Instruct/gsm8k_jetson/trt_edgellm-fp8_lmhead/20261012-142609/trt_profile.json[0m
+[32m2026-10-12 12:52:31[0m | [1mINFO    [0m | [36mlmms_eval.models.model_utils.gen_metrics[0m:[36mlog_metrics[0m:[36m136[0m - [1mMetric summary - Total elapsed time: 1566.421s, Total gen tokens: 0, Avg speed: 0.0 tokens/s[0m
+Postprocessing: 100%|██████████| 1319/1319 [00:00<00:00, 1851.01it/s]
+[32m2026-10-12 12:52:32[0m | [1mINFO    [0m | [36mlmms_eval.evaluator[0m:[36mevaluate[0m:[36m1404[0m - [1mPostprocessed 1319 docs for gsm8k_jetson/strict-match with 4 worker(s) in 0.71s[0m
+[32m2026-10-12 12:52:32[0m | [1mINFO    [0m | [36mlmms_eval.evaluator[0m:[36mevaluate[0m:[36m1404[0m - [1mPostprocessed 1319 docs for gsm8k_jetson/flexible-extract with 4 worker(s) in 0.72s[0m
+[32m2026-10-12 12:52:33[0m | [1mINFO    [0m | [36mlmms_eval.loggers.evaluation_tracker[0m:[36msave_results_aggregated[0m:[36m187[0m - [1mSaving results aggregated[0m
+[32m2026-10-12 12:52:33[0m | [1mINFO    [0m | [36mlmms_eval.loggers.evaluation_tracker[0m:[36msave_results_samples[0m:[36m300[0m - [1mSaving samples to jetson/results/thor/Qwen2.5-1.5B-Instruct/gsm8k_jetson/trt_edgellm-fp8_lmhead/20261012-142609/20261012_202621_samples_gsm8k_jetson.jsonl[0m
+trt_edgellm (engine_dir=/opt/models/trt-edgellm/Qwen2.5-1.5B-Instruct-fp8_lmhead/engines/llm,profile_output=jetson/results/thor/Qwen2.5-1.5B-Instruct/gsm8k_jetson/trt_edgellm-fp8_lmhead/20261012-142609/trt_profile.json,system_prompt=none), gen_kwargs: (), limit: None, offset: 0, num_fewshot: None, batch_size: 1
+
+LMMs-Eval: Probing Intelligence in the Real World
+> Good evaluation shapes what we build next.
+
+branch: jetson-benchmark
+commit: v0.6-317-g61717291
+
+|   Tasks    |     Filter     |n-shot|  Metric   |   |Value |   |Stderr|Stderr_CLT|
+|------------|----------------|-----:|-----------|---|-----:|---|-----:|---------:|
+|gsm8k_jetson|flexible-extract|     5|exact_match|↑  |0.6361|±  |0.0133|    0.0133|
+|gsm8k_jetson|strict-match    |     5|exact_match|↑  |0.3450|±  |0.0131|    0.0131|
+
+
+Throughput Summary
+
+|      Metric      |  Value  |  Unit  |
+|------------------|--------:|--------|
+|total_gen_tokens  |   0.0000|tokens  |
+|total_elapsed_time|1566.4211|seconds |
+|avg_speed         |   0.0000|tokens/s|
+
+
+[slim_run.py: dropped 2642 per-request progress/profile lines]

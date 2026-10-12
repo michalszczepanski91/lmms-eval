@@ -1,0 +1,88 @@
+23:58:32 Qwen2.5-3B-Instruct-fp16: engines exist
+23:58:32 Qwen2.5-3B-Instruct-fp8: engines exist
+23:58:32 Qwen2.5-3B-Instruct-int4_awq: engines exist
+23:58:32 Qwen2.5-3B-Instruct-int8_sq: engines exist
+23:58:32 Qwen2.5-3B-Instruct-fp8_kv: engines exist
+23:58:32 Qwen2.5-3B-Instruct-fp8_lmhead: engines exist
+23:58:32 Qwen2.5-3B-Instruct-int4_awq_taskcal: engines exist
+23:58:32 Qwen2.5-3B-Instruct-int4_gptq_qwen: engines exist
+=== 23:58:32 trt_edgellm 3b-fp16 gsm8k_jetson: done (/home/michal/dev/lmms-eval/jetson/results/thor/Qwen2.5-3B-Instruct/gsm8k_jetson/trt_edgellm-fp16/20261009-024221/), skipped
+=== 23:58:32 trt_edgellm 3b-fp8 gsm8k_jetson: done (/home/michal/dev/lmms-eval/jetson/results/thor/Qwen2.5-3B-Instruct/gsm8k_jetson/trt_edgellm-fp8/20261009-043800/), skipped
+=== 23:58:32 trt_edgellm 3b-int4_awq gsm8k_jetson: done (/home/michal/dev/lmms-eval/jetson/results/thor/Qwen2.5-3B-Instruct/gsm8k_jetson/trt_edgellm-int4_awq/20261009-054507/), skipped
+=== 23:58:32 trt_edgellm 3b-int8_sq gsm8k_jetson 
+    /home/michal/dev/lmms-eval/jetson/results/thor/Qwen2.5-3B-Instruct/gsm8k_jetson/trt_edgellm-int8_sq/20261011-235832/: samples 2638, question_marks 0, empty 0, request_failed 0
+summary: /home/michal/dev/lmms-eval/jetson/results/thor/SUMMARY.md
+=== 01:12:45 trt_edgellm 3b-fp16 mmlu_jetson: done (/home/michal/dev/lmms-eval/jetson/results/thor/Qwen2.5-3B-Instruct/mmlu_jetson/trt_edgellm-fp16/20261009-163348/), skipped
+=== 01:12:45 trt_edgellm 3b-fp8 mmlu_jetson: done (/home/michal/dev/lmms-eval/jetson/results/thor/Qwen2.5-3B-Instruct/mmlu_jetson/trt_edgellm-fp8/20261009-180300/), skipped
+=== 01:12:45 trt_edgellm 3b-int4_awq mmlu_jetson: done (/home/michal/dev/lmms-eval/jetson/results/thor/Qwen2.5-3B-Instruct/mmlu_jetson/trt_edgellm-int4_awq/20261009-191117/), skipped
+=== 01:12:45 trt_edgellm 3b-int8_sq mmlu_jetson 
+    /home/michal/dev/lmms-eval/jetson/results/thor/Qwen2.5-3B-Instruct/mmlu_jetson/trt_edgellm-int8_sq/20261012-011245/: samples 14042, question_marks 0, empty 0, request_failed 0
+summary: /home/michal/dev/lmms-eval/jetson/results/thor/SUMMARY.md
+=== 01:33:35 trt_edgellm 3b-fp16 ifeval: done (/home/michal/dev/lmms-eval/jetson/results/thor/Qwen2.5-3B-Instruct/ifeval/trt_edgellm-fp16/20261010-031531/), skipped
+=== 01:33:35 trt_edgellm 3b-fp8 ifeval: done (/home/michal/dev/lmms-eval/jetson/results/thor/Qwen2.5-3B-Instruct/ifeval/trt_edgellm-fp8/20261010-043108/), skipped
+=== 01:33:35 trt_edgellm 3b-int4_awq ifeval: done (/home/michal/dev/lmms-eval/jetson/results/thor/Qwen2.5-3B-Instruct/ifeval/trt_edgellm-int4_awq/20261010-051805/), skipped
+=== 01:33:35 trt_edgellm 3b-int8_sq ifeval 
+    /home/michal/dev/lmms-eval/jetson/results/thor/Qwen2.5-3B-Instruct/ifeval/trt_edgellm-int8_sq/20261012-013335/: samples 541, question_marks 0, empty 0, request_failed 0
+summary: /home/michal/dev/lmms-eval/jetson/results/thor/SUMMARY.md
+=== 02:42:27 trt_edgellm 3b-fp8_kv gsm8k_jetson 
+    /home/michal/dev/lmms-eval/jetson/results/thor/Qwen2.5-3B-Instruct/gsm8k_jetson/trt_edgellm-fp8_kv/20261012-024227/: samples 2638, question_marks 0, empty 0, request_failed 0
+=== 03:51:30 trt_edgellm 3b-fp8_lmhead gsm8k_jetson 
+    /home/michal/dev/lmms-eval/jetson/results/thor/Qwen2.5-3B-Instruct/gsm8k_jetson/trt_edgellm-fp8_lmhead/20261012-035130/: samples 2638, question_marks 0, empty 0, request_failed 0
+=== 04:52:32 trt_edgellm 3b-int4_awq_taskcal gsm8k_jetson 
+    /home/michal/dev/lmms-eval/jetson/results/thor/Qwen2.5-3B-Instruct/gsm8k_jetson/trt_edgellm-int4_awq_taskcal/20261012-045232/: samples 2638, question_marks 0, empty 0, request_failed 0
+=== 05:38:14 trt_edgellm 3b-int4_gptq_qwen gsm8k_jetson 
+    /home/michal/dev/lmms-eval/jetson/results/thor/Qwen2.5-3B-Instruct/gsm8k_jetson/trt_edgellm-int4_gptq_qwen/20261012-053814/: samples 2638, question_marks 0, empty 0, request_failed 0
+summary: /home/michal/dev/lmms-eval/jetson/results/thor/SUMMARY.md
+=== 06:30:36 trt_edgellm 3b-fp8_kv mmlu_jetson 
+    /home/michal/dev/lmms-eval/jetson/results/thor/Qwen2.5-3B-Instruct/mmlu_jetson/trt_edgellm-fp8_kv/20261012-063036/: samples 14042, question_marks 0, empty 0, request_failed 0
+=== 08:07:55 trt_edgellm 3b-fp8_lmhead mmlu_jetson 
+    /home/michal/dev/lmms-eval/jetson/results/thor/Qwen2.5-3B-Instruct/mmlu_jetson/trt_edgellm-fp8_lmhead/20261012-080755/: samples 14042, question_marks 0, empty 0, request_failed 0
+=== 09:06:42 trt_edgellm 3b-int4_awq_taskcal mmlu_jetson 
+    /home/michal/dev/lmms-eval/jetson/results/thor/Qwen2.5-3B-Instruct/mmlu_jetson/trt_edgellm-int4_awq_taskcal/20261012-090642/: samples 14042, question_marks 0, empty 0, request_failed 0
+=== 10:32:05 trt_edgellm 3b-int4_gptq_qwen mmlu_jetson 
+    /home/michal/dev/lmms-eval/jetson/results/thor/Qwen2.5-3B-Instruct/mmlu_jetson/trt_edgellm-int4_gptq_qwen/20261012-103205/: samples 14042, question_marks 0, empty 0, request_failed 0
+summary: /home/michal/dev/lmms-eval/jetson/results/thor/SUMMARY.md
+11:09:58 Qwen2.5-1.5B-Instruct-fp16: engines exist
+11:09:58 Qwen2.5-1.5B-Instruct-fp8: engines exist
+11:09:58 Qwen2.5-1.5B-Instruct-int4_awq: engines exist
+11:09:58 Qwen2.5-1.5B-Instruct-int8_sq: engines exist
+11:09:58 Qwen2.5-1.5B-Instruct-fp8_kv: engines exist
+11:09:58 Qwen2.5-1.5B-Instruct-fp8_lmhead: engines exist
+11:09:58 Qwen2.5-1.5B-Instruct-int4_awq_taskcal: engines exist
+11:09:58 Qwen2.5-1.5B-Instruct-int4_gptq_qwen: engines exist
+=== 11:09:58 trt_edgellm 1.5b-fp16 gsm8k_jetson: done (/home/michal/dev/lmms-eval/jetson/results/thor/Qwen2.5-1.5B-Instruct/gsm8k_jetson/trt_edgellm-fp16/20261010-111357/), skipped
+=== 11:09:58 trt_edgellm 1.5b-fp8 gsm8k_jetson: done (/home/michal/dev/lmms-eval/jetson/results/thor/Qwen2.5-1.5B-Instruct/gsm8k_jetson/trt_edgellm-fp8/20261011-175940/), skipped
+=== 11:09:58 trt_edgellm 1.5b-int4_awq gsm8k_jetson: done (/home/michal/dev/lmms-eval/jetson/results/thor/Qwen2.5-1.5B-Instruct/gsm8k_jetson/trt_edgellm-int4_awq/20261010-122809/), skipped
+=== 11:09:58 trt_edgellm 1.5b-int8_sq gsm8k_jetson 
+    /home/michal/dev/lmms-eval/jetson/results/thor/Qwen2.5-1.5B-Instruct/gsm8k_jetson/trt_edgellm-int8_sq/20261012-110958/: samples 2638, question_marks 0, empty 0, request_failed 0
+summary: /home/michal/dev/lmms-eval/jetson/results/thor/SUMMARY.md
+=== 12:10:46 trt_edgellm 1.5b-fp16 mmlu_jetson: done (/home/michal/dev/lmms-eval/jetson/results/thor/Qwen2.5-1.5B-Instruct/mmlu_jetson/trt_edgellm-fp16/20261010-212917/), skipped
+=== 12:10:46 trt_edgellm 1.5b-fp8 mmlu_jetson: done (/home/michal/dev/lmms-eval/jetson/results/thor/Qwen2.5-1.5B-Instruct/mmlu_jetson/trt_edgellm-fp8/20261010-223849/), skipped
+=== 12:10:46 trt_edgellm 1.5b-int4_awq mmlu_jetson: done (/home/michal/dev/lmms-eval/jetson/results/thor/Qwen2.5-1.5B-Instruct/mmlu_jetson/trt_edgellm-int4_awq/20261010-231946/), skipped
+=== 12:10:46 trt_edgellm 1.5b-int8_sq mmlu_jetson 
+    /home/michal/dev/lmms-eval/jetson/results/thor/Qwen2.5-1.5B-Instruct/mmlu_jetson/trt_edgellm-int8_sq/20261012-121046/: samples 14042, question_marks 0, empty 0, request_failed 0
+summary: /home/michal/dev/lmms-eval/jetson/results/thor/SUMMARY.md
+=== 13:09:25 trt_edgellm 1.5b-fp16 ifeval: done (/home/michal/dev/lmms-eval/jetson/results/thor/Qwen2.5-1.5B-Instruct/ifeval/trt_edgellm-fp16/20261011-043149/), skipped
+=== 13:09:25 trt_edgellm 1.5b-fp8 ifeval: done (/home/michal/dev/lmms-eval/jetson/results/thor/Qwen2.5-1.5B-Instruct/ifeval/trt_edgellm-fp8/20261011-051110/), skipped
+=== 13:09:25 trt_edgellm 1.5b-int4_awq ifeval: done (/home/michal/dev/lmms-eval/jetson/results/thor/Qwen2.5-1.5B-Instruct/ifeval/trt_edgellm-int4_awq/20261011-053611/), skipped
+=== 13:09:25 trt_edgellm 1.5b-int8_sq ifeval 
+    /home/michal/dev/lmms-eval/jetson/results/thor/Qwen2.5-1.5B-Instruct/ifeval/trt_edgellm-int8_sq/20261012-130925/: samples 541, question_marks 0, empty 0, request_failed 0
+summary: /home/michal/dev/lmms-eval/jetson/results/thor/SUMMARY.md
+=== 13:58:08 trt_edgellm 1.5b-fp8_kv gsm8k_jetson 
+    /home/michal/dev/lmms-eval/jetson/results/thor/Qwen2.5-1.5B-Instruct/gsm8k_jetson/trt_edgellm-fp8_kv/20261012-135808/: samples 2638, question_marks 0, empty 0, request_failed 0
+=== 14:26:09 trt_edgellm 1.5b-fp8_lmhead gsm8k_jetson 
+    /home/michal/dev/lmms-eval/jetson/results/thor/Qwen2.5-1.5B-Instruct/gsm8k_jetson/trt_edgellm-fp8_lmhead/20261012-142609/: samples 2638, question_marks 0, empty 0, request_failed 0
+=== 14:52:50 trt_edgellm 1.5b-int4_awq_taskcal gsm8k_jetson 
+    /home/michal/dev/lmms-eval/jetson/results/thor/Qwen2.5-1.5B-Instruct/gsm8k_jetson/trt_edgellm-int4_awq_taskcal/20261012-145250/: samples 2638, question_marks 0, empty 0, request_failed 0
+=== 15:21:31 trt_edgellm 1.5b-int4_gptq_qwen gsm8k_jetson 
+    /home/michal/dev/lmms-eval/jetson/results/thor/Qwen2.5-1.5B-Instruct/gsm8k_jetson/trt_edgellm-int4_gptq_qwen/20261012-152131/: samples 2638, question_marks 0, empty 0, request_failed 0
+summary: /home/michal/dev/lmms-eval/jetson/results/thor/SUMMARY.md
+=== 15:43:43 trt_edgellm 1.5b-fp8_kv mmlu_jetson 
+    /home/michal/dev/lmms-eval/jetson/results/thor/Qwen2.5-1.5B-Instruct/mmlu_jetson/trt_edgellm-fp8_kv/20261012-154343/: samples 14042, question_marks 0, empty 0, request_failed 0
+=== 16:13:45 trt_edgellm 1.5b-fp8_lmhead mmlu_jetson 
+    /home/michal/dev/lmms-eval/jetson/results/thor/Qwen2.5-1.5B-Instruct/mmlu_jetson/trt_edgellm-fp8_lmhead/20261012-161345/: samples 14042, question_marks 0, empty 0, request_failed 0
+=== 16:51:41 trt_edgellm 1.5b-int4_awq_taskcal mmlu_jetson 
+    /home/michal/dev/lmms-eval/jetson/results/thor/Qwen2.5-1.5B-Instruct/mmlu_jetson/trt_edgellm-int4_awq_taskcal/20261012-165141/: samples 14042, question_marks 0, empty 0, request_failed 0
+=== 17:34:18 trt_edgellm 1.5b-int4_gptq_qwen mmlu_jetson 
+    /home/michal/dev/lmms-eval/jetson/results/thor/Qwen2.5-1.5B-Instruct/mmlu_jetson/trt_edgellm-int4_gptq_qwen/20261012-173418/: samples 14042, question_marks 0, empty 0, request_failed 0
+summary: /home/michal/dev/lmms-eval/jetson/results/thor/SUMMARY.md
