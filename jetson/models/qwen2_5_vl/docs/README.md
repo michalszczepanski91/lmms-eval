@@ -2,16 +2,17 @@
 
 Teaching material for the two models benchmarked in `jetson/`. One example runs through all the pages: a **448×336 px image** with the question **"What is in the image?"**. All tensor shapes and position numbers below are for that example.
 
-All figures are in [figures/](figures/) as PNG and SVG. [qwen2_5_vl_architecture.pdf](qwen2_5_vl_architecture.pdf) holds all of them, one page each, in teaching order.
+All figures are in [figures/](figures/) as PNG and SVG. [qwen2_5_vl_architecture.pdf](qwen2_5_vl_architecture.pdf) holds all 10 of them, one page each, in teaching order.
 
 | # | Figure | Content |
 |---|--------|---------|
 | 1 | [01_overview_3b](figures/01_overview_3b.png) · [01_overview_7b](figures/01_overview_7b.png) | End-to-end data flow, parameter split |
 | 2 | [02_pixels_to_tokens](figures/02_pixels_to_tokens.png) | Resize, patches, 2×2 units, windows, token order |
-| 3 | [03_vision_encoder_3b](figures/03_vision_encoder_3b.png) · [03_vision_encoder_7b](figures/03_vision_encoder_7b.png) | ViT block, vision attention, vision MLP, patch merger |
-| 4 | [04_positions_mrope](figures/04_positions_mrope.png) | M-RoPE position ids (real values), 2D RoPE in the ViT |
-| 5 | [05_language_model_3b](figures/05_language_model_3b.png) · [05_language_model_7b](figures/05_language_model_7b.png) | Decoder layer, GQA attention, MLP, KV cache |
-| 6 | [06_3b_vs_7b](figures/06_3b_vs_7b.png) | Side-by-side comparison of the two sizes |
+| 3 | [03_patch_merger](figures/03_patch_merger.png) | The projector step by step: 4 patches of a 2×2 square → concat → mix → 1 token; what it is not |
+| 4 | [04_vision_encoder_3b](figures/04_vision_encoder_3b.png) · [04_vision_encoder_7b](figures/04_vision_encoder_7b.png) | ViT block, vision attention, vision MLP, patch merger |
+| 5 | [05_positions_mrope](figures/05_positions_mrope.png) | M-RoPE position ids (real values), 2D RoPE in the ViT |
+| 6 | [06_language_model_3b](figures/06_language_model_3b.png) · [06_language_model_7b](figures/06_language_model_7b.png) | Decoder layer, GQA attention, MLP, KV cache |
+| 7 | [07_3b_vs_7b](figures/07_3b_vs_7b.png) | Side-by-side comparison of the two sizes |
 
 **How accurate is it?** The script ([make_diagrams.py](make_diagrams.py)) builds every figure from the checkpoints' `config.json` (copies in [configs/](configs/)). It checks the parameter counts it derives against the safetensors headers in the HF cache, and they match exactly (3,754,622,976 and 8,292,166,656). The layer structure (bias or no bias, where norms and RoPE sit, window and full attention, merger) follows `transformers` 4.57 `modeling_qwen2_5_vl.py`. The token ids and M-RoPE positions of the example were produced with the real processor and `get_rope_index`. To rebuild, run `python3 jetson/models/qwen2_5_vl/docs/make_diagrams.py`; it needs only matplotlib and numpy.
 
@@ -23,7 +24,7 @@ Qwen2.5-VL is a **vision encoder** (a ViT) and a **language model** (the Qwen2.5
 
 1. The **image processor** (CPU) resizes the image and cuts it into P patches of 14×14 px.
 2. The **vision encoder** turns every patch into a 1280-d vector and refines it through 32 transformer blocks.
-3. The **patch merger** joins each 2×2 group of neighbouring patches into one vector of the LLM's width d. That gives N = P/4 *visual tokens*.
+3. The **patch merger** concatenates the 4 patch vectors of each 2×2 square (nothing is dropped), mixes them and projects the result to the LLM's width d. That gives N = P/4 *visual tokens*.
 4. The prompt is tokenized. It contains one `<|image_pad|>` placeholder per visual token. After the embedding lookup, those N rows are **overwritten** by the N merger outputs.
 5. The **decoder** (36 layers in 3B, 28 in 7B) processes text and image tokens together with causal attention. Every token gets a 3D position (M-RoPE).
 6. The **LM head** turns the last position into logits over the vocabulary. The next token is appended and the loop repeats, reusing the KV cache.
@@ -39,9 +40,22 @@ Nothing else connects the two models: the LLM sees image tokens only as ordinary
 - **Order**: the processor already lists the 4 patches of every 2×2 unit next to each other. The ViT then reorders the units so that each **112×112 px window** (8×8 patches = 4×4 tokens) is contiguous. Window attention can then work on contiguous slices of the sequence.
 - **Tokens**: N = (H/28)·(W/28). Example: 12 × 16 = **192 visual tokens**. One token covers 28×28 px.
 
-## 3. Vision encoder (same shape in 3B and 7B)
+## 3. Patch merger: 4 patches → 1 token
 
-![vision encoder 3B](figures/03_vision_encoder_3b.png)
+![patch merger](figures/03_patch_merger.png)
+
+The merger runs after the 32 vision blocks. It is the only place where the number of image tokens changes. For every 2×2 square of the image (28×28 px):
+
+1. Take the 4 patch vectors (1280 numbers each) and RMSNorm each one separately.
+2. **Concatenate** them into one vector of 5120 numbers. This is only a reshape: the processor already put the 4 patches of a square next to each other, so `[P, 1280]` becomes `[P/4, 5120]` and **nothing is dropped**.
+3. **Mix** them with Linear 5120→5120 + GELU. Every output number is a learned weighted sum of all 5120 inputs, so it combines patches A, B, C and D.
+4. **Project** to the LLM width with Linear 5120→d. This is the only compressing step: 5120 numbers become 2048 (3B, 2.5× fewer) or 3584 (7B, 1.4× fewer).
+
+So the merger is neither "keep 1 patch, drop 3" nor a fixed average. It is a learned mix of all four. It exists to make the image sequence 4× shorter (768 → 192 tokens: 4× less KV cache, ~16× less attention between image tokens) and to map vision features into the LLM's embedding space. It is small (36.7 M in 3B, 44.6 M in 7B) and stored with the vision encoder as `visual.merger.*`.
+
+## 4. Vision encoder (same shape in 3B and 7B)
+
+![vision encoder 3B](figures/04_vision_encoder_3b.png)
 
 | Part | What it does | Shapes / sizes |
 |------|--------------|----------------|
@@ -56,9 +70,9 @@ Nothing else connects the two models: the LLM sees image tokens only as ordinary
 
 Why use window attention? Full attention costs O(P²). With 64-patch windows, 28 of the 32 blocks cost O(P·64). The 4 full-attention blocks still let information travel across the whole image.
 
-## 4. Positions: M-RoPE and 2D RoPE
+## 5. Positions: M-RoPE and 2D RoPE
 
-![positions](figures/04_positions_mrope.png)
+![positions](figures/05_positions_mrope.png)
 
 Neither model has learned position embeddings. Positions enter only by rotating q and k (RoPE).
 
@@ -68,9 +82,9 @@ Neither model has learned position embeddings. Positions enter only by rotating 
   - Image tokens: t is the same for all of them; h and w are the row and column in the token grid, plus the start offset.
   - After an image, text resumes at max + 1. In the example, the 192 image tokens use positions 15…30, `<|vision_end|>` gets 31, and the first generated token gets **43** although its sequence index is 219. The model keeps that offset as `rope_deltas` (−176) for decoding.
 
-## 5. Language model
+## 6. Language model
 
-![language model 3B](figures/05_language_model_3b.png)
+![language model 3B](figures/06_language_model_3b.png)
 
 Every decoder layer follows the same pre-norm residual pattern as the vision block:
 
@@ -79,9 +93,9 @@ Every decoder layer follows the same pre-norm residual pattern as the vision blo
 - **Head**: final RMSNorm, then the LM head d→V. In **3B the LM head is the token-embedding matrix itself** (`tie_word_embeddings: true`); 7B has a separate 545 M matrix. V (151,936 / 152,064) is larger than the 151,665 real token ids; the extra rows are padding.
 - **Prefill vs decode**: prefill runs all L prompt tokens in one pass and fills the KV cache. Each decode step runs a single token. Only the last position needs the LM head.
 
-## 6. 3B vs 7B
+## 7. 3B vs 7B
 
-![3B vs 7B](figures/06_3b_vs_7b.png)
+![3B vs 7B](figures/07_3b_vs_7b.png)
 
 The vision encoder has the same shape in both sizes (632 M, weights trained separately). Only the merger's output width follows the LLM. The 3B language model is **deeper** (36 layers) but much **narrower** (2048 vs 3584) than the 7B.
 

@@ -386,7 +386,7 @@ def fig_overview(m, pdf):
         fs=9.5,
         lfs=7.7,
     )
-    mg = box(ax, 127, y, 28, h, "Patch merger (projector)", ["2×2 neighbouring patches", "→ 1 token", f"RMSNorm, concat 4×{m.vd} = {m.mdim}", f"Linear {m.mdim}→{m.mdim} · GELU", f"Linear {m.mdim}→{m.out}"], kind="merger", fs=9.5, lfs=7.7)
+    mg = box(ax, 127, y, 28, h, "Patch merger (projector)", ["the 4 patches of a 2×2 square:", "concatenated (all kept), mixed", f"RMSNorm, concat 4×{m.vd} = {m.mdim}", f"Linear {m.mdim}→{m.mdim} · GELU", f"Linear {m.mdim}→{m.out}"], kind="merger", fs=9.5, lfs=7.7)
     for a, b, s in ((img, proc, ""), (proc, pe, f"[P,{m.pdim}]"), (pe, vit, f"[P,{m.vd}]"), (vit, mg, f"[P,{m.vd}]")):
         arrow(ax, a.r, b.l)
         if s:
@@ -488,7 +488,7 @@ def fig_overview(m, pdf):
     save(fig, f"01_overview_{m.size.lower()}", pdf)
 
 
-# ----------------------------------------------------------------------------------------------- figure 3: vision encoder
+# ----------------------------------------------------------------------------------------------- figure 4: vision encoder
 
 
 def fig_vision(m, pdf):
@@ -570,12 +570,12 @@ def fig_vision(m, pdf):
     box(ax, x + 5, y + 9, w - 10, 4.6, f"RMSNorm ln_q  (each patch, {m.vd})", kind="norm", fs=7.8)
     arrow(ax, (cx, y + 13.6), (cx, y + 16))
     box(ax, x + 3, y + 16, w - 6, 11.5, kind="merger")
-    T(ax, cx, y + 18.3, "Concatenate 4 consecutive rows", 8.3, bold=True)
+    T(ax, cx, y + 18.3, "Concatenate the 4 patches of a 2×2 square", 8.3, bold=True)
     colors = ["#c9a3d9", "#b07fc6", "#9a62b5", "#7f4a9e"]
     for i in range(4):
         ax.add_patch(Rectangle((cx - 16 + i * 8, y + 20.6), 7.6, 2.4, fc=colors[i], ec="white", lw=0.6, zorder=3))
         T(ax, cx - 12.2 + i * 8, y + 21.8, str(m.vd), 6.5, color="white", bold=True, z=5)
-    T(ax, cx, y + 25.4, f"the 2×2 patches of one token → [N, {m.mdim}]", 7.2, color=SUB)
+    T(ax, cx, y + 25.4, f"nothing dropped: [P, {m.vd}] → [N, {m.mdim}]", 7.2, color=SUB)
     arrow(ax, (cx, y + 27.5), (cx, y + 29.5))
     box(ax, x + 5, y + 29.5, w - 10, 4.6, f"Linear {m.mdim} → {m.mdim}  (+ bias)", kind="merger", fs=8)
     arrow(ax, (cx, y + 34.1), (cx, y + 36))
@@ -587,10 +587,10 @@ def fig_vision(m, pdf):
     T(ax, cx, y + 54, "then reordered back to row-major", 7.2, color=SUB)
     T(ax, cx, y + 58.4, f"{fmt2(m.p_merger)} params", 7.2, color=SUB)
     footer(ax, W, H)
-    save(fig, f"03_vision_encoder_{m.size.lower()}", pdf)
+    save(fig, f"04_vision_encoder_{m.size.lower()}", pdf)
 
 
-# ----------------------------------------------------------------------------------------------- figure 5: language model
+# ----------------------------------------------------------------------------------------------- figure 6: language model
 
 
 def fig_decoder(m, pdf):
@@ -729,7 +729,7 @@ def fig_decoder(m, pdf):
     for i, s_ in enumerate(lines):
         T(ax, x + w / 2, y + 36 + i * 2.6, s_, 7.3, color=SUB)
     footer(ax, W, H)
-    save(fig, f"05_language_model_{m.size.lower()}", pdf)
+    save(fig, f"06_language_model_{m.size.lower()}", pdf)
 
 
 # ----------------------------------------------------------------------------------------------- figure 2: pixels → tokens
@@ -831,14 +831,14 @@ def fig_tokens(m, pdf):
     for i in range(4):
         ax.add_patch(Rectangle((139 + i * 13.2, 50.5), 12.6, 2.4, fc=colors[i], ec="none", zorder=3))
         T(ax, 145.3 + i * 13.2, 51.7, f"patch {i + 1}", 6.6, color="white", bold=True, z=5)
-    T(ax, 166, 55.4, f"concat → {m.mdim} numbers (one 2×2 unit)", 7.6, bold=True)
+    T(ax, 166, 55.4, f"RMSNorm each, concat → {m.mdim} numbers (all 4 kept)", 7.6, bold=True)
     arrow(ax, (166, 56.7), (166, 58.5))
     box(ax, 140, 58.5, 52, 4.6, f"Merger MLP: {m.mdim} → {m.mdim} → d", kind="merger", fs=8)
     arrow(ax, (166, 63.1), (166, 65.5))
     ax.add_patch(Rectangle((146, 65.5), 40, 2.6, fc="#b0304f", ec="none", alpha=0.85, zorder=3))
     T(ax, 166, 66.8, "1 visual token, d numbers", 6.8, color="white", bold=True, z=5)
     T(ax, 166, 71, "d = 2048 (3B)  ·  d = 3584 (7B)", 8, bold=True)
-    for i, s in enumerate(["It replaces one <|image_pad|> embedding,", "so the LLM reads it like any other token.", "One token covers 28 × 28 px of the image."]):
+    for i, s in enumerate(["It replaces one <|image_pad|> embedding,", "so the LLM reads it like any other token.", "One token covers 28 × 28 px of the image.", "Merger step by step: next page."]):
         T(ax, 166, 76 + i * 3, s, 7.6, color=SUB)
 
     box(
@@ -858,7 +858,154 @@ def fig_tokens(m, pdf):
     save(fig, "02_pixels_to_tokens", pdf)
 
 
-# ----------------------------------------------------------------------------------------------- figure 4: positions
+# ----------------------------------------------------------------------------------------------- figure 3: patch merger
+
+ABCD = ["#e8833a", "#3b7dd8", "#3fa34d", "#9b59b6"]
+
+
+def vbar(ax, x, y, w, n, color, unit=128, label=None):
+    """Vertical bar whose height is proportional to the vector length n (1 unit = 128 numbers)."""
+    h = n / unit
+    ax.add_patch(Rectangle((x, y), w, h, fc=color, ec="white", lw=0.8, zorder=3))
+    if label:
+        T(ax, x + w / 2, y + h / 2, label, 9, color="white", bold=True, z=5)
+    return h
+
+
+def mixed_bar(ax, x, y, w, n, rng, unit=128):
+    """A bar whose slices are random blends of the four patch colours: every number mixes A, B, C and D."""
+    rgb = np.array([matplotlib.colors.to_rgb(c) for c in ABCD])
+    h, k = n / unit, int(n / unit * 3)
+    for i in range(k):
+        wts = rng.dirichlet(np.ones(4))
+        ax.add_patch(Rectangle((x, y + i * h / k), w, h / k + 0.02, fc=tuple(wts @ rgb), ec="none", zorder=3))
+    ax.add_patch(Rectangle((x, y), w, h, fc="none", ec="#555", lw=0.8, zorder=4))
+    return h
+
+
+def fig_merger(a, b, pdf):
+    m = a
+    W, H = 200, 112
+    fig, ax = canvas(W, H)
+    rng = np.random.default_rng(0)
+    header(
+        ax,
+        "Patch merger: 4 patches → 1 token, nothing is dropped",
+        f"Runs after the {m.depth} vision blocks. It concatenates the 4 patch vectors of every 2×2 square, mixes them with a 2-layer MLP and projects to the LLM width.  Bar heights are to scale (1 unit = 128 numbers).",
+        W,
+    )
+    T(ax, 4, 13.4, "Every 2×2 square of the image is processed this way, independently (768 patches → 192 tokens in the example).", 8.6, ha="left", color=SUB, italic=True)
+
+    # 1 · the square on the image
+    panel(ax, 2, 16, 40, 66, "1 · One 2×2 square of the image", "io", fs=9)
+    photo = synthetic_photo(336, 448)
+    x0, y0, pw = 6, 22, 32 / 32
+    ax.imshow(photo, extent=(x0, x0 + 32 * pw, y0 + 24 * pw, y0), zorder=1, interpolation="bilinear")
+    for i in range(0, 33, 2):
+        ax.plot([x0 + i * pw] * 2, [y0, y0 + 24 * pw], color="#222", lw=0.4, alpha=0.6, zorder=2)
+    for j in range(0, 25, 2):
+        ax.plot([x0, x0 + 32 * pw], [y0 + j * pw] * 2, color="#222", lw=0.4, alpha=0.6, zorder=2)
+    # the 2×2 square whose 4 patches differ most from each other (so A-D look different)
+    means = photo.reshape(24, 14, 32, 14, 3).mean(axis=(1, 3))
+    r0, c0 = max(((r, c) for r in range(0, 24, 2) for c in range(0, 32, 2)), key=lambda rc: means[rc[0] : rc[0] + 2, rc[1] : rc[1] + 2].reshape(4, 3).std(axis=0).sum())
+    ax.add_patch(Rectangle((x0 + c0 * pw, y0 + r0 * pw), 2 * pw, 2 * pw, fc="none", ec="#d62728", lw=2, zorder=4))
+    zx, zy, zc = 9, 52, 12  # zoomed square: 2×2 cells of zc units
+    crop = photo[r0 * 14 : r0 * 14 + 28, c0 * 14 : c0 * 14 + 28]
+    ax.imshow(crop, extent=(zx, zx + 2 * zc, zy + 2 * zc, zy), zorder=1, interpolation="nearest")
+    line(ax, (x0 + c0 * pw, y0 + (r0 + 2) * pw), (zx, zy), color="#d62728", lw=0.8)
+    line(ax, (x0 + (c0 + 2) * pw, y0 + (r0 + 2) * pw), (zx + 2 * zc, zy), color="#d62728", lw=0.8)
+    for k, name in enumerate("ABCD"):
+        r, c = divmod(k, 2)
+        ax.add_patch(Rectangle((zx + c * zc, zy + r * zc), zc, zc, fc="none", ec=ABCD[k], lw=2.4, zorder=4))
+        T(ax, zx + (c + 0.5) * zc, zy + (r + 0.5) * zc, name, 13, bold=True, color="white", z=5, bg=ABCD[k])
+    T(ax, 22, 79, "28 × 28 px = 4 patches of 14 × 14", 7.8, color=SUB)
+
+    # 2 · four separate vectors, normalized
+    panel(ax, 44, 16, 34, 66, "2 · Four separate vectors", "vision", fs=9)
+    by = [22, 34, 46, 58]
+    for k, name in enumerate("ABCD"):
+        vbar(ax, 49, by[k], 5, m.vd, ABCD[k], label=name)
+        arrow(ax, (54, by[k] + 5), (58, by[k] + 5), lw=1)
+    box(ax, 58, 22, 9, 46, kind="norm")
+    T(ax, 62.5, 45, "RMSNorm  (ln_q), each vector on its own", 7.6, rot=90, bold=True)
+    for i, s_ in enumerate([f"one {m.vd}-d vector per patch,", "output of the vision blocks", "(already mixed with its context", "by attention)"]):
+        T(ax, 61, 71.5 + i * 2.5, s_, 7.4, color=SUB)
+
+    # 3 · concatenate, then mix
+    panel(ax, 80, 16, 52, 66, "3 · Concatenate, then mix", "merger", fs=9)
+    cx0, mx0 = 84, 118
+    for k in range(4):
+        line(ax, (67, by[k] + 5), (cx0, 22 + k * 10 + 5), color=ABCD[k], lw=1.2)
+        vbar(ax, cx0, 22 + k * 10, 5, m.vd, ABCD[k], label="ABCD"[k])
+    T(ax, cx0 + 2.5, 64.3, f"{m.mdim}", 8, bold=True)
+    for i in range(4):
+        for j in range(9):
+            line(ax, (cx0 + 5, 22 + i * 10 + 5), (mx0, 23 + j * 4.75), color=light(ABCD[i], 0.3), lw=0.45, z=1)
+    mixed_bar(ax, mx0, 22, 5, m.mdim, rng)
+    T(ax, mx0 + 2.5, 64.3, f"{m.mdim}", 8, bold=True)
+    box(ax, 93, 37, 21, 10, "Linear", [f"{m.mdim} → {m.mdim}", "+ GELU"], kind="merger", fs=8.5, lfs=7.6)
+    for i, s_ in enumerate(
+        [
+            "concat = a reshape: A|B|C|D stacked, all 5120 kept",
+            "Linear: every output number is a weighted",
+            "sum of all 5120 inputs → A, B, C, D combined",
+        ]
+    ):
+        T(ax, 106, 70 + i * 2.8, s_, 7.4, color=SUB)
+
+    # 4 · project to the LLM width
+    panel(ax, 134, 16, 64, 66, "4 · Project to the LLM width → 1 token", "decoder", fs=9)
+    ax.add_patch(matplotlib.patches.Polygon([(137, 22), (151, 33), (151, 49), (137, 62)], closed=True, fc=light(PAL["merger"][1], 0.6), ec=PAL["merger"][1], lw=1, zorder=2))
+    T(ax, 144, 39.5, "Linear", 8, bold=True, z=4)
+    T(ax, 144, 42.5, f"{m.mdim}→d", 7.4, z=4)
+    T(ax, 144, 45, "+ bias", 7, z=4, color=SUB)
+    for mm, xx in ((a, 158), (b, 179)):
+        hh = mixed_bar(ax, xx, 22, 6, mm.out, rng)
+        T(ax, xx + 3, 22 + hh + 2.4, f"{mm.size}: d = {mm.out}", 8.4, bold=True)
+        T(ax, xx + 3, 22 + hh + 4.8, f"{mm.mdim / mm.out:.1f}× fewer numbers", 7.4, color=SUB)
+    line(ax, (151, 41), (154, 41), (154, 30), lw=1)
+    arrow(ax, (154, 30), (158, 30), lw=1)
+    line(ax, (154, 41), (154, 47.5), (176, 47.5), lw=1)
+    arrow(ax, (176, 47.5), (179, 47.5), lw=1)
+    T(ax, 166, 66, "one or the other, depending on the model", 7.4, color=SUB, italic=True)
+    for i, s_ in enumerate(["1 visual token = the vector that replaces", "one <|image_pad|> in the LLM input"]):
+        T(ax, 166, 72.5 + i * 2.8, s_, 7.4, color=SUB)
+
+    # what it is not / why
+    box(ax, 2, 85, 96, 23, kind="note")
+    T(ax, 4, 88, "What the merger is NOT", 9.5, ha="left", bold=True)
+    cases = [
+        ("✗", "#c0392b", "keep 1 patch, drop 3", "no selection: no patch is discarded"),
+        ("✗", "#c0392b", "average the 4 patches", "no fixed pooling: the weights are learned"),
+        ("✓", "#2e7d32", "learned mix of all 4", "concat (lossless) + MLP; only the final 5120 → d step compresses"),
+    ]
+    for i, (mark, col, a_, b_) in enumerate(cases):
+        yy = 92.5 + i * 5
+        for k in range(4):
+            r, c = divmod(k, 2)
+            keep = mark == "✓" or (i == 0 and k == 0)
+            fc = ABCD[k] if keep else ("#cfcfcf" if i == 0 else light(ABCD[k], 0.5))
+            ax.add_patch(Rectangle((5 + c * 1.9, yy - 1.9 + r * 1.9), 1.8, 1.8, fc=fc, ec="white", lw=0.4, zorder=3))
+        T(ax, 11, yy, mark, 11, bold=True, color=col)
+        T(ax, 14, yy - 0.9, a_, 8.2, ha="left", bold=True)
+        T(ax, 14, yy + 1.3, b_, 7.4, ha="left", color=SUB)
+    box(ax, 100, 85, 98, 23, kind="note")
+    T(ax, 102, 88, "Why it is there", 9.5, ha="left", bold=True)
+    why = [
+        "• 4× shorter image sequence: 768 patches → 192 LLM tokens, so 4× less KV cache",
+        "   and ~16× less attention work between image tokens in every decoder layer.",
+        "• It is the only bridge between the two models: it maps vision features into the",
+        f"   LLM's embedding space (width {a.out} in 3B, {b.out} in 7B).",
+        f"• Small: {fmt(a.p_merger)} (3B) / {fmt(b.p_merger)} (7B) parameters, ~1 % of the model; stored as visual.merger.*",
+        "• Runs in window order; the ViT puts the tokens back in row-major order afterwards.",
+    ]
+    for i, s_ in enumerate(why):
+        T(ax, 102, 91.6 + i * 2.75, s_, 7.6, ha="left", color=SUB)
+    footer(ax, W, H)
+    save(fig, "03_patch_merger", pdf)
+
+
+# ----------------------------------------------------------------------------------------------- figure 5: positions
 
 
 def fig_positions(m, pdf):
@@ -948,10 +1095,10 @@ def fig_positions(m, pdf):
     ):
         T(ax, 104, 91 + i * 3.4, s, 7.8, ha="left", color=SUB)
     footer(ax, W, H)
-    save(fig, "04_positions_mrope", pdf)
+    save(fig, "05_positions_mrope", pdf)
 
 
-# ----------------------------------------------------------------------------------------------- figure 6: 3B vs 7B
+# ----------------------------------------------------------------------------------------------- figure 7: 3B vs 7B
 
 
 def fig_compare(a, b, pdf):
@@ -1001,7 +1148,7 @@ def fig_compare(a, b, pdf):
         T(ax, xs[3], y, r[3], 7.8, ha="left", color=SUB)
         y += 3.4
     footer(ax, W, H)
-    save(fig, "06_3b_vs_7b", pdf)
+    save(fig, "07_3b_vs_7b", pdf)
 
 
 def main():
@@ -1013,6 +1160,7 @@ def main():
         fig_overview(m3, pdf)
         fig_overview(m7, pdf)
         fig_tokens(m3, pdf)
+        fig_merger(m3, m7, pdf)
         fig_vision(m3, pdf)
         fig_vision(m7, pdf)
         fig_positions(m3, pdf)
