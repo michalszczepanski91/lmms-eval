@@ -117,6 +117,9 @@ python -m lmms_eval --tasks list_with_num
   - MME-SCI-Image (mme_sci_images)
 - [MMRefine](http://mmrefine.github.io/) (mmrefine)
 - [MMStar](https://github.com/MMStar-Benchmark/MMStar) (mmstar)
+  - MMStar Hybrid (mmstar_hybrid)
+    - MMStar Hybrid Perception (mmstar_hybrid_perception)
+    - MMStar Hybrid Reasoning (mmstar_hybrid_reasoning)
 - [MMUPD](https://huggingface.co/datasets/MM-UPD/MM-UPD) (mmupd)
   - MMUPD Base (mmupd_base)
     - MMAAD Base (mmaad_base)
@@ -359,6 +362,10 @@ python -m lmms_eval --tasks list_with_num
   - Video-ChatGPT Generic (videochatgpt_gen)
   - Video-ChatGPT Temporal (videochatgpt_temporal)
   - Video-ChatGPT Consistency (videochatgpt_consistency)
+- [Video-Index](https://huggingface.co/datasets/Video-Index/Video-Index) (video_index) - 840 multiple-choice questions from 76 video benchmarks, four capability groups, rule-based scoring
+  - Video file (video_index)
+  - Frames of the paper protocol (video_index_1fps, video_index_64frame, video_index_32frame, video_index_8frame)
+  - Question and options only, four option permutations (video_index_blind)
 - [Video-MME](https://video-mme.github.io/) (videomme)
 - [Video-MMMU](https://videommmu.github.io/) (videommmu)
 - [VideoEval-Pro](https://tiger-ai-lab.github.io/VideoEval-Pro/) (videoevalpro)
@@ -466,6 +473,7 @@ python -m lmms_eval --tasks list_with_num
 
 ## 5. Document Understanding Tasks
 
+- [DocAtlas-Bench](https://github.com/ahmedheakl/DocAtlas) (docatlas_bench)
 - [DOCVQA](https://github.com/anisha2102/docvqa) (docvqa)
   - DOCVQA Validation (docvqa_val)
   - DOCVQA Test (docvqa_test)

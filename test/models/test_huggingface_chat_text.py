@@ -27,7 +27,7 @@ class FakeTokenizer:
     def __init__(self):
         self.calls = []
 
-    def __call__(self, texts, padding=True, return_tensors="pt"):
+    def __call__(self, texts, padding=True, return_tensors="pt", **kwargs):
         self.calls.append(texts)
         return FakeBatch(input_ids=torch.tensor([[5, 6, 7, 8]]), attention_mask=torch.tensor([[1, 1, 1, 1]]))
 

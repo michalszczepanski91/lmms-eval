@@ -240,13 +240,17 @@ class Huggingface(lmms):
             images = self.flatten(images)
             videos = self.flatten(videos)
             audios = self.flatten(audios)
+            # Decoder-only generation needs left padding when batching: with right
+            # padding the prompt is followed by pad tokens and the model continues
+            # from those. Tokenizers differ in their default, so set it explicitly.
+            padding_side = "left" if self.batch_size > 1 else "right"
             if images or videos or audios:
                 kwargs = {"images": images, "videos": videos, "audios": audios}
-                inputs = self.processor(text=texts, padding=True, return_tensors="pt", **kwargs)
+                inputs = self.processor(text=texts, padding=True, padding_side=padding_side, return_tensors="pt", **kwargs)
             else:
                 # Text-only requests: the tokenizer alone (a text model's AutoProcessor may be a bare tokenizer that
                 # rejects media keyword arguments).
-                inputs = self.tokenizer(texts, padding=True, return_tensors="pt")
+                inputs = self.tokenizer(texts, padding=True, padding_side=padding_side, return_tensors="pt")
 
             if self.device_map == "auto":
                 inputs = inputs.to("cuda")
